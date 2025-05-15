@@ -1,0 +1,18 @@
+[logic]
+active = sr_idle@determine_cl_sv
+type = shared_with_cl_data
+
+[sr_idle@determine_cl_sv]
+on_info = {=isServer} sr_idle@sv_wait
+on_info2 = {=isClient} sr_particle@cl
+
+[sr_idle@sv_wait]
+on_info = {!is_alive(zat_b53_artefact_hunter_1)} sr_idle@nil %+ZAT_B53_GO_NIL%
+
+[sr_particle@cl]
+name = static\zharka_static_steam
+path = zat_b53_particle_play_point_1
+mode = 2
+looped = true
+
+[sr_idle@nil]

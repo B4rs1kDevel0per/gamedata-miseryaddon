@@ -1,0 +1,43 @@
+[logic]
+active = sr_idle@determine_cl_sv
+type = shared_with_cl_data
+
+[sr_idle@determine_cl_sv]
+on_info = {=isServer} sr_idle@sv_task
+on_info2 = {=isClient} sr_idle@cl_task
+
+;server logic
+[sr_idle@sv_task]
+on_info = {+ZAT_B7_ACTOR_WITH_STALKERS -ZAT_B7_STALKERS_VICTIMS_TASK_GIVEN} %+ZAT_B7_STALKERS_VICTIMS_TASK_GIVEN =give_task(zat_b7_stalkers_victims)%
+on_info2 = {+ZAT_B7_ACTOR_TELEPORT} sr_idle@sv_teleport
+on_info3 = {+ZAT_B7_STALKERS_RAIDERS_ATTACK} sr_idle@sv_check_actor
+
+[sr_idle@sv_teleport]
+on_game_timer = 30 | {!zat_b7_is_night} sr_idle@sv_out %=xrmpe_teleport_relevant_actors(zat_b7_stalker_raider_leader:zat_b7_actor_teleport_walk:zat_b7_actor_teleport_look:10) =teleport_squad(zat_b7_stalkers_raiders:zat_b7_stalkers_raiders_spawn_2) =set_game_time(23:0) +ZAT_B7_STALKERS_RAIDERS_ATTACK%, {=zat_b7_is_night} sr_idle@sv_out %=xrmpe_teleport_relevant_actors(zat_b7_stalker_raider_leader:zat_b7_actor_teleport_walk:zat_b7_actor_teleport_look:10) =teleport_squad(zat_b7_stalkers_raiders:zat_b7_stalkers_raiders_spawn_2) +ZAT_B7_STALKERS_RAIDERS_ATTACK%
+
+[sr_idle@sv_out]
+on_game_timer = 30 | sr_idle@sv_after
+
+[sr_idle@sv_check_actor]
+on_info = {+ACTOR_IS_SLEEPING} sr_idle@sv_teleport_squad
+on_info2 = {=any_actor_in_zone(zat_a2_sr_sleep)} sr_idle@sv_teleport_squad
+on_info3 = {-ACTOR_IS_SLEEPING !any_actor_in_zone(zat_a2_sr_sleep)} sr_idle@sv_after
+
+[sr_idle@sv_teleport_squad]
+on_info = sr_idle@sv_after %=teleport_squad(zat_b7_stalkers_raiders:zat_b7_stalkers_raiders_spawn_2) +ZAT_B7_STALKER_TELEPORTED%
+
+[sr_idle@sv_after]
+on_info = {+ZAT_B7_ACTOR_WITH_STALKERS -ZAT_B7_STALKERS_VICTIMS_TASK_GIVEN} %+ZAT_B7_STALKERS_VICTIMS_TASK_GIVEN =give_task(zat_b7_stalkers_victims)%
+on_info2 = {+ZAT_B7_TASK_END} sr_idle@nil
+
+;client logic
+[sr_idle@cl_task]
+on_info = {+ZAT_B7_ACTOR_TELEPORT =is_local_actor_relevant(10:zat_b7_stalker_raider_leader)} sr_idle@cl_teleport %=run_postprocess(fade_in_out)%, {+ZAT_B7_ACTOR_TELEPORT !is_local_actor_relevant(10:zat_b7_stalker_raider_leader)} sr_idle@nil
+
+[sr_idle@cl_teleport]
+on_game_timer = 30 | sr_idle@cl_out
+
+[sr_idle@cl_out]
+on_game_timer = 30 | sr_idle@nil %=enable_ui%
+
+[sr_idle@nil]

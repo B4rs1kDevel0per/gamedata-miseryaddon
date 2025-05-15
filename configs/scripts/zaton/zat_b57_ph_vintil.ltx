@@ -1,0 +1,29 @@
+[logic]
+active = ph_button@first_locked
+
+[ph_button@first_locked] ;‚интиль нельзя крутить до выдачи задания
+anim_blend = true
+anim = stop
+on_info = {+ZAT_B57_DEN_OF_THE_BLOODSUCKER_TWIST_VINTIL_GIVE} ph_button@ready
+
+[ph_button@ready] ;Винтиль можно крутить
+anim_blend = true
+anim = stop
+local_use = true
+on_press = ph_button@unlocked_initiator %+ZAT_B57_VINTIL_STARTED =disable_ui_only%
+tooltip = zat_b57_vintil_press
+on_info = {+ZAT_B57_VINTIL_STARTED} ph_button@unlocked
+
+[ph_button@unlocked_initiator] ;‚интиль крутится
+anim_blend = true
+anim = rotate
+on_timer = 4000 | ph_button@locked %=enable_ui +ZAT_B57_GAS_RUNNING_PLAY +ZAT_B57_DEN_OF_THE_BLOODSUCKER_WAIT_DESTROY_GIVE%
+
+[ph_button@unlocked] ;Винтиль крутится
+anim_blend = true
+anim = rotate
+on_info = {+ZAT_B57_GAS_RUNNING_PLAY} ph_button@locked
+
+[ph_button@locked] ;Винтиль прокрутился
+anim_blend = true
+anim = stop

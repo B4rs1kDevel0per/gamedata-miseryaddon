@@ -1,0 +1,94 @@
+[logic@jup_b1_zombie_1]
+active = walker@stay
+suitable = {=check_npc_name(jup_b1_zombie_1)} true
+prior = 70
+on_death = death
+
+[walker@stay]
+path_walk = zombie_spawn
+path_look = st_4_look_2
+on_info = {=dist_to_actor_le(12)} walker@angry %+JUP_B1_ZOMB_BE_FUCKED%, {+JUP_B1_ST_1_AT_POS +JUP_B1_ST_2_AT_POS} walker@go, {+JUP_B1_ZOMB_2_IS_DEAD} walker@angry, {+JUP_B1_ZOMB_3_IS_DEAD} walker@angry
+combat_ignore_cond = true 
+show_spot = false 
+wounded = wounded
+gather_items_enabled = false
+help_wounded_enabled = false
+corpse_detection_enabled = false
+
+[walker@go]
+path_walk = zombie_go
+on_info =  {=npc_in_zone(jup_b1_zombie_kill_zone)} %+JUP_B1_KILL_ZOMBIE_SOUND% 
+combat_ignore_cond = true 
+wounded = wounded
+gather_items_enabled = false
+help_wounded_enabled = false
+corpse_detection_enabled = false
+
+[walker@angry]
+path_walk = zombie_go
+on_info =  {=npc_in_zone(jup_b1_zombie_kill_zone)} %+JUP_B1_KILL_ZOMBIE_SOUND% 
+wounded = wounded
+gather_items_enabled = false
+help_wounded_enabled = false
+corpse_detection_enabled = false
+
+[wounded] ;Не должен быть раненым
+hp_state = 0|wounded_heavy@help_heavy
+hp_state_see = 0|wounded_heavy@help_heavy
+hp_victim = 0|nil
+hp_fight = 0|false
+hp_cover = 0|false
+
+[death]
+on_info = %+JUP_B1_ZOMB_IS_DEAD%
+
+;----------------------------------------
+[logic@jup_b1_zombie_2]
+active = walker@stay_2
+suitable = {=check_npc_name(jup_b1_zombie_2)} true
+prior = 70
+on_death = death@1
+
+[walker@stay_2]
+path_walk = zombie_stay_1
+on_info = {=dist_to_actor_le(12)} walker@angry_2, {+JUP_B1_ZOMB_IS_DEAD} walker@angry_2, {+JUP_B1_ZOMB_3_IS_DEAD} walker@angry_2
+combat_ignore_cond = true 
+show_spot = false 
+gather_items_enabled = false
+help_wounded_enabled = false
+corpse_detection_enabled = false
+
+[walker@angry_2]
+path_walk = zombie_walk_2
+in_restr = jup_b1_anomal_place
+gather_items_enabled = false
+help_wounded_enabled = false
+corpse_detection_enabled = false
+
+[death@1]
+on_info = %+JUP_B1_ZOMB_2_IS_DEAD%
+;---------------------------------------
+[logic@jup_b1_zombie_3]
+active = walker@stay_3
+suitable = {=check_npc_name(jup_b1_zombie_3)} true
+prior = 70
+on_death = death@2
+
+[walker@stay_3]
+path_walk = zombie_stay_2
+on_info = {=dist_to_actor_le(12)} walker@angry_3, {+JUP_B1_ZOMB_IS_DEAD} walker@angry_3, {+JUP_B1_ZOMB_2_IS_DEAD} walker@angry_3
+combat_ignore_cond = true 
+show_spot = false 
+gather_items_enabled = false
+help_wounded_enabled = false
+corpse_detection_enabled = false
+
+[walker@angry_3]
+path_walk = zombie_walk_3
+in_restr = jup_b1_anomal_place
+gather_items_enabled = false
+help_wounded_enabled = false
+corpse_detection_enabled = false
+
+[death@2]
+on_info = %+JUP_B1_ZOMB_3_IS_DEAD%

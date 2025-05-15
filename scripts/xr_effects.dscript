@@ -1,0 +1,1041 @@
+function sleep(actor, npc)
+	local sleep_zones = {
+						"zat_a2_sr_sleep",
+						"jup_a6_sr_sleep",
+						"pri_a16_sr_sleep",
+						"actor_surge_hide_2"
+						}
+
+	for k,v in pairs(sleep_zones) do
+		if utils.npc_in_zone(getLocalActor(), db.zone_by_name[v]) then
+			ui_sleep_dialog.sleep()
+			story_flags.give_flag("SLEEP_ACTIVE")
+		end
+	end
+end
+
+function jup_b32_place_scanner(actor, npc)
+	for i = 1, 5 do
+		if xr_conditions.player_in_zone(actor, npc, {"jup_b32_sr_scanner_place_"..i})
+			and not story_flags.has_flag("JUP_B32_SCANNER_"..i.."_PLACED") then
+			story_flags.give_flag("JUP_B32_SCANNER_"..i.."_PLACED")
+			story_flags.give_flag("JUP_B32_TUTORIAL_DONE")
+			remove_item(actor, npc, {"jup_b32_scanner_device"})
+			spawn_object(actor, nil, {"jup_b32_ph_scanner","jup_b32_scanner_place_"..i})
+		end
+	end
+end
+
+function jup_b32_pda_check(actor, npc)
+	pda.change_anomalies_names()
+end
+
+function pri_b306_generator_start(actor, npc)
+	if xr_conditions.actor_in_zone(actor, npc, {"pri_b306_sr_generator"}) then
+		story_flags.give_flag("PRI_B306_LIFT_GENERATOR_USED")
+	end
+end
+
+function jup_b206_get_plant(actor, npc)
+	if xr_conditions.actor_in_zone(actor, npc, {"jup_b206_sr_quest_line"}) then
+		story_flags.give_flag("JUP_B206_ANOMALOUS_GROVE_HAS_PLANT")
+		give_actor(actor, npc, {"jup_b206_plant"})
+		--destroy_object(actor, npc, {"story", "jup_b206_plant_ph"}) перенес  на время в логику
+	end
+end
+
+function pas_b400_switcher(actor, npc)
+	if xr_conditions.actor_in_zone(actor, npc, {"pas_b400_sr_switcher"}) then
+		story_flags.give_flag("PAS_B400_SWITCHER_USE")
+	end
+end
+
+
+function jup_b209_place_scanner(actor, npc)
+	if xr_conditions.player_in_zone(actor, npc, {"jup_b209_hypotheses"})	then
+		scenario_autosave(db.actor, nil, {"st_save_jup_b209_placed_mutant_scanner"})
+		story_flags.give_flag("JUP_B209_SCANNER_PLACED")
+		remove_item(actor, npc, {"jup_b209_monster_scanner"})
+		spawn_object(actor, nil, {"jup_b209_ph_scanner","jup_b209_scanner_place_point"})
+	end
+end
+
+function jup_b9_heli_1_searching(actor, npc)
+	if xr_conditions.actor_in_zone(actor, npc, {"jup_b9_heli_1"})
+		then
+		story_flags.give_flag("JUP_B9_HELI_1_SEARCHING")
+	end
+end
+
+function pri_a18_use_idol(actor, npc)
+	if xr_conditions.actor_in_zone(actor, npc, {"pri_a18_use_idol_restrictor"})
+		then
+		story_flags.give_flag("PRI_A18_RUN_CAM")
+	end
+end
+
+function jup_b8_heli_4_searching(actor, npc)
+	if xr_conditions.actor_in_zone(actor, npc, {"jup_b8_heli_4"})
+		then
+		story_flags.give_flag("JUP_B8_HELI_4_SEARCHING")
+	end
+end
+
+function jup_b10_ufo_searching(actor, npc)
+	if xr_conditions.actor_in_zone(actor, npc, {"jup_b10_ufo_restrictor"})
+		then
+		story_flags.give_flag("JUP_B10_UFO_MEMORY_STARTED")
+		give_actor(db.actor,nil,{"jup_b10_ufo_memory"})
+	end
+end
+
+
+function zat_b101_heli_5_searching(actor, npc)
+	if xr_conditions.actor_in_zone(actor, npc, {"zat_b101_heli_5"})
+		then
+		story_flags.give_flag("zat_b101_heli_5_searching")
+	end
+end
+
+function zat_b28_heli_3_searching(actor, npc)
+	if xr_conditions.actor_in_zone(actor, npc, {"zat_b28_heli_3"})
+		then
+		story_flags.give_flag("ZAT_B28_HELI_3_SEARCHING")
+	end
+end
+
+function zat_b100_heli_2_searching(actor, npc)
+	if xr_conditions.actor_in_zone(actor, npc, {"zat_b100_heli_2"})	then
+		story_flags.give_flag("zat_b100_heli_2_searching")
+	end
+end
+
+function jup_teleport_actor(actor, npc)
+	local point_in = patrol("jup_b16_teleport_in"):point(0)
+	local point_out = patrol("jup_b16_teleport_out"):point(0)
+	local actor_position = getLocalActor():position()
+	local out_position = vector():set(actor_position.x - point_in.x + point_out.x, actor_position.y - point_in.y + point_out.y , actor_position.z - point_in.z + point_out.z)
+	getLocalActor():set_actor_position(out_position)
+end
+
+function turn_off_underpass_lamps(actor, npc)
+	--hanging_lamp получает данные о состоянии в STATE_Read/STATE_Write
+	--Т.к. эта ф-ия вызывается только раз в начале, то для клиентов нет смысла ее запускать,
+	--поскольку мы ждем данные с сервера
+	if OnClient() then 
+		return
+	end
+	
+	local lamps_table = {
+							["pas_b400_lamp_start_flash"] = true,
+							["pas_b400_lamp_start_red"] = true,
+							["pas_b400_lamp_elevator_green"] = true,
+							["pas_b400_lamp_elevator_flash"] = true,
+							["pas_b400_lamp_elevator_green_1"] = true,
+							["pas_b400_lamp_elevator_flash_1"] = true,
+							["pas_b400_lamp_track_green"] = true,
+							["pas_b400_lamp_track_flash"] = true,
+							["pas_b400_lamp_downstairs_green"] = true,
+							["pas_b400_lamp_downstairs_flash"] = true,
+							["pas_b400_lamp_tunnel_green"] = true,
+							["pas_b400_lamp_tunnel_flash"] = true,
+							["pas_b400_lamp_tunnel_green_1"] = true,
+							["pas_b400_lamp_tunnel_flash_1"] = true,
+							["pas_b400_lamp_control_down_green"] = true,
+							["pas_b400_lamp_control_down_flash"] = true,
+							["pas_b400_lamp_control_up_green"] = true,
+							["pas_b400_lamp_control_up_flash"] = true,
+							["pas_b400_lamp_hall_green"] = true,
+							["pas_b400_lamp_hall_flash"] = true,
+							["pas_b400_lamp_way_green"] = true,
+							["pas_b400_lamp_way_flash"] = true,
+						}
+	local obj
+	for k,v in pairs(lamps_table) do
+		obj = get_story_object(k)
+
+		if obj then
+			obj:get_hanging_lamp():turn_off()
+		else
+			printf("function 'turn_off_underpass_lamps' lamp [%s] does not exist", tostring(k))
+			--abort("function 'turn_off_underpass_lamps' lamp [%s] does not exist", tostring(k))
+		end
+	end
+end
+
+local jup_b219_position
+local jup_b219_lvid
+local jup_b219_gvid
+
+function jup_b219_save_pos()
+	if OnClient() then
+		return
+	end
+	local obj = get_story_object("jup_b219_gate_id")
+	if obj and obj:position() then
+		jup_b219_position = obj:position()
+		jup_b219_lvid = obj:level_vertex_id()
+		jup_b219_gvid = obj:game_vertex_id()
+	else
+		return
+	end
+	sobj = alife():object(obj:id())
+	if sobj then
+		alife():release(sobj, true)
+	end
+end
+
+function jup_b219_restore_gate()
+	if OnClient() then
+		return
+	end
+	local yaw = 0
+	local spawn_sect = "jup_b219_gate"
+	if jup_b219_position then
+		local se_obj = alife():create(spawn_sect,
+									vector():set(jup_b219_position),
+									jup_b219_lvid,
+									jup_b219_gvid)
+		se_obj:set_yaw(yaw * math.pi / 180)
+	end
+end
+
+local particles_table = {
+[1] = {particle = particles_object("anomaly2\\teleport_out_00"), sound = sound_object("anomaly\\teleport_incoming")},
+[2] = {particle = particles_object("anomaly2\\teleport_out_00"), sound = sound_object("anomaly\\teleport_incoming")},
+[3] = {particle = particles_object("anomaly2\\teleport_out_00"), sound = sound_object("anomaly\\teleport_incoming")},
+[4] = {particle = particles_object("anomaly2\\teleport_out_00"), sound = sound_object("anomaly\\teleport_incoming")},
+}
+
+function jup_b16_play_particle_and_sound(actor, npc, p)
+	particles_table[p[1]].particle :play_at_pos(patrol(npc:name().."_particle"):point(0))
+	--particles_table[p[1]].sound    :play_at_pos(actor, patrol(npc:name().."_particle"):point(0), 0, sound_object.s3d)
+end
+
+function zat_b29_create_random_infop(actor, npc, p)
+	if p[2] == nil then
+		abort("Not enough parameters for zat_b29_create_random_infop!")
+	end
+
+	local amount_needed = p[1]
+	local current_infop = 0
+	local total_infop = 0
+
+	if (not amount_needed or amount_needed == nil) then
+		amount_needed = 1
+	end
+
+	for k,v in pairs(p) do
+		if k > 1 then
+			total_infop = total_infop + 1
+			story_flags.disable_flag(v)
+		end
+	end
+
+	if amount_needed > total_infop then
+		amount_needed = total_infop
+	end
+
+	for i = 1, amount_needed do
+		current_infop = math.random(1, total_infop)
+		for k,v in pairs(p) do
+			if k > 1 then
+				if (k == current_infop + 1 and (not story_flags.has_flag(v))) then
+					story_flags.give_flag(v)
+					break
+				end
+			end
+		end
+	end
+end
+
+function give_item_b29(actor, npc, p)
+--	local story_object = p and get_story_object(p[1])
+	local az_name
+	local az_table = {
+						"zat_b55_anomal_zone",
+						"zat_b54_anomal_zone",
+						"zat_b53_anomal_zone",
+						"zat_b39_anomal_zone",
+						"zaton_b56_anomal_zone",
+						}
+						
+	local az_table_flag = {
+						"ZAT_B55_ANOMAL_ZONE",
+						"ZAT_B54_ANOMAL_ZONE",
+						"ZAT_B53_ANOMAL_ZONE",
+						"ZAT_B39_ANOMAL_ZONE",
+						"ZATON_B56_ANOMAL_ZONE",
+						}						
+
+	for i = 16, 23 do
+		if story_flags.has_flag(dialogs_zaton.zat_b29_infop_bring_table[i]) then
+			for k,v in pairs(az_table_flag) do
+				if story_flags.has_flag(v) then
+					az_name = az_table[k]
+					story_flags.disable_flag(v)
+					break
+				end
+			end
+			pick_artefact_from_anomaly(nil, nil, {p[1], az_name, dialogs_zaton.zat_b29_af_table[i]})
+			break
+		end
+	end
+end
+
+function relocate_item_b29(actor, npc, p)
+	local item
+	for i = 16, 23 do
+		if story_flags.has_flag(dialogs_zaton.zat_b29_infop_bring_table[i]) then
+			item = dialogs_zaton.zat_b29_af_table[i]
+			break
+		end
+	end
+	local from_obj = p and get_story_object(p[1])
+	local to_obj = p and get_story_object(p[2])
+	if to_obj ~= nil then
+		if from_obj ~= nil and from_obj:object(item) ~= nil then
+			from_obj:transfer_item(from_obj:object(item), to_obj)
+		else
+			alife():create(item,
+				to_obj:position(),
+				to_obj:level_vertex_id(),
+				to_obj:game_vertex_id(),
+				to_obj:id())
+		end
+	else
+		abort("Couldn't relocate item to NULL")
+	end
+end
+
+function jup_b202_inventory_box_relocate(actor, npc)
+	local inv_box_out = get_story_object("jup_b202_actor_treasure")
+	local inv_box_in = get_story_object("jup_b202_snag_treasure")
+	local items_to_relocate = {}
+	local function relocate(inv_box_out, item)
+		table.insert(items_to_relocate, item)
+	end
+	inv_box_out:iterate_inventory_box	(relocate, inv_box_out)
+	for k,v in pairs(items_to_relocate) do
+		inv_box_out:transfer_item(v, inv_box_in)
+	end
+end
+
+function jup_b10_spawn_drunk_dead_items(actor, npc, p)
+	if OnClient() then
+		return
+	end
+	
+	local items_all = {
+					["wpn_ak74"] = 1,
+					["ammo_5.45x39_fmj"] = 5,
+					["ammo_5.45x39_ap"] = 3,
+					["wpn_fort"] = 1,
+					["ammo_9x18_fmj"] = 3,
+					["ammo_12x70_buck"] = 5,
+					["ammo_11.43x23_hydro"] = 2,
+					["grenade_rgd5"] = 3,
+					["grenade_f1"] = 2,
+					["medkit_army"] = 2,
+					["medkit"] = 4,
+					["bandage"] = 4,
+					["antirad"] = 2,
+					["vodka"] = 3,
+					["energy_drink"] = 2,
+					["conserva"] = 1,
+					["jup_b10_ufo_memory_2"] = 1,
+					}
+
+	local items = {
+					[2] = 	{
+							["wpn_sig550_luckygun"] = 1,
+							},
+					[1] = 	{
+							["ammo_5.45x39_fmj"] = 5,
+							["ammo_5.45x39_ap"] = 3,
+							["wpn_fort"] = 1,
+							["ammo_9x18_fmj"] = 3,
+							["ammo_12x70_buck"] = 5,
+							["ammo_11.43x23_hydro"] = 2,
+							["grenade_rgd5"] = 3,
+							["grenade_f1"] = 2,
+							},
+					[0] = 	{
+							["medkit_army"] = 2,
+							["medkit"] = 4,
+							["bandage"] = 4,
+							["antirad"] = 2,
+							["vodka"] = 3,
+							["energy_drink"] = 2,
+							["conserva"] = 1,
+							},
+					}
+
+	if p and p[1] ~= nil then
+		local cnt = xr_logic.pstor_retrieve(actor, "jup_b10_ufo_counter", 0)
+		if cnt > 2 then return end
+		for k,v in pairs(items[cnt]) do
+			local target_obj_id = get_story_object_id(p[1])
+			if target_obj_id ~= nil then
+				box = alife():object(target_obj_id)
+				if box == nil then
+					abort("There is no such object %s", p[1])
+				end
+				for i = 1,v do
+					alife():create(k,vector(),0,0,target_obj_id)
+				end
+			else
+				abort("object is nil %s", tostring(p[1]))
+			end
+		end
+	else
+		for k,v in pairs(items_all) do
+			for i = 1,v do
+				alife():create(k,
+					npc:position(),
+					npc:level_vertex_id(),
+					npc:game_vertex_id(),
+					npc:id())
+			end
+		end
+	end
+
+end
+
+function zat_b202_spawn_random_loot(actor, npc, p)
+	if OnClient() then
+		return
+	end
+	local si_table = {}
+	si_table[1] = {
+		[1] = {item = {"bandage","bandage","bandage","bandage","bandage","medkit","medkit","medkit","conserva","conserva"}},
+		[2] = {item = {"medkit","medkit","medkit","medkit","medkit","vodka","vodka","vodka","kolbasa","kolbasa"}},
+		[3] = {item = {"antirad","antirad","antirad","medkit","medkit","bandage","kolbasa","kolbasa","conserva"}},
+	}
+	si_table[2] = {
+		[1] = {item = {"grenade_f1","grenade_f1","grenade_f1"}},
+		[2] = {item = {"grenade_rgd5","grenade_rgd5","grenade_rgd5","grenade_rgd5","grenade_rgd5"}}
+	}
+	si_table[3] = {
+		[1] = {item = {"detector_elite"}},
+		[2] = {item = {"detector_advanced"}}
+	}
+	si_table[4] = {
+		[1] = {item = {"helm_hardhat"}},
+		[2] = {item = {"helm_respirator"}}
+	}
+	si_table[5] = {
+		[1] = {item = {"wpn_val","ammo_9x39_ap","ammo_9x39_ap","ammo_9x39_ap"}},
+		[2] = {item = {"wpn_spas12","ammo_12x70_buck","ammo_12x70_buck","ammo_12x70_buck","ammo_12x70_buck"}},
+		[3] = {item = {"wpn_desert_eagle","ammo_11.43x23_fmj","ammo_11.43x23_fmj","ammo_11.43x23_hydro","ammo_11.43x23_hydro"}},
+		[4] = {item = {"wpn_abakan","ammo_5.45x39_ap","ammo_5.45x39_ap"}},
+		[5] = {item = {"wpn_sig550","ammo_5.56x45_ap","ammo_5.56x45_ap"}},
+		[6] = {item = {"wpn_ak74","ammo_5.45x39_fmj","ammo_5.45x39_fmj"}},
+		[7] = {item = {"wpn_l85","ammo_5.56x45_ss190","ammo_5.56x45_ss190"}}
+	}
+	si_table[6] = {
+		[1] = {item = {"specops_outfit"}},
+		[2] = {item = {"stalker_outfit"}}
+	}
+	weight_table = {}
+	weight_table[1] = 2
+	weight_table[2] = 2
+	weight_table[3] = 2
+	weight_table[4] = 2
+	weight_table[5] = 4
+	weight_table[6] = 4
+	local spawned_item = {}
+	local max_weight = 12
+	repeat
+		local n = 0
+		repeat
+			n = math.random(1, #weight_table)
+			local prap = true
+			for k,v in pairs(spawned_item) do
+				if v == n then
+					prap = false
+					break
+				end
+			end
+		until (prap) and ((max_weight - weight_table[n]) >= 0)
+		max_weight = max_weight - weight_table[n]
+		table.insert(spawned_item,n)
+		local item = math.random(1, #si_table[n])
+		for k,v in pairs(si_table[n][item].item) do
+			spawn_object_in(actor, npc, {tostring(v),"jup_b202_snag_treasure"})
+		end
+	until max_weight <= 0
+end
+
+function oasis_heal(actor, npc)
+	local d_health = 0.005
+	local d_power = 0.01
+	local d_bleeding = 0.05
+	local d_radiation = -0.05	
+	for k, v in pairs(db.mp_actors) do
+		if npc:inside(v:center()) then
+			if(v.health<1) then
+				v.health = d_health
+			end
+			if(v.power<1) then
+				v.power = d_power
+			end
+			if(v.radiation>0) then
+				v.radiation = d_radiation
+			end
+			if(v.bleeding>0) then
+				v.bleeding = d_bleeding
+			end
+			v.satiety = 0.01
+		end
+	end		
+end
+
+--Функция принимает только одно значение, определяющее для какой групировки запускается. доступные значения [duty, freedom]
+function jup_b221_play_main(actor, npc, p)
+	local info_table = {}
+	local main_theme
+	local reply_theme
+	local info_need_reply
+	local reachable_theme = {}
+	local theme_to_play = 0
+
+	if (p and p[1]) == nil then
+		abort("No such parameters in function 'jup_b221_play_main'")
+	end
+--Составляем таблицу инфопоршинов определяющих доступность той или иной темы, определяем префиксы темы, ответа и реакции, соответственно для долга или для свободы.
+	if tostring(p[1]) == "duty" then
+		info_table = {
+			[1] = "JUP_B25_FREEDOM_FLINT_GONE",
+			[2] = "JUP_B25_FLINT_BLAME_DONE_TO_DUTY",
+			[3] = "JUP_B4_MONOLITH_SQUAD_IN_DUTY",
+			[4] = "JUP_A6_DUTY_LEADER_BUNKER_GUARDS_WORK",
+			[5] = "JUP_A6_DUTY_LEADER_EMPLOY_WORK",
+			[6] = "JUP_B207_DUTY_WINS"
+		}
+		main_theme = "jup_b221_duty_main_"
+		reply_theme = "jup_b221_duty_reply_"
+		info_need_reply = "JUP_B221_DUTY_REPLY"
+	elseif tostring(p[1]) == "freedom" then
+		info_table = {
+			[1] = "JUP_B207_FREEDOM_KNOW_ABOUT_DEPOT",
+			[2] = "JUP_B46_DUTY_FOUNDER_PDA_TO_FREEDOM",
+			[3] = "JUP_B4_MONOLITH_SQUAD_IN_FREEDOM",
+			[4] = "JUP_A6_FREEDOM_LEADER_BUNKER_GUARDS_WORK",
+			[5] = "JUP_A6_FREEDOM_LEADER_EMPLOY_WORK",
+			[6] = "JUP_B207_FREEDOM_WINS"
+		}
+		main_theme = "jup_b221_freedom_main_"
+		reply_theme = "jup_b221_freedom_reply_"
+		info_need_reply = "JUP_B221_FREEDOM_REPLY"
+	else
+		abort("Wrong parameters in function 'jup_b221_play_main'")
+	end
+--Составляем таблицу достыпных тем(тлько номера тем).
+	for k,v in pairs(info_table) do
+		if (story_flags.has_flag(v)) and (not story_flags.has_flag(main_theme .. tostring(k) .. "_PLAYED")) then
+			table.insert(reachable_theme,k)
+--			printf("jup_b221_play_main: table reachable_theme ------------------------------> [%s]", tostring(k))
+		end
+	end
+--Если таблица доступных тем пуста играем ответ. Если же она не пуста играем основную тему. Если играем основную тему заносим значение счетчика для повторного выполнения функции. Тему выбираем по рандому.
+	if #reachable_theme ~= 0 then
+		story_flags.disable_flag(info_need_reply)
+		theme_to_play = reachable_theme[math.random(1, #reachable_theme)]
+--		printf("jup_b221_play_main: variable theme_to_play ------------------------------> [%s]", tostring(theme_to_play))
+		xr_logic.pstor_store(actor,"jup_b221_played_main_theme",tostring(theme_to_play))
+		story_flags.give_flag(string.upper(main_theme) .. tostring(theme_to_play) .."_PLAYED")
+		if theme_to_play ~= 0 then
+			play_sound(actor, npc, {main_theme .. tostring(theme_to_play)})
+		else
+			abort("No such theme_to_play in function 'jup_b221_play_main'")
+		end
+	else
+		story_flags.give_flag(info_need_reply)
+		theme_to_play = tonumber(xr_logic.pstor_retrieve(actor,"jup_b221_played_main_theme",0))
+		if theme_to_play ~= 0 then
+			play_sound(actor, npc, {reply_theme..tostring(theme_to_play)})
+		else
+			abort("No such theme_to_play in function 'jup_b221_play_main'")
+		end
+		xr_logic.pstor_store(actor,"jup_b221_played_main_theme","0")
+	end
+end
+
+function pas_b400_play_particle(actor, npc, p)
+	if getLocalActor() then
+		getLocalActor():start_particles("zones\\zone_acidic_idle","bip01_head")
+	end
+end
+
+function pas_b400_stop_particle(actor, npc, p)
+	if getLocalActor() then
+		getLocalActor():stop_particles("zones\\zone_acidic_idle","bip01_head")
+	end
+end
+
+function damage_actor_items_on_start(actor, npc)
+	local actor = get_story_object("actor_degtyarev")
+	if actor ~= nil then
+		local obj = actor:object("helm_respirator")
+		if obj ~= nil then
+			obj:set_condition(0.8)
+		end
+	
+		obj = actor:object("stalker_outfit")
+		if obj ~= nil then
+			obj:set_condition(0.76)
+		end
+	
+		obj = actor:object("wpn_pmm")
+		if obj ~= nil then
+			obj:set_condition(0.9)
+		end
+	
+		obj = actor:object("wpn_ak74u")
+		if obj ~= nil then
+			obj:set_condition(0.7)
+		end
+	end
+end
+
+function damage_pri_a17_gauss()
+	local obj = get_story_object("pri_a17_gauss_rifle")
+	--local obj = npc:object("pri_a17_gauss_rifle")
+	if obj ~= nil then
+		obj:set_condition(0.0)
+	end
+end
+
+function pri_a17_hard_animation_reset(actor, npc, p)
+	--db.storage[npc:id()].state_mgr:set_state("pri_a17_fall_down", nil, nil, nil, {fast_set = true})
+	db.storage[npc:id()].state_mgr:set_state("pri_a17_fall_down")
+
+	local state_mgr = db.storage[npc:id()].state_mgr
+	if state_mgr ~= nil then
+		state_mgr.animation:set_state(nil, true)
+		state_mgr.animation:set_state("pri_a17_fall_down")
+		state_mgr.animation:set_control()
+	end
+end
+
+function jup_b217_hard_animation_reset(actor, npc, p)
+	db.storage[npc:id()].state_mgr:set_state("jup_b217_nitro_straight")
+
+	local state_mgr = db.storage[npc:id()].state_mgr
+	if state_mgr ~= nil then
+		state_mgr.animation:set_state(nil, true)
+		state_mgr.animation:set_state("jup_b217_nitro_straight")
+		state_mgr.animation:set_control()
+	end
+end
+
+-- Инфопоршны для синхронизации анимации нпс с прочими действиями, и для других целей
+function pri_a18_radio_start(actor, npc)
+	story_flags.give_flag("PRI_A18_RADIO_START")
+end
+
+function pri_a17_ice_climb_end(actor, npc)
+	story_flags.give_flag("PRI_A17_ICE_CLIMB_END")
+end
+
+function jup_b219_opening(actor, npc)
+	story_flags.give_flag("JUP_B219_OPENING")
+end
+
+function jup_b219_entering_underpass(actor, npc)
+	story_flags.give_flag("JUP_B219_ENTERING_UNDERPASS")
+end
+
+function pri_a17_pray_start(actor, npc)
+	story_flags.give_flag("PRI_A17_PRAY_START")
+end
+
+function zat_b38_open_info(actor, npc)
+	story_flags.give_flag("ZAT_B38_OPEN_INFO")
+end
+
+function zat_b38_switch_info(actor, npc)
+	story_flags.give_flag("ZAT_B38_SWITCH_INFO")
+end
+function zat_b38_cop_dead(actor, npc)
+	story_flags.give_flag("ZAT_B38_COP_DEAD")
+end
+
+function jup_b15_zulus_drink_anim_info(actor, npc)
+	story_flags.give_flag("JUP_B15_ZULUS_DRINK_ANIM_INFO")
+end
+
+function pri_a17_preacher_death(actor, npc)
+	story_flags.give_flag("PRI_A17_PREACHER_DEATH")
+end
+
+function zat_b3_tech_surprise_anim_end(actor, npc)
+	story_flags.give_flag("ZAT_B3_TECH_SURPRISE_ANIM_END")
+end
+
+function zat_b3_tech_waked_up(actor, npc)
+	story_flags.give_flag("ZAT_B3_TECH_WAKED_UP")
+end
+
+function zat_b3_tech_drinked_out(actor, npc)
+	story_flags.give_flag("ZAT_B3_TECH_DRINKED_OUT")
+end
+
+function pri_a28_kirillov_hq_online(actor, npc)
+	story_flags.give_flag("PRI_A28_KIRILLOV_HQ_ONLINE")
+end
+
+function pri_a20_radio_start(actor, npc)
+	story_flags.give_flag("PRI_A20_RADIO_START")
+end
+
+function pri_a22_kovalski_speak(actor, npc)
+	story_flags.give_flag("PRI_A22_KOVALSKI_SPEAK")
+end
+
+function zat_b38_underground_door_open(actor, npc)
+	story_flags.give_flag("ZAT_B38_UNDERGROUND_DOOR_OPEN")
+end
+
+function zat_b38_jump_tonnel_info(actor, npc)
+	story_flags.give_flag("ZAT_B38_JUMP_TONNEL_INFO")
+end
+
+function jup_a9_cam1_actor_anim_end(actor, npc)
+	story_flags.give_flag("JUP_A9_CAM1_ACTOR_ANIM_END")
+end
+
+function pri_a28_talk_ssu_video_end(actor, npc)
+	story_flags.give_flag("PRI_A28_TALK_SSU_VIDEO_END")
+end
+
+function create_cutscene_actor_with_weapon(actor, npc, p)
+	--' p[1] - секция кого спаунить
+	--' p[2] - имя патрульного пути где спаунить.
+	--' p[3] - точка патрульного пути
+	--' p[4] - поворот по оси Y
+	--' p[5] - принудительный слот - будет работать даже при disable_ui
+	if OnClient() then
+		return
+	end
+	local spawn_sect = p[1]
+	if spawn_sect == nil then
+		abort("Wrong spawn section for 'spawn_object' function %s. For object %s", tostring(spawn_sect), obj:name())
+	end
+
+	local path_name = p[2]
+	if path_name == nil then
+		abort("Wrong path_name for 'spawn_object' function %s. For object %s", tostring(path_name), obj:name())
+	end
+
+	if not level.patrol_path_exists(path_name) then
+		abort("Path %s doesnt exist. Function 'spawn_object' for object %s ", tostring(path_name), obj:name())
+	end
+	local ptr = patrol(path_name)
+	local index = p[3] or 0
+	local yaw = p[4] or 0
+
+	local npc = alife():create(spawn_sect, ptr:point(index), ptr:level_vertex_id(0), ptr:game_vertex_id(0))
+	if IsStalker( nil, npc:clsid()) then
+		npc:o_torso().yaw = yaw * math.pi / 180
+	else
+		npc.angle.y = yaw * math.pi / 180
+	end
+	
+
+	local slot_override = p[5] or 0
+	
+	local slot
+	local active_item
+	local actor_degtyarev = get_story_object("actor_degtyarev")
+	
+	if slot_override == 0 then
+		slot = actor_degtyarev:active_slot()
+		if(slot~=2 and slot~=3) then
+			return
+		end
+		active_item = actor_degtyarev:active_item()
+	else
+		if actor_degtyarev:item_in_slot(slot_override) ~= nil then
+			active_item = actor_degtyarev:item_in_slot(slot_override)
+		else
+			if actor_degtyarev:item_in_slot(3) ~= nil then
+				active_item = actor_degtyarev:item_in_slot(3)
+			elseif actor_degtyarev:item_in_slot(2) ~= nil then
+				active_item = actor_degtyarev:item_in_slot(2)
+			else
+				return
+			end
+		end
+	end
+	
+	if active_item ~= nil then
+		local actor_weapon = alife():object(active_item:id())
+		local section_name = actor_weapon:section_name()
+		if section_name == "pri_a17_gauss_rifle" then
+			section_name = "wpn_gauss"
+		end
+		
+		if (active_item) then
+			local new_weapon = alife():create(section_name,
+														ptr:point(index),
+														ptr:level_vertex_id(0),
+														ptr:game_vertex_id(0),
+														npc.id)
+			--if section_name ~= "wpn_gauss" then
+			--	new_weapon:clone_addons(actor_weapon)
+			--end
+		end
+	end
+end
+
+function zat_b33_pic_snag_container(actor, npc)
+	if xr_conditions.actor_in_zone(actor, npc, {"zat_b33_tutor"}) and 
+		not xr_conditions.any_actor_has_item(actor, npc, {"zat_b33_safe_container"}) then
+		give_actor(actor, npc, {"zat_b33_safe_container"})
+		story_flags.give_flag("ZAT_B33_FIND_PACKAGE")
+		if not story_flags.has_flag("ZAT_B33_SAFE_CONTAINER") then
+			local zone = db.zone_by_name["zat_b33_tutor"]
+			play_sound(actor, zone, {"pda_news"})
+		end
+	end
+end
+
+
+function zat_b202_spawn_b33_loot(actor, npc, p)
+	local info_table = {
+		"ZAT_B33_FIRST_ITEM_GIVED",
+		"ZAT_B33_SECOND_ITEM_GIVED",
+		"ZAT_B33_THIRD_ITEM_GIVED",
+		"ZAT_B33_FOURTH_ITEM_GIVED",
+		"ZAT_B33_FIFTH_ITEM_GIVED"
+	}
+	local item_table = {}
+	item_table[1] = {
+		"wpn_fort_snag"
+	}
+	item_table[2] = {
+		"medkit_scientic",
+		"medkit_scientic",
+		"medkit_scientic",
+		"antirad",
+		"antirad",
+		"antirad",
+		"bandage",
+		"bandage",
+		"bandage",
+		"bandage",
+		"bandage"
+	}
+	item_table[3] = {
+		"wpn_ak74u_snag"
+	}
+	item_table[4] = {
+		"af_soul"
+	}
+	item_table[5] = {
+		"helm_hardhat_snag"
+	}
+	for k,v in pairs(info_table) do
+		local obj_id
+		if (k == 1) or (k == 3) then
+			obj_id = "jup_b202_stalker_snag"
+		else
+			obj_id = "jup_b202_snag_treasure"
+		end
+		if not story_flags.has_flag(tostring(v)) then
+			for l,m in pairs(item_table[k]) do
+--				printf("zat_b202_spawn_b33_loot: number [%s] item [%s] to [%s]", tostring(k), tostring(m), tostring(obj_id))
+				spawn_object_in(actor, npc, {tostring(m),tostring(obj_id)})
+			end
+		end
+	end
+end
+
+local actor_position_for_restore
+local actor_direction_for_restore
+
+function save_actor_position()
+	actor_position_for_restore = getLocalActor():position()
+	--actor_direction_for_restore = get_story_object("actor"):direction()
+end
+
+function restore_actor_position()
+	--db.actor:set_actor_direction(actor_direction_for_restore)
+	getLocalActor():set_actor_position(actor_position_for_restore)
+end
+
+function pri_a28_check_zones()
+	local story_obj_id
+	local dist
+	local index = 0
+
+	local zones_tbl = {
+						[1] = "pri_a28_sr_mono_add_1",
+						[2] = "pri_a28_sr_mono_add_2",
+						[3] = "pri_a28_sr_mono_add_3",
+						}
+
+	local info_tbl = {
+						[1] = "PRI_A28_WAVE_1_SPAWNED",
+						[2] = "PRI_A28_WAVE_2_SPAWNED",
+						[3] = "PRI_A28_WAVE_3_SPAWNED",
+						}
+
+	local squad_tbl = {
+						[1] = "pri_a28_heli_mono_add_1",
+						[2] = "pri_a28_heli_mono_add_2",
+						[3] = "pri_a28_heli_mono_add_3",
+						}
+
+	for k,v in pairs(zones_tbl) do
+		story_obj_id = get_story_object_id(v)
+		if story_obj_id then
+			local se_obj = alife():object(story_obj_id)
+			local curr_dist = se_obj.position:distance_to(getNearestActor(se_obj):position())
+			if index == 0 then
+				dist = curr_dist
+				index = k
+			elseif dist < curr_dist then
+				dist = curr_dist
+				index = k
+			end
+		end
+	end
+
+	if index == 0 then
+		abort("Found no distance or zones in func 'pri_a28_check_zones'")
+	end
+
+	if story_flags.has_flag(info_tbl[index]) then
+		for k,v in pairs(info_tbl) do
+			if not story_flags.has_flag(info_tbl[k]) then
+				story_flags.give_flag(info_tbl[k])
+			end
+		end
+	else
+		story_flags.give_flag(info_tbl[index])
+	end
+
+	create_squad(db.actor,nil,{squad_tbl[index],"pri_a28_heli"})
+end
+
+function eat_vodka_script()
+	if getLocalActor():object("vodka_script") ~= nil then
+		getLocalActor():eat(getLocalActor():object("vodka_script"))
+	end
+end
+
+local mat_table = {
+					"jup_b200_material_1",
+					"jup_b200_material_2",
+					"jup_b200_material_3",
+					"jup_b200_material_4",
+					"jup_b200_material_5",
+					"jup_b200_material_6",
+					"jup_b200_material_7",
+					"jup_b200_material_8",
+					"jup_b200_material_9",
+					}
+
+function jup_b200_count_found(actor)
+	local cnt = 0
+						
+	for k,v in pairs(mat_table) do
+		local material_obj = get_story_object(v)
+		if material_obj then
+			local parent = material_obj:parent() 
+			if parent then
+				local parent_id = parent:id()
+				for k, v in pairs (db.mp_actors) do 
+					if parent_id ~= 65535 and parent_id == v:id() then
+						cnt = cnt + 1
+					end
+				end
+			end
+		end
+	end
+	
+	cnt = cnt + xr_logic.pstor_retrieve(actor, "jup_b200_tech_materials_brought_counter", 0)
+	xr_logic.pstor_store(actor, "jup_b200_tech_materials_found_counter", cnt)
+end
+
+function set_start_squad_relation(actor, npc)
+	if OnServer() then
+		local tbl = { "zat_b103_lost_merc_squad1", "jup_b204_squad", "jup_b4_squad", "jup_b47_merc_guard_squad" }
+		
+		for k,v in pairs(tbl) do
+			local squad = get_story_squad(v)
+			if squad ~= nil then
+				squad:set_squad_relation()
+			else
+				printf_msg("Can't find squad %s", v)
+			end
+		end
+	end
+end
+
+function zat_b29_get_artefact(npc)
+	local af_name
+	for i = 16, 23 do
+		if story_flags.has_flag(dialogs_zaton.zat_b29_infop_bring_table[i]) then
+			af_name = dialogs_zaton.zat_b29_af_table[i]
+			break
+		end
+	end
+	if af_name ~= nil then
+		local obj = npc:object(af_name)
+		if obj ~= nil then
+			obj:enable_attachable_item(true)
+		end
+	end
+end
+
+function zat_b29_hide_artefact(npc)
+	local af_name
+	for i = 16, 23 do
+		if story_flags.has_flag(dialogs_zaton.zat_b29_infop_bring_table[i]) then
+			af_name = dialogs_zaton.zat_b29_af_table[i]
+			break
+		end
+	end
+	if af_name ~= nil then
+		local obj = npc:object(af_name)
+		if obj ~= nil then
+			obj:enable_attachable_item(false)
+		end
+	end
+end
+
+function jup_sci_task_counter(actor, npc)
+	game_cl.executeFunctionOnServer("jup_sci_task_counter")
+end
+
+function jup_trapper_first_hunt_reward(actor, npc)
+	game_cl.executeFunctionOnServer("jup_trapper_first_hunt_reward")
+end
+
+function jup_trapper_second_hunt_reward(actor, npc)
+	game_cl.executeFunctionOnServer("jup_trapper_second_hunt_reward")
+end
+
+function pri_army_increase_goodwill(actor, npc)
+	game_cl.executeFunctionOnServer("pri_army_increase_goodwill")
+end
+
+function zat_b38_den_of_the_bloodsucker_inform_stalkers_reward(actor, npc)
+	game_cl.executeFunctionOnServer("zat_b38_den_of_the_bloodsucker_inform_stalkers_reward")
+end
+
+function zat_b38_disappearance_stalkers_reward(actor, npc)
+	game_cl.executeFunctionOnServer("zat_b38_disappearance_stalkers_reward")
+end
+
+function zat_b30_compass_to_barmen_task_reward(actor, npc)
+	game_cl.executeFunctionOnServer("zat_b30_compass_to_barmen_task_reward")
+end
+
+function zat_b30_sultan_task_reward(actor, npc)
+	game_cl.executeFunctionOnServer("zat_b30_sultan_task_reward")
+end

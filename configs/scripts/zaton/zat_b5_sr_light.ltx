@@ -1,0 +1,13 @@
+[logic]
+active = sr_idle
+
+[sr_idle]
+on_info = {+ZAT_B5_ACTOR_WITH_STALKERS} sr_light
+on_info2 = {+ZAT_B5_TASK_END} sr_idle@nil
+
+[sr_light]
+light_on = false
+on_info = {+ZAT_B5_MEAT} sr_idle@nil
+on_info2 = {+ZAT_B5_TASK_END} sr_idle@nil
+
+[sr_idle@nil]

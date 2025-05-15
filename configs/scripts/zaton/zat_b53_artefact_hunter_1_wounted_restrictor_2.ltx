@@ -1,0 +1,28 @@
+[logic]
+active = sr_idle@determine_cl_sv
+type = shared_with_cl_data
+
+[sr_idle@determine_cl_sv]
+on_info = {=isServer} sr_idle@sv_wait
+on_info2 = {=isClient} sr_idle@cl_wait
+
+;server logic
+;------ искатель попадает в вторую, сильную аномалию ------
+[sr_idle@sv_wait]
+on_info = {+ZAT_B53_ARTEFACT_HUNTER_1_IN_ZONE_OUNTED_RESTRICTOR_2} sr_idle@sv_wait2 %+ZAT_ARTEFACT_HUNTER_1_PLAY_PARTICLE_2%
+
+[sr_idle@sv_wait2]
+on_timer = 600 | sr_idle@nil %+ZAT_B53_BIG_ANOMALY_PARTILE%
+
+;client logic
+[sr_idle@cl_wait]
+on_info = {+ZAT_ARTEFACT_HUNTER_1_PLAY_PARTICLE_2} sr_particle@cl %=play_sound(steam_blowout)%
+
+[sr_particle@cl]
+name = static\zharka_static_steam
+path = zat_b53_artefact_hunter_1_wounted_particle_steam_point_2
+mode = 2
+looped = false
+on_info = {+ZAT_B53_BIG_ANOMALY_PARTILE} sr_idle@nil
+
+[sr_idle@nil]

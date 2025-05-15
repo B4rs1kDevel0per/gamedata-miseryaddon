@@ -1,0 +1,37 @@
+[logic]
+active = sr_idle@determine_cl_sv
+type = shared_with_cl_data
+
+[sr_idle@determine_cl_sv]
+on_info = {=isServer} sr_idle@sv_run_use_idol_tutorial
+on_info2 = {=isClient} sr_idle@cl_run_use_idol_tutorial
+
+;server logic
+[sr_idle@sv_run_use_idol_tutorial]
+on_info = {!squad_exist(pri_a18_monolith_idol_squad) !squad_exist(pri_a18_monolith_post_guard_squad) !squad_exist(pri_a18_monolith_corridor_squad) !squad_exist(pri_a18_monolith_2nd_corridor_squad)} %+PRI_A18_MONOLITH_SQUADS_DEAD%
+on_info2 = {+PRI_A18_RUN_CAM} sr_idle@sv_wait_koval_sound
+
+[sr_idle@sv_wait_koval_sound]
+on_info = {+PRI_A18_KOVAL_GO_ON} sr_idle@sv_kovalskis_voise_sound
+
+[sr_idle@sv_kovalskis_voise_sound]
+on_game_timer = 10 | sr_idle@sv_kovalskis_voise_sound_2
+
+[sr_idle@sv_kovalskis_voise_sound_2]
+on_signal = sound_end | sr_idle@sv_timer %+PRI_A18_ALTAR_STOP_CAM%
+on_info = {+PRI_A21_TASK_START -PRI_A21_SENTRY_TASK_DONE} %=play_sound(pri_a18_kovalskiy_squad)%, %=play_sound(pri_a18_kovalskiy_guard)%
+
+[sr_idle@sv_timer]
+on_game_timer = 20 | sr_idle@nil %+PRI_A18_CAM_STOP%
+
+;client logic
+[sr_idle@cl_run_use_idol_tutorial]
+on_info = {=player_in_zone(pri_a18_use_idol_restrictor) =local_actor_story_id(actor_degtyarev) +PRI_A18_MONOLITH_SQUADS_DEAD -PRI_A18_KOVAL_GO_ON} sr_idle@cl_stop_use_idol_tutorial %=run_tutorial(pri_a18_use_idol)%
+on_info2 = {+PRI_A18_RUN_CAM} sr_idle@nil
+
+[sr_idle@cl_stop_use_idol_tutorial]
+on_info = {!player_in_zone(pri_a18_use_idol_restrictor) =local_actor_story_id(actor_degtyarev) -PRI_A18_KOVAL_GO_ON} sr_idle@cl_run_use_idol_tutorial %=stop_tutorial(pri_a18_use_idol)%
+on_info2 = {+PRI_A18_RUN_CAM} sr_idle@nil
+on_info3 = {!has_active_tutorial} sr_idle@cl_run_use_idol_tutorial
+
+[sr_idle@nil]

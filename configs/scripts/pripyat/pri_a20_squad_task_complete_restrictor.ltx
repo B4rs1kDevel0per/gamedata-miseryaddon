@@ -1,0 +1,37 @@
+[logic]
+active = sr_idle@start
+type = sv_only
+
+[sr_idle@start]
+on_info = {+PRI_A20_SQUAD_CUTSCENE_ACTOR_TALK_COMPLETE} sr_idle@timer
+
+[sr_idle@timer]
+on_game_timer = 15 | sr_idle@answer
+
+[sr_idle@answer]
+on_signal = sound_end | sr_idle@timer_2
+on_info = {-ZAT_A23_ACTOR_HAS_GAUSS_RIFLE_DOCUMENTATION} %=play_sound(pri_a20_colonel_give_next_task_1)%
+on_info2 = {+ZAT_A23_ACTOR_HAS_GAUSS_RIFLE_DOCUMENTATION} %=play_sound(pri_a20_colonel_give_next_task_1_sentry_task) +PRI_A21_TASK_GIVE_FROM_A20%
+
+[sr_idle@timer_2]
+on_game_timer = 15 | sr_idle@tell_koval %+PRI_A20_SQUAD_CUTSCENE_ACTOR_TALK_2%
+
+[sr_idle@tell_koval]
+on_info = {+PRI_A20_SQUAD_CUTSCENE_ACTOR_TALK_2_COMPLETE} sr_idle@timer_3
+
+[sr_idle@timer_3]
+on_game_timer = 10 | sr_idle@answer_2
+
+[sr_idle@answer_2]
+on_signal = sound_end | {+PRI_A20_SEND_REINFORCEMENT} sr_idle@timer_before_nil %+PRI_A20_SQUAD_CAM_END =give_task(pri_a18_inspect_monolith)%, sr_idle@timer_before_nil %+PRI_A20_SQUAD_CAM_END%
+on_info = {+PRI_A18_USE_IDOL_DONE +PRI_A21_TASK_GIVE_FROM_A20 -PRI_A21_SENTRY_TASK_DONE} %=play_sound(pri_a20_colonel_about_sentry)%
+on_info2 = {+PRI_A18_USE_IDOL_DONE -ZAT_A23_ACTOR_HAS_GAUSS_RIFLE_DOCUMENTATION} %=play_sound(pri_a20_colonel_task_done)%
+on_info3 = {+PRI_A18_USE_IDOL_DONE +PRI_A21_SENTRY_TASK_DONE} %=play_sound(pri_a20_colonel_task_done)%
+on_info4 = {-PRI_A18_USE_IDOL_DONE -PRI_A21_COLONEL_GIVE_SENTRY_TASK} %=play_sound(pri_a20_colonel_send_reinforcement) +PRI_A20_SEND_REINFORCEMENT%
+on_info5 = {-PRI_A18_USE_IDOL_DONE +PRI_A21_COLONEL_GIVE_SENTRY_TASK +PRI_A21_CHASOVOI_DEAD} %=play_sound(pri_a20_colonel_send_reinforcement) +PRI_A20_SEND_REINFORCEMENT%
+on_info6 = {-PRI_A18_USE_IDOL_DONE +PRI_A21_COLONEL_GIVE_SENTRY_TASK -PRI_A21_CHASOVOI_DEAD} %=play_sound(pri_a20_colonel_send_reinforcement_a21_about_sentry) +PRI_A20_SEND_REINFORCEMENT%
+
+[sr_idle@timer_before_nil]
+on_game_timer = 20 | sr_idle@nil %+PRI_A20_CAM_END%
+
+[sr_idle@nil]

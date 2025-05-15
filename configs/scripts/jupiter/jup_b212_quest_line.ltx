@@ -1,0 +1,8 @@
+[logic]
+active = sr_idle@task
+type = sv_only
+
+[sr_idle@task]
+on_info = {+JUP_B212_JUPITER_CHIMERA_HUNT_STARTED -JUP_B212_JUPITER_CHIMERA_HUNT_GIVE} sr_idle@end %=give_task(jup_b212_jupiter_chimera_hunt) +JUP_B212_JUPITER_CHIMERA_HUNT_GIVE%
+
+[sr_idle@end]

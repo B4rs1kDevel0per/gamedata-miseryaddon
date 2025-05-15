@@ -1,0 +1,25 @@
+[logic]
+active = sr_idle@determine_cl_sv
+type = shared_with_cl_data
+
+[sr_idle@determine_cl_sv]
+on_info = {=isServer} sr_idle@sv_spawn_barge
+on_info2 = {=isClient} sr_idle@cl_wait
+
+;server logic
+[sr_idle@sv_spawn_barge]
+on_info  = {-ZAT_B44_STALKER_BARGE_SPAWNED} sr_idle@sv_barge_pda_story %+ZAT_B44_STALKER_BARGE_SPAWNED =spawn_corpse(zat_b44_stalker_barge:zat_b44_stalker_barge_dead_walk)%
+
+[sr_idle@sv_barge_pda_story]
+on_info = {=any_actor_has_item(zat_b44_barge_pda) -ZAT_B44_STALKER_BARGE_BODY_SEARCHED} %+ZAT_B44_STALKER_BARGE_BODY_SEARCHED%
+on_info2 = {+ZAT_B44_TECH_BUDDIES_STARTED -ZAT_B44_TECH_BUDDIES_GIVEN} %=give_task(zat_b44_tech_buddies) +ZAT_B44_TECH_BUDDIES_GIVEN%
+on_info3 = {+ZAT_B44_TECH_BUDDIES_JOKER_TOLD +ZAT_B44_TECH_BUDDIES_BARGE_TOLD -ZAT_B44_TECH_BUDDIES_BOTH_TOLD} sr_idle@nil %+ZAT_B44_TECH_BUDDIES_BOTH_TOLD +ZAT_B44_TECH_BUDDIES_TOLD%
+
+;client logic
+[sr_idle@cl_wait]
+on_info = {=any_actor_has_item(zat_b44_barge_pda) +ZAT_B44_STALKER_BARGE_BODY_SEARCHED =is_local_actor_relevant(50:zat_b44_stalker_barge)} sr_idle@cl_wait2 %=play_sound(zat_b44_stalker_barge_pda)%, {=any_actor_has_item(zat_b44_barge_pda) +ZAT_B44_STALKER_BARGE_BODY_SEARCHED !is_local_actor_relevant(50:zat_b44_stalker_barge)} sr_idle@cl_wait2
+
+[sr_idle@cl_wait2]
+on_info = {+ZAT_B44_TECH_BUDDIES_JOKER_TOLD +ZAT_B44_TECH_BUDDIES_BARGE_TOLD -ZAT_B44_TECH_BUDDIES_BOTH_TOLD} sr_idle@nil
+
+[sr_idle@nil]

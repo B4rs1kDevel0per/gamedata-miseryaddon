@@ -1,0 +1,76 @@
+[logic]
+active = sr_idle@pas_b400_sr_hall_1
+type = sv_only
+
+[sr_idle@pas_b400_sr_hall_1]
+on_info = {-PAS_B400_SR_HALL_1 =any_actor_in_zone(pas_b400_sr_hall_1)} %+PAS_B400_SR_HALL_1%
+on_info2 = {=any_actor_in_zone(pas_b400_sr_hall_2)} sr_idle@pas_b400_sr_hall_2 %-PAS_B400_SR_HALL_1 +PAS_B400_SR_HALL_2%
+on_info3 = {=any_actor_in_zone(pas_b400_sr_hall_3)} sr_idle@pas_b400_sr_hall_3 %-PAS_B400_SR_HALL_1 +PAS_B400_SR_HALL_3%
+on_info4 = {=any_actor_in_zone(pas_b400_sr_hall_6)} sr_idle@pas_b400_sr_hall_6 %-PAS_B400_SR_HALL_1 +PAS_B400_SR_HALL_6%
+
+[sr_idle@pas_b400_sr_hall_2]
+on_info = {=any_actor_in_zone(pas_b400_sr_hall_1) !any_actor_in_zone(pas_b400_sr_hall_2)} sr_idle@pas_b400_sr_hall_1 %-PAS_B400_SR_HALL_2 +PAS_B400_SR_HALL_1%
+on_info2 = {=any_actor_in_zone(pas_b400_sr_hall_3)} sr_idle@pas_b400_sr_hall_3 %-PAS_B400_SR_HALL_2 +PAS_B400_SR_HALL_3%
+on_info3 = {=any_actor_in_zone(pas_b400_sr_hall_5)} sr_idle@pas_b400_sr_hall_5 %-PAS_B400_SR_HALL_2 +PAS_B400_SR_HALL_5%
+
+[sr_idle@pas_b400_sr_hall_3]
+on_info = {=any_actor_in_zone(pas_b400_sr_hall_1) !any_actor_in_zone(pas_b400_sr_hall_3)} sr_idle@pas_b400_sr_hall_1 %-PAS_B400_SR_HALL_3 +PAS_B400_SR_HALL_1%
+on_info2 = {=any_actor_in_zone(pas_b400_sr_hall_2) !any_actor_in_zone(pas_b400_sr_hall_3)} sr_idle@pas_b400_sr_hall_2 %-PAS_B400_SR_HALL_3 +PAS_B400_SR_HALL_2%
+on_info3 = {=any_actor_in_zone(pas_b400_sr_hall_5)} sr_idle@pas_b400_sr_hall_5 %-PAS_B400_SR_HALL_3 +PAS_B400_SR_HALL_5%
+on_info4 = {=any_actor_in_zone(pas_b400_sr_hall_6)} sr_idle@pas_b400_sr_hall_6 %-PAS_B400_SR_HALL_3 +PAS_B400_SR_HALL_6%
+on_info5 = {=any_actor_in_zone(pas_b400_sr_hall_7)} sr_idle@pas_b400_sr_hall_7 %-PAS_B400_SR_HALL_3 +PAS_B400_SR_HALL_7%
+
+[sr_idle@pas_b400_sr_hall_4]
+on_info = {=any_actor_in_zone(pas_b400_sr_hall_6)} sr_idle@pas_b400_sr_hall_6 %-PAS_B400_SR_HALL_4 +PAS_B400_SR_HALL_6%
+
+[sr_idle@pas_b400_sr_hall_5]
+on_info = {=any_actor_in_zone(pas_b400_sr_hall_2) !any_actor_in_zone(pas_b400_sr_hall_5)} sr_idle@pas_b400_sr_hall_2 %-PAS_B400_SR_HALL_5 +PAS_B400_SR_HALL_2%
+on_info2 = {=any_actor_in_zone(pas_b400_sr_hall_3) !any_actor_in_zone(pas_b400_sr_hall_5)} sr_idle@pas_b400_sr_hall_3 %-PAS_B400_SR_HALL_5 +PAS_B400_SR_HALL_3%
+on_info3 = {=any_actor_in_zone(pas_b400_sr_hall_8) !any_actor_in_zone(pas_b400_sr_hall_5)} sr_idle@pas_b400_sr_hall_8 %-PAS_B400_SR_HALL_5 +PAS_B400_SR_HALL_8%
+on_info4 = {=any_actor_in_zone(pas_b400_sr_hall_10)} sr_idle@pas_b400_sr_hall_10 %-PAS_B400_SR_HALL_5 +PAS_B400_SR_HALL_10%
+
+[sr_idle@pas_b400_sr_hall_6]
+on_info = {=any_actor_in_zone(pas_b400_sr_hall_1) !any_actor_in_zone(pas_b400_sr_hall_6)} sr_idle@pas_b400_sr_hall_1 %-PAS_B400_SR_HALL_6 +PAS_B400_SR_HALL_1%
+on_info2 = {=any_actor_in_zone(pas_b400_sr_hall_3) !any_actor_in_zone(pas_b400_sr_hall_6)} sr_idle@pas_b400_sr_hall_3 %-PAS_B400_SR_HALL_6 +PAS_B400_SR_HALL_3%
+on_info3 = {=any_actor_in_zone(pas_b400_sr_hall_4) !any_actor_in_zone(pas_b400_sr_hall_6)} sr_idle@pas_b400_sr_hall_4 %-PAS_B400_SR_HALL_6 +PAS_B400_SR_HALL_4%
+on_info4 = {=any_actor_in_zone(pas_b400_sr_hall_7) !any_actor_in_zone(pas_b400_sr_hall_6)} sr_idle@pas_b400_sr_hall_7 %-PAS_B400_SR_HALL_6 +PAS_B400_SR_HALL_7%
+
+[sr_idle@pas_b400_sr_hall_7]
+on_info = {=any_actor_in_zone(pas_b400_sr_hall_3) !any_actor_in_zone(pas_b400_sr_hall_7)} sr_idle@pas_b400_sr_hall_3 %-PAS_B400_SR_HALL_7 +PAS_B400_SR_HALL_3%
+on_info2 = {=any_actor_in_zone(pas_b400_sr_hall_6)} sr_idle@pas_b400_sr_hall_6 %-PAS_B400_SR_HALL_7 +PAS_B400_SR_HALL_6%
+on_info3 = {=any_actor_in_zone(pas_b400_sr_hall_9) !any_actor_in_zone(pas_b400_sr_hall_7)} sr_idle@pas_b400_sr_hall_9 %-PAS_B400_SR_HALL_7 +PAS_B400_SR_HALL_9%
+on_info4 = {=any_actor_in_zone(pas_b400_sr_hall_10)} sr_idle@pas_b400_sr_hall_10 %-PAS_B400_SR_HALL_7 +PAS_B400_SR_HALL_10%
+on_info5 = {=any_actor_in_zone(pas_b400_sr_hall_11)} sr_idle@pas_b400_sr_hall_11 %-PAS_B400_SR_HALL_7 +PAS_B400_SR_HALL_11%
+on_info6 = {=any_actor_in_zone(pas_b400_sr_hall_12)} sr_idle@pas_b400_sr_hall_12 %-PAS_B400_SR_HALL_7 +PAS_B400_SR_HALL_12%
+
+[sr_idle@pas_b400_sr_hall_8]
+on_info = {=any_actor_in_zone(pas_b400_sr_hall_3) !any_actor_in_zone(pas_b400_sr_hall_8)} sr_idle@pas_b400_sr_hall_3 %-PAS_B400_SR_HALL_8 +PAS_B400_SR_HALL_3%
+on_info2 = {=any_actor_in_zone(pas_b400_sr_hall_5) !any_actor_in_zone(pas_b400_sr_hall_8)} sr_idle@pas_b400_sr_hall_5 %-PAS_B400_SR_HALL_8 +PAS_B400_SR_HALL_5%
+on_info3 = {=any_actor_in_zone(pas_b400_sr_hall_7)} sr_idle@pas_b400_sr_hall_7 %-PAS_B400_SR_HALL_8 +PAS_B400_SR_HALL_7%
+on_info4 = {=any_actor_in_zone(pas_b400_sr_hall_10)} sr_idle@pas_b400_sr_hall_10 %-PAS_B400_SR_HALL_8 +PAS_B400_SR_HALL_10%
+
+[sr_idle@pas_b400_sr_hall_9]
+on_info = {=any_actor_in_zone(pas_b400_sr_hall_7)} sr_idle@pas_b400_sr_hall_7 %-PAS_B400_SR_HALL_9 +PAS_B400_SR_HALL_7%
+on_info3 = {=any_actor_in_zone(pas_b400_sr_hall_12)} sr_idle@pas_b400_sr_hall_12 %-PAS_B400_SR_HALL_9 +PAS_B400_SR_HALL_12%
+
+[sr_idle@pas_b400_sr_hall_10]
+on_info = {=any_actor_in_zone(pas_b400_sr_hall_5) !any_actor_in_zone(pas_b400_sr_hall_10)} sr_idle@pas_b400_sr_hall_5 %-PAS_B400_SR_HALL_10 +PAS_B400_SR_HALL_5%
+on_info2 = {=any_actor_in_zone(pas_b400_sr_hall_7) !any_actor_in_zone(pas_b400_sr_hall_10)} sr_idle@pas_b400_sr_hall_7 %-PAS_B400_SR_HALL_10 +PAS_B400_SR_HALL_7%
+on_info3 = {=any_actor_in_zone(pas_b400_sr_hall_8) !any_actor_in_zone(pas_b400_sr_hall_10)} sr_idle@pas_b400_sr_hall_8 %-PAS_B400_SR_HALL_10 +PAS_B400_SR_HALL_8%
+on_info4 = {=any_actor_in_zone(pas_b400_sr_hall_11)} sr_idle@pas_b400_sr_hall_11 %-PAS_B400_SR_HALL_10 +PAS_B400_SR_HALL_11%
+
+[sr_idle@pas_b400_sr_hall_11]
+on_info = {=any_actor_in_zone(pas_b400_sr_hall_7) !any_actor_in_zone(pas_b400_sr_hall_11)} sr_idle@pas_b400_sr_hall_7 %-PAS_B400_SR_HALL_11 +PAS_B400_SR_HALL_7%
+on_info2 = {=any_actor_in_zone(pas_b400_sr_hall_10) !any_actor_in_zone(pas_b400_sr_hall_11)} sr_idle@pas_b400_sr_hall_10 %-PAS_B400_SR_HALL_11 +PAS_B400_SR_HALL_10%
+on_info3 = {=any_actor_in_zone(pas_b400_sr_hall_12) !any_actor_in_zone(pas_b400_sr_hall_11)} sr_idle@pas_b400_sr_hall_12 %-PAS_B400_SR_HALL_11 +PAS_B400_SR_HALL_12%
+on_info4 = {+PAS_B400_SR_HALL_12_IN -PAS_B400_SR_HALL_11_IN} %+PAS_B400_SR_HALL_11_IN%
+
+[sr_idle@pas_b400_sr_hall_12]
+on_info = {=any_actor_in_zone(pas_b400_sr_hall_7) !any_actor_in_zone(pas_b400_sr_hall_12)} sr_idle@pas_b400_sr_hall_7 %-PAS_B400_SR_HALL_12 +PAS_B400_SR_HALL_7%
+on_info2 = {=any_actor_in_zone(pas_b400_sr_hall_9) !any_actor_in_zone(pas_b400_sr_hall_12)} sr_idle@pas_b400_sr_hall_9 %-PAS_B400_SR_HALL_12 +PAS_B400_SR_HALL_9%
+on_info3 = {=any_actor_in_zone(pas_b400_sr_hall_11)} sr_idle@pas_b400_sr_hall_11 %-PAS_B400_SR_HALL_12 +PAS_B400_SR_HALL_11%
+on_info4 = {+PAS_B400_HALL_DONE} sr_idle@nil
+on_info5 = {-PAS_B400_SR_HALL_12_IN} %+PAS_B400_SR_HALL_12_IN%
+on_info6 = {-PAS_B400_SR_HALL_12_IN_2 +PAS_B400_CONTROL_DOWN_DOOR_OPENED} %+PAS_B400_SR_HALL_12_IN_2%
+
+[sr_idle@nil]

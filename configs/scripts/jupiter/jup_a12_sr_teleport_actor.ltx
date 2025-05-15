@@ -1,0 +1,66 @@
+[logic]
+active = sr_idle@determine_cl_sv
+type = shared_with_cl_data
+
+[sr_idle@determine_cl_sv]
+on_info = {=isServer} sr_idle@sv_task
+on_info2 = {=isClient} sr_idle@cl_wait
+
+;server logic
+[sr_idle@sv_task]
+on_info = {-JUP_A12_TASK_GIVEN +JUP_A12_ACTOR_CHOOSE_SELF -JUP_A12_STALKER_PRISONER_DEAD} sr_idle@sv_wait %+JUP_A12_ACTOR_CHOOSE_SELF_OR_RANSOM +JUP_A12_TASK_GIVEN =give_task(jup_a12_free_prisoner)%
+on_info2 = {-JUP_A12_TASK_GIVEN +JUP_A12_ACTOR_CHOOSE_POWER -JUP_A12_STALKER_PRISONER_DEAD} sr_idle@sv_wait %+JUP_A12_TASK_GIVEN =give_task(jup_a12_free_prisoner)%
+on_info3 = {-JUP_A12_TASK_GIVEN +JUP_A12_ACTOR_CHOOSE_RANSOM -JUP_A12_STALKER_PRISONER_DEAD} sr_idle@sv_wait %+JUP_A12_ACTOR_CHOOSE_SELF_OR_RANSOM +JUP_A12_TASK_GIVEN =give_task(jup_a12_free_prisoner)%
+on_info4 = {-JUP_A12_TASK_GIVEN +PRI_A12_STALKER_PRISONER_FREE -JUP_A12_STALKER_PRISONER_DEAD} sr_idle@sv_wait %+JUP_A12_TASK_GIVEN =give_task(jup_a12_free_prisoner)%
+on_info5 = {+JUP_A12_STALKER_PRISONER_DEAD} sr_idle@sv_remove_prisoner %+JUP_A12_STALKER_PRISONER_DEAD +PRI_A12_STALKER_PRISONER_FREE +JUP_A12_STALKER_PRISONER_FREE%
+;on_game_timer = 172800 | {-PRI_A12_STALKER_PRISONER_FREE} sr_idle@sv_remove_prisoner %+JUP_A12_STALKER_PRISONER_DEAD +PRI_A12_STALKER_PRISONER_FREE +JUP_A12_STALKER_PRISONER_FREE%
+
+[sr_idle@sv_wait]
+on_info = {+JUP_A12_ACTOR_GUIDED_BASE} sr_idle@sv_start %-JUP_A12_UI%
+on_info2 = {+JUP_A12_STALKER_PRISONER_CHEATS_TO_BASE -JUP_A12_STALKERS_ON_BASE} sr_idle@sv_start
+on_info3 = {+JUP_A12_STALKERS_ON_BASE} sr_idle@sv_clean_up
+;on_game_timer = 172800 | {-PRI_A12_STALKER_PRISONER_FREE} sr_idle@sv_remove_prisoner %+JUP_A12_STALKER_PRISONER_DEAD%
+
+[sr_idle@sv_start]
+on_info = {+JUP_A12_ACTOR_GUIDED_BASE} sr_idle@sv_teleport
+
+[sr_idle@sv_teleport]
+on_game_timer = 20 | {+JUP_A12_ACTOR_GUIDED_BASE} sr_idle@sv_switch %=xrmpe_teleport_relevant_actors(jup_a12_prisoner:jup_actor_arrive_walk:jup_actor_arrive_look:15) =teleport_squad(jup_a12_prisoner:jup_a6_spawn_point) +JUP_A12_PRISONER_QUEST_DONE_CL%
+
+[sr_idle@sv_switch]
+on_info = {+JUP_A12_ACTOR_GUIDED_BASE} sr_idle@sv_out %=forward_game_time(2)%
+
+[sr_idle@sv_out]
+on_game_timer = 30 | %+JUP_A12_UI%
+on_info = {+JUP_A12_UI +JUP_A12_ACTOR_GUIDED_BASE} sr_idle@sv_clean_up
+on_info2 = {+JUP_A12_STALKER_PRISONER_CHEATS_TO_BASE -JUP_A12_ACTOR_GUIDED_BASE} sr_idle@sv_clean_up
+
+[sr_idle@sv_clean_up]
+on_info = {+JUP_B6_PRISONER_EMPLOYED =dist_to_story_obj_ge(jup_a12_stalker_squad:35)} sr_idle@nil %=remove_squad(jup_a12_stalker_squad) =remove_squad(jup_a12_prisoner) +JUP_B6_EXPRISONER_WORK_ON_SCI%
+
+[sr_idle@sv_remove_prisoner]
+on_info = {=squad_exist(jup_a12_prisoner)} sr_idle@nil %=remove_squad(jup_a12_prisoner) +JUP_A12_TASK_DONE%, sr_idle@nil %+JUP_A12_TASK_DONE%
+
+[sr_idle@nil]
+on_info = {+JUP_A12_ACTOR_ENEMY_TO_BANDITS} sr_idle@zero %=set_squad_enemy_to_actor(jup_a12_bandit_guard_squad) =set_squad_enemy_to_actor(jup_a12_bandit_chief_squad) =set_squad_enemy_to_actor(jup_a12_bandit_cashier_squad) =set_squad_enemy_to_actor(jup_a12_bandit_sim_squad)%
+
+;client logic
+[sr_idle@cl_wait]
+on_info = {+JUP_A12_ACTOR_GUIDED_BASE} sr_idle@cl_start
+on_info2 = {+JUP_A12_STALKER_PRISONER_CHEATS_TO_BASE -JUP_A12_STALKERS_ON_BASE} sr_idle@cl_start
+on_info3 = {+JUP_A12_STALKERS_ON_BASE} sr_idle@zero
+
+[sr_idle@cl_start]
+on_info = {+JUP_A12_ACTOR_GUIDED_BASE =is_local_actor_relevant(15:jup_a12_stalker_prisoner)} sr_idle@cl_teleport %=run_postprocess(fade_in) =disable_ui%, {+JUP_A12_ACTOR_GUIDED_BASE !is_local_actor_relevant(15:jup_a12_stalker_prisoner)} sr_idle@zero
+
+[sr_idle@cl_teleport]
+on_info = {+JUP_A12_PRISONER_QUEST_DONE_CL +JUP_A12_ACTOR_GUIDED_BASE} sr_idle@cl_switch %=run_postprocess(black:8510:true)%, {+JUP_A12_PRISONER_QUEST_DONE_CL -JUP_A12_ACTOR_GUIDED_BASE} sr_idle@cl_switch
+
+[sr_idle@cl_switch]
+on_info = {+JUP_A12_ACTOR_GUIDED_BASE} sr_idle@cl_out
+
+[sr_idle@cl_out]
+on_info = {+JUP_A12_UI +JUP_A12_ACTOR_GUIDED_BASE} sr_idle@zero %=stop_postprocess(8510) =enable_ui%
+on_info2 = {+JUP_A12_STALKER_PRISONER_CHEATS_TO_BASE -JUP_A12_ACTOR_GUIDED_BASE} sr_idle@zero
+
+[sr_idle@zero]

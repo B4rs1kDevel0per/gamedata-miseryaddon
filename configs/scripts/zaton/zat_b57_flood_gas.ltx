@@ -1,0 +1,17 @@
+[logic]
+active = sr_idle@enable
+type = cl_only
+
+[sr_idle@enable]
+on_info = {+ZAT_B57_GAS_RUNNING_PLAY} sr_particle@flood
+
+[sr_particle@flood]
+name = industrial_particles\effects\exhaust_workshop_1_small
+path = zat_b57_place_gas_point
+mode = 2
+looped = true
+on_info = {+ZAT_B57_GAS_RUNNING_STOP} sr_idle@end
+
+[sr_idle@end]
+
+;позиционной ценности не представляет

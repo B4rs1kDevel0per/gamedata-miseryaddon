@@ -1,0 +1,44 @@
+[logic]
+active = sr_idle@determine_cl_sv
+type = shared_with_cl_data
+
+[sr_idle@determine_cl_sv]
+on_info = {=isServer} sr_idle@sv_wait
+on_info2 = {=isClient} sr_idle@cl_wait
+
+;server logic
+[sr_idle@sv_wait]
+on_info = {+JUP_B209_HYPOTHESES_STARTED -JUP_B209_GIVE_TASK} sr_idle@sv_wait2 %=give_task(jup_b209_hypotheses) +JUP_B209_GIVE_TASK%
+on_info2 = {+JUP_B209_GIVE_TASK} sr_idle@sv_wait2
+
+[sr_idle@sv_wait2]
+on_info = {+JUP_B209_SCANNER_PLACED} sr_idle@sv_create_squads 
+
+[sr_idle@sv_create_squads]
+on_info = {+JUP_B209_SCANNER_PLACED -JUP_B209_CREATE_SNORK_SQUAD} %=create_squad(jup_b209_squad_snork_up : jup_b209) =create_squad(jup_b209_squad_snork_1 : jup_b209) =create_squad(jup_b209_squad_snork_2 : jup_b209) +JUP_B209_CREATE_SNORK_SQUAD%
+on_info2 = {+JUP_B209_SNORK_7_DEATH +JUP_B209_SNORK_6_DEATH +JUP_B209_SNORK_5_DEATH +JUP_B209_SNORK_4_DEATH +JUP_B209_SNORK_3_DEATH +JUP_B209_SNORK_2_DEATH +JUP_B209_SNORK_1_DEATH} sr_idle@sv_wait3
+on_game_timer = 3000 | sr_idle@sv_wait3 %+JUP_B209_READY%
+
+[sr_idle@sv_wait3]
+on_timer = 5000 | sr_idle@nil %+JUP_B209_SCANNER_TIME_TO_REMOVE% 
+
+;client logic
+[sr_idle@cl_wait]
+on_info2 = {+JUP_B209_GIVE_TASK} sr_idle@cl_wait2
+
+[sr_idle@cl_wait2]
+on_info = {=actor_has_item(jup_b209_monster_scanner) =player_in_zone(jup_b209_hypotheses) +JUP_B209_HYPOTHESES_STARTED -JUP_B209_SCANNER_PLACED} sr_idle@cl_tut %=run_tutorial(jup_b209_monster_scanner_placed) +JUP_B209_START_TUTORIAL%
+on_info2 = {!actor_has_item(jup_b209_monster_scanner) +JUP_B209_SCANNER_REMOVE} sr_idle@nil
+
+[sr_idle@cl_tut]
+on_info = {=actor_has_item(jup_b209_monster_scanner) !player_in_zone(jup_b209_hypotheses) +JUP_B209_START_TUTORIAL} sr_idle@cl_wait2 %-JUP_B209_START_TUTORIAL =stop_tutorial%
+on_info2 = {+JUP_B209_SCANNER_PLACED} sr_idle@cl_wait3
+on_info3 = {!has_active_tutorial} sr_idle@cl_wait2
+
+[sr_idle@cl_wait3]
+on_info = {+JUP_B209_READY} sr_idle@cl_wait4
+
+[sr_idle@cl_wait4]
+on_info = {+JUP_B209_SCANNER_REMOVE} sr_idle@nil %=give_actor(jup_b209_monster_scanner)%
+
+[sr_idle@nil]

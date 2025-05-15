@@ -1,0 +1,51 @@
+;general section
+
+[sr_idle@bunker_gard_work]
+on_info1 = {+ZAT_B103_LOST_MERC_LEADER_BUNKER_GUARDS_WORK =distance_to_obj_ge(zat_b103_lost_merc_squad1:100) =squad_exist(zat_b103_lost_merc_squad1) -ZAT_B103_LOST_MERC_LEADER_DESTROED_FOR_BUNKER_GUARDS_WORK1} %=remove_squad(zat_b103_lost_merc_squad1) +ZAT_B103_LOST_MERC_LEADER_DESTROED_FOR_BUNKER_GUARDS_WORK1%, {+ZAT_B103_LOST_MERC_LEADER_BUNKER_GUARDS_WORK +ZAT_B215_GUIDE_TO_JUPITER =squad_exist(zat_b103_lost_merc_squad1) -ZAT_B103_LOST_MERC_LEADER_DESTROED_FOR_BUNKER_GUARDS_WORK1} %=remove_squad(zat_b103_lost_merc_squad1) +ZAT_B103_LOST_MERC_LEADER_DESTROED_FOR_BUNKER_GUARDS_WORK1%
+on_info2 = {+ZAT_B7_STALKER_SQUAD_LEADER_BUNKER_GUARDS_WORK =distance_to_obj_ge(zat_b7_stalkers_base_squad:100) =squad_exist(zat_b7_stalkers_base_squad) -ZAT_B7_STALKER_SQUAD_LEADER_DESTROED_FOR_BUNKER_GUARDS_WORK} %=remove_squad(zat_b7_stalkers_base_squad) +ZAT_B7_STALKER_SQUAD_LEADER_DESTROED_FOR_BUNKER_GUARDS_WORK%, {+ZAT_B7_STALKER_SQUAD_LEADER_BUNKER_GUARDS_WORK +ZAT_B215_GUIDE_TO_JUPITER =squad_exist(zat_b7_stalkers_base_squad) -ZAT_B7_STALKER_SQUAD_LEADER_DESTROED_FOR_BUNKER_GUARDS_WORK} %=remove_squad(zat_b7_stalkers_base_squad) +ZAT_B7_STALKER_SQUAD_LEADER_DESTROED_FOR_BUNKER_GUARDS_WORK%
+on_info6 = {+ZAT_B7_STALKER_SQUAD_LEADER_BUNKER_GUARDS_WORK =distance_to_obj_ge(zat_b7_stalkers_victims_1:100) =squad_exist(zat_b7_stalkers_victims_1) -ZAT_B7_STALKER_SQUAD_LEADER_DESTROED_FOR_BUNKER_GUARDS_WORK} %=remove_squad(zat_b7_stalkers_victims_1) +ZAT_B7_STALKER_SQUAD_LEADER_DESTROED_FOR_BUNKER_GUARDS_WORK%, {+ZAT_B7_STALKER_SQUAD_LEADER_BUNKER_GUARDS_WORK +ZAT_B215_GUIDE_TO_JUPITER =squad_exist(zat_b7_stalkers_victims_1) -ZAT_B7_STALKER_SQUAD_LEADER_DESTROED_FOR_BUNKER_GUARDS_WORK} %=remove_squad(zat_b7_stalkers_victims_1) +ZAT_B7_STALKER_SQUAD_LEADER_DESTROED_FOR_BUNKER_GUARDS_WORK%
+on_info3 = {+ZAT_B103_LOST_MERC_LEADER_BUNKER_GUARDS_WORK =squad_exist(zat_b103_lost_merc_squad1) -ZAT_B103_LOST_MERC_RELATION_FRIEND_SET} %+ZAT_B103_LOST_MERC_RELATION_FRIEND_SET =set_squad_goodwill(zat_b103_lost_merc_squad1:friend)%
+on_info4 = {+ZAT_B103_MERC_FIGHT +ZAT_B103_LOST_MERC_LEADER_BUNKER_GUARDS_WORK} %-ZAT_B103_LOST_MERC_LEADER_BUNKER_GUARDS_WORK -JUP_B47_BUNKER_GUARDS_DONE%, {=is_squad_enemy_to_actor(zat_b103_lost_merc_squad1) +ZAT_B103_LOST_MERC_LEADER_BUNKER_GUARDS_WORK} %-ZAT_B103_LOST_MERC_LEADER_BUNKER_GUARDS_WORK -JUP_B47_BUNKER_GUARDS_DONE% 
+on_info5 = {=is_squad_enemy_to_actor(zat_b7_stalkers_base_squad) +ZAT_B7_STALKER_SQUAD_LEADER_BUNKER_GUARDS_WORK} %-ZAT_B7_STALKER_SQUAD_LEADER_BUNKER_GUARDS_WORK -JUP_B47_BUNKER_GUARDS_DONE%
+
+;work section
+
+[logic]
+active = sr_idle@find_out
+type = sv_only
+
+[sr_idle@b103_start]
+on_info = sr_idle@find_out %=spawn_object(toolkit_2:zat_b103_toolkit_2_spawn)%
+
+[sr_idle@find_out]:sr_idle@bunker_gard_work
+on_actor_in_zone2 = zat_b103_sr_def_restr | {=actor_has_item(toolkit_2)} sr_idle@global_task %+ZAT_B103_TOOLKIT_2_SECOND%, {!actor_has_item(toolkit_2)} sr_idle@global_task
+
+[sr_idle@global_task]:sr_idle@bunker_gard_work
+on_info7 = {=actor_has_item(toolkit_2) -ZAT_B103_TOOLKIT_2_SECOND} sr_idle@b103_search %+ZAT_B103_ACTOR_TAKE_TOOLKIT%
+on_info8 = {=actor_has_item_count(toolkit_2:2) +ZAT_B103_TOOLKIT_2_SECOND} sr_idle@b103_search %+ZAT_B103_ACTOR_TAKE_TOOLKIT%
+on_info9 = {+ZAT_B103_MERC_BRING_SUPPLIES} sr_idle@supply_task %=give_task(zat_b103_merc_bring_supplies)%
+
+[sr_idle@b103_search]:sr_idle@bunker_gard_work
+on_info7 = {+ZAT_B103_MERC_BRING_SUPPLIES} sr_idle@supply_task %=give_task(zat_b103_merc_bring_supplies)%
+on_info8 = {=actor_has_item(toolkit_2) -ZAT_B103_TOOLKIT_2_SECOND} sr_idle@done %+ZAT_B103_ACTOR_TAKE_TOOLKIT%
+on_info9 = {=actor_has_item_count(toolkit_2:2) +ZAT_B103_TOOLKIT_2_SECOND} sr_idle@done %+ZAT_B103_ACTOR_TAKE_TOOLKIT%
+
+[sr_idle@supply_task]:sr_idle@bunker_gard_work
+on_info7 = {=actor_has_item(toolkit_2) -ZAT_B103_TOOLKIT_2_SECOND} sr_idle@done %+ZAT_B103_ACTOR_TAKE_TOOLKIT%
+on_info8 = {=actor_has_item_count(toolkit_2:2) +ZAT_B103_TOOLKIT_2_SECOND} sr_idle@done %+ZAT_B103_ACTOR_TAKE_TOOLKIT%
+on_info9 = {+ZAT_B103_MERC_TASK_DONE} sr_idle@free
+
+[sr_idle@supply_got]:sr_idle@bunker_gard_work
+on_info7 = {=actor_has_item(toolkit_2) -ZAT_B103_TOOLKIT_2_SECOND} sr_idle@done %+ZAT_B103_ACTOR_TAKE_TOOLKIT%
+on_info8 = {=actor_has_item_count(toolkit_2:2) +ZAT_B103_TOOLKIT_2_SECOND} sr_idle@done %+ZAT_B103_ACTOR_TAKE_TOOLKIT%
+on_info9 = {+ZAT_B103_MERC_TASK_DONE} sr_idle@free
+
+[sr_idle@done]:sr_idle@bunker_gard_work
+on_info7 = {+ZAT_B103_MERC_TASK_DONE} sr_idle@free
+
+[sr_idle@free]:sr_idle@bunker_gard_work
+on_info7 = {=actor_has_item(toolkit_2) -ZAT_B103_TOOLKIT_2_SECOND} sr_idle@done %+ZAT_B103_ACTOR_TAKE_TOOLKIT%
+on_info8 = {=actor_has_item_count(toolkit_2:2) +ZAT_B103_TOOLKIT_2_SECOND} sr_idle@done %+ZAT_B103_ACTOR_TAKE_TOOLKIT%
+on_info9 = {+ZAT_B103_ACTOR_TAKE_TOOLKIT} sr_idle@end
+
+[sr_idle@end]:sr_idle@bunker_gard_work

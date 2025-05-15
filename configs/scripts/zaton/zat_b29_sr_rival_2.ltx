@@ -1,0 +1,56 @@
+[logic]
+active = sr_idle@wait_for_start
+type = sv_only
+
+[sr_idle@wait_for_start]
+on_info = {+ZAT_B29_ADV_TASK_GIVEN +ZAT_B29_EXCLUSIVE_CONDITIONS -ZAT_B29_SECOND_RIVAL_TAKEN_OUT !story_object_exist(zat_b29_stalker_rival_2)} sr_idle@remove_detectors %+ZAT_B29_RIVAL_2_2 =create_squad(zat_b29_stalker_rival_2_squad:zat_b18)%
+on_info2 = {+ZAT_B29_ADV_TASK_GIVEN -ZAT_B29_EXCLUSIVE_CONDITIONS -ZAT_B29_SECOND_RIVAL_TAKEN_OUT !story_object_exist(zat_b29_stalker_rival_default_2)} sr_idle@wait %+ZAT_B29_RIVAL_2_2 =create_squad(zat_b29_stalker_rival_default_2_squad:zat_b18)%
+on_info3 = {+ZAT_B29_TASK_FAIL} sr_idle@nil
+
+[sr_idle@remove_detectors]
+on_info = {+ZAT_B30_RIVAL_2_WO_DETECTOR} sr_idle@wait
+on_info2 = {-ZAT_B30_RIVAL_2_WO_DETECTOR} sr_idle@wait %=give_item(detector_scientific:zat_b29_stalker_rival_2)%
+
+[sr_idle@wait]
+on_info = {+ZAT_B29_EXCLUSIVE_CONDITIONS -ZAT_B29_ADV_TASK_GIVEN +ZAT_B29_SECOND_RIVAL_TAKEN_OUT =dist_to_story_obj_ge(zat_b29_stalker_rival_2:150)} sr_idle@nil %=remove_squad(zat_b29_stalker_rival_2_squad)%
+on_info2 = {+ZAT_B29_EXCLUSIVE_CONDITIONS -ZAT_B29_ADV_TASK_GIVEN =squad_exist(zat_b29_stalker_rival_2_squad) =dist_to_story_obj_ge(zat_b29_stalker_rival_2:150)} sr_idle@wait_for_start %=remove_squad(zat_b29_stalker_rival_2_squad)%
+on_info3 = {-ZAT_B29_EXCLUSIVE_CONDITIONS -ZAT_B29_ADV_TASK_GIVEN +ZAT_B29_SECOND_RIVAL_TAKEN_OUT =dist_to_story_obj_ge(zat_b29_stalker_rival_default_2:150)} sr_idle@wait_for_start %=remove_squad(zat_b29_stalker_rival_default_2_squad)%
+on_info4 = {-ZAT_B29_EXCLUSIVE_CONDITIONS -ZAT_B29_ADV_TASK_GIVEN =squad_exist(zat_b29_stalker_rival_default_2_squad) =dist_to_story_obj_ge(zat_b29_stalker_rival_default_2:150)} sr_idle@wait_for_start %=remove_squad(zat_b29_stalker_rival_default_2_squad)%
+on_game_timer = 1800 | sr_idle@choose
+
+[sr_idle@choose]
+on_info = {-ZAT_B29_STALKER_RIVAL_2_FOUND_AF} sr_idle@check %=zat_b29_create_random_infop(1:ZAT_B29_RIVAL_2_1:ZAT_B29_RIVAL_2_2:ZAT_B29_RIVAL_2_3:ZAT_B29_RIVAL_2_4:ZAT_B29_RIVAL_2_5)%
+on_info2 = {+ZAT_B29_STALKER_RIVAL_2_FOUND_AF} sr_idle@walk_to_base_1
+
+[sr_idle@check]
+on_info = {+ZAT_B29_RIVAL_2_1 -ZAT_B29_RIVAL_1_1} sr_idle@walk, {+ZAT_B29_RIVAL_2_1 +ZAT_B29_RIVAL_1_1} %-ZAT_B29_RIVAL_2_1 +ZAT_B29_RIVAL_2_2%
+on_info2 = {+ZAT_B29_RIVAL_2_2 -ZAT_B29_RIVAL_1_2} sr_idle@walk, {+ZAT_B29_RIVAL_2_2 +ZAT_B29_RIVAL_1_2} %-ZAT_B29_RIVAL_2_2 +ZAT_B29_RIVAL_2_3%
+on_info3 = {+ZAT_B29_RIVAL_2_3 -ZAT_B29_RIVAL_1_3 +ZAT_B53_THANKS_DIALOG} sr_idle@walk, {+ZAT_B29_RIVAL_2_3 -ZAT_B53_THANKS_DIALOG} %-ZAT_B29_RIVAL_2_3 +ZAT_B29_RIVAL_2_4%, {+ZAT_B29_RIVAL_2_3 +ZAT_B29_RIVAL_1_3} %-ZAT_B29_RIVAL_2_3 +ZAT_B29_RIVAL_2_4%
+on_info4 = {+ZAT_B29_RIVAL_2_4 -ZAT_B29_RIVAL_1_4} sr_idle@walk, {+ZAT_B29_RIVAL_2_4 +ZAT_B29_RIVAL_1_4} %-ZAT_B29_RIVAL_2_4 +ZAT_B29_RIVAL_2_5%
+on_info5 = {+ZAT_B29_RIVAL_2_5 -ZAT_B29_RIVAL_1_5 +ZAT_B20_PLATEAU_WAY_DONE} sr_idle@walk, {+ZAT_B29_RIVAL_2_5 -ZAT_B20_PLATEAU_WAY_DONE} %-ZAT_B29_RIVAL_2_5 +ZAT_B29_RIVAL_2_1%, {+ZAT_B29_RIVAL_2_5 +ZAT_B29_RIVAL_1_5} %-ZAT_B29_RIVAL_2_5 +ZAT_B29_RIVAL_2_1%
+
+[sr_idle@walk]
+on_info = {+ZAT_B29_EXCLUSIVE_CONDITIONS -ZAT_B29_ADV_TASK_GIVEN +ZAT_B29_SECOND_RIVAL_TAKEN_OUT =dist_to_story_obj_ge(zat_b29_stalker_rival_2:150)} sr_idle@nil %=remove_squad(zat_b29_stalker_rival_2_squad)%
+on_info2 = {+ZAT_B29_EXCLUSIVE_CONDITIONS -ZAT_B29_ADV_TASK_GIVEN =squad_exist(zat_b29_stalker_rival_2_squad) =dist_to_story_obj_ge(zat_b29_stalker_rival_2:150)} sr_idle@wait_for_start %=remove_squad(zat_b29_stalker_rival_2_squad)%
+on_info3 = {-ZAT_B29_EXCLUSIVE_CONDITIONS -ZAT_B29_ADV_TASK_GIVEN +ZAT_B29_SECOND_RIVAL_TAKEN_OUT =dist_to_story_obj_ge(zat_b29_stalker_rival_default_2:150)} sr_idle@wait_for_start %=remove_squad(zat_b29_stalker_rival_default_2_squad)%
+on_info4 = {-ZAT_B29_EXCLUSIVE_CONDITIONS -ZAT_B29_ADV_TASK_GIVEN =squad_exist(zat_b29_stalker_rival_default_2_squad) =dist_to_story_obj_ge(zat_b29_stalker_rival_default_2:150)} sr_idle@wait_for_start %=remove_squad(zat_b29_stalker_rival_default_2_squad)%
+on_info5 = {=squad_in_zone(zat_b29_stalker_rival_2_squad:zat_b29_sr_1) +ZAT_B29_RIVAL_2_1} sr_idle@wait, {=squad_in_zone(zat_b29_stalker_rival_default_2_squad:zat_b29_sr_1) +ZAT_B29_RIVAL_2_1} sr_idle@wait
+on_info6 = {=squad_in_zone(zat_b29_stalker_rival_2_squad:zat_b29_sr_2) +ZAT_B29_RIVAL_2_2} sr_idle@wait, {=squad_in_zone(zat_b29_stalker_rival_default_2_squad:zat_b29_sr_2) +ZAT_B29_RIVAL_2_2} sr_idle@wait
+on_info7 = {=squad_in_zone(zat_b29_stalker_rival_2_squad:zat_b29_sr_3) +ZAT_B29_RIVAL_2_3} sr_idle@wait, {=squad_in_zone(zat_b29_stalker_rival_default_2_squad:zat_b29_sr_3) +ZAT_B29_RIVAL_2_3} sr_idle@wait
+on_info8 = {=squad_in_zone(zat_b29_stalker_rival_2_squad:zat_b29_sr_4) +ZAT_B29_RIVAL_2_4} sr_idle@wait, {=squad_in_zone(zat_b29_stalker_rival_default_2_squad:zat_b29_sr_4) +ZAT_B29_RIVAL_2_4} sr_idle@wait
+on_info9 = {=squad_in_zone(zat_b29_stalker_rival_2_squad:zat_b29_sr_5) +ZAT_B29_RIVAL_2_5} sr_idle@wait, {=squad_in_zone(zat_b29_stalker_rival_default_2_squad:zat_b29_sr_5) +ZAT_B29_RIVAL_2_5} sr_idle@wait
+
+[sr_idle@walk_to_base_1]
+on_info = {!dist_to_story_obj_ge(zat_stalker_base_smart:300)} sr_idle@walk_to_base_2 %+ZAT_B29_RIVAL_2_2 -ZAT_B29_RIVAL_2_1 -ZAT_B29_RIVAL_2_3 -ZAT_B29_RIVAL_2_4 -ZAT_B29_RIVAL_2_5 -ZAT_B29_RIVAL_2_BASE%
+on_game_timer = 1800 | sr_idle@walk_to_base_2 %+ZAT_B29_RIVAL_2_2 -ZAT_B29_RIVAL_2_1 -ZAT_B29_RIVAL_2_3 -ZAT_B29_RIVAL_2_4 -ZAT_B29_RIVAL_2_5 -ZAT_B29_RIVAL_2_BASE%
+
+[sr_idle@walk_to_base_2]
+on_info = {!dist_to_story_obj_ge(zat_stalker_base_smart:150)} sr_idle@walk_to_base_3 %+ZAT_B29_RIVAL_2_BASE -ZAT_B29_RIVAL_2_1 -ZAT_B29_RIVAL_2_2 -ZAT_B29_RIVAL_2_3 -ZAT_B29_RIVAL_2_4 -ZAT_B29_RIVAL_2_5%
+on_game_timer = 900 | sr_idle@walk_to_base_3 %+ZAT_B29_RIVAL_2_BASE -ZAT_B29_RIVAL_2_1 -ZAT_B29_RIVAL_2_2 -ZAT_B29_RIVAL_2_3 -ZAT_B29_RIVAL_2_4 -ZAT_B29_RIVAL_2_5%
+
+[sr_idle@walk_to_base_3]
+on_info = {+ZAT_B29_LINKER_TAKE_AF_FROM_RIVAL} sr_idle@walk %+ZAT_B29_RIVAL_2_2 -ZAT_B29_RIVAL_2_BASE%
+on_info2 = {-ZAT_B29_ADV_TASK_GIVEN} sr_idle@walk %+ZAT_B29_RIVAL_2_2 -ZAT_B29_RIVAL_2_BASE%
+on_game_timer = 900 | {+ZAT_B29_EXCLUSIVE_CONDITIONS +ZAT_B29_STALKER_RIVAL_2_FOUND_AF =squad_in_zone(zat_b29_stalker_rival_2_squad:zat_b29_sr_stalkers_base)} %+ZAT_B29_LINKER_TAKE_AF_FROM_RIVAL%, {-ZAT_B29_EXCLUSIVE_CONDITIONS +ZAT_B29_STALKER_RIVAL_2_FOUND_AF =squad_in_zone(zat_b29_stalker_rival_default_2_squad:zat_b29_sr_stalkers_base)} %+ZAT_B29_LINKER_TAKE_AF_FROM_RIVAL%
+
+[sr_idle@nil]

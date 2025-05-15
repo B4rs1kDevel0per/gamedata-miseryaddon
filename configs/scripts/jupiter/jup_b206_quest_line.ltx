@@ -1,0 +1,36 @@
+[logic]
+active = sr_idle@determine_cl_sv
+type = shared_with_cl_data
+
+[sr_idle@determine_cl_sv]
+on_info = {=isServer} sr_idle@sv_start
+on_info2 = {=isClient} sr_idle@cl_wait
+
+;server logic
+[sr_idle@sv_start]
+on_info = sr_idle@sv_wait %=anomaly_turn_off(jup_b206_anomal_zone)%
+
+[sr_idle@sv_wait]
+on_info = {+JUP_B206_ANOMALOUS_GROVE_STARTED} sr_idle@sv_wait2 %=give_task(jup_b206_anomalous_grove) =xrmpe_client_spawn(jup_b206_plant_ph:jup_b206_plant_point)%
+
+[sr_idle@sv_wait2]
+on_info = {+JUP_B206_ANOMALOUS_GROVE_HAS_PLANT} sr_idle@sv_after %=destroy_object(story:jup_b206_plant_ph)%
+
+[sr_idle@sv_after]
+on_info = {-JUP_B206_GOT_ANOMALOUS_PLANT} %+JUP_B206_GOT_ANOMALOUS_PLANT =scenario_autosave(st_save_jup_b206_got_anomalous_plant)%
+on_info2 = {+JUP_B206_GOT_ANOMALOUS_PLANT} sr_idle@nil %=anomaly_turn_on(jup_b206_anomal_zone)%
+
+;client logic
+[sr_idle@cl_wait]
+on_info = {+JUP_B206_ANOMALOUS_GROVE_STARTED} sr_idle@cl_use
+
+[sr_idle@cl_use]
+on_info = {=player_in_zone(jup_b206_sr_quest_line) -JUP_B206_ANOMALOUS_GROVE_HAS_PLANT} sr_idle@cl_place %=run_tutorial(jup_b206_plant)%
+on_info2 = {+JUP_B206_ANOMALOUS_GROVE_HAS_PLANT} sr_idle@cl_place
+
+[sr_idle@cl_place]
+on_info = {+JUP_B206_ANOMALOUS_GROVE_HAS_PLANT} sr_idle@nil
+on_info2 = {!player_in_zone(jup_b206_sr_quest_line)} sr_idle@cl_use %=stop_tutorial%
+on_info3 = {!has_active_tutorial} sr_idle@cl_use
+
+[sr_idle@nil]

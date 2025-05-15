@@ -1,0 +1,16 @@
+[logic]
+active = sr_idle
+type = cl_only
+
+[sr_idle]
+on_info = {=local_actor_story_id(actor_degtyarev) =player_in_zone(jup_b9_heli_1) -JUP_B9_HELI_1_SEARCHING} sr_idle@2 %=run_tutorial(jup_b9_heli_1)%
+on_info2 = {+JUP_B9_HELI_1_SEARCHING} sr_idle@3
+
+[sr_idle@2]
+on_info = {!player_in_zone(jup_b9_heli_1)} sr_idle %=stop_tutorial%
+on_info2 = {+JUP_B9_HELI_1_SEARCHING -JUP_B9_GIVE_ITEM} sr_idle@3 %+JUP_B9_GIVE_ITEM%
+on_info3 = {+JUP_B9_GIVE_ITEM} sr_idle@3
+on_info4 = {!has_active_tutorial} sr_idle
+
+[sr_idle@3]
+

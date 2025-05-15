@@ -1,0 +1,45 @@
+[logic]
+active = sr_idle@pas_b400_sr_canalisation_1
+type = sv_only
+
+[sr_idle@pas_b400_sr_canalisation_1]
+on_info = {-PAS_B400_SR_CANALISATION_1 =any_actor_in_zone(pas_b400_sr_canalisation_1)} %+PAS_B400_SR_CANALISATION_1%
+on_info2 = {=any_actor_in_zone(pas_b400_sr_canalisation_2) -PAS_B400_CANALISATION_TUSHKANO_START} %+PAS_B400_CANALISATION_TUSHKANO_START%
+on_info3 = {!squad_exist(pas_b400_canalisation_tushkano) !squad_exist(pas_b400_canalisation_snork_2)} sr_idle@pas_b400_sr_canalisation_2 %-PAS_B400_SR_CANALISATION_1 +PAS_B400_SR_CANALISATION_2%
+on_info4 = {-PAS_B400_CANALISATION_ZOMBIED_3_ATTACKED =any_actor_in_zone(pas_b400_sr_canalisation_3)} %+PAS_B400_CANALISATION_ZOMBIED_3_ATTACKED =heal_squad(pas_b400_stalkers_squad)%
+on_info5 = {-PAS_B400_CANALISATION_ZOMBIED_5_ATTACKED =any_actor_in_zone(pas_b400_sr_canalisation_5)} %+PAS_B400_CANALISATION_ZOMBIED_5_ATTACKED =heal_squad(pas_b400_stalkers_squad)%
+
+[sr_idle@pas_b400_sr_canalisation_2]
+on_info = {=any_actor_in_zone(pas_b400_sr_canalisation_3)} sr_idle@pas_b400_sr_canalisation_3 %-PAS_B400_SR_CANALISATION_2 +PAS_B400_SR_CANALISATION_3%
+on_info2 = {=any_actor_in_zone(pas_b400_sr_canalisation_4)} sr_idle@pas_b400_sr_canalisation_4 %-PAS_B400_SR_CANALISATION_2 +PAS_B400_SR_CANALISATION_4%
+on_info3 = {=any_actor_in_zone(pas_b400_sr_canalisation_5)} sr_idle@pas_b400_sr_canalisation_5 %-PAS_B400_SR_CANALISATION_2 +PAS_B400_SR_CANALISATION_5%
+on_info4 = {=any_actor_in_zone(pas_b400_sr_canalisation_6)} sr_idle@pas_b400_sr_canalisation_6 %-PAS_B400_SR_CANALISATION_2 +PAS_B400_SR_CANALISATION_6%
+on_info5 = {=any_actor_in_zone(pas_b400_sr_canalisation_7)} sr_idle@pas_b400_sr_canalisation_7 %-PAS_B400_SR_CANALISATION_2 +PAS_B400_SR_CANALISATION_7 =scenario_autosave(st_save_uni_travel_pas_to_pri)%
+
+[sr_idle@pas_b400_sr_canalisation_3]
+on_info = {=any_actor_in_zone(pas_b400_sr_canalisation_2) !any_actor_in_zone(pas_b400_sr_canalisation_3)} sr_idle@pas_b400_sr_canalisation_2 %-PAS_B400_SR_CANALISATION_3 +PAS_B400_SR_CANALISATION_2%
+on_info2 = {=any_actor_in_zone(pas_b400_sr_canalisation_4)} sr_idle@pas_b400_sr_canalisation_4 %-PAS_B400_SR_CANALISATION_3 +PAS_B400_SR_CANALISATION_4%
+on_info3 = {-PAS_B400_CANALISATION_ZOMBIED_3_ATTACKED} %+PAS_B400_CANALISATION_ZOMBIED_3_ATTACKED =heal_squad(pas_b400_stalkers_squad)%
+
+[sr_idle@pas_b400_sr_canalisation_4]
+on_info = {=any_actor_in_zone(pas_b400_sr_canalisation_3) !any_actor_in_zone(pas_b400_sr_canalisation_4)} sr_idle@pas_b400_sr_canalisation_3 %-PAS_B400_SR_CANALISATION_4 +PAS_B400_SR_CANALISATION_3%
+on_info2 = {=any_actor_in_zone(pas_b400_sr_canalisation_5)} sr_idle@pas_b400_sr_canalisation_5 %-PAS_B400_SR_CANALISATION_4 +PAS_B400_SR_CANALISATION_5%
+on_info3 = {-PAS_B400_CANALISATION_ZOMBIED_5_ATTACKED} %+PAS_B400_CANALISATION_ZOMBIED_5_ATTACKED =heal_squad(pas_b400_stalkers_squad)%
+
+[sr_idle@pas_b400_sr_canalisation_5]
+on_info = {=any_actor_in_zone(pas_b400_sr_canalisation_4) !any_actor_in_zone(pas_b400_sr_canalisation_5)} sr_idle@pas_b400_sr_canalisation_4 %-PAS_B400_SR_CANALISATION_5 +PAS_B400_SR_CANALISATION_4%
+on_info2 = {=any_actor_in_zone(pas_b400_sr_canalisation_6)} sr_idle@pas_b400_sr_canalisation_6 %-PAS_B400_SR_CANALISATION_5 +PAS_B400_SR_CANALISATION_6%
+on_info3 = {-PAS_B400_SOKOLOV_ABOUT_EXIT_1_CAN +PAS_B400_ZULUS_ABOUT_EXIT_1} sr_idle@sokolov_talks
+
+[sr_idle@sokolov_talks]
+on_game_timer = 20 | sr_idle@pas_b400_sr_canalisation_5 %+PAS_B400_SOKOLOV_ABOUT_EXIT_1_CAN%
+
+[sr_idle@pas_b400_sr_canalisation_6]
+on_info = {=any_actor_in_zone(pas_b400_sr_canalisation_5) !any_actor_in_zone(pas_b400_sr_canalisation_6)} sr_idle@pas_b400_sr_canalisation_5 %-PAS_B400_SR_CANALISATION_6 +PAS_B400_SR_CANALISATION_5%
+on_info2 = {=any_actor_in_zone(pas_b400_sr_canalisation_7)} sr_idle@pas_b400_sr_canalisation_7 %-PAS_B400_SR_CANALISATION_6 +PAS_B400_SR_CANALISATION_7 =scenario_autosave(st_save_uni_travel_pas_to_pri)%
+
+[sr_idle@pas_b400_sr_canalisation_7]
+on_info = {=any_actor_in_zone(pas_b400_sr_canalisation_6) !any_actor_in_zone(pas_b400_sr_canalisation_7)} sr_idle@pas_b400_sr_canalisation_6 %-PAS_B400_SR_CANALISATION_7 +PAS_B400_SR_CANALISATION_6%
+on_info2 = {+PAS_B400_CANALISATION_DONE} sr_idle@nil
+
+[sr_idle@nil]

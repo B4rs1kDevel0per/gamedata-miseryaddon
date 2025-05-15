@@ -1,0 +1,48 @@
+[logic]
+active = sr_idle@start
+type = sv_only
+
+[sr_idle@start]
+on_info = {+PRI_A20_TALK_WITH_COLONEL_COMPLETE -PRI_A18_USE_IDOL_DONE} sr_idle@sokolov_vano_recreate_1
+
+[sr_idle@sokolov_vano_recreate_1]
+on_info = {-PRI_A18_SOKOLOV_EXIST =squad_exist(pri_a16_sokolov_squad)} %=remove_squad(pri_a16_sokolov_squad) +PRI_A18_SOKOLOV_EXIST%
+on_info2 = {-PRI_A18_VANO_EXIST =squad_exist(pri_a16_vano_squad)} %=remove_squad(pri_a16_vano_squad) +PRI_A18_VANO_EXIST%
+on_info3 = sr_idle@sokolov_vano_recreate_2
+
+[sr_idle@sokolov_vano_recreate_2]
+on_info = {+LEADER_ACHIEVEMENT_GAINED +PRI_A18_SOKOLOV_EXIST -PRI_A18_ONCE_SOKOLOV_CREATE} %=create_squad(pri_a16_sokolov_squad_strong:pri_b35_mercs) +PRI_A18_ONCE_SOKOLOV_CREATE%, {+PRI_A18_SOKOLOV_EXIST -PRI_A18_ONCE_SOKOLOV_CREATE} %=create_squad(pri_a16_sokolov_squad:pri_b35_mercs) +PRI_A18_ONCE_SOKOLOV_CREATE% 
+on_info2 = {+LEADER_ACHIEVEMENT_GAINED +PRI_A18_VANO_EXIST -PRI_A18_ONCE_VANO_CREATE} %=create_squad(pri_a16_vano_squad_strong:pri_b35_mercs) +PRI_A18_ONCE_VANO_CREATE%, {+PRI_A18_VANO_EXIST -PRI_A18_ONCE_VANO_CREATE} %=create_squad(pri_a16_vano_squad:pri_b35_mercs) +PRI_A18_ONCE_VANO_CREATE%
+on_info3 = sr_idle@skelja_merkulov_recreate_1 %+PRI_A18_SKELJA_MERKULOV_CAN_WORK%
+
+
+
+
+[sr_idle@skelja_merkulov_recreate_1]
+on_info = {+PRI_A18_SOKOLOV_EXIST -PRI_A18_VANO_EXIST =squad_exist(pri_a22_military_merkulov_squad) -PRI_A18_ONCE_MERKULOV_REMOVE} %=remove_squad(pri_a22_military_merkulov_squad) +PRI_A18_ONCE_MERKULOV_REMOVE%
+on_info2 = {+PRI_A18_VANO_EXIST -PRI_A18_SOKOLOV_EXIST =squad_exist(pri_a22_military_skelja_squad) -PRI_A18_ONCE_SKELJA_REMOVE} %=remove_squad(pri_a22_military_skelja_squad) +PRI_A18_ONCE_SKELJA_REMOVE%
+on_info3 = {-PRI_A18_VANO_EXIST -PRI_A18_SOKOLOV_EXIST =squad_exist(pri_a22_military_merkulov_squad) =squad_exist(pri_a22_military_skelja_squad) -PRI_A18_ONCE_MERKULOV_AND_SKELJA_REMOVE} %=remove_squad(pri_a22_military_merkulov_squad) =remove_squad(pri_a22_military_skelja_squad) +PRI_A18_ONCE_MERKULOV_AND_SKELJA_REMOVE%
+on_info4 = sr_idle@skelja_merkulov_recreate_2
+ 
+[sr_idle@skelja_merkulov_recreate_2]
+on_info = {+LEADER_ACHIEVEMENT_GAINED +PRI_A18_ONCE_MERKULOV_REMOVE -PRI_A18_ONCE_MERKULOV_CREATE} %=create_squad(pri_a22_military_merkulov_squad_strong:pri_b35_mercs) +PRI_A18_ONCE_MERKULOV_CREATE%, {+PRI_A18_ONCE_MERKULOV_REMOVE -PRI_A18_ONCE_MERKULOV_CREATE} %=create_squad(pri_a22_military_merkulov_squad:pri_b35_mercs) +PRI_A18_ONCE_MERKULOV_CREATE% 
+on_info2 = {+LEADER_ACHIEVEMENT_GAINED +PRI_A18_ONCE_SKELJA_REMOVE -PRI_A18_ONCE_SKELJA_CREATE} %=create_squad(pri_a22_military_skelja_squad_strong:pri_b35_mercs) +PRI_A18_ONCE_SKELJA_CREATE%, {+PRI_A18_ONCE_SKELJA_REMOVE -PRI_A18_ONCE_SKELJA_CREATE} %=create_squad(pri_a22_military_skelja_squad:pri_b35_mercs) +PRI_A18_ONCE_SKELJA_CREATE% 
+on_info3 = {+LEADER_ACHIEVEMENT_GAINED +PRI_A18_ONCE_MERKULOV_AND_SKELJA_REMOVE -PRI_A18_ONCE_MERKULOV_CREATE -PRI_A18_ONCE_SKELJA_CREATE} %=create_squad(pri_a22_military_merkulov_squad_strong:pri_b35_mercs) =create_squad(pri_a22_military_skelja_squad_strong:pri_b35_mercs) +PRI_A18_ONCE_MERKULOV_CREATE +PRI_A18_ONCE_SKELJA_CREATE%, {+PRI_A18_ONCE_MERKULOV_AND_SKELJA_REMOVE -pri_a18_once_merkulov_create -PRI_A18_ONCE_SKELJA_CREATE} %=create_squad(pri_a22_military_merkulov_squad:pri_b35_mercs) =create_squad(pri_a22_military_skelja_squad:pri_b35_mercs) +PRI_A18_ONCE_MERKULOV_CREATE +PRI_A18_ONCE_SKELJA_CREATE%
+on_info4 = sr_idle@after
+ 
+
+ 
+ 
+[sr_idle@after]
+on_info = {+PRI_A18_ACTOR_ENEMY +PRI_A18_SOKOLOV_EXIST =squad_exist(pri_a16_sokolov_squad) =dist_to_story_obj_ge(pri_a16_sokolov_squad:100)} %=kill_squad(pri_a16_sokolov_squad) +PRI_A18_SOKOLOV_OR_SKELJA_KILLED%
+on_info2 = {+PRI_A18_ACTOR_ENEMY +PRI_A18_SOKOLOV_EXIST =squad_exist(pri_a16_sokolov_squad_strong) =dist_to_story_obj_ge(pri_a16_sokolov_squad_strong:100)} %=kill_squad(pri_a16_sokolov_squad_strong) +PRI_A18_SOKOLOV_OR_SKELJA_KILLED%
+on_info3 = {+PRI_A18_ACTOR_ENEMY +PRI_A18_ONCE_SKELJA_CREATE =squad_exist(pri_a22_military_skelja_squad) =dist_to_story_obj_ge(pri_a22_military_skelja_squad:100)} %=kill_squad(pri_a22_military_skelja_squad) +PRI_A18_SOKOLOV_OR_SKELJA_KILLED%
+on_info4 = {+PRI_A18_ACTOR_ENEMY +PRI_A18_ONCE_SKELJA_CREATE =squad_exist(pri_a22_military_skelja_squad_strong) =dist_to_story_obj_ge(pri_a22_military_skelja_squad_strong:100)} %=kill_squad(pri_a22_military_skelja_squad_strong) +PRI_A18_SOKOLOV_OR_SKELJA_KILLED%
+on_info5 = {+PRI_A18_ACTOR_ENEMY +PRI_A18_VANO_EXIST =squad_exist(pri_a16_vano_squad) =dist_to_story_obj_ge(pri_a16_vano_squad:100)} %=kill_squad(pri_a16_vano_squad) +PRI_A18_VANO_OR_MERKULOV_KILLED%
+on_info6 = {+PRI_A18_ACTOR_ENEMY +PRI_A18_VANO_EXIST =squad_exist(pri_a16_vano_squad_strong) =dist_to_story_obj_ge(pri_a16_vano_squad_strong:100)} %=kill_squad(pri_a16_vano_squad_strong) +PRI_A18_VANO_OR_MERKULOV_KILLED%
+on_info7 = {+PRI_A18_ACTOR_ENEMY +PRI_A18_ONCE_MERKULOV_CREATE =squad_exist(pri_a22_military_merkulov_squad) =dist_to_story_obj_ge(pri_a22_military_merkulov_squad:100)} %=kill_squad(pri_a22_military_merkulov_squad) +PRI_A18_VANO_OR_MERKULOV_KILLED%
+on_info8 = {+PRI_A18_ACTOR_ENEMY +PRI_A18_ONCE_MERKULOV_CREATE =squad_exist(pri_a22_military_merkulov_squad_strong) =dist_to_story_obj_ge(pri_a22_military_merkulov_squad_strong:100)} %=kill_squad(pri_a22_military_merkulov_squad_strong) +PRI_A18_VANO_OR_MERKULOV_KILLED%
+on_info9 = {+PRI_A18_SOKOLOV_OR_SKELJA_KILLED +PRI_A18_VANO_OR_MERKULOV_KILLED} sr_idle@nil
+
+
+[sr_idle@nil]

@@ -1,0 +1,9 @@
+[logic]
+active = sr_idle@spawn
+type = sv_only
+
+[sr_idle@spawn]
+on_info = {+ZAT_B52_NIMBLE_CLEAR -ZAT_B52_PORT_BANDITS_SPAWN} sr_idle@end %=create_squad(zat_b52_port_bandits:zat_b52) +ZAT_B52_PORT_BANDITS_SPAWN%
+on_info2 = {+ZAT_B52_PORT_BANDITS_SPAWN} sr_idle@end
+
+[sr_idle@end]

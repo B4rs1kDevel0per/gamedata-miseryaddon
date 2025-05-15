@@ -1,0 +1,30 @@
+[logic]
+active = sr_idle@pre_has_gaus_spawn_garik
+type = sv_only
+
+[sr_idle@pre_has_gaus_spawn_garik]
+on_info = {+PRI_A17_ACTOR_HAS_GAUSS_RIFLE} sr_idle@sokolov_spawn %=create_squad(pri_b35_jup_b43_stalker_assistant_squad:pri_a16)%
+;Затычка!!!
+on_info2 = {+PRI_A28_ACTOR_IN_ZONE_STAY} sr_idle@create_garry
+
+[sr_idle@sokolov_spawn]
+on_info = {+PRI_A15_SOKOLOV_OUT -PAS_B400_SOKOLOV_DEAD} sr_idle@destroy_garry %=create_squad(pri_a16_sokolov_squad:pri_a16) +PRI_A16_SOKOLOV_ON_PRIPYAT%
+on_info2 = {-PRI_A15_SOKOLOV_OUT} sr_idle@destroy_garry
+on_info3 = {+PAS_B400_SOKOLOV_DEAD} sr_idle@destroy_garry
+
+[sr_idle@destroy_garry]
+on_info = {+PRI_A25_RFI_SOURCE_ELIMINATED =squad_exist(pri_b35_jup_b43_stalker_assistant_squad)} sr_idle@create_garry %=remove_squad(pri_b35_jup_b43_stalker_assistant_squad)%
+on_info2 = {!squad_exist(pri_b35_jup_b43_stalker_assistant_squad)} %=create_squad(pri_b35_jup_b43_stalker_assistant_squad:pri_a16)%
+
+[sr_idle@create_garry]
+on_info = {+PRI_A28_ACTOR_IN_ZONE_STAY} sr_idle@create_yar %=create_squad(pri_b35_jup_b43_stalker_assistant_squad:pri_a16) =create_squad(pri_a16_stalkers_squad:pri_a16) =create_squad(stalker_sim_squad_advanced:pri_a16) =create_squad(stalker_sim_squad_veteran:pri_a16) -PRI_A16_WAIT_FOR_STALKERS%
+
+[sr_idle@create_yar]
+on_info = {+JUP_B19_COMPLETE -JUP_B19_YAR_ENEMY_OR_DEAD =squad_exist(jup_b19_freedom_yar_squad)} sr_idle@add_yar %=remove_squad(jup_b19_freedom_yar_squad)%
+on_info2 = {+JUP_B19_COMPLETE -JUP_B19_YAR_ENEMY_OR_DEAD !squad_exist(jup_b19_freedom_yar_squad)} sr_idle@add_yar
+on_info3 = {+JUP_B19_YAR_ENEMY_OR_DEAD} sr_idle@nil
+
+[sr_idle@add_yar]
+on_info = sr_idle@nil %=create_squad(pri_a16_freedom_yar_squad:pri_a16)%
+
+[sr_idle@nil]

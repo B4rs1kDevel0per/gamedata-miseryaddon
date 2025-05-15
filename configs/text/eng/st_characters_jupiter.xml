@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="windows-1251" ?>
+<string_table>
+	<string id="jup_a10_bandit_leader_name">
+		<text>Jack</text>
+	</string>
+	<string id="jup_a10_stalker_vano">
+		<text>Vano</text>
+	</string>
+	<string id="jup_a6_duty_leader">
+		<text>Lt Col Shulga</text>
+	</string>
+	<string id="jup_a6_freedom_leader">
+		<text>Loki</text>
+	</string>
+	<string id="jup_a6_stalker_barmen">
+		<text>Hawaiian</text>
+	</string>
+	<string id="jup_a6_stalker_medik">
+		<text>Bonesetter</text>
+	</string>
+	<string id="jup_b10_stalker_drunk">
+		<text>Senka</text>
+	</string>
+	<string id="jup_b15_zulus">
+		<text>Zulu</text>
+	</string>
+	<string id="jup_b19_freedom_yar_name">
+		<text>Uncle Yar</text>
+	</string>
+	<string id="jup_b1_stalker_1">
+		<text>Topol</text>
+	</string>
+	<string id="jup_b1_stalker_2">
+		<text>Mace</text>
+	</string>
+	<string id="jup_b1_stalker_3">
+		<text>Spirit</text>
+	</string>
+	<string id="jup_b1_stalker_4">
+		<text>Snake</text>
+	</string>
+	<string id="jup_b207_merc_leader_name">
+		<text>Vulture</text>
+	</string>
+	<string id="jup_b217_stalker_tech">
+		<text>Nitro</text>
+	</string>
+	<string id="jup_b220_trapper">
+		<text>Trapper</text>
+	</string>
+	<string id="jup_b25_freedom_flint">
+		<text>Flint</text>
+	</string>
+	<string id="jup_b46_duty_founder_name">
+		<text>General Tachenko</text>
+	</string>
+	<string id="jup_b46_duty_founder_squad_02_name">
+		<text>Lt Bunchuk</text>
+	</string>
+	<string id="jup_b46_duty_founder_squad_03_name">
+		<text>Col Kosmach</text>
+	</string>
+	<string id="jup_b46_duty_founder_squad_04_name">
+		<text>Lt Zakharchuk</text>
+	</string>
+	<string id="jup_b47_merc_01">
+		<text>Black</text>
+	</string>
+	<string id="jup_b47_merc_02">
+		<text>Duplet</text>
+	</string>
+	<string id="jup_b47_merc_03">
+		<text>Surgeon</text>
+	</string>
+	<string id="jup_b47_merc_04">
+		<text>Skull</text>
+	</string>
+	<string id="jup_b47_merc_05">
+		<text>Stake</text>
+	</string>
+	<string id="jup_b47_merc_06">
+		<text>Koshey</text>
+	</string>
+	<string id="jup_b47_merc_07">
+		<text>Corpse</text>
+	</string>
+	<string id="jup_b4_monolith_squad_leader_name">
+		<text>Strider</text>
+	</string>
+	<string id="jup_b4_monolith_squad_soldier_1_name">
+		<text>Armor</text>
+	</string>
+	<string id="jup_b4_monolith_squad_soldier_2_name">
+		<text>Sickle</text>
+	</string>
+	<string id="jup_b4_monolith_squad_soldier_3_name">
+		<text>Walrus</text>
+	</string>
+	<string id="jup_b4_monolith_squad_soldier_4_name">
+		<text>Meeker</text>
+	</string>
+	<string id="jup_b4_monolith_squad_soldier_5_name">
+		<text>Foma</text>
+	</string>
+	<string id="jup_b6_scientist_biochemist">
+		<text>Professor Ozersky</text>
+	</string>
+	<string id="jup_b6_scientist_novikov">
+		<text>Novikov</text>
+	</string>
+	<string id="jup_b6_scientist_nuclear_physicist">
+		<text>Professor Hermann</text>
+	</string>
+	<string id="jup_b9_shliachin_name">
+		<text>Sgt. Shlyachin</text>
+	</string>
+	<string id="st_jup_a12_bandit_cashier">
+		<text>Dwarf</text>
+	</string>
+	<string id="st_jup_a12_bandit_chief">
+		<text>Shishak</text>
+	</string>
+	<string id="st_jup_a12_stalker_assaulter">
+		<text>Grizzly</text>
+	</string>
+	<string id="st_jup_a12_stalker_diplomat">
+		<text>Torba</text>
+	</string>
+	<string id="st_jup_a12_stalker_prisoner">
+		<text>Mitay</text>
+	</string>
+	<string id="st_jup_b207_duty_security_squad_leader_name">
+		<text>Lt Gavrilenko</text>
+	</string>
+	<string id="st_jup_b207_freedom_assault_squad_leader_name">
+		<text>Kremen</text>
+	</string>
+	<string id="st_jup_b207_freedom_recon_squad_leader_name">
+		<text>Gaiduk</text>
+	</string>
+	<string id="st_jup_b43_stalker_assistant">
+		<text>Garry</text>
+	</string>
+	<string id="jup_b46_duty_founder_squad_01_name">
+		<text>Major Chepurny</text>
+	</string>
+	<string id="jup_b25_stalker_senya">
+		<text>Splinter</text>
+	</string>
+</string_table>

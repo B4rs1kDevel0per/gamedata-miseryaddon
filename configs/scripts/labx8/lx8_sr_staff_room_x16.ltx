@@ -1,0 +1,8 @@
+[logic]
+active = sr_idle@start
+type = sv_only
+
+[sr_idle@start]
+on_info = {=any_actor_has_item(pri_a19_lab_x16_info)} sr_idle@nil %+PRI_A19_LAB_X16_INFO =inc_counter(lx8_documents)%
+
+[sr_idle@nil]

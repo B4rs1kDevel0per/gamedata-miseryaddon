@@ -1,0 +1,83 @@
+[animpoint@presets]
+combat_ignore_cond = true
+combat_ignore_keep_when_attacked = true
+invulnerable = true
+out_restr = jup_a6_sr_noweap
+gather_items_enabled = false
+help_wounded_enabled = false
+corpse_detection_enabled = false
+use_camp = false
+
+;*************************************
+
+[logic@jup_b217_stalker_tech]
+suitable = {=check_npc_name(jup_b217_stalker_tech)} true
+active = animpoint
+prior = 200
+level_spot = mechanic
+
+[animpoint]:animpoint@presets
+cover_name = jup_a6_animpoint_tech_start
+avail_animations = wait_na
+reach_distance = 50
+meet = no_meet
+on_info = {+JUP_B217_PP_END_IN_SCENE} animpoint@first_visit_timer
+
+[animpoint@first_visit_timer]:animpoint@presets
+cover_name = jup_a6_animpoint_tech_start
+avail_animations = wait_na
+reach_distance = 50
+meet = no_meet
+on_game_timer = 45 | animpoint@first_visit
+
+[animpoint@first_visit]:animpoint@presets
+cover_name = jup_a6_animpoint_tech_start
+avail_animations = jup_b217_nitro_stand
+reach_distance = 5
+reach_movement = walk_noweap
+on_signal = sound_end | {-JUP_B217_WELCOME_TECH_TALKED} %+JUP_B217_WELCOME_TECH_TALKED%
+on_info = {+JUP_B217_TECH_BEGIN_TO_TALK -JUP_B217_TECH_WELCOME_END} %=play_sound(jup_b217_stalker_tech_welcome) +JUP_B217_TECH_WELCOME_END%
+on_info2 = {+JUP_B217_WELCOME_TECH_TALKED} animpoint@sit_tp
+on_info3 = {-JUP_B217_STALKER_TECH_MET} %+JUP_B217_STALKER_TECH_MET%
+meet = no_meet
+
+[animpoint@sit_tp]:animpoint@presets
+cover_name = jup_a6_animpoint_tech
+avail_animations = animpoint_sit_normal
+meet = no_meet
+on_game_timer = 15 | remark@straight_anim %=teleport_npc(jup_b217_tech_tp_from_cutscene) =stop_postprocess(1245) =jup_b217_hard_animation_reset%
+
+; break start animation
+[remark@straight_anim]
+anim = wait_na
+meet = no_meet
+on_game_timer = 3 | animpoint@sit
+combat_ignore_cond = true
+combat_ignore_keep_when_attacked = true
+invulnerable = true
+out_restr = jup_a6_sr_noweap
+gather_items_enabled = false
+help_wounded_enabled = false
+corpse_detection_enabled = false
+ 
+[animpoint@sit]:animpoint@presets
+cover_name = jup_a6_animpoint_tech
+reach_distance = 10
+avail_animations = animpoint_sit_normal
+on_info = {-JUP_A6_STALKER_TECH_INFO -JUP_B9_BLACKBOX_DECRYPTED +JUP_B9_BLACKBOX_DECRYPTING !npc_talking} %+JUP_A6_STALKER_TECH_INFO%
+meet = meet@default
+
+[meet@default]
+close_anim 		= nil
+close_victim 	= nil
+far_anim 		= nil
+far_victim 		= nil
+close_distance  = 0
+far_distance 	= 0
+close_snd_distance = 3
+use 			= {+JUP_B9_BLACKBOX_RECORDS_END -JUP_B9_BLACKBOX_DECRYPTED} self, {+JUP_B9_BLACKBOX_RECORDS_GO -JUP_B9_BLACKBOX_RECORDS_CL_END} false, {!actor_enemy} true
+meet_dialog		= {-JUP_B9_BLACKBOX_DECRYPTED +JUP_A6_STALKER_TECH_INFO +JUP_B9_BLACKBOX_DECRYPTING} jup_b217_stalker_tech_blackbox_start
+allow_break 	= false
+close_snd_hello = jup_b217_stalker_tech_greeting
+close_snd_bye 	= jup_b217_stalker_tech_farewell
+meet_on_talking = false

@@ -1,0 +1,17 @@
+[logic] 
+active = sr_idle
+type = cl_only
+
+[sr_idle]
+on_player_inside = {+ZAT_B57_GAS_RUNNING_PLAY} sr_psy_antenna %=add_cs_text(zat_b57_gas_warning)%
+
+[sr_psy_antenna]
+mute_sound_threshold = 1
+postprocess = pas_b400_acidic.ppe
+eff_intensity = 100
+hit_intensity = 5
+no_mumble = true
+no_static = true
+hit_type = chemical
+hit_freq = 1000
+on_player_outside = sr_idle %=del_cs_text()%

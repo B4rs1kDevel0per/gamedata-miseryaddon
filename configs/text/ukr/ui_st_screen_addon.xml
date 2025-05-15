@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="windows-1251" ?>
+<string_table>
+	<string id="zat_b12_conteiner_full_locked">
+		<text>Контейнер закритий - необхідні два ключі</text>
+	</string>
+	<string id="zat_b12_conteiner_has_one_key">
+		<text>Використати ключ ($$ACTION_USE$$)</text>
+	</string>
+	<string id="zat_b12_conteiner_has_two_key">
+		<text>Використати ключі ($$ACTION_USE$$)</text>
+	</string>
+	<string id="zat_b12_conteiner_locked">
+		<text>Контейнер закритий - необхідний другий ключ</text>
+	</string>
+	<string id="zat_b12_conteiner_open">
+		<text>Відчинити контейнер ($$ACTION_USE$$)</text>
+	</string>
+	<string id="zat_b14_door_locked_hint">
+		<text>Механізм дверей заблоковано зсередини</text>
+	</string>
+	<string id="zat_b57_balon_use_hint">
+		<text>Підключити газовий балон ($$ACTION_USE$$)</text>
+	</string>
+	<string id="zat_b57_gas_warning">
+		<text>Обережно! Хімічна небезпека!</text>
+	</string>
+	<string id="zat_b57_vintil_press">
+		<text>Повернути вентиль ($$ACTION_USE$$)</text>
+	</string>
+	<string id="zat_b33_car_searching_tip">
+		<text>Обшукати «Запорожець» ($$ACTION_USE$$)</text>
+	</string>
+	<string id="jup_b10_ufo_searching_tips">
+		<text>Обшукати літальний апарат ($$ACTION_USE$$)</text>
+	</string>
+	<string id="jup_b1_bar_door">
+		<text>Двері заклинило</text>
+	</string>
+	<string id="jup_b1_door_is_closed">
+		<text>Двері зачинено зсередини</text>
+	</string>
+	<string id="jup_b202_treasures_closed">
+		<text>Сейф закритий</text>
+	</string>
+	<string id="jup_b205_tip_door_closed">
+		<text>Потрібний код</text>
+	</string>
+	<string id="jup_b205_tip_door_decode">
+		<text>Ввести код ($$ACTION_USE$$)</text>
+	</string>
+	<string id="jup_b206_use_plant">
+		<text>Зірвати рослину ($$ACTION_USE$$)</text>
+	</string>
+	<string id="jup_b209_scanner_place_tips">
+		<text>Встановити сканер ($$ACTION_USE$$)</text>
+	</string>
+	<string id="jup_b209_scanner_remove_tips">
+		<text>Забрати сканер ($$ACTION_USE$$)</text>
+	</string>
+	<string id="st_jup_b41_door_locked">
+		<text>Необхідно дочекатися герметизації шлюзу</text>
+	</string>
+	<string id="pas_b400_tip_switcher">
+		<text>Увімкнути рубильник ($$ACTION_USE$$)</text>
+	</string>
+	<string id="pri_a18_use_idol">
+		<text>Оглянути конструкцію ($$ACTION_USE$$)</text>
+	</string>
+	<string id="pri_a25_blow_up_enter_door">
+		<text>Встановити вибухівку ($$ACTION_USE$$)</text>
+	</string>
+	<string id="pri_a28_talk_with_stupid_medic">
+		<text>Привести до тями ($$ACTION_USE$$)</text>
+	</string>
+	<string id="pri_b306_elevator_door_locked_used">
+		<text>Ліфт знеструмлено</text>
+	</string>
+	<string id="pri_b306_generator_use">
+		<text>Запустити генератор ($$ACTION_USE$$)</text>
+	</string>
+	<string id="st_pri_b306_go_down">
+		<text>Спуститися ліфтом ($$ACTION_USE$$)</text>
+	</string>
+	<string id="st_lx8_button_press_true">
+		<text>Доступ дозволено</text>
+	</string>
+	<string id="st_lx8_lift_button">
+		<text>Піднятися ліфтом ($$ACTION_USE$$)</text>
+	</string>
+	<string id="lx8_raduga">
+		<text>Пригнічувач агресії «Веселка»\nмакет зовнішнього комлексу випромінювання\nмасштаб 1:20</text>
+	</string>
+
+	<string id="st_resupply_ready">
+		<text>Перед операцією можна поповнити запас медикаментів та боєприпасів у лейтенантів Рогівця та Кирилова.</text>
+	</string>
+	<string id="st_freeplay_text_ok">
+		<text>Ви не встигли дістатися гелікоптерів. Група евакуації полишила Зону без Вас.</text>
+	</string>
+	<string id="st_freeplay_text_yes_no">
+		<text>Чи готові Ви покинути Зону? Дороги назад не буде.</text>
+	</string>
+	<string id="st_gameover_sub">
+		<text>ОДИН ІЗ ГРАВЦІВ ЗАГИНУВ</text>
+	</string>
+	<string id="st_gameover_load_after">
+		<text>ЗАВАНТАЖЕННЯ ОСТАННЬОГО ЗБЕРЕЖЕННЯ ЧЕРЕЗ:</text>
+	</string>
+	<string id="st_game_over_uppercase">
+		<text>ГРУ ЗАКІНЧЕНО</text>
+	</string>
+	<string id="st_zat_b57_gas_timer">
+		<text>ЗАКІНЧЕННЯ ДІЇ ГАЗУ</text>
+	</string>
+		<string id="st_pri_a28_helis_leave_timer">
+		<text>ВІДЛІТ ВЕРТОЛЬОТІВ ЧЕРЕЗ</text>
+	</string>
+	
+	<string id="st_ach_balance_advocate">
+		<text>Отримано досягнення «Прибічник рівноваги»</text>
+	</string>
+	<string id="st_ach_battle_systems_master">
+		<text>Отримано досягнення «Майстер бойових систем»</text>
+	</string>
+	<string id="st_ach_detective">
+		<text>Отримано досягнення «Сищик»</text>
+	</string>
+	<string id="st_ach_diplomat">
+		<text>Отримано досягнення «Дипломат»</text>
+	</string>
+	<string id="st_ach_friend_of_duty">
+		<text>Отримано досягнення «Друг «Долгу»</text>
+	</string>
+	<string id="st_ach_friend_of_freedom">
+		<text>Отримано досягнення «Друг «Волі»</text>
+	</string>
+	<string id="st_ach_friend_of_stalkers">
+		<text>Отримано досягнення «Друг сталкерів»</text>
+	</string>
+	<string id="st_ach_herald_of_justice">
+		<text>Отримано досягнення «Гінець правосуддя»</text>
+	</string>
+	<string id="st_ach_high_tech_master">
+		<text>Отримано досягнення «Майстер високих технологій»</text>
+	</string>
+	<string id="st_ach_information_dealer">
+		<text>Отримано досягнення «Торговець інформацією»</text>
+	</string>
+	<string id="st_ach_keeper_of_secrets">
+		<text>Отримано досягнення «Зберігач таємниць»</text>
+	</string>
+	<string id="st_ach_kingpin">
+		<text>Отримано досягнення «Авторитет»</text>
+	</string>
+	<string id="st_ach_leader">
+		<text>Отримано досягнення «Лідер»</text>
+	</string>
+	<string id="st_ach_mutant_hunter">
+		<text>Отримано досягнення «Мисливець на мутантів»</text>
+	</string>
+	<string id="st_ach_one_of_the_lads">
+		<text>Отримано досягнення «Свій хлопець»</text>
+	</string>
+	<string id="st_ach_pioneer">
+		<text>Отримано досягнення «Першовідкривач»</text>
+	</string>
+	<string id="st_ach_research_man">
+		<text>Отримано досягнення «Науковій співробітник»</text>
+	</string>
+	<string id="st_ach_seeker">
+		<text>Отримано досягнення «Шукач»</text>
+	</string>
+	<string id="st_ach_skilled_stalker">
+		<text>Отримано досягнення «Досвідчений сталкер»</text>
+	</string>
+	<string id="st_ach_wealthy">
+		<text>Отримано досягнення «Заможний клієнт»</text>
+	</string>
+	<string id="st_ach_wheel_litter_sisyphus">
+		<text>Отримано досягнення «Сізіфова праця».</text>
+	</string>
+	<string id="st_coop_desc">
+		<text>Майор СБУ Дегтярьов, заручившись підтримкою своєї групи, вирушає на територію Чорнобильської Зони відчуження на пошуки зниклих військових вертольотів і для розслідування причин провалу операції «Фарватер»</text>
+	</string>
+	<string id="st_coop_name">
+		<text>ПОКЛИК ПРИП'ЯТІ</text>
+	</string>
+</string_table>

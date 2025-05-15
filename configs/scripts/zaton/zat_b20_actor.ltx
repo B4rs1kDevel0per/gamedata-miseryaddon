@@ -1,0 +1,25 @@
+[logic]
+active = walker
+on_hit = hit
+
+[walker]
+path_walk = zat_b20_smart_terrain_actor_spawn_walk
+path_look = zat_b20_smart_terrain_actor_spawn_look
+def_state_standing = guard_na
+on_info = {+ZAT_B20_PLATEAU_WAY_KNOWN} %=destroy_object% 
+on_info2 = {+ZAT_B20_DESTROY_ACTOR} %=destroy_object% 
+meet = no_meet
+out_restr = zat_b20_in_restrictor
+combat_ignore_cond = true
+combat_ignore_keep_when_attacked = true
+danger = danger
+invulnerable = true
+gather_items_enabled = false
+help_wounded_enabled = false
+corpse_detection_enabled = false
+
+[danger]
+ignore_distance = 0
+
+[hit]
+on_info = %+ZAT_B20_ACTOR_HIT =destroy_object%

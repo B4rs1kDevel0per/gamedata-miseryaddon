@@ -1,0 +1,160 @@
+; Reference animpoints and walkers
+
+[animpoint@a28_def]
+cover_name = pri_a16_kovalski_1st_floor
+reach_movement = walk_noweap
+avail_animations = ward_noweap
+out_restr = pri_a16_sr_noweap
+combat_ignore_cond = true
+combat_ignore_keep_when_attacked = true
+invulnerable = true
+meet = meet@pri_a28
+use_camp = false
+gather_items_enabled = false
+help_wounded_enabled = false
+corpse_detection_enabled = false
+
+[animpoint@a28_def_short]
+cover_name = pri_a16_kovalski_1st_floor
+reach_movement = walk_noweap
+avail_animations = ward_noweap_short
+out_restr = pri_a16_sr_noweap
+combat_ignore_cond = true
+combat_ignore_keep_when_attacked = true
+invulnerable = true
+meet = meet@pri_a28
+use_camp = false
+gather_items_enabled = false
+help_wounded_enabled = false
+corpse_detection_enabled = false
+
+[animpoint@a28_radio]
+cover_name = pri_a16_animp_radio_talk
+reach_movement = walk_noweap
+avail_animations = ward_noweap_short
+out_restr = pri_a16_sr_noweap
+combat_ignore_cond = true
+combat_ignore_keep_when_attacked = true
+invulnerable = true
+meet = no_meet
+use_camp = false
+gather_items_enabled = false
+help_wounded_enabled = false
+corpse_detection_enabled = false
+
+[walker@a28_def_base]
+invulnerable = true
+def_state_moving = walk_noweap
+def_state_standing = wait_na
+combat_ignore_cond = true
+combat_ignore_keep_when_attacked = true 
+out_restr = pri_a16_sr_noweap
+meet = no_meet
+use_camp = false
+gather_items_enabled = false
+help_wounded_enabled = false
+corpse_detection_enabled = false
+
+[meet@pri_a28]
+meet_dialog	= {+PRI_A28_COLONEL_INSTRUCTIONS_SOUND_END} pri_a17_military_colonel_kovalski_evacuation_start 
+use = true
+close_snd_hello = nil
+close_snd_bye = nil
+abuse = false
+allow_break = false
+trade_enable = false
+close_distance = 0
+close_anim = nil
+far_distance = 0
+meet_on_talking = false
+;--------------------------------------
+
+[logic@pri_a28_kovalskiy]
+active = animpoint@a28_waiting_for_surge_end
+suitable = {+PRI_B305_FIFTH_CAM_END -PRI_A28_UPDATE_TASK_COVER_STRELOK =check_npc_name(pri_a17_military_colonel_kovalski)} true  
+prior = 200
+post_combat_time = 0, 0
+
+;--------------------------------------
+; Talk with base, order to get base on line
+[animpoint@a28_waiting_for_surge_end]:animpoint@a28_def
+on_game_timer = 20 | %=play_sound(pri_b305_kovalskiy_order_kirilov)%
+on_signal = sound_end | {-PRI_B305_KOVALSKIY_ORDER_KIRILOV_DONE_END} %+PRI_B305_KOVALSKIY_ORDER_KIRILOV_DONE_END%
+on_info = {+PRI_A28_SURGE_END} animpoint@a28_order_to_kirillov_1
+
+[animpoint@a28_order_to_kirillov_1]:animpoint@a28_def
+on_game_timer = 30 | %=play_sound(pri_a28_colonel_after_surge)%
+on_signal = sound_end | animpoint@a28_order_to_kirillov_2 %+PRI_A28_COLONEL_AFTER_SURGE_SOUND_END%
+meet = no_meet
+
+[animpoint@a28_order_to_kirillov_2]:animpoint@a28_def
+on_info = {+PRI_A28_SIGNALLER_AFTER_SURGE_1_DONE} animpoint@a28_radio_talking_1 ;prev. cond. was +PRI_A28_SIGNALLER_AFTER_SURGE_SOUND_END
+
+;--------------------------------------
+; Talk with base, going to radio, talking
+[animpoint@a28_radio_talking_1]:animpoint@a28_radio
+on_info = {=animpoint_reached +PRI_A28_SIGNALLER_AFTER_SURGE_SOUND_END -PRI_A28_CENTER_KOVAL_BASE_TALK} %+PRI_A28_CENTER_KOVAL_BASE_TALK%
+on_info2 = {+PRI_A28_CENTER_TO_COLONEL_1_SOUND_END} animpoint@a28_radio_talking_2
+
+[animpoint@a28_radio_talking_2]:animpoint@a28_radio
+on_game_timer = 10 | %=play_sound(pri_a28_colonel_to_center_1)%
+on_signal = sound_end | animpoint@a28_radio_talking_3 %+PRI_A28_COLONEL_TO_CENTER_1_SOUND_END%
+
+[animpoint@a28_radio_talking_3]:animpoint@a28_radio
+on_info = {+PRI_A28_CENTER_TO_COLONEL_2_SOUND_END} animpoint@a28_radio_talking_4
+
+[animpoint@a28_radio_talking_4]:animpoint@a28_radio
+on_game_timer = 10 | %=play_sound(pri_a28_colonel_to_center_2)%
+on_signal = sound_end | animpoint@a28_radio_talking_5 %+PRI_A28_COLONEL_TO_CENTER_2_SOUND_END%
+
+[animpoint@a28_radio_talking_5]:animpoint@a28_radio
+on_info = {+PRI_A28_CENTER_TO_COLONEL_3_SOUND_END} animpoint@a28_radio_talking_6
+
+[animpoint@a28_radio_talking_6]:animpoint@a28_radio
+on_game_timer = 10 | %=play_sound(pri_a28_colonel_to_center_3)%
+on_signal = sound_end | animpoint@a28_base_movie_wait %+PRI_A28_COLONEL_TO_CENTER_3_SOUND_END%
+
+;--------------------------------------
+;Listening to actor's talk with HQ
+[animpoint@a28_base_movie_wait]:animpoint@a28_def_short
+on_info = {+PRI_A28_BASE_MOVIE_DONE} animpoint@a28_waiting_for_actor_command_1
+meet = no_meet
+
+;--------------------------------------
+;Giving orders to squad after cutscene
+[animpoint@a28_waiting_for_actor_command_1]:animpoint@a28_def_short
+on_game_timer = 10 | %=play_sound(pri_a28_colonel_instructions)%
+on_signal = sound_end | animpoint@a28_waiting_for_actor_command_2 %+PRI_A28_COLONEL_INSTRUCTIONS_SOUND_END%
+meet = no_meet
+
+[animpoint@a28_waiting_for_actor_command_2]:animpoint@a28_def_short
+on_game_timer = 10 | %=play_sound(pri_a28_colonel_actor_talk)%
+on_signal = sound_end | animpoint@a28_waiting_for_actor_command_3 %+PRI_A28_MILITARYS_GO_TO_THE_DOOR%
+meet = no_meet
+on_info = {-PRI_A28_SUPPLY_DONE -PRI_A25_ACTOR_NEEDS_MEDIKIT_SUPPLY +PRI_A22_ARMY_SIGNALLER_SUPPLY_OUTFIT_DONE -PRI_A22_ACTOR_NEEDS_AMMO_SUPPLY -PRI_A22_ACTOR_NEEDS_GRENADE_SUPPLY} %+PRI_A28_SUPPLY_DONE%
+
+[animpoint@a28_waiting_for_actor_command_3]:animpoint@a28_def_short
+on_game_timer = 6000 | walker@a28_no_time
+on_info = {+PRI_A28_UPDATE_TASK_COVER_STRELOK_DIALOG} walker@a28_pos_for_orders
+
+[walker@a28_no_time]:walker@a28_def_base
+path_walk = a28_colonel_evac_start_walk
+path_look = a28_colonel_evac_start_look
+on_info = %=play_sound(pri_a28_colonel_cannot_wait)%
+on_signal = sound_end | walker@a28_pos_for_orders %+PRI_A28_UPDATE_TASK_COVER_STRELOK_DIALOG%
+on_info2 = {=npc_in_zone(pri_a20_sokolov_with_garick_new_way_to_pripyat_talk) -PRI_A28_COLONEL_REACHED_POS_FOR_ORDERS} walker@a28_orders_to_group %+PRI_A28_COLONEL_REACHED_POS_FOR_ORDERS%
+
+;colonel_evac_start
+;--------------------------------------
+; Giving orders to group about moving out
+[walker@a28_pos_for_orders]:walker@a28_def_base
+path_walk = a28_colonel_evac_start_walk
+path_look = a28_colonel_evac_start_look
+on_info = {+PRI_A28_COLONEL_REACHED_POS_FOR_ORDERS} walker@a28_orders_to_group
+on_info2 = {=npc_in_zone(pri_a20_sokolov_with_garick_new_way_to_pripyat_talk) -PRI_A28_COLONEL_REACHED_POS_FOR_ORDERS} walker@a28_orders_to_group %+PRI_A28_COLONEL_REACHED_POS_FOR_ORDERS%
+
+[walker@a28_orders_to_group]:walker@a28_def_base
+path_walk = a28_colonel_evac_start_walk
+path_look = a28_colonel_evac_start_look
+on_info = %=play_sound(pri_a28_colonel_evacuation)%
+on_signal = sound_end | %+PRI_A28_UPDATE_TASK_COVER_STRELOK%

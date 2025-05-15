@@ -1,0 +1,17 @@
+[logic]
+active = ph_button@closed
+
+[ph_button@closed]
+anim_blend = true
+anim = idle_close
+on_info = {+ZAT_B38_LIFT_OPEN} ph_button@opening %=play_sound(zat_b38_elevator_door)%, {+ZAT_B38_FORBIDDEN_FAIL} ph_button@opened
+
+[ph_button@opening]
+anim_blend = true
+anim = open
+on_game_timer = 25 | ph_button@opened
+
+[ph_button@opened]
+anim_blend = true
+anim = idle_open
+on_info = {-ZAT_B38_LIFT_OPENED} %+ZAT_B38_LIFT_OPENED%

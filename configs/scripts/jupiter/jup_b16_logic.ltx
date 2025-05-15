@@ -1,0 +1,35 @@
+[logic]
+active = sr_idle@random
+type = sv_only
+
+[sr_idle@turn_off]
+on_info = sr_idle@random %=turn_off(jup_b43_heart_lamp)%
+
+[sr_idle@random]
+on_info = {~20} %+JUP_B16_SR_1_1%, {~40} %+JUP_B16_SR_1_2%, {~60} %+JUP_B16_SR_1_3%, {~80} %+JUP_B16_SR_1_4%, %+JUP_B16_SR_1_5%
+on_info2 = {~20} %+JUP_B16_SR_2_1%, {~40} %+JUP_B16_SR_2_2%, {~60} %+JUP_B16_SR_2_3%, {~80} %+JUP_B16_SR_2_4%, %+JUP_B16_SR_2_5%
+on_info3 = {~20} %+JUP_B16_SR_3_1%, {~40} %+JUP_B16_SR_3_2%, {~60} %+JUP_B16_SR_3_3%, {~80} %+JUP_B16_SR_3_4%, %+JUP_B16_SR_3_5%
+on_info4 = {~20} %+JUP_B16_SR_4_1%, {~40} %+JUP_B16_SR_4_2%, {~60} %+JUP_B16_SR_4_3%, {~80} %+JUP_B16_SR_4_4%, %+JUP_B16_SR_4_5%
+on_info6 = {+JUP_B16_OASIS_ARTEFACT_TO_SCIENTIST +JUP_B41_HEART_SPAWN} sr_idle@nil %+JUP_B16_RANDOMIZE% 
+on_info5 =  sr_idle@wait_for_reset %+JUP_B16_RANDOMIZE% 
+
+[sr_idle@wait_for_reset]
+;on_info = {-JUP_B16_OASIS_ARTIFACT_SPAWN} %=xrmpe_client_spawn(af_oasis_heart:jup_b16_oasis_artifact_spawn) +JUP_B16_OASIS_ARTIFACT_SPAWN%
+on_info = {-JUP_B16_OASIS_ARTIFACT_SPAWN} %+JUP_B16_OASIS_ARTIFACT_SPAWN%
+on_info2 = {+JUP_B16_OASIS_START -JUP_B16_OASIS_GIVE_TASK}  %=give_task(jup_b16_oasis) +JUP_B16_OASIS_GIVE_TASK%
+on_info3 = {=surge_started} sr_idle@surge
+on_info4  = {-JUP_B16_RANDOMIZE} sr_idle@random %-JUP_B16_SR_1_1 -JUP_B16_SR_1_2 -JUP_B16_SR_1_3 -JUP_B16_SR_1_4 -JUP_B16_SR_1_5 -JUP_B16_SR_2_1 -JUP_B16_SR_2_2 -JUP_B16_SR_2_3 -JUP_B16_SR_2_4 -JUP_B16_SR_2_5 -JUP_B16_SR_3_1 -JUP_B16_SR_3_2 -JUP_B16_SR_3_3 -JUP_B16_SR_3_4 -JUP_B16_SR_3_5 -JUP_B16_SR_4_1 -JUP_B16_SR_4_2 -JUP_B16_SR_4_3 -JUP_B16_SR_4_4 -JUP_B16_SR_4_5%
+on_info5 = {+JUP_B16_OASIS_ARTEFACT_TO_SCIENTIST =dist_to_actor_ge(30) -JUP_B41_HEART_SPAWN} %+JUP_B41_HEART_SPAWN =xrmpe_client_spawn(jup_b41_af_oasis_heart:jup_b41_heart_spawn) =turn_on(jup_b43_heart_lamp)%
+on_info6 = {+JUP_B16_OASIS_ARTEFACT_TO_SCIENTIST +JUP_B41_HEART_SPAWN} sr_idle@nil
+
+[sr_idle@surge]
+on_info = {!surge_started} sr_idle@wait_for_reset %-JUP_B16_RANDOMIZE%
+on_info5 = {+JUP_B16_OASIS_ARTEFACT_TO_SCIENTIST =dist_to_actor_ge(30) -JUP_B41_HEART_SPAWN} %+JUP_B41_HEART_SPAWN =xrmpe_client_spawn(jup_b41_af_oasis_heart:jup_b41_heart_spawn) =turn_on(jup_b43_heart_lamp)%
+on_info2 = {+JUP_B16_OASIS_START -JUP_B16_OASIS_GIVE_TASK}  %=give_task(jup_b16_oasis) +JUP_B16_OASIS_GIVE_TASK%
+
+[sr_idle@surge_after_task]
+on_info = {!surge_started} sr_idle@nil %-JUP_B16_RANDOMIZE%
+
+[sr_idle@nil]
+on_info3 = {=surge_started} sr_idle@surge_after_task
+on_info4  = {-JUP_B16_RANDOMIZE} sr_idle@random %-JUP_B16_SR_1_1 -JUP_B16_SR_1_2 -JUP_B16_SR_1_3 -JUP_B16_SR_1_4 -JUP_B16_SR_1_5 -JUP_B16_SR_2_1 -JUP_B16_SR_2_2 -JUP_B16_SR_2_3 -JUP_B16_SR_2_4 -JUP_B16_SR_2_5 -JUP_B16_SR_3_1 -JUP_B16_SR_3_2 -JUP_B16_SR_3_3 -JUP_B16_SR_3_4 -JUP_B16_SR_3_5 -JUP_B16_SR_4_1 -JUP_B16_SR_4_2 -JUP_B16_SR_4_3 -JUP_B16_SR_4_4 -JUP_B16_SR_4_5%

@@ -1,0 +1,20 @@
+[logic]
+active = sr_idle@determine_cl_sv
+type = shared_with_cl_data
+
+[sr_idle@determine_cl_sv]
+on_info = {=isServer} sr_idle@sv_wait
+on_info2 = {=isClient} sr_idle@cl_play_roar
+
+;server logic
+[sr_idle@sv_wait]
+on_info = {+ZAT_B57_GAS_RUNNING_PLAY} sr_idle@sv_create_squad
+
+[sr_idle@sv_create_squad]
+on_game_timer = 30 | sr_idle@nil %+ZAT_B57_ROAR_PLAY =create_squad(zat_b57_bloodsuckers:zat_b38)%
+
+;client logic
+[sr_idle@cl_play_roar]
+on_info = {+ZAT_B57_ROAR_PLAY} sr_idle@nil %=play_sound(zat_b57_bloodsucker_roar)%
+
+[sr_idle@nil]

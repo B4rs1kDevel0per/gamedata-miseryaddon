@@ -1,0 +1,14 @@
+[logic]
+active = ph_idle@wait
+
+[ph_idle@wait]
+on_info = {=actor_has_item(zat_b57_gas) +ZAT_B57_DEN_OF_THE_BLOODSUCKER_PLACE_GAS_GIVE -ZAT_B57_BALON_USE} ph_idle@use
+
+[ph_idle@use]
+on_use = {=actor_has_item(zat_b57_gas)} ph_idle@nil %+ZAT_B57_BALON_USE%
+local_use = true
+tips = zat_b57_balon_use_hint
+on_info = {!actor_has_item(zat_b57_gas)} ph_idle@wait
+on_info2 = {+ZAT_B57_BALON_USE} ph_idle@nil
+
+[ph_idle@nil]

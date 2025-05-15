@@ -1,0 +1,29 @@
+[logic]
+active = sr_idle
+type = sv_only
+
+[sr_idle]
+on_info = {+ZAT_B3_TECH_HAVE_ONE_DOSE} sr_idle@drunk_1
+on_info2 = {+ZAT_B3_TECH_SEE_PRODUCE_62} sr_idle@sleep 
+;временный фикс
+on_game_timer = 120 | {-ZAT_B3_TECH_WAKED_UP} %+ZAT_B3_TECH_WAKED_UP%
+
+[sr_idle@drunk_1]
+on_game_timer = 21600 | sr_idle %-ZAT_B3_TECH_HAVE_ONE_DOSE%
+on_info = {+ZAT_B3_TECH_HAVE_COUPLE_DOSE} sr_idle@drunk_2 
+on_info2 = {+ZAT_B3_TECH_SEE_PRODUCE_62} sr_idle@sleep 
+
+[sr_idle@drunk_2]
+on_game_timer = 28800 | sr_idle %-ZAT_B3_TECH_HAVE_COUPLE_DOSE -ZAT_B3_TECH_HAVE_ONE_DOSE%
+on_info = {+ZAT_B3_TECH_OUT} sr_idle@sleep 
+on_info2 = {+ZAT_B3_TECH_SEE_PRODUCE_62} sr_idle@sleep 
+
+[sr_idle@sleep]
+on_game_timer  = 7200 | {+ZAT_B3_TECH_SEE_PRODUCE_62 +ZAT_B3_TECH_SURPRISE_ANIM_END} sr_idle@end %-ZAT_B3_TECH_HAVE_COUPLE_DOSE -ZAT_B3_TECH_HAVE_ONE_DOSE -ZAT_B3_TECH_OUT +ZAT_B3_TECH_HAS_AWAKEN%
+on_game_timer2 = 43200 | {-ZAT_B3_TECH_SEE_PRODUCE_62} sr_idle %-ZAT_B3_TECH_HAVE_COUPLE_DOSE -ZAT_B3_TECH_HAVE_ONE_DOSE -ZAT_B3_TECH_OUT%
+
+[sr_idle@end]
+;временный фикс
+on_game_timer = 120 | {-ZAT_B3_TECH_WAKED_UP} sr_idle@nil %+ZAT_B3_TECH_WAKED_UP%
+
+[sr_idle@nil]

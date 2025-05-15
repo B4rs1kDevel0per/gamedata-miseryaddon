@@ -1,0 +1,13 @@
+-- Invokes from different thread (not main) !!!!
+function on_connect_started()
+	fill_tables()
+	sound_theme.load_sound()
+	xr_s.init()
+	
+	if not dialogs_filled then
+		dialog_manager.fill_phrase_table()
+		dialogs_filled = true
+	end
+	
+	xr_statistic.actor_statistic.completed_quests = 0
+end

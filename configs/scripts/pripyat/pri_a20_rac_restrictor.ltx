@@ -1,0 +1,18 @@
+[logic]
+active = sr_idle@start
+
+[sr_idle@start]
+on_info = {=isServer +PRI_A20_RUN_RADIO_SND -PRI_A20_ONCE_RADIO_CALL} %+PRI_A20_ONCE_RADIO_CALL =play_sound(radio_call)%
+on_signal = sound_end | {=isServer} sr_idle@kovalski_ofice_rac %+PRI_A20_RADIO_CALL_SND_END%
+
+[sr_idle@kovalski_ofice_rac]
+on_info = {+PRI_A20_RADIO_START} sr_idle@kovalski_ofice_rac_2
+
+[sr_idle@kovalski_ofice_rac_2]
+on_game_timer = 15 | %=play_sound(pri_a20_recon_squad_attacked)%
+on_signal = sound_end | sr_idle@kovalski_ofice_rac_3 
+
+[sr_idle@kovalski_ofice_rac_3]
+on_game_timer = 10 | sr_idle@nil %+PRI_A20_COLONEL_TALK_IN_RADIO%
+
+[sr_idle@nil]

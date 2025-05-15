@@ -1,0 +1,54 @@
+[logic]
+active = sr_idle@determine_cl_sv
+type = shared_with_cl_data
+
+[sr_idle@determine_cl_sv]
+on_info = {=isServer} sr_idle@sv_check_surge_end
+on_info2 = {=isClient} sr_idle@cl_wait
+
+;server logic
+[sr_idle@sv_check_surge_end]
+on_info = {+PRI_A28_COLONEL_TO_CENTER_3_SOUND_END} sr_idle@sv_timer_before_cutscene
+
+[sr_idle@sv_timer_before_cutscene]
+on_game_timer = 10 | sr_idle@sv_cutscene_actor_spawn %+PRI_A28_BASE_MOVIE_WAIT%
+
+[sr_idle@sv_cutscene_actor_spawn]
+on_game_timer = 25 | sr_idle@sv_wait %+PRI_A28_BASE_MOVIE_START =create_cutscene_actor_with_weapon(pri_a28_cutscene_actor_base:pri_a16_pri_b305_kovalskiy_walk)%
+
+[sr_idle@sv_wait]
+on_info = {+PRI_A28_BASE_MOVIE_END} sr_idle@sv_after_1 
+
+[sr_idle@sv_after_1]
+on_game_timer = 10 | {-PRI_A28_DESTROY_BASE_CUTSCENE_ACTOR} %+PRI_A28_DESTROY_BASE_CUTSCENE_ACTOR%
+on_info = {+PRI_A28_DESTROY_BASE_CUTSCENE_ACTOR_DONE} sr_idle@sv_after_2
+
+[sr_idle@sv_after_2]
+on_game_timer = 10 | sr_idle@sv_save %+PRI_A28_BASE_MOVIE_DONE%
+
+[sr_idle@sv_save]
+on_info = {-PRI_A28_TALKED_WITH_SSU} %+PRI_A28_TALKED_WITH_SSU =scenario_autosave(st_save_pri_a28_talked_with_ssu)%
+on_info2 = {+PRI_A28_TALKED_WITH_SSU} sr_idle@nil
+
+;client logic
+[sr_idle@cl_wait]
+on_info = {+PRI_A28_BASE_MOVIE_WAIT} sr_idle@cl_wait2 %=disable_ui =run_postprocess(fade_in_out)%
+
+[sr_idle@cl_wait2]
+on_info = {+PRI_A28_BASE_MOVIE_START} sr_cutscene@cl
+
+[sr_cutscene@cl]
+global_cameffect = true
+point = pri_a28_actor_walk
+look = pri_a28_actor_look
+cam_effector = scenario_cam\pripyat\pri_a28_ssu_communication_camera
+on_info = {+PRI_A28_SSU_TO_ACTOR_5_SOUND_END} %=stop_sr_cutscene%
+on_signal = cameff_end | sr_idle@cl_after_1 %+PRI_A28_BASE_MOVIE_END%
+
+[sr_idle@cl_after_1]
+on_info = {+PRI_A28_DESTROY_BASE_CUTSCENE_ACTOR_DONE} sr_idle@cl_after_2 %=xrmpe_teleport_local_actor(pri_a28_cutscene_actor_base_walk:pri_a28_cutscene_actor_base_look)%
+
+[sr_idle@cl_after_2]
+on_info = {+PRI_A28_BASE_MOVIE_DONE} sr_idle@nil %=stop_postprocess(2021) =enable_ui%
+
+[sr_idle@nil]

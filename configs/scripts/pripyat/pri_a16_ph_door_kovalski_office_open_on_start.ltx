@@ -1,0 +1,14 @@
+[logic]
+active = ph_door@open
+
+[ph_door@open]
+closed = false
+locked = false
+on_use = ph_door@closed
+on_game_timer = 50 | {=surge_started} ph_door@closed
+on_info = {+PRI_A22_CLOSE_KOVALSKI_OFFICE_DOOR -PRI_A22_ONCE_DOOR_CLOSE} ph_door@closed %+PRI_A22_ONCE_DOOR_CLOSE%
+
+[ph_door@closed]
+closed = true
+locked = false
+on_use = ph_door@open

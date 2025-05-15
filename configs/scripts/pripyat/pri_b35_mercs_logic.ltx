@@ -1,0 +1,174 @@
+[wounded@no_wound]
+hp_state = 0 | wounded_heavy@help_heavy
+hp_state_see = 0 | wounded_heavy@help_heavy
+hp_victim = 0 | nil
+hp_cover = 0 | false
+hp_fight = 0 | false
+
+
+
+[logic@pri_b35_merc_leader]
+active = walker@leader_walk
+suitable = {=check_npc_name(pri_b35_merc_leader)}
+prior = 200
+on_death = death
+on_hit = hit
+on_combat = combat
+
+[walker@leader_walk]
+path_walk = leader_walk
+on_info = {+PRI_B35_ENVOY_SIGHTED} walker@rendevous
+on_info2 = {-PRI_B35_ENVOY_SIGHTED =see_npc(pri_b35_envoy)} %+PRI_B35_ENVOY_SIGHTED%
+on_info3 = {-PRI_B35_MERC_LEADER_SIGHTED =npc_in_zone(pri_b35_sr_mercs)} %+PRI_B35_MERC_LEADER_SIGHTED%
+;on_info4 = {-PRI_B35_MERC_LEADER_SIGHTED =actor_see_npc} %+PRI_B35_MERC_LEADER_SIGHTED%
+on_info5 = {+PRI_B35_ATTACK_STARTED} walker@leader_after %+PRI_B35_RENDEVOUS_DONE%
+on_info6 = {-PRI_B35_ATTACK_STARTED =has_actor_enemy} %+PRI_B35_ATTACK_STARTED% 
+
+[walker@rendevous]
+path_walk = leader_rendevous_walk
+path_look = leader_rendevous_look
+on_info = {+PRI_B35_RENDEVOUS_IN_PROCESS} remark@rendevous
+on_info2 = {+PRI_B35_ATTACK_STARTED} walker@leader_after %+PRI_B35_RENDEVOUS_DONE%
+on_info3 = {-PRI_B35_ATTACK_STARTED =has_actor_enemy} %+PRI_B35_ATTACK_STARTED% 
+
+[remark@rendevous]
+anim = wait_na
+on_info = {+PRI_B35_RENDEVOUS_DONE} walker@leader_after
+target = story | pri_b35_envoy
+
+[walker@leader_after]
+path_walk = leader_after_walk
+combat_ignore_cond = true
+out_restr = pri_b35_sr_mercs_escape
+on_info = {-PRI_B35_ATTACK_STARTED =has_actor_enemy} %+PRI_B35_ATTACK_STARTED% 
+on_info2 = {+PRI_B35_ATTACK_STARTED} walker@leader_after_rush
+def_state_moving = assault
+wounded = wounded@no_wound
+
+[walker@leader_after_rush]
+path_walk = leader_after_walk
+combat_ignore_cond = true
+out_restr = pri_b35_sr_mercs_escape
+on_info = {-PRI_B35_ATTACK_STARTED =has_actor_enemy} %+PRI_B35_ATTACK_STARTED% 
+def_state_moving = rush
+wounded = wounded@no_wound
+
+[hit]
+on_info = {=hit_by_actor} %+PRI_B35_ATTACK_STARTED%
+
+[death]
+on_info = %+PRI_B35_MERC_LEADER_OUT +PRI_B35_ATTACK_STARTED%
+
+[combat]
+on_info = {-PRI_B35_ATTACK_STARTED =has_actor_enemy} %+PRI_B35_ATTACK_STARTED%
+
+
+
+[logic@pri_b35_merc_1]
+active = walker@merc_1
+suitable = {!check_npc_name(pri_b35_merc_leader) !check_npc_name(pri_b35_merc_grenade_launcher) =target_squad_name(pri_b35_mercs_squad)}
+prior = 200
+on_combat = combat
+
+[walker@merc_1]
+path_walk = merc_1_walk
+on_info = {+PRI_B35_ATTACK_STARTED} walker@merc_after
+on_info2 = {+PRI_B35_RENDEVOUS_DONE -PRI_B35_ATTACK_STARTED} walker@merc_after_no_attack
+
+[logic@pri_b35_merc_2]
+active = walker@merc_2
+suitable = {!check_npc_name(pri_b35_merc_leader) !check_npc_name(pri_b35_merc_grenade_launcher) =target_squad_name(pri_b35_mercs_squad)}
+prior = 200
+on_combat = combat
+
+[walker@merc_2]
+path_walk = merc_2_walk
+on_info = {+PRI_B35_ATTACK_STARTED} walker@merc_after
+on_info2 = {+PRI_B35_RENDEVOUS_DONE -PRI_B35_ATTACK_STARTED} walker@merc_after_no_attack
+
+[logic@pri_b35_merc_3]
+active = walker@merc_3
+suitable = {!check_npc_name(pri_b35_merc_leader) !check_npc_name(pri_b35_merc_grenade_launcher) =target_squad_name(pri_b35_mercs_squad)}
+prior = 200
+on_combat = combat
+
+[walker@merc_3]
+path_walk = merc_3_walk
+on_info = {+PRI_B35_ATTACK_STARTED} walker@merc_after
+on_info2 = {+PRI_B35_RENDEVOUS_DONE -PRI_B35_ATTACK_STARTED} walker@merc_after_no_attack
+danger = danger@no_danger
+
+[logic@pri_b35_merc_4]
+active = walker@merc_4
+suitable = {!check_npc_name(pri_b35_merc_leader) !check_npc_name(pri_b35_merc_grenade_launcher) =target_squad_name(pri_b35_mercs_squad)}
+prior = 200
+on_combat = combat
+
+[walker@merc_4]
+path_walk = merc_4_walk
+path_look = merc_4_look
+on_info = {+PRI_B35_ATTACK_STARTED} walker@merc_after
+on_info2 = {+PRI_B35_RENDEVOUS_DONE -PRI_B35_ATTACK_STARTED} walker@merc_after_no_attack
+def_state_standing = guard_chasovoy
+
+[walker@merc_after]
+path_walk = leader_after_walk
+out_restr = pri_b35_sr_mercs_escape
+def_state_moving = rush
+wounded = wounded@no_wound
+
+[walker@merc_after_no_attack]
+path_walk = leader_after_walk
+out_restr = pri_b35_sr_mercs_escape
+on_info = {+PRI_B35_ATTACK_STARTED !check_npc_name(pri_b35_merc_grenade_launcher)} walker@merc_after
+on_info2 = {+PRI_B35_ATTACK_STARTED =check_npc_name(pri_b35_merc_grenade_launcher_1) =npc_in_zone(pri_b35_sr_mercs)} remark@shoot_actor_1
+on_info3 = {+PRI_B35_ATTACK_STARTED =check_npc_name(pri_b35_merc_grenade_launcher_2) =npc_in_zone(pri_b35_sr_mercs)} remark@shoot_actor_2
+def_state_moving = patrol
+wounded = wounded@no_wound
+
+
+[logic@pri_b35_merc_5]
+active = walker@merc_5
+suitable = {=check_npc_name(pri_b35_merc_grenade_launcher_1)}
+prior = 200
+on_combat = combat
+
+[walker@merc_5]
+path_walk = merc_5_walk
+path_look = merc_5_look
+on_info = {+PRI_B35_ATTACK_STARTED =npc_in_zone(pri_b35_sr_mercs)} remark@shoot_actor_1
+on_info2 = {+PRI_B35_ATTACK_STARTED !npc_in_zone(pri_b35_sr_mercs)} walker@merc_after
+on_info3 = {+PRI_B35_RENDEVOUS_DONE -PRI_B35_ATTACK_STARTED} walker@merc_after_no_attack
+def_state_standing = wait_na
+
+[remark@shoot_actor_1]
+target = path | pri_b35_mercs_grenade_launcher_look, 0
+anim = threat_fire
+on_game_timer = 70 | walker@mercs_grenade_after
+on_info = {!any_actor_in_zone(pri_b35_sr_actor_position)} walker@mercs_grenade_after
+
+[logic@pri_b35_merc_6]
+active = walker@merc_6
+suitable = {=check_npc_name(pri_b35_merc_grenade_launcher_2)}
+prior = 200
+on_combat = combat
+
+[walker@merc_6]
+path_walk = merc_6_walk
+path_look = merc_6_look
+on_info = {+PRI_B35_ATTACK_STARTED =npc_in_zone(pri_b35_sr_mercs)} remark@shoot_actor_2
+on_info2 = {+PRI_B35_ATTACK_STARTED !npc_in_zone(pri_b35_sr_mercs)} walker@merc_after
+on_info3 = {+PRI_B35_RENDEVOUS_DONE -PRI_B35_ATTACK_STARTED} walker@merc_after_no_attack
+def_state_standing = wait_na
+
+[remark@shoot_actor_2]
+target = path | pri_b35_mercs_grenade_launcher_look, 0
+anim = threat_fire
+on_game_timer = 70 | walker@mercs_grenade_after
+on_info = {!any_actor_in_zone(pri_b35_sr_actor_position)} walker@mercs_grenade_after
+
+[walker@mercs_grenade_after]
+path_walk = leader_after_walk
+out_restr = pri_b35_sr_mercs_escape
+def_state_moving = sprint
+wounded = wounded@no_wound

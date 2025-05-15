@@ -1,0 +1,17 @@
+[logic]
+active = sr_idle@on_pripyat
+type = sv_only
+
+[sr_idle@on_pripyat]
+on_info = {=actor_on_level(pripyat) -PRI_A15_ZULUS_OUT} sr_idle@timer
+on_info2 = {+PRI_A15_ZULUS_OUT} sr_idle@nil
+
+[sr_idle@timer]
+on_game_timer = 6000 | {+PRI_A17_ACTOR_HAS_GAUSS_RIFLE -PRI_B305_FIFTH_CAM_END =dist_to_actor_le(100)} sr_idle@spawn %+PRI_B301_SCENE_START%
+
+[sr_idle@spawn]
+on_info = {-PRI_B301_ZULUS_SPAWN} %=create_squad(pri_b301_zulus_squad:pri_b301) +PRI_B301_ZULUS_SPAWN%
+on_info2 = {+PRI_B301_ZULUS_TELEPORT} sr_idle@nil %=teleport_squad(pri_b301_zulus_squad:pri_a16_zulus_2_walk_1)%
+on_info3 = {-SAVE_PRI_B301_ARRIVED_TO_HELP_ZULU +PRI_B301_SCENE_START =any_actor_in_zone(pri_b301_avtosave_restr)} %+SAVE_PRI_B301_ARRIVED_TO_HELP_ZULU =scenario_autosave(st_save_pri_b301_arrived_to_help_zulu)%
+
+[sr_idle@nil]

@@ -1,0 +1,51 @@
+[logic]
+active = animpoint@search
+on_hit = hit
+
+; ************************* 3 *****************************
+[animpoint@search]
+cover_name = pri_b305_sc_cam_3
+avail_animations = pri_b305_actor
+on_info = {+PRI_B305_THIRD_CAM_END} %=destroy_object -PRI_B305_3_CAM_ACTOR%
+on_info2 = {+PRI_B305_KIRILOV_SIGNAL_NEXT_TO_ACTOR_DONE_END -PRI_B305_ACTOR_DONT_SEE_ANYONE_DONE} %=play_sound(pri_b305_actor_dont_see_anyone) +PRI_B305_ACTOR_DONT_SEE_ANYONE_DONE% 
+on_signal = sound_end | animpoint@search2 %+PRI_B305_ACTOR_DONT_SEE_ANYONE_DONE_END%
+meet = no_meet
+use_camp = false
+combat_ignore_cond = true
+combat_ignore_keep_when_attacked = true
+invulnerable = true
+gather_items_enabled = false
+help_wounded_enabled = false
+corpse_detection_enabled = false
+
+[animpoint@search2]
+cover_name = pri_b305_sc_cam_3
+avail_animations = pri_b305_actor
+on_info = {+PRI_B305_THIRD_CAM_END} %=destroy_object -PRI_B305_3_CAM_ACTOR%
+;on_info2 = {+PRI_B305_ACTOR_DONT_SEE_ANYONE_DONE_END -PRI_B305_KIRILOV_SOURCE_IS_NEAR_DONE} %=play_sound(pri_b305_kirilov_source_is_near) +PRI_B305_KIRILOV_SOURCE_IS_NEAR_DONE%
+on_info2 = {+PRI_B305_KIRILOV_SOURCE_IS_NEAR_DONE_END} animpoint@search_timer
+meet = no_meet
+use_camp = false
+combat_ignore_cond = true
+combat_ignore_keep_when_attacked = true
+invulnerable = true
+gather_items_enabled = false
+help_wounded_enabled = false
+corpse_detection_enabled = false
+
+[animpoint@search_timer]
+cover_name = pri_b305_sc_cam_3
+avail_animations = pri_b305_actor
+on_info = {+PRI_B305_THIRD_CAM_END} %=destroy_object -PRI_B305_3_CAM_ACTOR%
+on_game_timer = 40 | {-PRI_B305_ACTOR_IT_IS_UNDERGROUND_DONE} %=play_sound(pri_b305_actor_it_is_underground) +PRI_B305_ACTOR_IT_IS_UNDERGROUND_DONE%
+meet = no_meet
+use_camp = false
+combat_ignore_cond = true
+combat_ignore_keep_when_attacked = true
+invulnerable = true
+gather_items_enabled = false
+help_wounded_enabled = false
+corpse_detection_enabled = false
+
+[hit]
+on_info = %+PRI_B305_CUT_3_ACTOR_HIT =destroy_object -PRI_B305_3_CAM_ACTOR%

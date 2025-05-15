@@ -1,0 +1,60 @@
+[logic]
+active = sr_idle@determine_cl_sv
+type = shared_with_cl_data
+
+[sr_idle@determine_cl_sv]
+on_info = {=isServer} sr_idle@sv_find_squad_cam
+on_info2 = {=isClient} sr_idle@cl_wait
+
+;server logic
+[sr_idle@sv_find_squad_cam]
+on_info = {+PRI_A22_START} sr_idle@sv_check_actor_find_squad %+PRI_A18_USE_IDOL_DONE +PRI_A18_FOUND_ANTENNA +PRI_A21_SENTRY_TASK_DONE +PRI_A19_LAB_X8_INVESTIGATED%
+on_info2 = {+PRI_A25_TASK_START} sr_idle@sv_check_actor_find_squad
+
+[sr_idle@sv_check_actor_find_squad]
+on_info = {=any_actor_in_zone(pri_a22_find_squad)} sr_idle@sv_check_cutscene_start_info %+PRI_A22_ACTOR_IN_ZONE_PRI_A22_FIND_SQUAD%
+
+[sr_idle@sv_check_cutscene_start_info]
+on_info = {+PRI_A22_RAN_SQUAD_CAM} sr_idle@sv_cutscene_timer %+PRI_A22_CAM_2_WAIT%
+
+[sr_idle@sv_cutscene_timer]
+on_game_timer = 20 | sr_idle@sv_wait %+PRI_A22_CAM_2_START =create_cutscene_actor_with_weapon(pri_a22_cutscene_actor_find_squad:pri_a22_smart_terrain_pri_a22_squad_cutscene_actor_walk:0:26)%
+
+[sr_idle@sv_wait]
+on_info = {+PRI_A22_CUTSCENE_ACTOR_FIND_SQUAD_DESTROY} sr_idle@sv_cutscene_end %=disable_ui =run_postprocess(fade_in:4310)%
+
+[sr_idle@sv_cutscene_end]
+on_game_timer = 20 | sr_idle@sv_pre_cutscene_end_info_part_2 %+PRI_A22_CAM_2_END%
+
+[sr_idle@sv_pre_cutscene_end_info_part_2]
+on_info = sr_idle@sv_autosave %+PRI_A22_SCENE_DONE +PRI_A17_COLONEL_QUESTION_UNAVAILABLE%
+
+[sr_idle@sv_autosave]
+on_info = {-PRI_A22_ONCE_AUTOSAVE} %+PRI_A22_ONCE_AUTOSAVE =scenario_autosave(st_save_pri_a22_found_dead_squad)%
+on_info2 = {+PRI_A22_ONCE_AUTOSAVE} sr_idle@nil
+
+;client logic
+[sr_idle@cl_wait]
+on_info = {+PRI_A22_CAM_2_WAIT =local_actor_story_id(actor_degtyarev)} sr_idle@cl_wait2 %=disable_ui =run_postprocess(fade_in:4310)%
+
+[sr_idle@cl_wait2]
+on_info = {+PRI_A22_CAM_2_START} sr_cutscene@cl_start %=run_postprocess(black:4311:true)%
+
+[sr_cutscene@cl_start]
+enable_ui_on_end = false
+global_cameffect = true
+outdoor = true
+point = pri_a25_actor_walk 
+look = pri_a25_actor_look
+cam_effector = scenario_cam\pripyat\pri_a22_radio_camera
+on_game_timer = 10 | {-PRI_A22_PP_STOP} %+PRI_A22_PP_STOP =stop_postprocess(4310) =stop_postprocess(4311)%
+on_signal = cameff_end | sr_idle@cl_cutscene_end_postprocess %=run_postprocess(black:4313:true) +PRI_A22_CUTSCENE_ACTOR_FIND_SQUAD_DESTROY =xrmpe_teleport_local_actor(pri_a22_smart_terrain_pri_a22_squad_cutscene_actor_walk:pri_a22_smart_terrain_pri_a22_squad_cutscene_actor_look)%
+on_signal2 = cam_effector_stop | sr_idle@cl_cutscene_end_postprocess %=run_postprocess(black:4313:true) +PRI_A22_CUTSCENE_ACTOR_FIND_SQUAD_DESTROY =xrmpe_teleport_local_actor(pri_a22_smart_terrain_pri_a22_squad_cutscene_actor_walk:pri_a22_smart_terrain_pri_a22_squad_cutscene_actor_look)%
+on_info = {+PRI_A22_CAM_2_FADE -PRI_A22_CAM_2_FADE_IN} %=run_postprocess(fade_in:4312) +PRI_A22_CAM_2_FADE_IN%
+on_info2 = {+PRI_A22_FIND_SQUAD_CAM_END} %=stop_sr_cutscene%
+on_info3 = {+PRI_A22_CUT_ACTOR_HIT} %=stop_sr_cutscene +PRI_A22_FIND_SQUAD_CAM_END +PRI_A22_CAM_2_FADE +PRI_A22_CAM_2_FADE_IN +PRI_A22_ACTOR_TO_BASE_TALKED% 
+
+[sr_idle@cl_cutscene_end_postprocess]
+on_info = {+PRI_A22_CAM_2_END} sr_idle@nil %=stop_postprocess(4312) =stop_postprocess(4313) =enable_ui%
+
+[sr_idle@nil]

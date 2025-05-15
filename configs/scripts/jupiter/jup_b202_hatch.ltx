@@ -1,0 +1,8 @@
+[logic]
+active = ph_idle@wait
+type = sv_only
+
+[ph_idle@wait]
+on_info = {+JUP_B202_ACTOR_ITEMS_STOLEN} ph_idle@nil %=destroy_object =xrmpe_client_spawn(hatch_01:jup_b202_hatch_spawn)%
+
+[ph_idle@nil]

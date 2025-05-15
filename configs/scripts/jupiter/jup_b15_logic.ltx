@@ -1,0 +1,62 @@
+[logic]
+active = sr_idle@determine_cl_sv
+type = shared_with_cl_data
+
+[sr_idle@determine_cl_sv]
+on_info = {=isServer} sr_idle@sv_task
+on_info2 = {=isClient} sr_idle@cl_drink_control
+
+;server logic
+[sr_idle@sv_task]
+on_info = {+JUP_A9_TECH_WAY_INFO} sr_idle@sv_drink_control %=give_task(jup_b218_pripyat_group) +JUP_B218_GATHER_SQUAD =spawn_object_in(vodka:jup_b15_zulus)%
+
+[sr_idle@sv_drink_control]
+on_info = {+JUP_B15_ACTOR_DRINK +JUP_B15_ZULUS_DRINK_ANIM_INFO} sr_idle@sv_drink_effect
+
+[sr_idle@sv_drink_effect]
+on_info = {+JUP_B15_ACTOR_DRINK -JUP_B15_ACTOR_DRINK_FINAL} %-JUP_B15_ACTOR_DRINK%
+on_info2 = {+JUP_B15_ACTOR_DRINK +JUP_B15_ACTOR_DRINK_FINAL} %-JUP_B15_ACTOR_DRINK%
+on_game_timer = 15 | {+JUP_B15_ACTOR_DRINK_FINAL} sr_idle@sv_wait, {-JUP_B15_ACTOR_DRINK_FINAL} sr_idle@sv_drink_control %-JUP_B15_ZULUS_DRINK_ANIM_INFO +JUP_B15_CAN_TALK +JUP_B15_ACTOR_DRINK_CL%
+
+[sr_idle@sv_wait]
+on_info = {+JUP_B15_CAMEFF_END} sr_idle@sv_b218 %=set_counter(jup_b218_squad_members_count:0) -JUP_B15_ACTOR_DRINK_CL%
+
+[sr_idle@sv_b218]
+on_info8 = {-JUP_B15_DRUNK_WITH_ZULU_SAVED} %+JUP_B15_DRUNK_WITH_ZULU_SAVED =scenario_autosave(st_save_jup_b15_drunk_with_zulu)%
+on_info  = {+JUP_B218_VANO_TP -JUP_B218_ZULUS_MET_VANO} %+JUP_B218_ZULUS_MET_VANO =inc_counter(jup_b218_squad_members_count) =scenario_autosave(st_save_jup_b218_vano_in_squad)%
+on_info2 = {+JUP_B218_SOKOLOV_TP -JUP_B218_ZULUS_MET_SOKOLOV} %+JUP_B218_ZULUS_MET_SOKOLOV =inc_counter(jup_b218_squad_members_count) =scenario_autosave(st_save_jup_b218_sokolov_in_squad)%
+on_info3 = {+JUP_B218_MONOLITH_FR_TP -JUP_B218_ZULUS_MET_MONOLITH} %+JUP_B218_ZULUS_MET_MONOLITH =inc_counter(jup_b218_squad_members_count) =scenario_autosave(st_save_jup_b218_strider_in_squad)%
+on_info4 = {+JUP_B218_MONOLITH_DU_TP -JUP_B218_ZULUS_MET_MONOLITH} %+JUP_B218_ZULUS_MET_MONOLITH =inc_counter(jup_b218_squad_members_count) =scenario_autosave(st_save_jup_b218_strider_in_squad)%
+on_info5 = {+JUP_B218_PAUSE_MEET} sr_idle@sv_pause %-JUP_B218_PAUSE_MEET -JUP_B218_PAUSE_DONE%
+on_info7 = {+JUP_B218_GATHER_SQUAD_COMPLETE} sr_idle@nil
+
+[sr_idle@sv_pause]
+on_game_timer = 15 | sr_idle@sv_b218 %+JUP_B218_PAUSE_DONE%
+
+;client logic
+[sr_idle@cl_drink_control]
+on_info = {=local_actor_story_id(actor_degtyarev) +JUP_B15_ACTOR_DRINK +JUP_B15_ZULUS_DRINK_ANIM_INFO} sr_idle@cl_drink_effect
+
+[sr_idle@cl_drink_effect]
+on_info = {+JUP_B15_ACTOR_DRINK -JUP_B15_ACTOR_DRINK_FINAL} %=give_actor(vodka_script)%
+on_info2 = {+JUP_B15_ACTOR_DRINK +JUP_B15_ACTOR_DRINK_FINAL} %=give_actor(vodka_script)%
+on_info3 = {+JUP_B15_ACTOR_DRINK_CL -JUP_B15_ACTOR_DRINK_FINAL} %=enable_ui%
+on_info4 = {+JUP_B15_ACTOR_DRINK_CL +JUP_B15_ACTOR_DRINK_FINAL =actor_has_item(vodka_script)} sr_cutscene@cl_sleep %=eat_vodka_script%, {+JUP_B15_ACTOR_DRINK_CL -JUP_B15_ACTOR_DRINK_FINAL =actor_has_item(vodka_script)} sr_idle@cl_drink_control %=eat_vodka_script =enable_ui%
+
+[sr_cutscene@cl_sleep]
+point = jup_b15_cut_actor_walk
+look = jup_b15_cut_actor_look
+cam_effector = scenario_cam\Jupiter\jup_b15_sleep
+global_cameffect = false
+enable_ui_on_end = false
+on_signal = cameff_end | sr_cutscene@cl_wake %=run_postprocess(fade_in_out) =set_game_time(06:00)%	
+
+[sr_cutscene@cl_wake]
+point = jup_b15_cut_actor_walk
+look = jup_b15_cut_actor_look
+cam_effector = scenario_cam\Jupiter\jup_b15_wake_up
+global_cameffect = false
+on_info = {-JUP_B15_ALCOHOL} %+JUP_B15_ALCOHOL%	
+on_signal = cameff_end | sr_idle@nil %+JUP_B15_CAMEFF_END%
+
+[sr_idle@nil]

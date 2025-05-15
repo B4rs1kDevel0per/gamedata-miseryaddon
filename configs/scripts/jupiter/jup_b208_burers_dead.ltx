@@ -1,0 +1,8 @@
+[logic]
+active = sr_idle@dead
+type = sv_only
+
+[sr_idle@dead]
+on_info = {!squad_exist(jup_b208_burers_squad)} sr_idle@end %+JUP_B208_BURERS_DEAD%
+
+[sr_idle@end]

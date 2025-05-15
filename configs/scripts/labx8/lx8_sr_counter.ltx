@@ -1,0 +1,30 @@
+[logic]
+active = sr_idle@quest
+type = sv_only
+
+[sr_idle@quest]
+on_actor_in_zone = labx8_sr_quest | sr_idle@one %=set_counter(lx8_documents)%
+
+
+[sr_idle@one]
+on_info = {=counter_equal(lx8_documents:1)} sr_idle@two %+LX8_DOC_1%
+
+[sr_idle@two]
+on_info = {=counter_equal(lx8_documents:2)} sr_idle@three %+LX8_DOC_2%
+
+[sr_idle@three]
+on_info = {=counter_equal(lx8_documents:3)} sr_idle@four %+LX8_DOC_3%
+
+[sr_idle@four]
+on_info = {=counter_equal(lx8_documents:4)} sr_idle@five %+LX8_DOC_4%
+
+[sr_idle@five]
+on_info = {=counter_equal(lx8_documents:5)} sr_idle@six %+LX8_DOC_5%
+
+[sr_idle@six]
+on_info = {=counter_equal(lx8_documents:6)} sr_idle@controller %+LX8_DOC_6 =anim_obj_backward(lx8_physic_door) =create_squad(lx8_controller_squad:lx8_smart_terrain)%
+
+[sr_idle@controller]
+on_info = {+LX8_CONTROLLER_DEAD} sr_idle@nil %=anim_obj_forward(lx8_physic_door)%
+
+[sr_idle@nil]

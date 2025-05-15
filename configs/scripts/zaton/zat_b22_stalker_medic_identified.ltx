@@ -1,0 +1,27 @@
+[logic]
+active = sr_idle@determine_cl_sv
+type = shared_with_cl_data
+
+[sr_idle@determine_cl_sv]
+on_info = {=isServer} sr_idle@sv_general
+on_info2 = {=isClient} sr_idle@cl_wait
+
+;server logic
+[sr_idle@sv_general]
+on_info = {+ZAT_B22_STALKER_MEDIC_BODY_SEARCHED -ZAT_B22_STALKER_VAMPIRE_STORY =any_actor_has_item(zat_b22_medic_pda)} sr_idle@sv_4 %+ZAT_B22_STALKER_VAMPIRE +ZAT_B22_STALKER_VAMPIRE_STORY%
+on_info2 = {=any_actor_has_item(zat_b22_medic_pda) -ZAT_B22_ACTOR_HAS_PROOF} %+ZAT_B22_ACTOR_HAS_PROOF%
+
+[sr_idle@sv_1]:sr_idle@sv_general
+on_actor_inside = sr_idle@sv_2 %+ZAT_B22_ACTOR_IN%
+
+[sr_idle@sv_2]:sr_idle@sv_general
+on_actor_outside = sr_idle@sv_general %+ZAT_B22_ACTOR_GONE% 
+
+[sr_idle@sv_4]
+on_info = {=any_actor_has_item(zat_b22_medic_pda)} sr_idle@nil %+ZAT_B22_ACTOR_HAS_PROOF%
+
+;client logic
+[sr_idle@cl_wait]
+on_info = {+ZAT_B22_STALKER_MEDIC_BODY_SEARCHED +ZAT_B22_STALKER_VAMPIRE_STORY =any_actor_has_item(zat_b22_medic_pda) =is_local_actor_relevant(50:zat_b22_stalker_medic)} sr_idle@nil %=play_sound(zat_b22_stalker_medic_diary)%, {+ZAT_B22_STALKER_MEDIC_BODY_SEARCHED +ZAT_B22_STALKER_VAMPIRE_STORY =any_actor_has_item(zat_b22_medic_pda) !is_local_actor_relevant(50:zat_b22_stalker_medic)} sr_idle@nil
+
+[sr_idle@nil]

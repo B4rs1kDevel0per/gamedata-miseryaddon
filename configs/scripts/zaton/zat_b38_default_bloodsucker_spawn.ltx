@@ -1,0 +1,13 @@
+[logic]
+active = sr_idle@spawn
+type = sv_only
+
+[sr_idle@spawn] ;спаун
+on_info = {=dist_to_actor_ge(150) +ZAT_B38_DEFAULT_BLOODSUCKER_DEATH -ZAT_B57_DEN_OF_THE_BLOODSUCKER_TELL_STALKERS_ABOUT_DESTROY_LAIR_GIVE} sr_idle@wait %=create_squad(zat_b38_default_bloodsucker:zat_b38)%
+on_info2 = {+ZAT_B57_DEN_OF_THE_BLOODSUCKER_TELL_STALKERS_ABOUT_DESTROY_LAIR_GIVE} sr_idle@nil
+
+[sr_idle@wait]
+on_game_timer = 86400 | sr_idle@spawn %=clear_smart_terrain(zat_b38) -ZAT_B38_DEFAULT_BLOODSUCKER_DEATH%
+on_info = {+ZAT_B57_DEN_OF_THE_BLOODSUCKER_TELL_STALKERS_ABOUT_DESTROY_LAIR_GIVE} sr_idle@nil
+
+[sr_idle@nil]

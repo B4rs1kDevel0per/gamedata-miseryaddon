@@ -1,0 +1,13 @@
+[logic]
+active = sr_idle@start
+type = sv_only
+
+[sr_idle@start]
+on_info = {+JUP_B19_FOLLOWING_YAR}  sr_idle@set %=set_counter(zombied_dead)%
+on_info2 = {+JUP_B19_YAR_ENEMY_OR_DEAD}  sr_idle@nil
+
+[sr_idle@set]
+on_info = {=counter_greater(zombied_dead:9)} sr_idle@nil %+JUP_B19_ZOMBIED_DEAD%
+on_info2 = {+JUP_B19_YAR_ENEMY_OR_DEAD}  sr_idle@nil
+
+[sr_idle@nil]

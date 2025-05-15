@@ -1,0 +1,16 @@
+[logic]
+active = sr_idle@give
+type = sv_only
+
+[sr_idle@give]
+on_info = {+ZAT_B14_RECON_PLACE -ZAT_B14_LEARN_ABOUT_STRANGE_OCCURRENCE_GIVE_TASK} sr_idle@reward %+ZAT_B14_LEARN_ABOUT_STRANGE_OCCURRENCE_GIVE_TASK =give_task(zat_b14_learn_about_strange_occurrence)%
+on_info2 = {-ZAT_B14_RECON_PLACE +ZAT_B14_TAKE_ITEM -ZAT_B14_LEARN_ABOUT_STRANGE_OCCURRENCE_BY_STALKERS_GIVE_TASK =any_actor_has_item(af_quest_b14_twisted)} sr_idle@task_re %+ZAT_B14_LEARN_ABOUT_STRANGE_OCCURRENCE_BY_STALKERS_GIVE_TASK =give_task(zat_b14_learn_about_strange_occurrence_by_stalkers)%
+
+[sr_idle@task_re]
+on_info = {+ZAT_B14_GIVE_ITEM_STALKER +ZAT_B14_STALKER_KILLED_BY_ACTOR =any_actor_has_item(af_quest_b14_twisted) -ZAT_A2_LINKER_B14_QUEST_STRANGE_ITEM_DONE} sr_idle@end %=give_task(zat_b14_learn_about_strange_occurrence_by_stalkers) +ZAT_B14_REVERSED_FIRST_TIME%
+on_info2 = {+ZAT_B14_GIVE_ITEM_LINKER} sr_idle@end %=give_treasure(zat_hiding_place_44)%
+
+[sr_idle@reward]
+on_info = {+ZAT_B14_GIVE_ITEM_LINKER} sr_idle@end %=give_treasure(zat_hiding_place_44)%
+
+[sr_idle@end]

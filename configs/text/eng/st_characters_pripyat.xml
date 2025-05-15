@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="windows-1251" ?>
+<string_table>
+	<string id="pri_a15_military_recon_1_name">
+		<text>Lt Sergeev</text>
+	</string>
+	<string id="pri_a15_military_recon_2_name">
+		<text>Sgt. Valiushok</text>
+	</string>
+	<string id="pri_a15_military_recon_3_name">
+		<text>Sgt. Ostrovsky</text>
+	</string>
+	<string id="pri_a15_military_recon_leader_name">
+		<text>Captain Klimenko</text>
+	</string>
+	<string id="pri_a15_sokolov_name">
+		<text>Lt Sokolov</text>
+	</string>
+	<string id="pri_a17_military_captain_tarasov">
+		<text>Captain Tarasov</text>
+	</string>
+	<string id="pri_a17_military_colonel_kovalski_name">
+		<text>Col Kovalsky</text>
+	</string>
+	<string id="pri_a17_military_lieutenant_podorojniy">
+		<text>Lt Podorozhny</text>
+	</string>
+	<string id="pri_a18_skorlupko_in_suit_name">
+		<text>Lt Skelya</text>
+	</string>
+	<string id="pri_a18_vano_in_suit_reserve_name">
+		<text>Sgt. Merkulov</text>
+	</string>
+	<string id="pri_a21_sentry_lieutenant_stecenko_name">
+		<text>Lt Stetsenko</text>
+	</string>
+	<string id="pri_a22_military_yarmoshuk_name">
+		<text>Sgt. Yarmoshuk</text>
+	</string>
+	<string id="pri_a25_army_medic_name">
+		<text>Lt Rogovets</text>
+	</string>
+	<string id="pri_a28_evac_com_name">
+		<text>Lt Smirnov</text>
+	</string>
+	<string id="pri_b305_strelok_name">
+		<text>Strelok</text>
+	</string>
+	<string id="pri_b306_envoy_name">
+		<text>Barchuk</text>
+	</string>
+	<string id="st_pri_a22_army_signaller">
+		<text>Lt Kirillov</text>
+	</string>
+	<string id="st_pri_b35_envoy">
+		<text>Serbin</text>
+	</string>
+	<string id="st_pri_b35_merc_leader">
+		<text>Jackal</text>
+	</string>
+	<string id="pri_a17_military_prapor_valentyr">
+		<text>WO Valentir</text>
+	</string>
+	<string id="pri_a17_military_sergeant_morozov">
+		<text>Snr. Sgt Morozov</text>
+	</string>
+</string_table>

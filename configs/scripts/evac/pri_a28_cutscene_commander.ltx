@@ -1,0 +1,45 @@
+[walker@ignore]
+wounded = wounded@no_wound
+def_state_standing = threat_na
+def_state_moving = assault
+meet = no_meet
+use_camp = false
+combat_ignore_cond = true
+combat_ignore_keep_when_attacked = true
+invulnerable = true
+gather_items_enabled = false
+help_wounded_enabled = false
+corpse_detection_enabled = false
+
+;Wounded - no wounds
+[wounded@no_wound]
+hp_state = 0 | wounded_heavy@help_heavy
+hp_state_see = 0 | wounded_heavy@help_heavy
+hp_victim = 0 | nil
+hp_cover = 0 | false
+hp_fight = 0 | false
+
+
+
+[logic]
+active = smartcover@evac_comm
+
+[smartcover@evac_comm]:walker@ignore
+cover_name = pri_a28_heli_cover_33
+combat_ignore_cond = true
+meet = no_meet
+on_game_timer = 60 | {+PRI_A28_SCENE_END -PRI_A28_COMMANDER_ON_POSITION} smartcover@evac_comm_snd %+PRI_A28_COMMANDER_ON_POSITION%
+
+[smartcover@evac_comm_snd]:smartcover@evac_comm
+on_game_timer = 70 | %=play_sound(pri_a28_evac_com_ready)%
+on_signal = sound_end | %+PRI_A28_EVAC_COM_READY% 
+on_info = {+PRI_A28_FINAL_ACTOR_SPEECH_DONE +PRI_A28_STRELOK_DEAD} walker@evac_comm_run %=play_sound(pri_a28_evac_com_scene_end_when_strelok_dead)%
+on_info2 = {+PRI_A28_FINAL_ACTOR_SPEECH_DONE -PRI_A28_STRELOK_DEAD} walker@evac_comm_run
+
+[walker@evac_comm_run]:walker@ignore
+path_walk = pri_a28_cutscene_commander_away
+def_state_moving = sneak_run
+combat_ignore_cond = true
+meet = no_meet
+on_game_timer = 20 | {-PRI_A28_TEAM_HELI_RUN} %+PRI_A28_TEAM_HELI_RUN%
+on_info = {+PRI_A28_SHOW_FREEPLAY_DIALOG} %=destroy_object%

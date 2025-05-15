@@ -1,0 +1,46 @@
+[logic]
+active = sr_idle@determine_cl_sv
+type = shared_with_cl_data
+
+[sr_idle@determine_cl_sv]
+on_info = {=isServer} sr_idle@sv_wait_clients
+on_info2 = {=isClient} sr_idle@cl_wait
+
+;server logic
+[sr_idle@sv_wait_clients]
+on_info = {+JUP_B217_WELCOME_FADED =ClientsConnectedToActors} sr_idle@sv_jup_b217_welcome_cameff_begin
+on_game_timer = 1800 | %+JUP_B217_WELCOME_FADED_CL% sr_idle@sv_wait
+
+[sr_idle@sv_jup_b217_welcome_cameff_begin]
+on_game_timer = 50 | %+JUP_B217_WELCOME_FADED_CL% sr_idle@sv_wait
+
+[sr_idle@sv_wait]
+on_info = {+JUP_B217_WELCOME_PLAYED} sr_idle@sv_jup_b217_give_task
+
+[sr_idle@sv_jup_b217_give_task]
+on_info2 = {-JUP_B217_ARRIVED_TO_JUP_SAVED} %+JUP_B217_ARRIVED_TO_JUP_SAVED =scenario_autosave(st_save_jup_b217_arrived_to_jup)%
+on_info3 = {+JUP_B217_TECH_INSTRUMENTS_START} sr_idle@sv_wait2 %=give_task(jup_b217_tech_instruments)%
+
+[sr_idle@sv_wait2]
+on_info = {+JUP_B4_TASK_END +JUP_B46_TASK_DONE +JUP_B207_TASK_END} sr_idle@nil %+JUP_A6_TASKS_DONE%
+
+;client logic
+[sr_idle@cl_wait]
+on_info = {+JUP_B217_WELCOME_FADED} %=disable_ui =run_postprocess(black:1488:true)% sr_idle@cl_jup_b217_welcome_cameff_begin
+
+[sr_idle@cl_jup_b217_welcome_cameff_begin]
+on_info = {+JUP_B217_WELCOME_FADED_CL} %=stop_postprocess(1488)% sr_cutscene@cl_217
+
+[sr_cutscene@cl_217]
+point = jup_a6_actor_walk
+look  = jup_a6_actor_look
+on_game_timer = 25 | {-JUP_B217_PP_END_IN_SCENE} %+JUP_B217_PP_END_IN_SCENE%
+cam_effector = scenario_cam\jupiter\jup_b217_welcome_cameff
+enable_ui_on_end = true
+global_cameffect = true
+on_info = {+JUP_B217_WELCOME_TECH_TALKED} %=stop_sr_cutscene =run_postprocess(fade_in_out)%
+on_signal = cameff_end | sr_idle@nil %+JUP_B217_WELCOME_PLAYED%
+
+[sr_idle@nil]
+
+

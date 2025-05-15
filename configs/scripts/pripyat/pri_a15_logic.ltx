@@ -1,0 +1,666 @@
+;Vano
+[animpoint@vano]
+cover_name = pri_a15_animpoint_vano
+meet = no_meet
+use_camp = false
+combat_ignore_cond = true
+combat_ignore_keep_when_attacked = true
+invulnerable = true
+gather_items_enabled = false
+help_wounded_enabled = false
+corpse_detection_enabled = false
+reach_distance = 50
+reach_movement = walk_noweap
+out_restr = pri_a15_sr_start
+
+[logic@pri_a15_vano]
+prior = 200
+suitable = {=check_npc_name(pri_a15_vano) -PRI_A15_CUTSCENE_END} true
+active = animpoint@pri_a15_vano
+
+[animpoint@pri_a15_vano]:animpoint@vano
+avail_animations = pri_a15_idle_none
+on_info = {+PRI_A15_CUTSCENE_GO +PRI_A15_ALL_ALIVE} animpoint@pri_a15_vano_all_alive
+on_info2 = {+PRI_A15_CUTSCENE_GO +PRI_A15_1_SOKOLOV} animpoint@pri_a15_vano_1_sokolov
+on_info3 = {+PRI_A15_CUTSCENE_GO +PRI_A15_1_ZULUS} animpoint@pri_a15_vano_1_zulus
+on_info4 = {+PRI_A15_CUTSCENE_GO +PRI_A15_1_WANDERER} animpoint@pri_a15_vano_1_wanderer
+on_info5 = {+PRI_A15_CUTSCENE_GO +PRI_A15_2_SOKOLOV_ZULUS} animpoint@pri_a15_vano_2_sokolov_zulus
+on_info6 = {+PRI_A15_CUTSCENE_GO +PRI_A15_2_SOKOLOV_WANDERER} animpoint@pri_a15_vano_2_sokolov_wanderer
+on_info7 = {+PRI_A15_CUTSCENE_GO +PRI_A15_2_ZULUS_WANDERER} animpoint@pri_a15_vano_2_zulus_wanderer
+on_info8 = {+PRI_A15_CUTSCENE_GO +PRI_A15_3_VANO_ALIVE} animpoint@pri_a15_vano_3_vano_alive
+on_info9 = {-PRI_A15_VANO_COUNTED} %+PRI_A15_VANO_COUNTED =dec_counter(pri_a15_squad_count)%
+ 
+[animpoint@pri_a15_vano_all_alive]:animpoint@vano
+avail_animations = pri_a15_vano_all
+
+[animpoint@pri_a15_vano_1_sokolov]:animpoint@vano
+avail_animations = pri_a15_vano_1_sokolov
+
+[animpoint@pri_a15_vano_1_zulus]:animpoint@vano
+avail_animations = pri_a15_vano_1_zulus
+
+[animpoint@pri_a15_vano_1_wanderer]:animpoint@vano
+avail_animations = pri_a15_vano_1_wanderer
+
+[animpoint@pri_a15_vano_2_sokolov_zulus]:animpoint@vano
+avail_animations = pri_a15_vano_2_sokolov_zulus
+
+[animpoint@pri_a15_vano_2_sokolov_wanderer]:animpoint@vano
+avail_animations = pri_a15_vano_2_sokolov_wanderer
+
+[animpoint@pri_a15_vano_2_zulus_wanderer]:animpoint@vano
+avail_animations = pri_a15_vano_2_zulus_wanderer
+
+[animpoint@pri_a15_vano_3_vano_alive]:animpoint@vano
+avail_animations = pri_a15_vano_3_vano_alive
+
+
+;Sokolov
+[animpoint@sokolov]
+cover_name = pri_a15_animpoint_sokolov
+meet = no_meet
+use_camp = false
+combat_ignore_cond = true
+combat_ignore_keep_when_attacked = true
+invulnerable = true
+gather_items_enabled = false
+help_wounded_enabled = false
+corpse_detection_enabled = false
+reach_distance = 50
+reach_movement = walk_noweap
+
+[logic@pri_a15_sokolov]
+prior = 200
+suitable = {=check_npc_name(pri_a15_sokolov_scene) -PRI_A15_CUTSCENE_END} true
+active = animpoint@pri_a15_sokolov
+
+[animpoint@pri_a15_sokolov]:animpoint@sokolov
+avail_animations = pri_a15_idle_none
+on_info = {+PRI_A15_CUTSCENE_GO +PRI_A15_ALL_ALIVE} animpoint@pri_a15_sokolov_all_alive
+on_info2 = {+PRI_A15_CUTSCENE_GO +PRI_A15_1_VANO} animpoint@pri_a15_sokolov_1_vano
+on_info3 = {+PRI_A15_CUTSCENE_GO +PRI_A15_1_ZULUS} animpoint@pri_a15_sokolov_1_zulus
+on_info4 = {+PRI_A15_CUTSCENE_GO +PRI_A15_1_WANDERER} animpoint@pri_a15_sokolov_1_wanderer
+on_info5 = {+PRI_A15_CUTSCENE_GO +PRI_A15_2_VANO_ZULUS} animpoint@pri_a15_sokolov_2_vano_zulus
+on_info6 = {+PRI_A15_CUTSCENE_GO +PRI_A15_2_VANO_WANDERER} animpoint@pri_a15_sokolov_2_vano_wanderer
+on_info7 = {+PRI_A15_CUTSCENE_GO +PRI_A15_2_ZULUS_WANDERER} animpoint@pri_a15_sokolov_2_zulus_wanderer
+on_info8 = {+PRI_A15_CUTSCENE_GO +PRI_A15_3_SOKOLOV_ALIVE} animpoint@pri_a15_sokolov_3_sokolov_alive
+on_info9 = {-PRI_A15_SOKOLOV_COUNTED} %+PRI_A15_SOKOLOV_COUNTED =dec_counter(pri_a15_squad_count)%
+ 
+[animpoint@pri_a15_sokolov_all_alive]:animpoint@sokolov
+avail_animations = pri_a15_sokolov_all
+
+[animpoint@pri_a15_sokolov_1_vano]:animpoint@sokolov
+avail_animations = pri_a15_sokolov_1_vano
+
+[animpoint@pri_a15_sokolov_1_zulus]:animpoint@sokolov
+avail_animations = pri_a15_sokolov_1_zulus
+
+[animpoint@pri_a15_sokolov_1_wanderer]:animpoint@sokolov
+avail_animations = pri_a15_sokolov_1_wanderer
+
+[animpoint@pri_a15_sokolov_2_vano_zulus]:animpoint@sokolov
+avail_animations = pri_a15_sokolov_2_vano_zulus
+
+[animpoint@pri_a15_sokolov_2_vano_wanderer]:animpoint@sokolov
+avail_animations = pri_a15_sokolov_2_vano_wanderer
+
+[animpoint@pri_a15_sokolov_2_zulus_wanderer]:animpoint@sokolov
+avail_animations = pri_a15_sokolov_2_zulus_wanderer
+
+[animpoint@pri_a15_sokolov_3_sokolov_alive]:animpoint@sokolov
+avail_animations = pri_a15_sokolov_3_sokolov_alive
+
+
+;Zulus
+[animpoint@zulus]
+cover_name = pri_a15_animpoint_zulus
+meet = no_meet
+use_camp = false
+combat_ignore_cond = true
+combat_ignore_keep_when_attacked = true
+invulnerable = true
+gather_items_enabled = false
+help_wounded_enabled = false
+corpse_detection_enabled = false
+reach_distance = 50
+reach_movement = patrol
+out_restr = pri_a15_sr_start
+
+[logic@pri_a15_zulus]
+prior = 200
+suitable = {=check_npc_name(pri_a15_zulus) -PRI_A15_CUTSCENE_END} true
+active = animpoint@pri_a15_zulus
+
+[animpoint@pri_a15_zulus]:animpoint@zulus
+avail_animations = pri_a15_idle_unstrap
+on_info = {+PRI_A15_CUTSCENE_GO +PRI_A15_ALL_ALIVE} animpoint@pri_a15_zulus_all_alive
+on_info2 = {+PRI_A15_CUTSCENE_GO +PRI_A15_1_VANO} animpoint@pri_a15_zulus_1_vano
+on_info3 = {+PRI_A15_CUTSCENE_GO +PRI_A15_1_SOKOLOV} animpoint@pri_a15_zulus_1_sokolov
+on_info4 = {+PRI_A15_CUTSCENE_GO +PRI_A15_1_WANDERER} animpoint@pri_a15_zulus_1_wanderer
+on_info5 = {+PRI_A15_CUTSCENE_GO +PRI_A15_2_VANO_SOKOLOV} animpoint@pri_a15_zulus_2_vano_sokolov
+on_info6 = {+PRI_A15_CUTSCENE_GO +PRI_A15_2_VANO_WANDERER} animpoint@pri_a15_zulus_2_vano_wanderer
+on_info7 = {+PRI_A15_CUTSCENE_GO +PRI_A15_2_SOKOLOV_WANDERER} animpoint@pri_a15_zulus_2_sokolov_wanderer
+on_info8 = {+PRI_A15_CUTSCENE_GO +PRI_A15_3_ZULUS_ALIVE} animpoint@pri_a15_zulus_3_zulus_alive
+on_info9 = {-PRI_A15_ZULUS_COUNTED} %+PRI_A15_ZULUS_COUNTED =dec_counter(pri_a15_squad_count)%
+ 
+[animpoint@pri_a15_zulus_all_alive]:animpoint@zulus
+avail_animations = pri_a15_zulus_all
+
+[animpoint@pri_a15_zulus_1_vano]:animpoint@zulus
+avail_animations = pri_a15_zulus_1_vano
+
+[animpoint@pri_a15_zulus_1_sokolov]:animpoint@zulus
+avail_animations = pri_a15_zulus_1_sokolov
+
+[animpoint@pri_a15_zulus_1_wanderer]:animpoint@zulus
+avail_animations = pri_a15_zulus_1_wanderer
+
+[animpoint@pri_a15_zulus_2_vano_sokolov]:animpoint@zulus
+avail_animations = pri_a15_zulus_2_vano_sokolov
+
+[animpoint@pri_a15_zulus_2_vano_wanderer]:animpoint@zulus
+avail_animations = pri_a15_zulus_2_vano_wanderer
+
+[animpoint@pri_a15_zulus_2_sokolov_wanderer]:animpoint@zulus
+avail_animations = pri_a15_zulus_2_sokolov_wanderer
+
+[animpoint@pri_a15_zulus_3_zulus_alive]:animpoint@zulus
+avail_animations = pri_a15_zulus_3_zulus_alive
+
+
+;Wanderer
+[animpoint@wanderer]
+cover_name = pri_a15_animpoint_wanderer
+meet = no_meet
+use_camp = false
+combat_ignore_cond = true
+combat_ignore_keep_when_attacked = true
+invulnerable = true
+gather_items_enabled = false
+help_wounded_enabled = false
+corpse_detection_enabled = false
+reach_distance = 50
+reach_movement = walk_noweap
+out_restr = pri_a15_sr_start
+
+[logic@pri_a15_wanderer]
+prior = 200
+suitable = {=check_npc_name(pri_a15_wanderer) -PRI_A15_CUTSCENE_END} true
+active = animpoint@pri_a15_wanderer
+
+[animpoint@pri_a15_wanderer]:animpoint@wanderer
+avail_animations = pri_a15_idle_none
+on_info = {+PRI_A15_CUTSCENE_GO +PRI_A15_ALL_ALIVE} animpoint@pri_a15_wanderer_all_alive
+on_info2 = {+PRI_A15_CUTSCENE_GO +PRI_A15_1_VANO} animpoint@pri_a15_wanderer_1_vano
+on_info3 = {+PRI_A15_CUTSCENE_GO +PRI_A15_1_SOKOLOV} animpoint@pri_a15_wanderer_1_sokolov
+on_info4 = {+PRI_A15_CUTSCENE_GO +PRI_A15_1_ZULUS} animpoint@pri_a15_wanderer_1_zulus
+on_info5 = {+PRI_A15_CUTSCENE_GO +PRI_A15_2_VANO_SOKOLOV} animpoint@pri_a15_wanderer_2_vano_sokolov
+on_info6 = {+PRI_A15_CUTSCENE_GO +PRI_A15_2_VANO_ZULUS} animpoint@pri_a15_wanderer_2_vano_zulus
+on_info7 = {+PRI_A15_CUTSCENE_GO +PRI_A15_2_SOKOLOV_ZULUS} animpoint@pri_a15_wanderer_2_sokolov_zulus
+on_info8 = {+PRI_A15_CUTSCENE_GO +PRI_A15_3_WANDERER_ALIVE} animpoint@pri_a15_wanderer_3_wanderer_alive
+on_info9 = {-PRI_A15_WANDERER_COUNTED} %+PRI_A15_WANDERER_COUNTED =dec_counter(pri_a15_squad_count)%
+ 
+[animpoint@pri_a15_wanderer_all_alive]:animpoint@wanderer
+avail_animations = pri_a15_wanderer_all
+
+[animpoint@pri_a15_wanderer_1_vano]:animpoint@wanderer
+avail_animations = pri_a15_wanderer_1_vano
+
+[animpoint@pri_a15_wanderer_1_sokolov]:animpoint@wanderer
+avail_animations = pri_a15_wanderer_1_sokolov
+
+[animpoint@pri_a15_wanderer_1_zulus]:animpoint@wanderer
+avail_animations = pri_a15_wanderer_1_zulus
+
+[animpoint@pri_a15_wanderer_2_vano_sokolov]:animpoint@wanderer
+avail_animations = pri_a15_wanderer_2_vano_sokolov
+
+[animpoint@pri_a15_wanderer_2_vano_zulus]:animpoint@wanderer
+avail_animations = pri_a15_wanderer_2_vano_zulus
+
+[animpoint@pri_a15_wanderer_2_sokolov_zulus]:animpoint@wanderer
+avail_animations = pri_a15_wanderer_2_sokolov_zulus
+
+[animpoint@pri_a15_wanderer_3_wanderer_alive]:animpoint@wanderer
+avail_animations = pri_a15_wanderer_3_wanderer_alive
+
+
+;actor
+[animpoint@actor]
+cover_name = pri_a15_animpoint_actor
+meet = no_meet
+use_camp = false
+combat_ignore_cond = true
+combat_ignore_keep_when_attacked = true
+invulnerable = true
+gather_items_enabled = false
+help_wounded_enabled = false
+corpse_detection_enabled = false
+reach_distance = 50
+reach_movement = walk_noweap
+out_restr = pri_a15_sr_start
+
+[logic@pri_a15_actor]
+prior = 200
+suitable = {=check_npc_name(pri_a15_actor) -PRI_A15_CUTSCENE_END} true
+active = animpoint@pri_a15_actor
+
+[animpoint@pri_a15_actor]:animpoint@actor
+avail_animations = pri_a15_idle_none
+on_info = {+PRI_A15_CUTSCENE_GO +PRI_A15_ALL_ALIVE} animpoint@pri_a15_actor_all_alive
+on_info2 = {+PRI_A15_CUTSCENE_GO +PRI_A15_1_VANO} animpoint@pri_a15_actor_1_vano
+on_info3 = {+PRI_A15_CUTSCENE_GO +PRI_A15_1_SOKOLOV} animpoint@pri_a15_actor_1_sokolov
+on_info4 = {+PRI_A15_CUTSCENE_GO +PRI_A15_1_ZULUS} animpoint@pri_a15_actor_1_zulus
+on_info5 = {+PRI_A15_CUTSCENE_GO +PRI_A15_1_WANDERER} animpoint@pri_a15_actor_1_wanderer
+on_info6 = {+PRI_A15_CUTSCENE_GO +PRI_A15_2_VANO_SOKOLOV} animpoint@pri_a15_actor_2_vano_sokolov
+on_info7 = {+PRI_A15_CUTSCENE_GO +PRI_A15_2_VANO_ZULUS} animpoint@pri_a15_actor_2_vano_zulus
+on_info8 = {+PRI_A15_CUTSCENE_GO +PRI_A15_2_VANO_WANDERER} animpoint@pri_a15_actor_2_vano_wanderer
+on_info9 = {+PRI_A15_CUTSCENE_GO +PRI_A15_2_SOKOLOV_ZULUS} animpoint@pri_a15_actor_2_sokolov_zulus
+on_info10 = {+PRI_A15_CUTSCENE_GO +PRI_A15_2_SOKOLOV_WANDERER} animpoint@pri_a15_actor_2_sokolov_wanderer
+on_info11 = {+PRI_A15_CUTSCENE_GO +PRI_A15_2_ZULUS_WANDERER} animpoint@pri_a15_actor_2_zulus_wanderer
+on_info12 = {+PRI_A15_CUTSCENE_GO +PRI_A15_3_WANDERER_ALIVE} animpoint@pri_a15_actor_3_wanderer_alive
+on_info13 = {+PRI_A15_CUTSCENE_GO +PRI_A15_3_ZULUS_ALIVE} animpoint@pri_a15_actor_3_zulus_alive
+on_info14 = {+PRI_A15_CUTSCENE_GO +PRI_A15_3_SOKOLOV_ALIVE} animpoint@pri_a15_actor_3_sokolov_alive
+on_info15 = {+PRI_A15_CUTSCENE_GO +PRI_A15_3_VANO_ALIVE} animpoint@pri_a15_actor_3_vano_alive
+on_info16 = {+PRI_A15_CUTSCENE_GO +PRI_A15_ALL_DEAD} animpoint@pri_a15_actor_all_dead
+on_info17 = {-PRI_A15_ACTOR_COUNTED} %+PRI_A15_ACTOR_COUNTED =dec_counter(pri_a15_squad_count)%
+ 
+[animpoint@pri_a15_actor_all_alive]:animpoint@actor
+avail_animations = pri_a15_actor_all
+
+[animpoint@pri_a15_actor_1_vano]:animpoint@actor
+avail_animations = pri_a15_actor_1_vano
+
+[animpoint@pri_a15_actor_1_sokolov]:animpoint@actor
+avail_animations = pri_a15_actor_1_sokolov
+
+[animpoint@pri_a15_actor_1_zulus]:animpoint@actor
+avail_animations = pri_a15_actor_1_zulus
+
+[animpoint@pri_a15_actor_1_wanderer]:animpoint@actor
+avail_animations = pri_a15_actor_1_wanderer
+
+[animpoint@pri_a15_actor_2_vano_sokolov]:animpoint@actor
+avail_animations = pri_a15_actor_2_vano_sokolov
+
+[animpoint@pri_a15_actor_2_vano_zulus]:animpoint@actor
+avail_animations = pri_a15_actor_2_vano_zulus
+
+[animpoint@pri_a15_actor_2_vano_wanderer]:animpoint@actor
+avail_animations = pri_a15_actor_2_vano_wanderer
+
+[animpoint@pri_a15_actor_2_sokolov_zulus]:animpoint@actor
+avail_animations = pri_a15_actor_2_sokolov_zulus
+
+[animpoint@pri_a15_actor_2_sokolov_wanderer]:animpoint@actor
+avail_animations = pri_a15_actor_2_sokolov_wanderer
+
+[animpoint@pri_a15_actor_2_zulus_wanderer]:animpoint@actor
+avail_animations = pri_a15_actor_2_zulus_wanderer
+
+[animpoint@pri_a15_actor_3_wanderer_alive]:animpoint@actor
+avail_animations = pri_a15_actor_3_wanderer_alive
+
+[animpoint@pri_a15_actor_3_zulus_alive]:animpoint@actor
+avail_animations = pri_a15_actor_3_zulus_alive
+
+[animpoint@pri_a15_actor_3_sokolov_alive]:animpoint@actor
+avail_animations = pri_a15_actor_3_sokolov_alive
+
+[animpoint@pri_a15_actor_3_vano_alive]:animpoint@actor
+avail_animations = pri_a15_actor_3_vano_alive
+
+[animpoint@pri_a15_actor_all_dead]:animpoint@actor
+avail_animations = pri_a15_actor_all_dead
+
+
+;military tarasov
+[animpoint@general_military_1]
+cover_name = pri_a15_animpoint_military_1
+meet = no_meet
+use_camp = false
+combat_ignore_cond = true
+combat_ignore_keep_when_attacked = true
+invulnerable = true
+gather_items_enabled = false
+help_wounded_enabled = false
+corpse_detection_enabled = false
+reach_distance = 50
+reach_movement = patrol
+
+[logic@pri_a15_military_tarasov]
+prior = 200
+suitable = {=check_npc_name(pri_a15_military_tarasov) -PRI_A15_CUTSCENE_END} true
+active = animpoint@pri_a15_military_tarasov
+
+[animpoint@pri_a15_military_tarasov]:animpoint@general_military_1
+avail_animations = pri_a15_idle_unstrap
+on_info = {+PRI_A15_CUTSCENE_GO +PRI_A15_ALL_ALIVE} animpoint@pri_a15_military_tarasov_all_alive
+on_info2 = {+PRI_A15_CUTSCENE_GO +PRI_A15_1_VANO} animpoint@pri_a15_military_tarasov_1_vano
+on_info3 = {+PRI_A15_CUTSCENE_GO +PRI_A15_1_SOKOLOV} animpoint@pri_a15_military_tarasov_1_sokolov
+on_info4 = {+PRI_A15_CUTSCENE_GO +PRI_A15_1_ZULUS} animpoint@pri_a15_military_tarasov_1_zulus
+on_info5 = {+PRI_A15_CUTSCENE_GO +PRI_A15_1_WANDERER} animpoint@pri_a15_military_tarasov_1_wanderer
+on_info6 = {+PRI_A15_CUTSCENE_GO +PRI_A15_2_VANO_SOKOLOV} animpoint@pri_a15_military_tarasov_2_vano_sokolov
+on_info7 = {+PRI_A15_CUTSCENE_GO +PRI_A15_2_VANO_ZULUS} animpoint@pri_a15_military_tarasov_2_vano_zulus
+on_info8 = {+PRI_A15_CUTSCENE_GO +PRI_A15_2_VANO_WANDERER} animpoint@pri_a15_military_tarasov_2_vano_wanderer
+on_info9 = {+PRI_A15_CUTSCENE_GO +PRI_A15_2_SOKOLOV_ZULUS} animpoint@pri_a15_military_tarasov_2_sokolov_zulus
+on_info10 = {+PRI_A15_CUTSCENE_GO +PRI_A15_2_SOKOLOV_WANDERER} animpoint@pri_a15_military_tarasov_2_sokolov_wanderer
+on_info11 = {+PRI_A15_CUTSCENE_GO +PRI_A15_2_ZULUS_WANDERER} animpoint@pri_a15_military_tarasov_2_zulus_wanderer
+on_info12 = {+PRI_A15_CUTSCENE_GO +PRI_A15_3_WANDERER_ALIVE} animpoint@pri_a15_military_tarasov_3_wanderer_alive
+on_info13 = {+PRI_A15_CUTSCENE_GO +PRI_A15_3_ZULUS_ALIVE} animpoint@pri_a15_military_tarasov_3_zulus_alive
+on_info14 = {+PRI_A15_CUTSCENE_GO +PRI_A15_3_SOKOLOV_ALIVE} animpoint@pri_a15_military_tarasov_3_sokolov_alive
+on_info15 = {+PRI_A15_CUTSCENE_GO +PRI_A15_3_VANO_ALIVE} animpoint@pri_a15_military_tarasov_3_vano_alive
+on_info16 = {+PRI_A15_CUTSCENE_GO +PRI_A15_ALL_DEAD} animpoint@pri_a15_military_tarasov_all_dead
+on_info17 = {-PRI_A15_MIL_1_COUNTED} %+PRI_A15_MIL_1_COUNTED =dec_counter(pri_a15_squad_count)%
+ 
+[animpoint@pri_a15_military_tarasov_all_alive]:animpoint@general_military_1
+avail_animations = pri_a15_military_tarasov_all
+
+[animpoint@pri_a15_military_tarasov_1_vano]:animpoint@general_military_1
+avail_animations = pri_a15_military_tarasov_1_vano
+
+[animpoint@pri_a15_military_tarasov_1_sokolov]:animpoint@general_military_1
+avail_animations = pri_a15_military_tarasov_1_sokolov
+
+[animpoint@pri_a15_military_tarasov_1_zulus]:animpoint@general_military_1
+avail_animations = pri_a15_military_tarasov_1_zulus
+
+[animpoint@pri_a15_military_tarasov_1_wanderer]:animpoint@general_military_1
+avail_animations = pri_a15_military_tarasov_1_wanderer
+
+[animpoint@pri_a15_military_tarasov_2_vano_sokolov]:animpoint@general_military_1
+avail_animations = pri_a15_military_tarasov_2_vano_sokolov
+
+[animpoint@pri_a15_military_tarasov_2_vano_zulus]:animpoint@general_military_1
+avail_animations = pri_a15_military_tarasov_2_vano_zulus
+
+[animpoint@pri_a15_military_tarasov_2_vano_wanderer]:animpoint@general_military_1
+avail_animations = pri_a15_military_tarasov_2_vano_wanderer
+
+[animpoint@pri_a15_military_tarasov_2_sokolov_zulus]:animpoint@general_military_1
+avail_animations = pri_a15_military_tarasov_2_sokolov_zulus
+
+[animpoint@pri_a15_military_tarasov_2_sokolov_wanderer]:animpoint@general_military_1
+avail_animations = pri_a15_military_tarasov_2_sokolov_wanderer
+
+[animpoint@pri_a15_military_tarasov_2_zulus_wanderer]:animpoint@general_military_1
+avail_animations = pri_a15_military_tarasov_2_zulus_wanderer
+
+[animpoint@pri_a15_military_tarasov_3_wanderer_alive]:animpoint@general_military_1
+avail_animations = pri_a15_military_tarasov_3_wanderer_alive
+
+[animpoint@pri_a15_military_tarasov_3_zulus_alive]:animpoint@general_military_1
+avail_animations = pri_a15_military_tarasov_3_zulus_alive
+
+[animpoint@pri_a15_military_tarasov_3_sokolov_alive]:animpoint@general_military_1
+avail_animations = pri_a15_military_tarasov_3_sokolov_alive
+
+[animpoint@pri_a15_military_tarasov_3_vano_alive]:animpoint@general_military_1
+avail_animations = pri_a15_military_tarasov_3_vano_alive
+
+[animpoint@pri_a15_military_tarasov_all_dead]:animpoint@general_military_1
+avail_animations = pri_a15_military_tarasov_all_dead
+
+
+;military 2
+[animpoint@general_military_2]
+cover_name = pri_a15_animpoint_military_2
+meet = no_meet
+use_camp = false
+combat_ignore_cond = true
+combat_ignore_keep_when_attacked = true
+invulnerable = true
+gather_items_enabled = false
+help_wounded_enabled = false
+corpse_detection_enabled = false
+reach_distance = 50
+reach_movement = patrol
+
+[logic@pri_a15_military_2]
+prior = 200
+suitable = {=check_npc_name(pri_a15_military_2) -PRI_A15_CUTSCENE_END} true
+active = animpoint@pri_a15_military_2
+
+[animpoint@pri_a15_military_2]:animpoint@general_military_2
+avail_animations = pri_a15_idle_unstrap
+on_info = {+PRI_A15_CUTSCENE_GO +PRI_A15_ALL_ALIVE} animpoint@pri_a15_military_2_all_alive
+on_info2 = {+PRI_A15_CUTSCENE_GO +PRI_A15_1_VANO} animpoint@pri_a15_military_2_1_vano
+on_info3 = {+PRI_A15_CUTSCENE_GO +PRI_A15_1_SOKOLOV} animpoint@pri_a15_military_2_1_sokolov
+on_info4 = {+PRI_A15_CUTSCENE_GO +PRI_A15_1_ZULUS} animpoint@pri_a15_military_2_1_zulus
+on_info5 = {+PRI_A15_CUTSCENE_GO +PRI_A15_1_WANDERER} animpoint@pri_a15_military_2_1_wanderer
+on_info6 = {+PRI_A15_CUTSCENE_GO +PRI_A15_2_VANO_SOKOLOV} animpoint@pri_a15_military_2_2_vano_sokolov
+on_info7 = {+PRI_A15_CUTSCENE_GO +PRI_A15_2_VANO_ZULUS} animpoint@pri_a15_military_2_2_vano_zulus
+on_info8 = {+PRI_A15_CUTSCENE_GO +PRI_A15_2_VANO_WANDERER} animpoint@pri_a15_military_2_2_vano_wanderer
+on_info9 = {+PRI_A15_CUTSCENE_GO +PRI_A15_2_SOKOLOV_ZULUS} animpoint@pri_a15_military_2_2_sokolov_zulus
+on_info10 = {+PRI_A15_CUTSCENE_GO +PRI_A15_2_SOKOLOV_WANDERER} animpoint@pri_a15_military_2_2_sokolov_wanderer
+on_info11 = {+PRI_A15_CUTSCENE_GO +PRI_A15_2_ZULUS_WANDERER} animpoint@pri_a15_military_2_2_zulus_wanderer
+on_info12 = {+PRI_A15_CUTSCENE_GO +PRI_A15_3_WANDERER_ALIVE} animpoint@pri_a15_military_2_3_wanderer_alive
+on_info13 = {+PRI_A15_CUTSCENE_GO +PRI_A15_3_ZULUS_ALIVE} animpoint@pri_a15_military_2_3_zulus_alive
+on_info14 = {+PRI_A15_CUTSCENE_GO +PRI_A15_3_SOKOLOV_ALIVE} animpoint@pri_a15_military_2_3_sokolov_alive
+on_info15 = {+PRI_A15_CUTSCENE_GO +PRI_A15_3_VANO_ALIVE} animpoint@pri_a15_military_2_3_vano_alive
+on_info16 = {+PRI_A15_CUTSCENE_GO +PRI_A15_ALL_DEAD} animpoint@pri_a15_military_2_all_dead
+on_info17 = {-PRI_A15_MIL_2_COUNTED} %+PRI_A15_MIL_2_COUNTED =dec_counter(pri_a15_squad_count)%
+
+[animpoint@pri_a15_military_2_all_alive]:animpoint@general_military_2
+avail_animations = pri_a15_military_2_all
+
+[animpoint@pri_a15_military_2_1_vano]:animpoint@general_military_2
+avail_animations = pri_a15_military_2_1_vano
+
+[animpoint@pri_a15_military_2_1_sokolov]:animpoint@general_military_2
+avail_animations = pri_a15_military_2_1_sokolov
+
+[animpoint@pri_a15_military_2_1_zulus]:animpoint@general_military_2
+avail_animations = pri_a15_military_2_1_zulus
+
+[animpoint@pri_a15_military_2_1_wanderer]:animpoint@general_military_2
+avail_animations = pri_a15_military_2_1_wanderer
+
+[animpoint@pri_a15_military_2_2_vano_sokolov]:animpoint@general_military_2
+avail_animations = pri_a15_military_2_2_vano_sokolov
+
+[animpoint@pri_a15_military_2_2_vano_zulus]:animpoint@general_military_2
+avail_animations = pri_a15_military_2_2_vano_zulus
+
+[animpoint@pri_a15_military_2_2_vano_wanderer]:animpoint@general_military_2
+avail_animations = pri_a15_military_2_2_vano_wanderer
+
+[animpoint@pri_a15_military_2_2_sokolov_zulus]:animpoint@general_military_2
+avail_animations = pri_a15_military_2_2_sokolov_zulus
+
+[animpoint@pri_a15_military_2_2_sokolov_wanderer]:animpoint@general_military_2
+avail_animations = pri_a15_military_2_2_sokolov_wanderer
+
+[animpoint@pri_a15_military_2_2_zulus_wanderer]:animpoint@general_military_2
+avail_animations = pri_a15_military_2_2_zulus_wanderer
+
+[animpoint@pri_a15_military_2_3_wanderer_alive]:animpoint@general_military_2
+avail_animations = pri_a15_military_2_3_wanderer_alive
+
+[animpoint@pri_a15_military_2_3_zulus_alive]:animpoint@general_military_2
+avail_animations = pri_a15_military_2_3_zulus_alive
+
+[animpoint@pri_a15_military_2_3_sokolov_alive]:animpoint@general_military_2
+avail_animations = pri_a15_military_2_3_sokolov_alive
+
+[animpoint@pri_a15_military_2_3_vano_alive]:animpoint@general_military_2
+avail_animations = pri_a15_military_2_3_vano_alive
+
+[animpoint@pri_a15_military_2_all_dead]:animpoint@general_military_2
+avail_animations = pri_a15_military_2_all_dead
+
+
+;military 3
+[animpoint@general_military_3]
+cover_name = pri_a15_animpoint_military_3
+meet = no_meet
+use_camp = false
+combat_ignore_cond = true
+combat_ignore_keep_when_attacked = true
+invulnerable = true
+gather_items_enabled = false
+help_wounded_enabled = false
+corpse_detection_enabled = false
+reach_distance = 50
+reach_movement = patrol
+
+[logic@pri_a15_military_3]
+prior = 200
+suitable = {=check_npc_name(pri_a15_military_3) -PRI_A15_CUTSCENE_END} true
+active = animpoint@pri_a15_military_3
+
+[animpoint@pri_a15_military_3]:animpoint@general_military_3
+avail_animations = pri_a15_idle_unstrap
+on_info = {+PRI_A15_CUTSCENE_GO +PRI_A15_ALL_ALIVE} animpoint@pri_a15_military_3_all_alive
+on_info2 = {+PRI_A15_CUTSCENE_GO +PRI_A15_1_VANO} animpoint@pri_a15_military_3_1_vano
+on_info3 = {+PRI_A15_CUTSCENE_GO +PRI_A15_1_SOKOLOV} animpoint@pri_a15_military_3_1_sokolov
+on_info4 = {+PRI_A15_CUTSCENE_GO +PRI_A15_1_ZULUS} animpoint@pri_a15_military_3_1_zulus
+on_info5 = {+PRI_A15_CUTSCENE_GO +PRI_A15_1_WANDERER} animpoint@pri_a15_military_3_1_wanderer
+on_info6 = {+PRI_A15_CUTSCENE_GO +PRI_A15_2_VANO_SOKOLOV} animpoint@pri_a15_military_3_2_vano_sokolov
+on_info7 = {+PRI_A15_CUTSCENE_GO +PRI_A15_2_VANO_ZULUS} animpoint@pri_a15_military_3_2_vano_zulus
+on_info8 = {+PRI_A15_CUTSCENE_GO +PRI_A15_2_VANO_WANDERER} animpoint@pri_a15_military_3_2_vano_wanderer
+on_info9 = {+PRI_A15_CUTSCENE_GO +PRI_A15_2_SOKOLOV_ZULUS} animpoint@pri_a15_military_3_2_sokolov_zulus
+on_info10 = {+PRI_A15_CUTSCENE_GO +PRI_A15_2_SOKOLOV_WANDERER} animpoint@pri_a15_military_3_2_sokolov_wanderer
+on_info11 = {+PRI_A15_CUTSCENE_GO +PRI_A15_2_ZULUS_WANDERER} animpoint@pri_a15_military_3_2_zulus_wanderer
+on_info12 = {+PRI_A15_CUTSCENE_GO +PRI_A15_3_WANDERER_ALIVE} animpoint@pri_a15_military_3_3_wanderer_alive
+on_info13 = {+PRI_A15_CUTSCENE_GO +PRI_A15_3_ZULUS_ALIVE} animpoint@pri_a15_military_3_3_zulus_alive
+on_info14 = {+PRI_A15_CUTSCENE_GO +PRI_A15_3_SOKOLOV_ALIVE} animpoint@pri_a15_military_3_3_sokolov_alive
+on_info15 = {+PRI_A15_CUTSCENE_GO +PRI_A15_3_VANO_ALIVE} animpoint@pri_a15_military_3_3_vano_alive
+on_info16 = {+PRI_A15_CUTSCENE_GO +PRI_A15_ALL_DEAD} animpoint@pri_a15_military_3_all_dead
+on_info17 = {-PRI_A15_MIL_3_COUNTED} %+PRI_A15_MIL_3_COUNTED =dec_counter(pri_a15_squad_count)%
+
+[animpoint@pri_a15_military_3_all_alive]:animpoint@general_military_3
+avail_animations = pri_a15_military_3_all
+
+[animpoint@pri_a15_military_3_1_vano]:animpoint@general_military_3
+avail_animations = pri_a15_military_3_1_vano
+
+[animpoint@pri_a15_military_3_1_sokolov]:animpoint@general_military_3
+avail_animations = pri_a15_military_3_1_sokolov
+
+[animpoint@pri_a15_military_3_1_zulus]:animpoint@general_military_3
+avail_animations = pri_a15_military_3_1_zulus
+
+[animpoint@pri_a15_military_3_1_wanderer]:animpoint@general_military_3
+avail_animations = pri_a15_military_3_1_wanderer
+
+[animpoint@pri_a15_military_3_2_vano_sokolov]:animpoint@general_military_3
+avail_animations = pri_a15_military_3_2_vano_sokolov
+
+[animpoint@pri_a15_military_3_2_vano_zulus]:animpoint@general_military_3
+avail_animations = pri_a15_military_3_2_vano_zulus
+
+[animpoint@pri_a15_military_3_2_vano_wanderer]:animpoint@general_military_3
+avail_animations = pri_a15_military_3_2_vano_wanderer
+
+[animpoint@pri_a15_military_3_2_sokolov_zulus]:animpoint@general_military_3
+avail_animations = pri_a15_military_3_2_sokolov_zulus
+
+[animpoint@pri_a15_military_3_2_sokolov_wanderer]:animpoint@general_military_3
+avail_animations = pri_a15_military_3_2_sokolov_wanderer
+
+[animpoint@pri_a15_military_3_2_zulus_wanderer]:animpoint@general_military_3
+avail_animations = pri_a15_military_3_2_zulus_wanderer
+
+[animpoint@pri_a15_military_3_3_wanderer_alive]:animpoint@general_military_3
+avail_animations = pri_a15_military_3_3_wanderer_alive
+
+[animpoint@pri_a15_military_3_3_zulus_alive]:animpoint@general_military_3
+avail_animations = pri_a15_military_3_3_zulus_alive
+
+[animpoint@pri_a15_military_3_3_sokolov_alive]:animpoint@general_military_3
+avail_animations = pri_a15_military_3_3_sokolov_alive
+
+[animpoint@pri_a15_military_3_3_vano_alive]:animpoint@general_military_3
+avail_animations = pri_a15_military_3_3_vano_alive
+
+[animpoint@pri_a15_military_3_all_dead]:animpoint@general_military_3
+avail_animations = pri_a15_military_3_all_dead
+
+
+;military 4
+[animpoint@general_military_4]
+cover_name = pri_a15_animpoint_military_4
+meet = no_meet
+use_camp = false
+combat_ignore_cond = true
+combat_ignore_keep_when_attacked = true
+invulnerable = true
+gather_items_enabled = false
+help_wounded_enabled = false
+corpse_detection_enabled = false
+reach_distance = 50
+reach_movement = patrol
+
+[logic@pri_a15_military_4]
+prior = 200
+suitable = {=check_npc_name(pri_a15_military_4) -PRI_A15_CUTSCENE_END} true
+active = animpoint@pri_a15_military_4
+
+[animpoint@pri_a15_military_4]:animpoint@general_military_4
+avail_animations = pri_a15_idle_unstrap
+on_info = {+PRI_A15_CUTSCENE_GO +PRI_A15_ALL_ALIVE} animpoint@pri_a15_military_4_all_alive
+on_info2 = {+PRI_A15_CUTSCENE_GO +PRI_A15_1_VANO} animpoint@pri_a15_military_4_1_vano
+on_info3 = {+PRI_A15_CUTSCENE_GO +PRI_A15_1_SOKOLOV} animpoint@pri_a15_military_4_1_sokolov
+on_info4 = {+PRI_A15_CUTSCENE_GO +PRI_A15_1_ZULUS} animpoint@pri_a15_military_4_1_zulus
+on_info5 = {+PRI_A15_CUTSCENE_GO +PRI_A15_1_WANDERER} animpoint@pri_a15_military_4_1_wanderer
+on_info6 = {+PRI_A15_CUTSCENE_GO +PRI_A15_2_VANO_SOKOLOV} animpoint@pri_a15_military_4_2_vano_sokolov
+on_info7 = {+PRI_A15_CUTSCENE_GO +PRI_A15_2_VANO_ZULUS} animpoint@pri_a15_military_4_2_vano_zulus
+on_info8 = {+PRI_A15_CUTSCENE_GO +PRI_A15_2_VANO_WANDERER} animpoint@pri_a15_military_4_2_vano_wanderer
+on_info9 = {+PRI_A15_CUTSCENE_GO +PRI_A15_2_SOKOLOV_ZULUS} animpoint@pri_a15_military_4_2_sokolov_zulus
+on_info10 = {+PRI_A15_CUTSCENE_GO +PRI_A15_2_SOKOLOV_WANDERER} animpoint@pri_a15_military_4_2_sokolov_wanderer
+on_info11 = {+PRI_A15_CUTSCENE_GO +PRI_A15_2_ZULUS_WANDERER} animpoint@pri_a15_military_4_2_zulus_wanderer
+on_info12 = {+PRI_A15_CUTSCENE_GO +PRI_A15_3_WANDERER_ALIVE} animpoint@pri_a15_military_4_3_wanderer_alive
+on_info13 = {+PRI_A15_CUTSCENE_GO +PRI_A15_3_ZULUS_ALIVE} animpoint@pri_a15_military_4_3_zulus_alive
+on_info14 = {+PRI_A15_CUTSCENE_GO +PRI_A15_3_SOKOLOV_ALIVE} animpoint@pri_a15_military_4_3_sokolov_alive
+on_info15 = {+PRI_A15_CUTSCENE_GO +PRI_A15_3_VANO_ALIVE} animpoint@pri_a15_military_4_3_vano_alive
+on_info16 = {+PRI_A15_CUTSCENE_GO +PRI_A15_ALL_DEAD} animpoint@pri_a15_military_4_all_dead
+on_info17 = {-PRI_A15_MIL_4_COUNTED} %+PRI_A15_MIL_4_COUNTED =dec_counter(pri_a15_squad_count)%
+
+[animpoint@pri_a15_military_4_all_alive]:animpoint@general_military_4
+avail_animations = pri_a15_military_4_all
+
+[animpoint@pri_a15_military_4_1_vano]:animpoint@general_military_4
+avail_animations = pri_a15_military_4_1_vano
+
+[animpoint@pri_a15_military_4_1_sokolov]:animpoint@general_military_4
+avail_animations = pri_a15_military_4_1_sokolov
+
+[animpoint@pri_a15_military_4_1_zulus]:animpoint@general_military_4
+avail_animations = pri_a15_military_4_1_zulus
+
+[animpoint@pri_a15_military_4_1_wanderer]:animpoint@general_military_4
+avail_animations = pri_a15_military_4_1_wanderer
+
+[animpoint@pri_a15_military_4_2_vano_sokolov]:animpoint@general_military_4
+avail_animations = pri_a15_military_4_2_vano_sokolov
+
+[animpoint@pri_a15_military_4_2_vano_zulus]:animpoint@general_military_4
+avail_animations = pri_a15_military_4_2_vano_zulus
+
+[animpoint@pri_a15_military_4_2_vano_wanderer]:animpoint@general_military_4
+avail_animations = pri_a15_military_4_2_vano_wanderer
+
+[animpoint@pri_a15_military_4_2_sokolov_zulus]:animpoint@general_military_4
+avail_animations = pri_a15_military_4_2_sokolov_zulus
+
+[animpoint@pri_a15_military_4_2_sokolov_wanderer]:animpoint@general_military_4
+avail_animations = pri_a15_military_4_2_sokolov_wanderer
+
+[animpoint@pri_a15_military_4_2_zulus_wanderer]:animpoint@general_military_4
+avail_animations = pri_a15_military_4_2_zulus_wanderer
+
+[animpoint@pri_a15_military_4_3_wanderer_alive]:animpoint@general_military_4
+avail_animations = pri_a15_military_4_3_wanderer_alive
+
+[animpoint@pri_a15_military_4_3_zulus_alive]:animpoint@general_military_4
+avail_animations = pri_a15_military_4_3_zulus_alive
+
+[animpoint@pri_a15_military_4_3_sokolov_alive]:animpoint@general_military_4
+avail_animations = pri_a15_military_4_3_sokolov_alive
+
+[animpoint@pri_a15_military_4_3_vano_alive]:animpoint@general_military_4
+avail_animations = pri_a15_military_4_3_vano_alive
+
+[animpoint@pri_a15_military_4_all_dead]:animpoint@general_military_4
+avail_animations = pri_a15_military_4_all_dead

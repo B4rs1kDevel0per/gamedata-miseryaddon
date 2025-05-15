@@ -1,0 +1,12 @@
+[logic]
+active = ph_button@wait
+
+[ph_button@wait] 
+anim = idle
+on_press = ph_idle@attack %=anim_obj_forward(pas_b400_door_control_down) =create_squad(pas_b400_hall_monolith_squad:pas_b400_hall) +PAS_B400_CONTROL_DOWN_DOOR_OPENED =heal_squad(pas_b400_stalkers_squad)%
+tooltip = pas_b400_tip_switcher
+
+[ph_idle@attack]
+on_game_timer = 30 | ph_idle@nil %+PAS_B400_HALL_MONOLITH_SQUAD_ATTACKED%
+
+[ph_idle@nil]

@@ -1,0 +1,29 @@
+[logic]
+active = sr_idle
+type = sv_only
+
+[sr_idle]
+on_info = {+JUP_B1_ACTOR_ATK_SQUAD +JUP_B1_GIVE_TASK} sr_idle@2 %=xrmpe_client_spawn(jup_b1_half_artifact:jup_b1_art_spawn)%, {+JUP_B1_ST_MISSION} sr_idle@2 %=xrmpe_client_spawn(jup_b1_half_artifact:jup_b1_art_spawn)%
+
+[sr_idle@2]
+on_info = {=any_actor_in_zone(jup_b1_light_zone) -JUP_B1_START -JUP_B1_AUTOSAVE} %+JUP_B1_AUTOSAVE +JUP_B1_START =scenario_autosave(st_save_jup_b1_entered_railroad_tunnel)%
+on_info2 = {+JUP_B1_START -JUP_B1_AUTOSAVE} %+JUP_B1_AUTOSAVE =scenario_autosave(st_save_jup_b1_entered_railroad_tunnel)%
+on_info3 = {+JUP_B1_AUTOSAVE +JUP_B1_START} sr_idle@3
+
+[sr_idle@3]
+on_info = {=any_actor_in_zone(jup_b1_tuskano_spawn_zone) +JUP_B1_GIVE_TASK} sr_idle@step1 %=create_squad(jup_b1_tushkano_squad:jup_b1)%
+
+[sr_idle@step1]
+on_game_timer = 30 | {-JUP_B1_ACTOR_ATK_SQUAD} sr_idle@step2 %+JUP_B1_KILL_TUSKANO =set_counter(jup_b1_tushkano_death:0)%
+on_game_timer2 = 30 | {+JUP_B1_ACTOR_ATK_SQUAD} sr_idle@step2 %+JUP_B1_SPAWN_CONTROLLER%
+
+[sr_idle@step2]
+on_info = {=any_actor_has_item(jup_b1_half_artifact) +JUP_B1_SPAWN_CONTROLLER} sr_idle@postef %=anomaly_turn_off(jup_b1_anomal_zone) =create_squad(jup_b1_controller_squad:jup_b1) +JUP_B1_ACTOR_HAS_HALF_ARTIFACT%
+
+[sr_idle@postef]
+on_info = {+JUP_B1_CONTROLLER_IS_DEAD} sr_idle@turn_anomaly_off %=run_postprocess(blink)%
+
+[sr_idle@turn_anomaly_off]
+on_info = {+JUP_B1_TASK_DONE} sr_idle@end; %=anomaly_turn_off(jup_b1_anomal_zone)%
+
+[sr_idle@end]

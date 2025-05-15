@@ -1,0 +1,10 @@
+[logic]
+active = sr_idle@both_artefacts_dialo_disbler
+type = sv_only
+
+[sr_idle@both_artefacts_dialo_disbler]
+on_info = {+JUP_B43_MINCER_MEAT_GIVE_DONE} %+JUP_B43_MINCER_MEAT_AND_KOLOBOK_DIALOG_DISABLE%
+on_info2 = {+JUP_B43_KOLOBOK_GIVE_DONE} %+JUP_B43_MINCER_MEAT_AND_KOLOBOK_DIALOG_DISABLE%
+on_info3 = {!squad_exist(jup_b43_stalker_assistant_squad_sq) +PRI_A17_ACTOR_HAS_GAUSS_RIFLE -JUP_B43_ONCE_JUPGARIK_CREATE} sr_idle@nil %+JUP_B43_ONCE_JUPGARIK_CREATE =create_squad(jup_b43_stalker_assistant_squad_sq:jup_a6)%
+
+[sr_idle@nil]

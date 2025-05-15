@@ -1,0 +1,80 @@
+[logic]
+active = sr_idle@determine_cl_sv
+type = shared_with_cl_data
+
+[sr_idle@determine_cl_sv]
+on_info = {=isServer} sr_idle@sv_spawn
+on_info2 = {=isClient} sr_idle@cl_wait
+
+[sr_idle@sv_spawn]
+on_info = {-JUP_B9_SHLIACHIN_SPAWN} sr_idle@sv_wait %=spawn_corpse (jup_b9_shliachin : jup_b9_shliachin_spawn_point : 0) +JUP_B9_SHLIACHIN_SPAWN%
+
+[sr_idle@sv_wait]
+on_info = {+JUP_B9_GIVE_TASK} sr_idle@sv_wait2
+
+[sr_idle@sv_wait2]
+on_info = {+JUP_B9_HELI_1_SEARCHING -JUP_B9_HELI_1_SEARCHED} sr_idle@sv_wait3
+
+[sr_idle@sv_wait3]
+on_game_timer = 20 | sr_idle@sv_wait4 %+JUP_B9_HELI_1_CUT_WAIT =create_cutscene_actor_with_weapon(jup_b9_actor_visual_stalker:jup_b9_actor_visual_stalker_walk:0:30)%
+
+[sr_idle@sv_wait4]
+on_game_timer = 40 | sr_idle@sv_wait5 %+JUP_B9_HELI_1_PLAY_SOUND%
+
+[sr_idle@sv_wait5]
+on_info ={+JUP_B9_HELI_1_SEARCHED} sr_idle@sv_after
+
+[sr_idle@sv_after]
+on_game_timer = 10 | sr_idle@sv_save %+JUP_B9_HELI_1_SEARCHED%
+
+[sr_idle@sv_save]
+on_info = {+JUP_B9_BLACKBOX_DECRYPTING} sr_idle@sv_wait6
+on_info2 = {+JUP_B9_HELI_1_SEARCHED -SAVE_JUP_B9_SEARCHED_HELI_1} %+SAVE_JUP_B9_SEARCHED_HELI_1 =scenario_autosave(st_save_jup_b9_searched_heli_1)%
+
+[sr_idle@sv_wait6]
+on_game_timer = 10800 | sr_idle@sv_wait7 %+JUP_B9_BLACKBOX_DECRYPTED_TIME%
+on_info = {+JUP_B9_BLACKBOX_DECRYPTED_TIME} sr_idle@sv_wait7
+
+[sr_idle@sv_wait7]
+on_info = {+JUP_B9_BLACKBOX_RECORDS_CL_END} sr_idle@sv_wait8
+
+[sr_idle@sv_wait8]
+on_game_timer = 10 | sr_idle@nil %+JUP_B9_BLACKBOX_RECORDS_END%
+
+[sr_idle@cl_wait]
+on_info = {=local_actor_story_id(actor_degtyarev) +JUP_B9_GIVE_TASK} sr_idle@cl_wait2, {!local_actor_story_id(actor_degtyarev) +JUP_B9_GIVE_TASK} sr_idle@cl_after
+
+[sr_idle@cl_wait2]
+on_info = {+JUP_B9_HELI_1_SEARCHING -JUP_B9_HELI_1_SEARCHED} sr_idle@cl_wait3 %=disable_ui =run_postprocess(fade_in:7710)%
+
+[sr_idle@cl_wait3]
+on_info = {+JUP_B9_HELI_1_CUT_WAIT} sr_idle@cl_wait4 %=run_postprocess(black:7711:true)%
+
+[sr_idle@cl_wait4]
+on_info = {+JUP_B9_HELI_1_PLAY_SOUND} sr_cutscene@cl_cam %=stop_postprocess(7710) =stop_postprocess(7711)%
+
+[sr_cutscene@cl_cam]
+point = jup_b9_actor_visual_stalker_walk
+look = jup_b9_actor_visual_stalker_look
+global_cameffect = true
+enable_ui_on_end = false
+outdoor = true
+cam_effector = scenario_cam\jupiter\jup_b9_heli_1_camera
+on_signal = cameff_end | sr_idle@cl_after %=give_actor(jup_b9_blackbox) +JUP_B9_HELI_1_SEARCHED =run_postprocess(black:7713:true)%
+on_signal2 = cam_effector_stop | sr_idle@cl_after %=give_actor(jup_b9_blackbox) +JUP_B9_HELI_1_SEARCHED =run_postprocess(black:7713:true)%
+on_info = {+JUP_B9_HELI_1_SOUND -JUP_B9_HELI_AFTER_CAMERA_FADE} %+JUP_B9_HELI_AFTER_CAMERA_FADE =run_postprocess(fade_in:7712)%
+on_info2 = {+JUP_B9_CAMERA_STOP} %=stop_sr_cutscene%
+on_info3 = {+JUP_B9_ACTOR_HIT} %=stop_sr_cutscene%
+
+[sr_idle@cl_after]
+on_info = {+JUP_B9_HELI_1_SEARCHED} sr_idle@cl_wait5 %=stop_postprocess(7712) =stop_postprocess(7713) =enable_ui =xrmpe_teleport_local_actor(jup_b9_actor_visual_stalker_walk :jup_b9_actor_visual_stalker_look)%
+
+[sr_idle@cl_wait5]
+on_info = {+JUP_B9_BLACKBOX_RECORDS_GO =is_local_actor_relevant(5:jup_b217_stalker_tech)} sr_idle@cl_play_sound, {+JUP_B9_BLACKBOX_RECORDS_GO !is_local_actor_relevant(5:jup_b217_stalker_tech)} sr_idle@nil
+
+[sr_idle@cl_play_sound]
+on_info = {+JUP_B9_BLACKBOX_RECORDS_GO -JUP_B9_BLACKBOX_RECORDS_CL_END} %=play_sound(jup_b9_blackbox_records) =disable_ui_only%
+on_info2 = {+JUP_B9_BLACKBOX_RECORDS_CL_END} sr_idle@nil %=enable_ui%
+on_signal = sound_end | %+JUP_B9_BLACKBOX_RECORDS_CL_END%
+
+[sr_idle@nil]

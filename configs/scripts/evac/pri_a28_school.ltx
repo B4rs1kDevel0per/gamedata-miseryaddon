@@ -1,0 +1,310 @@
+#include "pri_a28_general.ltx"
+
+[logic@pri_a28_kovalski_school]
+active = camper@kovalski_school_1
+suitable = {-PRI_A28_SCHOOL_DONE =check_npc_name(kovalski)} true
+prior = 200
+on_hit = hit@def
+on_death = death@def
+post_combat_time = 0,0
+
+[camper@kovalski_school_1]:walker@kovalski_ignore
+path_walk = kovalski_1_walk
+path_look = kovalski_1_look
+out_restr = pri_a28_sr_school_1
+on_info = {=npc_in_zone(pri_a28_sr_school_1) +PRI_A28_MEDIC_ABOUT_SNORK} camper@kovalski_school_1_wait
+
+[camper@kovalski_school_1_wait]:walker@kovalski_ignore
+path_walk = kovalski_1_walk
+path_look = kovalski_1_look
+out_restr = pri_a28_sr_school_1
+on_game_timer = 10 | %=play_sound(pri_a28_colonel_about_snork)%
+on_signal = sound_end | camper@kovalski_school_2 %+PRI_A28_COLONEL_ABOUT_SNORK%
+on_info = {+PRI_A28_COLONEL_ABOUT_SNORK} camper@kovalski_school_2
+
+[camper@kovalski_school_2]:walker@kovalski_fight
+path_walk = kovalski_2_walk
+path_look = kovalski_2_look 
+;def_state_moving = assault_fire
+out_restr = pri_a28_sr_school_2
+on_signal = path_end | %+PRI_A28_SCHOOL_2_LEAVE%
+on_info = {+PRI_A28_SCHOOL_2_LEAVE} camper@kovalski_school_2_wait %=disable_memory_object%
+
+[camper@kovalski_school_2_wait]:walker@kovalski_ignore
+path_walk = kovalski_2_walk
+path_look = kovalski_2_look 
+out_restr = pri_a28_sr_school_2
+on_game_timer = 10 | {-PRI_A28_COLONEL_FIRE_WILL} camper@kovalski_school_3 %+PRI_A28_COLONEL_FIRE_WILL =play_sound(pri_a28_colonel_fire_will)%
+on_info = {+PRI_A28_COLONEL_FIRE_WILL} camper@kovalski_school_3
+
+[camper@kovalski_school_3]:walker@kovalski_fight
+path_walk = kovalski_3_walk
+path_look = kovalski_3_look 
+;def_state_moving = assault_fire
+out_restr = pri_a28_sr_school_3
+on_signal = path_end | {-PRI_A28_SCHOOL_DONE} %+PRI_A28_SCHOOL_DONE% 
+
+
+
+[logic@pri_a28_medic_school]
+active = camper@medic_school_1 
+suitable = {-PRI_A28_SCHOOL_DONE =check_npc_name(base_medic)} true
+prior = 200
+on_hit = hit@def
+on_death = death@def
+post_combat_time = 0,0
+
+[camper@medic_school_1]:walker@ignore
+path_walk = medic_1_walk
+path_look = medic_1_look
+def_state_standing = hide_na
+out_restr = pri_a28_sr_school_1
+on_signal = sound_end | %+PRI_A28_MEDIC_ABOUT_SNORK%
+on_info = {+PRI_A28_SCHOOL_1_LEAVE} %=play_sound(pri_a28_medic_about_snork)%
+on_info2 = {+PRI_A28_COLONEL_ABOUT_SNORK} camper@medic_school_2
+
+[camper@medic_school_2]:walker@fight
+path_walk = medic_2_walk
+path_look = medic_2_look 
+;def_state_moving = assault_fire
+out_restr = pri_a28_sr_school_2
+on_signal = path_end | camper@medic_school_2_wait %+PRI_A28_SCHOOL_2_LEAVE%
+on_info = {+PRI_A28_SCHOOL_2_LEAVE} camper@medic_school_2_wait
+
+[camper@medic_school_2_wait]:walker@fight
+path_walk = medic_2_walk
+path_look = medic_2_look 
+out_restr = pri_a28_sr_school_2
+on_info = {+PRI_A28_COLONEL_FIRE_WILL} camper@medic_school_3
+
+[camper@medic_school_3]:walker@fight
+path_walk = medic_3_walk
+path_look = medic_3_look 
+;def_state_moving = assault_fire
+out_restr = pri_a28_sr_school_3
+on_signal = path_end | {-PRI_A28_SCHOOL_DONE} %+PRI_A28_SCHOOL_DONE% 
+
+
+
+[logic@pri_a28_strelok_school]
+active = camper@strelok_school_1
+suitable = {-PRI_A28_SCHOOL_DONE =check_npc_name(strelok)} true
+prior = 200
+on_hit = hit@def
+on_death = death@def
+post_combat_time = 0,0
+
+[camper@strelok_school_1]:walker@ignore
+path_walk = strelok_1_walk
+path_look = strelok_1_look
+out_restr = pri_a28_sr_school_1
+on_info = {+PRI_A28_COLONEL_ABOUT_SNORK} camper@strelok_school_2
+
+[camper@strelok_school_2]:walker@fight
+path_walk = strelok_2_walk
+path_look = strelok_2_look 
+;def_state_moving = assault_fire
+out_restr = pri_a28_sr_school_2
+on_signal = path_end | camper@strelok_school_2_wait %+PRI_A28_SCHOOL_2_LEAVE%
+on_info = {+PRI_A28_SCHOOL_2_LEAVE} camper@strelok_school_2_wait
+
+[camper@strelok_school_2_wait]:walker@fight
+path_walk = strelok_2_walk
+path_look = strelok_2_look 
+out_restr = pri_a28_sr_school_2
+on_info = {+PRI_A28_COLONEL_FIRE_WILL} camper@strelok_school_3
+
+[camper@strelok_school_3]:walker@fight
+path_walk = strelok_3_walk
+path_look = strelok_3_look 
+;def_state_moving = assault_fire
+out_restr = pri_a28_sr_school_3
+on_signal = path_end | {-PRI_A28_SCHOOL_DONE} %+PRI_A28_SCHOOL_DONE% 
+
+
+
+[logic@pri_a28_military_1_school]
+active = camper@military_1_school_1
+suitable = {-PRI_A28_SCHOOL_DONE =target_squad_name(pri_a16_military_squad) !check_npc_name(strelok) !check_npc_name(kovalski) !check_npc_name(base_medic)} true
+prior = 100
+on_hit = hit@def
+on_death = death@def
+post_combat_time = 0,0
+
+[camper@military_1_school_1]:walker@ignore
+path_walk = military_1_1_walk
+path_look = military_1_1_look
+def_state_standing = hide_na
+out_restr = pri_a28_sr_school_1
+on_info = {+PRI_A28_COLONEL_ABOUT_SNORK} camper@military_1_school_2
+
+[camper@military_1_school_2]:walker@fight
+path_walk = military_1_2_walk
+path_look = military_1_2_look 
+;def_state_moving = assault_fire
+out_restr = pri_a28_sr_school_2
+on_signal = path_end | camper@military_1_school_2_wait %+PRI_A28_SCHOOL_2_LEAVE%
+on_info = {+PRI_A28_SCHOOL_2_LEAVE} camper@military_1_school_2_wait
+
+[camper@military_1_school_2_wait]:walker@fight
+path_walk = military_1_2_walk
+path_look = military_1_2_look 
+out_restr = pri_a28_sr_school_2
+on_info = {+PRI_A28_COLONEL_FIRE_WILL} camper@military_1_school_3
+
+[camper@military_1_school_3]:walker@fight
+path_walk = military_1_3_walk
+path_look = military_1_3_look 
+;def_state_moving = assault_fire
+out_restr = pri_a28_sr_school_3
+on_signal = path_end | {-PRI_A28_SCHOOL_DONE} %+PRI_A28_SCHOOL_DONE% 
+
+
+
+[logic@pri_a28_military_2_school]
+active = camper@military_2_school_1
+suitable = {-PRI_A28_SCHOOL_DONE =target_squad_name(pri_a16_military_squad) !check_npc_name(strelok) !check_npc_name(kovalski) !check_npc_name(base_medic)} true
+prior = 100
+on_hit = hit@def
+on_death = death@def
+post_combat_time = 0,0
+
+[camper@military_2_school_1]:walker@ignore
+path_walk = military_2_1_walk
+path_look = military_2_1_look
+def_state_standing = hide_na
+out_restr = pri_a28_sr_school_1
+on_info = {+PRI_A28_COLONEL_ABOUT_SNORK} camper@military_2_school_2
+
+[camper@military_2_school_2]:walker@fight
+path_walk = military_2_2_walk
+path_look = military_2_2_look 
+;def_state_moving = assault_fire
+out_restr = pri_a28_sr_school_2
+on_signal = path_end | camper@military_2_school_2_wait %+PRI_A28_SCHOOL_2_LEAVE%
+on_info = {+PRI_A28_SCHOOL_2_LEAVE} camper@military_2_school_2_wait
+
+[camper@military_2_school_2_wait]:walker@fight
+path_walk = military_2_2_walk
+path_look = military_2_2_look 
+out_restr = pri_a28_sr_school_2
+on_info = {+PRI_A28_COLONEL_FIRE_WILL} camper@military_2_school_3
+
+[camper@military_2_school_3]:walker@fight
+path_walk = military_2_3_walk
+path_look = military_2_3_look 
+;def_state_moving = assault_fire
+out_restr = pri_a28_sr_school_3
+on_signal = path_end | {-PRI_A28_SCHOOL_DONE} %+PRI_A28_SCHOOL_DONE% 
+
+
+
+[logic@pri_a28_military_3_school]
+active = camper@military_3_school_1
+suitable = {-PRI_A28_SCHOOL_DONE =target_squad_name(pri_a16_military_squad) !check_npc_name(strelok) !check_npc_name(kovalski) !check_npc_name(base_medic)} true
+prior = 100
+on_hit = hit@def
+on_death = death@def
+post_combat_time = 0,0
+
+[camper@military_3_school_1]:walker@ignore
+path_walk = military_3_1_walk
+path_look = military_3_1_look
+def_state_standing = hide_na
+out_restr = pri_a28_sr_school_1
+on_info = {+PRI_A28_COLONEL_ABOUT_SNORK} camper@military_3_school_2
+
+[camper@military_3_school_2]:walker@fight
+path_walk = military_3_2_walk
+path_look = military_3_2_look 
+;def_state_moving = assault_fire
+out_restr = pri_a28_sr_school_2
+on_signal = path_end | camper@military_3_school_2_wait %+PRI_A28_SCHOOL_2_LEAVE%
+on_info = {+PRI_A28_SCHOOL_2_LEAVE} camper@military_3_school_2_wait
+
+[camper@military_3_school_2_wait]:walker@fight
+path_walk = military_3_2_walk
+path_look = military_3_2_look 
+out_restr = pri_a28_sr_school_2
+on_info = {+PRI_A28_COLONEL_FIRE_WILL} camper@military_3_school_3
+
+[camper@military_3_school_3]:walker@fight
+path_walk = military_3_3_walk
+path_look = military_3_3_look 
+;def_state_moving = assault_fire
+out_restr = pri_a28_sr_school_3
+on_signal = path_end | {-PRI_A28_SCHOOL_DONE} %+PRI_A28_SCHOOL_DONE% 
+
+
+
+[logic@pri_a28_military_4_school]
+active = camper@military_4_school_1
+suitable = {-PRI_A28_SCHOOL_DONE =target_squad_name(pri_a16_military_squad) !check_npc_name(strelok) !check_npc_name(kovalski) !check_npc_name(base_medic)} true
+prior = 100
+on_hit = hit@def
+on_death = death@def
+post_combat_time = 0,0
+
+[camper@military_4_school_1]:walker@ignore
+path_walk = military_4_1_walk
+path_look = military_4_1_look
+out_restr = pri_a28_sr_school_1
+on_info = {+PRI_A28_COLONEL_ABOUT_SNORK} camper@military_4_school_2
+
+[camper@military_4_school_2]:walker@fight
+path_walk = military_4_2_walk
+path_look = military_4_2_look 
+;def_state_moving = assault_fire
+out_restr = pri_a28_sr_school_2
+on_signal = path_end | camper@military_4_school_2_wait %+PRI_A28_SCHOOL_2_LEAVE%
+on_info = {+PRI_A28_SCHOOL_2_LEAVE} camper@military_4_school_2_wait
+
+[camper@military_4_school_2_wait]:walker@fight
+path_walk = military_4_2_walk
+path_look = military_4_2_look 
+out_restr = pri_a28_sr_school_2
+on_info = {+PRI_A28_COLONEL_FIRE_WILL} camper@military_4_school_3
+
+[camper@military_4_school_3]:walker@fight
+path_walk = military_4_3_walk
+path_look = military_4_3_look 
+;def_state_moving = assault_fire
+out_restr = pri_a28_sr_school_3
+on_signal = path_end | {-PRI_A28_SCHOOL_DONE} %+PRI_A28_SCHOOL_DONE% 
+
+
+
+[logic@pri_a28_military_5_school]
+active = camper@military_5_school_1
+suitable = {-PRI_A28_SCHOOL_DONE =target_squad_name(pri_a16_military_squad) !check_npc_name(strelok) !check_npc_name(kovalski) !check_npc_name(base_medic)} true
+prior = 100
+on_hit = hit@def
+on_death = death@def
+post_combat_time = 0,0
+
+[camper@military_5_school_1]:walker@ignore
+path_walk = military_5_1_walk
+path_look = military_5_1_look
+out_restr = pri_a28_sr_school_1
+on_info = {+PRI_A28_COLONEL_ABOUT_SNORK} camper@military_5_school_2
+
+[camper@military_5_school_2]:walker@fight
+path_walk = military_5_2_walk
+path_look = military_5_2_look 
+;def_state_moving = assault_fire
+out_restr = pri_a28_sr_school_2
+on_signal = path_end | camper@military_5_school_2_wait %+PRI_A28_SCHOOL_2_LEAVE%
+on_info = {+PRI_A28_SCHOOL_2_LEAVE} camper@military_5_school_2_wait
+
+[camper@military_5_school_2_wait]:walker@fight
+path_walk = military_5_2_walk
+path_look = military_5_2_look 
+out_restr = pri_a28_sr_school_2
+on_info = {+PRI_A28_COLONEL_FIRE_WILL} camper@military_5_school_3
+
+[camper@military_5_school_3]:walker@fight
+path_walk = military_5_3_walk
+path_look = military_5_3_look 
+;def_state_moving = assault_fire
+out_restr = pri_a28_sr_school_3
+on_signal = path_end | {-PRI_A28_SCHOOL_DONE} %+PRI_A28_SCHOOL_DONE% 

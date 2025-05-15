@@ -1,0 +1,9 @@
+[logic]
+active = sr_idle@wait_actor
+type = sv_only
+
+[sr_idle@wait_actor]
+on_info = {=any_actor_in_zone(zat_b52_snag_place) +ZAT_B52_REPUTATION_GIVE -ZAT_B52_SNAG_NO_PLACE} sr_idle@end %+ZAT_B52_SNAG_NO_PLACE%
+on_info2 = {+ZAT_B52_SNAG_NO_PLACE} sr_idle@end
+
+[sr_idle@end]

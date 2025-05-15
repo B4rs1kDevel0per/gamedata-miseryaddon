@@ -1,0 +1,39 @@
+[logic]
+active = sr_idle@no_task
+type = sv_only
+
+[sr_idle@no_task]
+on_info = {+JUP_B6_GIVE_TASK} sr_idle@cont 
+on_info2 = {-JUP_B6_EMPLOYED_STALKER +JUP_B6_EMPLOY_STALKER} sr_idle@wait_for_employ_done %=give_task(jup_b6_employ_stalkers)%
+on_info3 = {=is_squad_enemy_to_actor(jup_b6_stalker_freedom_squad) +JUP_B6_FREEDOM_EMPLOYED} sr_idle@nil %+JUP_B6_TASK_FAIL%, {=is_squad_enemy_to_actor(jup_b6_stalker_duty_squad) +JUP_B6_DUTY_EMPLOYED} sr_idle@nil %+JUP_B6_TASK_FAIL%, {=is_squad_enemy_to_actor(jup_b6_stalker_gonta_squad) +JUP_B6_GONTA_EMPLOYED} sr_idle@nil %+JUP_B6_TASK_FAIL%, {=is_squad_enemy_to_actor(jup_b6_stalker_exprisoner_squad) +JUP_B6_EXPRISONER_WORK_ON_SCI} sr_idle@nil %+JUP_B6_TASK_FAIL% 
+
+[sr_idle@wait_for_employ_done]
+on_info = {+JUP_B6_EMPLOYED_STALKER} sr_idle@spawn
+
+[sr_idle@spawn]
+on_info  = {+JUP_B6_FREEDOM_EMPLOYED} sr_idle@no_task %=create_squad(jup_b6_stalker_freedom_squad:jup_b41)%
+on_info2 = {+JUP_B6_DUTY_EMPLOYED} sr_idle@no_task %=create_squad(jup_b6_stalker_duty_squad:jup_b41)%
+on_info3 = {+JUP_B6_GONTA_EMPLOYED} sr_idle@check_gonta_on_zaton %=create_squad(jup_b6_stalker_gonta_squad:jup_b41)%
+on_info4 = {+JUP_B6_EXPRISONER_WORK_ON_SCI} sr_idle@no_task %=create_squad(jup_b6_stalker_exprisoner_squad:jup_b41)%
+
+[sr_idle@check_gonta_on_zaton]
+on_info = {=squad_exist(zat_b106_stalker_gonta_squad)} %=remove_squad(zat_b106_stalker_gonta_squad)%
+on_info2 = {=squad_exist(zat_b106_stalker_crab_squad)} %=remove_squad(zat_b106_stalker_crab_squad)%
+on_info3 = sr_idle@no_task %+ZAT_B106_GONTA_ON_JUPITER%
+
+[sr_idle@clean_up_gonta]
+on_info = sr_idle@no_task
+
+[sr_idle@cont]
+on_game_timer = 10 | sr_idle@reward %=give_task(jup_b6_task)%
+
+[sr_idle@reward]
+on_info = {+JUP_B6_TASK_DONE -JUP_B1_STALKER_1_IS_DEAD -JUP_B1_STALKER_2_IS_DEAD -JUP_B1_STALKER_3_IS_DEAD -JUP_B1_STALKER_4_IS_DEAD =dist_to_story_obj_ge(jup_b1_stalker_squad:140)} sr_idle@reward_2 %=remove_squad(jup_b1_stalker_squad)%, {+JUP_B1_STALKER_1_IS_DEAD +JUP_B6_TASK_DONE} sr_idle@nil, {+JUP_B1_STALKER_2_IS_DEAD +JUP_B6_TASK_DONE} sr_idle@nil, {+JUP_B1_STALKER_3_IS_DEAD +JUP_B6_TASK_DONE} sr_idle@nil, {+JUP_B1_STALKER_4_IS_DEAD +JUP_B6_TASK_DONE} sr_idle@nil
+
+[sr_idle@reward_2]
+on_info = sr_idle@reward_3 %=create_squad(jup_b1_stalker_pro_squad:jup_b41)%
+
+[sr_idle@reward_3]
+on_info = sr_idle@nil %=set_squad_neutral_to_actor(jup_b1_stalker_pro_squad)%
+
+[sr_idle@nil]

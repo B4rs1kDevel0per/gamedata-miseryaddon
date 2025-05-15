@@ -1,0 +1,9 @@
+[logic]
+active = sr_idle@start
+type = sv_only
+
+[sr_idle@start]
+on_info = {-ZAT_B14_CUT_SCENE_1_START -ZAT_B14_STALKER_DEATH +ZAT_B14_GIVE_ITEM_STALKER +ZAT_B14_STALKER_CUT_SCENE_READY !any_actor_has_item(af_quest_b14_twisted) =any_actor_in_zone(zat_b14_bar_zone)} sr_idle@end %+ZAT_B14_CUT_SCENE_1_START%
+on_info2 = {+ZAT_B14_CUT_SCENE_1_START} sr_idle@end
+
+[sr_idle@end]

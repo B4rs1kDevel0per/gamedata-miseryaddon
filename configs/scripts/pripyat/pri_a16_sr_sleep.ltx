@@ -1,0 +1,14 @@
+[logic]
+active = sr_idle@wait
+type = cl_only
+
+[sr_idle@wait]
+on_all_connected_players_inside = sr_idle@run %=run_tutorial(tutorial_sleep)%
+on_info = {+PRI_B305_FIFTH_CAM_END -PRI_A28_ACTOR_IN_ZONE_STAY} sr_idle@idle
+
+[sr_idle@run]
+on_info = {+TUTORIAL_SLEEP} %-TUTORIAL_SLEEP =run_tutorial(tutorial_sleep)%
+on_not_all_connected_players_inside = {+TUTORIAL_SLEEP} sr_idle@wait, sr_idle@wait %=stop_tutorial%
+
+[sr_idle@idle]
+on_info = {+PRI_A28_ACTOR_IN_ZONE_STAY} sr_idle@wait

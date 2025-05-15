@@ -1,0 +1,19 @@
+[logic]
+active = sr_idle@first
+type = sv_only
+
+[sr_idle@first]
+on_info  = {-ZAT_B101_ONE_HELI_INFO +PLAY_SOUND_HELI_5} %+ZAT_B101_ONE_HELI_INFO%
+on_info2 = {-ZAT_B101_ONE_HELI_INFO +PLAY_SOUND_HELI_4} %+ZAT_B101_ONE_HELI_INFO%
+on_info4 = {+ZAT_B101_HELI_5_SOUND} sr_idle@timer_1
+on_info5 = {+JUP_B8_HELI_4_SOUND} sr_idle@timer_1
+[sr_idle@timer_1]
+on_game_timer = 20 | sr_idle@second %+ZAT_B101_JUP_B8_CAMERA_ONE_STOP%
+
+[sr_idle@second]
+on_info = {+ZAT_B101_HELI_5_SOUND +JUP_B8_HELI_4_SOUND} sr_idle@timer_2
+
+[sr_idle@timer_2]
+on_game_timer = 20 | sr_idle@nil %+ZAT_B101_JUP_B8_CAMERA_BOTH_STOP%
+
+[sr_idle@nil]

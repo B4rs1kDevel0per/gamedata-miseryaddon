@@ -1,0 +1,96 @@
+[logic]
+active = sr_idle@determine_cl_sv
+type = shared_with_cl_data
+
+[sr_idle@determine_cl_sv]
+on_info = {=isServer} sr_idle@sv_start
+on_info2 = {=isClient} sr_idle@cl_start
+
+;server logic
+[sr_idle@sv_start]
+on_info  = {+PRI_A25_RFI_SOURCE_ELIMINATED -PRI_A28_EVACUATION_START} sr_idle@sv_management %=spawn_object(pri_b305_signal_man:pri_b305_signal_temp_walk) =create_squad(pri_b305_dogs_squad:pri_b305_dogs)%
+
+[sr_idle@sv_management]
+on_info = {=squad_exist(pri_a16_vano_squad) -PRI_A16_VANO_WAS_ALIVE_WHEN_REMOVED} %=remove_squad(pri_a16_vano_squad) +PRI_A16_VANO_WAS_ALIVE_WHEN_REMOVED%
+on_info2 = {=story_object_exist(pri_a17_military_sergeant_morozov) -PRI_B305_KILL_MOROZOV} %+PRI_B305_KILL_MOROZOV =destroy_object(story:pri_a17_military_sergeant_morozov)%
+on_game_timer = 20 | {=squad_exist(pri_a25_base_army_medic)} %=remove_squad(pri_a25_base_army_medic) +PRI_B305_MEDIC_HOME +PRI_B305_MEDIC_SQUAD_REMOVED%
+on_info3 = {!squad_exist(pri_a25_base_army_medic)} sr_idle@sv_actor_spawn %=create_squad(pri_a25_base_army_medic:pri_a16) +PRI_B305_1_CAM_ACTOR +PRI_B305_1_CAM_ACTOR_CL =create_cutscene_actor_with_weapon(pri_b305_actor_visual:pri_a16_pri_b305_actor_walk)%
+
+[sr_idle@sv_actor_spawn]
+on_info1 = {+PRI_B305_1_CAM_ACTOR} sr_idle@sv_cam1_timer
+on_info2 = {+PRI_B305_2_CAM_ACTOR} sr_idle@sv_cam2_timer %+PRI_B305_SECOND_CAM_START%
+
+[sr_idle@sv_cam1_timer]
+on_game_timer = 80 | sr_idle@sv_wait %+PRI_B305_FIRST_CAM_START_CL%
+
+[sr_idle@sv_cam2_timer]
+on_game_timer = 50 | sr_idle@sv_wait2 %+PRI_B305_SECOND_CAM_START_CL%
+
+[sr_idle@sv_wait]
+on_info = {+PRI_B305_FIRST_CAM_END_CL} sr_idle@sv_save_for_a25
+
+[sr_idle@sv_save_for_a25]
+on_info = {-SAVE_PRI_A25_FREED_MEDIC} %+SAVE_PRI_A25_FREED_MEDIC =scenario_autosave(st_save_pri_a25_freed_medic)%
+on_info2 = {+SAVE_PRI_A25_FREED_MEDIC} sr_idle@sv_second_cam
+
+[sr_idle@sv_second_cam]
+on_actor_inside = sr_idle@sv_actor_spawn %+PRI_B305_2_CAM_ACTOR +PRI_B305_2_CAM_ACTOR_CL -PRI_B305_1_CAM_ACTOR =create_cutscene_actor_with_weapon(pri_b305_actor_visual_2:pri_a28_cutscene_actor_base_walk)%
+
+[sr_idle@sv_wait2]
+on_info = {+PRI_B305_SECOND_CAM_END_CL} sr_idle@sv_keeper_of_secrets_archievement
+
+;*************************************************************************************************************
+; Логика бонуса за ачивку "Хранитель тайн"
+;*************************************************************************************************************
+[sr_idle@sv_keeper_of_secrets_archievement]
+on_info = {+KEEPER_OF_SECRETS_ACHIEVEMENT_GAINED} sr_idle@sv_strelok_regeneration_timer
+
+[sr_idle@sv_strelok_regeneration_timer]
+on_game_timer = 100 | sr_idle@sv_strelok_regeneration  
+
+[sr_idle@sv_strelok_regeneration]
+on_info = sr_idle@sv_strelok_regeneration_timer %=heal_squad(pri_a16_military_squad)% 
+;*************************************************************************************************************
+
+;client logic
+[sr_idle@cl_start]
+on_info  = {+PRI_A25_RFI_SOURCE_ELIMINATED -PRI_A28_EVACUATION_START} sr_idle@cl_management %=run_postprocess(fade_in)%
+
+[sr_idle@cl_management]
+on_info = %=run_postprocess(black:5612:true)%
+on_info2 = {+PRI_B305_1_CAM_ACTOR_CL} sr_idle@cl_actor_spawn %=xrmpe_teleport_local_actor(pri_a16_pri_b305_kirillov_walk:pri_a28_cutscene_actor_base_walk)%
+
+[sr_idle@cl_actor_spawn]
+on_info1 = {+PRI_B305_1_CAM_ACTOR} sr_idle@cl_cam1_timer %=disable_ui%
+on_info2 = {+PRI_B305_2_CAM_ACTOR} sr_idle@cl_cam2_timer %=run_postprocess(black:5613:true) =disable_ui%
+
+[sr_idle@cl_cam1_timer]
+on_info = {+PRI_B305_FIRST_CAM_START_CL} sr_cutscene@cl_cam1 
+
+[sr_idle@cl_cam2_timer]
+on_info = {+PRI_B305_SECOND_CAM_START_CL} sr_cutscene@cl_cam2_p1 
+
+[sr_cutscene@cl_cam1]
+point = pri_a16_pri_b305_actor_walk
+look = pri_a16_pri_b305_actor_walk
+cam_effector = scenario_cam\pripyat\pri_b305_catscene_1_medik_back	
+global_cameffect = true
+on_game_timer = 10 | {-PRI_B305_FIRST_CAM_READY} %+PRI_B305_FIRST_CAM_READY =stop_postprocess(5612)%
+on_info = {+PRI_B305_ACTOR_UNDERSTAND_DONE_END} %=stop_sr_cutscene =enable_ui +PRI_B305_FIRST_CAM_END%
+on_info2 = {+PRI_B305_FIRST_CAM_READY} %=stop_postprocess(5612)%
+on_signal = cameff_end | sr_idle@cl_second_cam %+PRI_B305_FIRST_CAM_END +PRI_B305_FIRST_CAM_END_CL =give_task(pri_b305_kovalskiy_talk)% 
+
+[sr_idle@cl_second_cam]
+on_info = {+PRI_B305_2_CAM_ACTOR_CL} sr_idle@cl_actor_spawn %=run_postprocess(fade_in)%
+
+[sr_cutscene@cl_cam2_p1]
+point = pri_a28_cutscene_actor_base_walk
+look = pri_a28_cutscene_actor_base_walk
+cam_effector = pri_b305_camera_2
+global_cameffect = true
+on_game_timer = 50 | {-PRI_B305_SECOND_CAM_READY} %+PRI_B305_SECOND_CAM_READY%
+on_info = {-PRI_B305_CAM2_FADE_OUT} %+PRI_B305_CAM2_FADE_OUT =stop_postprocess(5613)%
+on_info2 = {+PRI_B305_ACTOR_CHECK_SIGNAL_DONE_END} %=stop_sr_cutscene +PRI_B305_SECOND_CAM_END =enable_ui%
+on_signal = cameff_end | sr_idle@nil %+PRI_B305_SECOND_CAM_END +PRI_B305_SECOND_CAM_END_CL =give_task(pri_b305_check_unknown_signal)%
+
+[sr_idle@nil]

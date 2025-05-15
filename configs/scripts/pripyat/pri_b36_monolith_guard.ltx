@@ -1,0 +1,75 @@
+[logic@guard_1]
+active = walker@guard_1
+suitable = {=check_npc_name(monolith)} true
+prior = 100
+
+[walker@guard_1]
+path_walk = pri_b36_guard_1_1_walk
+path_look = pri_b36_guard_1_1_look
+on_info = {+PRI_B36_AHTUNG} walker@fire_actor_1
+on_actor_dist_le = 50 | {=see_actor} walker@fire_actor_1 %+PRI_B36_AHTUNG%
+on_sound = any_actor|WPN_shoot|10000|0.2| {=dist_to_actor_le(70)} walker@fire_actor_1 %+PRI_B36_AHTUNG%
+on_sound2 = any_actor|MST_step|15|0.5| walker@fire_actor_1 %+PRI_B36_AHTUNG%
+on_sound3 = any_actor|WPN_empty|15|0.3| walker@fire_actor_1 %+PRI_B36_AHTUNG%
+on_sound4 = any_actor|WPN_reload|15|0.3| walker@fire_actor_1 %+PRI_B36_AHTUNG%
+on_sound5 = any_actor|MST_damage|10|0.3| walker@fire_actor_1 %+PRI_B36_AHTUNG%
+sound_idle = state
+combat_ignore_cond = {=is_enemy_actor} true, {=check_enemy_name(sim_default)} true
+danger = danger_1
+gather_items_enabled = false
+help_wounded_enabled = false
+corpse_detection_enabled = false
+
+[walker@fire_actor_1]
+path_walk = pri_b36_guard_1_1_walk
+path_look = pri_b36_guard_1_1_look
+out_restr = pri_b36_sr_half_out_restr
+sound_idle = state
+gather_items_enabled = false
+help_wounded_enabled = false
+corpse_detection_enabled = false
+
+[danger_1]
+ignore_distance = 0
+
+;[hit_1]
+;on_info = {=hit_by_actor -PRI_B36_AHTUNG} %+PRI_B36_AHTUNG%
+
+;------------------------- 2 ------------------------------
+
+[logic@guard_2]
+active = walker@guard_2
+suitable = {=check_npc_name(monolith)} true
+prior = 100
+
+[walker@guard_2]
+path_walk = pri_b36_guard_2_1_walk
+path_look = pri_b36_guard_2_1_look
+on_info = {+PRI_B36_AHTUNG} walker@fire_actor_2
+on_actor_dist_le = 50 | {=see_actor} walker@fire_actor_2 %+PRI_B36_AHTUNG%
+on_sound = any_actor|WPN_shoot|10000|0.2| {=dist_to_actor_le(70)} walker@fire_actor_2 %+PRI_B36_AHTUNG%
+on_sound2 = any_actor|MST_step|15|0.5| walker@fire_actor_2 %+PRI_B36_AHTUNG%
+on_sound3 = any_actor|WPN_empty|15|0.3| walker@fire_actor_2 %+PRI_B36_AHTUNG%
+on_sound4 = any_actor|WPN_reload|15|0.3| walker@fire_actor_2 %+PRI_B36_AHTUNG%
+on_sound5 = any_actor|MST_damage|10|0.3| walker@fire_actor_2 %+PRI_B36_AHTUNG%
+sound_idle = state
+combat_ignore_cond = {=is_enemy_actor} true, {=check_enemy_name(sim_default)} true
+danger = danger_2
+gather_items_enabled = false
+help_wounded_enabled = false
+corpse_detection_enabled = false
+
+[walker@fire_actor_2]
+path_walk = pri_b36_guard_2_1_walk
+path_look = pri_b36_guard_2_1_look
+out_restr = pri_b36_sr_half_out_restr
+sound_idle = state
+gather_items_enabled = false
+help_wounded_enabled = false
+corpse_detection_enabled = false
+
+[danger_2]
+ignore_distance = 0
+
+;[hit_2]
+;on_info = {=hit_by_actor -PRI_B36_AHTUNG} %+PRI_B36_AHTUNG%

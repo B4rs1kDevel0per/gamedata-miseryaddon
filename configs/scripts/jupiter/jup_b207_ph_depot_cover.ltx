@@ -1,0 +1,13 @@
+[logic]
+active = ph_idle@wait
+type = sv_only
+
+[ph_idle@wait]
+on_info = {+JUP_B207_MORGAN_GIVED_DEPOT} ph_idle@hit %=xrmpe_client_spawn(jup_b207_depot_cover:jup_b207_depot_cover)%
+on_info2 = {+JUP_B207_FREEDOM_KNOWS_ABOUT_DEPOT} ph_idle@hit %=xrmpe_client_spawn(jup_b207_depot_cover:jup_b207_depot_cover)%
+on_info3 = {+JUP_B207_DUTY_KNOWS_ABOUT_DEPOT} ph_idle@hit %=xrmpe_client_spawn(jup_b207_depot_cover:jup_b207_depot_cover)%
+
+[ph_idle@hit]
+on_info = {=story_object_exist(jup_b207_depot_cover_id)} ph_idle@nil %=force_obj(jup_b207_depot_cover_id) =destroy_object%
+
+[ph_idle@nil]

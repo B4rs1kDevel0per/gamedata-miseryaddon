@@ -1,0 +1,17 @@
+[logic]
+active = sr_idle@jup_a9_logic
+type = sv_only
+
+[sr_idle@jup_a9_logic]
+on_info1 = {-JUP_A9_DELIVERY_INFO_TAKED =any_actor_has_item(jup_a9_delivery_info)} %+JUP_A9_DELIVERY_INFO_TAKED%
+on_info2 = {-JUP_A9_LOSSES_INFO_TAKED =any_actor_has_item(jup_a9_losses_info)} %+JUP_A9_LOSSES_INFO_TAKED%
+on_info3 = {-JUP_A9_MEETING_INFO_TAKED =any_actor_has_item(jup_a9_meeting_info)} %+JUP_A9_MEETING_INFO_TAKED%
+on_info4 = {-JUP_A9_EVACUATION_INFO_TAKED =any_actor_has_item(jup_a9_evacuation_info)} %+JUP_A9_EVACUATION_INFO_TAKED%
+
+on_info5  = {+ZAT_B107_EVACUATION_INFO_FULL +JUP_A9_WAY_INFO -JUP_A9_CONSERVATION_INFO -JUP_A9_POWER_INFO -JUP_A9_WAY_TO_PRIPYAT_GAS_INFO_STARTED -JUP_A9_WAY_TO_PRIPYAT_POWER_INFO_STARTED} %=give_task(jup_a9_way_to_pripyat_power_info) =give_task(jup_a9_way_to_pripyat_gas_info)%
+on_info6  = {+ZAT_B107_EVACUATION_INFO_FULL -JUP_A9_WAY_INFO +JUP_A9_CONSERVATION_INFO -JUP_A9_POWER_INFO -JUP_A9_WAY_TO_PRIPYAT_WAY_INFO_STARTED -JUP_A9_WAY_TO_PRIPYAT_POWER_INFO_STARTED} %=give_task(jup_a9_way_to_pripyat_power_info) =give_task(jup_a9_way_to_pripyat_way_info)%
+on_info7 = {+ZAT_B107_EVACUATION_INFO_FULL -JUP_A9_WAY_INFO -JUP_A9_CONSERVATION_INFO +JUP_A9_POWER_INFO -JUP_A9_WAY_TO_PRIPYAT_WAY_INFO_STARTED -JUP_A9_WAY_TO_PRIPYAT_GAS_INFO_STARTED} %=give_task(jup_a9_way_to_pripyat_gas_info) =give_task(jup_a9_way_to_pripyat_way_info)%
+on_info8 = {+ZAT_B107_EVACUATION_INFO_FULL +JUP_A9_WAY_INFO +JUP_A9_CONSERVATION_INFO +JUP_A9_POWER_INFO -JUP_A9_ACTOR_FOUND_MAIN_DOCUMENTS} %+JUP_A9_ACTOR_FOUND_MAIN_DOCUMENTS%
+on_info9 = {+ZAT_B107_EVACUATION_INFO_FULL +JUP_A9_WAY_INFO +JUP_A9_CONSERVATION_INFO +JUP_A9_POWER_INFO -JUP_A9_WAY_TO_PRIPYAT_TECH_STARTED} sr_idle@jup_a9_end %+JUP_A9_ACTOR_FOUND_MAIN_DOCUMENTS =give_task(jup_a9_way_to_pripyat_tech)%
+
+[sr_idle@jup_a9_end]

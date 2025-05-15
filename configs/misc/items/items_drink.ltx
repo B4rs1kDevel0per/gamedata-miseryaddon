@@ -1,0 +1,1064 @@
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;; IMPORTED DRINK ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+[vodka_quality]:booster ;1l
+$spawn				= "food and drugs\vodka"
+cform				= skeleton
+visual				= dynamics\drink\drink_vodka.ogf
+description			= st_vodka_quality_descr
+
+inv_name			= st_vodka_quality
+inv_name_short		= st_vodka_quality
+inv_weight			= 1.454
+
+inv_grid_width		= 1
+inv_grid_height		= 1
+inv_grid_x			= 22
+inv_grid_y			= 5
+cost				= 2663
+
+attach_angle_offset		= 0.000000, 0.000000, 0.000000
+attach_position_offset	= 0.087266, -0.078540, 0.052360
+attach_bone_name		= bip01_r_hand
+auto_attach				= false
+
+bone_name				= bip01_r_hand
+position_offset			= 0.0,0.0,0.0
+angle_offset			= 1.570790,1.570790,3.92699
+
+break_particles			= destroy_fx\destroy_bottle
+break_sound				= material\bottle\collide\bottle_break_1
+
+boost_time				= 38
+boost_radiation_restore	= 0.00044
+
+eat_alcohol				= 0.124
+eat_satiety				= 0.028
+eat_sleepiness			= 0.054
+
+eat_health				= 0.021
+
+use_sound				= interface\inv_drink_flask_effect
+
+lsd_factor_mul 		= 1.2
+lsd_factor_sqprop 	= 1.4
+
+repair_part_bonus		= 0.04
+
+thirst_factor = -0.1
+
+[vodka_quality2]:vodka_quality
+inv_name			= st_vodka_quality2
+inv_name_short		= st_vodka_quality2
+inv_weight			= 1.126
+
+inv_grid_x			= 22
+inv_grid_y			= 6
+cost				= 1842
+
+[vodka_quality3]:vodka_quality
+inv_name			= st_vodka_quality3
+inv_name_short		= st_vodka_quality3
+inv_weight			= 0.798
+
+inv_grid_x			= 22
+inv_grid_y			= 7
+cost				= 1021
+
+[beer]:booster ;500ml
+$spawn				= "food and drugs\vodka"
+cform				= skeleton
+visual				= dynamics\devices\dev_beer\dev_beer.ogf
+description			= st_beer_descr
+
+inv_name			= st_beer
+inv_name_short		= st_beer
+inv_weight			= 0.71
+
+inv_grid_width		= 1
+inv_grid_height		= 1
+inv_grid_x			= 15
+inv_grid_y			= 46
+cost				= 1349
+
+attach_angle_offset		= 0.000000, 0.000000, 0.000000
+attach_position_offset	= 0.087266, -0.078540, 0.052360
+attach_bone_name		= bip01_r_hand
+auto_attach				= false
+
+bone_name				= bip01_r_hand
+position_offset			= 0.0,0.0,0.0
+angle_offset			= 1.570790,1.570790,3.92699
+
+break_particles			= destroy_fx\destroy_bottle
+break_sound				= material\bottle\collide\bottle_break_1
+
+boost_time				= 36
+boost_radiation_restore	= 0.00026
+
+eat_alcohol				= 0.032
+eat_satiety 			= 0.247
+eat_sleepiness			= 0.018
+eat_health				= 0.042
+
+use_sound				= interface\inv_drink_flask_beer
+
+thirst_factor = 0.15
+
+lsd_factor_sqprop 	= 1.2
+
+[water_drink]:booster ;350ml
+$spawn				= "food and drugs\energy_drink"
+inv_name			= st_water_drink
+inv_name_short		= st_water_drink
+visual				= dynamics\devices\dev_drink_stalker\dev_drink_water
+description			= st_water_drink_descr
+cost				= 613
+
+inv_grid_width		= 1
+inv_grid_height		= 1
+inv_grid_x			= 17
+inv_grid_y			= 7
+inv_weight			= 0.38
+
+attach_angle_offset		= 0.000000, 0.000000, 0.000000
+attach_position_offset	= 0.087266, -0.078540, 0.052360
+attach_bone_name		= bip01_r_hand
+auto_attach				= false
+
+boost_time				= 32
+boost_radiation_restore	= 0.00021
+
+eat_alcohol				= -0.14
+eat_satiety 			= 0.112
+eat_sleepiness			= -0.06
+eat_health				= 0.027
+
+use_sound				= interface\inv_drink_can2
+
+repair_part_bonus		= 0.01
+
+thirst_factor = 0.35
+
+lsd_factor = -0.2
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;; ZONE-PRODUCED DRINK ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+[bottle_metal]:booster ;1l
+$spawn				= "food and drugs\energy_drink"
+inv_name_short		= st_bottle_metal
+inv_name			= st_bottle_metal
+visual				= dynamics\drink\drink_water
+description			= st_bottle_metal_descr
+cost				= 1264
+
+inv_grid_width		= 1
+inv_grid_height		= 1
+inv_grid_x			= 25
+inv_grid_y			= 5
+inv_weight			= 1.420
+
+attach_angle_offset		= 0.000000, 0.000000, 0.000000
+attach_position_offset	= 0.087266, -0.078540, 0.052360
+attach_bone_name		= bip01_r_hand
+auto_attach				= false
+
+boost_time				= 34
+boost_radiation_restore	= 0.00035
+
+eat_alcohol				= 0.144
+eat_satiety				= 0.018
+eat_sleepiness			= 0.065
+eat_health				= -0.034
+
+use_sound			= interface\inv_drink_flask_effect
+
+lsd_factor_mul = 2
+lsd_factor_sqprop = 1.6
+
+thirst_factor = -0.1
+
+repair_part_bonus		= 0.02
+
+[bottle_metal2]:bottle_metal
+inv_name_short		= st_bottle_metal2
+inv_name			= st_bottle_metal2
+cost				= 876
+
+inv_grid_x			= 25
+inv_grid_y			= 6
+inv_weight			= 1.103
+
+[bottle_metal3]:bottle_metal
+inv_name_short		= st_bottle_metal3
+inv_name			= st_bottle_metal3
+cost				= 488
+
+inv_grid_x			= 25
+inv_grid_y			= 7
+inv_weight			= 0.786
+
+[tea]:booster ;1l
+$spawn				= "food and drugs\energy_drink"
+inv_name			= st_tea
+inv_name_short		= st_tea
+visual				= dynamics\drink\drink_tea
+description			= st_tea_descr
+cost				= 4473
+
+inv_grid_width		= 1
+inv_grid_height		= 2
+inv_grid_x			= 20
+inv_grid_y			= 44
+inv_weight			= 1.035
+
+attach_angle_offset		= 0.000000, 0.000000, 0.000000
+attach_position_offset	= 0.087266, -0.078540, 0.052360
+attach_bone_name		= bip01_r_hand
+auto_attach				= false
+
+boost_time				= 38
+boost_radiation_restore	= 0.00044
+
+eat_alcohol				= -0.274
+eat_satiety				= 0.226
+eat_sleepiness			= -0.105
+eat_health				= 0.032
+
+use_sound				= interface\inv_drink_tea
+
+thirst_factor = 0.35
+
+lsd_factor		= -0.2
+
+[tea2]:tea
+inv_name			= st_tea2
+inv_name_short		= st_tea2
+cost				= 3082
+
+inv_grid_x			= 21
+inv_grid_y			= 44
+inv_weight			= 0.701
+
+[tea3]:tea
+inv_name			= st_tea3
+inv_name_short		= st_tea3
+cost				= 1691
+
+inv_grid_x			= 22
+inv_grid_y			= 44
+inv_weight			= 0.368
+
+[flask]:booster ;1l
+$spawn				= "food and drugs\energy_drink"
+inv_name			= st_flask
+inv_name_short		= st_flask
+visual				= dynamics\drink\drink_flask
+description			= st_flask_descr
+cost				= 658
+
+inv_grid_width		= 1
+inv_grid_height		= 1
+inv_grid_x			= 26
+inv_grid_y			= 5
+inv_weight			= 1.33
+
+attach_angle_offset		= 0.000000, 0.000000, 0.000000
+attach_position_offset	= 0.087266, -0.078540, 0.052360
+attach_bone_name		= bip01_r_hand
+auto_attach				= false
+
+boost_time				= 31
+boost_radiation_restore	= 0.00019
+
+eat_alcohol				= -0.079
+eat_satiety 			= 0.066
+eat_sleepiness			= -0.06
+eat_health				= 0.018
+
+use_sound				= interface\inv_drink_flask_2
+
+repair_part_bonus		= 0.01
+
+thirst_factor = 0.35
+
+lsd_factor		= -0.35
+
+[flask2]:flask
+inv_name			= st_flask2
+inv_name_short		= st_flask2
+cost				= 472
+
+inv_grid_x			= 26
+inv_grid_y			= 6
+inv_weight			= 0.996
+
+[flask3]:flask
+inv_name			= st_flask3
+inv_name_short		= st_flask3
+cost				= 286
+
+inv_grid_x			= 26
+inv_grid_y			= 7
+inv_weight			= 0.663
+
+[drink_crow]:booster
+$spawn				= "food and drugs\energy_drink"
+inv_name			= st_drink_crow
+inv_name_short		= st_drink_crow
+visual				= dynamics\drink\drink_crow.ogf
+description			= st_drink_crow_descr
+cost				= 1700;5660 ; Too easy to hunt crows 2 X Buckshoot + 1 x Jerrycan ~= 240 RU cooking cost, 1700 base price gives 821 RU making 581 RU profit, previously 2493 RU of profit
+
+inv_grid_x			= 38
+inv_grid_y			= 0
+inv_weight			= 0.223
+
+attach_angle_offset		= 0.000000, 0.000000, 0.000000
+attach_position_offset	= 0.087266, -0.078540, 0.052360
+attach_bone_name		= bip01_r_hand
+auto_attach				= false
+
+boost_time				= 174
+boost_radiation_restore	= 0.00044
+
+eat_alcohol				= -0.274
+eat_satiety				= 0.446
+eat_sleepiness			= -0.396
+eat_health				= 0.071
+
+use_sound				= interface\inv_drink_flask_2
+
+thirst_factor = -0.1
+
+lsd_factor_mul = 1.8
+lsd_factor_sqprop = 1.5
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;; ZONE-PRODUCED SMOKES ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+[joint]:booster
+$spawn				= "devices\pda"
+visual				= dynamics\drink\drink_joint.ogf
+description			= st_joint_descr
+
+inv_name			= st_joint
+inv_name_short		= st_joint
+inv_weight			= 0.001
+
+inv_grid_width		= 1
+inv_grid_height		= 1
+inv_grid_x			= 12
+inv_grid_y			= 8
+cost				= 380
+
+attach_angle_offset		= -0.287979, 1.560923, 1.544060
+attach_position_offset	= 0.096910, -0.013594, 0.107925
+attach_bone_name		= bip01_r_hand
+auto_attach				= false
+
+// should be deleted after update
+bone_name				= bip01_r_hand
+position_offset			= 0.0,0.0,0.0
+angle_offset			= 1.570790,1.570790,3.92699
+
+[joint_smoke]:joint ; actual smoking boost
+inv_grid_width		= 0
+inv_grid_height		= 0
+inv_weight			= 0
+boost_time					= 421
+boost_radiation_restore		= 0.0000001826
+boost_telepat_protection	= 0.0032
+;boost_power_restore		= -0.0022
+;boost_max_weight			= -3.461
+eat_alcohol					= -0.083
+eat_satiety					= -0.074
+eat_sleepiness				= 0.17
+use_sound					= interface\inv_smoke
+
+lsd_factor		= 0.2
+
+[marijuana]:booster ;x3
+$spawn				= "devices\pda"
+visual				= dynamics\equipments\trade\sack.ogf
+description			= st_marijuana_descr
+
+inv_name			= st_marijuana
+inv_name_short		= st_marijuana
+inv_weight			= 0.034
+
+inv_grid_width		= 1
+inv_grid_height		= 1
+inv_grid_x			= 20
+inv_grid_y			= 8
+
+cost				= 3620
+
+attach_angle_offset		= -0.287979, 1.560923, 1.544060
+attach_position_offset	= 0.096910, -0.013594, 0.107925
+attach_bone_name		= bip01_r_hand
+auto_attach				= false
+
+// should be deleted after update
+bone_name				= bip01_r_hand
+position_offset			= 0.0,0.0,0.0
+angle_offset			= 1.570790,1.570790,3.92699
+
+[marijuana_smoke]:marijuana ; actual smoking boost
+inv_grid_width		= 0
+inv_grid_height		= 0
+inv_weight			= 0
+boost_time					= 652
+boost_radiation_restore		= 0.0000002901
+boost_telepat_protection	= 0.0083
+;boost_power_restore		= -0.0041
+;boost_max_weight			= -6.854
+eat_alcohol					= -0.092
+eat_satiety					= -0.294
+eat_sleepiness				= 0.21
+use_sound					= interface\inv_smoke_bongo
+
+lsd_factor		= 0.1
+
+[marijuana2]:marijuana
+inv_name			= st_marijuana2
+inv_name_short		= st_marijuana2
+inv_weight			= 0.033
+
+inv_grid_x			= 20
+inv_grid_y			= 9
+
+cost				= 1830
+
+[marijuana2_smoke]:marijuana_smoke
+
+[marijuana3]:marijuana
+inv_name			= st_marijuana3
+inv_name_short		= st_marijuana3
+inv_weight			= 0.032
+
+inv_grid_x			= 20
+inv_grid_y			= 10
+
+cost				= 1040
+
+[marijuana3_smoke]:marijuana_smoke
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;; IMPORTED SMOKES ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+[cigarettes]:booster ;x3
+$spawn				= "devices\pda"
+visual				= dynamics\drink\drink_cigar0.ogf
+description			= st_cigarettes_descr
+
+inv_name			= st_cigarettes
+inv_name_short		= st_cigarettes
+inv_weight			= 0.005
+
+inv_grid_width		= 1
+inv_grid_height		= 1
+inv_grid_x			= 23
+inv_grid_y			= 7
+cost				= 2020
+
+attach_angle_offset		= -0.287979, 1.560923, 1.544060
+attach_position_offset	= 0.096910, -0.013594, 0.107925
+attach_bone_name		= bip01_r_hand
+auto_attach				= false
+
+// should be deleted after update
+bone_name				= bip01_r_hand
+position_offset			= 0.0,0.0,0.0
+angle_offset			= 1.570790,1.570790,3.92699
+
+[cigarettes_smoke]:cigarettes ; actual smoking boost
+inv_grid_width		= 0
+inv_grid_height		= 0
+inv_weight			= 0
+boost_time					= 22
+boost_radiation_restore		= 0.00046
+eat_alcohol					= -0.052
+eat_satiety					= 0.029
+eat_sleepiness				= -0.036
+eat_health					= -0.014
+use_sound					= interface\inv_smoke
+
+lsd_factor		= 0.2
+
+[cigarettes2]:cigarettes
+inv_name			= st_cigarettes2
+inv_name_short		= st_cigarettes2
+inv_weight			= 0.004
+
+inv_grid_x			= 21
+inv_grid_y			= 8
+cost				= 1540
+
+[cigarettes2_smoke]:cigarettes_smoke
+
+[cigarettes3]:cigarettes
+inv_name			= st_cigarettes3
+inv_name_short		= st_cigarettes3
+inv_weight			= 0.003
+
+inv_grid_x			= 21
+inv_grid_y			= 9
+cost				= 1060
+
+[cigarettes3_smoke]:cigarettes_smoke
+
+[cigarettes4]:cigarettes
+inv_name			= st_cigarettes4
+inv_name_short		= st_cigarettes4
+inv_weight			= 0.002
+
+inv_grid_x			= 21
+inv_grid_y			= 10
+cost				= 580
+
+[cigarettes4_smoke]:cigarettes_smoke
+
+[cigar1]:booster ;x3
+$spawn				= "devices\pda"
+visual				= dynamics\drink\drink_cigar1.ogf
+
+description			= st_cigar1_descr
+inv_name			= st_cigar1
+inv_name_short		= st_cigar1
+inv_weight			= 0.004
+
+inv_grid_width		= 1
+inv_grid_height		= 1
+inv_grid_x			= 22
+inv_grid_y			= 8
+
+cost				= 1506
+
+attach_angle_offset		= -0.287979, 1.560923, 1.544060
+attach_position_offset	= 0.096910, -0.013594, 0.107925
+attach_bone_name		= bip01_r_hand
+auto_attach				= false
+
+// should be deleted after update
+bone_name				= bip01_r_hand
+position_offset			= 0.0,0.0,0.0
+angle_offset			= 1.570790,1.570790,3.92699
+
+[cigar1_smoke]:cigar1 ; actual smoking boost
+inv_grid_width		= 0
+inv_grid_height		= 0
+inv_weight			= 0
+boost_time					= 24
+boost_radiation_restore		= 0.00044
+eat_alcohol					= -0.0585
+eat_satiety					= 0.031
+eat_sleepiness				= -0.049
+eat_health					= -0.012
+use_sound					= interface\inv_smoke
+
+lsd_factor		= 0.3
+
+[cigar1_2]:cigar1
+inv_name			= st_cigar1_2
+inv_name_short		= st_cigar1_2
+inv_weight			= 0.003
+
+inv_grid_x			= 22
+inv_grid_y			= 9
+
+cost				= 1004
+
+[cigar1_2_smoke]:cigar1_smoke
+
+[cigar1_3]:cigar1
+inv_name			= st_cigar1_3
+inv_name_short		= st_cigar1_3
+inv_weight			= 0.002
+
+inv_grid_x			= 22
+inv_grid_y			= 10
+
+cost				= 502
+
+[cigar1_3_smoke]:cigar1_smoke
+
+[cigar2]:booster ;x3
+$spawn				= "devices\pda"
+visual				= dynamics\drink\drink_cigar2.ogf
+
+description			= st_cigar2_descr
+inv_name			= st_cigar2
+inv_name_short		= st_cigar2
+inv_weight			= 0.004
+
+inv_grid_width		= 1
+inv_grid_height		= 1
+inv_grid_x			= 23
+inv_grid_y			= 8
+
+cost				= 1792
+
+attach_angle_offset		= -0.287979, 1.560923, 1.544060
+attach_position_offset	= 0.096910, -0.013594, 0.107925
+attach_bone_name		= bip01_r_hand
+auto_attach				= false
+
+// should be deleted after update
+bone_name				= bip01_r_hand
+position_offset			= 0.0,0.0,0.0
+angle_offset			= 1.570790,1.570790,3.92699
+
+[cigar2_smoke]:cigar2 ; actual smoking boost
+inv_grid_width		= 0
+inv_grid_height		= 0
+inv_weight			= 0
+boost_time					= 26
+boost_radiation_restore		= 0.00051
+eat_alcohol					= -0.066
+eat_satiety					= 0.026
+eat_sleepiness				= -0.06
+eat_health					= -0.010
+use_sound					= interface\inv_smoke
+
+lsd_factor		= 0.3
+
+[cigar2_2]:cigar2
+inv_name			= st_cigar2_2
+inv_name_short		= st_cigar2_2
+inv_weight			= 0.003
+
+inv_grid_x			= 23
+inv_grid_y			= 9
+
+cost				= 1228
+
+[cigar2_2_smoke]:cigar2_smoke
+
+[cigar2_3]:cigar2
+inv_name			= st_cigar2_3
+inv_name_short		= st_cigar2_3
+inv_weight			= 0.002
+
+inv_grid_x			= 23
+inv_grid_y			= 10
+
+cost				= 664
+
+[cigar2_3_smoke]:cigar2_smoke
+
+[cigar3]:booster
+$spawn				= "devices\pda"
+visual				= dynamics\drink\drink_cigar3.ogf
+
+description			= st_cigar3_descr
+inv_name			= st_cigar3
+inv_name_short		= st_cigar3
+inv_weight			= 0.004
+
+inv_grid_width		= 1
+inv_grid_height		= 1
+inv_grid_x			= 24
+inv_grid_y			= 8
+
+cost				= 2081
+
+attach_angle_offset		= -0.287979, 1.560923, 1.544060
+attach_position_offset	= 0.096910, -0.013594, 0.107925
+attach_bone_name		= bip01_r_hand
+auto_attach				= false
+
+// should be deleted after update
+bone_name				= bip01_r_hand
+position_offset			= 0.0,0.0,0.0
+angle_offset			= 1.570790,1.570790,3.92699
+
+[cigar3_smoke]:cigar3 ; actual smoking boost
+inv_grid_width		= 0
+inv_grid_height		= 0
+inv_weight			= 0
+boost_time					= 28
+boost_radiation_restore		= 0.00061
+eat_alcohol					= -0.0725
+eat_satiety					= 0.023
+eat_sleepiness				= -0.074
+eat_health					= -0.008
+use_sound					= interface\inv_smoke
+
+lsd_factor		= 0.3
+
+[cigar3_2]:cigar3
+inv_name			= st_cigar3_2
+inv_name_short		= st_cigar3_2
+inv_weight			= 0.003
+
+inv_grid_x			= 24
+inv_grid_y			= 9
+
+cost				= 1454
+
+[cigar3_2_smoke]:cigar3_smoke
+
+[cigar3_3]:cigar3
+inv_name			= st_cigar3_3
+inv_name_short		= st_cigar3_3
+inv_weight			= 0.002
+
+inv_grid_x			= 24
+inv_grid_y			= 10
+
+cost				= 827
+
+[cigar3_3_smoke]:cigar3_smoke
+
+[tobacco]:booster ;x5
+$spawn				= "devices\pda"
+visual				= dynamics\equipments\trade\tobacco.ogf
+description			= st_tobacco_descr
+
+inv_name			= st_tobacco
+inv_name_short		= st_tobacco
+inv_weight			= 0.108
+
+inv_grid_width		= 1
+inv_grid_height		= 1
+inv_grid_x			= 23
+inv_grid_y			= 5
+
+cost				= 4180
+
+attach_angle_offset		= -0.287979, 1.560923, 1.544060
+attach_position_offset	= 0.096910, -0.013594, 0.107925
+attach_bone_name		= bip01_r_hand
+auto_attach				= false
+
+// should be deleted after update
+bone_name				= bip01_r_hand
+position_offset			= 0.0,0.0,0.0
+angle_offset			= 1.570790,1.570790,3.92699
+
+[tobacco_smoke]:tobacco
+inv_grid_width		= 0
+inv_grid_height		= 0
+inv_weight			= 0
+boost_time					= 34
+boost_radiation_restore		= 0.00081
+eat_alcohol					= -0.0765
+eat_satiety					= 0.058
+eat_sleepiness				= -0.077
+eat_health					= -0.018
+use_sound					= interface\inv_smoke_tobacco
+
+lsd_factor		= 0.4
+
+[tobacco2]:tobacco
+inv_name			= st_tobacco2
+inv_name_short		= st_tobacco2
+inv_weight			= 0.107
+
+inv_grid_x			= 23
+inv_grid_y			= 6
+
+cost				= 3424
+
+[tobacco2_smoke]:tobacco_smoke
+
+[tobacco3]:tobacco
+inv_name			= st_tobacco3
+inv_name_short		= st_tobacco3
+inv_weight			= 0.106
+
+inv_grid_x			= 25
+inv_grid_y			= 8
+
+cost				= 2668
+
+[tobacco3_smoke]:tobacco_smoke
+
+[tobacco4]:tobacco
+inv_name			= st_tobacco4
+inv_name_short		= st_tobacco4
+inv_weight			= 0.105
+
+inv_grid_x			= 25
+inv_grid_y			= 9
+
+cost				= 1812
+
+[tobacco4_smoke]:tobacco_smoke
+
+[tobacco5]:tobacco
+inv_name			= st_tobacco5
+inv_name_short		= st_tobacco5
+inv_weight			= 0.104
+
+inv_grid_x			= 25
+inv_grid_y			= 10
+
+cost				= 956
+
+[tobacco5_smoke]:tobacco_smoke
+
+[hand_rolling_tobacco]:booster ;x5
+$spawn				= "devices\pda"
+visual				= dynamics\devices\dev_hand_rolling_tobacco\dev_hand_rolling_tobacco.ogf
+description			= st_hand_rolling_tobacco_descr
+
+inv_name			= st_hand_rolling_tobacco
+inv_name_short		= st_hand_rolling_tobacco
+inv_weight			= 0.007
+
+inv_grid_width		= 1
+inv_grid_height		= 1
+inv_grid_x			= 24
+inv_grid_y			= 5
+cost				= 6435
+
+attach_angle_offset		= -0.287979, 1.560923, 1.544060
+attach_position_offset	= 0.096910, -0.013594, 0.107925
+attach_bone_name		= bip01_r_hand
+auto_attach				= false
+
+// should be deleted after update
+bone_name				= bip01_r_hand
+position_offset			= 0.0,0.0,0.0
+angle_offset			= 1.570790,1.570790,3.92699
+
+[hand_rolling_tobacco_smoke]:hand_rolling_tobacco
+inv_grid_width		= 0
+inv_grid_height		= 0
+inv_weight			= 0
+boost_time					= 29
+boost_radiation_restore		= 0.00097
+eat_alcohol					= -0.0876
+eat_satiety					= 0.072
+eat_sleepiness				= -0.106
+eat_health					= -0.008
+use_sound					= interface\inv_smoke_tobacco
+
+lsd_factor		= 0.35
+
+[hand_rolling_tobacco2]:hand_rolling_tobacco
+inv_name			= st_hand_rolling_tobacco2
+inv_name_short		= st_hand_rolling_tobacco2
+inv_weight			= 0.006
+
+inv_grid_x			= 24
+inv_grid_y			= 6
+cost				= 5148
+
+[hand_rolling_tobacco2_smoke]:hand_rolling_tobacco_smoke
+
+[hand_rolling_tobacco3]:hand_rolling_tobacco
+inv_name			= st_hand_rolling_tobacco3
+inv_name_short		= st_hand_rolling_tobacco3
+inv_weight			= 0.005
+
+inv_grid_x			= 26
+inv_grid_y			= 8
+cost				= 3861
+
+[hand_rolling_tobacco3_smoke]:hand_rolling_tobacco_smoke
+
+[hand_rolling_tobacco4]:hand_rolling_tobacco
+inv_name			= st_hand_rolling_tobacco4
+inv_name_short		= st_hand_rolling_tobacco4
+inv_weight			= 0.003
+
+inv_grid_x			= 26
+inv_grid_y			= 9
+cost				= 2647
+
+[hand_rolling_tobacco4_smoke]:hand_rolling_tobacco_smoke
+
+[hand_rolling_tobacco5]:hand_rolling_tobacco
+inv_name			= st_hand_rolling_tobacco5
+inv_name_short		= st_hand_rolling_tobacco5
+inv_weight			= 0.002
+
+inv_grid_x			= 26
+inv_grid_y			= 10
+cost				= 1487
+
+[hand_rolling_tobacco5_smoke]:hand_rolling_tobacco_smoke
+
+[cigar]:booster
+$spawn				= "devices\pda"
+visual				= dynamics\devices\dev_cigar\dev_cigar.ogf
+description			= st_cuban_cigar_descr
+
+inv_name			= st_cuban_cigar
+inv_name_short		= st_cuban_cigar
+inv_weight			= 0.011
+
+inv_grid_width		= 1
+inv_grid_height		= 1
+inv_grid_x			= 15
+inv_grid_y			= 44
+cost				= 898
+
+attach_angle_offset		= -0.287979, 1.560923, 1.544060
+attach_position_offset	= 0.096910, -0.013594, 0.107925
+attach_bone_name		= bip01_r_hand
+auto_attach				= false
+
+// should be deleted after update
+bone_name				= bip01_r_hand
+position_offset			= 0.0,0.0,0.0
+angle_offset			= 1.570790,1.570790,3.92699
+
+[cigar_smoke]:cigar
+inv_grid_width		= 0
+inv_grid_height		= 0
+inv_weight			= 0
+boost_time					= 29
+boost_radiation_restore		= 0.00066
+eat_alcohol					= -0.066
+eat_satiety					= 0.032
+eat_sleepiness				= -0.027
+eat_health					= -0.010
+use_sound					= interface\inv_smoke
+
+lsd_factor		= 0.3
+
+[cigarettes_lucky]:booster ;x4
+$spawn				= "devices\pda"
+visual				= dynamics\devices\dev_cigarettes_lucky\dev_cigarettes_lucky.ogf
+description			= st_cigarettes_lucky_descr
+
+inv_name			= st_cigarettes_lucky
+inv_name_short		= st_cigarettes_lucky
+inv_weight			= 0.005
+
+inv_grid_width		= 1
+inv_grid_height		= 1
+inv_grid_x			= 24
+inv_grid_y			= 7
+cost				= 3884
+
+attach_angle_offset		= -0.287979, 1.560923, 1.544060
+attach_position_offset	= 0.096910, -0.013594, 0.107925
+attach_bone_name		= bip01_r_hand
+auto_attach				= false
+
+// should be deleted after update
+bone_name				= bip01_r_hand
+position_offset			= 0.0,0.0,0.0
+angle_offset			= 1.570790,1.570790,3.92699
+
+[cigarettes_lucky_smoke]:cigarettes_lucky
+inv_grid_width		= 0
+inv_grid_height		= 0
+inv_weight			= 0
+boost_time					= 62
+boost_radiation_restore		= 0.00072
+eat_satiety					= 0.014
+eat_sleepiness				= -0.032
+eat_health					= -0.002
+use_sound					= interface\inv_smoke
+
+lsd_factor		= 0.2
+
+[cigarettes_lucky2]:cigarettes_lucky
+inv_name			= st_cigarettes_lucky2
+inv_name_short		= st_cigarettes_lucky2
+inv_weight			= 0.004
+
+inv_grid_x			= 27
+inv_grid_y			= 8
+cost				= 2963
+
+[cigarettes_lucky2_smoke]:cigarettes_lucky_smoke
+
+[cigarettes_lucky3]:cigarettes_lucky
+inv_name			= st_cigarettes_lucky3
+inv_name_short		= st_cigarettes_lucky3
+inv_weight			= 0.003
+
+inv_grid_x			= 27
+inv_grid_y			= 9
+cost				= 2042
+
+[cigarettes_lucky3_smoke]:cigarettes_lucky_smoke
+
+[cigarettes_lucky4]:cigarettes_lucky
+inv_name			= st_cigarettes_lucky4
+inv_name_short		= st_cigarettes_lucky4
+inv_weight			= 0.002
+
+inv_grid_x			= 27
+inv_grid_y			= 10
+cost				= 1121
+
+[cigarettes_lucky4_smoke]:cigarettes_lucky_smoke
+
+[cigarettes_russian]:booster ;x3
+$spawn				= "devices\pda"
+visual				= dynamics\devices\dev_cigarettes_russian\dev_cigarettes_russian.ogf
+description			= st_cigarettes_russian_descr
+
+inv_name			= st_cigarettes_russian
+inv_name_short		= st_cigarettes_russian
+
+inv_weight			= 0.004
+
+inv_grid_width		= 1
+inv_grid_height		= 1
+inv_grid_x			= 28
+inv_grid_y			= 8
+cost				= 688
+
+attach_angle_offset		= -0.287979, 1.560923, 1.544060
+attach_position_offset	= 0.096910, -0.013594, 0.107925
+attach_bone_name		= bip01_r_hand
+auto_attach				= false
+
+// should be deleted after update
+bone_name				= bip01_r_hand
+position_offset			= 0.0,0.0,0.0
+angle_offset			= 1.570790,1.570790,3.92699
+
+[cigarettes_russian_smoke]:cigarettes_russian
+inv_grid_width		= 0
+inv_grid_height		= 0
+inv_weight			= 0
+boost_time					= 18
+boost_radiation_restore		= 0.00037
+eat_alcohol					= -0.036
+eat_satiety					= 0.032
+eat_sleepiness				= -0.038
+eat_health					= -0.018
+use_sound					= interface\inv_smoke
+
+lsd_factor		= 0.2
+
+[cigarettes_russian2]:cigarettes_russian
+inv_name			= st_cigarettes_russian2
+inv_name_short		= st_cigarettes_russian2
+
+inv_weight			= 0.003
+
+inv_grid_x			= 28
+inv_grid_y			= 9
+cost				= 492
+
+[cigarettes_russian2_smoke]:cigarettes_russian_smoke
+
+[cigarettes_russian3]:cigarettes_russian
+inv_name			= st_cigarettes_russian3
+inv_name_short		= st_cigarettes_russian3
+
+inv_weight			= 0.002
+
+inv_grid_x			= 28
+inv_grid_y			= 10
+cost				= 296
+
+[cigarettes_russian3_smoke]:cigarettes_russian_smoke
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;

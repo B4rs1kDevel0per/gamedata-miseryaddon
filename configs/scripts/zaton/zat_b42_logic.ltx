@@ -1,0 +1,37 @@
+[logic]
+active = sr_idle@determine_cl_sv
+type = shared_with_cl_data
+
+[sr_idle@determine_cl_sv]
+on_info = {=isServer} sr_idle@sv_spawn
+on_info2 = {=isClient} sr_idle@cl_wait
+
+;server logic
+[sr_idle@sv_spawn]
+on_info = {-ZAT_B42_MAYRON_SPAWN} sr_idle@sv_wait %=spawn_corpse(zat_b42_mayron:zat_b42_mayron_walk) +ZAT_B42_MAYRON_SPAWN%
+
+[sr_idle@sv_wait]
+on_actor_in_zone = zat_b42_warning_space_restrictor | {-ZAT_B42_CONTROLLER_WARNING_1_SOUND -ZAT_B42_CONTROLLER_DEAD} %+ZAT_B42_CONTROLLER_WARNING_1_SOUND%
+on_info = {+ZAT_B42_CONTROLLER_WARNING_1_SOUND_PLAYED -SAVE_ZAT_B42_ARRIVED_TO_CONTROLER_LAIR} %+SAVE_ZAT_B42_ARRIVED_TO_CONTROLER_LAIR =scenario_autosave(st_save_zat_b42_arrived_to_controler_lair)%
+on_info2 = {+SAVE_ZAT_B42_ARRIVED_TO_CONTROLER_LAIR} sr_idle@sv_wait2
+on_info3 = {+ZAT_B42_CONTROLLER_DEAD} sr_idle@nill
+
+[sr_idle@sv_wait2]
+on_info = {+ZAT_B42_CONTROLLER_DEAD} sr_idle@nill
+
+;client logic
+[sr_idle@cl_wait]
+on_actor_in_zone = zat_b42_warning_space_restrictor | {+ZAT_B42_CONTROLLER_WARNING_1_SOUND -ZAT_B42_CONTROLLER_DEAD -ZAT_B42_CONTROLLER_WARNING_1_SOUND_PLAYED =is_local_actor_relevant(50)} %=play_sound(zat_b42_controller_warning_1)%
+on_signal = sound_end | %+ZAT_B42_CONTROLLER_WARNING_1_SOUND_PLAYED%
+on_info = {+SAVE_ZAT_B42_ARRIVED_TO_CONTROLER_LAIR} sr_idle@cl_wait2
+on_info2 = {+ZAT_B42_CONTROLLER_DEAD} sr_idle@nill
+
+[sr_idle@cl_wait2]
+on_actor_not_in_zone = zat_b42_warning_space_restrictor | sr_idle@cl_wait3
+on_info = {+ZAT_B42_CONTROLLER_DEAD} sr_idle@nill
+
+[sr_idle@cl_wait3]
+on_actor_in_zone = zat_b42_warning_space_restrictor | {=is_local_actor_relevant(50)} sr_idle@nill %=play_sound(zat_b42_controller_warning_2)%
+on_info = {+ZAT_B42_CONTROLLER_DEAD} sr_idle@nill
+
+[sr_idle@nill]

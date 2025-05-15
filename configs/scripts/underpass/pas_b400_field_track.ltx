@@ -1,0 +1,9 @@
+#include "pas_b400_field_general.ltx"
+
+[logic]
+active = sr_psy_antenna@track
+
+[sr_psy_antenna@track]:sr_psy_antenna@def
+on_info = {+PAS_B400_FIELD_TRACK_OFF} sr_idle@nil
+
+[sr_idle@nil]

@@ -1,0 +1,11 @@
+[logic]
+active = sr_idle
+type = sv_only
+
+[sr_idle]
+on_info = {=any_actor_has_item(zat_b12_documents_2)} %+ZAT_B12_FIND_KEYS_AND_OPEN%
+on_info2 = {=any_actor_has_item(zat_b12_key_1) =any_actor_has_item(zat_b12_key_2)} %+ZAT_B12_ACTOR_HAVE_KEYS%, {=any_actor_has_item(zat_b12_key_1) +ZAT_B12_ONE_LOCK_OPEN} %+ZAT_B12_ACTOR_HAVE_KEYS%, {=any_actor_has_item(zat_b12_key_2) +ZAT_B12_ONE_LOCK_OPEN} %+ZAT_B12_ACTOR_HAVE_KEYS%
+on_info3 = {=any_actor_has_item(zat_b57_gas)} sr_idle@end %+ZAT_B57_ACTOR_HAS_GAS%
+on_info4 = {-ZAT_B12_ACTOR_FOUND_DOCUMENTS =any_actor_has_item(zat_b12_documents_1)} %+ZAT_B12_ACTOR_FOUND_DOCUMENTS%, {-ZAT_B12_ACTOR_FOUND_DOCUMENTS =any_actor_has_item(zat_b12_documents_2)} %+ZAT_B12_ACTOR_FOUND_DOCUMENTS%
+
+[sr_idle@end]

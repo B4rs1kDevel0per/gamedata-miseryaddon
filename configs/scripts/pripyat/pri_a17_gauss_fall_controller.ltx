@@ -1,0 +1,20 @@
+[logic]
+active = sr_idle@no_action
+type = sv_only
+
+[sr_idle@no_action]
+on_info = {+PRI_A17_MON_PREACHER_DEAD} sr_idle@timer
+
+[sr_idle@timer]
+on_game_timer = 55 | {=story_obj_in_zone_by_name(pri_a17_gauss_rifle:pri_a17_gauss_fall_zone)} sr_idle@end %+PRI_A17_GAUSS_FALLED =damage_pri_a17_gauss%
+on_game_timer2 = 55 | {!story_obj_in_zone_by_name(pri_a17_gauss_rifle:pri_a17_gauss_fall_zone)} sr_idle@progress
+on_info = {=any_actor_has_item(pri_a17_gauss_rifle)} sr_idle@end %=damage_pri_a17_gauss +PRI_A17_GAUSS_FALLED%
+
+[sr_idle@progress]
+on_info = {=any_actor_has_item(pri_a17_gauss_rifle)} sr_idle@end, {=story_object_exist(pri_a17_gauss_rifle) -PRI_A17_GAUSS_DESTROYED} %+PRI_A17_GAUSS_DESTROYED =destroy_object(story:pri_a17_gauss_rifle)%
+on_game_timer = 10 | {!story_object_exist(pri_a17_gauss_rifle) +PRI_A17_GAUSS_DESTROYED} sr_idle@hit %=spawn_object(pri_a17_gauss_rifle:pri_a17_gauss_fall_point) +PRI_A17_GAUSS_FALLED%
+
+[sr_idle@hit]
+on_info = {=story_object_exist(pri_a17_gauss_rifle)} sr_idle@end %=damage_pri_a17_gauss%
+
+[sr_idle@end]

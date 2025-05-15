@@ -1,0 +1,99 @@
+[logic]
+active = sr_idle@determine_cl_sv
+type = shared_with_cl_data
+
+[sr_idle@determine_cl_sv]
+on_info = {=isServer} sr_idle@sv_wait_for_start
+on_info2 = {=isClient} sr_idle@cl_wait_for_start
+
+;server logic
+[sr_idle@sv_wait_for_start]
+on_info = {+JUP_B218_GATHER_SQUAD_COMPLETE} sr_idle@sv_destroy %=create_cutscene_actor_with_weapon(jup_b219_actor:jup_b219_spawn_spown:0:0:3)%
+
+[sr_idle@sv_destroy]
+on_game_timer = 30 | sr_idle@sv_surge %+JUP_B218_CUTSCENE_DESTROY%
+
+[sr_idle@sv_surge]
+on_info = {!surge_started} sr_idle@sv_timer, sr_idle@sv_timer %=stop_surge%
+
+[sr_idle@sv_timer]
+on_info = sr_idle@sv_spawn %=remove_squad(jup_b15_zulus_squad)% 
+
+[sr_idle@sv_spawn]
+on_info = sr_idle@sv_spawn_soldier %=create_squad(jup_b219_squad:jup_b219) =create_squad(jup_b219_stalker_tech_squad:jup_b219) %
+
+[sr_idle@sv_spawn_soldier]
+on_info = {+JUP_B218_SOLDIER_HIRED} sr_idle@sv_spawn_stalker %=create_squad_member(jup_b219_soldier:jup_b219_squad:jup_b219_soldier_walk)%
+on_info2 = {-JUP_B218_SOLDIER_HIRED} sr_idle@sv_spawn_stalker
+
+[sr_idle@sv_spawn_stalker]
+on_info = {+JUP_A10_VANO_AGREE_GO_UND} sr_idle@sv_spawn_monolith %=create_squad_member(jup_b219_vano:jup_b219_squad:jup_b219_vano_walk)%
+on_info2 = {-JUP_A10_VANO_AGREE_GO_UND} sr_idle@sv_spawn_monolith
+
+[sr_idle@sv_spawn_monolith]
+on_info = {+JUP_B218_MONOLITH_HIRED} sr_idle@sv_cheak %=create_squad_member(jup_b219_monolith_squad_leader_freedom_skin:jup_b219_squad:jup_b219_monolith_walk)% 
+on_info2 = {-JUP_B218_MONOLITH_HIRED} sr_idle@sv_cheak 
+
+[sr_idle@sv_cheak]
+on_info = {-JUP_B218_SOLDIER_HIRED -JUP_A10_VANO_AGREE_GO_UND -JUP_B218_MONOLITH_HIRED}  sr_idle@sv_wait_squad_one             	
+on_info2 = {-JUP_B218_SOLDIER_HIRED +JUP_A10_VANO_AGREE_GO_UND -JUP_B218_MONOLITH_HIRED} sr_idle@sv_wait_squad_one_vano   			
+on_info3 = {-JUP_B218_SOLDIER_HIRED -JUP_A10_VANO_AGREE_GO_UND +JUP_B218_MONOLITH_HIRED} sr_idle@sv_wait_squad_one_monolith   		
+on_info4 = {+JUP_B218_SOLDIER_HIRED -JUP_A10_VANO_AGREE_GO_UND -JUP_B218_MONOLITH_HIRED} sr_idle@sv_wait_squad_one_soldier   		
+on_info5 = {+JUP_B218_SOLDIER_HIRED +JUP_A10_VANO_AGREE_GO_UND +JUP_B218_MONOLITH_HIRED} sr_idle@sv_wait_squad_all   				
+on_info6 = {+JUP_B218_SOLDIER_HIRED +JUP_A10_VANO_AGREE_GO_UND -JUP_B218_MONOLITH_HIRED} sr_idle@sv_wait_squad_soldier_vano   		
+on_info7 = {+JUP_B218_SOLDIER_HIRED -JUP_A10_VANO_AGREE_GO_UND +JUP_B218_MONOLITH_HIRED} sr_idle@sv_wait_squad_soldier_monolith   	  
+on_info8 = {-JUP_B218_SOLDIER_HIRED +JUP_A10_VANO_AGREE_GO_UND +JUP_B218_MONOLITH_HIRED} sr_idle@sv_wait_squad_vano_monolith   
+
+[sr_idle@sv_wait_squad_one]   
+on_info = {+JUP_B219_AZOT_ON_POS +JUP_B219_ZULUS_ON_POS +JUP_B219_ACTOR_ON_POS}  sr_idle@sv_wait %+JUP_B219_START_ONE +JUP_B219_START_SOUND%
+  
+[sr_idle@sv_wait_squad_one_vano]   
+on_info = {+JUP_B219_AZOT_ON_POS +JUP_B219_ZULUS_ON_POS +JUP_B219_ACTOR_ON_POS +JUP_B219_VANO_ON_POS}  sr_idle@sv_wait %+JUP_B219_START_ONE_VANO +JUP_B219_START_SOUND%
+
+[sr_idle@sv_wait_squad_one_monolith]   
+on_info = {+JUP_B219_AZOT_ON_POS +JUP_B219_ZULUS_ON_POS +JUP_B219_ACTOR_ON_POS +JUP_B219_MONOLITH_ON_POS}  sr_idle@sv_wait %+JUP_B219_START_ONE_MONOLITH +JUP_B219_START_SOUND%
+
+[sr_idle@sv_wait_squad_one_soldier]   
+on_info = {+JUP_B219_AZOT_ON_POS +JUP_B219_ZULUS_ON_POS +JUP_B219_ACTOR_ON_POS +JUP_B219_SOLDIER_ON_POS}  sr_idle@sv_wait %+JUP_B219_START_ONE_SOLDIER +JUP_B219_START_SOUND%
+
+[sr_idle@sv_wait_squad_all]   
+on_info = {+JUP_B219_AZOT_ON_POS +JUP_B219_ZULUS_ON_POS +JUP_B219_ACTOR_ON_POS +JUP_B219_SOLDIER_ON_POS +JUP_B219_MONOLITH_ON_POS +JUP_B219_VANO_ON_POS}  sr_idle@sv_wait %+JUP_B219_START_ALL +JUP_B219_START_SOUND%
+   
+[sr_idle@sv_wait_squad_soldier_vano]   
+on_info = {+JUP_B219_AZOT_ON_POS +JUP_B219_ZULUS_ON_POS +JUP_B219_ACTOR_ON_POS +JUP_B219_SOLDIER_ON_POS +JUP_B219_VANO_ON_POS} sr_idle@sv_wait %+JUP_B219_START_SOLDIER_VANO +JUP_B219_START_SOUND%   
+   
+[sr_idle@sv_wait_squad_soldier_monolith]   
+on_info = {+JUP_B219_AZOT_ON_POS +JUP_B219_ZULUS_ON_POS +JUP_B219_ACTOR_ON_POS +JUP_B219_SOLDIER_ON_POS +JUP_B219_MONOLITH_ON_POS}  sr_idle@sv_wait %+JUP_B219_START_SOLDIER_MONOLITH +JUP_B219_START_SOUND%    
+   
+[sr_idle@sv_wait_squad_vano_monolith]   
+on_info = {+JUP_B219_AZOT_ON_POS +JUP_B219_ZULUS_ON_POS +JUP_B219_ACTOR_ON_POS +JUP_B219_VANO_ON_POS +JUP_B219_MONOLITH_ON_POS}  sr_idle@sv_wait %+JUP_B219_START_VANO_MONOLITH +JUP_B219_START_SOUND%    
+   
+[sr_idle@sv_wait]
+on_info = {+JUP_B219_FADE_IN} sr_idle@sv_go_to_lc
+ 
+[sr_idle@sv_go_to_lc]
+on_game_timer = 30 | sr_idle@nil %+JUP_B219_DESTROY_ACTOR =remove_squad(jup_b219_squad) =remove_squad(jup_b219_stalker_tech_squad) =xrmpe_teleport_actors(jup_b219_actor_levelchanger_walk:jup_b219_actor_levelchanger_look)% 
+   
+;client logic
+[sr_idle@cl_wait_for_start]
+on_info = {+JUP_B218_GATHER_SQUAD_COMPLETE} sr_idle@cl_destroy %=run_postprocess(fade_in) =disable_ui%
+
+[sr_idle@cl_destroy]
+on_info = {+JUP_B218_CUTSCENE_DESTROY} sr_idle@cl_wait %=xrmpe_teleport_local_actor(jup_b219_actor_dark_walk:jup_b219_actor_dark_look)  =run_postprocess(black:22219:true)%
+
+[sr_idle@cl_wait]
+on_info = {+JUP_B219_AZOT_ON_POS +JUP_B219_ZULUS_ON_POS +JUP_B219_ACTOR_ON_POS}  sr_cutscene@cl_start %=stop_postprocess(22219)%
+  	
+[sr_cutscene@cl_start]
+point = jup_b219_actor_start_walk
+look = jup_b219_actor_start_look
+cam_effector = jup_b219_descent_camera
+on_signal = cameff_end |  sr_idle@cl_go_to_lc %+JUP_B219_FADE_IN =run_postprocess(black:22219:true)% 
+enable_ui_on_end = false   
+on_info = {+JUP_B219_ENTERING_UNDERPASS} %=run_postprocess(fade_in)%
+
+[sr_idle@cl_go_to_lc]
+on_info =  {+JUP_B219_FADE_IN} %=run_postprocess(black:22219:true)%
+on_info2 = {+JUP_B219_DESTROY_ACTOR} sr_idle@nil %=enable_ui% 
+
+[sr_idle@nil]

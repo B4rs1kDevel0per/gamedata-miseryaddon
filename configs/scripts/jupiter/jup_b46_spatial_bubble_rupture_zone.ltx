@@ -1,0 +1,30 @@
+[logic]
+active = sr_idle@determine_cl_sv
+type = shared_with_cl_data
+
+[sr_idle@determine_cl_sv]
+on_info = {=isServer} sr_idle@sv_jup_b46_ruptured
+on_info2 = {=isClient} sr_idle@cl_jup_b46_ruptured
+
+;server logic
+[sr_idle@sv_jup_b46_ruptured]
+on_info = {=any_actor_in_zone(jup_b46_spatial_bubble_zone) =actor_active_detector(detector_scientific) -JUP_B46_SPATIAL_BUBBLE_RUPTURED} sr_idle@sv_jup_b46_rupture_particle %+JUP_B46_SPATIAL_BUBBLE_REVEAL%
+on_info2 = {+JUP_B46_SPATIAL_BUBBLE_RUPTURED} sr_idle@nil
+
+[sr_idle@sv_jup_b46_rupture_particle]
+on_info = {-JUP_B46_SPATIAL_BUBBLE_RUPTURED} %+JUP_B46_SPATIAL_BUBBLE_RUPTURED%
+on_info2 {+JUP_B46_SPATIAL_BUBBLE_RUPTURED} sr_idle@nil
+
+[sr_idle@cl_jup_b46_ruptured]
+on_info = {+JUP_B46_SPATIAL_BUBBLE_REVEAL} sr_particle@cl_jup_b46_rupture_particle
+on_info2 = {+JUP_B46_SPATIAL_BUBBLE_RUPTURED} sr_idle@nil
+
+[sr_particle@cl_jup_b46_rupture_particle]
+name = anomaly2\anomaly_spatial_bubble_rupture
+path = jup_b46_particle_point
+mode = 2
+looped = false 
+on_info = {+JUP_B46_SPATIAL_BUBBLE_RUPTURED} %=play_sound(jup_b46_spatial_bubble_rupture)%
+on_signal = particle_end | {+JUP_B46_SPATIAL_BUBBLE_RUPTURED} sr_idle@nil
+
+[sr_idle@nil]

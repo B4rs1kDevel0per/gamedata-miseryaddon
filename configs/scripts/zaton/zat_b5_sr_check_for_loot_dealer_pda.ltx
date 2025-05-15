@@ -1,0 +1,11 @@
+[logic]
+active = sr_idle
+type = sv_only
+
+[sr_idle]
+on_info = {+ZAT_B5_TRADER_DEATH} sr_idle@check
+
+[sr_idle@check]
+on_info = {=any_actor_has_item(device_pda_zat_b5_dealer)} sr_idle@nil %+ZAT_B7_ACTOR_NOW_DUTY_ILLICIT_DEALER%
+
+[sr_idle@nil]

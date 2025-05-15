@@ -1,0 +1,73 @@
+[logic]
+active = sr_idle@determine_cl_sv
+type = shared_with_cl_data
+
+[sr_idle@determine_cl_sv]
+on_info = {=isServer} sr_idle@sv_spawn_corps
+on_info2 = {=isClient} sr_idle@cl_wait_heli_2_cut
+
+;server logic
+[sr_idle@sv_spawn_corps]
+on_info = {-ZAT_B100_MILITARY_CORPS_SPAWNED} sr_idle@sv_poltergeist %=spawn_corpse(zat_b100_military_1:zat_b100_heli_2_look) =spawn_corpse(zat_b100_military_2:zat_b100_poltergeist_01_walk) =spawn_corpse(zat_b100_military_3:zat_b100_poltergeist_02_walk) +ZAT_B100_MILITARY_CORPS_SPAWNED%
+
+[sr_idle@sv_poltergeist]
+on_info = {+ZAT_B100_HELI_2_SEARCHING +ZAT_A1_GAME_START} sr_idle@sv_thinking_spawn %+ZAT_B100_POLTER_IGNOR_ACTOR%
+
+[sr_idle@sv_thinking_spawn]
+on_game_timer = 20 | sr_idle@sv_thinking_fade %+ZAT_B100_THINKING_START =create_cutscene_actor_with_weapon(zat_b100_actor:zat_a23_temp_actor_walk:0:0)%
+
+[sr_idle@sv_thinking_fade]
+on_game_timer = 40 | sr_idle@sv_wait %+ZAT_B100_HELI_2_CUT%
+
+[sr_idle@sv_wait]
+on_info = {+ZAT_B100_HELI_2_SEARCHED} sr_idle@sv_destroy
+
+[sr_idle@sv_destroy]
+on_game_timer = 20 | {=object_exist(zat_b100_actor)} sr_idle@sv_end %+ZAT_B100_HELI_2_CUT_FADE =destroy_object(story:zat_b100_actor)%, sr_idle@sv_end %+ZAT_B100_HELI_2_CUT_FADE%
+
+[sr_idle@sv_end]
+on_game_timer = 20 | {-ZAT_B100_GUIDE_MAPS_GIVED} sr_idle@sv_save %-ZAT_B100_POLTER_IGNOR_ACTOR +ZAT_B100_GUIDE_MAPS_GIVED =give_task(zat_b100_guide_maps)%, sr_idle@sv_save %-ZAT_B100_POLTER_IGNOR_ACTOR%
+
+[sr_idle@sv_save]
+on_info = {-ZAT_B100_SCENARIO_SAVE_HELI_2_SEARCHED} %+ZAT_B100_SCENARIO_SAVE_HELI_2_SEARCHED =scenario_autosave(st_save_zat_b100_searched_heli_2)%
+on_info2 = {+ZAT_B100_SCENARIO_SAVE_HELI_2_SEARCHED} sr_idle@sv_polter_respawn
+
+[sr_idle@sv_polter_respawn]
+on_info = {+ZAT_B100_HELI_2_SEARCHED !is_obj_on_job(logic@zat_b100_poltergeist_02:zat_b100) !squad_exist(zat_b100_poltergeist_squad_01) =distance_to_obj_ge(zat_b100_heli_2:100)} sr_idle@sv_timer
+on_info2 = {+ZAT_B100_SPAWN_NEW_WAVE} %-ZAT_B100_SPAWN_NEW_WAVE%
+
+[sr_idle@sv_timer]
+on_info = {+ZAT_B100_SPAWN_NEW_WAVE} sr_idle@sv_polter_respawn %-ZAT_B100_SPAWN_NEW_WAVE =create_squad(zat_b100_poltergeist_squad_01:zat_b100)% 
+on_game_timer = 7200 | sr_idle@sv_polter_respawn %+ZAT_B100_SPAWN_NEW_WAVE%
+
+
+;client logic
+[sr_idle@cl_wait_heli_2_cut]
+on_info = {=local_actor_story_id(actor_degtyarev) +ZAT_B100_POLTER_IGNOR_ACTOR} sr_idle@cl_heli_2_cut_spawn %=run_postprocess(fade_in:7914) =disable_ui%
+
+[sr_idle@cl_heli_2_cut_spawn]
+on_info = {+ZAT_B100_THINKING_START} sr_idle@cl_heli_2_cut_start %=run_postprocess(black:7915:true)%
+
+[sr_idle@cl_heli_2_cut_start]
+on_info = {+ZAT_B100_HELI_2_CUT} sr_cutscene@cl_heli_2_cut %=stop_postprocess(7914) =stop_postprocess(7915)%
+
+[sr_cutscene@cl_heli_2_cut]
+point = zat_b100_heli_2_walk
+look = zat_b100_heli_2_look
+cam_effector = scenario_cam\Zaton\zat_b100_heli_2_camera
+global_cameffect = true
+enable_ui_on_end = false
+outdoor = true
+on_signal = cameff_end | {+ZAT_B100_HELI_2_SEARCHED} sr_idle@cl_destroy
+on_signal2 = cam_effector_stop | {+ZAT_B100_HELI_2_SEARCHED} sr_idle@cl_destroy
+on_info3 = {+ZAT_B100_HELI_2_SEARCHED} %=stop_sr_cutscene =run_postprocess(fade_in:7916)%
+on_info = {+ZAT_B100_ACTOR_HIT} %=stop_sr_cutscene +ZAT_B100_HELI_2_SEARCHED =run_postprocess(fade_in:7916)%
+on_info2 = {-ZAT_B100_SOUND_PLAY} %+ZAT_B100_SOUND_PLAY%
+
+[sr_idle@cl_destroy]
+on_info = {+ZAT_B100_HELI_2_CUT_FADE} sr_idle@cl_end %+zat_b100_got_guide_maps =run_postprocess(black:7917:true) =xrmpe_teleport_local_actor(zat_b100_heli_2_walk:zat_b100_heli_2_look)%
+
+[sr_idle@cl_end]
+on_info = {+ZAT_B100_GUIDE_MAPS_GIVED} sr_idle@nil %=stop_postprocess(7916) =stop_postprocess(7917) =enable_ui%
+
+[sr_idle@nil]

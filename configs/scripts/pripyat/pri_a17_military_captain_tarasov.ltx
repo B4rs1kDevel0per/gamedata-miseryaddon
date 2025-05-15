@@ -1,0 +1,267 @@
+[walker@generic]
+gather_items_enabled = false
+help_wounded_enabled = false
+corpse_detection_enabled = false
+wounded = wounded
+
+;----------------------------------------------------------------------------------------------------------
+
+[logic@pri_a17_military_captain_tarasov]
+suitable = {-PRI_A17_ACTOR_LEAVER  =check_npc_name(pri_a17_military_captain_tarasov)} true
+prior = 70
+active = walker@firstmeet
+on_death = death
+on_combat = combat
+post_combat_time = 0, 0
+known_flags = known_flags
+
+[walker@firstmeet]:walker@generic
+path_walk = taras_stay_idle
+path_look = taras_look_idle
+combat_ignore_cond = {=fighting_dist_ge (15)} true
+on_info = {+PRI_A17_MON_AMBUSH_KILLED +PRI_A17_ACTOR_HAS_GAUSS_RIFLE -PRI_A17_ACTOR_ATTACK_MILITARY} walker@safe, {+PRI_A17_PATROL_DEAD} walker@squad_go_check, walker@teleported
+on_info2 = {+PRI_A17_TELEPORT_STEP_1 -PRI_A17_TARAS_TELEPORTED} %+PRI_A17_TARAS_TELEPORTED =teleport_npc(pri_a17_taras_go1)%
+meet = no_meet
+combat_ignore_cond = true
+combat_ignore_keep_when_attacked = true
+invulnerable = true
+
+[walker@teleported]:walker@generic
+path_walk = taras_stay_idle
+path_look = taras_look_idle
+def_state_standing = talk_default
+combat_ignore_cond = {=fighting_dist_ge (15)} true
+on_game_timer = 50 | {=dist_to_actor_le(5) -PRI_A17_TARAS_GIVE_ORDERS_1} remark@give_orders %+PRI_A17_TARAS_GIVE_ORDERS_1 =play_sound(pri_a17_recon_squad_commander_order_hide1)%
+meet = no_meet
+
+[remark@give_orders]:walker@generic
+target = story | actor
+anim = idle
+combat_ignore_cond = {=fighting_dist_ge (15)} true
+on_game_timer = 32 | walker@sneak 
+meet = no_meet
+
+[walker@sneak]:walker@generic
+path_walk = taras_go1
+path_look = taras_golook1
+def_state_moving1 = assault 
+combat_ignore_cond = {=fighting_dist_ge (15)} true
+on_info = {=npc_in_zone(pri_a17_squad_follow)} %+PRI_A17_SQUAD_GO_1%
+on_signal = at_position | walker@get_at_pos 
+meet = no_meet
+
+[walker@get_at_pos]:walker@generic
+path_walk = taras_attack
+path_look = taras_pat_look 
+def_state_moving1 = assault
+combat_ignore_cond = {=fighting_dist_ge (15)} true
+on_info = {=npc_in_zone(pri_a17_taras_hide_cover_zone) !actor_enemy} smartcover@ready_to_attack %+PRI_A17_RECON_GO =play_sound(pri_a17_recon_squad_commander_order_hide2) +PRI_A17_PATROL_GO%
+meet = no_meet
+
+[smartcover@ready_to_attack]:walker@generic
+cover_name = pri_a17_taras_ready_to_attack
+cover_state = idle_target
+combat_ignore_cond = {=fighting_dist_ge (15)} true
+on_info = {!any_actor_in_zone(pri_a17_hosp_square) =npc_in_zone(pri_a17_taras_cover_2_zone)} smartcover@ready_to_attack1 
+on_info2 = {+PRI_A17_MON_ATK} camper@attack %=make_enemy(pri_a17_monolith_patrol_lead)%
+meet = no_meet
+in_restr = pri_a17_val_chek_fight_zone
+
+[smartcover@ready_to_attack1]:walker@generic
+cover_name = pri_a17_taras_ready_to_attack
+cover_state = idle_target 
+combat_ignore_cond = {=fighting_dist_ge (15)} true
+on_info = {+PRI_A17_MON_ATK} camper@attack %=make_enemy(pri_a17_monolith_patrol_lead)%
+on_info2 = {+PRI_A17_MON_PAT_SOUND1 !is_playing_sound !actor_enemy} %=play_sound(pri_a17_recon_squad_attack_now_)%
+on_info3 = {-PRI_A17_MON_PAT_SOUND1 !any_actor_in_zone(pri_a17_hosp_build_1)} smartcover@ready_to_attack1_actor_dont_hide,  {-PRI_A17_MON_PAT_SOUND1 =any_actor_in_zone(pri_a17_backoff)} smartcover@ready_to_attack1_actor_dont_hide
+on_signal = sound_end | {+PRI_A17_MON_PAT_SOUND1} smartcover@ready_to_attack2 
+meet = no_meet
+
+[smartcover@ready_to_attack1_actor_dont_hide]:walker@generic
+cover_name = pri_a17_taras_ready_to_attack
+cover_state = idle_target 
+combat_ignore_cond = {=fighting_dist_ge (15)} true
+on_info = {=any_actor_in_zone(pri_a17_monolith_attack_zone) !actor_enemy} %=play_sound(pri_a17_recon_squad_actor_dont_hide)%, {=any_actor_in_zone(pri_a17_backoff) !actor_enemy} %=play_sound(pri_a17_recon_squad_actor_dont_hide)%, smartcover@ready_to_attack1
+on_signal = sound_end | smartcover@ready_to_attack1
+meet = no_meet
+
+[smartcover@ready_to_attack2]:walker@generic
+cover_name = pri_a17_taras_ready_to_attack
+cover_state = idle_target 
+combat_ignore_cond = {=fighting_dist_ge (15)} true
+on_info = {+PRI_A17_MON_ATK} camper@attack %=make_enemy(pri_a17_monolith_patrol_lead)%
+on_info2 = {+PRI_A17_MON_PAT_SOUND2 !is_playing_sound !actor_enemy} %=play_sound(pri_a17_recon_squad_attack_now_)%
+on_signal = sound_end | smartcover@ready_to_attack3 
+meet = no_meet
+
+[smartcover@ready_to_attack3]:walker@generic
+cover_name = pri_a17_taras_ready_to_attack
+cover_state = idle_target 
+combat_ignore_cond = {=fighting_dist_ge (15)} true
+on_info = {+PRI_A17_MON_ATK} camper@attack %=make_enemy(pri_a17_monolith_patrol_lead)%
+on_info2 = {+PRI_A17_MON_PAT_SOUND3 !is_playing_sound !actor_enemy} %=play_sound(pri_a17_recon_squad_commander_ready_to_fire)%
+on_signal = sound_end | smartcover@ready_to_attack4 
+meet = no_meet
+
+[smartcover@ready_to_attack4]:walker@generic
+cover_name = pri_a17_taras_ready_to_attack
+cover_state = lookout_target 
+combat_ignore_cond = {=fighting_dist_ge (15)} true
+on_info = {+PRI_A17_MON_ATK} camper@attack %=make_enemy(pri_a17_monolith_patrol_lead)%
+on_info2 = {+PRI_A17_MON_PAT_SOUND4 !is_playing_sound !actor_enemy} %=play_sound(pri_a17_recon_squad_attack_now_)%
+on_signal = sound_end | smartcover@ready_to_attack5 
+meet = no_meet
+
+[smartcover@ready_to_attack5]:walker@generic
+cover_name = pri_a17_taras_ready_to_attack
+cover_state = lookout_target 
+combat_ignore_cond = {=fighting_dist_ge (15)} true
+on_info = {+PRI_A17_MON_ATK} camper@attack %=make_enemy(pri_a17_monolith_patrol_lead)%
+on_info2 = {+PRI_A17_MON_PAT_SOUND5 !is_playing_sound !actor_enemy} %=play_sound(pri_a17_recon_squad_attack_now_)%
+on_info4 =  {+PRI_A17_ATK_MON_PAT} camper@attack %=make_enemy(pri_a17_monolith_patrol_lead)%
+on_signal = sound_end | camper@attack 
+meet = no_meet
+
+[camper@attack]:walker@generic
+path_walk = taras_attack;_2
+path_look = taras_pat_look
+def_state_moving1 = assault
+def_state_campering = threat_na
+def_state_campering_fire = threat_fire
+no_retreat = true 
+on_info =  {+PRI_A17_PATROL_DEAD} walker@go_check_1
+on_info2 = {+PRI_A17_ICE_DEAD} remark@taras_shocked
+on_info3 = {+PRI_A17_GOOD_SHOT -PRI_A17_NICE_TAR_END !is_playing_sound} %=play_sound(pri_a17_recon_squad_nice_shoot)%
+on_info4 = {=health_le(0.99) !actor_enemy} %=restore_health% 
+on_signal = sound_end | %+PRI_A17_NICE_TAR_END%
+out_restr = pri_a17_taras_attack_fight_zone
+meet = no_meet
+combat_ignore_cond = {=check_enemy_name(pri_a17_monolith_preacher)} true
+
+[walker@go_check_1]:walker@generic
+path_walk = taras_attack
+path_look = taras_pat_look
+def_state_standing = caution
+on_game_timer = 55 | {-PRI_A17_ORD_TAR_END !is_playing_sound} %+PRI_A17_ORD_TAR_END =play_sound(pri_a17_recon_squad_order_to_check)%
+on_signal = sound_end | {+PRI_A17_ORD_TAR_END} walker@go_check_2 %+PRI_A17_SQUAD_MOVE%
+on_info = {+PRI_A17_ICE_DEAD -PRI_A17_TARAS_SHOCK_SOUND} remark@taras_shocked %+PRI_A17_TARAS_SHOCK_SOUND =play_sound(pri_a17_recon_squad_monolith_ambush)%, {+PRI_A17_ICE_DEAD} remark@taras_shocked
+meet = no_meet
+combat_ignore_cond = {=fighting_dist_ge (25)} true, {=check_enemy_name(pri_a17_monolith_preacher)} true
+
+[walker@go_check_2]:walker@generic
+path_walk = taras_chek_stay
+path_look = taras_chek_look
+def_state_moving1 = assault
+on_info = {+PRI_A17_ICE_DEAD -PRI_A17_TARAS_SHOCK_SOUND} remark@taras_shocked %+PRI_A17_TARAS_SHOCK_SOUND =play_sound(pri_a17_recon_squad_monolith_ambush)%, {+PRI_A17_ICE_DEAD} remark@taras_shocked, {=npc_in_zone(pri_a17_taras_check_zone)} walker@squad_go_check 
+meet = no_meet
+combat_ignore_cond = {=fighting_dist_ge (20)} true, {=check_enemy_name(pri_a17_monolith_preacher)} true
+
+[walker@squad_go_check]:walker@generic
+path_walk = taras_chek_sit
+path_look = taras_chek_look
+def_state_moving1 = assault
+on_info = {+PRI_A17_GET_IN_COVER} walker@defend, {+PRI_A17_ICE_DEAD -PRI_A17_TARAS_SHOCK_SOUND} remark@taras_shocked %+PRI_A17_TARAS_SHOCK_SOUND =play_sound(pri_a17_recon_squad_monolith_ambush)%, {+PRI_A17_ICE_DEAD} remark@taras_shocked
+meet = no_meet
+combat_ignore_cond = {=fighting_dist_ge (20)} true, {=check_enemy_name(pri_a17_monolith_preacher)} true
+
+[remark@taras_shocked]:walker@generic
+anim = bloodsucker_search
+target = path | pri_a17_taras_chek_look, 0
+on_signal = anim_end | walker@defend %+PRI_A17_GET_IN_COVER%
+on_info = {=health_le(0.99) !actor_enemy} %=restore_health% 
+combat_ignore_cond = true
+combat_ignore_keep_when_attacked = true
+meet = no_meet
+
+[walker@defend]:walker@generic
+path_walk = taras_chek_fight
+path_look = taras_pat_look
+out_restr = pri_a17_taras_chek_fight_zone
+on_info = {=counter_greater(pri_a17_monolith_amb_death:11) !squad_has_enemy(pri_a17_recon_squad) +PRI_A17_ACTOR_HAS_GAUSS_RIFLE} walker@safe, {+PRI_A17_MON_AMBUSH_KILLED} walker@safe 
+on_game_timer = 170 | {!actor_enemy} %=play_sound(pri_a17_recon_squad_sniper_out)%
+on_info2 = {=health_le(0.5) !actor_enemy} %=restore_health% 
+on_info3 = {=any_actor_in_zone(pri_a17_hosp_build_1)} %+PRI_A17_IN_COVER%
+def_state_moving1 = assault 
+meet = no_meet
+combat_ignore_cond = {=check_enemy_name(pri_a17_monolith_preacher)} true
+
+[walker@safe]:walker@generic
+path_walk = taras_chek_fight
+path_look = taras_chek_look
+on_info = {+PRI_A17_ACTOR_HAS_GAUSS_RIFLE !is_playing_sound !actor_enemy !has_enemy} %=play_sound(pri_a17_recon_squad_after_monolith_clear)%
+on_signal = sound_end | walker@fintalk
+meet = meet@get_f_gauss
+
+[meet@get_f_gauss]
+meet_dialog	    = pri_a17_military_recon_squad_after_scene_dialog 
+trade_enable	= false
+close_distance  = 15
+close_anim      = guard
+close_victim    = actor
+abuse           = false
+use 			= true
+
+[walker@fintalk]:walker@generic
+path_walk = taras_final_talk
+path_look = taras_final_look
+on_info = {+PRI_A17_VAL_FIN_TALK_END !is_playing_sound  !actor_enemy} %=play_sound(pri_a17_recon_squad_commander_to_prapor)%, {+PRI_A17_VAL_DEAD} patrol@home, {=dist_to_actor_ge(140)} patrol@home %+PRI_A17_GO_HOME%
+on_signal = sound_end |  patrol@home %+PRI_A17_GO_HOME%
+meet = no_meet
+
+[patrol@home]:walker@generic
+path_walk = patrol_home
+commander = true
+formation = back
+on_signal = path_end | walker@base_1
+on_info = {=npc_in_zone(pri_a16_sr_noweap)} walker@base
+meet = no_meet
+out_restr = pri_a16_sr_noweap
+def_state_moving = assault
+
+[walker@base]:walker@generic
+path_walk = taras_base_stay
+path_look = taras_base_look
+def_state_standing = wait
+on_info = {=squad_in_zone_all(pri_a17_recon_squad:pri_surge_hide_a16) =check_smart_alarm_status(zat_stalker_base_smart:normal)} %+PRI_A17_AT_HOME =set_squad_neutral_to_actor(pri_a17_recon_squad)%
+out_restr = pri_a16_sr_noweap
+
+;-------------------------------------------------------------
+
+[wounded]
+hp_state 		= 0|wounded_heavy@help_heavy
+hp_state_see 	= 0|wounded_heavy@help_heavy
+hp_victim 		= 0|nil
+hp_fight 		= 0|false
+hp_cover		= 0|false
+
+[combat]
+on_info = {=actor_enemy} %+PRI_A17_ACTOR_ATTACK_MILITARY%
+
+[death]
+on_info = {=killed_by_actor =squad_exist(pri_a17_recon_squad)} %+PRI_A17_ACTOR_ATTACK_MILITARY +PRI_A17_TARAS_DEAD =set_squad_enemy_to_actor(pri_a17_recon_squad) =stop_sound%, %+PRI_A17_TARAS_DEAD =stop_sound%
+
+[known_flag]
+PRI_A17_TARAS_IS_DEAD
+
+;-------------------------------------------Актер бросил отряд--------------------------------------------
+[logic@pri_a17_military_captain_tarasov_dead]
+suitable = {+PRI_A17_ACTOR_LEAVER  =check_npc_name(pri_a17_military_captain_tarasov)} true
+prior = 70
+active = walker@taras_dead
+on_death = death
+on_combat = combat
+post_combat_time = 0, 0
+known_flags = known_flags
+
+[walker@taras_dead]:walker@generic
+path_walk = taras_dead
+on_info = walker@taras_dead_2 %=teleport_npc(pri_a17_taras_dead)%
+meet = no_meet
+
+[walker@taras_dead_2]:walker@generic
+path_walk = taras_dead
+on_game_timer = 20 | walker@taras_dead_3 %=hit_npc(self:pri_a17_mon_sni_3:bip01_head:1:23)%
+
+[walker@taras_dead_3]:walker@generic
+path_walk = taras_dead
+on_game_timer = 5 | nil %=kill_npc%

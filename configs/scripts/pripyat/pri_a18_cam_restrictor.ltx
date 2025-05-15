@@ -1,0 +1,51 @@
+[logic]
+active = sr_idle@determine_cl_sv
+type = shared_with_cl_data
+
+[sr_idle@determine_cl_sv]
+on_info = {=isServer} sr_idle@sv_start
+on_info2 = {=isClient} sr_idle@cl_start
+
+;server logic
+[sr_idle@sv_start]
+on_info = {+PRI_A18_RUN_CAM} sr_idle@sv_wait %+PRI_A18_USE_IDOL_DONE +PRI_A18_FOUND_ANTENNA%
+on_info2 = {-PRI_A18_ACTOR_ENEMY =is_squad_enemy_to_actor(pri_a16_sokolov_squad:pri_a16_vano_squad:pri_a22_military_merkulov_squad:pri_a22_military_skelja_squad)} %+PRI_A18_ACTOR_ENEMY +PRI_A18_GET_REINFORCEMENT_DONE%
+
+[sr_idle@sv_wait]
+on_game_timer = 20 | sr_idle@sv_wait2 %=create_cutscene_actor_with_weapon(pri_a18_cutscene_actor:pri_a18_cutscene_actor_spawn:0:180) +PRI_A18_TASK_END% 
+
+[sr_idle@sv_wait2]
+on_info = {+PRI_A18_CUTSCENE_ACTOR_DESTR}sr_idle@sv_after
+
+[sr_idle@sv_after]
+on_game_timer = 20 | sr_idle@sv_check_when_reinfor_go_base %+PRI_A18_CUTSCENE_END_CL%
+
+[sr_idle@sv_check_when_reinfor_go_base]
+on_info = {+PRI_A18_ONCE_AUTOSAVE !any_actor_in_zone(pri_a18_task_end_zone)} sr_idle@nil %+PRI_A18_REINF_GO_BASE% 
+on_info2 = {-PRI_A18_ONCE_AUTOSAVE} %+PRI_A18_ONCE_AUTOSAVE =scenario_autosave(st_save_pri_a18_searched_antenna)%
+
+;client logic
+[sr_idle@cl_start]
+on_info = {+PRI_A18_RUN_CAM =local_actor_story_id(actor_degtyarev)} sr_idle@cl_wait %=disable_ui =run_postprocess(fade_in:2023)%
+
+[sr_idle@cl_wait]
+on_info = {+PRI_A18_TASK_END} sr_cutscene@cl_start %=run_postprocess(black:2057:true)% 
+
+[sr_cutscene@cl_start]
+global_cameffect = true
+enable_ui_on_end = false
+outdoor = true
+point = pri_a18_actor_in_catscene_teleport
+look = pri_a18_actor_in_catscene_teleport
+cam_effector = scenario_cam\pripyat\pri_a18_inspect_monolith_cameff
+on_game_timer = 50 | {-PRI_A18_PP_STOP} %+PRI_A18_PP_STOP =stop_postprocess(2023) =stop_postprocess(2057)%
+on_signal = cameff_end | sr_idle@cl_after %=run_postprocess(black:2021:true) +PRI_A18_CUTSCENE_ACTOR_DESTR =xrmpe_teleport_local_actor(pri_b35_mercs_pri_a18_reinforcement_1_ready_kill_look:pri_a18_smart_terrain_pri_a18_monolith_2_look)%
+on_signal2 = cam_effector_stop | sr_idle@cl_after %=run_postprocess(black:2021:true) +PRI_A18_CUTSCENE_ACTOR_DESTR =xrmpe_teleport_local_actor(pri_b35_mercs_pri_a18_reinforcement_1_ready_kill_look:pri_a18_smart_terrain_pri_a18_monolith_2_look)%
+on_info = {+PRI_A18_ALTAR_STOP_CAM -PRI_A18_FADE_IN} %=run_postprocess(fade_in:2022) +PRI_A18_FADE_IN%
+on_info2 = {+PRI_A18_CAM_STOP} %=stop_sr_cutscene%
+on_info3 = {+PRI_A18_CUT_ACTOR_HIT} %=stop_sr_cutscene +PRI_A18_CAM_STOP +PRI_A18_ALTAR_STOP_CAM +PRI_A18_FADE_IN +PRI_A18_KOVAL_GO_ON%
+
+[sr_idle@cl_after]
+on_info = {+PRI_A18_CUTSCENE_END_CL} sr_idle@nil %=stop_postprocess(2021) =stop_postprocess(2022) =stop_postprocess(2057) =enable_ui%
+
+[sr_idle@nil]

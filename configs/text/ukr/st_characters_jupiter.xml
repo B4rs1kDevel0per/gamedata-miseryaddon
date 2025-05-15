@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="windows-1251" ?>
+<string_table>
+	<string id="jup_a10_bandit_leader_name">
+		<text>Валет</text>
+	</string>
+	<string id="jup_a10_stalker_vano">
+		<text>Вано</text>
+	</string>
+	<string id="jup_a6_duty_leader">
+		<text>Підполковник Шульга</text>
+	</string>
+	<string id="jup_a6_freedom_leader">
+		<text>Локі</text>
+	</string>
+	<string id="jup_a6_stalker_barmen">
+		<text>Гаваєць</text>
+	</string>
+	<string id="jup_a6_stalker_medik">
+		<text>Костоправ</text>
+	</string>
+	<string id="jup_b10_stalker_drunk">
+		<text>Сенько</text>
+	</string>
+	<string id="jup_b15_zulus">
+		<text>Зулус</text>
+	</string>
+	<string id="jup_b19_freedom_yar_name">
+		<text>Дядько Яр</text>
+	</string>
+	<string id="jup_b1_stalker_1">
+		<text>Тополь</text>
+	</string>
+	<string id="jup_b1_stalker_2">
+		<text>Булава</text>
+	</string>
+	<string id="jup_b1_stalker_3">
+		<text>Дух</text>
+	</string>
+	<string id="jup_b1_stalker_4">
+		<text>Змій</text>
+	</string>
+	<string id="jup_b207_merc_leader_name">
+		<text>Гриф</text>
+	</string>
+	<string id="jup_b217_stalker_tech">
+		<text>Азот</text>
+	</string>
+	<string id="jup_b220_trapper">
+		<text>Звіробій</text>
+	</string>
+	<string id="jup_b25_freedom_flint">
+		<text>Флінт</text>
+	</string>
+	<string id="jup_b46_duty_founder_name">
+		<text>Генерал Таченко</text>
+	</string>
+	<string id="jup_b46_duty_founder_squad_02_name">
+		<text>Лейтенант Бунчук</text>
+	</string>
+	<string id="jup_b46_duty_founder_squad_03_name">
+		<text>Полковник Космач</text>
+	</string>
+	<string id="jup_b46_duty_founder_squad_04_name">
+		<text>Лейтенант Захарчук</text>
+	</string>
+	<string id="jup_b47_merc_01">
+		<text>Чорний</text>
+	</string>
+	<string id="jup_b47_merc_02">
+		<text>Дуплет</text>
+	</string>
+	<string id="jup_b47_merc_03">
+		<text>Хірург</text>
+	</string>
+	<string id="jup_b47_merc_04">
+		<text>Череп</text>
+	</string>
+	<string id="jup_b47_merc_05">
+		<text>Кол</text>
+	</string>
+	<string id="jup_b47_merc_06">
+		<text>Кощій</text>
+	</string>
+	<string id="jup_b47_merc_07">
+		<text>Труп</text>
+	</string>
+	<string id="jup_b4_monolith_squad_leader_name">
+		<text>Бродяга</text>
+	</string>
+	<string id="jup_b4_monolith_squad_soldier_1_name">
+		<text>Броня</text>
+	</string>
+	<string id="jup_b4_monolith_squad_soldier_2_name">
+		<text>Серп</text>
+	</string>
+	<string id="jup_b4_monolith_squad_soldier_3_name">
+		<text>Морж</text>
+	</string>
+	<string id="jup_b4_monolith_squad_soldier_4_name">
+		<text>Тихий</text>
+	</string>
+	<string id="jup_b4_monolith_squad_soldier_5_name">
+		<text>Хома</text>
+	</string>
+	<string id="jup_b6_scientist_biochemist">
+		<text>Професор Озьорський</text>
+	</string>
+	<string id="jup_b6_scientist_novikov">
+		<text>Новіков</text>
+	</string>
+	<string id="jup_b6_scientist_nuclear_physicist">
+		<text>Професор Герман</text>
+	</string>
+	<string id="jup_b9_shliachin_name">
+		<text>Сержант Шлячін</text>
+	</string>
+	<string id="st_jup_a12_bandit_cashier">
+		<text>Гном</text>
+	</string>
+	<string id="st_jup_a12_bandit_chief">
+		<text>Шишак</text>
+	</string>
+	<string id="st_jup_a12_stalker_assaulter">
+		<text>Ведмідь</text>
+	</string>
+	<string id="st_jup_a12_stalker_diplomat">
+		<text>Торба</text>
+	</string>
+	<string id="st_jup_a12_stalker_prisoner">
+		<text>Митяй</text>
+	</string>
+	<string id="st_jup_b207_duty_security_squad_leader_name">
+		<text>Лейтенант Гавриленко</text>
+	</string>
+	<string id="st_jup_b207_freedom_assault_squad_leader_name">
+		<text>Кремінь</text>
+	</string>
+	<string id="st_jup_b207_freedom_recon_squad_leader_name">
+		<text>Гайдук</text>
+	</string>
+	<string id="st_jup_b43_stalker_assistant">
+		<text>Гарик</text>
+	</string>
+	<string id="jup_b46_duty_founder_squad_01_name">
+		<text>Майор Чепурний</text>
+	</string>
+	<string id="jup_b25_stalker_senya">
+		<text>Тріска</text>
+	</string>
+</string_table>

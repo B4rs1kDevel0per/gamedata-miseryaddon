@@ -1,0 +1,27 @@
+[logic]
+active = sr_idle@start
+type = sv_only
+
+[sr_idle@start]
+on_info = {+JUP_B1_COMPLETE_END} sr_idle@wait_for_start
+on_info2 = {+JUP_B32_TASK_START_CHEAT} %+JUP_B1_COMPLETE_END% 
+
+[sr_idle@wait_for_start]
+on_info = {+JUP_B32_TASK_START} sr_idle@get_scanners %=give_task(jup_b32_get_scanners_task)%
+
+[sr_idle@get_scanners]
+on_info = {+JUP_B32_SCANNERS_TRANFERRED} sr_idle@place_scanners %=give_task(jup_b32_task_1) =give_task(jup_b32_task_2) =give_task(jup_b32_task_3)%
+
+[sr_idle@place_scanners]
+on_info = {+JUP_B32_SCANNER_1_PLACED +JUP_B32_SCANNER_2_PLACED +JUP_B32_SCANNER_3_PLACED} sr_idle@reward %=give_task(jup_b32_task_reward)%
+
+[sr_idle@reward]
+on_info = {+JUP_B32_SCANNER_REWARD} sr_idle@wait_for_addon %+JUP_B32_TASK_END -JUP_B32_TASK_START%
+
+[sr_idle@wait_for_addon]
+on_info = {+JUP_B32_TASK_ADDON_START} sr_idle@get_scanners_2 %-JUP_B32_SCANNERS_TRANFERRED =give_task(jup_b32_get_scanners_addon_task)%
+
+[sr_idle@get_scanners_2]
+on_info = {+JUP_B32_SCANNERS_TRANFERRED} sr_idle@nil %=give_task(jup_b32_addon_task_1) =give_task(jup_b32_addon_task_2)% 
+
+[sr_idle@nil]

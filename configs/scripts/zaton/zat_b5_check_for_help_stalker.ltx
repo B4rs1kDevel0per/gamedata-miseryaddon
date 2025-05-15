@@ -1,0 +1,17 @@
+[logic]
+active = sr_idle
+type = sv_only
+
+[sr_idle]
+on_info = {+ZAT_B5_ACTOR_WITH_STALKERS} sr_idle@start_stalkers, {+ZAT_B5_ACTOR_WITH_BANDITS} sr_idle@start_bandits, {+ZAT_B5_ACTOR_WITH_DEALER} sr_idle@nil
+
+[sr_idle@start_stalkers]
+on_info = {+ZAT_B5_BANDITS_DEATH +ZAT_B5_DEALER_SQUAD_DEATH} sr_idle@nil %+ZAT_B5_DESTROY_ENEMY% 
+
+[sr_idle@start_bandits]
+on_info = {+ZAT_B5_WITNESS_DEAD -ZAT_B5_DOLG_ENEMY -ZAT_B5_STALKER_HIT} sr_idle@nil, {+ZAT_B5_WITNESS_DEAD} sr_idle@nil %+ZAT_B5_BANDIT_IN_FIGHT%
+;on_info2 = {+ZAT_B5_WITNESS_DEAD +ZAT_B5_DOLG_ENEMY -ZAT_B5_STALKER_HIT} sr_idle@nil %+ZAT_B5_BANDIT_IN_FIGHT%
+;on_info3 = {+ZAT_B5_WITNESS_DEAD -ZAT_B5_DOLG_ENEMY +ZAT_B5_STALKER_HIT} sr_idle@nil %+ZAT_B5_BANDIT_IN_FIGHT%
+;on_info4 = {+ZAT_B5_WITNESS_DEAD +ZAT_B5_DOLG_ENEMY +ZAT_B5_STALKER_HIT} sr_idle@nil %+ZAT_B5_BANDIT_IN_FIGHT%
+
+[sr_idle@nil]

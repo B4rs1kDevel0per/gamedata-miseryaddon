@@ -1,0 +1,14 @@
+[logic]
+active = sr_idle@start
+type = sv_only
+
+[sr_idle@start]
+on_info = sr_idle@check %=disable_anomaly(lx8_scentific_room_electric_zone)%
+
+[sr_idle@check]
+on_info = {+LX8_SCENTIFIC_DOOR_OPEN} sr_idle@wait %=enable_anomaly(lx8_scentific_room_electric_zone)%
+		
+[sr_idle@wait]
+on_info = {=any_actor_has_item(pri_a19_american_experiment_info)} sr_idle@nil %+PRI_A19_AMERICAN_EXPERIMENT_INFO =inc_counter(lx8_documents)%
+
+[sr_idle@nil]

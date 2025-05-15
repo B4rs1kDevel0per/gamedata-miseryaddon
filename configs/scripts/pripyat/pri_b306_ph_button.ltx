@@ -1,0 +1,31 @@
+[logic]
+active = ph_idle@wait_for_start
+
+[ph_idle@wait_for_start]
+on_info = {+PRI_B306_LIFT_GENERATOR_STARTED} ph_idle@closed
+nonscript_usable = false
+
+[ph_idle@closed]
+on_info = {=any_actor_has_item(zat_a23_labx8_key)} ph_button@open 
+tips = tip_no_access_card
+nonscript_usable = true
+
+[ph_button@open]
+on_info = {!any_actor_has_item(zat_a23_labx8_key)} ph_idle@closed 
+tooltip = st_pri_b306_go_down
+on_press = ph_idle@teleport %+PRI_B306_ACTOR_TO_LAB +PRI_B306_ACTOR_TO_LAB_DONE =disable_ui =run_postprocess(fade_in)%
+on_info = {=isServer +PRI_B306_ACTOR_TO_LAB -PRI_B306_ACTOR_TO_LAB_SAVE} %+PRI_B306_ACTOR_TO_LAB_SAVE =scenario_autosave(st_save_uni_pri_to_labx8)%
+
+[ph_idle@teleport]
+on_game_timer = 20 | ph_idle@in %=run_postprocess(black:3009:true) =xrmpe_teleport_local_actor(pri_b306_actor_lc_walk)%
+
+[ph_idle@in]
+on_info = {!any_actor_in_zone(pri_b306_sr_control)} ph_idle@wait %=run_postprocess(black:3009:true) =disable_ui%
+
+[ph_idle@wait]
+on_game_timer = 10 | ph_idle@out %=stop_postprocess(3009)%
+
+[ph_idle@out]
+on_game_timer = 10 | ph_idle@closed %=enable_ui +PRI_B306_ACTOR_FROM_LAB%
+
+[ph_idle@nil]

@@ -1,0 +1,63 @@
+[logic]
+active = sr_idle@wait_for_start
+type = sv_only
+
+[sr_idle@wait_for_start]
+on_info = {+PRI_B305_FIFTH_CAM_END +PRI_A28_STRELOK_CAN_LEAVE} sr_idle@wait_for_mono_die %+PRI_A28_DEFEND_START%
+on_info2 = {+PRI_B305_FIFTH_CAM_END =any_actor_in_zone(pri_a28_scene_end_zone)} sr_idle@wait_for_mono_die %+PRI_A28_DEFEND_START%
+on_info3 = {+PRI_B305_FIFTH_CAM_END +PRI_A28_STRELOK_DEAD =any_actor_in_zone(pri_a28_scene_end_zone)} sr_idle@wait_for_mono_die %+PRI_A28_DEFEND_START%
+on_info4 = {+PRI_A28_HELIS_LEAVE =any_actor_in_zone(pri_a28_scene_end_zone)} sr_idle@add_final_wave
+on_info5 = {+PRI_A28_CUTSCENES_END} sr_idle@nil
+;on_info6 = {+PRI_A28_SQUAD_DEAD} sr_idle@waves_done
+
+[sr_idle@wait_for_mono_die]
+on_info = {!counter_greater(pri_a28_heli_mono_cnt:4)} sr_idle@wait_for_spawn
+on_info2 = {+PRI_A28_HELIS_LEAVE =any_actor_in_zone(pri_a28_scene_end_zone)} sr_idle@add_final_wave %-PRI_A28_DEFENDER_NEEDED%
+on_info3 = {+PRI_A28_CUTSCENES_END} sr_idle@nil
+on_info4 = {+PRI_A28_SQUAD_DEAD} sr_idle@waves_done
+
+[sr_idle@wait_for_spawn]
+on_info = {+PRI_A28_CUTSCENES_END} sr_idle@nil
+on_info2 = {=any_actor_in_zone(pri_a28_scene_end_zone)} sr_idle@add_wave %-PRI_A28_DEFENDER_NEEDED%
+on_info3 = {+PRI_A28_SQUAD_DEAD} sr_idle@waves_done
+on_info4 = {+PRI_A28_WAVE_1_SPAWNED +PRI_A28_WAVE_2_SPAWNED +PRI_A28_WAVE_3_SPAWNED} sr_idle@waves_done
+on_info5 = {-PRI_A28_WAVE_3_SPAWNED =any_actor_in_zone(pri_a28_sr_mono_add_1)} sr_idle@spawn_wave_3 %+PRI_A28_DEFENDER_NEEDED%
+on_info6 = {-PRI_A28_WAVE_3_SPAWNED ~50 =any_actor_in_zone(pri_a28_sr_mono_add_2)} sr_idle@spawn_wave_3 %+PRI_A28_DEFENDER_NEEDED%
+on_info7 = {-PRI_A28_WAVE_1_SPAWNED ~50 =any_actor_in_zone(pri_a28_sr_mono_add_2)} sr_idle@spawn_wave_1 %+PRI_A28_DEFENDER_NEEDED%
+on_info8 = {-PRI_A28_WAVE_1_SPAWNED =any_actor_in_zone(pri_a28_sr_mono_add_3)} sr_idle@spawn_wave_1 %+PRI_A28_DEFENDER_NEEDED%
+on_info9 = {!any_actor_in_zone(pri_a28_scene_end_zone)} sr_idle@get_zone_to_spawn %+PRI_A28_DEFENDER_NEEDED%
+
+[sr_idle@get_zone_to_spawn]
+on_info = {+PRI_A28_WAVE_1_SPAWNED +PRI_A28_WAVE_2_SPAWNED +PRI_A28_WAVE_3_SPAWNED} sr_idle@waves_done
+on_info2 = sr_idle@wait_for_mono_die %=pri_a28_check_zones%
+
+[sr_idle@spawn_wave_1]
+on_info = sr_idle@wait_for_mono_die %+PRI_A28_WAVE_1_SPAWNED =create_squad(pri_a28_heli_mono_add_1:pri_a28_heli) =inc_counter(pri_a28_heli_mono_cnt:4)%
+
+[sr_idle@spawn_wave_2]
+on_info = sr_idle@wait_for_mono_die %+PRI_A28_WAVE_2_SPAWNED =create_squad(pri_a28_heli_mono_add_2:pri_a28_heli) =inc_counter(pri_a28_heli_mono_cnt:4)%
+
+[sr_idle@spawn_wave_3]
+on_info = sr_idle@wait_for_mono_die %+PRI_A28_WAVE_3_SPAWNED =create_squad(pri_a28_heli_mono_add_3:pri_a28_heli) =inc_counter(pri_a28_heli_mono_cnt:4)%
+
+[sr_idle@add_wave]
+on_info = {~33 -PRI_A28_WAVE_1_SPAWNED} sr_idle@spawn_wave_1, {~66 -PRI_A28_WAVE_2_SPAWNED} sr_idle@spawn_wave_2, {~100 -PRI_A28_WAVE_3_SPAWNED} sr_idle@spawn_wave_3
+on_info2 = {+PRI_A28_WAVE_1_SPAWNED +PRI_A28_WAVE_2_SPAWNED +PRI_A28_WAVE_3_SPAWNED} sr_idle@waves_done
+on_info3 = {+PRI_A28_HELIS_LEAVE} sr_idle@add_final_wave
+on_info4 = {+PRI_A28_SQUAD_DEAD} sr_idle@waves_done
+
+[sr_idle@waves_done]
+on_info = {=any_actor_in_zone(pri_a28_scene_end_zone)} sr_idle@wait_a_little
+on_info2 = {-PRI_A28_HELIS_DEFENDED} %+PRI_A28_HELIS_DEFENDED%
+on_game_timer = 300 | sr_idle@add_final_wave %+PRI_A28_HELIS_LEAVE%
+
+[sr_idle@wait_a_little]
+on_game_timer = 30 | sr_idle@add_final_wave
+on_info = {-PRI_A28_FINAL_WAVE_ADDED} %+PRI_A28_FINAL_WAVE_ADDED =create_squad(pri_a28_heli_mono_add_2_final:pri_a28_heli)%
+
+[sr_idle@add_final_wave]
+on_info = {-PRI_A28_FINAL_WAVE_ADDED !any_actor_in_zone(pri_a28_sr_mono_add_2)} sr_idle@nil %+PRI_A28_WAVES_END =create_squad(pri_a28_heli_mono_add_2_final:pri_a28_heli)%
+on_info2 = {-PRI_A28_FINAL_WAVE_ADDED =any_actor_in_zone(pri_a28_sr_mono_add_2)} sr_idle@nil %+PRI_A28_WAVES_END%
+on_info3 = {+PRI_A28_FINAL_WAVE_ADDED} sr_idle@nil %+PRI_A28_WAVES_END%
+
+[sr_idle@nil]

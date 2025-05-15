@@ -1,0 +1,13 @@
+[logic]
+active = sr_idle@logic2
+type = sv_only
+
+[sr_idle@logic2]
+on_info = {+ZAT_B28_HELI_3_SOUND} sr_idle@timer %+ZAT_B28_HELI_3_SOUND%
+on_info2 = {+ZAT_B28_ACTOR_HIT} sr_idle@timer
+
+[sr_idle@timer]
+on_game_timer = 20 | sr_idle@nil %+ZAT_B28_CAMERA_STOP%
+on_info = {+ZAT_B28_ACTOR_HIT} sr_idle@nil %+ZAT_B28_CAMERA_STOP%
+
+[sr_idle@nil]

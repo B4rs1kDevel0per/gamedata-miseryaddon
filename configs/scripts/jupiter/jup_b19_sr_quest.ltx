@@ -1,0 +1,153 @@
+[logic]
+active = sr_idle@determine_cl_sv
+type = shared_with_cl_data
+
+[sr_idle@determine_cl_sv]
+on_info = {=isServer} sr_idle@sv_wait
+on_info2 = {=isClient} sr_idle@cl_wait
+
+;server logic
+[sr_idle@sv_wait]
+on_info = {+JUP_B19_AGREED_TO_GO} sr_idle@sv_agreed_to_go %=give_task(jup_b19_airing_to_kopatci)%
+on_info2 = {+JUP_B19_FAIL}  sr_idle@nil 
+
+[sr_idle@sv_agreed_to_go]
+on_info = {+JUP_B19_READY_TO_GO} sr_idle@sv_wait2 
+on_info2 = {+JUP_B19_FAIL}  sr_idle@nil 
+
+[sr_idle@sv_wait2]
+on_game_timer = 10 | sr_idle@sv_wait3 %+JUP_B19_DONT_BREAK%
+on_info = {+JUP_B19_FAIL}  sr_idle@nil
+
+[sr_idle@sv_wait3]
+on_game_timer = 20 | sr_idle@sv_create_squad %+JUP_B19_DESTROY_YAR =xrmpe_teleport_relevant_actors(jup_b19_freedom_yar:jup_b19_teleport_actor_walk:jup_b19_teleport_actor_look:10) =teleport_squad(jup_b19_freedom_yar_squad:jup_b19_yar_1_walk)%
+on_info = {+JUP_B19_FAIL}  sr_idle@nil
+
+[sr_idle@sv_create_squad]
+on_game_timer = 10 | sr_idle@sv_wait4  %=clear_smart_terrain(jup_b19:false) =enable_ui% 
+on_info = {+JUP_B19_FAIL}  sr_idle@nil
+
+[sr_idle@sv_wait4]
+on_info = sr_idle@sv_check_surge %=forward_game_time(1)% 
+on_info2 = {+JUP_B19_FAIL}  sr_idle@nil
+
+[sr_idle@sv_check_surge]
+on_info = {=surge_started} sr_idle@sv_wait5 %=stop_surge%, sr_idle@sv_wait5
+
+[sr_idle@sv_wait5]
+on_info = {+JUP_B19_ARRIVED} sr_idle@sv_wait6
+on_info2 = {+JUP_B19_FAIL} sr_idle@nil
+
+[sr_idle@sv_wait6]
+on_info = {-JUP_B19_UI_INPUT_ENABLED} %+JUP_B19_UI_INPUT_ENABLED%
+on_game_timer = 10 | sr_idle@sv_merc_spawned
+on_info2 = {+JUP_B19_FAIL} sr_idle@nil
+
+[sr_idle@sv_merc_spawned]
+on_info = {+JUP_B19_MERC_SPAWNED} sr_idle@sv_wait7 %-JUP_B19_ACTOR_DAMAGED_ZOMBIED =create_squad(jup_b19_merc_squad:jup_b19)% 
+on_info2 = {+JUP_B19_FAIL} sr_idle@nil
+
+[sr_idle@sv_wait7]
+on_game_timer = 10 | sr_idle@sv_wait8 %=set_counter(merc_death) =set_squads_enemies(jup_b19_merc_squad:jup_b19_freedom_yar_squad)%
+on_info = {+JUP_B19_FAIL} sr_idle@nil
+
+[sr_idle@sv_wait8]
+on_info = {=counter_greater(merc_death:4)} sr_idle@sv_wait_teleport %+JUP_B19_MERCS_DEAD%
+on_info2 = {+JUP_B19_FAIL} sr_idle@nil
+
+[sr_idle@sv_wait_teleport]
+on_info = {+JUP_B19_YAR_TELEPORT_ACTOR_TO_YANOV} sr_idle@sv_done_disable_ui
+on_info2 = {+JUP_B19_YAR_DONT_TELEPORT_ACTOR_TO_YANOV} sr_idle@sv_wait_for_yar_teleport
+on_info3 = {+JUP_B19_FAIL} sr_idle@nil
+
+[sr_idle@sv_done_disable_ui]
+on_game_timer = 10 | sr_idle@sv_done_timer
+on_info = {+JUP_B19_FAIL} sr_idle@nil %=enable_ui%
+
+[sr_idle@sv_done_timer]
+on_game_timer = 20 | sr_idle@sv_switch %=forward_game_time(1)%
+on_info = {+JUP_B19_FAIL} sr_idle@nil
+
+[sr_idle@sv_switch]
+on_game_timer = 10 | sr_idle@sv_done_create_squad %-JUP_B19_DONT_BREAK +JUP_B19_YAR_SWITCH_SMART_TERRAIN%
+on_info = {+JUP_B19_FAIL} sr_idle@nil
+
+[sr_idle@sv_done_create_squad]
+on_game_timer = 10 | sr_idle@sv_two_white  %=xrmpe_teleport_relevant_actors(jup_b19_freedom_yar:jup_actor_arrive_walk:jup_actor_arrive_look:10) =teleport_squad(jup_b19_freedom_yar_squad:jup_a6_spawn_point)%
+on_info = {+JUP_B19_FAIL}  sr_idle@nil
+
+[sr_idle@sv_two_white]
+on_game_timer = 40 | sr_idle@sv_done_enable_ui
+on_info = {+JUP_B19_FAIL} sr_idle@nil
+
+[sr_idle@sv_done_enable_ui]
+on_info = {-JUP_B19_UI_INPUT_2_ENABLED} sr_idle@sv_wait_for_yar_teleport %+JUP_B19_UI_INPUT_2_ENABLED%
+on_game_timer = 20 | sr_idle@sv_wait_for_yar_teleport
+
+[sr_idle@sv_wait_for_yar_teleport]
+on_info = {+JUP_B19_FAIL} sr_idle@nil
+on_info3 = {!squad_exist(jup_b19_freedom_yar_squad)} sr_idle@nil
+
+;client logic
+[sr_idle@cl_wait]
+on_info = {+JUP_B19_READY_TO_GO =is_local_actor_relevant(10:jup_b19_freedom_yar)} sr_idle@cl_disable_ui, {+JUP_B19_READY_TO_GO !is_local_actor_relevant(10:jup_b19_freedom_yar)} sr_idle@cl_wait_teleport
+
+[sr_idle@cl_disable_ui]
+on_game_timer = 10 | sr_idle@cl_timer %=run_postprocess(fade_in)%
+on_info = {+JUP_B19_FAIL}  sr_idle@nil %=enable_ui%
+
+[sr_idle@cl_timer]
+on_game_timer = 20 | sr_idle@cl_teleport %=run_postprocess(black:2119:true)%
+on_info = {+JUP_B19_FAIL}  sr_idle@nil %=enable_ui%
+
+[sr_idle@cl_teleport]
+on_game_timer = 10 | sr_idle@cl_black  %=enable_ui% 
+on_info = {+JUP_B19_FAIL}  sr_idle@nil %=stop_postprocess(2119) =enable_ui%
+
+[sr_idle@cl_black]
+on_info = sr_idle@cl_wait2
+on_info2 = {+JUP_B19_FAIL}  sr_idle@nil %=stop_postprocess(2119) =enable_ui%
+
+[sr_idle@cl_wait2]
+on_info = {+JUP_B19_ARRIVED} sr_idle@cl_enable_ui_timer %=stop_postprocess(2119)%
+on_info2 = {+JUP_B19_FAIL} sr_idle@nil %=stop_postprocess(2119) =enable_ui%
+
+[sr_idle@cl_enable_ui_timer]
+on_info = {!black_screen} sr_idle@cl_enable_ui %+JUP_B19_ARRIVED_DONE%
+on_info2 = {+JUP_B19_FAIL} sr_idle@nil %=enable_ui%
+
+[sr_idle@cl_enable_ui]
+on_info = {-JUP_B19_UI_INPUT_ENABLED} %=enable_ui%
+on_game_timer = 10 | {!talking} sr_idle@cl_wait_teleport %=enable_ui%
+on_info2 = {+JUP_B19_FAIL} sr_idle@nil %=enable_ui%
+
+[sr_idle@cl_wait_teleport]
+on_info = {+JUP_B19_YAR_TELEPORT_ACTOR_TO_YANOV =is_local_actor_relevant(10:jup_b19_freedom_yar)} sr_idle@cl_done_disable_ui %=disable_ui =run_postprocess(fade_in)%, {+JUP_B19_YAR_TELEPORT_ACTOR_TO_YANOV !is_local_actor_relevant(10:jup_b19_freedom_yar)} sr_idle@nil
+on_info2 = {+JUP_B19_YAR_DONT_TELEPORT_ACTOR_TO_YANOV} sr_idle@nil
+on_info3 = {+JUP_B19_FAIL} sr_idle@nil %=enable_ui%
+
+[sr_idle@cl_done_disable_ui]
+on_game_timer = 10 | sr_idle@cl_done_timer %=run_postprocess(fade_in)%
+on_info = {+JUP_B19_FAIL} sr_idle@nil %=enable_ui%
+
+[sr_idle@cl_done_timer]
+on_game_timer = 20 | sr_idle@cl_switch %=run_postprocess(black:3120:true)%
+on_info = {+JUP_B19_FAIL} sr_idle@nil %=enable_ui =stop_postprocess(3120)%
+
+[sr_idle@cl_switch]
+on_game_timer = 10 | sr_idle@cl_done_create_squad
+on_info = {+JUP_B19_FAIL} sr_idle@nil %=enable_ui =stop_postprocess(3120)%
+
+[sr_idle@cl_done_create_squad]
+on_game_timer = 10 | sr_idle@cl_two_white
+on_info = {+JUP_B19_FAIL}  sr_idle@nil %=enable_ui =stop_postprocess(3120)%
+
+[sr_idle@cl_two_white]
+on_game_timer = 40 | sr_idle@cl_done_enable_ui %=stop_postprocess(3120)%
+on_info = {+JUP_B19_FAIL} sr_idle@nil %=enable_ui =stop_postprocess(3120)%
+
+[sr_idle@cl_done_enable_ui]
+on_info = {-JUP_B19_UI_INPUT_2_ENABLED} sr_idle@nil %=enable_ui%
+on_game_timer = 20 | sr_idle@nil %=enable_ui%
+
+[sr_idle@nil]

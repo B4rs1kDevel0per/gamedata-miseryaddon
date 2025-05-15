@@ -1,0 +1,19 @@
+[logic]
+active = sr_idle@spawn
+type = sv_only
+
+[sr_idle@spawn]
+on_info = {+PRI_A301_ZULUS_START_SCENE} sr_idle@new_spawn %=create_squad(pri_b301_snorks_squad:pri_b301)%
+
+[sr_idle@new_spawn]
+;on_info = {=dist_to_actor_ge(20) -PRI_B301_END_COUNTER +PRI_B301_MONSTER_DEATH_1} sr_idle@new_spawn %=create_squad_member(snork_normal:pri_b301_snorks_squad:pri_b301_spawn_point_1a) -PRI_B301_MONSTER_DEATH_1%
+;on_info2 = {=dist_to_actor_ge(20) -PRI_B301_END_COUNTER +PRI_B301_MONSTER_DEATH_2} sr_idle@new_spawn %=create_squad_member(snork_normal:pri_b301_snorks_squad:pri_b301_spawn_point_1a) -PRI_B301_MONSTER_DEATH_2%
+;on_info3 = {=dist_to_actor_ge(20) -PRI_B301_END_COUNTER +PRI_B301_MONSTER_DEATH_3} sr_idle@new_spawn %=create_squad_member(snork_normal:pri_b301_snorks_squad:pri_b301_spawn_point_1a) -PRI_B301_MONSTER_DEATH_3%
+;on_info4 = {=dist_to_actor_ge(20) -PRI_B301_END_COUNTER +PRI_B301_MONSTER_DEATH_4} sr_idle@new_spawn %=create_squad_member(snork_normal:pri_b301_snorks_squad:pri_b301_spawn_point_1a) -PRI_B301_MONSTER_DEATH_4%
+;on_info5 = {=dist_to_actor_ge(20) -PRI_B301_END_COUNTER +PRI_B301_MONSTER_DEATH_5} sr_idle@new_spawn %=create_squad_member(snork_normal:pri_b301_snorks_squad:pri_b301_spawn_point_1a) -PRI_B301_MONSTER_DEATH_5%
+
+on_info = { -PRI_B301_END_COUNTER +PRI_B301_MONSTER_DEATH_1} sr_idle@new_spawn %=create_squad_member(pri_b301_snork_1:pri_b301_snorks_squad:pri_b301_spawn_point_1a) -PRI_B301_MONSTER_DEATH_1%
+on_info2 = { -PRI_B301_END_COUNTER +PRI_B301_MONSTER_DEATH_2} sr_idle@new_spawn %=create_squad_member(pri_b301_snork_2:pri_b301_snorks_squad:pri_b301_spawn_point_1a) -PRI_B301_MONSTER_DEATH_2%
+on_info3 = { -PRI_B301_END_COUNTER +PRI_B301_MONSTER_DEATH_3} sr_idle@new_spawn %=create_squad_member(pri_b301_snork_3:pri_b301_snorks_squad:pri_b301_spawn_point_1a) -PRI_B301_MONSTER_DEATH_3%
+on_info4 = { -PRI_B301_END_COUNTER +PRI_B301_MONSTER_DEATH_4} sr_idle@new_spawn %=create_squad_member(pri_b301_snork_4:pri_b301_snorks_squad:pri_b301_spawn_point_1a) -PRI_B301_MONSTER_DEATH_4%
+on_info5 = { -PRI_B301_END_COUNTER +PRI_B301_MONSTER_DEATH_5} sr_idle@new_spawn %=create_squad_member(pri_b301_snork_5:pri_b301_snorks_squad:pri_b301_spawn_point_1a) -PRI_B301_MONSTER_DEATH_5%

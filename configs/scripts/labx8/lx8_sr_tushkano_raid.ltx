@@ -1,0 +1,20 @@
+[logic]
+active = sr_idle@one
+type = sv_only
+
+[sr_idle@one]
+on_actor_in_zone = lx8_sr_lab | sr_idle@two %+LX8_LAB_TUSHKANO_SPAWN =create_squad(lx8_tushkano_lab_squad:lx8_smart_terrain)%
+on_actor_in_zone2 = lx8_sr_upper | sr_idle@two %+LX8_UPPER_TUSHKANO_SPAWN =create_squad(lx8_tushkano_upper_squad:lx8_smart_terrain)%
+on_actor_in_zone3 = lx8_sr_lift | sr_idle@two %+LX8_LIFT_TUSHKANO_SPAWN =create_squad(lx8_tushkano_lift_squad:lx8_smart_terrain)%
+
+[sr_idle@two]
+on_actor_in_zone = lx8_sr_lab | {-LX8_LAB_TUSHKANO_SPAWN} sr_idle@three %+LX8_LAB_TUSHKANO_SPAWN =create_squad(lx8_tushkano_lab_squad:lx8_smart_terrain)%
+on_actor_in_zone2 = lx8_sr_upper | {-LX8_UPPER_TUSHKANO_SPAWN} sr_idle@three %+LX8_UPPER_TUSHKANO_SPAWN =create_squad(lx8_tushkano_upper_squad:lx8_smart_terrain)%
+on_actor_in_zone3 = lx8_sr_lift | {-LX8_LIFT_TUSHKANO_SPAWN} sr_idle@three %+LX8_LIFT_TUSHKANO_SPAWN =create_squad(lx8_tushkano_lift_squad:lx8_smart_terrain)%
+
+[sr_idle@three]
+on_actor_in_zone = lx8_sr_lab | {-LX8_LAB_TUSHKANO_SPAWN} sr_idle@nil %+LX8_LAB_TUSHKANO_SPAWN =create_squad(lx8_tushkano_lab_squad:lx8_smart_terrain)%
+on_actor_in_zone2 = lx8_sr_upper | {-LX8_UPPER_TUSHKANO_SPAWN} sr_idle@nil %+LX8_UPPER_TUSHKANO_SPAWN =create_squad(lx8_tushkano_upper_squad:lx8_smart_terrain)%
+on_actor_in_zone3 = lx8_sr_lift | {-LX8_LIFT_TUSHKANO_SPAWN} sr_idle@nil %+LX8_LIFT_TUSHKANO_SPAWN =create_squad(lx8_tushkano_lift_squad:lx8_smart_terrain)%
+
+[sr_idle@nil]

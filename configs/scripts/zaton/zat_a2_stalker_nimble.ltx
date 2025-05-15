@@ -1,0 +1,35 @@
+[logic@zat_a2_stalker_nimble]
+suitable = {=check_npc_name(zat_a2_stalker_nimble)} true
+prior = 200
+active = animpoint@base
+level_spot = trader
+
+[animpoint@base]
+cover_name = zat_a2_sc_zat_a2_stalker_nimble
+reach_movement = walk_noweap
+avail_animations = animpoint_sit_normal
+use_camp = false
+;reach_distance = 1.5
+meet = meet@base
+combat_ignore_cond = true
+combat_ignore_keep_when_attacked = true
+invulnerable = true
+out_restr = zat_a2_sr_noweap
+on_info = {-ZAT_B51_NIMBLE_CAN_GO !npc_talking} %+ZAT_B51_NIMBLE_CAN_GO%, {+ZAT_B51_NIMBLE_CAN_GO =npc_talking} %-ZAT_B51_NIMBLE_CAN_GO%
+gather_items_enabled = false
+help_wounded_enabled = false
+corpse_detection_enabled = false
+
+[meet@base]
+close_anim 		= nil
+close_victim 	= nil
+far_anim 		= nil
+far_victim 		= nil
+close_distance  = 0
+far_distance 	= 0
+close_snd_distance = 3
+use 			= {=actor_enemy} false, true
+close_snd_hello = {+ZAT_B51_ORDER_IN_PROCESS +ZAT_B51_ORDER_READY} zat_b51_stalker_nimble_greeting_order_ready, {+ZAT_B51_ORDER_IN_PROCESS -ZAT_B51_ORDER_READY} zat_b51_stalker_nimble_greeting_order_not_ready, {+ZAT_B51_NIMBLE_INTRO -ZAT_B51_FINISHED_CATEGORIES_ALL} zat_b51_stalker_nimble_greeting, nil
+trade_enable    = false
+allow_break 	= false
+meet_on_talking = false

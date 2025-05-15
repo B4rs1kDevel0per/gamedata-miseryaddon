@@ -1,0 +1,37 @@
+[logic]
+active = sr_idle@determine_cl_sv
+type = shared_with_cl_data
+
+[sr_idle@determine_cl_sv]
+on_info = {=isServer} sr_idle@sv_wait
+on_info2 = {=isClient} sr_idle@cl_wait
+
+;server logic
+[sr_idle@sv_wait]
+on_game_timer = 30 | {-JUP_B41_OUTER_DOOR_OPEN -JUP_B41_INNER_DOOR_OPEN =any_actor_in_zone(jup_b41_sr_steam)} sr_idle@sv_wait_play %+JUP_B41_DOOR_PLAY_SMOKE%
+on_info = {=surge_started} sr_idle@sv_open_doors %+JUP_B41_FORCED_OPEN%
+
+[sr_idle@sv_wait_play]
+on_game_timer = 10 | sr_idle@sv_wait %-JUP_B41_DOOR_PLAY_SMOKE%
+
+[sr_idle@sv_open_doors]
+on_game_timer = 30 | {-JUP_B41_OUTER_DOOR_OPEN -JUP_B41_INNER_DOOR_OPEN =any_actor_in_zone(jup_b41_sr_steam)} sr_idle@sv_open_play
+on_info = {+JUP_B41_FORCED_OPEN =squads_in_zone_b41} %-JUP_B41_FORCED_OPEN%
+on_info2 = {=surge_complete} sr_idle@sv_wait_out
+
+[sr_idle@sv_open_play]
+on_info = sr_idle@sv_open_doors
+
+[sr_idle@sv_wait_out]
+on_game_timer = 30 | {-JUP_B41_OUTER_DOOR_OPEN -JUP_B41_INNER_DOOR_OPEN =any_actor_in_zone(jup_b41_sr_steam)} sr_idle@sv_wait_out_play
+on_game_timer2 = 300 | sr_idle@sv_wait %-JUP_B41_FORCED_OPEN%
+
+[sr_idle@sv_wait_out_play]
+on_info = sr_idle@sv_wait_out
+
+;client logic
+[sr_idle@cl_wait]
+on_info = {+JUP_B41_DOOR_PLAY_SMOKE} sr_idle@cl_wait_play
+
+[sr_idle@cl_wait_play]
+on_info = sr_idle@cl_wait %=play_sound(jup_b41_steam) =play_particle_on_path(damage_fx\smoke:jup_b41_steam_1) =play_particle_on_path(damage_fx\smoke:jup_b41_steam_2)%

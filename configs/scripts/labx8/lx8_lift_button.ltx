@@ -1,0 +1,30 @@
+[logic]
+active = ph_idle@in
+
+
+[ph_idle@locked]
+on_info = {=isServer =any_actor_has_item(zat_a23_labx8_key)} ph_button@closed, {=isClient =actor_has_item(zat_a23_labx8_key)} ph_button@closed 
+on_info2 = {=isClient +LX8_ACTOR_TO_PRI} ph_idle@teleport %=disable_ui =run_postprocess(fade_in)%
+tips = tip_no_access_card
+nonscript_usable = true
+
+[ph_button@closed]
+on_info = {!any_actor_has_item(zat_a23_labx8_key)} ph_idle@locked
+local_use = true
+on_press = ph_idle@teleport %=disable_ui =run_postprocess(fade_in) +LX8_ACTOR_TO_PRI%
+on_info2 = {=isServer +LX8_ACTOR_TO_PRI -LX8_ACTOR_TO_PRI_SAVE} %+LX8_ACTOR_TO_PRI_SAVE =scenario_autosave(st_save_uni_labx8_to_pri)%
+on_info3 = {=isServer +LX8_ACTOR_TO_PRI} ph_idle@teleport, {=isClient +LX8_ACTOR_TO_PRI} ph_idle@teleport %=disable_ui =run_postprocess(fade_in)%
+tooltip = st_lx8_lift_button
+nonscript_usable = true
+
+[ph_idle@teleport]
+on_game_timer = 20 | {=isServer} ph_idle@in %=xrmpe_teleport_actors(lx8_actor_walk:lx8_actor_look)%, {=isClient} ph_idle@in %=run_postprocess(black:3009:true)% 
+
+[ph_idle@in]
+on_info = {!any_actor_in_zone(labx8_sr_levelchanger)} ph_idle@wait %=run_postprocess(black:3009:true) =disable_ui%
+
+[ph_idle@wait]
+on_game_timer = 10 | ph_idle@out %=stop_postprocess(3009)%
+
+[ph_idle@out]
+on_game_timer = 10 | ph_idle@locked %=enable_ui -LX8_ACTOR_TO_PRI%

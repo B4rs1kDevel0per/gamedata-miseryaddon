@@ -1,0 +1,29 @@
+;generic section
+
+[logic@zat_b100_poltergeist_gen]
+prior = 200
+monster_job = true	
+
+[mob_home@zat_b100_poltergeist_gen]
+aggressive = true
+on_info = {+ZAT_B100_POLTER_IGNOR_ACTOR} %=polter_actor_ignore(true)%, {=any_actor_in_zone(zat_surge_hide_a23)} %=polter_actor_ignore(true)%, %=polter_actor_ignore(false)%
+
+;work section
+
+[logic@zat_b100_poltergeist_01]:logic@zat_b100_poltergeist_gen
+active = mob_home@zat_b100_poltergeist_01
+suitable = {=is_monster_polter -ZAT_B100_HELI_2_SEARCHED} true
+
+[mob_home@zat_b100_poltergeist_01]:mob_home@zat_b100_poltergeist_gen
+path_home = poltergeist_01_walk
+home_min_radius = 5
+home_max_radius = 15
+
+[logic@zat_b100_poltergeist_02]:logic@zat_b100_poltergeist_gen
+active = mob_home@zat_b100_poltergeist_02
+suitable = {=is_monster_polter +ZAT_B100_HELI_2_SEARCHED} true
+
+[mob_home@zat_b100_poltergeist_02]:mob_home@zat_b100_poltergeist_gen
+path_home = poltergeist_02_walk
+home_min_radius = 20
+home_max_radius = 30

@@ -1,0 +1,24 @@
+[logic]
+active = sr_idle@determine_cl_sv
+type = shared_with_cl_data
+
+[sr_idle@determine_cl_sv]
+on_info = {=isServer} sr_idle@sv_fear
+on_info2 = {=isClient} sr_idle@cl_fear
+
+;server logic
+; Страшный звук в сцене
+[sr_idle@sv_fear]
+on_info = {+ZAT_B38_SCARY_SOUND} sr_idle@signal
+
+;client logic
+[sr_idle@cl_fear]
+on_info = {+ZAT_B38_SCARY_SOUND} sr_idle@signal %=play_sound(zat_b38_bloodsucker_roar)%
+
+[sr_idle@signal]
+on_signal = sound_end | sr_idle@timer
+
+[sr_idle@timer]
+on_game_timer = 30 | {+ZAT_B38_ILLUSION} sr_idle@end %+ZAT_B38_TIME_TO_SAY_ILLUSION%
+
+[sr_idle@end]

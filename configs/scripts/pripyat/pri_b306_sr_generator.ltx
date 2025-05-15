@@ -1,0 +1,17 @@
+[logic]
+active = sr_idle@wait_for_start
+type = cl_only
+
+[sr_idle@wait_for_start] 
+on_player_inside = sr_idle@run %=run_tutorial(pri_b306_generator)%
+on_info = {+PRI_B306_LIFT_GENERATOR_USED} sr_idle@end %=stop_tutorial =play_sound(pri_b306_generator_start)%
+
+[sr_idle@run]
+on_player_outside = sr_idle@wait_for_start %=stop_tutorial%
+on_info = {-PRI_B306_LIFT_GENERATOR_USED !has_active_tutorial} sr_idle@wait_for_start
+on_info2 = {+PRI_B306_LIFT_GENERATOR_USED} sr_idle@end %=play_sound(pri_b306_generator_start)%
+
+[sr_idle@end]
+on_game_timer = 30 | sr_idle@after %+PRI_B306_LIFT_GENERATOR_STARTED =play_sound_looped(pri_b306_generator_work)%
+
+[sr_idle@after]

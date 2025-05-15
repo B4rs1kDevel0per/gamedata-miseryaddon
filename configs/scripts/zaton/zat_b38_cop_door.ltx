@@ -1,0 +1,35 @@
+[logic]
+active = ph_door@locked
+
+[ph_door@locked]
+locked = true
+closed = true
+on_info = {+ZAT_B38_LOCK_SOUND_START -ZAT_B38_LOCK_SOUND_PLAY} %=play_sound(zat_b38_lock_sound) +ZAT_B38_LOCK_SOUND_PLAY%
+on_info2 = {+ZAT_B38_UNDERGROUND_DOOR_OPEN -ZAT_B38_STALKER_COP_DEATH} ph_door@open 
+on_info3 = {+ZAT_B38_LIFT_OPEN +ZAT_B38_STALKER_COP_DEATH} ph_door@close %+ZAT_B38_UNDERGROUND_DOOR_OPEN%
+tip_open = tip_door_locked
+snd_init 		= 
+snd_open_start 	= 
+snd_close_start = 
+snd_close_stop 	= 
+
+[ph_door@open]
+locked = false
+closed = false
+tip_open = nil
+tip_close = 
+snd_init 		= 
+snd_open_start 	= 
+snd_close_start = 
+snd_close_stop 	= 
+on_info = {-ZAT_B38_GET_B57 +ZAT_B38_STALKER_COP_DEATH} %+ZAT_B38_GET_B57%
+
+[ph_door@close]
+locked = false
+closed = true
+on_use = {+ZAT_B38_LIFT_OPEN +ZAT_B38_STALKER_COP_DEATH} ph_door@open %+ZAT_B38_GET_B57%, ph_door@open 
+tip_close = 
+snd_init 		= 
+snd_open_start 	= 
+snd_close_start = 
+snd_close_stop 	= 

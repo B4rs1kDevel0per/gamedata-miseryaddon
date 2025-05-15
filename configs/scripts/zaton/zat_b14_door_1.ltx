@@ -1,0 +1,29 @@
+[logic]
+active = ph_door@locked
+
+[ph_door@locked]
+locked = true
+closed = true
+on_info = {+ZAT_B14_DOOR_1_UNLOCK} ph_door@close
+snd_open_start = trader_door_locked
+tip_open = zat_b14_door_locked_hint
+not_for_npc = true 
+
+[ph_door@close]
+locked = false
+closed = true
+snd_open_start = metal_small_open
+snd_close_start = metal_small_close_start
+snd_close_stop = metal_small_close_stop
+on_use = ph_door@open
+not_for_npc = true 
+
+[ph_door@open]
+locked = false
+closed = false
+snd_open_start = metal_small_open
+snd_close_start = metal_small_close_start
+snd_close_stop = metal_small_close_stop
+on_use = ph_door@close
+on_info = {+ZAT_B14_TAKE_ITEM -ZAT_B14_CLOSE_DOOR} ph_door@close %+ZAT_B14_CLOSE_DOOR%
+not_for_npc = true

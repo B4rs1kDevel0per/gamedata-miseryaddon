@@ -1,0 +1,109 @@
+[logic@zat_a2_stalker_mechanic]
+suitable = {=check_npc_name(zat_a2_stalker_mechanic)}
+prior = 200
+active = animpoint@base
+can_select_weapon = false
+level_spot = mechanic
+
+[animpoint@base]
+cover_name = zat_a2_sc_tech
+reach_distance = 2
+avail_animations = zat_b3_tech_idle
+use_camp = false
+out_restr = zat_a2_sr_noweap
+meet = meet
+on_info = {+ZAT_B3_TECH_OUT =dist_to_actor_ge(20)} animpoint@sleep, {+ZAT_B3_TECH_DRINKING +ZAT_B3_TECH_OUT} animpoint@drinking %-ZAT_B3_TECH_DRINKED_OUT%, {+ZAT_B3_TECH_DRINKING +ZAT_B3_TECH_HAVE_COUPLE_DOSE} animpoint@drinking %-ZAT_B3_TECH_DRINKED_OUT%, {+ZAT_B3_TECH_DRINKING +ZAT_B3_TECH_HAVE_ONE_DOSE} animpoint@drinking %-ZAT_B3_TECH_DRINKED_OUT%
+on_info2 = {+ZAT_B3_TECH_SEE_PRODUCE_62 -ZAT_B3_TECH_HAS_AWAKEN -ZAT_B3_TECH_SHOCKED} animpoint@shocked %-ZAT_B3_TECH_WAKED_UP +ZAT_B3_TECH_SHOCKED%
+on_info3 = {=dist_to_actor_ge(75)} %-ZAT_B3_MECH_GREETINGS%, {+ZAT_B3_TECH_SEE_PRODUCE_62 =see_actor =dist_to_actor_le(3) -ZAT_B3_MECH_GREETINGS} %=play_sound(zat_b3_tech_drink_no_more) +ZAT_B3_MECH_GREETINGS%, {+ZAT_B3_TECH_HAVE_COUPLE_DOSE +ZAT_B3_TECH_DISCOUNT_1 =see_actor =dist_to_actor_le(3) -ZAT_B3_MECH_GREETINGS} %=play_sound(zat_b3_tech_realy_drunk_discount) +ZAT_B3_MECH_GREETINGS%, {+ZAT_B3_TECH_HAVE_COUPLE_DOSE -ZAT_B3_TECH_DISCOUNT_1 =see_actor =dist_to_actor_le(3) -ZAT_B3_MECH_GREETINGS}  %=play_sound(zat_b3_tech_realy_drunk) +ZAT_B3_MECH_GREETINGS%, {+ZAT_B3_TECH_HAVE_ONE_DOSE +ZAT_B3_TECH_DISCOUNT_1 =see_actor =dist_to_actor_le(3) -ZAT_B3_MECH_GREETINGS} %=play_sound(zat_b3_tech_drunk_discount) +ZAT_B3_MECH_GREETINGS%, {+ZAT_B3_TECH_HAVE_ONE_DOSE -ZAT_B3_TECH_DISCOUNT_1 =see_actor =dist_to_actor_le(3) -ZAT_B3_MECH_GREETINGS} %=play_sound(zat_b3_tech_drunk) +ZAT_B3_MECH_GREETINGS%, {-ZAT_B3_TECH_HAVE_ONE_DOSE =see_actor =dist_to_actor_le(3) -ZAT_B3_MECH_GREETINGS} %=play_sound(zat_b3_tech_sober) +ZAT_B3_MECH_GREETINGS% 
+on_info4 = {=dist_to_actor_ge(20)} %+ZAT_B3_TECH_WAKED_UP +ZAT_B3_TECH_DRINKED_OUT%
+on_game_timer = 100 | %+ZAT_B3_TECH_WAKED_UP +ZAT_B3_TECH_DRINKED_OUT% 
+combat_ignore_cond = true
+combat_ignore_keep_when_attacked = true
+invulnerable = true
+gather_items_enabled = false
+help_wounded_enabled = false
+corpse_detection_enabled = false
+on_info5 = {=npc_talking} animpoint@short_idle
+
+[animpoint@short_idle]:animpoint@base
+avail_animations = zat_b3_tech_idle_short
+on_actor_dist_ge_nvis = 10 | animpoint@base
+
+[meet]
+close_snd_hello = nil
+close_snd_bye   = nil
+close_anim 		= nil
+close_victim 	= nil
+far_anim 		= nil
+far_victim 		= nil
+close_distance  = 0
+far_distance 	= 0
+use = {+ZAT_B3_TECH_WAKED_UP +ZAT_B3_TECH_DRINKED_OUT} true, false
+allow_break = false
+meet_dialog	= {+ZAT_B3_TECH_SEE_PRODUCE_62 -ZAT_A23_ACTOR_HAS_ACCESS_CARD_TO_TESTING_WORKSHOP} zat_b3_stalker_tech_produce_62_start
+meet_on_talking = false
+
+[animpoint@drinking]
+cover_name = zat_a2_sc_tech
+reach_distance = 2
+avail_animations = zat_b3_tech_drink
+use_camp = false
+out_restr = zat_a2_sr_noweap
+on_game_timer = 37 | {-ZAT_B3_TECH_TAKE_DOSE +ZAT_B3_TECH_OUT} %=play_sound(zat_b3_tech_take_third_dose) +ZAT_B3_TECH_TAKE_DOSE%, {-ZAT_B3_TECH_TAKE_DOSE +ZAT_B3_TECH_HAVE_COUPLE_DOSE} %=play_sound(zat_b3_tech_take_second_dose) +ZAT_B3_TECH_TAKE_DOSE%, {-ZAT_B3_TECH_TAKE_DOSE +ZAT_B3_TECH_HAVE_ONE_DOSE} %=play_sound(zat_b3_tech_take_first_dose) +ZAT_B3_TECH_TAKE_DOSE%
+on_game_timer2 = 42 | {+ZAT_B3_TECH_OUT} animpoint@sleep %-ZAT_B3_TECH_DRINKING -ZAT_B3_TECH_TAKE_DOSE -ZAT_B3_TECH_WAKED_UP%, animpoint@base %-ZAT_B3_TECH_DRINKING -ZAT_B3_TECH_TAKE_DOSE%
+meet = no_meet
+combat_ignore_cond = true
+combat_ignore_keep_when_attacked = true
+invulnerable = true
+gather_items_enabled = false
+help_wounded_enabled = false
+corpse_detection_enabled = false
+
+[animpoint@sleep]
+cover_name = zat_a2_sc_tech
+reach_distance = 2
+avail_animations = zat_b3_tech_drunk
+use_camp = false
+on_game_timer = 220 | %+ZAT_A2_MECH_SLEEP_SOUND%
+on_info = {-ZAT_B3_TECH_OUT} animpoint@base  %-ZAT_A2_MECH_SLEEP_SOUND%
+on_info2 = {=dist_to_actor_ge(20)} %-ZAT_B3_MECH_SLEEPING%, {=see_actor =dist_to_actor_le(4) -ZAT_B3_MECH_SLEEPING +ZAT_A2_MECH_SLEEP_SOUND} %=play_sound(zat_b3_tech_sleep_) +ZAT_B3_MECH_SLEEPING%
+meet = meet@sleep
+out_restr = zat_a2_sr_noweap
+combat_ignore_cond = true
+combat_ignore_keep_when_attacked = true
+invulnerable = true
+gather_items_enabled = false
+help_wounded_enabled = false
+corpse_detection_enabled = false
+
+[meet@sleep]
+close_snd_hello = nil
+close_snd_bye   = nil
+close_anim 		= nil
+close_victim 	= nil
+far_anim 		= nil
+far_victim 		= nil
+close_distance  = 0
+far_distance 	= 0
+snd_on_use = zat_b3_tech_no_sleep_
+abuse = false
+use	= false
+meet_on_talking = false
+
+[animpoint@shocked]
+cover_name = zat_a2_sc_tech ;refuse
+reach_distance = 2
+avail_animations = zat_b3_tech_surprise
+use_camp = false
+out_restr = zat_a2_sr_noweap
+on_game_timer = 20 | {-ZAT_B3_TECH_SEE_PRODUCE_62_DONE} %=play_sound(zat_b3_tech_see_produce_62) +ZAT_B3_TECH_SEE_PRODUCE_62_DONE%
+on_game_timer2 = 150 | {-ZAT_B3_TECH_SURPRISE_ANIM_END} %+ZAT_B3_TECH_SURPRISE_ANIM_END%
+target = story | actor
+on_info = {+ZAT_B3_TECH_SURPRISE_ANIM_END -ZAT_B3_TECH_SEE_PRODUCE_62_QUEST} animpoint@sleep %+ZAT_B3_TECH_OUT -ZAT_B3_TECH_DRINKING +ZAT_B3_TECH_SEE_PRODUCE_62_QUEST%
+meet = no_meet
+combat_ignore_cond = true
+combat_ignore_keep_when_attacked = true
+invulnerable = true
+gather_items_enabled = false
+help_wounded_enabled = false
+corpse_detection_enabled = false

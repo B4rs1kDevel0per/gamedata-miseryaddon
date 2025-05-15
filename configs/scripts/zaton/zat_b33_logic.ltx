@@ -1,0 +1,11 @@
+[logic]
+active = sr_idle@zat_b33_pic_habar
+type = sv_only
+
+[sr_idle@zat_b33_pic_habar]
+on_actor_in_zone1 = zat_b33_space_restrictor_snork_jump_05_01 | {-ZAT_B33_SNORK_SPAWN_05 +ZAT_B33_ACTOR_GO_DOWN} %+ZAT_B33_SNORK_SPAWN_05 =create_squad(zat_b33_snork_second_wave:zat_b33)%
+on_actor_in_zone2 = zat_b33_logic | {-ZAT_B33_ACTOR_GO_DOWN} %+ZAT_B33_ACTOR_GO_DOWN%
+on_info = {+ZAT_B33_FIND_PACKAGE +ZAT_B33_SNORK_SPAWN_05} sr_idle@zat_b33_end
+
+[sr_idle@zat_b33_end]
+on_info = {!any_actor_in_zone(zat_b33_space_restrictor) !squad_exist(zat_b33_snork_first_wave) +ZAT_B33_SNORK_SPAWN_05} %=create_squad(zat_b33_snork_first_wave:zat_b33)%

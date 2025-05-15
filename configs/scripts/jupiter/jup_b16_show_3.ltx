@@ -1,0 +1,92 @@
+[logic]
+active = sr_idle@determine_cl_sv
+type = shared_with_cl_data
+
+[sr_idle@determine_cl_sv]
+on_info = {=isServer} sr_idle@sv_wait
+on_info2 = {=isClient} sr_idle@cl_wait
+
+;server logic
+[sr_idle@sv_wait]
+on_info = {+JUP_B16_GO_PARTICLE} sr_idle@sv_wait2
+
+[sr_idle@sv_wait2]
+on_actor_in_zone = jup_b16_show_particles_sr | {+JUP_B16_SHOW_PARTICLES} sr_idle@sv_wait_for_show_particle
+
+[sr_idle@sv_wait_for_show_particle]
+on_timer = 100 | {+JUP_B16_SR_3_1 +JUP_B16_ROW_COMPLETE_3} sr_idle@sv_3_1 %-JUP_B16_ROW_COMPLETE_3%
+on_timer2 = 100 | {+JUP_B16_SR_3_2 +JUP_B16_ROW_COMPLETE_3} sr_idle@sv_3_2 %-JUP_B16_ROW_COMPLETE_3%
+on_timer3 = 100 | {+JUP_B16_SR_3_3 +JUP_B16_ROW_COMPLETE_3} sr_idle@sv_3_3 %-JUP_B16_ROW_COMPLETE_3%
+on_timer4 = 100 | {+JUP_B16_SR_3_4 +JUP_B16_ROW_COMPLETE_3} sr_idle@sv_3_4 %-JUP_B16_ROW_COMPLETE_3%
+on_timer5 = 100 | {+JUP_B16_SR_3_5 +JUP_B16_ROW_COMPLETE_3} sr_idle@sv_3_5 %-JUP_B16_ROW_COMPLETE_3%
+on_info = {-JUP_B16_ROW_COMPLETE_3} sr_idle@sv_wait
+
+[sr_idle@sv_3_1]
+on_info = {-JUP_B16_SOUND_3_1} %+JUP_B16_SOUND_3_1%
+on_info2 = {-JUP_B16_SR_3_1} sr_idle@sv_wait %-JUP_B16_SOUND_3_1 -JUP_B16_SHOW_PARTICLES -JUP_B16_GO_PARTICLE%, {+JUP_B16_ACTOR_LEAVE_OAZIS} sr_idle@sv_wait %-JUP_B16_SOUND_3_1 -JUP_B16_SHOW_PARTICLES -JUP_B16_GO_PARTICLE%
+
+[sr_idle@sv_3_2]
+on_info = {-JUP_B16_SOUND_3_2} %+JUP_B16_SOUND_3_2%
+on_info2 = {-JUP_B16_SR_3_2} sr_idle@sv_wait %-JUP_B16_SOUND_3_2 -JUP_B16_SHOW_PARTICLES -JUP_B16_GO_PARTICLE%, {+JUP_B16_ACTOR_LEAVE_OAZIS} sr_idle@sv_wait %-JUP_B16_SOUND_3_2 -JUP_B16_SHOW_PARTICLES -JUP_B16_GO_PARTICLE%
+
+[sr_idle@sv_3_3]
+on_info = {-JUP_B16_SOUND_3_3} %+JUP_B16_SOUND_3_3%
+on_info2 = {-JUP_B16_SR_3_3} sr_idle@sv_wait %-JUP_B16_SOUND_3_3 -JUP_B16_SHOW_PARTICLES -JUP_B16_GO_PARTICLE%, {+JUP_B16_ACTOR_LEAVE_OAZIS} sr_idle@sv_wait %-JUP_B16_SOUND_3_3 -JUP_B16_SHOW_PARTICLES -JUP_B16_GO_PARTICLE%
+
+[sr_idle@sv_3_4]
+on_info = {-JUP_B16_SOUND_3_4} %+JUP_B16_SOUND_3_4%
+on_info2 = {-JUP_B16_SR_3_4} sr_idle@sv_wait %-JUP_B16_SOUND_3_4 -JUP_B16_SHOW_PARTICLES -JUP_B16_GO_PARTICLE%, {+JUP_B16_ACTOR_LEAVE_OAZIS} sr_idle@sv_wait %-JUP_B16_SOUND_3_4 -JUP_B16_SHOW_PARTICLES -JUP_B16_GO_PARTICLE%
+
+[sr_idle@sv_3_5]
+on_info = {-JUP_B16_SOUND_3_5} %+JUP_B16_SOUND_3_5%
+on_info2 = {-JUP_B16_SR_3_5} sr_idle@sv_wait %-JUP_B16_SOUND_3_5 -JUP_B16_SHOW_PARTICLES -JUP_B16_GO_PARTICLE%, {+JUP_B16_ACTOR_LEAVE_OAZIS} sr_idle@sv_wait %-JUP_B16_SOUND_3_5 -JUP_B16_SHOW_PARTICLES -JUP_B16_GO_PARTICLE%
+
+;client logic
+[sr_idle@cl_wait]
+on_info = {+JUP_B16_GO_PARTICLE} sr_idle@cl_wait2
+
+[sr_idle@cl_wait2]
+on_actor_in_zone = jup_b16_show_particles_sr | {+JUP_B16_SHOW_PARTICLES} sr_idle@cl_wait_for_show_particle
+
+[sr_idle@cl_wait_for_show_particle]
+on_info = {+JUP_B16_SR_3_1 +JUP_B16_SOUND_3_1} sr_particle@cl_3_1
+on_info2 = {+JUP_B16_SR_3_2 +JUP_B16_SOUND_3_2} sr_particle@cl_3_2
+on_info3 = {+JUP_B16_SR_3_3 +JUP_B16_SOUND_3_3} sr_particle@cl_3_3
+on_info4 = {+JUP_B16_SR_3_4 +JUP_B16_SOUND_3_4} sr_particle@cl_3_4
+on_info5 = {+JUP_B16_SR_3_5 +JUP_B16_SOUND_3_5} sr_particle@cl_3_5
+on_info6 = {-JUP_B16_SHOW_PARTICLES} sr_idle@cl_wait
+
+[sr_particle@cl_3_1]
+name = anomaly2\oasis_way
+path = jup_b16_sr_3_1_particle
+mode = 2
+looped = true
+on_info = {-JUP_B16_SR_3_1} sr_idle@cl_wait, {+JUP_B16_ACTOR_LEAVE_OAZIS} sr_idle@cl_wait
+
+[sr_particle@cl_3_2]
+name = anomaly2\oasis_way
+path = jup_b16_sr_3_2_particle
+mode = 2
+looped = true
+on_info = {-JUP_B16_SR_3_2} sr_idle@cl_wait, {+JUP_B16_ACTOR_LEAVE_OAZIS} sr_idle@cl_wait
+
+[sr_particle@cl_3_3]
+name = anomaly2\oasis_way
+path = jup_b16_sr_3_3_particle
+mode = 2
+looped = true
+on_info = {-JUP_B16_SR_3_3} sr_idle@cl_wait, {+JUP_B16_ACTOR_LEAVE_OAZIS} sr_idle@cl_wait
+
+[sr_particle@cl_3_4]
+name = anomaly2\oasis_way
+path = jup_b16_sr_3_4_particle
+mode = 2
+looped = true
+on_info = {-JUP_B16_SR_3_4} sr_idle@cl_wait, {+JUP_B16_ACTOR_LEAVE_OAZIS} sr_idle@cl_wait
+
+[sr_particle@cl_3_5]
+name = anomaly2\oasis_way
+path = jup_b16_sr_3_5_particle
+mode = 2
+looped = true
+on_info = {-JUP_B16_SR_3_5} sr_idle@cl_wait, {+JUP_B16_ACTOR_LEAVE_OAZIS} sr_idle@cl_wait

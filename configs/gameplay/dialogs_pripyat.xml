@@ -1,0 +1,1931 @@
+<?xml version="1.0" encoding="windows-1251" ?>
+<game_dialogs>
+    <dialog id="pri_a22_army_signaller_about_signal">
+        <has_flag>PRI_B305_SECOND_CAM_END</has_flag>
+        <dont_has_flag>PRI_A22_ARMY_SIGNALLER_ABOUT_SIGNAL_TOLD</dont_has_flag>
+        <dont_has_flag>PRI_B305_FIFTH_CAM_END</dont_has_flag>
+        <phrase_list>
+            <phrase id="12">
+                <text>pri_a22_army_signaller_about_signal_12</text>
+                <give_flag>PRI_A22_ARMY_SIGNALLER_ABOUT_SIGNAL_TOLD</give_flag>
+            </phrase>
+            <phrase id="111">
+                <text>pri_a22_army_signaller_about_signal_111</text>
+                <next>12</next>
+            </phrase>
+            <phrase id="11">
+                <text>pri_a22_army_signaller_about_signal_11</text>
+                <next>111</next>
+            </phrase>
+            <phrase id="0">
+                <text>pri_a22_army_signaller_about_signal_0</text>
+                <next>1</next>
+            </phrase>
+            <phrase id="1">
+                <text>pri_a22_army_signaller_about_signal_1</text>
+                <next>11</next>
+                <next>12</next>
+            </phrase>
+        </phrase_list>
+    </dialog>
+    <dialog id="pri_a22_army_signaller_b35_about_merc">
+        <phrase_list>
+            <phrase id="1">
+                <text>pri_a22_army_signaller_b35_about_merc_1</text>
+                <action>dialogs.break_dialog</action>
+                <action>dialogs.disable_ui</action>
+                <is_final>1</is_final>
+                <give_flag>PRI_B35_ACTOR_REST</give_flag>
+            </phrase>
+            <phrase id="0">
+                <text>pri_a22_army_signaller_b35_about_merc_0</text>
+                <action>dialogs_pripyat.pri_b35_transfer_svd</action>
+                <next>1</next>
+            </phrase>
+        </phrase_list>
+    </dialog>
+    <dialog id="pri_b305_strelok_about_information">
+        <has_flag>PRI_B305_FIFTH_CAM_END</has_flag>
+        <dont_has_flag>PRI_B305_STRELOK_ABOUT_INFORMATION_TOLD</dont_has_flag>
+        <phrase_list>
+            <phrase id="0">
+                <text>pri_b305_strelok_about_information_0</text>
+                <next>1</next>
+            </phrase>
+            <phrase id="1">
+                <text>pri_b305_strelok_about_information_1</text>
+                <give_flag>PRI_B305_STRELOK_ABOUT_INFORMATION_TOLD</give_flag>
+            </phrase>
+        </phrase_list>
+    </dialog>
+    <dialog id="pri_b305_strelok_about_station">
+        <has_flag>PRI_B305_FIFTH_CAM_END</has_flag>
+        <dont_has_flag>PRI_B305_STRELOK_ABOUT_STATION_TOLD</dont_has_flag>
+        <phrase_list>
+            <phrase id="11">
+                <text>pri_b305_strelok_about_station_11</text>
+                <next>111</next>
+            </phrase>
+            <phrase id="111">
+                <text>pri_b305_strelok_about_station_111</text>
+                <give_flag>PRI_B305_STRELOK_ABOUT_STATION_TOLD</give_flag>
+            </phrase>
+            <phrase id="0">
+                <text>pri_b305_strelok_about_station_0</text>
+                <next>1</next>
+            </phrase>
+            <phrase id="1">
+                <text>pri_b305_strelok_about_station_1</text>
+                <next>11</next>
+                <next>12</next>
+            </phrase>
+            <phrase id="12">
+                <text>pri_b305_strelok_about_station_12</text>
+                <give_flag>PRI_B305_STRELOK_ABOUT_STATION_TOLD</give_flag>
+            </phrase>
+        </phrase_list>
+    </dialog>
+    <dialog id="pri_b305_strelok_about_base">
+        <has_flag>PRI_B305_FIFTH_CAM_END</has_flag>
+        <dont_has_flag>PRI_B305_STRELOK_ABOUT_BASE_TOLD</dont_has_flag>
+        <phrase_list>
+            <phrase id="1">
+                <text>pri_b305_strelok_about_base_1</text>
+                <next>11</next>
+                <next>12</next>
+                <next>13</next>
+            </phrase>
+            <phrase id="11">
+                <text>pri_b305_strelok_about_base_11</text>
+                <dont_has_flag>PRI_B305_STRELOK_ABOUT_BASE_Q1</dont_has_flag>
+                <next>111</next>
+            </phrase>
+            <phrase id="111">
+                <text>pri_b305_strelok_about_base_111</text>
+                <give_flag>PRI_B305_STRELOK_ABOUT_BASE_Q1</give_flag>
+                <next>12</next>
+                <next>13</next>
+            </phrase>
+            <phrase id="12">
+                <text>pri_b305_strelok_about_base_12</text>
+                <dont_has_flag>PRI_B305_STRELOK_ABOUT_BASE_Q2</dont_has_flag>
+                <next>121</next>
+            </phrase>
+            <phrase id="121">
+                <text>pri_b305_strelok_about_base_121</text>
+                <give_flag>PRI_B305_STRELOK_ABOUT_BASE_Q2</give_flag>
+                <next>11</next>
+                <next>13</next>
+            </phrase>
+            <phrase id="0">
+                <text>pri_b305_strelok_about_base_0</text>
+                <next>1</next>
+            </phrase>
+            <phrase id="13">
+                <text>pri_b305_strelok_about_base_13</text>
+                <give_flag>PRI_B305_STRELOK_ABOUT_BASE_TOLD</give_flag>
+            </phrase>
+        </phrase_list>
+    </dialog>
+    <dialog id="pri_a16_colonel_a21_about_sentry_pass_task_dialog">
+        <has_flag>PRI_A21_SPAWN_KONTROLER</has_flag>
+        <dont_has_flag>PRI_A21_SCENE_END</dont_has_flag>
+        <phrase_list>
+            <phrase id="12">
+                <text>pri_a16_colonel_a21_about_sentry_pass_task_dialog_12</text>
+                <dont_has_flag>PRI_A21_SENTRY_TASK_DONE</dont_has_flag>
+                <has_flag>PRI_A21_FROM_KONTROLER_100_M</has_flag>
+            </phrase>
+            <phrase id="1111">
+                <text>pri_a16_colonel_a21_about_sentry_pass_task_dialog_1111</text>
+                <give_flag>PRI_A21_SCENE_END</give_flag>
+            </phrase>
+            <phrase id="111">
+                <text>pri_a16_colonel_a21_about_sentry_pass_task_dialog_111</text>
+                <next>1111</next>
+            </phrase>
+            <phrase id="1">
+                <text>pri_a16_colonel_a21_about_sentry_pass_task_dialog_1</text>
+                <next>11</next>
+                <next>12</next>
+            </phrase>
+            <phrase id="11">
+                <text>pri_a16_colonel_a21_about_sentry_pass_task_dialog_11</text>
+                <has_flag>PRI_A21_SENTRY_TASK_DONE</has_flag>
+                <next>111</next>
+            </phrase>
+            <phrase id="0">
+                <text>pri_a16_colonel_a21_about_sentry_pass_task_dialog_0</text>
+                <next>1</next>
+            </phrase>
+        </phrase_list>
+    </dialog>
+    <dialog id="pri_b305_strelok_dialog">
+        <phrase_list>
+            <phrase id="1">
+                <text />
+                <next>11</next>
+            </phrase>
+            <phrase id="11">
+                <text>pri_b305_strelok_dialog_11</text>
+            </phrase>
+            <phrase id="0">
+                <text />
+                <next>1</next>
+            </phrase>
+        </phrase_list>
+    </dialog>
+    <dialog id="pri_b305_strelok_note">
+        <precondition>dialogs_pripyat.pri_b305_actor_has_strelok_notes</precondition>
+        <phrase_list>
+            <phrase id="1">
+                <text>pri_b305_strelok_note_1</text>
+                <next>11</next>
+                <next>12</next>
+                <next>13</next>
+                <next>14</next>
+                <next>15</next>
+                <next>16</next>
+                <next>17</next>
+                <next>18</next>
+            </phrase>
+            <phrase id="0">
+                <text>pri_b305_strelok_note_0</text>
+                <next>1</next>
+            </phrase>
+            <phrase id="11">
+                <precondition>dialogs_pripyat.pri_b305_actor_has_strelok_note_all</precondition>
+                <text>pri_b305_strelok_note_11</text>
+                <next>111</next>
+            </phrase>
+            <phrase id="15">
+                <precondition>dialogs_pripyat.pri_b305_actor_has_strelok_note_12</precondition>
+                <text>pri_b305_strelok_note_15</text>
+                <next>151</next>
+            </phrase>
+            <phrase id="12">
+                <precondition>dialogs_pripyat.pri_b305_actor_has_strelok_note_1</precondition>
+                <text>pri_b305_strelok_note_12</text>
+                <next>121</next>
+            </phrase>
+            <phrase id="151">
+                <action>dialogs_pripyat.pri_b305_sell_strelok_notes</action>
+                <text>pri_b305_strelok_note_151</text>
+            </phrase>
+            <phrase id="161">
+                <action>dialogs_pripyat.pri_b305_sell_strelok_notes</action>
+                <text>pri_b305_strelok_note_161</text>
+            </phrase>
+            <phrase id="111">
+                <action>dialogs_pripyat.pri_b305_sell_strelok_notes</action>
+                <text>pri_b305_strelok_note_111</text>
+            </phrase>
+            <phrase id="121">
+                <action>dialogs_pripyat.pri_b305_sell_strelok_notes</action>
+                <text>pri_b305_strelok_note_121</text>
+            </phrase>
+            <phrase id="13">
+                <precondition>dialogs_pripyat.pri_b305_actor_has_strelok_note_2</precondition>
+                <text>pri_b305_strelok_note_13</text>
+                <next>131</next>
+            </phrase>
+            <phrase id="14">
+                <precondition>dialogs_pripyat.pri_b305_actor_has_strelok_note_3</precondition>
+                <text>pri_b305_strelok_note_14</text>
+                <next>141</next>
+            </phrase>
+            <phrase id="131">
+                <action>dialogs_pripyat.pri_b305_sell_strelok_notes</action>
+                <text>pri_b305_strelok_note_131</text>
+            </phrase>
+            <phrase id="141">
+                <action>dialogs_pripyat.pri_b305_sell_strelok_notes</action>
+                <text>pri_b305_strelok_note_141</text>
+            </phrase>
+            <phrase id="16">
+                <precondition>dialogs_pripyat.pri_b305_actor_has_strelok_note_13</precondition>
+                <text>pri_b305_strelok_note_16</text>
+                <next>161</next>
+            </phrase>
+            <phrase id="17">
+                <precondition>dialogs_pripyat.pri_b305_actor_has_strelok_note_23</precondition>
+                <text>pri_b305_strelok_note_17</text>
+                <next>171</next>
+            </phrase>
+            <phrase id="171">
+                <action>dialogs_pripyat.pri_b305_sell_strelok_notes</action>
+                <text>pri_b305_strelok_note_171</text>
+            </phrase>
+            <phrase id="18">
+                <text>pri_b305_strelok_note_18</text>
+            </phrase>
+        </phrase_list>
+    </dialog>
+    <dialog id="pri_a17_military_colonel_kovalski_a25_base_reminding_2">
+        <phrase_list>
+            <phrase id="1">
+                <text>pri_a17_military_colonel_kovalski_a25_base_reminding_2_1</text>
+                <action>dialogs.break_dialog</action>
+                <is_final>1</is_final>
+                <disable_flag>PRI_A25_KOVALOSKI_BASE_1ST_DIALOG</disable_flag>
+                <give_flag>PRI_A25_KOVALOSKI_BASE_2ST_DIALOG</give_flag>
+            </phrase>
+            <phrase id="0">
+                <text>pri_a17_military_colonel_kovalski_a25_base_reminding_2_0</text>
+                <next>1</next>
+            </phrase>
+        </phrase_list>
+    </dialog>
+    <dialog id="pri_a17_military_colonel_kovalski_b35_about_merc_start">
+        <has_flag>PRI_B35_ACTOR_KNOW_ABOUT_MERCENARIES</has_flag>
+        <dont_has_flag>PRI_B35_TASK_RUNNING</dont_has_flag>
+        <dont_has_flag>PRI_B35_TASK_REFUSE</dont_has_flag>
+        <dont_has_flag>PRI_B35_KOVALSKI_KNOWS_ABOUT_MERCS</dont_has_flag>
+        <phrase_list>
+            <phrase id="1">
+                <text>pri_a17_military_colonel_kovalski_b35_about_merc_start_1</text>
+                <give_flag>PRI_B35_KOVALSKI_KNOWS_ABOUT_MERCS</give_flag>
+            </phrase>
+            <phrase id="0">
+                <text>pri_a17_military_colonel_kovalski_b35_about_merc_start_0</text>
+                <next>1</next>
+            </phrase>
+        </phrase_list>
+    </dialog>
+    <dialog id="pri_a17_military_colonel_kovalski_b35_actor_know_about_merc">
+        <has_flag>PRI_B35_KOVALSKI_KNOWS_ABOUT_MERCS</has_flag>
+        <has_flag>PRI_B35_ACTOR_KNOW_ABOUT_MERCENARIES</has_flag>
+        <has_flag>PRI_B35_ABOUT_MERCS_DIALOG</has_flag>
+        <dont_has_flag>PRI_B35_TASK_RUNNING</dont_has_flag>
+        <dont_has_flag>PRI_B35_TASK_REFUSE</dont_has_flag>
+        <phrase_list>
+            <phrase id="111">
+                <text>pri_a17_military_colonel_kovalski_b35_actor_know_about_merc_111</text>
+                <next>1111</next>
+            </phrase>
+            <phrase id="111111121">
+                <text>pri_a17_military_colonel_kovalski_b35_actor_know_about_merc_111111121</text>
+                <next>111111</next>
+                <next>111112</next>
+                <next>111113</next>
+            </phrase>
+            <phrase id="1111">
+                <text>pri_a17_military_colonel_kovalski_b35_actor_know_about_merc_1111</text>
+                <next>11111</next>
+            </phrase>
+            <phrase id="11111112">
+                <text>pri_a17_military_colonel_kovalski_b35_actor_know_about_merc_11111112</text>
+                <next>111111121</next>
+            </phrase>
+            <phrase id="11111111">
+                <text>pri_a17_military_colonel_kovalski_b35_actor_know_about_merc_11111111</text>
+                <action>dialogs.break_dialog</action>
+                <action>dialogs.disable_ui_only</action>
+                <give_flag>PRI_B35_ACTOR_IS_GUIDED</give_flag>
+            </phrase>
+            <phrase id="12">
+                <text>pri_a17_military_colonel_kovalski_b35_actor_know_about_merc_12</text>
+                <dont_has_flag>JUP_B19_INFORMATION_ABOUT_MERC</dont_has_flag>
+                <has_flag>ZAT_B40_ACTOR_HAS_NOTEBOOK</has_flag>
+                <next>111</next>
+            </phrase>
+            <phrase id="1">
+                <text>pri_a17_military_colonel_kovalski_b35_actor_know_about_merc_1</text>
+                <next>11</next>
+                <next>12</next>
+                <next>13</next>
+            </phrase>
+            <phrase id="11">
+                <text>pri_a17_military_colonel_kovalski_b35_actor_know_about_merc_11</text>
+                <has_flag>ZAT_B40_ACTOR_HAS_NOTEBOOK</has_flag>
+                <has_flag>JUP_B19_INFORMATION_ABOUT_MERC</has_flag>
+                <next>111</next>
+            </phrase>
+            <phrase id="13">
+                <text>pri_a17_military_colonel_kovalski_b35_actor_know_about_merc_13</text>
+                <dont_has_flag>ZAT_B40_ACTOR_HAS_NOTEBOOK</dont_has_flag>
+                <has_flag>JUP_B19_INFORMATION_ABOUT_MERC</has_flag>
+                <next>111</next>
+            </phrase>
+            <phrase id="1111121">
+                <text>pri_a17_military_colonel_kovalski_b35_actor_know_about_merc_1111121</text>
+                <next>11111111</next>
+                <next>11111112</next>
+            </phrase>
+            <phrase id="111113">
+                <text>pri_a17_military_colonel_kovalski_b35_actor_know_about_merc_111113</text>
+                <give_flag>PRI_B35_TASK_REFUSE</give_flag>
+            </phrase>
+            <phrase id="111112">
+                <text>pri_a17_military_colonel_kovalski_b35_actor_know_about_merc_111112</text>
+                <disable_flag>PRI_B35_TARGET_ENVOY</disable_flag>
+                <give_flag>PRI_B35_TARGET_MERC</give_flag>
+                <give_flag>PRI_B35_TASK_RUNNING</give_flag>
+                <next>1111121</next>
+            </phrase>
+            <phrase id="0">
+                <text>pri_a17_military_colonel_kovalski_b35_actor_know_about_merc_0</text>
+                <next>1</next>
+            </phrase>
+            <phrase id="11111">
+                <text>pri_a17_military_colonel_kovalski_b35_actor_know_about_merc_11111</text>
+                <next>111111</next>
+                <next>111112</next>
+                <next>111113</next>
+            </phrase>
+            <phrase id="111111">
+                <text>pri_a17_military_colonel_kovalski_b35_actor_know_about_merc_111111</text>
+                <disable_flag>PRI_B35_TARGET_MERC</disable_flag>
+                <give_flag>PRI_B35_TARGET_ENVOY</give_flag>
+                <give_flag>PRI_B35_TASK_RUNNING</give_flag>
+                <next>1111111</next>
+            </phrase>
+            <phrase id="1111111">
+                <text>pri_a17_military_colonel_kovalski_b35_actor_know_about_merc_1111111</text>
+                <next>11111111</next>
+                <next>11111112</next>
+            </phrase>
+        </phrase_list>
+    </dialog>
+    <dialog id="pri_a17_military_colonel_kovalski_a25_base_reminding_1">
+        <phrase_list>
+            <phrase id="1">
+                <text>pri_a17_military_colonel_kovalski_a25_base_reminding_1_1</text>
+                <action>dialogs.break_dialog</action>
+                <is_final>1</is_final>
+                <disable_flag>PRI_A25_KOVALOSKI_BASE_2ST_DIALOG</disable_flag>
+                <give_flag>PRI_A25_KOVALOSKI_BASE_1ST_DIALOG</give_flag>
+            </phrase>
+            <phrase id="0">
+                <text>pri_a17_military_colonel_kovalski_a25_base_reminding_1_0</text>
+                <next>1</next>
+            </phrase>
+        </phrase_list>
+    </dialog>
+    <dialog id="pri_a25_army_medic_need_health_care">
+        <phrase_list>
+            <phrase id="11">
+                <text>pri_a25_army_medic_need_health_care_11</text>
+                <action>dialogs.medic_magic_potion</action>
+                <next>111</next>
+            </phrase>
+            <phrase id="111">
+                <text>pri_a25_army_medic_need_health_care_111</text>
+            </phrase>
+            <phrase id="0">
+                <text>pri_a25_army_medic_need_health_care_0</text>
+                <next>1</next>
+                <next>2</next>
+            </phrase>
+            <phrase id="1">
+                <precondition>dialogs.actor_needs_bless</precondition>
+                <text>pri_a25_army_medic_need_health_care_1</text>
+                <next>11</next>
+            </phrase>
+            <phrase id="2">
+                <precondition>dialogs.actor_is_damn_healthy</precondition>
+                <text>pri_a25_army_medic_need_health_care_2</text>
+            </phrase>
+        </phrase_list>
+    </dialog>
+    <dialog id="jup_b15_zulus_b301_reward_dialog">
+        <has_flag>PRI_B301_REWARD_DIALOG_UNABLE</has_flag>
+        <dont_has_flag>JUP_B15_ZULUS_B301_REWARD_DIALOG_DONE</dont_has_flag>
+        <phrase_list>
+            <phrase id="1">
+                <text>jup_b15_zulus_b301_reward_dialog_1</text>
+                <dont_has_flag>PRI_B301_REWARD_WAY_1</dont_has_flag>
+                <next>11</next>
+            </phrase>
+            <phrase id="11">
+                <text>jup_b15_zulus_b301_reward_dialog_11</text>
+                <give_flag>PRI_B301_REWARD_WAY_1</give_flag>
+                <next>2</next>
+                <next>111</next>
+            </phrase>
+            <phrase id="21">
+                <text>jup_b15_zulus_b301_reward_dialog_21</text>
+                <give_flag>PRI_B301_REWARD_WAY_2</give_flag>
+                <next>1</next>
+                <next>211</next>
+            </phrase>
+            <phrase id="2">
+                <text>jup_b15_zulus_b301_reward_dialog_2</text>
+                <dont_has_flag>PRI_B301_REWARD_WAY_2</dont_has_flag>
+                <next>21</next>
+            </phrase>
+            <phrase id="211">
+                <text>jup_b15_zulus_b301_reward_dialog_211</text>
+                <action>dialogs.break_dialog</action>
+                <give_flag>JUP_B15_ZULUS_B301_REWARD_DIALOG_END</give_flag>
+            </phrase>
+            <phrase id="3">
+                <text>jup_b15_zulus_b301_reward_dialog_3</text>
+                <action>dialogs.break_dialog</action>
+                <give_flag>JUP_B15_ZULUS_B301_REWARD_DIALOG_END</give_flag>
+            </phrase>
+            <phrase id="111">
+                <text>jup_b15_zulus_b301_reward_dialog_111</text>
+                <action>dialogs.break_dialog</action>
+                <give_flag>JUP_B15_ZULUS_B301_REWARD_DIALOG_END</give_flag>
+            </phrase>
+            <phrase id="0">
+                <text>jup_b15_zulus_b301_reward_dialog_0</text>
+                <action>dialogs_pripyat.pri_b301_zulus_reward</action>
+                <disable_flag>PRI_B301_REWARD_DIALOG_UNABLE</disable_flag>
+                <give_flag>JUP_B15_ZULUS_B301_REWARD_DIALOG_DONE</give_flag>
+                <next>1</next>
+                <next>2</next>
+                <next>3</next>
+            </phrase>
+        </phrase_list>
+    </dialog>
+    <dialog id="pri_a15_sokolov_pripyat_ready">
+        <has_flag>JUP_B218_SOLDIER_HIRED</has_flag>
+        <has_flag>JUP_B218_PRIPYAT_GROUP_GATHERING</has_flag>
+        <precondition>dialogs.level_jupiter</precondition>
+        <dont_has_flag>PRI_A15_SOKOLOV_PRIPYAT_READY_TOLD</dont_has_flag>
+        <phrase_list>
+            <phrase id="0">
+                <text>pri_a15_sokolov_pripyat_ready_0</text>
+                <give_flag>PRI_A15_SOKOLOV_PRIPYAT_READY_TOLD</give_flag>
+                <next>1</next>
+            </phrase>
+            <phrase id="1">
+                <text>pri_a15_sokolov_pripyat_ready_1</text>
+            </phrase>
+        </phrase_list>
+    </dialog>
+    <dialog id="pri_a15_sokolov_need_outfit">
+        <has_flag>JUP_B218_SOLDIER_AGREED</has_flag>
+        <has_flag>JUP_A9_TECH_WAY_INFO</has_flag>
+        <has_flag>JUP_B218_PRIPYAT_GROUP_GATHERING</has_flag>
+        <dont_has_flag>JUP_B218_SOLDIER_NEED_OUTFIT</dont_has_flag>
+        <phrase_list>
+            <phrase id="0">
+                <text>pri_a15_sokolov_need_outfit_0</text>
+                <next>1</next>
+            </phrase>
+            <phrase id="1">
+                <text>pri_a15_sokolov_need_outfit_1</text>
+                <give_flag>JUP_B218_SOLDIER_NEED_OUTFIT</give_flag>
+            </phrase>
+        </phrase_list>
+    </dialog>
+    <dialog id="pri_a15_sokolov_evacuation_point">
+        <precondition>dialogs_jupiter.pri_a15_sokolov_actor_has_not_note</precondition>
+        <has_flag>PRI_A15_SOKOLOV_JUPITER_TOLD</has_flag>
+        <dont_has_flag>PRI_A15_SOKOLOV_EVACUATION_POINT_TOLD</dont_has_flag>
+        <dont_has_flag>PRI_A15_SOKOLOV_EVACUATION_NOTE_TOLD</dont_has_flag>
+        <phrase_list>
+            <phrase id="1">
+                <text>pri_a15_sokolov_evacuation_point_1</text>
+            </phrase>
+            <phrase id="0">
+                <text>pri_a15_sokolov_evacuation_point_0</text>
+                <give_flag>PRI_A15_SOKOLOV_EVACUATION_POINT_TOLD</give_flag>
+                <next>1</next>
+            </phrase>
+        </phrase_list>
+    </dialog>
+    <dialog id="pri_a15_sokolov_evacuation_note">
+        <precondition>dialogs_jupiter.pri_a15_sokolov_actor_has_note</precondition>
+        <has_flag>PRI_A15_SOKOLOV_JUPITER_TOLD</has_flag>
+        <phrase_list>
+            <phrase id="0">
+                <text>pri_a15_sokolov_evacuation_note_0</text>
+                <give_flag>PRI_A15_SOKOLOV_EVACUATION_NOTE_TOLD</give_flag>
+                <next>1</next>
+            </phrase>
+            <phrase id="1">
+                <text>pri_a15_sokolov_evacuation_note_1</text>
+                <action>dialogs_jupiter.pri_a15_sokolov_actor_give_note</action>
+            </phrase>
+        </phrase_list>
+    </dialog>
+    <dialog id="pri_a25_army_medic_freezer">
+        <phrase_list>
+            <phrase id="11">
+                <text>pri_a25_army_medic_freezer_11</text>
+                <next>111</next>
+            </phrase>
+            <phrase id="0">
+                <text>pri_a25_army_medic_freezer_0</text>
+                <next>1</next>
+            </phrase>
+            <phrase id="111">
+                <text>pri_a25_army_medic_freezer_111</text>
+                <action>dialogs.break_dialog</action>
+                <action>dialogs.disable_ui</action>
+                <is_final>1</is_final>
+                <give_flag>PRI_A25_RFI_SOURCE_ELIMINATED</give_flag>
+            </phrase>
+            <phrase id="1">
+                <text>pri_a25_army_medic_freezer_1</text>
+                <next>11</next>
+            </phrase>
+        </phrase_list>
+    </dialog>
+    <dialog id="jup_b43_stalker_assistant_b301_about_zulus">
+        <has_flag>PRI_B301_ZULUS_GO_BACK</has_flag>
+        <dont_has_flag>JUP_B43_STALKER_ASSISTANT_B301_ABOUT_ZULUS_DONE</dont_has_flag>
+        <phrase_list>
+            <phrase id="0">
+                <text>jup_b43_stalker_assistant_b301_about_zulus_0</text>
+                <next>1</next>
+            </phrase>
+            <phrase id="1">
+                <text>jup_b43_stalker_assistant_b301_about_zulus_1</text>
+                <give_flag>JUP_B43_STALKER_ASSISTANT_B301_ABOUT_ZULUS_DONE</give_flag>
+            </phrase>
+        </phrase_list>
+    </dialog>
+    <dialog id="pri_a25_army_medic_supply_medicine">
+        <phrase_list>
+            <phrase id="0">
+                <text>pri_a25_army_medic_supply_medicine_0</text>
+                <next>1</next>
+                <next>2</next>
+            </phrase>
+            <phrase id="1">
+                <text>pri_a25_army_medic_supply_medicine_1</text>
+                <action>dialogs_pripyat.pri_a25_medic_give_kit</action>
+                <disable_flag>PRI_A25_ACTOR_NEEDS_MEDIKIT_SUPPLY</disable_flag>
+                <has_flag>PRI_A25_ACTOR_NEEDS_MEDIKIT_SUPPLY</has_flag>
+            </phrase>
+            <phrase id="2">
+                <text>pri_a25_army_medic_supply_medicine_2</text>
+                <dont_has_flag>PRI_A25_ACTOR_NEEDS_MEDIKIT_SUPPLY</dont_has_flag>
+            </phrase>
+        </phrase_list>
+    </dialog>
+    <dialog id="pri_a16_colonel_a21_about_sentry_dialog">
+        <has_flag>PRI_A21_COLONEL_GIVE_SENTRY_TASK</has_flag>
+        <dont_has_flag>PRI_A21_SENTRY_TASK_DONE</dont_has_flag>
+        <phrase_list>
+            <phrase id="1">
+                <text>pri_a16_colonel_a21_about_sentry_dialog_1</text>
+                <next>11</next>
+            </phrase>
+            <phrase id="11">
+                <text>pri_a16_colonel_a21_about_sentry_dialog_11</text>
+            </phrase>
+            <phrase id="0">
+                <text>pri_a16_colonel_a21_about_sentry_dialog_0</text>
+                <next>1</next>
+            </phrase>
+        </phrase_list>
+    </dialog>
+    <dialog id="pri_a17_military_base_commander_actor_dialog_1">
+        <dont_has_flag>PRI_A17_TALK_WITH_KOVALSKI_ABOUT_MISSION_END</dont_has_flag>
+        <dont_has_flag>PRI_B305_FIFTH_CAM_END</dont_has_flag>
+        <dont_has_flag>PRI_A17_ACTOR_BRING_GAUSS_RIFLE</dont_has_flag>
+        <dont_has_flag>PRI_A20_TALK_WITH_COLONEL_COMPLETE</dont_has_flag>
+        <dont_has_flag>PRI_A18_FOUND_ANTENNA</dont_has_flag>
+        <dont_has_flag>PRI_A21_SENTRY_TASK_DONE</dont_has_flag>
+        <phrase_list>
+            <phrase id="1">
+                <text>pri_a17_military_base_commander_actor_dialog_1_1</text>
+                <next>11</next>
+                <next>12</next>
+            </phrase>
+            <phrase id="11">
+                <text>pri_a17_military_base_commander_actor_dialog_1_11</text>
+                <next>111</next>
+            </phrase>
+            <phrase id="0">
+                <text>pri_a17_military_base_commander_actor_dialog_1_0</text>
+                <next>1</next>
+            </phrase>
+            <phrase id="111">
+                <text>pri_a17_military_base_commander_actor_dialog_1_111</text>
+                <next>12</next>
+            </phrase>
+            <phrase id="12">
+                <text>pri_a17_military_base_commander_actor_dialog_1_12</text>
+                <give_flag>PRI_A17_TALK_WITH_KOVALSKI_ABOUT_MISSION_END</give_flag>
+            </phrase>
+        </phrase_list>
+    </dialog>
+    <dialog id="pri_a17_military_colonel_kovalski_a23_about_gauss_labx8">
+        <has_flag>ZAT_A23_ACTOR_HAS_GAUSS_RIFLE_DOCUMENTATION</has_flag>
+        <dont_has_flag>PRI_A23_DIALOG_ABOUT_GAUSS_LABX8_END</dont_has_flag>
+        <phrase_list>
+            <phrase id="111">
+                <text>pri_a17_military_colonel_kovalski_a23_about_gauss_labx8_111</text>
+                <give_flag>PRI_A23_DIALOG_ABOUT_GAUSS_LABX8_END</give_flag>
+            </phrase>
+            <phrase id="11">
+                <text>pri_a17_military_colonel_kovalski_a23_about_gauss_labx8_11</text>
+                <dont_has_flag>ZAT_B101_BOTH_HELI_INFO</dont_has_flag>
+                <next>111</next>
+            </phrase>
+            <phrase id="12">
+                <text>pri_a17_military_colonel_kovalski_a23_about_gauss_labx8_12</text>
+                <has_flag>ZAT_B101_BOTH_HELI_INFO</has_flag>
+                <next>111</next>
+            </phrase>
+            <phrase id="0">
+                <text>pri_a17_military_colonel_kovalski_a23_about_gauss_labx8_0</text>
+                <next>1</next>
+            </phrase>
+            <phrase id="1">
+                <text>pri_a17_military_colonel_kovalski_a23_about_gauss_labx8_1</text>
+                <next>11</next>
+                <next>12</next>
+            </phrase>
+        </phrase_list>
+    </dialog>
+    <dialog id="pri_a16_colonel_a21_about_sentry_start">
+        <dont_has_flag>PRI_A21_COLONEL_GIVE_SENTRY_TASK</dont_has_flag>
+        <dont_has_flag>PRI_A21_SENTRY_TASK_DONE</dont_has_flag>
+        <phrase_list>
+            <phrase id="2">
+                <text>pri_a16_colonel_a21_about_sentry_start_2</text>
+                <give_flag>PRI_A21_GIVE_TASK_BASE</give_flag>
+            </phrase>
+            <phrase id="0">
+                <text>pri_a16_colonel_a21_about_sentry_start_0</text>
+                <next>1</next>
+                <next>2</next>
+            </phrase>
+            <phrase id="1">
+                <text>pri_a16_colonel_a21_about_sentry_start_1</text>
+                <give_flag>PRI_A21_GIVE_TASK_BASE</give_flag>
+            </phrase>
+        </phrase_list>
+    </dialog>
+    <dialog id="pri_a22_army_signaller_about_rfi_source">
+        <has_flag>PRI_A22_COLONEL_GIVE_TASK</has_flag>
+        <dont_has_flag>PRI_A25_RFI_SOURCE_ASK_COMPLETE</dont_has_flag>
+        <dont_has_flag>PRI_B305_SECOND_CAM_END</dont_has_flag>
+        <precondition>dialog_manager.precondition_is_phrase_disabled</precondition>
+        <action>dialog_manager.action_disable_phrase</action>
+        <phrase_list>
+            <phrase id="2">
+                <text>pri_a22_army_signaller_about_rfi_source_2</text>
+                <dont_has_flag>PRI_A25_RFI_SOURCE_ELIMINATED</dont_has_flag>
+                <has_flag>PRI_A22_SCENE_DONE</has_flag>
+            </phrase>
+            <phrase id="3">
+                <text>pri_a22_army_signaller_about_rfi_source_3</text>
+                <give_flag>PRI_A25_RFI_SOURCE_ASK_COMPLETE</give_flag>
+                <has_flag>PRI_A25_RFI_SOURCE_ELIMINATED</has_flag>
+            </phrase>
+            <phrase id="1">
+                <text>pri_a22_army_signaller_about_rfi_source_1</text>
+                <dont_has_flag>PRI_A25_RFI_SOURCE_ELIMINATED</dont_has_flag>
+                <has_flag>PRI_A22_COLONEL_GIVE_TASK</has_flag>
+            </phrase>
+            <phrase id="0">
+                <text>pri_a22_army_signaller_about_rfi_source_0</text>
+                <next>1</next>
+                <next>2</next>
+                <next>3</next>
+            </phrase>
+        </phrase_list>
+    </dialog>
+    <dialog id="pri_a18_altar_destroyed_soldiers_start">
+        <phrase_list>
+            <phrase id="1">
+                <text />
+                <next>11</next>
+                <next>12</next>
+            </phrase>
+            <phrase id="0">
+                <text />
+                <next>1</next>
+            </phrase>
+            <phrase id="12">
+                <text>pri_a18_altar_destroyed_soldiers_start_12</text>
+                <has_flag>PRI_A18_ALTAR_DESTROYED_SOLDIERS_START_TOLD</has_flag>
+                <next>111</next>
+            </phrase>
+            <phrase id="111">
+                <text>pri_a18_altar_destroyed_soldiers_start_111</text>
+                <action>dialogs.break_dialog</action>
+                <is_final>1</is_final>
+            </phrase>
+            <phrase id="11">
+                <text>pri_a18_altar_destroyed_soldiers_start_11</text>
+                <dont_has_flag>PRI_A18_ALTAR_DESTROYED_SOLDIERS_START_TOLD</dont_has_flag>
+                <give_flag>PRI_A18_ALTAR_DESTROYED_SOLDIERS_START_TOLD</give_flag>
+                <next>111</next>
+            </phrase>
+        </phrase_list>
+    </dialog>
+    <dialog id="pri_a18_altar_destroyed_vano_start">
+        <phrase_list>
+            <phrase id="1">
+                <text />
+                <next>11</next>
+                <next>12</next>
+            </phrase>
+            <phrase id="111">
+                <text>pri_a18_altar_destroyed_vano_start_111</text>
+                <action>dialogs.break_dialog</action>
+                <is_final>1</is_final>
+            </phrase>
+            <phrase id="0">
+                <text />
+                <next>1</next>
+            </phrase>
+            <phrase id="12">
+                <text>pri_a18_altar_destroyed_vano_start_12</text>
+                <has_flag>PRI_A18_ALTAR_DESTROYED_VANO_START_TOLD</has_flag>
+                <next>111</next>
+            </phrase>
+            <phrase id="11">
+                <text>pri_a18_altar_destroyed_vano_start_11</text>
+                <dont_has_flag>PRI_A18_ALTAR_DESTROYED_VANO_START_TOLD</dont_has_flag>
+                <give_flag>PRI_A18_ALTAR_DESTROYED_VANO_START_TOLD</give_flag>
+                <next>111</next>
+            </phrase>
+        </phrase_list>
+    </dialog>
+    <dialog id="pri_a15_sokolov_start_dialog">
+        <phrase_list>
+            <phrase id="14">
+                <text>pri_a15_sokolov_start_dialog_14</text>
+                <precondition>dialogs.level_pripyat</precondition>
+                <has_flag>JUP_B218_SOLDIER_HIRED</has_flag>
+            </phrase>
+            <phrase id="13">
+                <text>pri_a15_sokolov_start_dialog_13</text>
+                <precondition>dialogs.level_pripyat</precondition>
+                <dont_has_flag>JUP_B218_SOLDIER_HIRED</dont_has_flag>
+            </phrase>
+            <phrase id="11">
+                <text>pri_a15_sokolov_start_dialog_11</text>
+                <precondition>dialogs.not_level_pripyat</precondition>
+                <dont_has_flag>PRI_A15_SOKOLOV_WHERE_FROM_TOLD</dont_has_flag>
+            </phrase>
+            <phrase id="12">
+                <text>pri_a15_sokolov_start_dialog_12</text>
+                <precondition>dialogs.not_level_pripyat</precondition>
+                <has_flag>PRI_A15_SOKOLOV_WHERE_FROM_TOLD</has_flag>
+            </phrase>
+            <phrase id="0">
+                <text />
+                <next>1</next>
+            </phrase>
+            <phrase id="1">
+                <text />
+                <next>11</next>
+                <next>12</next>
+                <next>13</next>
+                <next>14</next>
+            </phrase>
+        </phrase_list>
+    </dialog>
+    <dialog id="pri_a15_sokolov_goto_zulus">
+        <has_flag>PRI_A15_SOKOLOV_ARRANGED_OUTFIT_TOLD</has_flag>
+        <phrase_list>
+            <phrase id="11">
+                <text>pri_a15_sokolov_goto_zulus_11</text>
+                <action>dialogs.break_dialog</action>
+                <is_final>1</is_final>
+                <give_flag>JUP_B218_SOLDIER_HIRED</give_flag>
+            </phrase>
+            <phrase id="1">
+                <text>pri_a15_sokolov_goto_zulus_1</text>
+                <precondition>dialogs.is_surge_not_running</precondition>
+                <next>11</next>
+            </phrase>
+            <phrase id="2">
+                <text>pri_a15_sokolov_goto_zulus_2</text>
+                <precondition>dialogs.is_surge_running</precondition>
+            </phrase>
+            <phrase id="0">
+                <text>pri_a15_sokolov_goto_zulus_0</text>
+                <next>1</next>
+                <next>2</next>
+            </phrase>
+        </phrase_list>
+    </dialog>
+    <dialog id="jup_b43_stalker_assistant_b35_about_merc_actor">
+        <has_flag>PRI_B35_ASSISTANT_START_DIALOG_DONE</has_flag>
+        <dont_has_flag>PRI_B35_ACTOR_KNOW_ABOUT_MERCENARIES</dont_has_flag>
+        <phrase_list>
+            <phrase id="11">
+                <text>jup_b43_stalker_assistant_b35_about_merc_actor_11</text>
+                <next>111</next>
+            </phrase>
+            <phrase id="111">
+                <text>jup_b43_stalker_assistant_b35_about_merc_actor_111</text>
+                <give_flag>PRI_B35_ACTOR_KNOW_ABOUT_MERCENARIES</give_flag>
+            </phrase>
+            <phrase id="1">
+                <text>jup_b43_stalker_assistant_b35_about_merc_actor_1</text>
+                <next>11</next>
+            </phrase>
+            <phrase id="0">
+                <text>jup_b43_stalker_assistant_b35_about_merc_actor_0</text>
+                <next>1</next>
+            </phrase>
+        </phrase_list>
+    </dialog>
+    <dialog id="pri_a15_sokolov_occupation">
+        <has_flag>PRI_A15_SOKOLOV_JUPITER_TOLD</has_flag>
+        <dont_has_flag>PRI_A15_SOKOLOV_OCCUPATION_TOLD</dont_has_flag>
+        <phrase_list>
+            <phrase id="0">
+                <text>pri_a15_sokolov_occupation_0</text>
+                <give_flag>PRI_A15_SOKOLOV_OCCUPATION_TOLD</give_flag>
+                <next>1</next>
+            </phrase>
+            <phrase id="1">
+                <text>pri_a15_sokolov_occupation_1</text>
+            </phrase>
+        </phrase_list>
+    </dialog>
+    <dialog id="pri_a15_sokolov_jupiter">
+        <has_flag>PRI_A15_SOKOLOV_WHERE_FROM_TOLD</has_flag>
+        <dont_has_flag>PRI_A15_SOKOLOV_JUPITER_TOLD</dont_has_flag>
+        <phrase_list>
+            <phrase id="0">
+                <text>pri_a15_sokolov_jupiter_0</text>
+                <give_flag>PRI_A15_SOKOLOV_JUPITER_TOLD</give_flag>
+                <next>1</next>
+            </phrase>
+            <phrase id="1">
+                <text>pri_a15_sokolov_jupiter_1</text>
+            </phrase>
+        </phrase_list>
+    </dialog>
+    <dialog id="pri_a15_sokolov_pripyat_group">
+        <has_flag>PRI_A15_SOKOLOV_JUPITER_TOLD</has_flag>
+        <has_flag>JUP_B218_PRIPYAT_GROUP_GATHERING</has_flag>
+        <dont_has_flag>JUP_B218_SOLDIER_AGREED</dont_has_flag>
+        <dont_has_flag>JUP_B218_GATHER_SQUAD_COMPLETE</dont_has_flag>
+        <phrase_list>
+            <phrase id="0">
+                <text>pri_a15_sokolov_pripyat_group_0</text>
+                <give_flag>JUP_B218_SOLDIER_AGREED</give_flag>
+                <next>1</next>
+            </phrase>
+            <phrase id="1">
+                <text>pri_a15_sokolov_pripyat_group_1</text>
+            </phrase>
+        </phrase_list>
+    </dialog>
+    <dialog id="pri_a15_sokolov_where_from">
+        <dont_has_flag>PRI_A15_SOKOLOV_WHERE_FROM_TOLD</dont_has_flag>
+        <phrase_list>
+            <phrase id="0">
+                <text>pri_a15_sokolov_where_from_0</text>
+                <give_flag>PRI_A15_SOKOLOV_WHERE_FROM_TOLD</give_flag>
+                <next>1</next>
+            </phrase>
+            <phrase id="1">
+                <text>pri_a15_sokolov_where_from_1</text>
+            </phrase>
+        </phrase_list>
+    </dialog>
+    <dialog id="pri_a15_sokolov_helicopter">
+        <precondition>dialogs.level_pripyat</precondition>
+        <has_flag>PRI_A15_SOKOLOV_WHERE_FROM_TOLD</has_flag>
+        <dont_has_flag>PRI_A15_SOKOLOV_HELICOPTER_TOLD</dont_has_flag>
+        <phrase_list>
+            <phrase id="0">
+                <text>pri_a15_sokolov_helicopter_0</text>
+                <give_flag>PRI_A15_SOKOLOV_HELICOPTER_TOLD</give_flag>
+                <next>1</next>
+            </phrase>
+            <phrase id="1">
+                <text>pri_a15_sokolov_helicopter_1</text>
+            </phrase>
+        </phrase_list>
+    </dialog>
+    <dialog id="pri_a15_sokolov_about_journey">
+        <precondition>dialogs.level_pripyat</precondition>
+        <has_flag>PRI_A15_SOKOLOV_WHERE_FROM_TOLD</has_flag>
+        <dont_has_flag>JUP_B43_PRI_A20_SOKOLOV_WITH_GARICK_TRIP_TO_PRIPYAT_DIALOG_END</dont_has_flag>
+        <dont_has_flag>JUP_B218_SOLDIER_HIRED</dont_has_flag>
+        <phrase_list>
+            <phrase id="0">
+                <text>pri_a15_sokolov_about_journey_0</text>
+                <give_flag>JUP_B43_PRI_A20_SOKOLOV_WITH_GARICK_TRIP_TO_PRIPYAT_DIALOG_END</give_flag>
+                <next>1</next>
+            </phrase>
+            <phrase id="1">
+                <text>pri_a15_sokolov_about_journey_1</text>
+            </phrase>
+        </phrase_list>
+    </dialog>
+    <dialog id="pri_a22_army_signaller_supply_ammo">
+        <phrase_list>
+            <phrase id="2">
+                <text>pri_a22_army_signaller_supply_ammo_2</text>
+                <dont_has_flag>PRI_A22_ACTOR_NEEDS_AMMO_SUPPLY</dont_has_flag>
+            </phrase>
+            <phrase id="112">
+                <text>pri_a22_army_signaller_supply_ammo_112</text>
+                <action>dialogs_pripyat.pri_a22_army_signaller_supply</action>
+                <disable_flag>PRI_A22_ACTOR_NEEDS_AMMO_SUPPLY</disable_flag>
+                <has_flag>PRI_A22_ACTOR_NEEDS_AMMO_SUPPLY_ONE_DONE</has_flag>
+            </phrase>
+            <phrase id="111">
+                <text>pri_a22_army_signaller_supply_ammo_111</text>
+                <action>dialogs_pripyat.pri_a22_army_signaller_supply</action>
+                <dont_has_flag>PRI_A22_ACTOR_NEEDS_AMMO_SUPPLY_ONE_DONE</dont_has_flag>
+                <give_flag>PRI_A22_ACTOR_NEEDS_AMMO_SUPPLY_ONE_DONE</give_flag>
+                <next>11</next>
+                <next>12</next>
+                <next>13</next>
+                <next>14</next>
+                <next>15</next>
+                <next>16</next>
+                <next>17</next>
+                <next>18</next>
+                <next>19</next>
+                <next>20</next>
+            </phrase>
+            <phrase id="16">
+                <text>pri_a22_army_signaller_supply_ammo_16</text>
+                <give_flag>SUPPLY_AMMO_6</give_flag>
+                <next>111</next>
+                <next>112</next>
+            </phrase>
+            <phrase id="19">
+                <text>pri_a22_army_signaller_supply_ammo_19</text>
+                <give_flag>SUPPLY_AMMO_9</give_flag>
+                <next>111</next>
+                <next>112</next>
+            </phrase>
+            <phrase id="20">
+                <text>pri_a22_army_signaller_supply_ammo_20</text>
+            </phrase>
+            <phrase id="12">
+                <text>pri_a22_army_signaller_supply_ammo_12</text>
+                <give_flag>SUPPLY_AMMO_2</give_flag>
+                <next>111</next>
+                <next>112</next>
+            </phrase>
+            <phrase id="13">
+                <text>pri_a22_army_signaller_supply_ammo_13</text>
+                <give_flag>SUPPLY_AMMO_3</give_flag>
+                <next>111</next>
+                <next>112</next>
+            </phrase>
+            <phrase id="14">
+                <text>pri_a22_army_signaller_supply_ammo_14</text>
+                <give_flag>SUPPLY_AMMO_4</give_flag>
+                <next>111</next>
+                <next>112</next>
+            </phrase>
+            <phrase id="15">
+                <text>pri_a22_army_signaller_supply_ammo_15</text>
+                <give_flag>SUPPLY_AMMO_5</give_flag>
+                <next>111</next>
+                <next>112</next>
+            </phrase>
+            <phrase id="17">
+                <text>pri_a22_army_signaller_supply_ammo_17</text>
+                <give_flag>SUPPLY_AMMO_7</give_flag>
+                <next>111</next>
+                <next>112</next>
+            </phrase>
+            <phrase id="18">
+                <text>pri_a22_army_signaller_supply_ammo_18</text>
+                <give_flag>SUPPLY_AMMO_8</give_flag>
+                <next>111</next>
+                <next>112</next>
+            </phrase>
+            <phrase id="1">
+                <text>pri_a22_army_signaller_supply_ammo_1</text>
+                <has_flag>PRI_A22_ACTOR_NEEDS_AMMO_SUPPLY</has_flag>
+                <next>11</next>
+                <next>12</next>
+                <next>13</next>
+                <next>14</next>
+                <next>15</next>
+                <next>16</next>
+                <next>17</next>
+                <next>18</next>
+                <next>19</next>
+                <next>20</next>
+            </phrase>
+            <phrase id="11">
+                <text>pri_a22_army_signaller_supply_ammo_11</text>
+                <give_flag>SUPPLY_AMMO_1</give_flag>
+                <next>111</next>
+                <next>112</next>
+            </phrase>
+            <phrase id="0">
+                <text>pri_a22_army_signaller_supply_ammo_0</text>
+                <next>1</next>
+                <next>2</next>
+            </phrase>
+        </phrase_list>
+    </dialog>
+    <dialog id="pri_a15_sokolov_acquaintance_after_jorney">
+        <precondition>dialogs.level_pripyat</precondition>
+        <dont_has_flag>JUP_B218_SOLDIER_HIRED</dont_has_flag>
+        <dont_has_flag>PRI_A15_SOKOLOV_WHERE_FROM_TOLD</dont_has_flag>
+        <phrase_list>
+            <phrase id="1">
+                <text>pri_a15_sokolov_acquaintance_after_jorney_1</text>
+            </phrase>
+            <phrase id="0">
+                <text>pri_a15_sokolov_acquaintance_after_jorney_0</text>
+                <give_flag>PRI_A15_SOKOLOV_WHERE_FROM_TOLD</give_flag>
+                <next>1</next>
+            </phrase>
+        </phrase_list>
+    </dialog>
+    <dialog id="pri_a17_military_base_commander_actor_questions_dialog">
+        <dont_has_flag>PRI_A17_COLONEL_QUESTION_UNAVAILABLE</dont_has_flag>
+        <dont_has_flag>PRI_B305_FIFTH_CAM_END</dont_has_flag>
+        <phrase_list>
+            <phrase id="11121211">
+                <text>pri_a17_military_base_commander_actor_questions_dialog_11121211</text>
+                <next>111212111</next>
+            </phrase>
+            <phrase id="11121311">
+                <text>pri_a17_military_base_commander_actor_questions_dialog_11121311</text>
+                <next>111213111</next>
+            </phrase>
+            <phrase id="111212111">
+                <text>pri_a17_military_base_commander_actor_questions_dialog_111212111</text>
+                <next>9</next>
+                <next>111111</next>
+                <next>1113</next>
+                <next>1114</next>
+            </phrase>
+            <phrase id="1112121">
+                <text>pri_a17_military_base_commander_actor_questions_dialog_1112121</text>
+                <next>11121211</next>
+                <next>9</next>
+                <next>111111</next>
+                <next>1113</next>
+                <next>1114</next>
+            </phrase>
+            <phrase id="111213111">
+                <text>pri_a17_military_base_commander_actor_questions_dialog_111213111</text>
+                <next>9</next>
+                <next>111111</next>
+                <next>1113</next>
+                <next>1114</next>
+            </phrase>
+            <phrase id="1112131">
+                <text>pri_a17_military_base_commander_actor_questions_dialog_1112131</text>
+                <next>11121311</next>
+                <next>9</next>
+                <next>111111</next>
+                <next>1113</next>
+                <next>1114</next>
+            </phrase>
+            <phrase id="15">
+                <text>pri_a17_military_base_commander_actor_questions_dialog_15</text>
+            </phrase>
+            <phrase id="12">
+                <text>pri_a17_military_base_commander_actor_questions_dialog_12</text>
+                <next>121</next>
+            </phrase>
+            <phrase id="13">
+                <text>pri_a17_military_base_commander_actor_questions_dialog_13</text>
+                <next>131</next>
+            </phrase>
+            <phrase id="1311">
+                <text>pri_a17_military_base_commander_actor_questions_dialog_1311</text>
+                <next>13111</next>
+            </phrase>
+            <phrase id="13111">
+                <text>pri_a17_military_base_commander_actor_questions_dialog_13111</text>
+                <next>1113</next>
+                <next>1114</next>
+            </phrase>
+            <phrase id="141">
+                <text>pri_a17_military_base_commander_actor_questions_dialog_141</text>
+                <next>1411</next>
+                <next>1113</next>
+                <next>1114</next>
+            </phrase>
+            <phrase id="1411">
+                <text>pri_a17_military_base_commander_actor_questions_dialog_1411</text>
+                <give_flag>PRI_A17_KOVALSKI_KNOW_ABOUT_HELI</give_flag>
+                <next>14111</next>
+            </phrase>
+            <phrase id="14111">
+                <text>pri_a17_military_base_commander_actor_questions_dialog_14111</text>
+                <next>1113</next>
+                <next>1114</next>
+            </phrase>
+            <phrase id="131">
+                <text>pri_a17_military_base_commander_actor_questions_dialog_131</text>
+                <next>1311</next>
+                <next>1113</next>
+                <next>1114</next>
+            </phrase>
+            <phrase id="121">
+                <text>pri_a17_military_base_commander_actor_questions_dialog_121</text>
+                <next>1211</next>
+                <next>1113</next>
+                <next>1114</next>
+            </phrase>
+            <phrase id="1211">
+                <text>pri_a17_military_base_commander_actor_questions_dialog_1211</text>
+                <next>12111</next>
+                <next>12112</next>
+            </phrase>
+            <phrase id="12112">
+                <text>pri_a17_military_base_commander_actor_questions_dialog_12112</text>
+                <has_flag>PRI_A17_ACTOR_HAS_GAUSS_RIFLE</has_flag>
+                <next>1113</next>
+                <next>1114</next>
+            </phrase>
+            <phrase id="12111">
+                <text>pri_a17_military_base_commander_actor_questions_dialog_12111</text>
+                <dont_has_flag>PRI_A17_ACTOR_HAS_GAUSS_RIFLE</dont_has_flag>
+                <next>1113</next>
+                <next>1114</next>
+            </phrase>
+            <phrase id="11111">
+                <text>pri_a17_military_base_commander_actor_questions_dialog_11111</text>
+                <next>111111</next>
+                <next>1113</next>
+                <next>1114</next>
+            </phrase>
+            <phrase id="14">
+                <text>pri_a17_military_base_commander_actor_questions_dialog_14</text>
+                <dont_has_flag>PRI_A17_KOVALSKI_KNOW_ABOUT_HELI</dont_has_flag>
+                <next>141</next>
+            </phrase>
+            <phrase id="1">
+                <text>pri_a17_military_base_commander_actor_questions_dialog_1</text>
+                <next>11</next>
+                <next>12</next>
+                <next>13</next>
+                <next>14</next>
+                <next>15</next>
+            </phrase>
+            <phrase id="111212">
+                <text>pri_a17_military_base_commander_actor_questions_dialog_111212</text>
+                <next>1112121</next>
+            </phrase>
+            <phrase id="11122">
+                <text>pri_a17_military_base_commander_actor_questions_dialog_11122</text>
+                <dont_has_flag>PRI_A15_SOKOLOV_OUT</dont_has_flag>
+                <next>111211</next>
+                <next>111212</next>
+                <next>111213</next>
+                <next>111111</next>
+                <next>1113</next>
+                <next>1114</next>
+            </phrase>
+            <phrase id="11">
+                <text>pri_a17_military_base_commander_actor_questions_dialog_11</text>
+                <next>111</next>
+            </phrase>
+            <phrase id="111">
+                <text>pri_a17_military_base_commander_actor_questions_dialog_111</text>
+                <next>1111</next>
+                <next>1112</next>
+                <next>1113</next>
+                <next>15</next>
+            </phrase>
+            <phrase id="1111">
+                <text>pri_a17_military_base_commander_actor_questions_dialog_1111</text>
+                <next>11111</next>
+            </phrase>
+            <phrase id="1114">
+                <text>pri_a17_military_base_commander_actor_questions_dialog_1114</text>
+            </phrase>
+            <phrase id="111211111">
+                <text>pri_a17_military_base_commander_actor_questions_dialog_111211111</text>
+                <next>9</next>
+                <next>111111</next>
+                <next>1113</next>
+                <next>1114</next>
+            </phrase>
+            <phrase id="1113">
+                <text>pri_a17_military_base_commander_actor_questions_dialog_1113</text>
+                <next>1</next>
+            </phrase>
+            <phrase id="11123">
+                <text>pri_a17_military_base_commander_actor_questions_dialog_11123</text>
+                <dont_has_flag>PAS_B400_SOKOLOV_DEAD</dont_has_flag>
+                <has_flag>PRI_A15_SOKOLOV_OUT</has_flag>
+                <next>111211</next>
+                <next>111212</next>
+                <next>111213</next>
+                <next>111111</next>
+                <next>1113</next>
+                <next>1114</next>
+            </phrase>
+            <phrase id="111111">
+                <text>pri_a17_military_base_commander_actor_questions_dialog_111111</text>
+                <next>111</next>
+            </phrase>
+            <phrase id="111213">
+                <text>pri_a17_military_base_commander_actor_questions_dialog_111213</text>
+                <next>1112131</next>
+            </phrase>
+            <phrase id="1112">
+                <text>pri_a17_military_base_commander_actor_questions_dialog_1112</text>
+                <next>11121</next>
+                <next>11122</next>
+                <next>11123</next>
+            </phrase>
+            <phrase id="11121">
+                <text>pri_a17_military_base_commander_actor_questions_dialog_11121</text>
+                <precondition>dialogs_pripyat.pri_a17_sokolov_is_not_at_base</precondition>
+                <next>111211</next>
+                <next>111212</next>
+                <next>111213</next>
+                <next>111111</next>
+                <next>1113</next>
+                <next>1114</next>
+            </phrase>
+            <phrase id="11121111">
+                <text>pri_a17_military_base_commander_actor_questions_dialog_11121111</text>
+                <next>111211111</next>
+            </phrase>
+            <phrase id="1112111">
+                <text>pri_a17_military_base_commander_actor_questions_dialog_1112111</text>
+                <next>11121111</next>
+                <next>9</next>
+                <next>111111</next>
+                <next>1113</next>
+                <next>1114</next>
+            </phrase>
+            <phrase id="111211">
+                <text>pri_a17_military_base_commander_actor_questions_dialog_111211</text>
+                <next>1112111</next>
+            </phrase>
+            <phrase id="0">
+                <text>pri_a17_military_base_commander_actor_questions_dialog_0</text>
+                <next>1</next>
+            </phrase>
+            <phrase id="9">
+                <text>pri_a17_military_base_commander_actor_questions_dialog_9</text>
+                <next>91</next>
+            </phrase>
+            <phrase id="91">
+                <text>pri_a17_military_base_commander_actor_questions_dialog_91</text>
+                <next>111211</next>
+                <next>111212</next>
+                <next>111213</next>
+            </phrase>
+        </phrase_list>
+    </dialog>
+    <dialog id="pri_a25_army_medic_rescued">
+        <has_flag>PRI_B305_FIFTH_CAM_END</has_flag>
+        <dont_has_flag>PRI_A28_HOW_ARE_YOU_DIALOG_END</dont_has_flag>
+        <dont_has_flag>PRI_A28_MILITARYS_GO_TO_THE_DOOR</dont_has_flag>
+        <phrase_list>
+            <phrase id="1">
+                <text>pri_a25_army_medic_rescued_1</text>
+                <give_flag>PRI_A28_HOW_ARE_YOU_DIALOG_END</give_flag>
+            </phrase>
+            <phrase id="0">
+                <text>pri_a25_army_medic_rescued_0</text>
+                <next>1</next>
+            </phrase>
+        </phrase_list>
+    </dialog>
+    <dialog id="pri_a22_army_signaller_supply_grenade">
+        <phrase_list>
+            <phrase id="14">
+                <text>pri_a22_army_signaller_supply_grenade_14</text>
+            </phrase>
+            <phrase id="13">
+                <text>pri_a22_army_signaller_supply_grenade_13</text>
+                <give_flag>SUPPLY_GRENADE_3</give_flag>
+                <next>111</next>
+            </phrase>
+            <phrase id="11">
+                <text>pri_a22_army_signaller_supply_grenade_11</text>
+                <give_flag>SUPPLY_GRENADE_1</give_flag>
+                <next>111</next>
+            </phrase>
+            <phrase id="12">
+                <text>pri_a22_army_signaller_supply_grenade_12</text>
+                <give_flag>SUPPLY_GRENADE_2</give_flag>
+                <next>111</next>
+            </phrase>
+            <phrase id="2">
+                <text>pri_a22_army_signaller_supply_grenade_2</text>
+                <dont_has_flag>PRI_A22_ACTOR_NEEDS_GRENADE_SUPPLY</dont_has_flag>
+            </phrase>
+            <phrase id="0">
+                <text>pri_a22_army_signaller_supply_grenade_0</text>
+                <next>1</next>
+                <next>2</next>
+            </phrase>
+            <phrase id="1">
+                <text>pri_a22_army_signaller_supply_grenade_1</text>
+                <has_flag>PRI_A22_ACTOR_NEEDS_GRENADE_SUPPLY</has_flag>
+                <next>11</next>
+                <next>12</next>
+                <next>13</next>
+                <next>14</next>
+            </phrase>
+            <phrase id="111">
+                <text>pri_a22_army_signaller_supply_grenade_111</text>
+                <action>dialogs_pripyat.pri_a22_army_signaller_supply</action>
+                <disable_flag>PRI_A22_ACTOR_NEEDS_GRENADE_SUPPLY</disable_flag>
+            </phrase>
+        </phrase_list>
+    </dialog>
+    <dialog id="pri_a22_army_signaller_supply_outfit">
+        <dont_has_flag>PRI_A22_ARMY_SIGNALLER_SUPPLY_OUTFIT_DONE</dont_has_flag>
+        <phrase_list>
+            <phrase id="1">
+                <text>pri_a22_army_signaller_supply_outfit_1</text>
+                <give_flag>PRI_A22_ARMY_SIGNALLER_SUPPLY_OUTFIT_DONE</give_flag>
+            </phrase>
+            <phrase id="0">
+                <text>pri_a22_army_signaller_supply_outfit_0</text>
+                <action>dialogs_pripyat.pri_a22_give_actor_outfit</action>
+                <next>1</next>
+            </phrase>
+        </phrase_list>
+    </dialog>
+    <dialog id="pri_a22_army_signaller_start_dialog">
+        <phrase_list>
+            <phrase id="112">
+                <text>pri_a22_army_signaller_start_dialog_112</text>
+                <next>1121</next>
+            </phrase>
+            <phrase id="1121">
+                <text>pri_a22_army_signaller_start_dialog_1121</text>
+                <give_flag>PRI_A22_ARMY_SIGNALER_ACQUAINTANCE_DONE</give_flag>
+            </phrase>
+            <phrase id="111">
+                <text>pri_a22_army_signaller_start_dialog_111</text>
+                <next>1111</next>
+            </phrase>
+            <phrase id="1111">
+                <text>pri_a22_army_signaller_start_dialog_1111</text>
+                <give_flag>PRI_A22_ARMY_SIGNALER_ACQUAINTANCE_DONE</give_flag>
+                <next>112</next>
+            </phrase>
+            <phrase id="1">
+                <text />
+                <next>11</next>
+                <next>12</next>
+                <next>13</next>
+                <next>14</next>
+            </phrase>
+            <phrase id="113">
+                <text>pri_a22_army_signaller_start_dialog_113</text>
+            </phrase>
+            <phrase id="0">
+                <text />
+                <next>1</next>
+            </phrase>
+            <phrase id="11">
+                <text>pri_a22_army_signaller_start_dialog_11</text>
+                <dont_has_flag>PRI_A22_ARMY_SIGNALER_ACQUAINTANCE_DONE</dont_has_flag>
+                <next>111</next>
+                <next>112</next>
+                <next>113</next>
+            </phrase>
+            <phrase id="12">
+                <text>pri_a22_army_signaller_start_dialog_12</text>
+                <dont_has_flag>PRI_B305_FIFTH_CAM_END</dont_has_flag>
+                <has_flag>PRI_A22_ARMY_SIGNALER_ACQUAINTANCE_DONE</has_flag>
+            </phrase>
+            <phrase id="13">
+                <text>pri_a22_army_signaller_start_dialog_13</text>
+                <dont_has_flag>PRI_A28_COLONEL_INSTRUCTIONS_SOUND_END</dont_has_flag>
+                <has_flag>PRI_B305_FIFTH_CAM_END</has_flag>
+            </phrase>
+            <phrase id="14">
+                <text>pri_a22_army_signaller_start_dialog_14</text>
+                <has_flag>PRI_A28_COLONEL_INSTRUCTIONS_SOUND_END</has_flag>
+            </phrase>
+        </phrase_list>
+    </dialog>
+    <dialog id="pri_a17_military_base_commander_start">
+        <phrase_list>
+            <phrase id="0">
+                <text>pri_a17_military_base_commander_start_0</text>
+            </phrase>
+        </phrase_list>
+    </dialog>
+    <dialog id="pri_a17_military_base_commander_task_dialog">
+        <dont_has_flag>PRI_A17_MILITARY_BASE_COMMANDER_TASK_DIALOG_END</dont_has_flag>
+        <phrase_list>
+            <phrase id="11">
+                <text>pri_a17_military_base_commander_task_dialog_11</text>
+                <next>111</next>
+            </phrase>
+            <phrase id="111">
+                <text>pri_a17_military_base_commander_task_dialog_111</text>
+                <next>1111</next>
+            </phrase>
+            <phrase id="1">
+                <text>pri_a17_military_base_commander_task_dialog_1</text>
+                <next>11</next>
+            </phrase>
+            <phrase id="1111">
+                <text>pri_a17_military_base_commander_task_dialog_1111</text>
+                <next>11111</next>
+            </phrase>
+            <phrase id="11111">
+                <text>pri_a17_military_base_commander_task_dialog_11111</text>
+                <next>111111</next>
+            </phrase>
+            <phrase id="111111">
+                <text>pri_a17_military_base_commander_task_dialog_111111</text>
+                <give_flag>PRI_A17_GIVE_TASK_GET_GAUSS_RIFLE</give_flag>
+                <give_flag>PRI_A17_MILITARY_BASE_COMMANDER_TASK_DIALOG_END</give_flag>
+            </phrase>
+            <phrase id="0">
+                <text>pri_a17_military_base_commander_task_dialog_0</text>
+                <next>1</next>
+            </phrase>
+        </phrase_list>
+    </dialog>
+    <dialog id="pri_a25_army_medic_start_dialog">
+        <phrase_list>
+            <phrase id="11">
+                <text>pri_a25_army_medic_start_dialog_11</text>
+                <dont_has_flag>PRI_A25_ARMY_MEDIC_ACQUAINTANCE_DONE</dont_has_flag>
+                <give_flag>PRI_A25_ARMY_MEDIC_ACQUAINTANCE_DONE</give_flag>
+            </phrase>
+            <phrase id="12">
+                <text>pri_a25_army_medic_start_dialog_12</text>
+                <dont_has_flag>PRI_B305_FIFTH_CAM_END</dont_has_flag>
+                <has_flag>PRI_A25_ARMY_MEDIC_ACQUAINTANCE_DONE</has_flag>
+            </phrase>
+            <phrase id="14">
+                <text>pri_a25_army_medic_start_dialog_14</text>
+                <dont_has_flag>PRI_A28_COLONEL_INSTRUCTIONS_SOUND_END</dont_has_flag>
+                <has_flag>PRI_B305_FIFTH_CAM_END</has_flag>
+            </phrase>
+            <phrase id="0">
+                <text />
+                <next>1</next>
+            </phrase>
+            <phrase id="1">
+                <text />
+                <next>11</next>
+                <next>12</next>
+                <next>14</next>
+                <next>13</next>
+            </phrase>
+            <phrase id="13">
+                <text>pri_a25_army_medic_start_dialog_13</text>
+                <has_flag>PRI_A28_COLONEL_INSTRUCTIONS_SOUND_END</has_flag>
+            </phrase>
+        </phrase_list>
+    </dialog>
+    <dialog id="pri_a17_military_colonel_kovalski_b35_reward">
+        <has_flag>PRI_B35_RENDEVOUS_DONE</has_flag>
+        <dont_has_flag>PRI_B35_REWARD_GIVEN</dont_has_flag>
+        <dont_has_flag>PRI_A28_UPDATE_TASK_COVER_STRELOK</dont_has_flag>
+        <phrase_list>
+            <phrase id="2">
+                <text>pri_a17_military_colonel_kovalski_b35_reward_2</text>
+                <action>dialogs_pripyat.pri_b35_give_actor_reward</action>
+                <dont_has_flag>PRI_B35_SECONDARY</dont_has_flag>
+                <give_flag>PRI_B35_REWARD_GIVEN</give_flag>
+                <has_flag>PRI_B35_PRIMARY</has_flag>
+                <has_flag>PRI_B35_TARGET_MERC</has_flag>
+            </phrase>
+            <phrase id="3">
+                <text>pri_a17_military_colonel_kovalski_b35_reward_3</text>
+                <action>dialogs_pripyat.pri_b35_give_actor_reward</action>
+                <dont_has_flag>PRI_B35_SECONDARY</dont_has_flag>
+                <give_flag>PRI_B35_REWARD_GIVEN</give_flag>
+                <has_flag>PRI_B35_PRIMARY</has_flag>
+                <has_flag>PRI_B35_TARGET_ENVOY</has_flag>
+            </phrase>
+            <phrase id="4">
+                <text>pri_a17_military_colonel_kovalski_b35_reward_4</text>
+                <action>dialogs_pripyat.pri_b35_give_actor_reward</action>
+                <dont_has_flag>PRI_B35_PRIMARY</dont_has_flag>
+                <give_flag>PRI_B35_REWARD_GIVEN</give_flag>
+                <has_flag>PRI_B35_SECONDARY</has_flag>
+                <has_flag>PRI_B35_TARGET_ENVOY</has_flag>
+            </phrase>
+            <phrase id="5">
+                <text>pri_a17_military_colonel_kovalski_b35_reward_5</text>
+                <action>dialogs_pripyat.pri_b35_give_actor_reward</action>
+                <dont_has_flag>PRI_B35_PRIMARY</dont_has_flag>
+                <give_flag>PRI_B35_REWARD_GIVEN</give_flag>
+                <has_flag>PRI_B35_SECONDARY</has_flag>
+                <has_flag>PRI_B35_TARGET_MERC</has_flag>
+            </phrase>
+            <phrase id="1">
+                <text>pri_a17_military_colonel_kovalski_b35_reward_1</text>
+                <action>dialogs_pripyat.pri_b35_give_actor_reward</action>
+                <give_flag>PRI_B35_REWARD_GIVEN</give_flag>
+                <has_flag>PRI_B35_PRIMARY</has_flag>
+                <has_flag>PRI_B35_SECONDARY</has_flag>
+            </phrase>
+            <phrase id="6">
+                <text>pri_a17_military_colonel_kovalski_b35_reward_6</text>
+                <action>dialogs_pripyat.pri_b35_give_actor_reward</action>
+                <dont_has_flag>PRI_B35_PRIMARY</dont_has_flag>
+                <dont_has_flag>PRI_B35_SECONDARY</dont_has_flag>
+                <give_flag>PRI_B35_REWARD_GIVEN</give_flag>
+            </phrase>
+            <phrase id="0">
+                <text>pri_a17_military_colonel_kovalski_b35_reward_0</text>
+                <next>1</next>
+                <next>2</next>
+                <next>3</next>
+                <next>4</next>
+                <next>5</next>
+                <next>6</next>
+            </phrase>
+        </phrase_list>
+    </dialog>
+    <dialog id="jup_b43_stalker_assistant_b35_about_merc">
+        <dont_has_flag>PRI_B35_ACTOR_KNOW_ABOUT_MERCENARIES</dont_has_flag>
+        <dont_has_flag>PRI_B35_ASSISTANT_START_DIALOG_DONE</dont_has_flag>
+        <phrase_list>
+            <phrase id="1111">
+                <text>jup_b43_stalker_assistant_b35_about_merc_1111</text>
+                <give_flag>PRI_B35_ACTOR_KNOW_ABOUT_MERCENARIES</give_flag>
+                <give_flag>PRI_B35_ASSISTANT_START_DIALOG_DONE</give_flag>
+                <next>2</next>
+            </phrase>
+            <phrase id="2">
+                <text>jup_b43_stalker_assistant_b35_about_merc_2</text>
+                <give_flag>PRI_B35_ASSISTANT_START_DIALOG_DONE</give_flag>
+            </phrase>
+            <phrase id="111">
+                <text>jup_b43_stalker_assistant_b35_about_merc_111</text>
+                <next>1111</next>
+            </phrase>
+            <phrase id="1">
+                <text>jup_b43_stalker_assistant_b35_about_merc_1</text>
+                <next>11</next>
+            </phrase>
+            <phrase id="0">
+                <text>jup_b43_stalker_assistant_b35_about_merc_0</text>
+                <next>1</next>
+                <next>2</next>
+            </phrase>
+            <phrase id="11">
+                <text>jup_b43_stalker_assistant_b35_about_merc_11</text>
+                <next>111</next>
+            </phrase>
+        </phrase_list>
+    </dialog>
+    <dialog id="pri_a17_military_colonel_kovalski_evacuation_start">
+        <phrase_list>
+            <phrase id="1111">
+                <text>pri_a17_military_colonel_kovalski_evacuation_start_1111</text>
+                <next>11111</next>
+            </phrase>
+            <phrase id="111">
+                <text>pri_a17_military_colonel_kovalski_evacuation_start_111</text>
+                <dont_has_flag>PRI_A28_SUPPLY_DONE</dont_has_flag>
+                <next>1111</next>
+            </phrase>
+            <phrase id="12">
+                <text>pri_a17_military_colonel_kovalski_evacuation_start_12</text>
+                <has_flag>PRI_A28_UPDATE_TASK_TELL_KOVALSKI_WHEN_READY</has_flag>
+            </phrase>
+            <phrase id="21">
+                <text>pri_a17_military_colonel_kovalski_evacuation_start_21</text>
+            </phrase>
+            <phrase id="1">
+                <text />
+                <has_flag>PRI_A28_COLONEL_INSTRUCTIONS_SOUND_END</has_flag>
+                <next>11</next>
+                <next>12</next>
+            </phrase>
+            <phrase id="2">
+                <text />
+                <dont_has_flag>PRI_A28_COLONEL_INSTRUCTIONS_SOUND_END</dont_has_flag>
+                <next>21</next>
+            </phrase>
+            <phrase id="11111">
+                <text>pri_a17_military_colonel_kovalski_evacuation_start_11111</text>
+                <action>dialogs.break_dialog</action>
+                <is_final>1</is_final>
+                <give_flag>PRI_A28_UPDATE_TASK_TELL_KOVALSKI_WHEN_READY</give_flag>
+            </phrase>
+            <phrase id="0">
+                <text />
+                <next>1</next>
+                <next>2</next>
+            </phrase>
+            <phrase id="11">
+                <text>pri_a17_military_colonel_kovalski_evacuation_start_11</text>
+                <dont_has_flag>PRI_A28_UPDATE_TASK_TELL_KOVALSKI_WHEN_READY</dont_has_flag>
+                <next>111</next>
+                <next>101</next>
+            </phrase>
+            <phrase id="101">
+                <text />
+                <has_flag>PRI_A28_SUPPLY_DONE</has_flag>
+                <next>1011</next>
+            </phrase>
+            <phrase id="1011">
+                <give_flag>PRI_A28_UPDATE_TASK_TELL_KOVALSKI_WHEN_READY</give_flag>
+                <text />
+            </phrase>
+        </phrase_list>
+    </dialog>
+    <dialog id="pri_a17_military_colonel_kovalski_evacuation_ready">
+        <has_flag>PRI_A28_UPDATE_TASK_TELL_KOVALSKI_WHEN_READY</has_flag>
+        <dont_has_flag>PRI_A28_UPDATE_TASK_COVER_STRELOK_DIALOG</dont_has_flag>
+        <phrase_list>
+            <phrase id="11">
+                <text>pri_a17_military_colonel_kovalski_evacuation_ready_11</text>
+                <action>dialogs.break_dialog</action>
+                <is_final>1</is_final>
+                <give_flag>PRI_A28_UPDATE_TASK_COVER_STRELOK_DIALOG</give_flag>
+            </phrase>
+            <phrase id="0">
+                <text>pri_a17_military_colonel_kovalski_evacuation_ready_0</text>
+                <next>1</next>
+            </phrase>
+            <phrase id="1">
+                <text>pri_a17_military_colonel_kovalski_evacuation_ready_1</text>
+                <next>11</next>
+            </phrase>
+        </phrase_list>
+    </dialog>
+    <dialog id="pri_a17_military_recon_squad_after_scene_dialog">
+        <phrase_list>
+            <phrase id="1">
+                <text>pri_a17_military_recon_squad_after_scene_dialog_1</text>
+                <action>dialogs.break_dialog</action>
+                <is_final>1</is_final>
+            </phrase>
+            <phrase id="0">
+                <text>pri_a17_military_recon_squad_after_scene_dialog_0</text>
+                <next>1</next>
+            </phrase>
+        </phrase_list>
+    </dialog>
+    <dialog id="pri_a17_military_recon_squad_ambush_actor_ready">
+        <has_flag>PRI_A17_MILITARY_RECON_SQUAD_AMBUSH_ACTOR_INSTRUCT</has_flag>
+        <dont_has_flag>PRI_A17_MILITARY_RECON_SQUAD_AMBUSH_DIALOG_END</dont_has_flag>
+        <phrase_list>
+            <phrase id="2">
+                <text>pri_a17_military_recon_squad_ambush_actor_ready_2</text>
+                <precondition>dialogs.is_surge_running</precondition>
+            </phrase>
+            <phrase id="1">
+                <text>pri_a17_military_recon_squad_ambush_actor_ready_1</text>
+                <precondition>dialogs.is_surge_not_running</precondition>
+                <action>dialogs.save_pri_a17_hospital_start</action>
+                <next>11</next>
+            </phrase>
+            <phrase id="0">
+                <text>pri_a17_military_recon_squad_ambush_actor_ready_0</text>
+                <next>1</next>
+                <next>2</next>
+            </phrase>
+            <phrase id="11">
+                <text>pri_a17_military_recon_squad_ambush_actor_ready_11</text>
+                <action>dialogs.break_dialog</action>
+                <action>dialogs.disable_ui</action>
+                <is_final>1</is_final>
+                <give_flag>PRI_A17_TELEPORT_MILITARY_RECON</give_flag>
+                <give_flag>PRI_A17_MILITARY_RECON_SQUAD_AMBUSH_DIALOG_END</give_flag>
+            </phrase>
+        </phrase_list>
+    </dialog>
+    <dialog id="pri_a17_military_recon_squad_ambush_dialog_second">
+        <phrase_list>
+            <phrase id="0">
+                <text>pri_a17_military_recon_squad_ambush_dialog_second_0</text>
+            </phrase>
+        </phrase_list>
+    </dialog>
+    <dialog id="pri_a15_sokolov_arranged_outfit">
+        <has_flag>JUP_B206_ANOMALOUS_GROVE_DONE</has_flag>
+        <has_flag>JUP_B218_SOLDIER_NEED_OUTFIT</has_flag>
+        <has_flag>JUP_B218_PRIPYAT_GROUP_GATHERING</has_flag>
+        <dont_has_flag>PRI_A15_SOKOLOV_ARRANGED_OUTFIT_TOLD</dont_has_flag>
+        <phrase_list>
+            <phrase id="111">
+                <text>pri_a15_sokolov_arranged_outfit_111</text>
+            </phrase>
+            <phrase id="11">
+                <text>pri_a15_sokolov_arranged_outfit_11</text>
+                <give_flag>PRI_A15_SOKOLOV_ARRANGED_OUTFIT_TOLD</give_flag>
+                <next>111</next>
+            </phrase>
+            <phrase id="1">
+                <text>pri_a15_sokolov_arranged_outfit_1</text>
+                <next>11</next>
+            </phrase>
+            <phrase id="0">
+                <text>pri_a15_sokolov_arranged_outfit_0</text>
+                <next>1</next>
+            </phrase>
+        </phrase_list>
+    </dialog>
+    <dialog id="pri_a17_military_recon_squad_ambush_dialog">
+        <phrase_list>
+            <phrase id="0">
+                <text>pri_a17_military_recon_squad_ambush_dialog_0</text>
+                <next>1</next>
+                <next>2</next>
+            </phrase>
+            <phrase id="1">
+                <text>pri_a17_military_recon_squad_ambush_dialog_1</text>
+                <next>11</next>
+                <next>12</next>
+            </phrase>
+            <phrase id="11">
+                <text>pri_a17_military_recon_squad_ambush_dialog_11</text>
+                <precondition>dialogs.is_surge_not_running</precondition>
+                <action>dialogs.save_pri_a17_hospital_start</action>
+                <next>111</next>
+            </phrase>
+            <phrase id="2">
+                <text>pri_a17_military_recon_squad_ambush_dialog_2</text>
+                <next>21</next>
+            </phrase>
+            <phrase id="21">
+                <text>pri_a17_military_recon_squad_ambush_dialog_21</text>
+                <give_flag>PRI_A17_MILITARY_RECON_SQUAD_AMBUSH_ACTOR_INSTRUCT</give_flag>
+            </phrase>
+            <phrase id="12">
+                <text>pri_a17_military_recon_squad_ambush_dialog_12</text>
+                <precondition>dialogs.is_surge_running</precondition>
+                <give_flag>PRI_A17_MILITARY_RECON_SQUAD_AMBUSH_ACTOR_INSTRUCT</give_flag>
+            </phrase>
+            <phrase id="111">
+                <text>pri_a17_military_recon_squad_ambush_dialog_111</text>
+                <action>dialogs.break_dialog</action>
+                <is_final>1</is_final>
+                <give_flag>PRI_A17_MILITARY_RECON_SQUAD_AMBUSH_DIALOG_END</give_flag>
+                <give_flag>PRI_A17_TELEPORT_MILITARY_RECON</give_flag>
+                <give_flag>PRI_A17_MILITARY_RECON_SQUAD_AMBUSH_ACTOR_INSTRUCT</give_flag>
+            </phrase>
+        </phrase_list>
+    </dialog>
+    <dialog id="pri_a16_military_colonel_a20_find_recon_squd_dialog">
+        <phrase_list>
+            <phrase id="0">
+                <text>pri_a16_military_colonel_a20_find_recon_squd_dialog_0</text>
+            </phrase>
+        </phrase_list>
+    </dialog>
+    <dialog id="jup_b15_zulus_b301_after_fight">
+        <phrase_list>
+            <phrase id="1">
+                <text>jup_b15_zulus_b301_after_fight_1</text>
+                <next>11</next>
+            </phrase>
+            <phrase id="11">
+                <text>jup_b15_zulus_b301_after_fight_11</text>
+                <next>111</next>
+                <next>112</next>
+            </phrase>
+            <phrase id="2">
+                <text>jup_b15_zulus_b301_after_fight_2</text>
+                <action>dialogs.break_dialog</action>
+                <give_flag>PRI_B301_ZULUS_REMAIN_ALONE</give_flag>
+            </phrase>
+            <phrase id="112">
+                <text>jup_b15_zulus_b301_after_fight_112</text>
+                <action>dialogs.break_dialog</action>
+                <give_flag>PRI_B301_ZULUS_GO_ALONE</give_flag>
+                <give_flag>PRI_B301_REWARD_DIALOG_UNABLE</give_flag>
+            </phrase>
+            <phrase id="111">
+                <text>jup_b15_zulus_b301_after_fight_111</text>
+                <action>dialogs.break_dialog</action>
+                <give_flag>PRI_B301_GO_ON_BASE</give_flag>
+            </phrase>
+            <phrase id="0">
+                <text>jup_b15_zulus_b301_after_fight_0</text>
+                <next>1</next>
+                <next>2</next>
+            </phrase>
+        </phrase_list>
+    </dialog>
+    <dialog id="pri_a17_got_gauss">
+        <phrase_list>
+            <phrase id="1141">
+                <text></text>
+            </phrase>
+            <phrase id="31">
+                <text>pri_a17_got_gauss_31</text>
+                <next>4</next>
+                <next>5</next>
+            </phrase>
+            <phrase id="411">
+                <text>pri_a17_got_gauss_411</text>
+                <give_flag>PRI_A17_ACTOR_BRING_GAUSS_RIFLE</give_flag>
+                <next>4111</next>
+            </phrase>
+            <phrase id="4111">
+                <text>pri_a17_got_gauss_4111</text>
+            </phrase>
+            <phrase id="41">
+                <text>pri_a17_got_gauss_41</text>
+                <next>411</next>
+            </phrase>
+            <phrase id="511">
+                <text>pri_a17_got_gauss_511</text>
+                <action>dialogs.break_dialog</action>
+            </phrase>
+            <phrase id="51">
+                <text>pri_a17_got_gauss_51</text>
+                <next>511</next>
+            </phrase>
+            <phrase id="5">
+                <text>pri_a17_got_gauss_5</text>
+                <dont_has_flag>PRI_A17_ACTOR_HAS_GAUSS_RIFLE</dont_has_flag>
+                <next>51</next>
+            </phrase>
+            <phrase id="0">
+                <text>pri_a17_got_gauss_0</text>
+                <next>1</next>
+                <next>2</next>
+                <next>3</next>
+                <next>4</next>
+                <next>5</next>
+            </phrase>
+            <phrase id="4">
+                <text>pri_a17_got_gauss_4</text>
+                <has_flag>PRI_A17_ACTOR_HAS_GAUSS_RIFLE</has_flag>
+                <has_flag>PRI_A17_TOLD_ABOUT_OPERATION</has_flag>
+                <next>41</next>
+            </phrase>
+            <phrase id="21">
+                <text>pri_a17_got_gauss_21</text>
+                <next>4</next>
+                <next>5</next>
+            </phrase>
+            <phrase id="11">
+                <text>pri_a17_got_gauss_11</text>
+                <next>4</next>
+                <next>5</next>
+            </phrase>
+            <phrase id="1">
+                <text>pri_a17_got_gauss_1</text>
+                <dont_has_flag>PRI_A17_TOLD_ABOUT_OPERATION</dont_has_flag>
+                <dont_has_flag>PRI_A17_RECON_SQUAD_DEAD</dont_has_flag>
+                <dont_has_flag>PRI_A17_REACON_SQUAD_CASUALTIES</dont_has_flag>
+                <give_flag>PRI_A17_TOLD_ABOUT_OPERATION</give_flag>
+                <has_flag>PRI_A17_ACTOR_HAS_GAUSS_RIFLE</has_flag>
+                <next>11</next>
+            </phrase>
+            <phrase id="2">
+                <text>pri_a17_got_gauss_2</text>
+                <dont_has_flag>PRI_A17_RECON_SQUAD_DEAD</dont_has_flag>
+                <dont_has_flag>PRI_A17_TOLD_ABOUT_OPERATION</dont_has_flag>
+                <give_flag>PRI_A17_TOLD_ABOUT_OPERATION</give_flag>
+                <has_flag>PRI_A17_ACTOR_HAS_GAUSS_RIFLE</has_flag>
+                <has_flag>PRI_A17_REACON_SQUAD_CASUALTIES</has_flag>
+                <next>21</next>
+            </phrase>
+            <phrase id="3">
+                <text>pri_a17_got_gauss_3</text>
+                <dont_has_flag>PRI_A17_TOLD_ABOUT_OPERATION</dont_has_flag>
+                <give_flag>PRI_A17_TOLD_ABOUT_OPERATION</give_flag>
+                <has_flag>PRI_A17_RECON_SQUAD_DEAD</has_flag>
+                <has_flag>PRI_A17_ACTOR_HAS_GAUSS_RIFLE</has_flag>
+                <next>31</next>
+            </phrase>
+        </phrase_list>
+    </dialog>
+</game_dialogs>

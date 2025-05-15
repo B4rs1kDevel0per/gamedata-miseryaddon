@@ -1,0 +1,12 @@
+[logic]
+active = sr_idle@out
+type = sv_only
+
+[sr_idle@out]
+on_actor_inside = sr_idle@in
+
+[sr_idle@in]
+on_actor_outside = {+ZAT_B30_NEED_ARTEFACT_FROM_NOAH} sr_idle@out %+ZAT_B18_RESET_MEMORY -ZAT_B18_NOAH_SHOT_DOOR -ZAT_B18_NOAH_REMEMBERS%
+on_info = {+ZAT_B18_NOAH_DEAD} sr_idle@nil
+
+[sr_idle@nil]

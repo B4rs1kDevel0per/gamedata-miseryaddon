@@ -1,0 +1,108 @@
+[logic@jup_b4_monolith_squad_leader_monolith_skin]
+suitable = {=check_npc_name(jup_b4_monolith_squad_leader_monolith_skin)}
+active = walker@begin
+prior = 100
+on_death = death
+on_hit = hit
+
+[walker@begin]
+use_camp = false
+path_walk = monolith_squad_leader_monolith_skin_begin_walk
+path_look = monolith_squad_leader_monolith_skin_begin_look
+combat_ignore_cond = {-JUP_B4_MONOLITH_SQUAD_HIT} true, false
+meet = meet
+on_info = {=is_squad_enemy_to_actor(jup_b4_squad)} walker@begin2 %+JUP_B4_MONOLITH_SQUAD_OUT%
+on_info2 = {+JUP_B4_TELEPORT_TO_MONOLIT} walker@begin2
+gather_items_enabled = false
+help_wounded_enabled = false
+corpse_detection_enabled = false
+
+[walker@begin2]
+use_camp = false
+path_walk = monolith_squad_leader_monolith_skin_begin_walk
+path_look = monolith_squad_leader_monolith_skin_begin_look
+combat_ignore_cond = {-JUP_B4_MONOLITH_SQUAD_HIT} true, false
+meet = no_meet
+on_info = {+JUP_B4_ALING} walker@1
+on_info2 = {+JUP_B4_FREEDOM_SQUAD_LEADER_LETS_TALK_SOUND} walker@freedom
+on_info3 = {=is_squad_enemy_to_actor(jup_b4_squad)} %+JUP_B4_MONOLITH_SQUAD_OUT%
+on_actor_dist_ge_nvis = 150 | {-JUP_B4_ACTOR_GO_AWAY} %+JUP_B4_ACTOR_GO_AWAY%
+gather_items_enabled = false
+help_wounded_enabled = false
+corpse_detection_enabled = false
+;--------------------------------------------------------------------------------
+;--------------------------------------------------------------------------------
+
+[walker@1]
+use_camp = false
+path_walk = monolith_squad_leader_monolith_skin_1_walk
+path_look = monolith_squad_leader_monolith_skin_1_look
+combat_ignore_cond = {-JUP_B4_MONOLITH_SQUAD_HIT} true, false
+on_signal = align6 | %+JUP_B4_DUTY_ALING6%
+on_info = {+JUP_B4_DUTY_PRISIAGA} walker@2
+on_info2 = {=is_squad_enemy_to_actor(jup_b4_squad)} %+JUP_B4_MONOLITH_SQUAD_OUT%
+on_actor_dist_ge_nvis = 150 | {-JUP_B4_ACTOR_GO_AWAY} %+JUP_B4_ACTOR_GO_AWAY%
+meet = no_meet
+gather_items_enabled = false
+help_wounded_enabled = false
+corpse_detection_enabled = false
+
+[walker@2]
+use_camp = false
+path_walk = monolith_squad_leader_monolith_skin_1_walk
+path_look = monolith_squad_leader_monolith_skin_1_look
+combat_ignore_cond = {-JUP_B4_MONOLITH_SQUAD_HIT} true, false
+on_actor_dist_ge_nvis = 150 | {-JUP_B4_ACTOR_GO_AWAY} %+JUP_B4_ACTOR_GO_AWAY%
+on_timer = 300 | walker@3
+meet = no_meet
+gather_items_enabled = false
+help_wounded_enabled = false
+corpse_detection_enabled = false
+
+[walker@3]
+use_camp = false
+path_walk = monolith_squad_leader_monolith_skin_1_walk
+path_look = monolith_squad_leader_monolith_skin_1_look
+combat_ignore_cond = {-JUP_B4_MONOLITH_SQUAD_HIT} true, false
+on_info = {+JUP_B4_DUTY_PRISIAGA -JUP_B4_RECRUIT_6_SERVE_DUTY_SOUND} %=play_sound(jup_b4_recruit_1_serve_duty) +JUP_B4_RECRUIT_6_SERVE_DUTY_SOUND%
+on_info2 = {+JUP_B4_MONOLITH_SQUAD_OUT -JUP_B4_ML_STOP_SOUND} %=stop_sound +JUP_B4_ML_STOP_SOUND%
+on_actor_dist_ge_nvis = 150 | {-JUP_B4_ACTOR_GO_AWAY} %+JUP_B4_ACTOR_GO_AWAY%
+meet = no_meet
+gather_items_enabled = false
+help_wounded_enabled = false
+corpse_detection_enabled = false
+
+[meet]
+use					= {+JUP_B4_MONOLITH_SQUAD_OUT} false, true
+close_distance 		= 5
+far_distance		= 20
+close_victim		= actor
+close_anim 	        = {-JUP_B4_MONOLITH_SQUAD_HELP}wait
+close_snd_hello	    = nil
+far_victim			= actor
+far_anim            = {-JUP_B4_MONOLITH_SQUAD_HELP}hello_wpn
+far_snd				= {-JUP_B4_MONOLITH_SQUAD_HELP =dist_to_actor_ge(5)} jup_b4_monolith_squad_leader_meet
+trade_enable		= false
+allow_break			= false
+
+;--------------------------------------------------------------------------------
+;--------------------------------------------------------------------------------
+
+[walker@freedom]
+use_camp = false
+path_walk = monolith_squad_leader_monolith_skin_near_fire_walk
+path_look = monolith_squad_leader_monolith_skin_near_fire_look
+combat_ignore_cond = {-JUP_B4_MONOLITH_SQUAD_OUT} true, false
+on_signal = leader_near_fire | %+JUP_B4_FREEDOM_MONOLIT_LEADER_NEAR_FIRE%
+on_info = {=is_squad_enemy_to_actor(jup_b4_squad)} %+JUP_B4_MONOLITH_SQUAD_OUT%
+on_actor_dist_ge_nvis = 150 | {-JUP_B4_ACTOR_GO_AWAY} %+JUP_B4_ACTOR_GO_AWAY%
+meet = no_meet
+gather_items_enabled = false
+help_wounded_enabled = false
+corpse_detection_enabled = false
+
+[hit]
+on_info = %+JUP_B4_MONOLITH_SQUAD_HIT%
+
+[death]
+on_info = %+JUP_B4_MONOLITH_SQUAD_OUT%

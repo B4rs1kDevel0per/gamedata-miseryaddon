@@ -1,0 +1,299 @@
+-----------------------------------------------------------------------------------
+-- LEVELS
+-----------------------------------------------------------------------------------
+function level_zaton(first_speaker, second_speaker)
+	return level.name() == "zaton"
+end
+
+function level_jupiter(first_speaker, second_speaker)
+	return level.name() == "jupiter"
+end
+
+function level_pripyat(first_speaker, second_speaker)
+	return level.name() == "pripyat"
+end
+
+function not_level_zaton(first_speaker, second_speaker)
+	return level.name() ~= "zaton"
+end
+
+function not_level_jupiter(first_speaker, second_speaker)
+	return level.name() ~= "jupiter"
+end
+
+function not_level_pripyat(first_speaker, second_speaker)
+	return level.name() ~= "pripyat"
+end
+--------------------------------------------------------------------------------
+--			ALIFE SUPPORT
+--------------------------------------------------------------------------------
+
+---------------------
+function quest_dialog_heli_precond(first_speaker, second_speaker)
+	if (story_flags.has_flag("JUP_B9_HELI_1_SEARCHED") and
+				story_flags.has_flag("ZAT_B100_HELI_2_SEARCHED") and
+				story_flags.has_flag("ZAT_B28_HELI_3_SEARCHED") and
+				story_flags.has_flag("JUP_B8_HELI_4_SEARCHED") and
+				story_flags.has_flag("ZAT_B101_HELI_5_SEARCHED")) or
+				story_flags.has_flag("PRI_B305_ACTOR_WONDERED_DONE") then
+			return false
+	end
+
+	return true
+end
+
+function quest_dialog_military_precond(first_speaker, second_speaker)
+	if story_flags.has_flag("ZAT_B28_HELI_3_SEARCHED") or story_flags.has_flag("JUP_B9_BLACKBOX_DECRYPTED") then
+		if not (story_flags.has_flag("ZAT_B28_HELI_3_SEARCHED") and story_flags.has_flag("JUP_B9_BLACKBOX_DECRYPTED")) then
+			return true
+		end
+	end
+	return false
+end
+
+function quest_dialog_squad_precond(first_speaker, second_speaker)
+	return not (story_flags.has_flag("JUP_B218_MONOLITH_HIRED") and story_flags.has_flag("JUP_B218_SOLDIER_HIRED") and story_flags.has_flag("JUP_A10_VANO_AGREE_GO_UND"))
+end
+
+function quest_dialog_toolkits_precond(first_speaker, second_speaker)
+	if story_flags.has_flag("ZAT_A2_MECHANIC_TOOLKIT_SEARCH") and not story_flags.has_flag("ZAT_B3_TASK_END") then
+		return true
+	elseif story_flags.has_flag("JUP_B217_TECH_INSTRUMENTS_START") and not story_flags.has_flag("JUP_B217_TASK_END") then
+		return true
+	end
+	return false
+end
+
+
+function squad_not_in_smart_b101(first_speaker, second_speaker)
+	local smart = "zat_b101"
+	return not is_npc_in_current_smart(first_speaker, second_speaker, smart)
+end
+
+function squad_not_in_smart_b103(first_speaker, second_speaker)
+	local smart = "zat_b103"
+	return not is_npc_in_current_smart(first_speaker, second_speaker, smart)
+end
+
+function squad_not_in_smart_b104(first_speaker, second_speaker)
+	local smart = "zat_b104"
+	return not is_npc_in_current_smart(first_speaker, second_speaker, smart)
+end
+
+function squad_not_in_smart_b213(first_speaker, second_speaker)
+	local smart = "jup_b213"
+	return not is_npc_in_current_smart(first_speaker, second_speaker, smart)
+end
+
+function squad_not_in_smart_b214(first_speaker, second_speaker)
+	local smart = "jup_b214"
+	return not is_npc_in_current_smart(first_speaker, second_speaker, smart)
+end
+
+function squad_not_in_smart_b304(first_speaker, second_speaker)
+	local smart = "pri_b304_monsters_smart_terrain"
+	return not is_npc_in_current_smart(first_speaker, second_speaker, smart)
+end
+
+function squad_not_in_smart_b303(first_speaker, second_speaker)
+	local smart = "pri_b303"
+	return not is_npc_in_current_smart(first_speaker, second_speaker, smart)
+end
+
+function squad_not_in_smart_b40(first_speaker, second_speaker)
+	local smart = "zat_b40_smart_terrain"
+	return not is_npc_in_current_smart(first_speaker, second_speaker, smart)
+end
+
+function squad_not_in_smart_b18(first_speaker, second_speaker)
+	local smart = "zat_b18"
+	return not is_npc_in_current_smart(first_speaker, second_speaker, smart)
+end
+
+function squad_not_in_smart_b6(first_speaker, second_speaker)
+	local smart = "jup_b41"
+	return not is_npc_in_current_smart(first_speaker, second_speaker, smart)
+end
+
+function squad_not_in_smart_b205(first_speaker, second_speaker)
+	local smart = "jup_b205_smart_terrain"
+	return not is_npc_in_current_smart(first_speaker, second_speaker, smart)
+end
+
+function squad_not_in_smart_b47(first_speaker, second_speaker)
+	local smart = "jup_b47"
+	return not is_npc_in_current_smart(first_speaker, second_speaker, smart)
+end
+
+function squad_in_smart_zat_base(first_speaker, second_speaker)
+	local smart = "zat_stalker_base_smart"
+	return is_npc_in_current_smart(first_speaker, second_speaker, smart)
+end
+
+function squad_in_smart_jup_b25(first_speaker, second_speaker)
+	local smart = "jup_a6"
+	return is_npc_in_current_smart(first_speaker, second_speaker, smart)
+end
+
+function spartak_is_alive(first_speaker, second_speaker)
+	return xr_conditions.is_alive(nil,nil,{"zat_b7_stalker_victim_1"})
+end
+
+function tesak_is_alive(first_speaker, second_speaker)
+	return xr_conditions.is_alive(nil,nil,{"zat_b103_lost_merc_leader"})
+end
+
+function gonta_is_alive(first_speaker, second_speaker)
+	return xr_conditions.is_alive(nil,nil,{"zat_b103_lost_merc_leader"})
+end
+
+function mityay_is_alive(first_speaker, second_speaker)
+	return xr_conditions.is_alive(nil,nil,{"jup_a12_stalker_assaulter"})
+end
+
+function dolg_can_work_for_sci(first_speaker, second_speaker)
+	return not (story_flags.has_flag("JUP_A6_FREEDOM_LEADER_BUNKER_GUARDS_WORK") or story_flags.has_flag("JUP_A6_FREEDOM_LEADER_BUNKER_SCAN_WORK"))
+end
+
+function dolg_can_not_work_for_sci(first_speaker, second_speaker)
+	return story_flags.has_flag("JUP_A6_FREEDOM_LEADER_BUNKER_GUARDS_WORK") or story_flags.has_flag("JUP_A6_FREEDOM_LEADER_BUNKER_SCAN_WORK")
+end
+
+function freedom_can_work_for_sci(first_speaker, second_speaker)
+	return not (story_flags.has_flag("JUP_A6_DUTY_LEADER_BUNKER_GUARDS_WORK") or story_flags.has_flag("JUP_A6_DUTY_LEADER_BUNKER_SCAN_WORK"))
+end
+
+function freedom_can_not_work_for_sci(first_speaker, second_speaker)
+	return story_flags.has_flag("JUP_A6_DUTY_LEADER_BUNKER_GUARDS_WORK") or story_flags.has_flag("JUP_A6_DUTY_LEADER_BUNKER_SCAN_WORK")
+end
+
+function monolith_leader_is_alive(first_speaker, second_speaker)
+	if not (story_flags.has_flag("JUP_B4_MONOLITH_SQUAD_IN_FREEDOM") or story_flags.has_flag("JUP_B4_MONOLITH_SQUAD_IN_DUTY")) then
+		return xr_conditions.is_alive(nil,nil,{"jup_b4_monolith_squad_leader_monolith_skin"})
+	end
+
+	if story_flags.has_flag("JUP_B4_MONOLITH_SQUAD_IN_FREEDOM") then
+		return xr_conditions.is_alive(nil,nil,{"jup_b4_monolith_squad_leader_freedom_skin"})
+	elseif story_flags.has_flag("JUP_B4_MONOLITH_SQUAD_IN_DUTY") then
+		return xr_conditions.is_alive(nil,nil,{"jup_b4_monolith_squad_leader_duty_skin"})
+	end
+
+	return false
+end
+
+function monolith_leader_dead_or_hired(first_speaker, second_speaker)
+	if story_flags.has_flag("JUP_B218_SOLDIER_HIRED") then
+		return true
+	end
+
+	if not (story_flags.has_flag("JUP_B4_MONOLITH_SQUAD_IN_FREEDOM") or story_flags.has_flag("JUP_B4_MONOLITH_SQUAD_IN_DUTY")) then
+		return not xr_conditions.is_alive(nil,nil,{"jup_b4_monolith_squad_leader_monolith_skin"})
+	end
+
+	if story_flags.has_flag("JUP_B4_MONOLITH_SQUAD_IN_FREEDOM") then
+		return not xr_conditions.is_alive(nil,nil,{"jup_b4_monolith_squad_leader_freedom_skin"})
+	elseif story_flags.has_flag("JUP_B4_MONOLITH_SQUAD_IN_DUTY") then
+		return not xr_conditions.is_alive(nil,nil,{"jup_b4_monolith_squad_leader_duty_skin"})
+	end
+
+	return true
+end
+
+function monolith_leader_dead_or_dolg(first_speaker, second_speaker)
+	if story_flags.has_flag("JUP_B218_SOLDIER_HIRED") then
+		return true
+	end
+
+	if not (story_flags.has_flag("JUP_B4_MONOLITH_SQUAD_IN_FREEDOM") or story_flags.has_flag("JUP_B4_MONOLITH_SQUAD_IN_DUTY")) then
+		return not xr_conditions.is_alive(nil,nil,{"jup_b4_monolith_squad_leader_monolith_skin"})
+	end
+
+	if story_flags.has_flag("JUP_B4_MONOLITH_SQUAD_IN_FREEDOM") then
+		return true
+	elseif story_flags.has_flag("JUP_B4_MONOLITH_SQUAD_IN_DUTY") then
+		return not xr_conditions.is_alive(nil,nil,{"jup_b4_monolith_squad_leader_duty_skin"})
+	end
+
+	return true
+end
+
+function monolith_leader_dead_or_freedom(first_speaker, second_speaker)
+	if story_flags.has_flag("JUP_B218_SOLDIER_HIRED") then
+		return true
+	end
+
+	if not (story_flags.has_flag("JUP_B4_MONOLITH_SQUAD_IN_FREEDOM") or story_flags.has_flag("JUP_B4_MONOLITH_SQUAD_IN_DUTY")) then
+		return not xr_conditions.is_alive(nil,nil,{"jup_b4_monolith_squad_leader_monolith_skin"})
+	end
+
+	if story_flags.has_flag("JUP_B4_MONOLITH_SQUAD_IN_FREEDOM") then
+		return not xr_conditions.is_alive(nil,nil,{"jup_b4_monolith_squad_leader_freedom_skin"})
+	elseif story_flags.has_flag("JUP_B4_MONOLITH_SQUAD_IN_DUTY") then
+		return true
+	end
+
+	return true
+end
+
+function leave_zone_save(first_speaker, second_speaker)
+	xr_effects.scenario_autosave(db.actor,nil,{"st_save_uni_zone_to_reality"})
+end
+
+function save_uni_travel_zat_to_jup(first_speaker, second_speaker)
+	xr_effects.scenario_autosave(db.actor,nil,{"st_save_uni_travel_zat_to_jup"})
+end
+
+function save_uni_travel_zat_to_pri(first_speaker, second_speaker)
+	xr_effects.scenario_autosave(db.actor,nil,{"st_save_uni_travel_zat_to_pri"})
+end
+
+function save_uni_travel_jup_to_zat(first_speaker, second_speaker)
+	xr_effects.scenario_autosave(db.actor,nil,{"st_save_uni_travel_jup_to_zat"})
+end
+
+function save_uni_travel_jup_to_pri(first_speaker, second_speaker)
+	xr_effects.scenario_autosave(db.actor,nil,{"st_save_uni_travel_jup_to_pri"})
+end
+
+function save_uni_travel_pri_to_zat(first_speaker, second_speaker)
+	xr_effects.scenario_autosave(db.actor,nil,{"st_save_uni_travel_pri_to_zat"})
+end
+
+function save_uni_travel_pri_to_jup(first_speaker, second_speaker)
+	xr_effects.scenario_autosave(db.actor,nil,{"st_save_uni_travel_pri_to_jup"})
+end
+
+function save_jup_b218_travel_jup_to_pas(first_speaker, second_speaker)
+	xr_effects.scenario_autosave(db.actor,nil,{"st_save_jup_b218_travel_jup_to_pas"})
+end
+
+function save_pri_a17_hospital_start(first_speaker, second_speaker)
+	xr_effects.scenario_autosave(db.actor,nil,{"st_save_pri_a17_hospital_start"})
+end
+
+function save_jup_a10_gonna_return_debt(first_speaker, second_speaker)
+	if not story_flags.has_flag("JUP_A10_AVTOSAVE") then
+		xr_effects.scenario_autosave(db.actor,nil,{"st_save_jup_a10_gonna_return_debt"})
+		story_flags.give_flag("JUP_A10_AVTOSAVE")
+	end
+end
+
+function save_jup_b6_arrived_to_fen(first_speaker, second_speaker)
+	xr_effects.scenario_autosave(db.actor,nil,{"st_save_jup_b6_arrived_to_fen"})
+end
+
+function save_jup_b6_arrived_to_ash_heap(first_speaker, second_speaker)
+	xr_effects.scenario_autosave(db.actor,nil,{"st_save_jup_b6_arrived_to_ash_heap"})
+end
+
+function save_jup_b19_arrived_to_kopachy(first_speaker, second_speaker)
+	xr_effects.scenario_autosave(db.actor,nil,{"st_save_jup_b19_arrived_to_kopachy"})
+end
+
+function save_zat_b106_arrived_to_chimera_lair(first_speaker, second_speaker)
+	xr_effects.scenario_autosave(db.actor,nil,{"st_save_zat_b106_arrived_to_chimera_lair"})
+end
+
+function save_zat_b5_met_with_others(first_speaker, second_speaker)
+	xr_effects.scenario_autosave(db.actor,nil,{"st_save_zat_b5_met_with_others"})
+end

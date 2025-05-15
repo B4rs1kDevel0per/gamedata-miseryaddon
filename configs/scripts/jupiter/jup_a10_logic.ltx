@@ -1,0 +1,17 @@
+[logic]
+active = sr_idle
+type = sv_only
+
+[sr_idle]
+on_info = {+JUP_A10_VANO_GIVE_TASK} sr_idle@2
+on_info2 = {+JUP_A10_RUN_QUEST} %+JUP_B218_GATHER_SQUAD +JUP_A9_TECH_CONSERVATION_INFO%
+on_info3 = {!squad_exist(jup_a10_bandit_squad_3)} %+JUP_A10_BANDIT_OUT%
+
+[sr_idle@2]
+;on_info = {+JUP_A10_VANO_GIVE_TASK -JUP_A10_BANDIT_TAKE_MONEY -JUP_A10_BANDIT_TAKE_ALL_MONEY +JUP_A10_DEATH_0 +JUP_A10_DEATH_1 +JUP_A10_DEATH_2 +JUP_A10_DEATH_3} %+JUP_A10_BANDIT_OUT +JUP_A10_BACK_VANO%
+on_info = {+JUP_A10_VANO_GIVE_TASK -JUP_A10_BANDIT_TAKE_MONEY -JUP_A10_BANDIT_TAKE_ALL_MONEY !squad_exist(jup_a10_bandit_squad_3)} %+JUP_A10_BANDIT_OUT +JUP_A10_BACK_VANO%
+on_info2 = {+JUP_A10_BACK_VANO} sr_idle@3
+;on_info@3 = {=squad_exist(jup_a10_bandit_squad_3)} %+JUP_A10_BANDIT_SQUAD_DEATH%
+;on_game_timer = 259200 | sr_idle@3 %+JUP_A10_FALS -JUP_A10_VANO_GIVE_TASK% 
+
+[sr_idle@3]

@@ -1,0 +1,34 @@
+[logic]
+active = sr_idle@determine_cl_sv
+type = shared_with_cl_data
+
+[sr_idle@determine_cl_sv]
+on_info = {=isServer} sr_idle@sv_jup_b46_idle_sound
+on_info2 = {=isClient} sr_idle@cl_jup_b46_idle_sound
+
+;server logic
+[sr_idle@sv_jup_b46_idle_sound]
+on_info = {=distance_to_obj_le(jup_b46_spatial_bubble_zone:50) =any_actor_active_detector(detector_scientific:50)} sr_idle@sv_jup_b46_idle_particle %+JUP_B46_SPATIAL_BUBBLE_IDLE_PARTICLE_PLAY%
+on_info3 = {+JUP_B46_SPATIAL_BUBBLE_RUPTURED} sr_idle@nil
+
+[sr_idle@sv_jup_b46_idle_particle]
+on_info = {!any_actor_active_detector(detector_scientific:50)} sr_idle@sv_jup_b46_idle_sound %-JUP_B46_SPATIAL_BUBBLE_IDLE_PARTICLE_PLAY%
+on_info2 = {=distance_to_obj_ge(jup_b46_spatial_bubble_zone:50)} sr_idle@sv_jup_b46_idle_sound %-JUP_B46_SPATIAL_BUBBLE_IDLE_PARTICLE_PLAY%
+on_info3 = {+JUP_B46_DUTY_FOUNDER_SQUAD_SPAWNED} sr_idle@nil
+
+;client logic
+[sr_idle@cl_jup_b46_idle_sound]
+on_info = {+JUP_B46_SPATIAL_BUBBLE_IDLE_PARTICLE_PLAY} sr_particle@cl_jup_b46_idle_particle 
+on_info3 = {+JUP_B46_SPATIAL_BUBBLE_RUPTURED} sr_idle@nil
+
+[sr_particle@cl_jup_b46_idle_particle]
+name = anomaly2\anomaly_spatial_bubble_idle
+path = jup_b46_particle_point
+mode = 2
+looped = true 
+on_info  = {+JUP_B46_SPATIAL_BUBBLE_IDLE_PARTICLE_PLAY -JUP_B46_SPATIAL_BUBBLE_RUPTURED} %=play_sound(jup_b46_spatial_bubble_idle)%
+on_info2 = {-JUP_B46_SPATIAL_BUBBLE_IDLE_PARTICLE_PLAY} sr_idle@cl_jup_b46_idle_sound
+on_info3 = {-JUP_B46_SPATIAL_BUBBLE_IDLE_PARTICLE_PLAY} sr_idle@nil %=stop_sound%
+on_info4 = {+JUP_B46_DUTY_FOUNDER_SQUAD_SPAWNED} sr_idle@nil 
+
+[sr_idle@nil]

@@ -1,0 +1,12 @@
+[logic]
+active = sr_idle@kindergarten_polters_spawn
+type = sv_only
+
+[sr_idle@kindergarten_polters_spawn]
+on_info = {-PRI_A25_1ST_POLTER_SPAWNED =any_actor_in_zone(pri_a25_poltergeist_1_spawn_restrictor)} %+PRI_A25_1ST_POLTER_SPAWNED =create_squad(pri_a25_poltergeist_1_squad:pri_a25_smart_terrain)%
+on_info2 = {-PRI_A25_2ND_POLTER_SPAWNED =any_actor_in_zone(pri_a25_poltergeist_2_spawn_restrictor)} %+PRI_A25_2ND_POLTER_SPAWNED =create_squad(pri_a25_poltergeist_2_squad:pri_a25_smart_terrain)%
+on_info3 = {+PRI_A25_POLTERGEIST_2_DEAD} sr_idle@actor_long_time_without_polters
+
+[sr_idle@actor_long_time_without_polters]
+on_game_timer = 600 | {-PRI_A25_3RD_POLTER_SPAWNED =any_actor_in_zone(pri_a25_poltergeist_2_spawn_restrictor)} %+PRI_A25_3RD_POLTER_SPAWNED =create_squad(pri_a25_poltergeist_3_squad:pri_a25_smart_terrain)%
+on_info = {-PRI_A25_1ST_POLTER_SPAWNED =any_actor_in_zone(pri_a25_poltergeist_1_spawn_restrictor)} %+PRI_A25_1ST_POLTER_SPAWNED =create_squad(pri_a25_poltergeist_1_squad:pri_a25_smart_terrain)%

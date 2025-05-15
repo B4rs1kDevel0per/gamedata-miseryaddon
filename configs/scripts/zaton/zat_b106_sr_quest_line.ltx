@@ -1,0 +1,110 @@
+[logic]
+active = sr_idle@determine_cl_sv
+type = shared_with_cl_data
+
+[sr_idle@determine_cl_sv]
+on_info = {=isServer} sr_idle@sv_wait_consent
+on_info2 = {=isClient} sr_idle@cl_wait
+
+;server logic
+[sr_idle@sv_wait_consent]
+on_info = {+ZAT_B106_GONTA_ACCEPT_ACTOR} sr_idle@sv_wait_hunt %=give_task(zat_b106_hunt_himera)%
+;on_info2 = {=is_squad_enemy_to_actor(zat_b106_stalker_gonta_squad)} sr_idle@nil
+;on_info3 = {+ZAT_B106_GARMATA_DEAD +ZAT_B106_GONTA_DEAD} sr_idle@nil, {+ZAT_B106_FAIL} sr_idle@nil
+
+[sr_idle@sv_wait_hunt]
+on_info = {+ZAT_B106_START_HUNT} sr_idle@sv_wait
+;on_info2 = {=is_squad_enemy_to_actor(zat_b106_stalker_gonta_squad)} sr_idle@nil
+;on_info3 = {+ZAT_B106_GARMATA_DEAD +ZAT_B106_GONTA_DEAD} sr_idle@nil %=enable_ui%, {+ZAT_B106_FAIL} sr_idle@nil %=enable_ui%
+
+[sr_idle@sv_wait]
+on_game_timer = 10 | sr_idle@sv_timer %+ZAT_B106_FADE =clear_smart_terrain(zat_b106_smart_terrain)% ; 
+;on_info = {=is_squad_enemy_to_actor(zat_b106_stalker_gonta_squad)} sr_idle@nil %=enable_ui%
+;on_info2 = {+ZAT_B106_GARMATA_DEAD +ZAT_B106_GONTA_DEAD} sr_idle@nil %=enable_ui%, {+ZAT_B106_FAIL} sr_idle@nil %=enable_ui%
+
+[sr_idle@sv_timer]
+on_game_timer = 20 | sr_idle@sv_surge %+ZAT_B106_PREPARE_TELEPORT +ZAT_B106_DESTROY_GONTA +ZAT_B106_DESTROY_GARMATA =teleport_squad(zat_b106_stalker_gonta_squad:zat_b106_smart_terrain_gonta_lair_1_walk) =forward_game_time(0:20)%
+;on_info = {+ZAT_B106_GARMATA_DEAD +ZAT_B106_GONTA_DEAD} sr_idle@nil %=enable_ui%, {+ZAT_B106_FAIL} sr_idle@nil %=enable_ui%
+
+[sr_idle@sv_surge]
+on_info = sr_idle@sv_enable_set_timer
+;on_info = {=surge_started} sr_idle@sv_enable_set_timer %=stop_surge%, sr_idle@sv_enable_set_timer
+
+[sr_idle@sv_enable_set_timer]
+on_info =  sr_idle@sv_two_black %+ZAT_B106_TELEPORT =create_squad(zat_b106_chimera_squad:zat_b106_smart_terrain) =set_squad_goodwill(zat_b106_stalker_gonta_squad:friend)%
+;on_info2 = {+ZAT_B106_GONTA_DEAD} sr_idle@nil %=enable_ui =stop_postprocess(12106)%, {+ZAT_B106_FAIL} sr_idle@nil %=enable_ui =stop_postprocess(12106)%
+
+[sr_idle@sv_two_black]
+on_game_timer = 30 | {+ZAT_B106_REMARK} sr_idle@sv_timer_proc_done %+ZAT_B106_FADEOUT%
+;on_info = {+ZAT_B106_GONTA_DEAD} sr_idle@nil %=enable_ui =stop_postprocess(12106)%, {+ZAT_B106_FAIL} sr_idle@nil %=enable_ui =stop_postprocess(12106)%
+
+[sr_idle@sv_timer_proc_done]
+on_game_timer = 10 | sr_idle@sv_wait2 %+ZAT_B106_REMARK_DONE%
+;on_info2 = {+ZAT_B106_GONTA_DEAD} sr_idle@nil %=enable_ui%, {+ZAT_B106_FAIL} sr_idle@nil %=enable_ui%
+
+[sr_idle@sv_wait2]
+on_info = {+ZAT_B106_FORWARDING} sr_idle@sv_wait3
+on_info2 = {=is_squad_enemy_to_actor(zat_b106_stalker_gonta_squad)} sr_idle@nil
+on_info3 = {+ZAT_B106_GARMATA_DEAD +ZAT_B106_GONTA_DEAD} sr_idle@nil, {+ZAT_B106_FAIL} sr_idle@nil 
+
+[sr_idle@sv_wait3]
+on_info = {+ZAT_B106_RETURN_TO_SKADOVSK} sr_idle@sv_check_gonta %+ZAT_B106_HUNT_FINISH%
+on_info2 = {+ZAT_B106_HUNT_FINISH}  sr_idle@sv_create_stalkers 
+on_info3 = {+ZAT_B106_GARMATA_DEAD +ZAT_B106_GONTA_DEAD} sr_idle@nil, {+ZAT_B106_FAIL} sr_idle@nil, {+ZAT_B106_GO_TO_HOME} sr_idle@nil
+
+[sr_idle@sv_check_gonta]
+on_game_timer = 20 | {-ZAT_B106_GONTA_DEAD} sr_idle@sv_check_garmata %=teleport_squad(zat_b106_stalker_gonta_squad:zat_stalker_base_smart_gonta_1_walk)%, {+ZAT_B106_GONTA_DEAD} sr_idle@check_garmata
+on_info = {+ZAT_B106_GARMATA_DEAD +ZAT_B106_GONTA_DEAD} sr_idle@nil, {+ZAT_B106_FAIL} sr_idle@nil
+
+[sr_idle@sv_check_garmata]
+on_info = {-ZAT_B106_GARMATA_DEAD} sr_idle@sv_enable_ui_timer_two %=forward_game_time(0.20)%, {+ZAT_B106_GARMATA_DEAD} sr_idle@sv_enable_ui_timer_two %=forward_game_time(0.20)%
+on_info2 = {+ZAT_B106_GARMATA_DEAD +ZAT_B106_GONTA_DEAD} sr_idle@nil, {+ZAT_B106_FAIL} sr_idle@nil
+
+[sr_idle@sv_enable_ui_timer_two]
+on_game_timer = 30 | sr_idle@nil %+ZAT_B106_ALL_DONE =enable_ui%
+
+[sr_idle@sv_create_stalkers]
+on_game_timer = 10 | sr_idle@sv_teleport_gonta_to_jupiter %=teleport_squad(zat_b106_stalker_gonta_squad:zat_stalker_base_smart_gonta_1_walk)%
+
+[sr_idle@sv_teleport_gonta_to_jupiter]
+on_info = {+JUP_B6_GONTA_EMPLOYED -ZAT_B106_GONTA_ON_JUPITER =dist_to_story_obj_ge(zat_b106_stalker_gonta:50)} sr_idle@nil %=remove_squad(zat_b106_stalker_gonta_squad) =remove_squad(zat_b106_stalker_crab_squad)%
+on_info2 = {+ZAT_B106_GONTA_ON_JUPITER} sr_idle@sv_check_gonta_on_zaton
+
+[sr_idle@sv_check_gonta_on_zaton]
+on_info = {=squad_exist(zat_b106_stalker_gonta_squad)} %=remove_squad(zat_b106_stalker_gonta_squad)%
+on_info2 = {=squad_exist(zat_b106_stalker_crab_squad)} %=remove_squad(zat_b106_stalker_crab_squad)%
+on_info3 = sr_idle@nil
+
+;client logic
+[sr_idle@cl_wait]
+on_info = {+ZAT_B106_FADE =is_local_actor_relevant(10:zat_b106_stalker_gonta)} sr_idle@cl_timer %=run_postprocess(fade_in)%, {+ZAT_B106_FADE !is_local_actor_relevant(10:zat_b106_stalker_gonta)} sr_idle@cl_wait2
+
+[sr_idle@cl_timer]
+on_info = {+ZAT_B106_PREPARE_TELEPORT} sr_idle@cl_wait2 %=run_postprocess(black:12106:true)%
+
+[sr_idle@cl_wait2]
+on_info = {+ZAT_B106_TELEPORT} sr_idle@cl_two_black %=xrmpe_teleport_local_actor(zat_b106_teleport_actor_walk:zat_b106_teleport_actor_look)%
+
+[sr_idle@cl_two_black]
+on_info = {+ZAT_B106_FADEOUT} sr_idle@cl_timer_proc_done %=stop_postprocess(12106)%
+
+[sr_idle@cl_timer_proc_done]
+on_info = {+ZAT_B106_REMARK_DONE} sr_idle@cl_enable_ui
+
+[sr_idle@cl_enable_ui]
+on_info = {+ZAT_B106_FORWARDING} sr_idle@cl_wait3 %=enable_ui%
+on_info2 = {=is_squad_enemy_to_actor(zat_b106_stalker_gonta_squad)} sr_idle@nil
+on_info3 = {+ZAT_B106_GARMATA_DEAD +ZAT_B106_GONTA_DEAD} sr_idle@nil, {+ZAT_B106_FAIL} sr_idle@nil 
+
+[sr_idle@cl_wait3]
+on_info = {+ZAT_B106_RETURN_TO_SKADOVSK =is_local_actor_relevant(10:zat_b106_stalker_gonta)} sr_idle@cl_check %=run_postprocess(fade_in_out)%, {+ZAT_B106_RETURN_TO_SKADOVSK !is_local_actor_relevant(10:zat_b106_stalker_gonta)} sr_idle@nil
+on_info3 = {+ZAT_B106_GARMATA_DEAD +ZAT_B106_GONTA_DEAD} sr_idle@nil, {+ZAT_B106_FAIL} sr_idle@nil, {+ZAT_B106_GO_TO_HOME} sr_idle@nil
+
+[sr_idle@cl_check]
+on_info = {-ZAT_B106_GARMATA_DEAD} sr_idle@cl_enable_ui_timer_two %=xrmpe_teleport_local_actor(zat_actor_arrive_walk:zat_actor_arrive_look)%, {+ZAT_B106_GARMATA_DEAD} sr_idle@cl_enable_ui_timer_two %=xrmpe_teleport_local_actor(zat_b106_return_actor_walk:zat_b106_return_actor_look)%
+on_info2 = {+ZAT_B106_GARMATA_DEAD +ZAT_B106_GONTA_DEAD} sr_idle@nil %=enable_ui%, {+ZAT_B106_FAIL} sr_idle@nil %=enable_ui%
+
+[sr_idle@cl_enable_ui_timer_two]
+on_info = {+ZAT_B106_ALL_DONE} sr_idle@nil %=enable_ui%
+
+[sr_idle@nil]

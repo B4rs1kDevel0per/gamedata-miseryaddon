@@ -1,0 +1,13 @@
+[logic]
+active = sr_idle@start
+type = sv_only
+
+[sr_idle@start]
+on_info = {+JUP_B43_CONTRACT_STARTED} sr_idle@wait_end_task %=give_task(jup_b43_stalker_assistant_contract)%
+
+[sr_idle@wait_end_task]
+on_info = {+JUP_B43_CONTRACT_BROUGHT_FIRST_ARTEFACT -JUP_B43_ONCE_TREASURE_GIVE_1} %=give_treasure(jup_hiding_place_5) +JUP_B43_ONCE_TREASURE_GIVE_1%
+on_info2 = {+JUP_B43_CONTRACT_BROUGHT_SECOND_ARTEFACT -JUP_B43_ONCE_TREASURE_GIVE_2} %=give_treasure(jup_hiding_place_23) +JUP_B43_ONCE_TREASURE_GIVE_2%
+on_info3 = {+JUP_B43_CONTRACT_BROUGHT_FIRST_ARTEFACT +JUP_B43_CONTRACT_BROUGHT_SECOND_ARTEFACT} sr_idle@nil %+JUP_B43_CONTRACT_COMPLETE%
+
+[sr_idle@nil]

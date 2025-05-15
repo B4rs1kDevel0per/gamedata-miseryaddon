@@ -1,0 +1,42 @@
+[logic]
+active = sr_idle@determine_cl_sv
+type = no_save
+
+[sr_idle@determine_cl_sv]
+on_info = {=isServer} sr_idle@sv_control
+on_info2 = {=isClient} sr_idle@cl_control
+
+;server logic
+[sr_idle@sv_control]
+on_info  = {+ZAT_B215_GUIDE_TO_ZATON} %=xrmpe_teleport_actors(zat_actor_arrive_walk:zat_actor_arrive_look) -ZAT_B215_GUIDE_TO_ZATON%
+on_info2 = {+ZAT_B215_GUIDE_TO_JUPITER +ZAT_B215_CUT_GUIDE_TO_JUPITER} sr_idle@sv_to_jup_meet, {+ZAT_B215_GUIDE_TO_JUPITER -ZAT_B215_CUT_GUIDE_TO_JUPITER} sr_idle@sv_to_jup_meet %+ZAT_B215_CUT_GUIDE_TO_JUPITER%
+on_info3 = {+ZAT_B215_SET_COUNTER_3} %=set_counter(zat_a9_way_to_pripyat_counter:3) -ZAT_B215_SET_COUNTER_3%
+on_info4 = {+ZAT_B215_GUIDE_TO_PRIPYAT} sr_idle@sv_to_pri
+
+[sr_idle@sv_to_jup_meet]
+on_info = {+ZAT_B215_GUIDE_TO_JUPITER} %-ZAT_B215_GUIDE_TO_JUPITER -ZAT_B215_GUIDE_TO_ZATON -JUP_TRAVEL_MADE%
+on_game_timer = 20 | sr_idle@sv_control %=xrmpe_teleport_actors(zat_b215_jupiter_temp_walk:zat_b215_jupiter_temp_look) =forward_game_time(4) +ZAT_TO_JUP_JUMP_PROBKA%
+
+[sr_idle@sv_to_pri]
+on_info = {+ZAT_B215_GUIDE_TO_PRIPYAT} %-ZAT_B215_GUIDE_TO_PRIPYAT -ZAT_B215_GUIDE_TO_ZATON%
+on_game_timer = 20 | sr_idle@sv_control %=xrmpe_teleport_actors(zat_b215_pripyat_temp_walk:zat_b215_pripyat_temp_look) =forward_game_time(4) +JUP_B43_PRIPYAT_OUT_BASE_TELEPORT%
+
+;client logic
+[sr_idle@cl_control]
+on_info = {+ZAT_B215_GUIDE_TO_JUPITER} sr_idle@cl_to_jup_meet %=disable_ui =run_postprocess(fade_in)%
+on_info2 = {+ZAT_B215_GUIDE_TO_PRIPYAT} sr_idle@cl_to_pri %=disable_ui =run_postprocess(fade_in)% 
+on_info5 = {+UNI_LEAVE_ZONE_INFO} sr_idle@cl_leave_zone %=disable_ui =run_postprocess(fade_in)% 
+
+[sr_idle@cl_to_jup_meet]
+on_game_timer = 20 | sr_idle@cl_control %=run_postprocess(black:6127:true)%
+
+[sr_idle@cl_to_pri]
+on_game_timer = 20 | sr_idle@cl_control %=run_postprocess(black:6127:true)%
+
+[sr_idle@cl_leave_zone]
+on_game_timer = 20 | nil %=run_tutorial(outro_game)%
+
+
+
+
+

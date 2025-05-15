@@ -1,0 +1,68 @@
+[logic]
+active = ph_door@closed
+
+[ph_door@closed]
+closed = true
+locked = false
+on_use =  {=isServer} ph_door@open %+PRI_A16_BASE_MAIN_DOOR_OPEN%, ph_door@open
+on_info = {!check_smart_alarm_status(pri_a16:normal) -PRI_A16_WAIT_FOR_STALKERS} ph_door@locked
+on_info2 = {+PRI_B305_FIFTH_CAM_END -PRI_A28_UPDATE_TASK_COVER_STRELOK} ph_door@locked_pri_a28
+on_info3 = {+PRI_A16_BASE_MAIN_DOOR_OPEN !is_door_blocked_by_npc} ph_door@open 
+on_info4 = {+PRI_B305_THIRD_CAM_GO -PRI_B305_QUEST_COMPLETED} ph_door@closed_b305
+
+[ph_door@open]
+closed = false
+locked = false
+on_use = {=isServer -PRI_B305_DOOR_WORKED} ph_door@closed %-PRI_A16_BASE_MAIN_DOOR_OPEN%, ph_door@closed
+on_info = {!check_smart_alarm_status(pri_a16:normal) -PRI_A16_WAIT_FOR_STALKERS -PRI_B305_DOOR_WORKED} ph_door@locked %-PRI_A16_BASE_MAIN_DOOR_OPEN%
+on_info2 = {+PRI_B305_FIFTH_CAM_END -PRI_A28_UPDATE_TASK_COVER_STRELOK} ph_door@locked_pri_a28 %-PRI_A16_BASE_MAIN_DOOR_OPEN -PRI_B305_DOOR_WORKED%
+on_info3 = {-PRI_A16_BASE_MAIN_DOOR_OPEN !is_door_blocked_by_npc -PRI_B305_DOOR_WORKED} ph_door@closed
+on_info4 = {+PRI_B305_THIRD_CAM_GO -PRI_B305_FIFTH_CAM_END -PRI_B305_DOOR_WORKED -PRI_B305_QUEST_COMPLETED} ph_door@closed_b305 %-PRI_A16_BASE_MAIN_DOOR_OPEN%
+on_game_timer = 35 | {!is_door_blocked_by_npc -PRI_B305_DOOR_WORKED} ph_door@closed %-PRI_A16_BASE_MAIN_DOOR_OPEN%
+
+[ph_door@locked]
+closed = true
+locked = true
+on_info = {=check_smart_alarm_status(pri_a16:normal)} ph_door@closed
+on_info2 = {=check_smart_alarm_status(pri_a16:alarm)} ph_door@locked_alarm
+on_info3 = {+PRI_B305_THIRD_CAM_GO -PRI_B305_QUEST_COMPLETED} ph_door@closed_b305
+snd_open_start = trader_door_locked
+tip_open = tip_door_closed_hide_weapon
+
+[ph_door@locked_alarm]
+closed = true
+locked = true
+on_info = {=check_smart_alarm_status(pri_a16:normal)} ph_door@closed
+on_info2 = {=check_smart_alarm_status(pri_a16:danger)} ph_door@locked
+snd_open_start = trader_door_locked
+tip_open = tip_door_closed_base_alarm
+
+[ph_door@locked_pri_a28]
+closed = true
+locked = true
+on_info = {+PRI_A28_UPDATE_TASK_COVER_STRELOK} ph_door@open_regular %+PRI_A16_BASE_MAIN_DOOR_OPEN%
+snd_open_start = trader_door_locked
+not_for_npc = true
+
+[ph_door@closed_b305]
+closed = true
+locked = false
+on_use = {=isServer} ph_door@open %+PRI_A16_BASE_MAIN_DOOR_OPEN +PRI_B305_DOOR_WORKED%
+on_info = {+PRI_B305_DOOR_WORKED} ph_door@open %=disable_ui =xrmpe_teleport_local_actor(pri_a16_pri_b305_strelok_operation_look)%
+not_for_npc = true
+
+[ph_door@closed_regular]
+closed = true
+locked = false
+on_use = ph_door@open_regular %+PRI_A16_BASE_MAIN_DOOR_OPEN%
+on_info = {-PRI_A16_WAIT_FOR_STALKERS} ph_door@locked
+on_info2 = {+PRI_A16_BASE_MAIN_DOOR_OPEN !is_door_blocked_by_npc} ph_door@open_regular 
+
+[ph_door@open_regular]
+closed = false
+locked = false
+on_use = ph_door@closed_regular %-PRI_A16_BASE_MAIN_DOOR_OPEN%
+on_info = {-PRI_A16_WAIT_FOR_STALKERS} ph_door@locked %-PRI_A16_BASE_MAIN_DOOR_OPEN%
+on_info2 = {-PRI_A16_BASE_MAIN_DOOR_OPEN !is_door_blocked_by_npc} ph_door@closed_regular
+;on_game_timer = 50 | {!is_door_blocked_by_npc} ph_door@closed_regular %-PRI_A16_BASE_MAIN_DOOR_OPEN%
+not_for_npc = true

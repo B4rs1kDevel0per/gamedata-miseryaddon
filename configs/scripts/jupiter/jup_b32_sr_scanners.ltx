@@ -1,0 +1,25 @@
+[logic]
+active = sr_idle@wait
+type = cl_only
+
+[sr_idle@wait]
+on_info = {+JUP_B32_TASK_START +JUP_B32_SCANNERS_TRANFERRED} sr_idle@task
+
+[sr_idle@task]
+on_info = {=actor_has_item(jup_b32_scanner_device)} sr_idle@use
+on_info2 = {!actor_has_item(jup_b32_scanner_device) -JUP_B32_SCANNER_4_PLACED -JUP_B32_SCANNER_5_PLACED} sr_idle@wait, {!actor_has_item(jup_b32_scanner_device) +JUP_B32_SCANNER_4_PLACED +JUP_B32_SCANNER_5_PLACED} sr_idle@nil
+
+[sr_idle@use]
+on_info = {!actor_has_item(jup_b32_scanner_device)} sr_idle@task
+on_info2 = {=player_in_zone(jup_b32_sr_scanner_place_1) -JUP_B32_SCANNER_1_PLACED} sr_idle@place %=run_tutorial(jup_b32_scanner)%
+on_info3 = {=player_in_zone(jup_b32_sr_scanner_place_2) -JUP_B32_SCANNER_2_PLACED} sr_idle@place %=run_tutorial(jup_b32_scanner)%
+on_info4 = {=player_in_zone(jup_b32_sr_scanner_place_3) -JUP_B32_SCANNER_3_PLACED} sr_idle@place %=run_tutorial(jup_b32_scanner)%
+on_info5 = {=player_in_zone(jup_b32_sr_scanner_place_4) -JUP_B32_SCANNER_4_PLACED} sr_idle@place %=run_tutorial(jup_b32_scanner)%
+on_info6 = {=player_in_zone(jup_b32_sr_scanner_place_5) -JUP_B32_SCANNER_5_PLACED} sr_idle@place %=run_tutorial(jup_b32_scanner)%
+
+[sr_idle@place]
+on_info = {+JUP_B32_TUTORIAL_DONE} sr_idle@use %-JUP_B32_TUTORIAL_DONE%
+on_info2 = {!player_in_zone(jup_b32_sr_scanner_place_1) !player_in_zone(jup_b32_sr_scanner_place_2) !player_in_zone(jup_b32_sr_scanner_place_3) !player_in_zone(jup_b32_sr_scanner_place_4) !player_in_zone(jup_b32_sr_scanner_place_5)} sr_idle@use %=stop_tutorial%
+on_info3 = {!has_active_tutorial} sr_idle@use
+
+[sr_idle@nil]

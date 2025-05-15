@@ -1,0 +1,40 @@
+[logic]
+active = sr_idle@determine_cl_sv
+type = shared_with_cl_data
+
+[sr_idle@determine_cl_sv]
+on_info = {=isServer} sr_idle@sv_wait
+on_info2 = {=isClient} sr_idle@cl_check
+
+;server logic
+[sr_idle@sv_wait]
+on_info = {+ZAT_B5_ACTOR_STALKER_GO_TO_TRADER} sr_idle@sv_check
+on_info2 = {+ZAT_B5_MEAT} sr_idle@nil
+on_info3 = {+ZAT_B5_TIME_IS_OUT} sr_idle@nil
+
+[sr_idle@sv_check]
+on_actor_inside = sr_idle@nil %+ZAT_B5_START_QUEST_STALKERS%
+on_info ={+ZAT_B5_TIME_IS_OUT} sr_idle@nil
+on_info2 = {+ZAT_B5_MEAT} sr_idle@nil
+on_info3 = {+ZAT_B5_BREAK_CUTSCENE} sr_idle@nil
+on_actor_in_zone = zat_sr_check_enemy_dist | sr_idle@nil %+ZAT_B5_BREAK_CUTSCENE +ZAT_B5_STALKER_ATTACK_DEALER%
+
+;client logic
+[sr_idle@cl_check]
+on_info = {+ZAT_B5_START_QUEST_STALKERS =is_local_actor_relevant(30:zat_b5_intercept_talking_id)} sr_cutscene@cl_cam1 %=disable_ui%, {+ZAT_B5_START_QUEST_STALKERS !is_local_actor_relevant(30:zat_b5_intercept_talking_id)} sr_idle@nil
+on_info2 = {+ZAT_B5_TIME_IS_OUT} sr_idle@nil
+on_info3 = {+ZAT_B5_MEAT} sr_idle@nil
+on_info4 = {+ZAT_B5_BREAK_CUTSCENE} sr_idle@nil
+
+[sr_cutscene@cl_cam1]
+point = zat_b5_smart_terrain_actor_after_stalker_cutscene_walk
+look = zat_b5_smart_terrain_actor_after_stalker_cutscene_look
+cam_effector = scenario_cam\Zaton\zat_b5_from_stalkers
+on_signal = cameff_end | sr_idle@nil
+global_cameffect = true
+outdoor = true
+on_info = {+ZAT_B5_MEAT} %=stop_sr_cutscene%
+on_info2 = {+ZAT_B5_DEALER_SPEAK_2_DONE} %=stop_sr_cutscene%
+enable_ui_on_end = true
+
+[sr_idle@nil]

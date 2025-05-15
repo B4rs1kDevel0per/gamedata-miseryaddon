@@ -1,0 +1,46 @@
+[logic@jup_a12_bandit_cashier]
+active = walker@wait
+prior = 200
+on_death = death
+suitable = {=check_npc_name(jup_a12_bandit_cashier) !surge_started} true
+
+[walker@wait]
+path_walk = bandit_cashier_wait_walk
+path_look = bandit_cashier_wait_look
+combat_ignore_cond = {=check_enemy_name(jup_a12_stalker_prisoner) -JUP_A12_ACTOR_ENEMY_TO_BANDITS} true
+on_info = {+JUP_A12_STALKER_PRISONER_FREE -JUP_A12_STALKER_PRISONER_DEAD} walker@get_payment_wait
+on_info2 = {+JUP_A12_STALKER_PRISONER_DEAD} walker@wait_after
+meet = no_meet
+
+[walker@get_payment_wait]
+path_walk = bandit_cashier_get_payment_walk
+path_look = bandit_cashier_get_payment_look
+combat_ignore_cond = {=check_enemy_name(jup_a12_stalker_prisoner) -JUP_A12_ACTOR_ENEMY_TO_BANDITS} true
+on_actor_dist_le_nvis = 3 | %+JUP_A12_BANDIT_PAYMENT_STARTED%
+on_info = {+JUP_A12_BANDIT_PAYMENT_STARTED -JUP_A12_STALKER_PRISONER_DEAD} walker@get_payment
+on_info2 = {+JUP_A12_STALKER_PRISONER_DEAD} walker@wait_after
+def_state_moving = rush
+meet = no_meet
+
+[walker@get_payment]
+path_walk = bandit_cashier_get_payment_walk
+path_look = bandit_cashier_get_payment_look
+combat_ignore_cond = {=check_enemy_name(jup_a12_stalker_prisoner) -JUP_A12_ACTOR_ENEMY_TO_BANDITS} true
+meet = meet@get_payment
+on_info = {+JUP_A12_ACTOR_DID_NOT_PAY_TO_CASHIER} walker@wait_after %=actor_enemy%, {+JUP_A12_ACTOR_PAID_TO_CASHIER} walker@wait_after
+on_info2 = {+JUP_A12_STALKER_PRISONER_DEAD} walker@wait_after
+
+[meet@get_payment]
+use = {!actor_enemy -JUP_A12_ACTOR_PAID_TO_CASHIER -JUP_A12_ACTOR_DID_NOT_PAY_TO_CASHIER} self, false
+meet_dialog = jup_a12_bandit_payment_dialog
+trade_enable = false
+allow_break = false
+
+[walker@wait_after]
+path_walk = bandit_cashier_wait_walk
+path_look = bandit_cashier_wait_look
+combat_ignore_cond = {=check_enemy_name(jup_a12_stalker_prisoner)} true
+meet = no_meet
+
+[death]
+on_info = {-JUP_A12_ACTOR_ENEMY_TO_BANDITS +JUP_A12_BANDIT_PAYMENT_STARTED} %+JUP_A12_BANDIT_CASHIER_DEAD =set_squad_neutral_to_actor(jup_a12_bandit_chief_squad) =set_squad_neutral_to_actor(jup_a12_bandit_cashier_squad) =set_squad_neutral_to_actor(jup_a12_bandit_guard_squad) =set_squad_neutral_to_actor(jup_a12_bandit_sim_squad)%, %+JUP_A12_BANDIT_CASHIER_DEAD%

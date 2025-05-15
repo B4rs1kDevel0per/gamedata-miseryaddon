@@ -1,0 +1,23 @@
+[logic]
+active = ph_idle@wait
+
+[ph_idle@wait]
+on_info = {=isClient +PRI_A19_LAB_X8_INVESTIGATED +PRI_A22_SCENE_DONE =actor_has_item(pri_a25_explosive_charge_item)} ph_button@cl_place_explosive_on_the_door, {=isServer +PRI_A19_LAB_X8_INVESTIGATED +PRI_A22_SCENE_DONE =any_actor_has_item(pri_a25_explosive_charge_item)} ph_idle@sv_place_explosive_on_the_door
+on_info2 = {=isClient +PRI_A25_BLOW_UP_ENTER_DOOR_BOOM} ph_idle@nil
+
+[ph_button@cl_place_explosive_on_the_door]
+tooltip = pri_a25_blow_up_enter_door
+local_use = true
+on_press = ph_idle@nil %=remove_item(pri_a25_explosive_charge_item) +PRI_A25_BLOW_UP_ENTER_DOOR_BOOM%
+
+[ph_idle@sv_place_explosive_on_the_door]
+on_info = {+PRI_A25_BLOW_UP_ENTER_DOOR_BOOM} ph_idle@sv_spawn_explosive_grenade %=xrmpe_client_spawn(pri_a25_explosive_charge:pri_a25_smart_terrain_pri_a25_explosive_spawn_point) =play_sound(pri_a25_blow_up_door_peep)%
+on_info2 = {-PRI_A25_ONCE_AUTOSAVE =any_actor_in_zone(pri_a25_door_find_restrictor)} %+PRI_A25_ONCE_AUTOSAVE =scenario_autosave(st_save_pri_a25_gonna_place_explosive)%
+
+[ph_idle@sv_spawn_explosive_grenade]
+on_game_timer = 50 | ph_idle@sv_explosion %=xrmpe_client_spawn(pri_a25_enter_door_explosive_grenade:pri_a25_smart_terrain_pri_a25_enter_door_explosive_grenade_spawn_point)%
+
+[ph_idle@sv_explosion]
+on_info = {=object_exist(pri_a25_enter_door_explosive_grenade)} ph_idle@nil %=stop_sound(pri_a25_blow_up_door_peep) =barrel_explode(pri_a25_enter_door_explosive_grenade) =destroy_object(story:pri_a25_explosive_charge_id) +PRI_A25_FIND_ANTENNA%
+
+[ph_idle@nil]

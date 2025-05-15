@@ -1,0 +1,38 @@
+[logic]
+active = sr_idle@wait
+type = sv_only
+
+[sr_idle@wait]
+on_info = {+PRI_B35_ACTOR_REST} sr_idle@start
+
+[sr_idle@start]
+on_info = {+PRI_B35_MERC_LEADER_SIGHTED} sr_idle@wait_for_envoy %=play_sound(pri_b35_merc_leader_sighted)%
+on_info2 = {+PRI_B35_ATTACK_STARTED} sr_idle@hunt_started
+on_info3 = {!any_actor_in_zone(pri_b35_sr_actor_position)} sr_idle@wait_for_envoy
+
+[sr_idle@wait_for_envoy]
+on_info = {+PRI_B35_ENVOY_SIGHTED} sr_idle@rendevous %=play_sound(pri_b35_envoy_sighted)%
+on_info2 = {+PRI_B35_ATTACK_STARTED} sr_idle@hunt_started
+on_info3 = {!any_actor_in_zone(pri_b35_sr_actor_position)} sr_idle@rendevous
+
+[sr_idle@rendevous]
+on_info = {+PRI_B35_RENDEVOUS_IN_PROCESS} sr_idle@rendevous_done %=play_sound(pri_b35_rendevous_in_process)% 
+on_info2 = {+PRI_B35_ATTACK_STARTED} sr_idle@hunt_started
+on_info3 = {!any_actor_in_zone(pri_b35_sr_actor_position)} sr_idle@rendevous_done
+
+[sr_idle@rendevous_done]
+on_info = {+PRI_B35_ATTACK_STARTED} sr_idle@hunt_started
+on_info2 = {+PRI_B35_RENDEVOUS_DONE} sr_idle@hunt_started %=play_sound(pri_b35_rendevous_done)%
+
+[sr_idle@hunt_started] 
+on_info = {+PRI_B35_ENVOY_OUT +PRI_B35_TARGET_ENVOY} %=play_sound(pri_b35_primary_target_down)%, {+PRI_B35_ENVOY_OUT -PRI_B35_TARGET_ENVOY} %=play_sound(pri_b35_secondary_target_down)%
+on_info2 = {+PRI_B35_MERC_LEADER_OUT +PRI_B35_TARGET_MERC} %=play_sound(pri_b35_primary_target_down)%, {+PRI_B35_MERC_LEADER_OUT -PRI_B35_TARGET_MERC} %=play_sound(pri_b35_secondary_target_down)%
+on_info3 = {+PRI_B35_ENVOY_ESCAPE +PRI_B35_TARGET_ENVOY -PRI_B35_MERC_LEADER_ESCAPE} sr_idle@nil %=play_sound(pri_b35_primary_target_lost_end)%
+on_info4 = {+PRI_B35_ENVOY_ESCAPE -PRI_B35_TARGET_ENVOY +PRI_B35_MERC_LEADER_OUT} sr_idle@nil %=play_sound(pri_b35_secondary_target_lost_end)%
+on_info5 = {+PRI_B35_MERC_LEADER_ESCAPE +PRI_B35_TARGET_MERC -PRI_B35_ENVOY_ESCAPE} sr_idle@nil %=play_sound(pri_b35_primary_target_lost_end)%
+on_info6 = {+PRI_B35_MERC_LEADER_ESCAPE -PRI_B35_TARGET_MERC +PRI_B35_ENVOY_OUT} sr_idle@nil %=play_sound(pri_b35_secondary_target_lost_end)%
+on_info7 = {+PRI_B35_ENVOY_OUT +PRI_B35_MERC_LEADER_OUT} sr_idle@nil %=play_sound(pri_b35_both_done_end)%
+on_info8 = {+PRI_B35_MERC_LEADER_ESCAPE +PRI_B35_ENVOY_ESCAPE} sr_idle@nil %=play_sound(pri_b35_targets_lost_end)%
+on_info9 = {+PRI_B35_MERC_LEADER_OUT +PRI_B35_ENVOY_OUT} sr_idle@nil
+
+[sr_idle@nil]

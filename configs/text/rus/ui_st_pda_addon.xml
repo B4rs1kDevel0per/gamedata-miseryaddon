@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="windows-1251" ?>
+<string_table>
+	<string id="zaton">
+		<text>Затон</text>
+	</string>
+	<string id="jupiter">
+		<text>Окрестности «Юпитера»</text>
+	</string>
+	<string id="pripyat">
+		<text>Припять</text>
+	</string>
+	<string id="jupiter_underground">
+		<text>Путепровод «Припять-1»</text>
+	</string>
+	<string id="labx8">
+		<text>Лаборатория X8</text>
+	</string>
+	<string id="pda_stat_8">
+		<text>Побед в КНБ:</text>
+	</string>
+</string_table>

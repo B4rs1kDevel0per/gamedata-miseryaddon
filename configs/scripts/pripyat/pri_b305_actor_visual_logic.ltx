@@ -1,0 +1,36 @@
+[logic]
+active = remark@meet_kirilov_1
+
+; ************************* 1 *****************************
+[remark@meet_kirilov_1]
+target = path | pri_a16_pri_b305_kirillov_closer_walk, 0
+anim = wait_na
+out_restr = pri_a16_sr_noweap
+on_info = {+PRI_B305_KIRILOV_ABOUT_STRELOK_1_DONE_END -PRI_B305_ACTOR_GO_DONE} %=play_sound(pri_b305_actor_go) +PRI_B305_ACTOR_GO_DONE%
+on_signal = theme_end | remark@meet_kirilov_2 {-PRI_B305_ACTOR_GO_DONE_END} %+PRI_B305_ACTOR_GO_DONE_END%
+on_info2 = {+PRI_B305_FIRST_CAM_END} %=destroy_object%
+meet = no_meet
+use_camp = false
+combat_ignore_cond = true
+combat_ignore_keep_when_attacked = true
+invulnerable = true
+gather_items_enabled = false
+help_wounded_enabled = false
+corpse_detection_enabled = false
+
+[remark@meet_kirilov_2]
+target = path | pri_a16_pri_b305_kirillov_closer_walk, 0
+anim = wait_na
+out_restr = pri_a16_sr_noweap
+on_info = {+PRI_B305_KIRILOV_ABOUT_GARIK_VANO_DONE_END -PRI_B305_ACTOR_UNDERSTAND_DONE} %=play_sound(pri_b305_actor_understand) +PRI_B305_ACTOR_UNDERSTAND_DONE%  
+on_signal = theme_end | {-PRI_B305_ACTOR_UNDERSTAND_DONE_END} %+PRI_B305_ACTOR_UNDERSTAND_DONE_END% 
+on_info2 = {+PRI_B305_FIRST_CAM_END} %=destroy_object -PRI_B305_1_CAM_ACTOR% 
+meet = no_meet
+use_camp = false
+combat_ignore_cond = true
+combat_ignore_keep_when_attacked = true
+invulnerable = true
+gather_items_enabled = false
+help_wounded_enabled = false
+corpse_detection_enabled = false
+

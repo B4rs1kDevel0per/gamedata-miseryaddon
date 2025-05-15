@@ -1,0 +1,63 @@
+[logic]
+active = sr_idle@determine_cl_sv
+type = shared_with_cl_data
+
+[sr_idle@determine_cl_sv]
+on_info = {=isServer} sr_idle@sv_spawn
+on_info2 = {=isClient} sr_idle@cl_wait
+
+;server_logic
+[sr_idle@sv_spawn]
+on_info = {-ZAT_B28_SPAWN_DEAD} sr_idle@sv_start %+ZAT_B28_SPAWN_DEAD =spawn_corpse(snork_weak : zat_b28_snork_1_dead_walk) =spawn_corpse(snork_weak : zat_b28_snork_2_dead_walk) =spawn_corpse(snork_weak : zat_b28_snork_3_dead_walk) =spawn_corpse(zat_b28_draper : zat_b28_draper_walk) =spawn_corpse(zat_b28_umerov : zat_b28_umerov_walk) =spawn_corpse(zat_b28_smoliak : zat_b28_smoliak_walk)%
+
+[sr_idle@sv_start]
+on_info = {+ZAT_A1_GAME_START -ZAT_B28_START_BLOK} sr_idle@sv_wait %+ZAT_B28_START_BLOK%
+on_info2 = {+ZAT_B28_START_BLOK} sr_idle@sv_wait
+
+[sr_idle@sv_wait]
+on_info =  {+ZAT_B28_HELI_3_SEARCHING -ZAT_B28_HELI_3_SEARCHED} sr_idle@sv_wait2
+
+[sr_idle@sv_wait2]
+on_game_timer = 20 | sr_idle@sv_wait3 %+ZAT_B28_HELI_3_CUT_WAIT =create_cutscene_actor_with_weapon(zat_b28_actor_visual_stalker:zat_b28_actor_visual_stalker_walk:0:153)%
+
+[sr_idle@sv_wait3]
+on_game_timer = 45 | sr_idle@sv_wait4 %+ZAT_B28_HELI_3_PLAY_SOUND%
+
+[sr_idle@sv_wait4]
+on_info = {+ZAT_B28_HELI_CUT_END} sr_idle@sv_wait5
+
+[sr_idle@sv_wait5]
+on_game_timer = 10 | %+ZAT_B28_HELI_3_SEARCHED%
+on_info = {+ZAT_B28_HELI_3_SEARCHED} sr_idle@sv_save
+
+[sr_idle@sv_save]
+on_info = {+ZAT_B28_HELI_3_SEARCHED -SAVE_ZAT_B28_SEARCHED_HELI_3} %+SAVE_ZAT_B28_SEARCHED_HELI_3 =scenario_autosave(st_save_zat_b28_searched_heli_3)%
+on_info2 = {+SAVE_ZAT_B28_SEARCHED_HELI_3} sr_idle@nil
+
+;client logic
+[sr_idle@cl_wait]
+on_info = {=local_actor_story_id(actor_degtyarev) +ZAT_B28_HELI_3_SEARCHING -ZAT_B28_HELI_3_SEARCHED} sr_idle@cl_wait2 %=disable_ui =run_postprocess(fade_in:8109)%
+
+[sr_idle@cl_wait2]
+on_info = {+ZAT_B28_HELI_3_CUT_WAIT} sr_idle@cl_wait3 %=run_postprocess(black:8110:true)%
+
+[sr_idle@cl_wait3]
+on_info = {+ZAT_B28_HELI_3_PLAY_SOUND} sr_cutscene@cl_cut %=stop_postprocess(8110) =stop_postprocess(8109)%
+
+[sr_cutscene@cl_cut]
+point = zat_b28_actor_visual_stalker_walk
+look = zat_b28_actor_visual_stalker_look
+global_cameffect = true
+enable_ui_on_end = false
+outdoor = true
+cam_effector = scenario_cam\zaton\zat_b28_heli3_camera
+on_signal = cameff_end | sr_idle@cl_fade_out %+ZAT_B28_HELI_CUT_END =run_postprocess(black:8112:true)%
+on_signal2 = cam_effector_stop | sr_idle@cl_fade_out %+ZAT_B28_HELI_CUT_END =run_postprocess(black:8112:true)%
+on_info = {+ZAT_B28_HELI_3_SOUND -ZAT_B28_HELI_AFTER_CAMERA_FADE} %+ZAT_B28_HELI_AFTER_CAMERA_FADE =run_postprocess(fade_in:8111)%
+on_info2 = {+ZAT_B28_CAMERA_STOP} %=stop_sr_cutscene%
+on_info3 = {+ZAT_B28_ACTOR_HIT} %=stop_sr_cutscene% 
+
+[sr_idle@cl_fade_out]
+on_info = {+ZAT_B28_HELI_3_SEARCHED} sr_idle@nil %=stop_postprocess(8111) =stop_postprocess(8112) =xrmpe_teleport_local_actor(zat_b28_actor_visual_stalker_walk:zat_b28_actor_visual_stalker_look) =enable_ui%
+
+[sr_idle@nil]

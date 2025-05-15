@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="windows-1251" ?>
+<string_table>
+	<string id="st_wpn_wincheaster1300_trapper">
+		<text>Predator</text>
+	</string>
+	<string id="st_wpn_wincheaster1300_trapper_descr">
+		<text>A tailor-made pump-action shotgun which used to belong to Trapper. The hunter's only requirement in respect of his weapon was that it needed to kill predators in one shot. This philosophy was based on the belief that no matter how many people an animal had killed, it was still just an animal, and thus should not suffer.</text>
+	</string>
+	<string id="st_wpn_umirotvoritel">
+		<text>Unidentified weapon</text>
+	</string>
+	<string id="st_wpn_umirotvoritel_descr">
+		<text>An unknown weapon, the firing mechanism of which has not been established. The weapon appears faulty - squeezing the trigger doesn't do anything.</text>
+	</string>
+	<string id="st_wpn_vintorez_nimble">
+		<text>Tide</text>
+	</string>
+	<string id="st_wpn_vintorez_nimble_descr">
+		<text>A weapon made for military units on the basis of the silent sniper rifle. The rifle has higher stopping power than the Vintar BC, its predecessor, at the expense of its rate of fire, which allows the shooter to eliminate enemy forces one by one without revealing his position.</text>
+	</string>
+	<string id="st_wpn_usp_nimble">
+		<text>March</text>
+	</string>
+	<string id="st_wpn_usp_nimble_descr">
+		<text>A compact, large caliber pistol with short bolt movement and lightweight bolt assembly. Used to belong to a mercenary called Wolfhound. Appears to be a modified UDP Compact pistol.</text>
+	</string>
+	<string id="st_wpn_svu_nimble">
+		<text>SVU2-A</text>
+	</string>
+	<string id="st_wpn_svu_nimble_descr">
+		<text>This shortened sniper rifle with an increase rate of fire is the next step in the evolution of the SVUmk-2 sniper rifle. This weapon used to belong to Max, the legendary guardian of Freedom.</text>
+	</string>
+	<string id="st_wpn_svd_nimble">
+		<text>Lynx</text>
+	</string>
+	<string id="st_wpn_svd_nimble_descr">
+		<text>A hand-assembled version of the SVDm-2 sniper rifle. No different in appearance, it nonetheless provides an ideal combination of accuracy and stopping power.</text>
+	</string>
+	<string id="st_wpn_spas12_nimble">
+		<text>Carabineer</text>
+	</string>
+	<string id="st_wpn_spas12_nimble_descr">
+		<text>An army shotgun designed specifically for assault units on the basis of the SPSA-14. Capable of automatic fire like its predecessor, but provides better recoil compensation thanks to a balanced shock free system.</text>
+	</string>
+	<string id="st_wpn_sig550_strelok">
+		<text>Strelok's SGI-5k</text>
+	</string>
+	<string id="st_wpn_sig550_strelok_descr">
+		<text>A Swiss-made SGI-5k assault rifle. Although it is hardly new, it is clear that the previous owner took good care of it: the weapon has been taken apart and put back together, with every component fine-tuned for optimum performance, increasing stopping power. The letter "S" has been carved into the stock, along with 16 small notches.</text>
+	</string>
+	<string id="st_wpn_sig220_nimble">
+		<text>Alpine</text>
+	</string>
+	<string id="st_wpn_sig220_nimble_descr">
+		<text>A unique model of the SIP-t M200 handgun. Part of a small limited edition made for an unidentified special forces unit. The model benefits from an increased magazine capacity, a high durability steel barrel and an ultradurable polymer receiver.</text>
+	</string>
+	<string id="st_wpn_pkm_zulus">
+		<text>Zulu's RP-74</text>
+	</string>
+	<string id="st_wpn_pkm_zulus_descr">
+		<text>This weapon was previously owned by Zulu. Its special features include an enlarged ammo box and a particularly reliable retracting mechanism design. The modifications meant an increase in the weapon's weight, but that wasn't a problem for the last owner.</text>
+	</string>
+	<string id="st_wpn_mp5_nimble">
+		<text>Frasier</text>
+	</string>
+	<string id="st_wpn_mp5_nimble_descr">
+		<text>A submachine gun prototype based on the excellent Viper 5 model. Designed as a next generation close quarter combat weapon, it benefits from a higher caliber, rate of fire and accuracy.</text>
+	</string>
+	<string id="st_wpn_groza_nimble">
+		<text>Storm</text>
+	</string>
+	<string id="st_wpn_groza_nimble_descr">
+		<text>An experimental version of an assault rifle and grenade launcher system, a Russian modification of the standard Tunder S14, this weapon was specially designed for units operating in the Zone. Notable for its increased magazine capacity.</text>
+	</string>
+	<string id="st_wpn_desert_eagle_nimble">
+		<text>Steppe Eagle</text>
+	</string>
+	<string id="st_wpn_desert_eagle_nimble_descr">
+		<text>A hand-made pistol based on the Black Kite design. The components are finely tuned to achieve incredible accuracy for a handgun of this type.</text>
+	</string>
+</string_table>

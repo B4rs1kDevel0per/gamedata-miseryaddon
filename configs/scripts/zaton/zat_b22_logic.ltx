@@ -1,0 +1,29 @@
+[logic]
+active = sr_idle@b38_connect
+type = sv_only
+
+[sr_idle@b38_connect]
+on_info  = {+ZAT_B38_COP_PASSED_AWAY =story_object_exist(zat_b22_stalker_medic) -ZAT_B22_MEDIC_RESPAWN} sr_idle@2 %=teleport_npc_by_story_id(zat_b22_stalker_medic:zat_medic_home_smart_zat_b22_stalker_medic_walk) +ZAT_B22_MEDIC_RESPAWN =spawn_corpse(zat_b22_stalker_hunter_dead:zat_b22_stalker_hunter_dead) =spawn_object_in(drug_antidot:zat_b22_medic_inv_box) =spawn_object_in(medkit_army:zat_b22_medic_inv_box) =spawn_object_in(medkit_army:zat_b22_medic_inv_box) =spawn_object(zat_b38_stalker_cop_dead:zat_medic_home_smart_zat_b22_stalker_medic_look)%
+
+[sr_idle@2]
+on_info = {-ZAT_B22_STALKER_HUNTER_HIT =story_object_exist(zat_b22_stalker_hunter_dead)} %=hit_obj(zat_b22_stalker_hunter_dead:bip01_head:5:500:zat_b22_stalker_hunter_dead) +ZAT_B22_STALKER_HUNTER_HIT%
+on_actor_in_zone = zat_b22_stalker_medic_identified | sr_idle@6 %+ZAT_B38_DISAPPEARANCE_STALKERS_DEAL_WITH_MEDIC_GIVE +ZAT_B22_STALKER_VAMPIRE%
+on_game_timer = 86400 | sr_idle@3 %+ZAT_B38_DISAPPEARANCE_STALKERS_MEET_COP_24H_PAST_GIVE%
+ 
+[sr_idle@3]
+on_info = {+ZAT_B22_STALKER_COP_PLACE} sr_idle@4 %+ZAT_B38_DISAPPEARANCE_STALKERS_FIND_OUT_WHERE_IS_COP_GIVE%
+on_actor_in_zone = zat_b22_stalker_medic_identified | sr_idle@6 %+ZAT_B38_DISAPPEARANCE_STALKERS_DEAL_WITH_MEDIC_GIVE +ZAT_B22_STALKER_VAMPIRE%
+
+[sr_idle@4]
+on_info = {+ZAT_B38_DISAPPEARANCE_STALKERS_FIND_COP_NEAR_PORT_KRANS_GIVE} sr_idle@5
+on_actor_in_zone = zat_b22_stalker_medic_identified | sr_idle@6 %+ZAT_B38_DISAPPEARANCE_STALKERS_DEAL_WITH_MEDIC_GIVE +ZAT_B22_STALKER_VAMPIRE%
+
+[sr_idle@5]
+on_actor_in_zone = zat_b22_stalker_medic_identified | sr_idle@6 %+ZAT_B22_STALKER_VAMPIRE +ZAT_B38_DISAPPEARANCE_STALKERS_DEAL_WITH_MEDIC_GIVE%
+
+[sr_idle@6]
+on_info = {+ZAT_B22_STALKER_VAMPIRE_STORY} sr_idle@nil %+ZAT_B38_DISAPPEARANCE_STALKERS_TELL_BARMEN_ABOUT_MEDIC_GIVE%
+on_info2 = {+ZAT_B22_STALKER_MEDIC_BODY_SEARCHED} %+ZAT_B38_DISAPPEARANCE_STALKERS_TELL_BARMEN_ABOUT_MEDIC_GIVE%
+on_info3 = {+ZAT_B22_ACTOR_GONE +ZAT_B22_STALKER_MEDIC_DEATH -ZAT_B22_STALKER_VAMPIRE_STORY} %+ZAT_B38_DISAPPEARANCE_STALKERS_TELL_BARMEN_ABOUT_MEDIC_GIVE%
+
+[sr_idle@nil]

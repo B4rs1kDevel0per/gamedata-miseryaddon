@@ -1,0 +1,14 @@
+[logic]
+active = sr_idle@check_actor_has_jokers_pda
+type = cl_only
+
+[sr_idle@check_actor_has_jokers_pda]
+on_info = {=any_actor_has_item(zat_b39_joker_pda) =is_local_actor_relevant(50)} sr_idle@timer_before_play_snd, {=any_actor_has_item(zat_b39_joker_pda) !is_local_actor_relevant(50)} sr_idle@nil
+
+[sr_idle@timer_before_play_snd]
+on_game_timer = 10 | sr_idle@play_jockers_note_pda_snd
+
+[sr_idle@play_jockers_note_pda_snd]
+on_info = sr_idle@nil %=play_sound(zat_b39_joker_pda_record) +ZAT_B39_TECH_BUDDIES_JOKER_FOUND%
+
+[sr_idle@nil]

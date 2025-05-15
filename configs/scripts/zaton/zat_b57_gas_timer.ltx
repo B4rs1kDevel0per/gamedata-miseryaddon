@@ -1,0 +1,18 @@
+[logic]
+active = sr_idle@wait
+type = cl_only
+
+[sr_idle@wait]
+on_info = {+ZAT_B57_DEN_OF_THE_BLOODSUCKER_WAIT_DESTROY_GIVE =is_local_actor_relevant(30:zat_b57_ph_gas)} sr_timer@gas, {+ZAT_B57_DEN_OF_THE_BLOODSUCKER_WAIT_DESTROY_GIVE !is_local_actor_relevant(30:zat_b57_ph_gas)} sr_idle@end
+
+[sr_timer@gas]
+type = dec
+string = st_zat_b57_gas_timer
+timer_id = hud_timer_out_zone
+start_value = 45000
+on_value = 0 | sr_idle@end {!squad_exist(zat_b38_bloodsuckers_sleepers)} %+ZAT_B57_GAS_RUNNING_STOP +ZAT_B57_DEN_OF_THE_BLOODSUCKER_TELL_STALKERS_ABOUT_DESTROY_LAIR_GIVE%
+
+[sr_idle@end]
+
+;позиционной ценности не представляет
+

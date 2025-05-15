@@ -1,0 +1,19 @@
+[logic]
+active = ph_door@closed
+
+[ph_door@closed]
+not_for_npc = true
+closed = true
+locked = false
+on_use = ph_door@open %+PRI_A18_IDOL_DOOR_OPEN%
+on_info = {+PRI_A18_IDOL_DOOR_OPEN} ph_door@open
+on_info2 = {+PRI_A20_SQUAD_CAM_END !dist_to_story_obj_ge(pri_a18_wait_reinf:10)} %+PRI_A18_WAIT_REINF%
+on_info3 = {=any_actor_in_zone(pri_a18_monolith_trance_restrictor)} %+PRI_A18_FIND_ANTENA%
+
+[ph_door@open]
+closed = false
+locked = true
+show_tips = false
+not_for_npc = true
+on_info = {+PRI_A20_SQUAD_CAM_END !dist_to_story_obj_ge(pri_a18_wait_reinf:10)} %+PRI_A18_WAIT_REINF%
+on_info2 = {=any_actor_in_zone(pri_a18_monolith_trance_restrictor)} %+PRI_A18_FIND_ANTENA%

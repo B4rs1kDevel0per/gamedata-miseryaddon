@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="windows-1251" ?>
+<string_table>
+	<string id="pri_a15_military_recon_1_name">
+		<text>Лейтенант Сергеев</text>
+	</string>
+	<string id="pri_a15_military_recon_2_name">
+		<text>Сержант Валюшок</text>
+	</string>
+	<string id="pri_a15_military_recon_3_name">
+		<text>Сержант Островский</text>
+	</string>
+	<string id="pri_a15_military_recon_leader_name">
+		<text>Капитан Клименко</text>
+	</string>
+	<string id="pri_a15_sokolov_name">
+		<text>Лейтенант Соколов</text>
+	</string>
+	<string id="pri_a17_military_captain_tarasov">
+		<text>Капитан Тарасов</text>
+	</string>
+	<string id="pri_a17_military_colonel_kovalski_name">
+		<text>Полковник Ковальский</text>
+	</string>
+	<string id="pri_a17_military_lieutenant_podorojniy">
+		<text>Лейтенант Подорожный</text>
+	</string>
+	<string id="pri_a18_skorlupko_in_suit_name">
+		<text>Лейтенант Скеля</text>
+	</string>
+	<string id="pri_a18_vano_in_suit_reserve_name">
+		<text>Сержант Меркулов</text>
+	</string>
+	<string id="pri_a21_sentry_lieutenant_stecenko_name">
+		<text>Лейтенант Стеценко</text>
+	</string>
+	<string id="pri_a22_military_yarmoshuk_name">
+		<text>Сержант Ярмошук</text>
+	</string>
+	<string id="pri_a25_army_medic_name">
+		<text>Лейтенант Роговец</text>
+	</string>
+	<string id="pri_a28_evac_com_name">
+		<text>Лейтенант Смирнов</text>
+	</string>
+	<string id="pri_b305_strelok_name">
+		<text>Стрелок</text>
+	</string>
+	<string id="pri_b306_envoy_name">
+		<text>Барчук</text>
+	</string>
+	<string id="st_pri_a22_army_signaller">
+		<text>Лейтенант Кириллов</text>
+	</string>
+	<string id="st_pri_b35_envoy">
+		<text>Сербин</text>
+	</string>
+	<string id="st_pri_b35_merc_leader">
+		<text>Шакал</text>
+	</string>
+	<string id="pri_a17_military_prapor_valentyr">
+		<text>Прапорщик Валентир</text>
+	</string>
+	<string id="pri_a17_military_sergeant_morozov">
+		<text>Ст. сержант Морозов</text>
+	</string>
+</string_table>

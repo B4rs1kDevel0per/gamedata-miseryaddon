@@ -1,0 +1,156 @@
+[logic]
+active = sr_idle@determine_cl_sv
+type = shared_with_cl_data
+
+[sr_idle@determine_cl_sv]
+on_info = {=isServer} sr_idle@sv_start
+on_info2 = {=isClient} sr_idle@cl_start
+
+;server logic
+[sr_idle@sv_start]
+on_info = {+PRI_B305_FIFTH_CAM_END =any_actor_in_zone(pri_a28_scene_end_zone) +PRI_A28_STRELOK_CAN_LEAVE} sr_idle@sv_helis_reached_save
+on_info2 = {+PRI_B305_FIFTH_CAM_END =any_actor_in_zone(pri_a28_scene_end_zone) +PRI_A28_STRELOK_DEAD} sr_idle@sv_helis_reached_save
+on_info3 = {+PRI_B305_FIFTH_CAM_END +PRI_A28_SQUAD_DEAD} sr_idle@sv_helis_want_to_leave
+on_info4 = {+PRI_A28_HELIS_LEAVE !any_actor_in_zone(pri_a28_scene_end_zone)} sr_idle@sv_cut_2_save
+;затычка
+on_info5 = {+PRI_A28_CUTSCENE_START} sr_idle@sv_cut_1_save %=clear_smart_terrain(pri_sim_2)% 
+
+[sr_idle@sv_helis_want_to_leave]
+on_info = {-PRI_A28_EVACUATION_END =any_actor_in_zone(pri_a28_scene_end_zone)} %+PRI_A28_EVACUATION_END =scenario_autosave(st_save_pri_a28_evacuation_end)%
+on_info2 = {+PRI_A28_HELIS_LEAVE !any_actor_in_zone(pri_a28_scene_end_zone)} sr_idle@sv_cut_2_save
+
+[sr_idle@sv_helis_reached_save]
+on_info = {-PRI_A28_EVACUATION_END =actor_alive} %+PRI_A28_EVACUATION_END =scenario_autosave(st_save_pri_a28_evacuation_end)%
+on_info2 = {+PRI_A28_EVACUATION_END +PRI_A28_WAVES_END =any_actor_in_zone(pri_a28_scene_end_zone)} sr_idle@sv_cut_1_save
+on_info3 = {+PRI_A28_HELIS_LEAVE !any_actor_in_zone(pri_a28_scene_end_zone)} sr_idle@sv_cut_2_save
+
+;actor is in leaving zone, fly out
+[sr_idle@sv_cut_1_save]
+on_info = {-PRI_A28_EVACUATION_HELI =actor_alive} %+PRI_A28_EVACUATION_HELI =scenario_autosave(st_save_pri_a28_evacuation_heli)%
+on_info2 = {+PRI_A28_EVACUATION_HELI} sr_idle@sv_cut_1_start %=disable_ui +PRI_A28_SCENE_END%
+
+[sr_idle@sv_cut_1_start]
+on_game_timer = 18 | sr_idle@sv_check_squad %=create_cutscene_actor_with_weapon(pri_a28_cutscene_actor:pri_a28_cutscene_actor_walk:0:0:3)%
+
+[sr_idle@sv_check_squad]
+on_info = {=squad_exist(pri_a16_military_squad)} sr_idle@sv_check_commander %+PRI_A28_SOMEBODY_ALIVE%, sr_idle@sv_check_commander
+
+[sr_idle@sv_check_commander]
+on_info = {=is_alive(pri_a28_evac_com)} sr_idle@sv_add_commander %=remove_npc(pri_a28_evac_com)%, sr_idle@sv_add_commander
+
+[sr_idle@sv_add_commander]
+on_info = sr_idle@sv_check_strelok %=spawn_object(pri_a28_cutscene_commander:pri_a28_cutscene_commander_walk)%
+
+[sr_idle@sv_check_strelok]
+on_info = {=is_alive(pri_b305_strelok)} sr_idle@sv_add_strelok %=remove_npc(pri_b305_strelok) +PRI_A28_EVAC_CAM_1_START%, sr_idle@sv_wait_cut_1 %+PRI_A28_STRELOK_DEAD +PRI_A28_EVAC_CAM_1_START%
+
+[sr_idle@sv_add_strelok]
+on_info = sr_idle@sv_wait_cut_1 %=spawn_object(pri_a28_cutscene_strelok:pri_a28_cutscene_strelok_walk)%
+
+[sr_idle@sv_wait_cut_1]
+on_info = {+PRI_A28_CUT_1_END} sr_idle@sv_wait_freeplay_dialog
+
+[sr_idle@sv_wait_freeplay_dialog]
+on_info = {+PRI_A28_ACTOR_IN_ZONE_STAY} sr_idle@sv_check_sokolov %+PRI_A28_HELIS_LEAVE%
+on_info2 = {+PRI_A28_ACTOR_IN_ZONE_LEAVE} sr_idle@sv_check_sokolov %+PRI_A28_HELIS_LEAVE%
+
+;actor wasnt in zone when helis was leaving
+[sr_idle@sv_cut_2_save]
+on_info = {-PRI_A28_EVACUATION_HELI =actor_alive} %+PRI_A28_EVACUATION_HELI =scenario_autosave(st_save_pri_a28_evacuation_heli)%
+on_info2 = {+PRI_A28_EVACUATION_HELI} sr_idle@sv_check_sokolov
+
+[sr_idle@sv_check_sokolov]
+on_info = {-PRI_A28_SOKOLOV_LEFT_ALIVE =is_alive(pri_a15_sokolov_sci_head)} %+PRI_A28_SOKOLOV_LEFT_ALIVE%
+on_info2 = {-PRI_A28_ARMY_LEAVED_ALIVE -PRI_A28_STRELOK_DEAD =squad_npc_count_ge(pri_a16_military_squad:5)} %+PRI_A28_ARMY_LEAVED_ALIVE%
+on_info3 = {-PRI_A28_ARMY_LEAVED_ALIVE +PRI_A28_STRELOK_DEAD =squad_npc_count_ge(pri_a16_military_squad:4)} %+PRI_A28_ARMY_LEAVED_ALIVE%
+on_info4 = sr_idle@sv_cut_2_start
+
+[sr_idle@sv_cut_2_start]
+on_info = {=squad_exist(pri_a16_military_squad)} %=remove_squad(pri_a16_military_squad)%
+on_info2 = {=squad_exist(pri_a28_evac_squad)} %=remove_squad(pri_a28_evac_squad)%
+on_game_timer = 18 | {+PRI_A28_HELIS_ADDED} sr_idle@sv_wait_cut_2 %=destroy_object(story:pri_a28_earth_helli_1) =destroy_object(story:pri_a28_earth_helli_2) +PRI_A28_EVAC_CAM_2_START%, sr_idle@sv_wait_cut_2 %+PRI_A28_EVAC_CAM_2_START%
+
+[sr_idle@sv_wait_cut_2]
+on_info = {+PRI_A28_CUT_2_END} sr_idle@nil
+
+;client logic
+[sr_idle@cl_start]
+on_info = {+PRI_B305_FIFTH_CAM_END =any_actor_in_zone(pri_a28_scene_end_zone) +PRI_A28_STRELOK_CAN_LEAVE} sr_idle@cl_helis_reached_prepare
+on_info2 = {+PRI_B305_FIFTH_CAM_END =any_actor_in_zone(pri_a28_scene_end_zone) +PRI_A28_STRELOK_DEAD} sr_idle@cl_helis_reached_prepare
+on_info3 = {+PRI_B305_FIFTH_CAM_END +PRI_A28_SQUAD_DEAD} sr_idle@cl_helis_want_to_leave
+on_info4 = {+PRI_A28_HELIS_LEAVE !any_actor_in_zone(pri_a28_scene_end_zone)} sr_idle@cl_cut_2_prepare
+on_info5 = {+PRI_A28_CUTSCENE_START} sr_idle@cl_cut_1_prepare
+
+[sr_idle@cl_helis_reached_prepare]
+on_info = {+PRI_A28_EVACUATION_END +PRI_A28_WAVES_END =any_actor_in_zone(pri_a28_scene_end_zone)} sr_idle@cl_cut_1_prepare
+on_info2 = {+PRI_A28_HELIS_LEAVE !any_actor_in_zone(pri_a28_scene_end_zone)} sr_idle@cl_cut_2_prepare
+
+[sr_idle@cl_helis_want_to_leave]
+on_game_timer = 30 | %=play_sound(pri_a28_evac_com_helicopter_run_time)%
+on_signal = sound_end | sr_timer@cl_got_one_minute
+
+[sr_timer@cl_got_one_minute]
+type = dec
+string = st_pri_a28_helis_leave_timer
+timer_id = hud_timer_out_zone
+start_value = 60000
+on_value = 0 | {+PRI_A28_EVACUATION_END =any_actor_in_zone(pri_a28_scene_end_zone)} sr_idle@cl_cut_1_prepare, %+PRI_A28_HELIS_LEAVE%
+on_info = {-PRI_A28_EVACUATION_END =any_actor_in_zone(pri_a28_scene_end_zone)} %+PRI_A28_EVACUATION_END =scenario_autosave(st_save_pri_a28_evacuation_end)%
+on_info2 = {+PRI_A28_HELIS_LEAVE !any_actor_in_zone(pri_a28_scene_end_zone)} sr_idle@cl_cut_2_prepare
+
+;actor is in leaving zone, fly out
+[sr_idle@cl_cut_1_prepare]
+on_info = {+PRI_A28_EVACUATION_HELI} sr_idle@cl_cut_1_wait %=disable_ui =run_postprocess(black:3009:true) =save_actor_position%
+
+[sr_idle@cl_cut_1_wait]
+on_info = {+PRI_A28_EVAC_CAM_1_START} sr_cutscene@cut_1
+
+[sr_cutscene@cut_1]
+point = pri_a28_actor_hide_walk
+look = pri_a28_actor_hide_look
+global_cameffect = true
+enable_ui_on_end = false
+outdoor = true
+cam_effector = scenario_cam\pripyat\pri_a28_evac_cam_1
+on_signal = cam_effector_stop | sr_idle@cl_freeplay_dialog %=run_postprocess(black:3009:true) -PRI_A28_CAM_STARTED%
+on_signal2 = cameff_end | sr_idle@cl_freeplay_dialog %+PRI_A28_CUT_1_END =run_postprocess(black:3009:true) -PRI_A28_CAM_STARTED% 
+on_info = {-PRI_A28_CAM_STARTED} %+PRI_A28_CAM_STARTED =stop_postprocess(3009)%
+on_info2 = {+PRI_A28_CUT_1_END} %=stop_sr_cutscene%
+
+[sr_idle@cl_freeplay_dialog]
+on_game_timer = 10 | {=local_actor_story_id(actor_degtyarev) -PRI_A28_SHOW_FREEPLAY_DIALOG} %+PRI_A28_SHOW_FREEPLAY_DIALOG =enable_ui =show_freeplay_dialog(st_freeplay_text_yes_no:true)%
+on_info = {+PRI_A28_ACTOR_IN_ZONE_STAY} sr_idle@cl_cut_2_wait %=disable_ui%
+on_info2 = {+PRI_A28_ACTOR_IN_ZONE_LEAVE} sr_idle@cl_cut_2_wait %=disable_ui%
+
+;actor wasnt in zone when helis was leaving
+[sr_idle@cl_cut_2_prepare]
+on_info2 = {+PRI_A28_EVACUATION_HELI} sr_idle@cl_cut_2_wait %=disable_ui =run_postprocess(black:3009:true) =save_actor_position%
+
+[sr_idle@cl_cut_2_wait]
+on_info = {+PRI_A28_EVAC_CAM_2_START} sr_cutscene@cut_2 %=disable_ui%
+
+[sr_cutscene@cut_2]
+point = pri_a28_actor_hide_walk
+look = pri_a28_actor_hide_look
+global_cameffect = true
+enable_ui_on_end = false
+outdoor = true
+cam_effector = scenario_cam\pripyat\pri_a28_evac_cam_heli
+on_signal = cam_effector_stop | sr_idle@cl_hellis_fly_cutscene_end %+PRI_A28_CUT_2_END =run_postprocess(black:3009:true)%
+on_signal = cameff_end | sr_idle@cl_hellis_fly_cutscene_end %+PRI_A28_CUT_2_END =run_postprocess(black:3009:true)%
+on_info = {-PRI_A28_CAM_STARTED} %+PRI_A28_CAM_STARTED =stop_postprocess(3009)%
+on_game_timer = 200 | %=stop_sr_cutscene%
+
+[sr_idle@cl_hellis_fly_cutscene_end]
+on_game_timer = 10 | {=local_actor_story_id(actor_degtyarev) -PRI_A28_ACTOR_IN_ZONE_STAY -PRI_A28_ACTOR_IN_ZONE_LEAVE} sr_idle@cl_wait_for_ok %=enable_ui =show_freeplay_dialog(st_freeplay_text_ok)%
+on_info = {+PRI_A28_ACTOR_IN_ZONE_STAY} sr_idle@cl_announce_continue %=restore_actor_position =stop_postprocess(3009) =enable_ui%
+on_info2 = {+PRI_A28_ACTOR_IN_ZONE_LEAVE} sr_idle@nil %=restore_actor_position =enable_ui =run_tutorial(outro_game)%
+
+[sr_idle@cl_wait_for_ok]
+on_info = {+PRI_A28_ACTOR_IN_ZONE_STAY} sr_idle@cl_announce_continue %=restore_actor_position =stop_postprocess(3009)%
+
+[sr_idle@cl_announce_continue]
+on_info = {!dist_to_story_obj_ge(pri_surge_hide_a16:100)} sr_idle@nil %=play_sound(pri_a28_continuation)%
+on_game_timer = 50 | {-PRI_A28_CUTSCENES_END} %+PRI_A28_CUTSCENES_END%
+
+[sr_idle@nil]

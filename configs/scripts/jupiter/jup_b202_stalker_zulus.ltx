@@ -1,0 +1,94 @@
+; сюда «улуса не переводить
+[animpoint@zulus_basic]
+cover_name = jup_b15_sc_zulus
+avail_animations = jup_b15_zulus_sit_idle
+combat_ignore_cond = true
+on_info33 = {!npc_in_zone(jup_b15_sr_light)} %=teleport_npc(jup_a6_jup_b218_squad_member_arrive_walk)%
+combat_ignore_keep_when_attacked = true
+invulnerable = true
+use_camp = false
+meet = meet
+out_restr = jup_a6_sr_noweap_zulus
+reach_distance = 2
+gather_items_enabled = false
+help_wounded_enabled = false
+corpse_detection_enabled = false
+
+[logic@stalker_zulus]
+suitable = {=check_npc_name(jup_b15_zulus)} true
+prior = 200
+active = animpoint@zulus_home
+
+[animpoint@zulus_home]:animpoint@zulus_basic
+reach_movement = sprint
+on_actor_in_zone = jup_b15_logic | {+JUP_B218_GATHER_SQUAD} animpoint@b15, {+JUP_B218_PRIPYAT_GROUP_GATHERING} animpoint@wait
+on_info = {-JUP_B15_ZULUS_HAS_VODKA} %=spawn_object_in(vodka:jup_b15_zulus) +JUP_B15_ZULUS_HAS_VODKA%
+
+[animpoint@b15]:animpoint@zulus_basic
+on_info = {+JUP_B15_COME_TO_UND_TOLD} animpoint@drink
+on_actor_not_in_zone = jup_b15_logic | animpoint@zulus_home
+
+[animpoint@drink]:animpoint@zulus_basic
+avail_animations = jup_b15_zulus_sit_idle_short
+on_info2 = {+JUP_B15_ACTOR_DRINK} animpoint@drink_anim
+on_info3 = {+JUP_B15_CAMEFF_END} animpoint@wait %=play_sound(jup_b15_zulus_ready) +JUP_B218_PRIPYAT_GROUP_GATHERING%
+on_info4 = {-JUP_B15_ACTOR_DRINK +JUP_B15_ZULUS_DRINK_ANIM_INFO} %-JUP_B15_ZULUS_DRINK_ANIM_INFO%
+meet = meet@drink
+
+[animpoint@drink_anim]:animpoint@zulus_basic
+avail_animations = jup_b15_zulus_sit_drink 
+on_info = {+JUP_B15_ZULUS_DRINK_ANIM_INFO} animpoint@drink
+on_game_timer = 180 | {-JUP_B15_ZULUS_DRINK_ANIM_INFO} %+JUP_B15_ZULUS_DRINK_ANIM_INFO%
+meet = no_meet
+
+[animpoint@wait]:animpoint@zulus_basic
+on_info2  = {+JUP_B218_VANO_TP +JUP_B218_PAUSE_DONE -JUP_B218_ZULUS_SEE_VANO} animpoint@timer %+JUP_B218_ZULUS_SEE_VANO -JUP_B218_PAUSE_DONE%
+on_info3 = {+JUP_B218_SOKOLOV_TP +JUP_B218_PAUSE_DONE -JUP_B218_ZULUS_SEE_SOKOLOV} animpoint@timer %+JUP_B218_ZULUS_SEE_SOKOLOV -JUP_B218_PAUSE_DONE%
+on_info4 = {+JUP_B218_MONOLITH_FR_TP +JUP_B218_PAUSE_DONE -JUP_B218_ZULUS_SEE_MONOLITH} animpoint@timer %+JUP_B218_ZULUS_SEE_MONOLITH -JUP_B218_PAUSE_DONE%
+on_info5 = {+JUP_B218_MONOLITH_DU_TP +JUP_B218_PAUSE_DONE -JUP_B218_ZULUS_SEE_MONOLITH} animpoint@timer %+JUP_B218_ZULUS_SEE_MONOLITH -JUP_B218_PAUSE_DONE%
+
+[animpoint@timer]:animpoint@zulus_basic
+on_game_timer = 50 | {+JUP_B218_VANO_TP -JUP_B218_VANO_TP_PAUSE} animpoint@vano %+JUP_B218_VANO_TP_PAUSE%, {+JUP_B218_SOKOLOV_TP -JUP_B218_SOKOLOV_TP_PAUSE} animpoint@sokolov %+JUP_B218_SOKOLOV_TP_PAUSE%, {+JUP_B218_MONOLITH_FR_TP -JUP_B218_MONOLITH_FR_TP_PAUSE} animpoint@monolith %+JUP_B218_MONOLITH_FR_TP_PAUSE%,  {+JUP_B218_MONOLITH_DU_TP -JUP_B218_MONOLITH_DU_TP_PAUSE} animpoint@monolith %+JUP_B218_MONOLITH_DU_TP_PAUSE%
+
+[animpoint@vano]:animpoint@zulus_basic
+meet = meet@vano
+on_info2 = {+JUP_B15_ZULUS_GROUP_STALKER_START_TOLD} animpoint@wait
+
+[animpoint@sokolov]:animpoint@zulus_basic
+meet = meet@sokolov
+on_info2 = {+JUP_B15_ZULUS_GROUP_SOLDIER_START_TOLD} animpoint@wait
+
+[animpoint@monolith]:animpoint@zulus_basic
+meet = meet@monolith
+on_info2 = {+JUP_B15_ZULUS_GROUP_MONOLITH_START_TOLD} animpoint@wait
+
+[meet]
+close_anim 		= nil
+close_victim 	= nil
+far_anim 		= nil
+far_victim 		= nil
+close_distance  = 0
+far_distance 	= 0
+close_snd_distance = 3
+close_snd_hello = {+JUP_B218_GATHER_SQUAD} jup_b15_zulus_greeting, nil
+close_snd_bye   = nil
+use = {=actor_enemy} false, true
+allow_break = false
+trade_enable = false
+meet_on_talking = false
+
+[meet@drink]:meet
+use = {+JUP_B15_CAN_TALK} self, true
+allow_break = false
+
+[meet@vano]:meet
+use = {!actor_enemy} self
+meet_dialog     = jup_b15_zulus_group_stalker_start
+
+[meet@sokolov]:meet
+use = {!actor_enemy} self
+meet_dialog     = jup_b15_zulus_group_soldier_start
+
+[meet@monolith]:meet
+use = {!actor_enemy} self
+meet_dialog     = jup_b15_zulus_group_monolith_start

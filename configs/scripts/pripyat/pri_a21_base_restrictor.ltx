@@ -1,0 +1,90 @@
+[logic] ;логика для сцены В305, Явление Стрелка
+active = sr_idle@determine_cl_sv
+type = shared_with_cl_data
+
+[sr_idle@determine_cl_sv]
+on_info = {=isServer} sr_idle@sv_wait
+on_info2 = {=isClient} sr_idle@cl_wait
+
+;server logic
+[sr_idle@sv_wait]
+on_info = {+PRI_B305_PRE_EVAC_START} sr_idle@sv_timer %+PRI_B305_QUEST_COMPLETED +PRI_A16_WAIT_FOR_STALKERS =create_cutscene_actor_with_weapon(pri_b305_actor_visual_4:pri_a16_pri_b305_actor_strelok_operation_walk:0:0:3)%
+
+[sr_idle@sv_timer]
+on_game_timer = 10 | {+LEADER_ACHIEVEMENT_GAINED} sr_idle@sv_actor_spawn %=create_squad_member(pri_b305_strelok_strong:pri_a16_military_squad:pri_a16_pri_b305_strelok_spawn) +PRI_B305_FORTH_CAM_START +PRI_B305_4_CAM_ACTOR%, sr_idle@sv_actor_spawn %=create_squad_member(pri_b305_strelok:pri_a16_military_squad:pri_a16_pri_b305_strelok_spawn) +PRI_B305_FORTH_CAM_START +PRI_B305_4_CAM_ACTOR%
+
+[sr_idle@sv_actor_spawn]
+on_info = {+PRI_B305_4_CAM_ACTOR} sr_idle@sv_timer_cam4
+on_info2 = {+PRI_B305_5_CAM_ACTOR} sr_idle@sv_timer_cam5 %=create_cutscene_actor_with_weapon(pri_b305_actor_visual_5:pri_a28_cutscene_actor_base_walk:0:90)%
+
+[sr_idle@sv_timer_cam4]
+on_game_timer = 20 | sr_idle@sv_wait2 %+PRI_B305_FORTH_CAM_START_CL%
+
+[sr_idle@sv_wait2]
+on_info = {+PRI_B305_FORTH_CAM_END} sr_idle@sv_timer2
+
+[sr_idle@sv_timer2]
+on_game_timer = 20 | sr_idle@sv_actor_spawn %+PRI_B305_FIFTH_CAM_START +PRI_B305_5_CAM_ACTOR%
+
+[sr_idle@sv_timer_cam5]
+on_game_timer = 40 | sr_idle@sv_wait3 %+PRI_B305_FIFTH_CAM_START_CL%
+
+[sr_idle@sv_wait3]
+on_info = {+PRI_B305_FIFTH_CAM_END} sr_idle@sv_keeper_of_secrets_archievement
+
+;*************************************************************************************************************
+; Логика бонуса за ачивку "Лидер"
+;*************************************************************************************************************
+
+[sr_idle@sv_keeper_of_secrets_archievement]
+on_info = {+LEADER_ACHIEVEMENT_GAINED} sr_idle@sv_mysquad_regeneration_timer, sr_idle@nil
+
+[sr_idle@sv_mysquad_regeneration_timer]
+on_game_timer = 150 | sr_idle@sv_mysquad_regeneration  
+
+[sr_idle@sv_mysquad_regeneration]
+on_info = sr_idle@sv_mysquad_regeneration_timer %=heal_squad(pri_a16_military_squad)% 
+;*************************************************************************************************************
+
+;client logic
+
+[sr_idle@cl_wait]
+on_any_player_inside = {+PRI_B305_THIRD_CAM_END} sr_idle@cl_timer %=run_postprocess(fade_in:8810) +PRI_B305_PRE_EVAC_START%
+
+[sr_idle@cl_timer]
+on_info = {+PRI_B305_FORTH_CAM_START} sr_idle@cl_actor_spawn %=run_postprocess(black:8811:true)%
+
+[sr_idle@cl_actor_spawn]
+on_info = {+PRI_B305_4_CAM_ACTOR} sr_idle@cl_timer_cam4 %=run_postprocess(black:8811:true) =disable_ui%
+on_info2 = {+PRI_B305_5_CAM_ACTOR} sr_idle@cl_timer_cam5
+
+[sr_idle@cl_timer_cam4]
+on_info = {+PRI_B305_FORTH_CAM_START_CL} sr_cutscene@cl_cam4 %=stop_postprocess(8811) =stop_postprocess(8810)%
+
+[sr_cutscene@cl_cam4]
+point = pri_a28_cutscene_actor_base_walk
+look = pri_a16_pri_b305_kovalskiy_walk
+cam_effector = scenario_cam\pripyat\pri_b305_catscene_4_strelok_came	
+global_cameffect = true
+enable_ui_on_end = false
+outdoor = true
+on_game_timer = 80 | {-PRI_B305_STRELOK_GIVE_UP_DONE} %=play_sound(pri_b305_strelok_give_up) +PRI_B305_STRELOK_GIVE_UP_DONE%
+on_info = {+PRI_B305_KOVALSKIY_TALK_IN_SAFE_PLACE_DONE_END} %=stop_sr_cutscene =run_postprocess(fade_in)%
+on_signal = sound_end | {-PRI_B305_STRELOK_GIVE_UP_DONE_END} %+PRI_B305_STRELOK_GIVE_UP_DONE_END%
+on_signal2 = cameff_end | sr_idle@cl_timer2 %+PRI_B305_FORTH_CAM_END =run_postprocess(black:8812:true)%	
+
+[sr_idle@cl_timer2]
+on_info = {+PRI_B305_FIFTH_CAM_START} sr_idle@cl_actor_spawn
+
+[sr_idle@cl_timer_cam5]
+on_info = {+PRI_B305_FIFTH_CAM_START_CL} sr_cutscene@cl_cam5_1 %=stop_postprocess(8812)%
+
+[sr_cutscene@cl_cam5_1]
+point = pri_a28_cutscene_actor_base_walk
+look = pri_a16_pri_b305_kovalskiy_walk
+cam_effector = pri_b305_camera_5
+global_cameffect = true
+on_info = {+PRI_B305_KOVALSKIY_LET_CENTER_KNOW_DONE_END} %=stop_sr_cutscene%
+on_signal = cameff_end | sr_idle@nil %+PRI_B305_FIFTH_CAM_END =enable_ui%	
+
+[sr_idle@nil]

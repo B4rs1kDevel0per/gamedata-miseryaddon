@@ -1,0 +1,28 @@
+[logic]
+active = sr_idle@wait_for_start
+type = sv_only
+
+[sr_idle@wait_for_start]
+on_info = {+ZAT_B14_SMART_TERRAIN_OPEN -ZAT_B29_TASK_START !npc_talking(zat_a2_stalker_barmen)} %+ZAT_B29_TASK_START% 
+on_info2 = {+ZAT_B29_TASK_START} sr_idle@create_random_task_af
+
+[sr_idle@create_random_task_af]
+on_info = {+ZAT_B29_FIRST_RIVAL_TAKEN_OUT +ZAT_B29_SECOND_RIVAL_TAKEN_OUT -ZAT_B29_LINKER_FEARS_ACTOR +ZAT_B29_RESPAWN} sr_idle@nil %+ZAT_B29_LINKER_FEARS_ACTOR%
+on_info2 = {+ZAT_B29_FIRST_RIVAL_TAKEN_OUT +ZAT_B29_SECOND_RIVAL_TAKEN_OUT -ZAT_B29_LINKER_FEARS_ACTOR -ZAT_B29_EXCLUSIVE_CONDITIONS} %+ZAT_B29_LINKER_FEARS_ACTOR%
+on_info3 = {-ZAT_B29_LINKER_FEARS_ACTOR} sr_idle@give_task %=zat_b29_create_random_infop(3:ZAT_B29_AF_16:ZAT_B29_AF_17:ZAT_B29_AF_18:ZAT_B29_AF_19:ZAT_B29_AF_20:ZAT_B29_AF_21:ZAT_B29_AF_22:ZAT_B29_AF_23)%
+
+[sr_idle@give_task]
+on_info = {+ZAT_B29_ADV_TASK_GIVEN} sr_idle@wait_for_adv_task %=give_task(zat_b29_adv_task)%
+on_info2 = {+ZAT_B29_REDICE} sr_idle@create_random_task_af %-ZAT_B29_REDICE%
+on_info3 = {+ZAT_B29_TASK_FAIL} sr_idle@nil
+on_game_timer = 10800 | sr_idle@create_random_task_af
+
+[sr_idle@wait_for_adv_task]
+on_info = {-ZAT_B29_ADV_TASK_GIVEN} sr_idle@create_random_task_af
+on_info2 = {=is_squad_enemy_to_actor(zat_b29_stalker_rival_1_squad) -ZAT_B29_FIRST_RIVAL_TAKEN_OUT} %+ZAT_B29_FIRST_RIVAL_TAKEN_OUT%
+on_info3 = {=is_squad_enemy_to_actor(zat_b29_stalker_rival_2_squad) -ZAT_B29_SECOND_RIVAL_TAKEN_OUT} %+ZAT_B29_SECOND_RIVAL_TAKEN_OUT%
+on_info4 = {=is_squad_enemy_to_actor(zat_b29_stalker_rival_default_1_squad) -ZAT_B29_FIRST_RIVAL_TAKEN_OUT} %+ZAT_B29_FIRST_RIVAL_TAKEN_OUT%
+on_info5 = {=is_squad_enemy_to_actor(zat_b29_stalker_rival_default_2_squad) -ZAT_B29_SECOND_RIVAL_TAKEN_OUT} %+ZAT_B29_SECOND_RIVAL_TAKEN_OUT%
+on_game_timer = 172800 | %+ZAT_B29_ADV_TASK_TIMEOUT%
+
+[sr_idle@nil]

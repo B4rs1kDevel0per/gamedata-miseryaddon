@@ -1,0 +1,69 @@
+[logic@jup_b43_stalker_assistant]
+suitable = {=check_npc_name(jup_b43_stalker_assistant)} true
+prior = 210
+active = animpoint@stand_base
+level_spot = guider
+
+[animpoint@stand_base]
+cover_name = pri_a16_animp_garick
+use_camp = false 
+combat_ignore_cond = true
+combat_ignore_keep_when_attacked = true
+invulnerable = true
+meet = meet@stand_base
+on_info = {-PRI_A20_WAY_TO_PRIPYAT_2_SOUND_END -PRI_A20_TALK_WITH_COLONEL_COMPLETE =squad_in_zone(pri_a16_sokolov_squad:pri_a16_sr_noweap) +PRI_A16_SOKOLOV_ON_PRIPYAT} walker@wait_for_play_sound
+on_info2 = {-PRI_A16_STALKER_GUIDE_MET_DONE !npc_talking +PRI_A16_STALKER_GUIDE_MET} %+PRI_A16_STALKER_GUIDE_MET_DONE%
+out_restr = pri_a16_sr_noweap
+gather_items_enabled = false
+help_wounded_enabled = false
+corpse_detection_enabled = false
+
+[walker@wait_for_play_sound]
+path_walk = pri_a20_garick_walk
+path_look = pri_a20_garick_look
+combat_ignore_cond = true
+combat_ignore_keep_when_attacked = true
+invulnerable = true
+meet = no_meet
+def_state_standing = wait_na
+on_info = {+PRI_A20_WAY_TO_PRIPYAT_1_SOUND_END} walker@play_sound
+on_info2 = {!squad_in_zone(pri_a16_sokolov_squad:pri_a16_sr_noweap)} animpoint@stand_base
+on_info3 = {+PRI_A20_TALK_WITH_COLONEL_COMPLETE} animpoint@stand_base
+out_restr = pri_a16_sr_noweap
+gather_items_enabled = false
+help_wounded_enabled = false
+corpse_detection_enabled = false
+use_camp = false
+
+[walker@play_sound]
+path_walk = pri_a20_garick_walk
+path_look = pri_a20_garick_look
+combat_ignore_cond = true
+combat_ignore_keep_when_attacked = true
+invulnerable = true
+meet = no_meet
+def_state_standing = wait_na
+on_signal = sound_end | %+PRI_A20_WAY_TO_PRIPYAT_2_SOUND_END%
+on_game_timer = 10 | %=play_sound(pri_a20_sokolov_with_garick_new_way_to_pripyat_2)%
+on_info = {+PRI_A20_WAY_TO_PRIPYAT_3_SOUND_END} animpoint@stand_base
+on_info2 = {+PRI_A20_TALK_WITH_COLONEL_COMPLETE} animpoint@stand_base
+out_restr = pri_a16_sr_noweap
+gather_items_enabled = false
+help_wounded_enabled = false
+corpse_detection_enabled = false
+use_camp = false
+
+[meet@stand_base]
+close_snd_hello = nil
+close_snd_bye 	= nil
+close_anim 		= nil
+close_victim 	= nil
+far_anim 		= nil
+far_victim 		= nil
+close_distance  = 0
+far_distance 	= 0
+use = {-PRI_A25_RFI_SOURCE_ELIMINATED +PRI_A16_STALKER_GUIDE_MET_DONE +ZAT_A23_ACTOR_HAS_GAUSS_RIFLE_DOCUMENTATION -PRI_B35_ASSISTANT_START_DIALOG_DONE !npc_talking =dist_to_actor_le(6) =see_actor !actor_enemy} self, {=actor_enemy} false, true
+meet_dialog = {-PRI_A16_STALKER_GUIDE_MET_DONE} jup_b43_stalker_assistant_pripyat_start, {-PRI_A25_RFI_SOURCE_ELIMINATED +ZAT_A23_ACTOR_HAS_GAUSS_RIFLE_DOCUMENTATION -PRI_B35_ASSISTANT_START_DIALOG_DONE} jup_b43_stalker_assistant_b35_about_merc
+trade_enable 	= false
+allow_break 	= false
+meet_on_talking = false

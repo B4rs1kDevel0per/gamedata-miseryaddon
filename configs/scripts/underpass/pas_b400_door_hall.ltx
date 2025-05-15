@@ -1,0 +1,4 @@
+[animated_object]
+tip = {-PAS_B400_CONTROL_DOWN_DOOR_OPENED} tip_door_no_electricity, {-PAS_B400_HALL_BUTTON_PRESSED} tip_door_blocked, none
+on_start = true %=turn_off(pas_b400_lamp_hall_red) =turn_on(pas_b400_lamp_hall_flash)%
+on_stop = true %=turn_off(pas_b400_lamp_hall_flash) =turn_on(pas_b400_lamp_hall_green) +PAS_B400_HALL_DOOR_OPENED%

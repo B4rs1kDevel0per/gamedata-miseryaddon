@@ -1,0 +1,10 @@
+[logic]
+active = sr_idle@pri_b303_toolkit_3
+type = sv_only
+
+[sr_idle@pri_b303_toolkit_3]
+on_info = {-PRI_B303_ACTOR_TAKE_TOOLKIT +PRI_B303_ACTOR_TAKE_NOONE =any_actor_has_item(toolkit_3)} %+PRI_B303_ACTOR_TAKE_TOOLKIT%, {-PRI_B303_ACTOR_TAKE_TOOLKIT +PRI_B303_ACTOR_TAKE_ONE =actor_has_item_count(toolkit_3:2)} %+PRI_B303_ACTOR_TAKE_TOOLKIT%
+on_info2 = {=any_actor_in_zone(pri_b303_burer_out_rest) -PRI_B303_ACTOR_TAKE_ONE =any_actor_has_item(toolkit_3)} %+PRI_B303_ACTOR_TAKE_ONE%, {=any_actor_in_zone(pri_b303_burer_out_rest) -PRI_B303_ACTOR_TAKE_NOONE !any_actor_has_item(toolkit_3)} %+PRI_B303_ACTOR_TAKE_NOONE%
+on_info3 = {+PRI_B303_ACTOR_TAKE_TOOLKIT} sr_idle@pri_b303_end 
+
+[sr_idle@pri_b303_end]

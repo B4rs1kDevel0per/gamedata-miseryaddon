@@ -1,0 +1,11 @@
+[logic]
+active = sr_idle@logic2
+type = sv_only
+
+[sr_idle@logic2]
+on_info = {+JUP_B9_HELI_1_SOUND} sr_idle@2
+
+[sr_idle@2]
+on_game_timer = 20 | sr_idle@nil %+JUP_B9_CAMERA_STOP%
+
+[sr_idle@nil]

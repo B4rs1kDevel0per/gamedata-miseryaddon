@@ -1,0 +1,30 @@
+[logic]
+active = sr_idle@wait_for_start
+type = sv_only
+
+[sr_idle@determine_cl_sv]
+on_info = {=isServer} sr_idle@wait_for_start
+on_info2 = {=isClient} sr_idle@nil
+
+[sr_idle@wait_for_start]
+on_info = {+ZAT_B29_EXCLUSIVE_CONDITIONS -ZAT_B30_COMPASS_TASK_START} %+ZAT_B30_COMPASS_TASK_START%
+on_info2 = {+ZAT_B30_COMPASS_TASK_START} sr_idle@wait_for_give_task
+
+[sr_idle@wait_for_give_task]
+on_info = {+ZAT_B30_COMPASS_TO_BARMEN} sr_idle@get_barmen_af %=give_task(zat_b30_compass_to_barmen_task)%
+on_info2 = {+ZAT_B30_BARMEN_GOT_AF} sr_idle@nil
+on_info3 = {=any_actor_has_item(af_compass) -ZAT_B30_ACTOR_WITH_AF} %+ZAT_B30_ACTOR_WITH_AF%
+
+[sr_idle@get_barmen_af]
+;проверить, чтобы работало, когда арт в слоте
+on_info = {=any_actor_has_item(af_compass) -ZAT_B30_ACTOR_WITH_AF} sr_idle@bring_af %+ZAT_B30_ACTOR_WITH_AF%
+on_info2 = {+ZAT_B30_COMPASS_TO_BARMEN_REVERSED} sr_idle@nil
+on_info3 = {-ZAT_B30_COMPASS_TO_BARMEN_REVERSED +ZAT_B30_FIRST_DETECTOR} %+ZAT_B30_COMPASS_TO_BARMEN_REVERSED -ZAT_B30_COMPASS_TO_BARMEN%
+
+[sr_idle@bring_af]
+on_info = {!any_actor_has_item(af_compass) +ZAT_B30_ACTOR_WITH_AF} sr_idle@get_barmen_af %-ZAT_B30_ACTOR_WITH_AF%
+on_info2 = {+ZAT_B30_BARMEN_GOT_AF} sr_idle@nil
+on_info3 = {+ZAT_B30_COMPASS_TO_BARMEN_REVERSED} sr_idle@nil
+on_info4 = {-ZAT_B30_COMPASS_TO_BARMEN_REVERSED +ZAT_B30_FIRST_DETECTOR} %+ZAT_B30_COMPASS_TO_BARMEN_REVERSED -ZAT_B30_COMPASS_TO_BARMEN%
+
+[sr_idle@nil]

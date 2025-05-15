@@ -1,0 +1,158 @@
+[animpoint@b305_def]
+cover_name = pri_a16_kovalski_1st_floor
+reach_movement = walk_noweap
+avail_animations = ward_noweap
+out_restr = pri_a16_sr_noweap
+corpse_detection_enabled = false
+combat_ignore_cond = true
+combat_ignore_keep_when_attacked = true
+invulnerable = true
+use_camp = false
+meet = meet@col
+
+[remark@def]
+combat_ignore_cond = true
+combat_ignore_keep_when_attacked = true
+out_restr = pri_a16_sr_noweap
+invulnerable = true
+gather_items_enabled = false
+help_wounded_enabled = false
+corpse_detection_enabled = false
+on_info66 = {+PRI_B305_FIFTH_CAM_START -PRI_B305_KOVALSKIY_TP} walker@deal_talk %=teleport_npc(pri_a16_pri_b305_kovalskiy_walk) +PRI_B305_KOVALSKIY_TP%
+meet = meet@col
+use_camp = false
+
+[walker@def]
+combat_ignore_cond = true
+combat_ignore_keep_when_attacked = true
+out_restr = pri_a16_sr_noweap
+invulnerable = true
+gather_items_enabled = false
+help_wounded_enabled = false
+corpse_detection_enabled = false
+on_info66 = {+PRI_B305_FIFTH_CAM_START -PRI_B305_KOVALSKIY_TP} walker@deal_talk %=teleport_npc(pri_a16_pri_b305_kovalskiy_walk) +PRI_B305_KOVALSKIY_TP%
+use_camp = false
+meet = meet@col
+
+[meet@col]
+close_snd_hello = nil
+close_snd_bye = nil
+close_anim 		= nil
+close_victim 	= nil
+far_anim 		= nil
+far_victim 		= nil
+use = {=actor_enemy} false, true
+trade_enable 	= false
+allow_break 	= false
+meet_on_talking = false
+
+;************************************
+[logic@pri_b305_kovalskiy]
+active = walker@b305
+suitable = {-PRI_B305_FIFTH_CAM_END +PRI_A25_RFI_SOURCE_ELIMINATED =check_npc_name(kovalski)} true
+prior = 200
+
+[walker@b305]:walker@def
+path_walk = pri_b305_kovalskiy_walk
+path_look = pri_b305_kirillov_walk
+def_state_standing = wait_na
+meet = no_meet
+on_info = {-PRI_B305_KOVALSKI_INCASE_TP} remark@info_wait %=teleport_npc(pri_a16_pri_b305_kovalskiy_walk) +PRI_B305_KOVALSKI_INCASE_TP%
+;on_info2 = {+PRI_B305_SECOND_CAM_READY -PRI_B305_SECOND_CAM_END} remark@info_1 ;%=teleport_npc(pri_a16_pri_b305_kovalskiy_walk)%
+on_info3 = {+PRI_B305_SECOND_CAM_END} animpoint@rest
+
+[remark@info_wait]:remark@def
+target = story | actor
+anim = wait_na
+on_info = {+PRI_B305_SECOND_CAM_READY -PRI_B305_SECOND_CAM_END} remark@info_1
+
+[remark@info_1]:remark@def
+target = story | pri_b305_actor_visual_2
+anim = wait_na
+on_info = {-PRI_B305_KOVALSKIY_NEWS_DONE} %=play_sound(pri_b305_kovalskiy_news) +PRI_B305_KOVALSKIY_NEWS_DONE%
+on_signal = sound_end | remark@info_2 %+PRI_B305_KOVALSKIY_NEWS_DONE_END%
+meet = no_meet
+on_info2 = {+PRI_B305_SECOND_CAM_END} animpoint@rest
+
+[remark@info_2]:remark@def
+target = story | pri_b305_actor_visual_2
+anim = wait_na
+on_info = {+PRI_B305_KIRILOV_STRANGE_SIGNAL_DONE_END -PRI_B305_KOVALSKIY_ASK_COORDINATES_DONE} %=play_sound(pri_b305_kovalskiy_ask_coordinates) +PRI_B305_KOVALSKIY_ASK_COORDINATES_DONE%
+on_signal = sound_end | remark@info_3 %+PRI_B305_KOVALSKIY_ASK_COORDINATES_DONE_END +PRI_B305_CAM_2_KIRILOV_GO%
+meet = no_meet
+on_info2 = {+PRI_B305_SECOND_CAM_END} animpoint@rest
+ 
+[remark@info_3]:remark@def
+target = story | pri_a22_army_signaller
+anim = wait_na
+on_info = {+PRI_B305_KIRILOV_GIVE_COORDINATES_DONE_END -PRI_B305_KOVALSKIY_THINK_OF_ATTACK_DONE} %=play_sound(pri_b305_kovalskiy_think_of_attack) +PRI_B305_KOVALSKIY_THINK_OF_ATTACK_DONE%
+on_signal = sound_end | {-PRI_B305_KOVALSKIY_THINK_OF_ATTACK_DONE_END} %+PRI_B305_KOVALSKIY_THINK_OF_ATTACK_DONE_END%
+on_info2 = {+PRI_B305_SECOND_CAM_END} animpoint@rest
+meet = no_meet
+
+[animpoint@rest]:animpoint@b305_def
+reach_movement = walk
+on_info = {+PRI_B305_THIRD_CAM_GO} walker@strelok_operation_start %=teleport_npc(pri_a16_pri_b305_kovalskiy_strelok_operation_walk) +FUCK%
+;meet = no_meet
+
+[walker@strelok_operation_start]:walker@def
+path_walk = pri_b305_kovalskiy_strelok_operation_walk
+path_look = pri_b305_strelok_operation_look
+def_state_moving = sprint
+meet = no_meet
+on_game_timer = 30 | remark@strelok_operation_start
+
+[remark@strelok_operation_start]:remark@def
+target = path | pri_a16_pri_b305_strelok_operation_walk, 0
+anim   = threat
+on_info = {+PRI_B305_STRELOK_GIVE_UP_DONE_END -PRI_B305_KOVALSKIY_WHO_ARE_YOU_DONE} %=play_sound(pri_b305_kovalskiy_who_are_you) +PRI_B305_KOVALSKIY_WHO_ARE_YOU_DONE%
+on_signal = sound_end | remark@strelok_operation_sound2 %+PRI_B305_KOVALSKIY_WHO_ARE_YOU_DONE_END%
+meet = no_meet
+
+[remark@strelok_operation_sound2]:remark@def
+target = path | pri_a16_pri_b305_strelok_operation_walk, 0
+anim   = threat
+on_info = {+PRI_B305_STRELOK_ABOUT_ZONE_DESTROYING_DONE_END} remark@strelok_operation_weapon_down
+meet = no_meet
+
+[remark@strelok_operation_weapon_down]:remark@def
+target = path | pri_a16_pri_b305_strelok_operation_walk, 0
+anim   = ward
+on_info = {+PRI_B305_ACTOR_EMISSION_STARTS_DONE_END -PRI_B305_KOVALSKIY_TALK_IN_SAFE_PLACE_DONE} %=play_sound(pri_b305_kovalskiy_talk_in_safe_place) +PRI_B305_KOVALSKIY_TALK_IN_SAFE_PLACE_DONE%
+on_signal = sound_end | remark@wait %+PRI_B305_KOVALSKIY_TALK_IN_SAFE_PLACE_DONE_END%
+meet = no_meet
+
+[remark@wait]:remark@def
+target = path | pri_a16_pri_b305_strelok_operation_walk, 0
+anim   = threat
+meet = no_meet
+on_info = {+PRI_B305_FIFTH_CAM_START -PRI_B305_KOVALSKIY_TP} walker@deal_talk %+PRI_B305_KOVALSKIY_TP =teleport_npc(pri_a16_pri_b305_kovalskiy_walk)%
+
+[walker@deal_talk]:walker@def
+path_walk = pri_b305_kovalskiy_walk
+path_look = pri_b305_kirillov_walk
+def_state_standing = wait_na
+on_info = {+PRI_B305_ACTOR_WE_HAVE_PROBLEMS_DONE_END -PRI_B305_KOVALSKIY_ABOUT_DEAL_DONE} %=play_sound(pri_b305_kovalskiy_about_deal) +PRI_B305_KOVALSKIY_ABOUT_DEAL_DONE%
+on_signal = sound_end | remark@phrase_4 %+PRI_B305_KOVALSKIY_ABOUT_DEAL_DONE_END%
+meet = no_meet
+
+[remark@phrase_4]:remark@def
+target = story | pri_b305_strelok
+anim = wait_na
+on_info = {+PRI_B305_STRELOK_ABOUT_HELI_DONE_END -PRI_B305_KOVALSKIY_ABOUT_ANOMALY_MAP_DONE} %=play_sound(pri_b305_kovalskiy_about_anomaly_map) +PRI_B305_KOVALSKIY_ABOUT_ANOMALY_MAP_DONE%
+on_signal = sound_end | remark@phrase_7 %+PRI_B305_KOVALSKIY_ABOUT_ANOMALY_MAP_DONE_END%
+meet = no_meet
+
+[remark@phrase_7]:remark@def
+target = story | pri_b305_strelok
+anim = wait_na
+on_info = {+PRI_B305_ACTOR_WONDERED_DONE_END -PRI_B305_KOVALSKIY_WONDERED_DONE} %=play_sound(pri_b305_kovalskiy_wondered) +PRI_B305_KOVALSKIY_WONDERED_DONE%
+on_signal = sound_end | remark@phrase_10 %+PRI_B305_KOVALSKIY_WONDERED_DONE_END%
+meet = no_meet
+
+[remark@phrase_10]:remark@def
+target = story | pri_b305_strelok
+anim = wait_na
+on_info = {+PRI_B305_ACTOR_NEED_CENTER_TO_KNOW_DONE_END -PRI_B305_KOVALSKIY_LET_CENTER_KNOW_DONE} %=play_sound(pri_b305_kovalskiy_let_center_know) +PRI_B305_KOVALSKIY_LET_CENTER_KNOW_DONE%
+on_signal = sound_end | %+PRI_B305_KOVALSKIY_LET_CENTER_KNOW_DONE_END%
+meet = no_meet

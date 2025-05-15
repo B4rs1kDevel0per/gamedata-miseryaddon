@@ -1,0 +1,60 @@
+[logic]
+active = sr_idle@determine_cl_sv
+type = shared_with_cl_data
+
+[sr_idle@determine_cl_sv]
+on_info = {=isServer} sr_idle@sv_kindergarten_door_find
+on_info2 = {=isClient} sr_idle@cl_wait
+
+;server logic
+[sr_idle@sv_kindergarten_door_find]
+on_info = {+PRI_A19_LAB_X8_INVESTIGATED +PRI_A22_SCENE_DONE} sr_idle@sv_check_door_find_with_or_with_out_explosive
+
+[sr_idle@sv_check_door_find_with_or_with_out_explosive]
+on_info = {=any_actor_in_zone(pri_a25_door_find_restrictor) =any_actor_has_item(pri_a25_explosive_charge_item)} sr_idle@sv_check_actor_antena_find %+PRI_A25_BLOW_UP_DOOR%
+on_info2 = {=any_actor_in_zone(pri_a25_door_find_restrictor) !any_actor_has_item(pri_a25_explosive_charge_item)} sr_idle@sv_cutscene_timer %+PRI_A25_CAM_WAIT%
+
+[sr_idle@sv_cutscene_timer]
+on_game_timer = 20 | sr_idle@sv_wait %+PRI_A25_CAM_START =create_cutscene_actor_with_weapon(pri_a25_cutscene_actor:pri_a25_smart_terrain_cutscene_actor_walk:0:300)%
+
+[sr_idle@sv_wait]
+on_info = {+PRI_A25_DESTR_CUTSC_ACTOR} sr_idle@sv_cutscene_end
+
+[sr_idle@sv_cutscene_end]
+on_game_timer = 10 | sr_idle@sv_actor_has_explosive_check %+PRI_A25_CAM_END%
+
+[sr_idle@sv_actor_has_explosive_check]
+on_info = {=any_actor_has_item(pri_a25_explosive_charge_item)} sr_idle@sv_check_actor_antena_find %+PRI_A25_BLOW_UP_DOOR%
+
+[sr_idle@sv_check_actor_antena_find]
+on_info = {=any_actor_in_zone(pri_a25_find_antenna_restrictor)} sr_idle@sv_check_antena_destroy %+PRI_A25_DESTROY_ANTENNA%
+
+[sr_idle@sv_check_antena_destroy]
+on_info = {+PRI_A19_LAB_X8_INVESTIGATED +PRI_A22_SCENE_DONE +PRI_A25_WOOD_BOARD_HIT} sr_idle@sv_make_explosion %=xrmpe_client_spawn(pri_a25_antenna_grenade:pri_a25_smart_terrain_pri_a25_antenna_grenade_spawn_point) +PRI_A25_ANTENNA_DESTROYED%
+
+[sr_idle@sv_make_explosion]
+on_info = {=object_exist(pri_a25_antenna_grenade)} sr_idle@nil %=barrel_explode(pri_a25_antenna_grenade) +PRI_A25_HIT_BARRIER_OBJECTS%
+
+;client logic
+[sr_idle@cl_wait]
+on_info = {+PRI_A25_CAM_WAIT =local_actor_story_id(actor_degtyarev)} sr_idle@cl_wait2 %=disable_ui =run_postprocess(fade_in:4410)%
+
+[sr_idle@cl_wait2]
+on_info = {+PRI_A25_CAM_START} sr_cutscene@cl_start %=run_postprocess(black:4411)%
+
+[sr_cutscene@cl_start]
+enable_ui_on_end = false
+global_cameffect = true
+outdoor = true
+point = pri_a25_actor_walk 
+look = pri_a25_actor_look
+cam_effector = scenario_cam\pripyat\pri_a25_find_door_without_explosive_cameff
+on_game_timer = 10 | sr_cutscene@cl_start %=stop_postprocess(4410) =stop_postprocess(4411)%
+on_signal = cameff_end | sr_idle@cl_cutscene_end_postprocess %=run_postprocess(black:4413:true) +PRI_A25_DESTR_CUTSC_ACTOR =xrmpe_teleport_local_actor(pri_a25_smart_terrain_cutscene_actor_walk:pri_a25_smart_terrain_cutscene_actor_look)% 
+on_info = {+PRI_A25_FIND_EXPLOSIVE -PRI_A25_FADE} %=run_postprocess(fade_in:4412) +PRI_A25_FADE%
+on_info2 = {+PRI_A25_CAM_STOP} %=stop_sr_cutscene%
+
+[sr_idle@cl_cutscene_end_postprocess]
+on_info = {+PRI_A25_CAM_END} sr_idle@nil %=stop_postprocess(4413) =stop_postprocess(4412) =enable_ui%
+
+[sr_idle@nil]

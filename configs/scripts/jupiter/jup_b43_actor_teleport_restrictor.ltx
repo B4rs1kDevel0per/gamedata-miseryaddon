@@ -1,0 +1,44 @@
+[logic]
+active = sr_idle@determine_cl_sv
+type = no_save
+
+[sr_idle@determine_cl_sv]
+on_info = {=isServer} sr_idle@sv_talk_about_teleport
+on_info2 = {=isClient} sr_idle@cl_talk_about_teleport
+
+;server logic
+[sr_idle@sv_talk_about_teleport]
+on_info = {+JUP_B43_TELEPORT_ACTOR_FROM_PRIPYAT_TO_JUPITER} sr_idle@sv_from_pripyat_to_jupiter
+on_info2 = {+JUP_B43_TELEPORT_ACTOR_FROM_JUPITER_TO_PRIPYAT} sr_idle@sv_from_jupiter_to_pripyat
+on_info3 = {+JUP_B43_TELEPORT_ACTOR_FROM_PRIPYAT_TO_ZATON} sr_idle@sv_from_pripyat_to_zaton
+on_info4 = {=actor_on_level(jupiter) +JUP_B43_JUPITER_OUT_BASE_TELEPORT} %=xrmpe_teleport_actors(jup_actor_arrive_walk:jup_actor_arrive_look) -JUP_B43_JUPITER_OUT_BASE_TELEPORT%
+on_info5 = {=actor_on_level(pripyat) +JUP_B43_PRIPYAT_OUT_BASE_TELEPORT} %=xrmpe_teleport_actors(pri_actor_arrive_walk:pri_actor_arrive_look) -JUP_B43_PRIPYAT_OUT_BASE_TELEPORT%
+on_info6 = {=actor_on_level(zaton) +JUP_B43_ZATON_OUT_BASE_TELEPORT} %=xrmpe_teleport_actors(zat_actor_arrive_walk:zat_actor_arrive_look) -JUP_B43_ZATON_OUT_BASE_TELEPORT%
+
+[sr_idle@sv_from_pripyat_to_jupiter]
+on_game_timer = 20 | sr_idle@sv_talk_about_teleport %-JUP_B43_TELEPORT_ACTOR_FROM_PRIPYAT_TO_JUPITER =forward_game_time(4) =xrmpe_teleport_actors(pri_teleport_actor_from_pripyat_to_jupiter_walk:pri_teleport_actor_from_pripyat_to_jupiter_look) +JUP_B43_JUPITER_OUT_BASE_TELEPORT%
+
+[sr_idle@sv_from_jupiter_to_pripyat]
+on_game_timer = 20 | sr_idle@sv_talk_about_teleport %-JUP_B43_TELEPORT_ACTOR_FROM_JUPITER_TO_PRIPYAT =forward_game_time(4) =xrmpe_teleport_actors(jup_teleport_actor_from_jupiter_to_pripyat_walk:jup_teleport_actor_from_jupiter_to_pripyat_look) +JUP_B43_PRIPYAT_OUT_BASE_TELEPORT%
+
+[sr_idle@sv_from_pripyat_to_zaton]
+on_game_timer = 20 | sr_idle@sv_talk_about_teleport %-JUP_B43_TELEPORT_ACTOR_FROM_PRIPYAT_TO_ZATON =forward_game_time(4) =xrmpe_teleport_actors(pri_teleport_actor_from_pripyat_to_zaton_walk:pri_teleport_actor_from_pripyat_to_zaton_look) +JUP_B43_ZATON_OUT_BASE_TELEPORT%
+
+;client logic
+[sr_idle@cl_talk_about_teleport]
+on_info = {+JUP_B43_TELEPORT_ACTOR_FROM_PRIPYAT_TO_JUPITER} sr_idle@cl_from_pripyat_to_jupiter %=disable_ui =run_postprocess(fade_in)%
+on_info2 = {+JUP_B43_TELEPORT_ACTOR_FROM_JUPITER_TO_PRIPYAT} sr_idle@cl_from_jupiter_to_pripyat %=disable_ui =run_postprocess(fade_in)%
+on_info3 = {+JUP_B43_TELEPORT_ACTOR_FROM_PRIPYAT_TO_ZATON} sr_idle@cl_from_pripyat_to_zaton %=disable_ui =run_postprocess(fade_in)%
+on_info4 = {+UNI_LEAVE_ZONE_INFO} sr_idle@cl_leave_zone %=disable_ui =run_postprocess(fade_in)% 
+
+[sr_idle@cl_from_pripyat_to_jupiter]
+on_game_timer = 20 | sr_idle@cl_talk_about_teleport %=run_postprocess(black:3009:true)%
+
+[sr_idle@cl_from_jupiter_to_pripyat]
+on_game_timer = 20 | sr_idle@cl_talk_about_teleport %=run_postprocess(black:3009:true)%
+
+[sr_idle@cl_from_pripyat_to_zaton]
+on_game_timer = 20 | sr_idle@cl_talk_about_teleport %=run_postprocess(black:3009:true)%
+
+[sr_idle@cl_leave_zone]
+on_game_timer = 20 | nil %=run_tutorial(outro_game)%

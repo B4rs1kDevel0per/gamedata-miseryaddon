@@ -1,0 +1,18 @@
+[logic]
+active = ph_idle@start
+
+[ph_idle@start]
+on_info = ph_door@open %+PRI_A16_UPPER_DOOR_OPEN%
+
+[ph_door@open]
+closed = false
+locked = false
+on_use = ph_door@closed %-PRI_A16_UPPER_DOOR_OPEN%
+on_game_timer = 50 | {=surge_started} ph_door@closed %-PRI_A16_UPPER_DOOR_OPEN%
+on_info = {-PRI_A16_UPPER_DOOR_OPEN !is_door_blocked_by_npc} ph_door@closed
+
+[ph_door@closed]
+closed = true
+locked = false
+on_use = ph_door@open %+PRI_A16_UPPER_DOOR_OPEN%
+on_info = {+PRI_A16_UPPER_DOOR_OPEN !is_door_blocked_by_npc} ph_door@open

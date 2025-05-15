@@ -1,0 +1,62 @@
+[logic]
+active = sr_idle@determine_cl_sv
+type = shared_with_cl_data
+
+[sr_idle@determine_cl_sv]
+on_info = {=isServer} sr_idle@sv_wait
+on_info2 = {=isClient} sr_idle@cl_wait
+
+[sr_idle@sv_wait]
+on_info = {+JUP_B8_GIVE_TASK} sr_idle@sv_wait2
+
+[sr_idle@sv_wait2]
+on_info = {+JUP_B8_HELI_4_SEARCHING -JUP_B8_HELI_4_SEARCHED} sr_idle@sv_wait3
+
+[sr_idle@sv_wait3]
+on_game_timer = 20 | sr_idle@sv_wait4 %+JUP_B8_HELI_4_CUT_WAIT =create_cutscene_actor_with_weapon(jup_b8_actor_visual_stalker:jup_b8_actor_visual_stalker_walk:0:140)%
+
+[sr_idle@sv_wait4]
+on_game_timer = 20 | sr_idle@sv_wait5 %+PLAY_SOUND_HELI_4%
+
+[sr_idle@sv_wait5]
+on_info = {+JUP_B8_HELI_4_CUT_PLAYED} sr_idle@sv_end
+
+[sr_idle@sv_end]
+on_game_timer = 10 | %+JUP_B8_HELI_4_SEARCHED%
+on_info = {+JUP_B8_HELI_4_SEARCHED} sr_idle@sv_save
+
+[sr_idle@sv_save]
+on_info = {-SAVE_JUP_B8_SEARCHED_HELI_4} %+SAVE_JUP_B8_SEARCHED_HELI_4 =scenario_autosave(st_SAVE_JUP_B8_SEARCHED_HELI_4)%
+on_info2 = {+SAVE_JUP_B8_SEARCHED_HELI_4} sr_idle@nil
+
+;client logic
+[sr_idle@cl_wait]
+on_info = {=local_actor_story_id(actor_degtyarev) +JUP_B8_GIVE_TASK} sr_idle@cl_wait2
+
+[sr_idle@cl_wait2]
+on_info = {+JUP_B8_HELI_4_SEARCHING -JUP_B8_HELI_4_SEARCHED} sr_idle@cl_wait3 %=disable_ui =run_postprocess(fade_in:2215)%
+
+[sr_idle@cl_wait3]
+on_info = {+JUP_B8_HELI_4_CUT_WAIT} sr_idle@cl_wait4 %=run_postprocess(black:2216:true)%
+
+[sr_idle@cl_wait4]
+on_info = {+PLAY_SOUND_HELI_4} sr_cutscene@cl_cam %=stop_postprocess(2215) =stop_postprocess(2216)%
+
+[sr_cutscene@cl_cam]
+point = jup_b8_actor_visual_stalker_walk
+look = jup_b8_actor_visual_stalker_look
+global_cameffect = true
+enable_ui_on_end = false
+outdoor = true
+cam_effector = scenario_cam\jupiter\jup_b8_heli_4_camera
+on_signal = cameff_end | sr_idle@cl_end %+JUP_B8_HELI_4_CUT_PLAYED =run_postprocess(black:2218:true)%
+on_signal2 = cam_effector_stop | sr_idle@cl_end %+JUP_B8_HELI_4_CUT_PLAYED =run_postprocess(black:2218:true)%
+on_info = {+JUP_B8_HELI_4_SOUND -JUP_B8_HELI_AFTER_CAMERA_FADE} %+JUP_B8_HELI_AFTER_CAMERA_FADE =run_postprocess(fade_in:2217)%
+on_info2 = {+ZAT_B101_JUP_B8_CAMERA_ONE_STOP -ZAT_B101_HELI_5_SEARCHING} %=stop_sr_cutscene%
+on_info3 = {+ZAT_B101_JUP_B8_CAMERA_BOTH_STOP} %=stop_sr_cutscene%
+on_info4 = {+JUP_B8_ACTOR_HIT} %=stop_sr_cutscene%
+
+[sr_idle@cl_end]
+on_info = {+JUP_B8_HELI_4_SEARCHED} sr_idle@nil %=stop_postprocess(2217) =stop_postprocess(2218) =enable_ui =xrmpe_teleport_local_actor(jup_b8_actor_visual_stalker_walk:jup_b8_actor_visual_stalker_look)% 
+
+[sr_idle@nil]

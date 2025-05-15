@@ -1,0 +1,23 @@
+[logic]
+active = ph_door@closed
+
+[ph_door@closed]
+locked = true
+closed = true 
+tip_open = tip_door_open
+not_for_npc = true
+snd_open_start = 
+snd_close_start = 
+snd_close_stop = 
+on_use = {+PRI_A25_CHECK_FREEZER_KNOCK} ph_door@open %+PRI_A25_FREEZER_CAN_TALK%
+on_info = {+PRI_A25_WOOD_BOARD_HIT +PRI_A25_ONCE_REFRIGERATOR_DOOR_OPEN} ph_door@open
+
+[ph_door@open]
+locked = false
+closed = false
+show_tips = false
+not_for_npc = true
+snd_open_start = 
+snd_close_start = 
+snd_close_stop = 
+on_info = {-PRI_A25_ONCE_REFRIGERATOR_DOOR_OPEN} ph_door@closed %+PRI_A25_ONCE_REFRIGERATOR_DOOR_OPEN%

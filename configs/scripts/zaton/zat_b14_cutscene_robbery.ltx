@@ -1,0 +1,27 @@
+[logic]
+active = sr_idle@determine_cl_sv
+type = shared_with_cl_data
+
+[sr_idle@determine_cl_sv]
+on_info = {=isServer} sr_idle@sv_wait
+on_info2 = {=isClient} sr_idle@cl_wait
+
+;server logic
+[sr_idle@sv_wait]
+on_info = {+ZAT_B14_STALKER_ROBBERY_CUTSCENE_END} sr_idle@end
+on_info2 = {-ZAT_B14_STALKER_ROBBERY_CUTSCENE_START +ZAT_B14_STALKER_ROBBERY -ZAT_B14_ACTOR_ENEMY} sr_idle@end %+ZAT_B14_STALKER_ROBBERY_CUTSCENE_START%
+
+;client logic
+[sr_idle@cl_wait]
+on_info = {+ZAT_B14_STALKER_ROBBERY_CUTSCENE_END} sr_idle@end
+on_info2 = {+ZAT_B14_STALKER_ROBBERY_CUTSCENE_START =is_local_actor_relevant(25:zat_b14_stalker_1) =actor_has_item(af_quest_b14_twisted)} sr_cutscene@coming, {+ZAT_B14_STALKER_ROBBERY_CUTSCENE_START !is_local_actor_relevant(25:zat_b14_stalker_1)} sr_idle@end
+
+[sr_cutscene@coming]
+point = zat_b14_robbery_actor_walk
+look = zat_b14_robbery_actor_look
+cam_effector = scenario_cam\zaton\zat_b14_robbery
+on_signal = cameff_end | sr_idle@end %+ZAT_B14_STALKER_ROBBERY_CUTSCENE_END%
+global_cameffect = true
+outdoor = true
+
+[sr_idle@end]

@@ -1,0 +1,35 @@
+[logic]
+active = sr_idle@determine_cl_sv
+type = shared_with_cl_data
+
+[sr_idle@determine_cl_sv]
+on_info = {=isServer} sr_idle@sv_attack_timer
+on_info2 = {=isClient} sr_idle@cl_wait
+
+;server logic
+[sr_idle@sv_attack_timer]
+on_info = {+PRI_B301_SNORK_ATTACK_1 -PRI_B301_SNORK_ATTACK_2} sr_idle@sv_attack_timer2
+on_info2 = {+PRI_B301_GO_ON_BASE} sr_idle@sv_teleport
+
+[sr_idle@sv_attack_timer2]
+on_game_timer = 70 | sr_idle@sv_attack_timer %+PRI_B301_SNORK_ATTACK_2%
+on_info = {+PRI_B301_GO_ON_BASE} sr_idle@sv_teleport
+
+[sr_idle@sv_teleport]
+on_game_timer = 10 | sr_idle@sv_ui %+PRI_B301_ZULUS_TELEPORT +PRI_B301_REWARD_DIALOG_UNABLE%
+
+[sr_idle@sv_ui]
+on_game_timer = 30 | sr_idle@nil %+PRI_B301_UI_CL%
+
+;client logic
+
+[sr_idle@cl_wait]
+on_info = {+PRI_B301_GO_ON_BASE} sr_idle@cl_teleport %=run_postprocess(fade_in:7810) =disable_ui%
+
+[sr_idle@cl_teleport]
+on_info = {+PRI_B301_ZULUS_TELEPORT} sr_idle@cl_ui %=run_postprocess(black:7811:true) =xrmpe_teleport_local_actor(pri_actor_arrive_walk:pri_actor_arrive_look)%
+
+[sr_idle@cl_ui]
+on_info = {+PRI_B301_UI_CL} sr_idle@nil %=stop_postprocess(7810) =stop_postprocess(7811) =enable_ui%
+
+[sr_idle@nil]

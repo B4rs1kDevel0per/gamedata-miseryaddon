@@ -1,0 +1,52 @@
+[logic]
+active = sr_idle@base_radio_snd_1
+type = cl_only
+
+[sr_idle@base_radio_snd_1]
+on_info = {+PRI_A28_CENTER_KOVAL_BASE_TALK -PRI_A28_SSU_TO_ACTOR_5_SOUND_END} sr_idle@base_radio_snd_2, {+PRI_A28_CENTER_KOVAL_BASE_TALK +PRI_A28_SSU_TO_ACTOR_5_SOUND_END} sr_idle@nil 
+
+[sr_idle@base_radio_snd_2]
+on_game_timer = 50 | %=play_sound(pri_a28_center_to_colonel_1)%
+on_signal = sound_end | sr_idle@base_radio_snd_3 %+PRI_A28_CENTER_TO_COLONEL_1_SOUND_END%
+
+[sr_idle@base_radio_snd_3]
+on_info = {+PRI_A28_COLONEL_TO_CENTER_1_SOUND_END} sr_idle@base_radio_snd_4
+
+[sr_idle@base_radio_snd_4]
+on_game_timer = 10 | %=play_sound(pri_a28_center_to_colonel_2)%
+on_signal = sound_end | sr_idle@base_radio_snd_5 %+PRI_A28_CENTER_TO_COLONEL_2_SOUND_END%
+
+[sr_idle@base_radio_snd_5]
+on_info = {+PRI_A28_COLONEL_TO_CENTER_2_SOUND_END} sr_idle@base_radio_snd_6
+
+[sr_idle@base_radio_snd_6]
+on_game_timer = 10 | %=play_sound(pri_a28_center_to_colonel_3)%
+on_signal = sound_end | sr_idle@base_radio_snd_7 %+PRI_A28_CENTER_TO_COLONEL_3_SOUND_END%
+
+[sr_idle@base_radio_snd_7]
+on_info = {+PRI_A28_SSU_TO_ACTOR_1_SOUND_BEGIN} %=play_sound(pri_a28_ssu_to_actor_1)%
+on_signal = sound_end | sr_idle@base_radio_snd_8 %+PRI_A28_SSU_TO_ACTOR_1_SOUND_END%
+
+[sr_idle@base_radio_snd_8]
+on_info = {+PRI_A28_ACTOR_TO_SSU_1_SOUND_END} sr_idle@base_radio_snd_9
+
+[sr_idle@base_radio_snd_9]
+on_info = {-PRI_A28_TALK_SSU_TUTORIAL} %+PRI_A28_TALK_SSU_TUTORIAL =run_tutorial(talk_ssu)%
+on_game_timer = 13 | %=play_sound(pri_a28_ssu_to_actor_2) =run_postprocess(black:2021:true)%
+on_signal = sound_end | sr_idle@base_radio_snd_10 %+PRI_A28_SSU_TO_ACTOR_2_SOUND_END%
+
+[sr_idle@base_radio_snd_10]
+on_info = {+PRI_A28_ACTOR_TO_SSU_2_SOUND_END} sr_idle@base_radio_snd_11
+
+[sr_idle@base_radio_snd_11]
+on_game_timer = 30 | %=play_sound(pri_a28_ssu_to_actor_3)%
+on_signal = sound_end | sr_idle@base_radio_snd_12 %+PRI_A28_SSU_TO_ACTOR_3_SOUND_END%
+
+[sr_idle@base_radio_snd_12]
+on_info = {+PRI_A28_ACTOR_TO_SSU_WITH_OR_WITHOUT_HELI_INFO_SOUND_END} sr_idle@base_radio_snd_13
+
+[sr_idle@base_radio_snd_13]
+on_game_timer = 10 | %=play_sound(pri_a28_ssu_to_actor_5)%
+on_signal = sound_end | sr_idle@nil %+PRI_A28_SSU_TO_ACTOR_5_SOUND_END%
+
+[sr_idle@nil]

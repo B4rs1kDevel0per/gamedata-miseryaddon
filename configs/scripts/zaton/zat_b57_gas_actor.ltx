@@ -1,0 +1,10 @@
+[logic] 
+active = sr_idle@install
+type = cl_only
+
+[sr_idle@install]
+on_player_inside = {=actor_has_item(zat_b57_gas) +ZAT_B57_DEN_OF_THE_BLOODSUCKER_SEARCH_GAS_GIVE -ZAT_B57_DEN_OF_THE_BLOODSUCKER_PLACE_GAS_GIVE} %+ZAT_B57_DEN_OF_THE_BLOODSUCKER_PLACE_GAS_GIVE%
+on_info = {=actor_has_item(zat_b57_gas) +ZAT_B57_BALON_USE} sr_idle@nil %=remove_item(zat_b57_gas) =spawn_object(zat_b57_ph_gas:zat_b57_place_gas_point) +ZAT_B57_DEN_OF_THE_BLOODSUCKER_TWIST_VINTIL_GIVE%
+
+[sr_idle@nil]
+

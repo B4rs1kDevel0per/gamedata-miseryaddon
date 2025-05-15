@@ -1,0 +1,68 @@
+[logic]
+active = sr_idle@determine_cl_sv
+type = shared_with_cl_data
+
+[sr_idle@determine_cl_sv]
+on_info = {=isServer} sr_idle@sv_zat_a23_gauss_rifle_guard_spawn
+on_info2 = {=isClient} sr_idle@cl_zat_a23_pick_documents
+
+;server logic
+[sr_idle@sv_zat_a23_gauss_rifle_guard_spawn]
+on_info = {-ZAT_A23_GAUSS_RIFLE_GUARD_SPAWNED =any_actor_has_item(zat_a23_access_card)} sr_idle@sv_zat_a23_wait_actor %+ZAT_A23_GAUSS_RIFLE_GUARD_SPAWNED =create_squad(zat_a23_zombie_squad:zat_a23_smart_terrain) =create_squad(zat_a23_giant_squad:zat_a23_smart_terrain) =set_counter(zat_a23_zombied_attack:0) =set_counter(zat_a23_zombied_death:0)%, {+ZAT_A23_GAUSS_RIFLE_GUARD_SPAWNED} sr_idle@sv_zat_a23_wait_actor
+on_info2 = {=any_actor_has_item(zat_a23_gauss_rifle_docs)} sr_idle@sv_zat_a23_pick_documents %+ZAT_A23_ACTOR_USED_ACCESS_CARD%
+
+[sr_idle@sv_zat_a23_wait_actor]
+on_info = {=counter_greater(zat_a23_zombied_attack:5)} sr_idle@sv_zat_a23_pick_documents, {+ZAT_A23_ACTOR_USED_ACCESS_CARD} sr_idle@sv_zat_a23_zombie_attak
+on_info2 = {=any_actor_has_item(zat_a23_gauss_rifle_docs)} sr_idle@sv_zat_a23_pick_documents %+ZAT_A23_ACTOR_USED_ACCESS_CARD%
+
+[sr_idle@sv_zat_a23_zombie_attak]
+on_game_timer = 50 | sr_idle@sv_zat_a23_wait_actor %=inc_counter(zat_a23_zombied_attack:1)%
+on_info = {=counter_greater(zat_a23_zombied_death:5)} sr_idle@sv_zat_a23_pick_documents
+on_info2 = {=any_actor_has_item(zat_a23_gauss_rifle_docs)} sr_idle@sv_zat_a23_pick_documents %+ZAT_A23_ACTOR_USED_ACCESS_CARD%
+
+[sr_idle@sv_zat_a23_pick_documents]
+on_info = {=any_actor_has_item(zat_a23_gauss_rifle_docs)} sr_idle@sv_zat_a23_cam_spawn
+
+[sr_idle@sv_zat_a23_cam_spawn]
+on_game_timer = 20 | sr_idle@sv_zat_a23_cam_time %+ZAT_A23_CAM_TIME =create_cutscene_actor_with_weapon(zat_b100_actor:zat_a23_temp_actor_walk:0:0:3)%
+
+[sr_idle@sv_zat_a23_cam_time]
+on_game_timer = 30 | sr_idle@sv_zat_a23_cam_wait_end
+
+[sr_idle@sv_zat_a23_cam_wait_end]
+on_info = {+ZAT_A23_ACTOR_HAS_GAUSS_RIFLE_DOCUMENTATION} sr_idle@sv_zat_a23_cam_destroy
+on_info2 = {!object_exist(zat_b100_actor)} %+ZAT_A23_ACTOR_REMOVED%
+
+[sr_idle@sv_zat_a23_cam_destroy]
+on_game_timer = 20 | {=object_exist(zat_b100_actor)} sr_idle@sv_zat_a23_cam_end %+ZAT_A23_CAM_DESTROY =destroy_object(story:zat_b100_actor) =destroy_object(story:zat_a23_gauss_rifle_docs_fake)%, sr_idle@sv_zat_a23_cam_end %+ZAT_A23_CAM_DESTROY =destroy_object(story:zat_a23_gauss_rifle_docs_fake)%
+
+[sr_idle@sv_zat_a23_cam_end]
+on_game_timer = 20 | sr_idle@sv_zat_a23_end %+ZAT_A23_CAM_END%
+
+[sr_idle@sv_zat_a23_end]
+on_info = {-ZAT_A23_SCENARIO_SAVE_ACTOR_HAS_GAUSE_DOCS} %+ZAT_A23_SCENARIO_SAVE_ACTOR_HAS_GAUSE_DOCS =scenario_autosave(st_save_zat_a23_got_gauss_docs)%
+on_info2 = {+ZAT_A23_SCENARIO_SAVE_ACTOR_HAS_GAUSE_DOCS} sr_idle@nil
+
+;client logic
+[sr_idle@cl_zat_a23_pick_documents]
+on_info = {=local_actor_story_id(actor_degtyarev) =any_actor_has_item(zat_a23_gauss_rifle_docs)} sr_idle@cl_zat_a23_cam_spawn %=run_postprocess(fade_in:7910) =disable_ui%
+
+[sr_idle@cl_zat_a23_cam_spawn]
+on_info = {+ZAT_A23_CAM_TIME} sr_cutscene@cl_zat_a23_cam_start 
+
+[sr_cutscene@cl_zat_a23_cam_start]
+point = zat_a23_cam_actor_walk
+look = zat_a23_cam_actor_look
+cam_effector = scenario_cam\zaton\zat_a23_documents_cam
+global_cameffect = true
+enable_ui_on_end = false
+on_info = {+ZAT_A23_ACTOR_SND_PLAYED -ZAT_A23_ACTOR_HAS_GAUSS_RIFLE_DOCUMENTATION} %+ZAT_A23_ACTOR_HAS_GAUSS_RIFLE_DOCUMENTATION =stop_sr_cutscene =run_postprocess(fade_in:7912) =give_actor(zat_a23_labx8_key) =give_task(pri_a19_lab_x8_investigation)%, {+ZAT_A23_ACTOR_REMOVED -ZAT_A23_ACTOR_HAS_GAUSS_RIFLE_DOCUMENTATION} %+ZAT_A23_ACTOR_HAS_GAUSS_RIFLE_DOCUMENTATION =stop_sr_cutscene =run_postprocess(fade_in:7912) =give_actor(zat_a23_labx8_key) =give_task(pri_a19_lab_x8_investigation)%
+on_signal2 = cameff_end | {+ZAT_A23_ACTOR_HAS_GAUSS_RIFLE_DOCUMENTATION} sr_idle@cl_zat_a23_cam_destroy
+
+[sr_idle@cl_zat_a23_cam_destroy]
+on_info = {+ZAT_A23_CAM_DESTROY} sr_idle@cl_zat_a23_cam_end %=run_postprocess(black:7913:true) =xrmpe_teleport_local_actor(zat_a23_cam_actor_walk:zat_a23_cam_actor_look)%
+
+[sr_idle@cl_zat_a23_cam_end]
+on_info = {+ZAT_A23_CAM_END} sr_idle@nil %=stop_postprocess(7912) =stop_postprocess(7913) =enable_ui%
+
+[sr_idle@nil] 

@@ -1,0 +1,31 @@
+[logic]
+active = ph_door@locked
+
+[ph_door@locked]
+locked = true
+on_info = {+ZAT_B22_MEDIC_RESPAWN} ph_door@locked_timer
+tip_open = tip_door_locked
+snd_open_start = trader_door_locked
+not_for_npc = true
+
+[ph_door@locked_timer]
+locked = true
+tip_open = tip_door_locked
+snd_open_start = trader_door_locked
+not_for_npc = true
+on_game_timer = 10800 | {+ZAT_B22_TRICK_DONE} ph_door@close %+ZAT_B22_CAN_GO_IN%  
+on_info = {+ZAT_B38_DISAPPEARANCE_STALKERS_FIND_COP_NEAR_PORT_KRANS_GIVE -ZAT_B22_CAN_GO_IN +ZAT_B22_TRICK_DONE} ph_door@close %+ZAT_B22_CAN_GO_IN%
+
+[ph_door@close]
+locked = false
+closed = true
+tip_open = tip_door_open
+on_use = {-ZAT_B22_ACTOR_CAN_HURT} ph_door@open %+ZAT_B22_ACTOR_CAN_HURT%, ph_door@open
+not_for_npc = true
+
+[ph_door@open]
+locked = false
+closed = false
+on_use = ph_door@close
+tip_close = tip_door_close
+not_for_npc = true

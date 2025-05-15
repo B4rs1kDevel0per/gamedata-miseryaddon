@@ -1,0 +1,12 @@
+[logic]
+active = sr_idle@1
+type = sv_only
+
+[sr_idle@1]
+on_info1 = {+PRI_B304_TUSHKAN_1 -PRI_B304_TUSHKANO_1_DONE} %=create_squad(pri_b304_tushkano_1:pri_b304_monsters_smart_terrain) +PRI_B304_TUSHKANO_1_DONE%
+on_info2 = {+PRI_B304_TUSHKAN_2 -PRI_B304_TUSHKANO_2_DONE} %=create_squad(pri_b304_tushkano_2:pri_b304_monsters_smart_terrain) +PRI_B304_TUSHKANO_2_DONE%
+on_info3 = {+PRI_B304_TUSHKAN_3 -PRI_B304_TUSHKANO_3_DONE} %=create_squad(pri_b304_tushkano_3:pri_b304_monsters_smart_terrain) +PRI_B304_TUSHKANO_3_DONE%
+on_info4 = {+PRI_B304_TUSHKAN_4 -PRI_B304_TUSHKANO_4_DONE} %=create_squad(pri_b304_tushkano_4:pri_b304_monsters_smart_terrain) +PRI_B304_TUSHKANO_4_DONE%
+on_info5 = {+PRI_B304_ACTOR_TAKE_TOOLKIT -PRI_B304_TUSHKANO_UNDERGROUND_ATTACK} %=create_squad(pri_b304_tushkano_7:pri_b304_monsters_smart_terrain) =create_squad(pri_b304_tushkano_8:pri_b304_monsters_smart_terrain) +PRI_B304_TUSHKANO_UNDERGROUND_ATTACK%
+on_info6 = {+PRI_B304_BIG_DOOR1_OPEN} %+PRI_B304_BIG_DOOR_OPEN%
+on_info7 = {+PRI_B304_BIG_DOOR2_OPEN} %+PRI_B304_BIG_DOOR_OPEN%

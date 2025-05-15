@@ -1,0 +1,17 @@
+[logic]
+active = sr_idle@squad_neutral
+type = sv_only
+
+[sr_idle@squad_neutral]
+on_info = {+PAS_B400_TASK_GIVEN -PAS_B400_SQUAD_REMOVED !squad_exist(pas_b400_stalkers_squad)} sr_idle@timeout
+on_info2 = {+PAS_B400_ACTOR_ENEMY} sr_idle@timeout %=set_squad_enemy_to_actor(pas_b400_stalkers_squad)%
+on_info3 = {=squad_exist(pas_b400_stalkers_squad) =is_squad_enemy_to_actor(pas_b400_stalkers_squad) !counter_greater(pas_b400_actor_zulus_hit:2) !counter_greater(pas_b400_actor_vano_hit:2) !counter_greater(pas_b400_actor_sokolov_hit:2) !counter_greater(pas_b400_actor_wanderer_hit:2)} %=set_squad_friend_to_actor(pas_b400_stalkers_squad)%
+
+[sr_idle@timeout]
+on_game_timer = 150 | sr_idle@nil %+PAS_B400_ACTOR_ENEMY_TO_SQUAD%
+on_info = {-PAS_B400_ZULUS_DEAD} %+PAS_B400_ZULUS_DEAD +PRI_A15_ZULUS_OUT%
+on_info2 = {-PAS_B400_VANO_DEAD +JUP_A10_VANO_AGREE_GO_UND} %+PAS_B400_VANO_DEAD +PRI_A15_VANO_OUT%
+on_info3 = {-PAS_B400_SOKOLOV_DEAD +JUP_B218_SOLDIER_HIRED} %+PAS_B400_SOKOLOV_DEAD +PRI_A15_SOKOLOV_OUT%
+on_info4 = {-PAS_B400_WANDERER_DEAD +JUP_B218_MONOLITH_HIRED} %+PAS_B400_WANDERER_DEAD +PRI_A15_WANDERER_OUT%
+
+[sr_idle@nil]

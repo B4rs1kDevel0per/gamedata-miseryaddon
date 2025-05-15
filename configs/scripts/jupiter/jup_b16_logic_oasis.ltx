@@ -1,0 +1,12 @@
+[logic]
+active = sr_idle
+type = sv_only
+
+[sr_idle]
+on_any_player_inside = {+JUP_B16_OASIS_ART} %-JUP_B16_ROW_COMPLETE_4 -JUP_B16_ROW_COMPLETE_3 -JUP_B16_ROW_COMPLETE_2 -JUP_B16_ROW_COMPLETE_1 -JUP_B16_NO_TELEPORT%, {-JUP_B16_OASIS_ART} %+JUP_B16_OASIS_ART -JUP_B16_ROW_COMPLETE_4 -JUP_B16_ROW_COMPLETE_3 -JUP_B16_ROW_COMPLETE_2 -JUP_B16_ROW_COMPLETE_1 -JUP_B16_NO_TELEPORT%
+on_info = {-ACTOR_HAS_AF_OASIS_HEART =any_actor_has_item(af_oasis_heart)} %+ACTOR_HAS_AF_OASIS_HEART +JUP_B16_OASIS_ART =spawn_object(jup_b16_pseudodog_strong:jup_b16_spawn_psy_dog:0:270)%
+on_info2 = {-SAVE_JUP_B16_PASSED_LABYRINTH =any_actor_in_zone(jup_b16_teleport) +JUP_B16_NO_TELEPORT} %+SAVE_JUP_B16_PASSED_LABYRINTH =scenario_autosave(st_save_jup_b16_passed_labyrinth)%
+on_info3 = {+JUP_B16_OASIS_ART} %=oasis_heal%
+
+;on_any_player_inside =  {-JUP_B16_PSEUDODOG} % =spawn_object(jup_b16_pseudodog_strong:jup_b16_spawn_psy_dog:0:270) +JUP_B16_PSEUDODOG%
+;on_any_player_inside2 = {+JUP_B16_OASIS_START} %+JUP_B16_OASIS_ART%

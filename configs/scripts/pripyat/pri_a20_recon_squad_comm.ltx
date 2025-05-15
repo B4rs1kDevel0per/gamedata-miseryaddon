@@ -1,0 +1,49 @@
+[logic]
+active = sr_idle@determine_cl_sv
+type = shared_with_cl_data
+
+[sr_idle@determine_cl_sv]
+on_info = {=isServer} sr_idle@sv_kovalski_office_cutscene
+on_info2 = {=isClient} sr_idle@cl_wait
+
+;server logic
+[sr_idle@sv_kovalski_office_cutscene]
+on_info = {+PRI_A17_ACTOR_HAS_GAUSS_RIFLE} sr_idle@sv_wait_cutscene %=remove_squad(pri_a20_missing_military_recon)% 
+
+[sr_idle@sv_wait_cutscene]
+on_game_timer = 50 | {+PRI_A20_CUTSCENE_START} sr_idle@sv_fade %+PRI_A20_CUTSCENE_WAIT_CL =create_squad(pri_a20_missing_military_recon:pri_b35_mercs)%
+
+[sr_idle@sv_fade]
+on_game_timer = 10 | {+PRI_A20_SQUAD_ATTACK_CAM} sr_idle@sv_wait %+PRI_A20_CUTSCENE_START_CL%
+
+[sr_idle@sv_wait]
+on_info = {+PRI_A20_CUTSCENE_END_CL} sr_idle@sv_cutscene_end
+
+[sr_idle@sv_cutscene_end]
+on_game_timer = 10 | sr_idle@sv_check_actor_in_koval_office %+PRI_A20_CUTSCENE_FADE_CL%
+
+[sr_idle@sv_check_actor_in_koval_office]
+on_info = {=any_actor_in_zone(pri_a21_meet_kovalski_restrictor)} sr_idle@nil %+PRI_A20_TASK_GIVED%
+
+;client logic
+
+[sr_idle@cl_wait]
+on_info = {+PRI_A20_CUTSCENE_WAIT_CL =is_local_actor_relevant(10:pri_a17_military_colonel_kovalski)} sr_idle@cl_fade %=disable_ui =run_postprocess(fade_in:2121)%, {+PRI_A20_CUTSCENE_WAIT_CL !is_local_actor_relevant(10:pri_a17_military_colonel_kovalski)} sr_idle@nil
+
+[sr_idle@cl_fade]
+on_info = {+PRI_A20_CUTSCENE_START_CL} sr_cutscene@cl_cut %=run_postprocess(black:2122:true)%
+
+[sr_cutscene@cl_cut]
+point = pri_a16_yarmoshuk_look
+look = pri_a16_yarmoshuk_look
+global_cameffect = true
+enable_ui_on_end = false
+cam_effector = scenario_cam\pripyat\pri_a20_recon_squad_comm
+on_game_timer = 20 | sr_cutscene@cl_cut %=stop_postprocess(2121) =stop_postprocess(2122)%
+on_info = {+PRI_A20_ONCE_TASK_GIVE} %=run_postprocess(fade_in:2021) =stop_sr_cutscene%
+on_signal = cameff_end | sr_idle@cl_cutscene_end_postprocess %+PRI_A20_CUTSCENE_END_CL%
+
+[sr_idle@cl_cutscene_end_postprocess]
+on_info = {+PRI_A20_CUTSCENE_FADE_CL} sr_idle@nil %=xrmpe_teleport_local_actor(pri_a16_cutscene_actor_walk:pri_a16_military_colonel_kovalski_walk) =enable_ui =stop_postprocess(2021)%
+
+[sr_idle@nil]

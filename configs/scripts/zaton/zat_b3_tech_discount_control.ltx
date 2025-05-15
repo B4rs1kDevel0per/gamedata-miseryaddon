@@ -1,0 +1,15 @@
+[logic]
+active = sr_idle
+type = sv_only
+
+[sr_idle]
+on_info = {+ZAT_B3_TECH_DRINKING} sr_idle@discount_1 %+ZAT_B3_TECH_DISCOUNT_1%
+
+[sr_idle@discount_1]
+on_game_timer = 7200 | sr_idle %-ZAT_B3_TECH_DISCOUNT_1%
+on_info = {+ZAT_B3_TECH_HAVE_COUPLE_DOSE +ZAT_B3_TECH_DISCOUNT_1 +ZAT_B3_TECH_DRINKING} sr_idle@discount_2 %+ZAT_B3_TECH_DISCOUNT_2% 
+
+[sr_idle@discount_2]
+on_game_timer = 7200 | sr_idle %-ZAT_B3_TECH_DISCOUNT_1 -ZAT_B3_TECH_DISCOUNT_2%
+
+[sr_idle@nil]

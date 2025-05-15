@@ -1,0 +1,25 @@
+[logic]
+active = sr_idle@determine_cl_sv
+type = shared_with_cl_data
+
+[sr_idle@determine_cl_sv]
+on_info = {=isServer} sr_idle@sv_wait
+on_info2 = {=isClient} sr_idle@cl_wait
+
+;server logic
+[sr_idle@sv_wait]
+on_info = {+JUP_B16_ROW_COMPLETE_1 +JUP_B16_ROW_COMPLETE_2 +JUP_B16_ROW_COMPLETE_3 +JUP_B16_ROW_COMPLETE_4} %+JUP_B16_NO_TELEPORT%
+on_info2 = {-JUP_B16_ACTOR_LEAVE_OAZIS =dist_to_actor_ge(150)} %+JUP_B16_ACTOR_LEAVE_OAZIS% 
+on_actor_in_zone = jup_b16_teleport | {+JUP_B16_ACTOR_LEAVE_OAZIS} %-JUP_B16_ACTOR_LEAVE_OAZIS%
+on_actor_in_zone2 = jup_b16_teleport | {-JUP_B16_NO_TELEPORT} sr_idle@sv_teleport %-JUP_B16_SHOW_PARTICLES -JUP_B16_GO_PARTICLE%
+on_actor_in_zone3 = jup_b16_show_particles_sr | {+JUP_B16_GO_PARTICLE} %+JUP_B16_SHOW_PARTICLES%
+
+[sr_idle@sv_teleport]
+on_info = {-JUP_B16_NO_TELEPORT} sr_idle@sv_wait %+JUP_B16_GO_PARTICLE%
+
+;client logic
+[sr_idle@cl_wait]
+on_player_in_zone = jup_b16_teleport | {-JUP_B16_NO_TELEPORT} sr_idle@cl_teleport
+
+[sr_idle@cl_teleport]
+on_info = {-JUP_B16_NO_TELEPORT} sr_idle@cl_wait %=jup_teleport_actor%

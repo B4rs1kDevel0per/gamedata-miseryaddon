@@ -1,0 +1,10 @@
+[logic]
+active = sr_idle
+type = cl_only
+
+[sr_idle]
+on_info = {+JUP_B16_SOUND_4_4} %=play_sound(jup_b16_oasis_noise)%
+on_signal = sound_end | sr_idle@wait
+
+[sr_idle@wait]
+on_info = {-JUP_B16_SHOW_PARTICLES} sr_idle

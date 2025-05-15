@@ -1,0 +1,17 @@
+[logic]
+active = ph_idle@wait
+type = sv_only
+
+[ph_idle@wait]
+on_info =  {+PRI_B303_KILL_PSEUDODOG} ph_idle@end %+PRI_B303_SCREAMING_PLAYED%
+on_info2 = {=any_actor_in_zone(pri_b303_burer_out_rest)} ph_idle@end %+PRI_B303_SCREAMING_PLAYED +PRI_B303_SCREAMING_PLAYED =destroy_object%
+on_info3 = {=any_actor_in_zone(pri_b303_kill_dog_rest)} ph_idle@shoot %+PRI_B303_KILL_PSEUDODOG%
+
+[ph_idle@shoot]
+on_info =  ph_idle@end %=hit_obj(pri_b303_screaming_dog:bip01_spine2:3:1000:pri_b303_screeming_dog_spawn) =hit_obj(pri_b303_screaming_dog:bip01_spine2:3:3000:pri_b303_screaming_dog_look)%
+
+[ph_idle@end]
+on_info = {-PRI_B303_SCREAMING_PLAYED} %+PRI_B303_SCREAMING_PLAYED =play_sound(pri_b303_dog_screaming)%
+on_signal = theme_end | {+PRI_B303_SCREAMING_PLAYED} ph_idle@nil
+
+[ph_idle@nil]

@@ -1,0 +1,12 @@
+[logic]
+active = sr_idle@set_default_counter
+type = sv_only
+
+[sr_idle@set_default_counter]
+on_info = {-PRI_B301_SET_DEFAULT_COUNTER} sr_idle@add_counter %=set_counter(pri_b301_monsters_death_counter:0) +PRI_B301_SET_DEFAULT_COUNTER%
+
+[sr_idle@add_counter]
+on_info = {+PRI_B301_MONSTER_DEATH} sr_idle@add_counter %=inc_counter(pri_b301_monsters_death_counter:1) -PRI_B301_MONSTER_DEATH%
+on_info2 = {=counter_equal(pri_b301_monsters_death_counter:5) -PRI_B301_END_COUNTER} sr_idle@end %+PRI_B301_END_COUNTER +PRI_B301_SAVE_ZULUS_COMPLETE%
+
+[sr_idle@end]

@@ -1,0 +1,11 @@
+[logic]
+active = sr_idle@wait
+
+[sr_idle@wait]
+on_info = {+JUP_A12_MERCS_GO_TO_POSITIONS} sr_light@off
+
+[sr_light@off]
+light_on = false
+on_info = {+PRI_A12_STALKER_PRISONER_FREE} sr_idle@nil
+
+[sr_idle@nil]

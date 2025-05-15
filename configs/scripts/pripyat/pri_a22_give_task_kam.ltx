@@ -1,0 +1,74 @@
+[logic]
+active = sr_idle@determine_cl_sv
+type = shared_with_cl_data
+
+[sr_idle@determine_cl_sv]
+on_info = {=isServer} sr_idle@sv_give_task_cutscene
+on_info2 = {=isClient} sr_idle@cl_wait
+
+;server logic
+[sr_idle@sv_give_task_cutscene]
+on_info = {+PRI_A18_FOUND_ANTENNA +PRI_A21_SENTRY_TASK_DONE +PRI_A19_LAB_X8_INVESTIGATED +PRI_B306_ATTACK_END} sr_idle@sv_remove_squads %+PRI_A25_TASK_START =teleport_squad(pri_a25_base_army_medic:pri_a25_smart_terrain_medic_walk) =remove_squad(pri_a22_military_yarmoshuk_squad)%
+
+[sr_idle@sv_remove_squads]
+on_info = {=squad_exist(pri_a22_military_skelja_squad)} %=remove_squad(pri_a22_military_skelja_squad) +PRI_A22_SKELYA% 
+on_info2 = {=squad_exist(pri_a22_military_merkulov_squad)} %=remove_squad(pri_a22_military_merkulov_squad) +PRI_A22_MERKULOV% 
+on_info3 = sr_idle@sv_wait5sec
+
+[sr_idle@sv_wait5sec]
+on_game_timer = 100 | %=play_sound(pri_a22_colonel_to_actor_need_talk)%
+on_signal = sound_end | sr_idle@sv_kovalski_office_meet %=give_task(pri_a22_talk_with_kovalski)%
+
+[sr_idle@sv_kovalski_office_meet]
+on_info = {=any_actor_in_zone(pri_a21_meet_kovalski_restrictor)} sr_idle@sv_kovalski_give_task_start %+PRI_A22_KOVALSKI_GIVE_TASK_START +PRI_A22_TALK_WITH_KOVALSKI_TASK_COMPETE%
+
+[sr_idle@sv_kovalski_give_task_start]
+on_game_timer = 10 | sr_idle@sv_wait_cutscene %+PRI_A22_WAIT_CAM =create_cutscene_actor_with_weapon(pri_a22_cutscene_actor_give_task:pri_a16_a22_cutscene_actor_walk:0:90)%
+
+[sr_idle@sv_wait_cutscene]
+on_game_timer = 20 | %+PRI_A22_CLOSE_KOVALSKI_OFFICE_DOOR%
+on_info = {+PRI_A22_KOVALSKI_SPEAK} sr_idle@sv_wait 
+
+[sr_idle@sv_wait]
+on_info = {+PRI_A22_END_CAM} sr_idle@sv_cutscene_end
+
+[sr_idle@sv_cutscene_end]
+on_game_timer = 10 | sr_idle@sv_create_squads %+PRI_A22_END_CAM_CL =create_squad(pri_a22_military_yarmoshuk_squad:pri_a22_smart_terrain)%
+
+[sr_idle@sv_create_squads]
+on_info = {+PRI_A22_SKELYA -PRI_A18_ACTOR_ENEMY} %=create_squad(pri_a22_military_skelja_squad:pri_a22_smart_terrain)%
+on_info2 = {+PRI_A22_MERKULOV -PRI_A18_ACTOR_ENEMY} %=create_squad(pri_a22_military_merkulov_squad:pri_a22_smart_terrain)% 
+on_info3 = sr_idle@sv_check_body_searching
+
+[sr_idle@sv_check_body_searching]
+on_info = {=any_actor_in_zone(pri_a21_meet_kovalski_restrictor)} %+PRI_A22_TASK_GIVED%
+on_info2 = {+PRI_A22_YARMOSHUK_BODY_SEARCH} sr_idle@sv_run_squad_cam_give_info
+
+[sr_idle@sv_run_squad_cam_give_info]
+on_game_timer = 10 | sr_idle@nil %+PRI_A22_RAN_SQUAD_CAM%
+
+;client logic
+[sr_idle@cl_wait]
+on_info = {+PRI_A22_KOVALSKI_GIVE_TASK_START =local_actor_story_id(actor_degtyarev)} sr_idle@cl_wait2 %=disable_ui =run_postprocess(fade_in:8910)%
+
+[sr_idle@cl_wait2]
+on_info = {+PRI_A22_WAIT_CAM} sr_idle@cl_wait_cutscene %=run_postprocess(black:8911:true) =xrmpe_teleport_local_actor(pri_a16_yarmoshuk_look:pri_a16_yarmoshuk_look)%
+
+[sr_idle@cl_wait_cutscene]
+on_info = {+PRI_A22_KOVALSKI_SPEAK} sr_cutscene@cl_start 
+
+[sr_cutscene@cl_start]
+enable_ui_on_end = false
+global_cameffect = true
+point = pri_a16_yarmoshuk_look
+look = pri_a16_yarmoshuk_look
+cam_effector = scenario_cam\pripyat\pri_a22_give_task
+on_signal = cameff_end | sr_idle@cl_cutscene_end_postprocess %+PRI_A22_END_CAM =run_postprocess(black:2021:true) =xrmpe_teleport_local_actor(pri_a16_a22_cutscene_actor_walk:pri_a16_a22_kovalski_to_actor_walk) +PRI_A22_CUTSCENE_ACTOR_GIVE_TASK_DESTROY%
+on_info = %=stop_postprocess(8910) =stop_postprocess(8911)%
+on_info2 = {+PRI_A22_COLONEL_GIVE_TASK -PRI_A22_FADE_IN} %=run_postprocess(fade_in:2022) +PRI_A22_FADE_IN%
+on_info3 = {+PRI_A22_STOP_CAM} %=stop_sr_cutscene%
+
+[sr_idle@cl_cutscene_end_postprocess]
+on_info = {+PRI_A22_END_CAM_CL} sr_idle@nil %=stop_postprocess(2021) =stop_postprocess(2022) =enable_ui%
+
+[sr_idle@nil]
