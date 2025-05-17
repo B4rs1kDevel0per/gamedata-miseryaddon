@@ -1,7 +1,7 @@
 --[[------------------------------------------------------------------------------------------------------------------
-автор: Диденко Руслан (Stohe)
+пїЅпїЅпїЅпїЅпїЅ: пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ (Stohe)
 
-порядок вызова методов биндера:
+пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ:
 reload
 reinit
 load
@@ -19,7 +19,8 @@ function motivator_binder:__init (obj) super(obj)
 	self.first_update = false
 --	self.need_relation_update = false
 
-	self.opened_doors = {} --Хранит таблицу дверей, открытых данным персонажем (чтобы потом закрыть)
+	self.opened_doors = {} --пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ (пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ)
+	self.upd_stage = 1 -- [DYNNEWS] РјСѓР»СЊС‚РёСЃС‚Р°РґРёР№РЅС‹Р№ update
 end
 
 function motivator_binder:extrapolate_callback(cur_pt)
@@ -39,18 +40,18 @@ function motivator_binder:reinit()
 		--memusage.collect_info(self.object, "reinit_start")
 		--printf("motivator_binder:reinit(): self.object:name()='%s'", self.object:name())
 
-		-- КОЛЛБЕКИ ЗДЕСЬ СТАВИТЬ НЕЛЬЗЯ! Здесь еще неизвестна активная схема.
-		-- Ставьте коллбеки в методе update в отмеченном комментарием месте.
+		-- пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ! пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ.
+		-- пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅ update пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ.
 
 		local char_ini = self.object:spawn_ini() or ini_file("scripts\\dummy.ltx")
 
 ----------------------------------------------------------------------------------------------------------------------
--- Общие скрипты
+-- пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 ----------------------------------------------------------------------------------------------------------------------
 		db.storage[self.object:id()] = {  followers = {} }
 		self.st = db.storage[self.object:id()]
 
-		--' Создание менеджера контроля положений тела
+		--' пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ
 		--memusage.collect_info(self.object, "before_statemgr")
 	self.st.state_mgr = state_mgr.bind_manager(self.object)
 
@@ -80,20 +81,23 @@ function motivator_binder:net_spawn(sobject)
 
 	db.add_obj(self.object)
 
-	-- Все CALLBACK-и ставить здесь:
+	-- пїЅпїЅпїЅ CALLBACK-пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ:
 	self.object:set_patrol_extrapolate_callback(motivator_binder.extrapolate_callback, self)
 	self.object:set_callback(callback.hit, motivator_binder.hit_callback, self)
 	self.object:set_callback(callback.death, motivator_binder.death_callback, self)
 	self.object:set_callback(callback.use_object, motivator_binder.use_callback, self)
 	self.object:set_callback(callback.sound, motivator_binder.hear_callback, self)
 	self.object:set_callback(callback.help_wounded, motivator_binder.help_wounded_callback, self)
+	self.object:set_callback(callback.on_item_take, self.on_item_take, self)
+	self.object:set_callback(callback.on_item_drop, self.on_item_drop, self)
+	self.object:set_callback(callback.take_item_from_box, self.take_item_from_box, self)
 	--memusage.collect_info(self.object, "after__callback")
 
-	-- ставим дефолтное расстояние входа в смарткаверы
+	--     
 
 	self.object:apply_loophole_direction_distance(1.0)
 
-		--' Загрузка историй для лагеря.
+		--'    .
 	if self.loaded == false then
 		local char_ini = ""
 		local spawn_ini = self.object:spawn_ini()
@@ -116,7 +120,7 @@ function motivator_binder:net_spawn(sobject)
 	if not self.object:alive() then
 		self.object:death_sound_enabled(false)
 
-		release_body_manager.get_release_body_manager():moving_dead_body(self.object) ---НЕ ЗАБЫТЬ УБРАТЬ
+		release_body_manager.get_release_body_manager():moving_dead_body(self.object) ---  
 		return true
 	end
 
@@ -133,13 +137,13 @@ function motivator_binder:net_spawn(sobject)
 	db.add_enemy( self.object )
 	self.e_index = db.heli_enemy_count - 1
 
-	--' загрузка озвучки
+	--'  
 	--memusage.collect_info(self.object, "before_soundmgr")
 	sound_theme.init_npc_sound(self.object)
 	--memusage.collect_info(self.object, "after_soundmgr_netspawn_end")
 
 
-	--' Для зомбированных чуваков говорим что аномалий не существует
+	--'        
 	if get_object_story_id(self.object:id()) == "zat_b53_artefact_hunter_1" then
 		local manager = self.object:motivation_action_manager()
 		manager:remove_evaluator	(stalker_ids.property_anomaly)
@@ -147,7 +151,7 @@ function motivator_binder:net_spawn(sobject)
 	end
 
 	xr_reach_task.add_reach_task_action(self.object)
---******************************* Телепорт на первую точку пути работы смарттеррейна...*****************************
+--*******************************       ...*****************************
 	local se_obj = alife():object(self.object:id())
 	if se_obj ~= nil then
 		if db.spawned_vertex_by_id[se_obj.id] ~= nil then
@@ -169,7 +173,7 @@ function motivator_binder:net_spawn(sobject)
 
 	smart_terrain.setup_gulag_and_logic_on_spawn(self.object, self.st, sobject, modules.stype_stalker, self.loaded)
 
-	--' Универсальный тормоз на выход из комбата
+	--' пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 	if character_community(self.object) ~= "zombied" then
 		post_combat_idle.add_post_combat_idle(self.object)
 	end
@@ -177,6 +181,9 @@ function motivator_binder:net_spawn(sobject)
 
 	self.object:group_throw_time_interval(2000)
 
+	if axr_main and axr_main.npc_on_net_spawn then -- [DYNNEWS]
+		axr_main.npc_on_net_spawn(self.object, sobject)
+	end
 	return true
 end
 
@@ -199,12 +206,12 @@ function motivator_binder:net_destroy()
 	if on_offline_condlist ~= nil then
 		xr_logic.pick_section_from_condlist(db.actor, self.object, on_offline_condlist)
 	end
-	-- для того, чтобы сталкеры запоминали последние позиции/активные секции на смарт террейнах --------
+	-- пїЅпїЅпїЅ пїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ/пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ --------
 	local se_obj = alife():object(self.object:id())
 	if se_obj ~= nil and se_obj.m_smart_terrain_id ~= 65535 then
 		local smart_terrain = alife():object(se_obj.m_smart_terrain_id)
 		if smart_terrain.arriving_npc[se_obj.id] == nil then
-			-- Запоминаем позицию и активную секцию --------
+			-- пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ --------
 			if db.offline_objects[self.object:id()] then
 				db.offline_objects[self.object:id()].level_vertex_id = self.object:level_vertex_id()
 				db.offline_objects[self.object:id()].active_section = db.storage[self.object:id()].active_section
@@ -224,6 +231,9 @@ function motivator_binder:net_destroy()
 	end
 
 	object_binder.net_destroy(self)
+	if axr_main and axr_main.npc_on_net_destroy then -- [DYNNEWS]
+		axr_main.npc_on_net_destroy(self.object)
+	end
 end
 
 function motivator_binder:clear_callbacks()
@@ -234,8 +244,8 @@ function motivator_binder:clear_callbacks()
 end
 
 function motivator_binder:hit_callback(obj, amount, local_direction, who, bone_index)
-	-- FIXME: коллбеки неплохо было бы регистрировать в общем storage, а не посхемно...
-	-- просто всегда ставить их при включении схемы и снимать при отключении.
+	-- FIXME: пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅ storage, пїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ...
+	-- пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ.
 	if(is_object_actor_by_id(who:id())) then
 		xr_statistic.set_best_weapon(amount, who)
 
@@ -250,7 +260,7 @@ function motivator_binder:hit_callback(obj, amount, local_direction, who, bone_i
 			end
 		end
 ]]
-		-- Ищем смарты по расстоянию
+		-- пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 		if amount > 0 then
 			for k,v in pairs(sim_board.get_sim_board().smarts) do
 				local smart = v.smrt 
@@ -279,7 +289,7 @@ function motivator_binder:hit_callback(obj, amount, local_direction, who, bone_i
 		xr_logic.issue_event(obj, self.st.hit, "hit_callback", obj, amount, local_direction, who, bone_index)
 	end
 
-	-- Если пришел смертельный хит, с некоторой вероятностью делаем чувака раненым.
+	-- пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ, пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ.
 	if bone_index ~= 15 and amount > obj.health*100 then
 		--printf("DEADLY HIT %s %s", amount, self.object.health*100)
 		obj.health = 0.15
@@ -291,6 +301,9 @@ function motivator_binder:hit_callback(obj, amount, local_direction, who, bone_i
 --		self.need_relation_update = who:id() == db.actor:id()
 		xr_wounded.hit_callback(obj:id())
 	end
+	if axr_main and axr_main.npc_on_hit_callback then -- [DYNNEWS]
+		axr_main.npc_on_hit_callback(obj, amount, local_direction, who, bone_index)
+	end
 end
 
 function motivator_binder:death_callback(victim, who)
@@ -299,7 +312,7 @@ function motivator_binder:death_callback(victim, who)
 	xrs_dyn_music.npc_table[self.object:id()] = nil
 	xr_combat_ignore.fighting_with_actor_npcs[self.object:id()] = nil
 --	xrs_dyn_music.stop_combat(self.object:id())
-	--' Если игрок был с квестом от механика - фейлить его
+	--' пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ - пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ
 	local st = db.storage[self.object:id()]
 	local npc = self.object
 	--stalker_generic.remove_level_spot(npc, st)
@@ -308,7 +321,7 @@ function motivator_binder:death_callback(victim, who)
 		xr_statistic.inc_killed_stalkers_counter(who:id())
 	end
 
-	--' Загрузка историй для лагеря.
+	--' пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ.
 	local known_info = utils.cfg_get_string(st.ini,st.section_logic , "known_info", self.object, false, "", nil)
 	printf("xr_info from death loaded!!!")
 	xr_info.loadInfo(self.object, st.ini, known_info)
@@ -316,7 +329,7 @@ function motivator_binder:death_callback(victim, who)
 	local known_flags = utils.cfg_get_string(st.ini,st.section_logic , "known_flags", self.object, false, "", nil)
 	xr_info.loadFlags(self.object, st.ini, known_flags)
 	
-	--' Принудительно обнуляем анимейшн менеджер чтобы отдетачились приатаченные объекты
+	--' пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 	if self.st.state_mgr ~= nil then
 		self.st.state_mgr.animation:set_state(nil, true)
 	end
@@ -336,7 +349,7 @@ function motivator_binder:death_callback(victim, who)
 	db.delete_enemy( self.e_index )
 
 	self:clear_callbacks()
-	--' Наносим небольшой импульс вперед.
+	--' пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ.
 	if(actor_stats.remove_from_ranking~=nil)then
 		local community = character_community(self.object)
 		if community == "zombied" or
@@ -348,6 +361,12 @@ function motivator_binder:death_callback(victim, who)
 
 	end
 	release_body_manager.get_release_body_manager():moving_dead_body(self.object)
+	if VScallback and VScallback.OnNpcDeth then -- [DYNNEWS]
+		VScallback.OnNpcDeth(victim, who)
+	end
+	if axr_main and axr_main.npc_on_death_callback then -- [DYNNEWS]
+		axr_main.npc_on_death_callback(self.object, who)
+	end
 end
 
 function motivator_binder:use_callback(obj, who)
@@ -358,6 +377,9 @@ function motivator_binder:use_callback(obj, who)
 		dialog_manager.disabled_phrases[obj:id()] = nil
 		if self.st.active_section then
 			xr_logic.issue_event(obj, self.st[self.st.active_scheme], "use_callback", obj, who)
+		end
+		if axr_main and axr_main.npc_on_item_use then -- [DYNNEWS]
+			axr_main.npc_on_item_use(obj, who)
 		end
 	else
 		if xr_info.npc_flags[obj:id()] ~= nil then
@@ -381,7 +403,7 @@ function motivator_binder:update(delta)
 	local object_alive = object:alive()
 	local actor = db.actor
 
-	-- Переключение логики.
+	-- пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ.
 	update_logic(object)
 
 
@@ -396,22 +418,22 @@ function motivator_binder:update(delta)
 		self.last_update = time_global()
 	end
 
-	-- Открываем двери
+	-- пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 	if object_alive then
 		local opened_doors = ph_door.try_to_open_door(self.object)
 		utils.copy_table(self.opened_doors, opened_doors)
-		-- Закрываем двери
+		-- пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 		local closed_doors = ph_door.try_to_close_door(self.object, self.opened_doors)
 		for id,v in pairs(closed_doors) do
 			self.opened_doors[id] = nil
 		end
 	end
 
-	--' Апдейт менеджера состояний тела
+	--' пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ
 	if self.st.state_mgr then
 		if object_alive then
 			self.st.state_mgr:update()
-			-- Апдейт торговли
+			-- пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			if self.st.state_mgr.combat == false and
 				 self.st.state_mgr.alife == false --and self.st.state_mgr.planner:current_action_id() == self.st.state_mgr.operators["end"]
 			then
@@ -424,20 +446,20 @@ function motivator_binder:update(delta)
 
 
 	if object_alive then
-		--' Апдейт саундменеджера
+		--' пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 		xr_sound.update(object:id())
 
-		--' Апдейт юзабилити персонажа
+		--' пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 		xr_meet.process_npc_usability(object)
 		
-		-- Апдейт безсмертия
+		-- пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 		stalker_generic.update_invulnerability(self.object)
 	end
 
 
 
 
-	-- Апдейт отряда
+	-- пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 	local squad = get_object_squad(self.object)
 	if squad ~= nil then
 		if squad:commander_id() == self.object:id() then
@@ -476,7 +498,7 @@ function motivator_binder:update(delta)
 		object:set_tip_text_default()
 	end
 --[[
--- Полечилось в двигле...
+-- пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅ...
 	if self.need_relation_update then
 		local squad = get_object_squad(self.object)
 		local obj_relation_to_actor =  game_relations.game_relations_by_num[self.object:relation(db.actor)]
@@ -485,6 +507,37 @@ function motivator_binder:update(delta)
 		end
 		self.need_relation_update = false
 	end]]--
+
+	-- [DYNNEWS] РјСѓР»СЊС‚РёСЃС‚Р°РґРёР№РЅС‹Р№ update
+	if self.upd_stage == 1 then
+		sr_light.check_light(object)
+	elseif self.upd_stage == 2 then
+		if object_alive then
+			local opened_doors = ph_door.try_to_open_door(self.object)
+			utils.copy_table(self.opened_doors, opened_doors)
+			local closed_doors = ph_door.try_to_close_door(self.object, self.opened_doors)
+			for id,v in pairs(closed_doors) do
+				self.opened_doors[id] = nil
+			end
+			xr_sound.update(object:id())
+			xr_meet.process_npc_usability(object)
+		end
+	elseif self.upd_stage == 3 then
+		local squad = get_object_squad(self.object)
+		if squad then
+			if squad:commander_id() == self.object:id() then
+				squad:update()
+			end
+		end
+	end
+	self.upd_stage = self.upd_stage + 1
+	if self.upd_stage > 3 then
+		self.upd_stage = 1
+	end
+
+	if axr_main and axr_main.npc_on_update then -- [DYNNEWS]
+		axr_main.npc_on_update(object, db.storage[object:id()])
+	end
 end
 
 function motivator_binder:reload(section)
@@ -551,7 +604,7 @@ function motivator_binder:help_wounded_callback(who_id)
 
 	alife():create("medkit_script", self.object:position(), self.object:level_vertex_id(), self.object:game_vertex_id(), self.object:id())
 
-	--' “ут надо анлочить аптечку дл¤ использовани¤.
+	--' пїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ.
 	xr_wounded.unlock_medkit(self.object)
 	xr_wounded.help_callback(self.object)
 	
@@ -595,7 +648,7 @@ function AddToMotivator(npc)
 	end
 end
 
--- Эвалюаторы, которые имеют высший приоритет, и, соответственно, перебивают остальные скрипты собой
+-- пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅ, пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 function addCommonPrecondition(action)
 	action:add_precondition (world_property(xr_evaluators_id.stohe_meet_base + 1,false))
 	action:add_precondition (world_property(xr_evaluators_id.sidor_wounded_base + 0,  false))
@@ -603,6 +656,9 @@ function addCommonPrecondition(action)
 	action:add_precondition (world_property(xr_evaluators_id.wounded_exist,		false))
 	action:add_precondition (world_property(xr_evaluators_id.corpse_exist,		false))
 	action:add_precondition (world_property(stalker_ids.property_items,		false))
+	if axr_main and axr_main.npc_add_precondition then -- [DYNNEWS]
+		axr_main.npc_add_precondition(action)
+	end
 end
 
 
@@ -613,7 +669,7 @@ function update_logic(object)
 	local st_combat = st.combat
 
 	if st ~= nil and st.active_scheme ~= nil and object_alive then
-		-- Обрабатываем Override on_combat
+		-- пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ Override on_combat
 		local switched = false
 		local manager = object:motivation_action_manager()
 		if manager:initialized() and manager:current_action_id() == stalker_ids.action_combat_planner then
@@ -641,7 +697,25 @@ function update_logic(object)
 			xr_logic.try_switch_to_another_section(object, st[st.active_scheme], actor)
 		end
 	else
-		-- если нет активной секции, то тип боя взять из секции on_combat
+		-- пїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ on_combat
 		xr_combat.set_combat_type(object, actor, st_combat)
+	end
+end
+
+function motivator_binder:on_item_take(item)
+	if axr_main and axr_main.npc_on_item_take then -- [DYNNEWS]
+		axr_main.npc_on_item_take(self.object, item)
+	end
+end
+
+function motivator_binder:on_item_drop(item)
+	if axr_main and axr_main.npc_on_item_drop then -- [DYNNEWS]
+		axr_main.npc_on_item_drop(self.object, item)
+	end
+end
+
+function motivator_binder:take_item_from_box(box, item)
+	if axr_main and axr_main.npc_on_item_take_from_box then -- [DYNNEWS]
+		axr_main.npc_on_item_take_from_box(self.object, box, item)
 	end
 end
