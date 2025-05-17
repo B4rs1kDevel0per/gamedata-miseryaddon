@@ -5,7 +5,7 @@
 function bind(obj)
 	printf("_bp: monster.bind: name='%s', id='%d'", obj:name(), obj:id())
 
-	-- пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
+	-- Для спауна
 	--xr_spawner.spawn_client(obj)
 	if OnClient() then
 		obj:bind_object(bind_monster_cl(obj))
@@ -54,34 +54,16 @@ function generic_object_binder:update(delta)
 	--'	self.object:name(), time_global())
 	
 	if not object_alive then
-		local looted = nil
-		if xr_logic and xr_logic.pstor_retrieve then
-			looted = xr_logic.pstor_retrieve(self.object,"looted",nil)
-		end
-		if not (looted) then
-			self.object:set_callback(callback.use_object, self.use_callback, self)
-			if game and game.translate_string then
-				self.object:set_tip_text(game.translate_string("st_corpse_loot_caption"))
-			else
-				self.object:set_tip_text("")
-			end
-		else
-			self.object:set_callback(callback.use_object, nil)
-			self.object:set_tip_text("")
-		end
 		return
 	end
 	
-	if object_alive then
-		if (m_mines) then m_mines.chek_target(self.object) end
-	end
 	
 	self.object:set_tip_text("")
 	local st = db.storage[self.object:id()]
 	if st ~= nil and st.active_scheme ~= nil then
 		xr_logic.try_switch_to_another_section(self.object, st[st.active_scheme], db.actor)
 	end
-	-- пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
+	-- Апдейт отряда
 	if squad ~= nil then
 		if squad:commander_id() == self.object:id() then
 			squad:update()
@@ -114,7 +96,7 @@ function generic_object_binder:update(delta)
 	end
 	
 	
--- пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ , пїЅпїЅ пїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅ !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+-- Если есть враг , то идем в комбат !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 	if self.object:get_enemy() then
 		if xr_logic.mob_captured(self.object) then
 			xr_logic.mob_release(self.object)
@@ -155,7 +137,7 @@ function generic_object_binder:update(delta)
 end
 
 function generic_object_binder:extrapolate_callback()
-	-- пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+	-- Проверяем, что объект еще в онлайне
 	if db.storage[self.object:id()] == nil or
 		 db.storage[self.object:id()].object == nil
 	then
@@ -193,56 +175,50 @@ function generic_object_binder:death_callback(victim, who)
 	xr_combat_ignore.fighting_with_actor_npcs[self.object:id()] = nil
 
 	self:hit_callback(victim, 1, vector():set(0,0,0), who, "from_death_callback")
-	if who and getLocalActor and getLocalActor() and getLocalActor():id() == who:id() then
+	if is_object_actor_by_id(who:id()) then
 		xr_statistic.inc_killed_monsters_counter(who:id())
 		xr_statistic.set_best_monster(self.object, who:id())
 	end
 
-	if self.st and self.st.mob_death then
+	if self.st.mob_death then
 		xr_logic.issue_event(self.object, self.st.mob_death, "death_callback", victim, who)
 	end
 
-	if self.st and self.st.active_section then
+	if self.st.active_section then
 		xr_logic.issue_event(self.object, self.st[self.st.active_scheme], "death_callback", victim, who)
 	end
-	-- DYNNEWS: СЂР°СЃС€РёСЂРµРЅРЅР°СЏ РѕР±СЂР°Р±РѕС‚РєР° СЃРјРµСЂС‚Рё
+	--' Наносим небольшой импульс вперед.
+	local h = hit()
+	h.draftsman = self.object
+	h.type = hit.fire_wound
+	h.direction = who:position():sub(self.object:position())
+	h:bone("pelvis")
+	h.power = 1
+	h.impulse = 10
+	self.object:hit(h)
+
 	local obj_clsid = self.object:clsid()
 	if obj_clsid == clsid.poltergeist_s then
 		printf("releasing object ["..self.object:name().."]")
 		if alife():object(self.object:id()) ~= nil then
 			alife():release(alife():object(self.object:id()), true)
 		end
-	else
-		if release_body_manager and release_body_manager.get_release_body_manager then
-			release_body_manager.get_release_body_manager():moving_dead_body(self.object,true)
-		end
-		if VScallback and VScallback.OnMutantDeth then
-			VScallback.OnMutantDeth(victim, who)
-		end
 	end
-	if axr_main and axr_main.monster_on_death_callback then
-		axr_main.monster_on_death_callback(victim,who)
-	end
-	if db and db.storage and db.storage[self.object:id()] then
-		db.storage[self.object:id()].death_time = game.get_game_time()
-	end
-	-- DYNNEWS END
 end
 
 function generic_object_binder:hit_callback(obj, amount, local_direction, who, bone_index)
-	if(is_object_actor_by_id and who and is_object_actor_by_id(who:id())) then
+--	printf("HIT_CALLBACK: [%s] amount[%s]", obj:name(), amount)
+
+	if(is_object_actor_by_id(who:id())) then
 		xr_statistic.set_best_weapon(amount, who)
 	end
 
-	if self.st and self.st.hit then
+	if self.st.hit then
 		xr_logic.issue_event(self.object, self.st.hit, "hit_callback", obj, amount, local_direction, who, bone_index)
 	end
 
 	if amount > 0 then
-		if axr_main and axr_main.monster_on_hit_callback then
-			axr_main.monster_on_hit_callback(obj, amount, local_direction, who, bone_index)
-		end
-		printf("HIT_CALLBACK: %s amount=%s bone=%s who:id() = [%s] actor:id() = [%s]", obj:name(), amount, tostring(bone_index), who and who:id() or 'nil', db.actor and db.actor:id() or 'nil')
+		printf("HIT_CALLBACK: %s amount=%s bone=%s who:id() = [%s] actor:id() = [%s]", obj:name(), amount, tostring(bone_index), who:id(), db.actor:id())
 	end
 end
 
@@ -253,19 +229,9 @@ function generic_object_binder:hear_callback(self, who_id, sound_type, sound_pos
 	xr_hear.hear_callback(self, who_id, sound_type, sound_position, sound_power)
 end
 
-function generic_object_binder:use_callback(obj, who)
-	if axr_main and axr_main.monster_on_actor_use_callback then
-		axr_main.monster_on_actor_use_callback(obj,who)
-	end
-end
-
 function generic_object_binder:net_spawn(sobject)
 	if not object_binder.net_spawn(self, sobject) then
 		return false
-	end
-
-	if axr_main and axr_main.monster_on_net_spawn then
-		axr_main.monster_on_net_spawn(self.object)
 	end
 
 	local on_offline_condlist = db.storage[self.object:id()] and db.storage[self.object:id()].overrides and db.storage[self.object:id()].overrides.on_offline_condlist
@@ -274,20 +240,18 @@ function generic_object_binder:net_spawn(sobject)
 	end
 
 	if not self.object:alive() then
-		if release_body_manager and release_body_manager.get_release_body_manager then
-			release_body_manager.get_release_body_manager():moving_dead_body(self.object)
-		end
 		return true
 	end
 	if alife():object(self.object:id()) == nil then
 		return false
 	end
-	if VScallback and VScallback.OnMutantSpawn then
-		VScallback.OnMutantSpawn(self.object)
-	end
+
+--	local pos = self.object:position()
+--	printf("net_spawn mpos[%s][%s][%s]", tostring(pos.x), tostring(pos.y), tostring(pos.z))
+
 	db.add_obj(self.object)
 
---*******************************       ...*****************************
+--******************************* Телепорт на первую точку пути работы смарттеррейна...*****************************
 	local se_obj = alife():object(self.object:id())
 	if se_obj then
 		if db.spawned_vertex_by_id[se_obj.id] ~= nil then
@@ -313,10 +277,10 @@ function generic_object_binder:net_spawn(sobject)
 end
 
 function generic_object_binder:net_destroy()
-	self.object:set_callback(callback.death, nil)
+	self.object:set_callback(callback.death,				nil)
 	self.object:set_callback(callback.patrol_path_in_point, nil)
-	self.object:set_callback(callback.hit, nil)
-	self.object:set_callback(callback.sound, nil)
+	self.object:set_callback(callback.hit,					nil)
+	self.object:set_callback(callback.sound, 				nil)
 	xr_sound.stop_sounds_by_id(self.object:id())
 
 	xr_combat_ignore.fighting_with_actor_npcs[self.object:id()] = nil
@@ -326,12 +290,19 @@ function generic_object_binder:net_destroy()
 		xr_logic.issue_event(self.object, st[st.active_scheme], "net_destroy")
 	end
 
-	-- DYNNEWS: СЃРѕС…СЂР°РЅСЏРµРј РїРѕР·РёС†РёСЋ Рё СЃРµРєС†РёСЋ РґР»СЏ С‚СЂСѓРїРѕРІ
-	if db and db.offline_objects and db.offline_objects[self.object:id()] then
-		db.offline_objects[self.object:id()].level_vertex_id = self.object:level_vertex_id()
-		db.offline_objects[self.object:id()].active_section = db.storage[self.object:id()] and db.storage[self.object:id()].active_section
+	-- для того, чтобы мутанты запоминали последние позиции/активные секции на смарт террейнах --------
+	local se_obj = alife():object(self.object:id())
+	if se_obj and se_obj.m_smart_terrain_id ~= 65535 then
+		local smart_terrain = alife():object(se_obj.m_smart_terrain_id)
+		if smart_terrain.arriving_npc[se_obj.id] == nil then
+			-- Запоминаем позицию и активную секцию --------
+			if db.offline_objects[self.object:id()] then
+				db.offline_objects[self.object:id()].level_vertex_id = self.object:level_vertex_id()
+				db.offline_objects[self.object:id()].active_section = db.storage[self.object:id()].active_section
+			end
+		end
 	end
-	-- DYNNEWS END
+	------------------------------------------------n
 
 	db.del_obj(self.object)
 	db.storage[self.object:id()] = nil
@@ -349,12 +320,8 @@ function generic_object_binder:net_save_relevant()
 end
 
 function generic_object_binder:save(packet)
+
 	set_save_marker(packet, "save", false, "generic_object_binder")
-	-- DYNNEWS: СЃРѕС…СЂР°РЅСЏРµРј РІСЂРµРјСЏ СЃРјРµСЂС‚Рё РґР»СЏ С‚СЂСѓРїРѕРІ
-	if not (self.object:alive()) and utils and utils.w_CTime and db and db.storage and db.storage[self.object:id()] then
-		utils.w_CTime(packet,db.storage[self.object:id()].death_time or game.get_game_time(),"bind_monster")
-	end
-	-- DYNNEWS END
 	object_binder.save(self, packet)
 	xr_logic.save_obj(self.object, packet)
 	set_save_marker(packet, "save", true, "generic_object_binder")
@@ -363,11 +330,6 @@ end
 function generic_object_binder:load(reader)
 	self.loaded = true
 	set_save_marker(reader, "load", false, "generic_object_binder")
-	-- DYNNEWS: Р·Р°РіСЂСѓР¶Р°РµРј РІСЂРµРјСЏ СЃРјРµСЂС‚Рё РґР»СЏ С‚СЂСѓРїРѕРІ
-	if not (self.object:alive()) and utils and utils.r_CTime and db and db.storage and db.storage[self.object:id()] then
-		db.storage[self.object:id()].death_time = utils.r_CTime(reader,"bind_monster")
-	end
-	-- DYNNEWS END
 	object_binder.load(self, reader)
 	xr_logic.load_obj(self.object, reader)
 	set_save_marker(reader, "load", true, "generic_object_binder")
