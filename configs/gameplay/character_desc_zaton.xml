@@ -46,7 +46,7 @@
 		<icon>ui_inGame2_Hero</icon>
 		<map_icon x="2" y="5"></map_icon>
 
-		<team>mp_actor</team>
+		<team>mp_actor_2</team>
 		<supplies>
 			[spawn] \n
 			novice_outfit \n
@@ -76,7 +76,7 @@
 		<icon>ui_inGame2_Hero</icon>
 		<map_icon x="2" y="5"></map_icon>
 
-		<team>mp_actor</team>
+		<team>mp_actor_3</team>
 		<supplies>
 			[spawn] \n
 			black_coat_outfit \n
@@ -105,41 +105,7 @@
 		<reputation>0</reputation>
 		<visual>actors\stalker_hero\stalker_hero_1</visual>
 	</specific_character>		
-	
-	<specific_character id="actor_partner_default_2" team_default = "1">
-		<name>st_partner_name</name>
-		<icon>ui_inGame2_Hero</icon>
-		<map_icon x="2" y="5"></map_icon>
-
-		<team>mp_actor</team>
-		<supplies>
-			[spawn] \n
-			stalker_outfit \n
-
-			wpn_fort \n
-   			ammo_9x18_pmm = 3 \n
-
-   			wpn_ak74 \n
-			
-			ammo_5.45x39_fmj = 3 \n
-   			
-			bandage = 3 \n
-			antirad = 2 \n
-			medkit_army = 2 \n
-
-			bread = 2 \n
-			conserva = 1 \n
-    </supplies>
-
-    <money min="1500"  max="2500"  infinitive="0"/>
-
-		<class>actor_partner</class>
-		<community>stalker</community>
-
-		<rank>0</rank>
-		<reputation>0</reputation>
-		<visual>actors\stalker_hero\stalker_hero_1</visual>
-	</specific_character>		
+		
 
 	<specific_character id="zat_b30_owl_stalker_trader" team_default="1">
 		<name>st_zat_b30_owl_stalker_trader_name</name>
