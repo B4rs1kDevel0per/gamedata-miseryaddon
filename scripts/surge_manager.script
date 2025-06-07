@@ -14,6 +14,7 @@ local surge_shock_pp_eff 	= 1
 local earthquake_cam_eff 	= 2
 local sleep_cam_eff 		= 3
 local sleep_fade_pp_eff		= 4
+local earthquake_end_cam_eff  = 90
 
 local START_MIN_SURGE_TIME 	= 2*60*60
 local START_MAX_SURGE_TIME 	= 4*60*60
@@ -22,6 +23,8 @@ local MAX_SURGE_TIME 		= 24*60*60
 local prev_sec 				= -1
 local prev_game_sec 		= -1
 local currentPPEfactor = 0.001
+
+local AFTERBLOW_TIME = 15
 
 local immuned_to_surge_squads = {
 						["monster_predatory_day"] 	= true,
@@ -79,7 +82,7 @@ function CSurgeManager:initialize()
 	self.surge_time = 222
 	self.inited_time = game.CTime()
 	self.last_surge_time = game.get_game_time()
-	self._delta = math.random(START_MIN_SURGE_TIME, START_MAX_SURGE_TIME) -- global minutes, время между выбросами
+	self._delta = math.random(START_MIN_SURGE_TIME, START_MAX_SURGE_TIME) -- global minutes, пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 
 	self.count = 0
 	self.covers = {}

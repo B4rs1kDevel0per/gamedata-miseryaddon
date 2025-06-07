@@ -1,0 +1,86 @@
+#include "eatable_objects.ltx"
+#include "hud_objects.ltx"
+
+
+[drug_sleepingpills]:booster ;x5
+
+;***********************************************************
+hud = drug_sleepingpills_hud_model
+helm_prohibited = false; true
+full_outfit_prohibited = false ;true
+
+base_object = drug_sleepingpills ;показывает, какая секция является базовой для "одинаковых" предметов разной степени целостности
+uses_count = 5	    ;Сколько раз предмет можно использовать
+
+;При первом использовании всегда съедается базовый предмет
+using_2 = drug_sleepingpills2	;Секция предмета, который будет заспавнен после первого использования, и который отвечает за второе использование
+using_3 = drug_sleepingpills3	;Аналогично для второго использования
+using_4 = drug_sleepingpills4
+using_5 = drug_sleepingpills5
+;************************************************************
+
+$spawn 				= "food and drugs\drug_sleepingpills"
+visual				= dynamics\equipments\medical\drug_radioprotector.ogf
+inv_name			= st_sleepingpills
+inv_name_short		= st_sleepingpills
+description			= st_sleepingpills_descr
+
+inv_grid_width		= 1
+inv_grid_height		= 1
+inv_grid_x			= 4
+inv_grid_y			= 5
+cost				= 2100
+inv_weight			= 0.011
+
+use_sound			= $silent
+
+
+[drug_sleepingpills2]:drug_sleepingpills
+inv_name			= st_sleepingpills2
+inv_name_short		= st_sleepingpills2
+inv_weight			= 0.009
+hud = drug_sleepingpills_hud_model2
+cost				= 1680
+inv_grid_x			= 4
+inv_grid_y			= 6
+
+[drug_sleepingpills3]:drug_sleepingpills
+inv_name			= st_sleepingpills3
+inv_name_short		= st_sleepingpills3
+inv_weight			= 0.007
+hud = drug_sleepingpills_hud_model3
+cost				= 1260
+inv_grid_x			= 4
+inv_grid_y			= 7
+
+[drug_sleepingpills4]:drug_sleepingpills
+inv_name			= st_sleepingpills4
+inv_name_short		= st_sleepingpills4
+inv_weight			= 0.005
+hud = drug_sleepingpills_hud_model4
+cost				= 840
+inv_grid_x			= 4
+inv_grid_y			= 8
+
+[drug_sleepingpills5]:drug_sleepingpills
+inv_name			= st_sleepingpills5
+inv_name_short		= st_sleepingpills5
+hud = drug_sleepingpills_hud_model5
+inv_weight			= 0.003
+trash_object = drug_sleepingpills_trash
+cost				= 420
+inv_grid_x			= 4
+inv_grid_y			= 9
+
+[drug_sleepingpills_trash]:gwr_base_trash
+visual                        = dynamics\equipments\medical\drug_radioprotector_trash.ogf
+
+;направление, в котором предмет отбрасывается
+throw_dir = right
+;смещение точки спавна относительно камеры
+throw_offset_y = -0.6	//вверх-вниз
+throw_offset_x = 0.2	//вперед-назад
+throw_offset_z =  0.6	//положительные - в сторону броска, отрицательное - в противоположную
+
+throw_impulse_y = -90
+throw_impulse_z = 180

@@ -1,0 +1,88 @@
+;---------------------------------------------------------------------------------------------
+;		ЗќЉЋ‹ЋѓИ ‡…‹ЭЌ›‰
+;---------------------------------------------------------------------------------------------
+[ecologist_green_outfit]:outfit_base
+GroupControlSection	= spawn_group
+discovery_dependency =
+$spawn 			= "outfit\ecologist_green_outfit"
+$prefetch 		= 32
+class			= E_STLK
+cform           = skeleton
+visual          = dynamics\outfit\ecolog_green_suit
+actor_visual	= actors\stalker_sci_green.ogf	;actors\stalker_ecolog\stalker_ecolog.ogf
+player_hud_section	= actor_hud_20
+
+ef_equipment_type	= 2
+
+inv_name			= st_ecologist_green_outfit_name
+inv_name_short		= st_ecologist_green_outfit_name
+description			= st_ecologist_green_outfit_description
+inv_weight			= 16.33
+slot				= 6
+
+inv_grid_width		= 2
+inv_grid_height		= 3
+inv_grid_x			= 30
+inv_grid_y			= 22
+
+upgr_icon_x			= 716
+upgr_icon_y			= 824
+upgr_icon_width		= 198
+upgr_icon_height   	= 129
+
+full_icon_name		= npc_icon_scientific_outfit
+nightvision_sect	= effector_nightvision_2
+helmet_avaliable	 	= false
+
+additional_inventory_weight2 	= 20
+additional_inventory_weight 	= 20
+
+cost				= 68480
+full_scale_icon		= 12,11			;иконка сталкера в костюме в полный рост
+
+immunities_sect			= sect_ecologist_green_outfit_immunities
+bones_koeff_protection 	= actor_armor_suit
+hit_fraction_actor		= 0.77
+artefact_count          = 5
+control_inertion_factor = 1.91
+
+; MEDIUM RESISTANCE
+burn_protection 				= 1.900 ; 1017 kW / m2 (4x prot. suit multiplier)
+shock_protection 				= 2.650 ; 2024 kV
+radiation_protection 			= 0.0390
+chemical_burn_protection 		= 0.1490 ; 4333 C1 ppm. eq.
+telepatic_protection 			= 0.1620 ; 74 mT
+strike_protection 				= 0
+explosion_protection 			= 0.32
+wound_protection				= 0.36
+fire_wound_protection  			= 0.28
+
+power_loss				= 0.88
+
+power_restore_speed				= -0.0014
+
+repair_part_bonus	 	= 0.30
+
+torch_available = true
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;; CAMO MOD by KCS ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;; original scripts: yastiandrie & alundaio ;;;;;
+;;;;;;;;;;;;; implementation: trojanuch ;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+; DAY PRESET: LOW
+
+; KCS - new cammo variables - "1" - no bonus ; timer factor - above 1 bonus, below 1 penalty; distance factor - above 1 penalty, below 1 bonus; max range factor 1.2 larger number have little effect
+detect_range_factor = 1.05 		; Factor of eye_range that a NPC no longer ignores a player in a Ghillie ; KCS - new cammo variable for outfit - Ghillie default = 0.3 ; sniper class bonus = 0.2 ; recon class bonus = 0.1
+aim_time_factor = 0.9			; Multiplier for time it take for NPC's to aim while wearing a Ghillie ; KCS - new cammo variable for outfit - Ghillie default = 3.0 ; sniper class bonus = 0.1 ; recon class bonus = 0.2
+help_distance_factor = 1.0		; Factor for Decreasing Distance for NPC's informing allies of your position if you are wearing a Ghillie. Used in conjuction with npc_help ; KCS - new cammo variable for outfit - Ghillie default = 0.6 ; sniper class bonus = 0.2 ; recon class bonus = 0.1
+help_timer_factor = 0.9			; Factor for Increasing Timer for NPC's informing allies of your position if you are wearing a Ghillie. Used in conjunction with npc_help ; KCS - new cammo variable for outfit - Ghillie default = 6.0 ; sniper class bonus = 0.1 ; recon class bonus = 0.2
+xr_combat_ignore = light_inertion ; section in "xr_combat_ignore.ltx" that is used for this outfit; NOT WORKING - left in file for future usage
+
+; NIGHT PRESET: MEDIUM
+
+n_detect_range_factor = 0.5	; Factor of range that a NPC no longer ignores a player at during night. (10pm to 3am)
+n_help_distance_factor = 0.65	; Factor for Decreasing Distance for NPC's informing allies of your position during night hours. Used in conjuction with npc_help
+n_help_timer_factor = 3.5 ;2.0	; Factor for Increasing Timer for NPC's informing allies of your position during night hours. Used in conjunction with npc_help
+n_aim_time_factor = 2.1			; Multiplier for time it take for NPC's to aim during night hours

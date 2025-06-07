@@ -1,0 +1,82 @@
+;---------------------------------------------------------------------------------------------
+;	 КОСТЮМ МОНОЛИТА
+;---------------------------------------------------------------------------------------------
+[monolit_outfit]:outfit_base
+GroupControlSection	= spawn_group
+discovery_dependency =
+$spawn 			= "outfit\monolit_outfit"
+;$prefetch 		= 32
+class			= E_STLK
+cform           = skeleton
+visual          = dynamics\outfit\monolit_outfit.ogf
+actor_visual	= actors\stalker_hero\hero_monolit.ogf
+player_hud_section	= actor_hud_11
+
+ef_equipment_type	= 3
+
+inv_name			= monolit_outfit_name
+inv_name_short		= monolit_outfit_name
+description			= monolit_outfit_descr
+
+inv_weight			= 7.8
+
+additional_inventory_weight2	= 12	
+additional_inventory_weight		= 12
+
+inv_grid_width		= 2
+inv_grid_height		= 3
+inv_grid_x			= 36
+inv_grid_y			= 28
+
+upgr_icon_x			= 814
+upgr_icon_y			= 579
+upgr_icon_width		= 159
+upgr_icon_height   	= 137
+
+full_icon_name		= npc_icon_monolit_outfit
+
+cost				= 62360
+slot				= 6
+full_scale_icon		= 14,11			;иконка сталкера в костюме в полный рост
+
+artefact_count                  = 2
+
+default_to_ruck     = false
+immunities_sect		= sect_monolit_outfit_immunities
+
+
+; LOW RESISTANCE
+burn_protection 				= 0.04 ; 15 kW / m2
+shock_protection 				= 1.02 ; 968 kV
+radiation_protection 			= 0.0025
+chemical_burn_protection 		= 0.02 ; 72 C1 ppm. eq.
+telepatic_protection 			= 0.0260 ; 14 mT
+strike_protection 				= 0
+explosion_protection 			= 0.29
+wound_protection				= 0.5
+fire_wound_protection  			= 0.25
+
+hit_fraction_actor				= 0.85
+bones_koeff_protection 			= actor_armor_light
+
+control_inertion_factor = 1.2
+power_loss 			= 0.6
+
+upgrades                = up_gr_firstab_monolit_outfit, up_gr_seconab_monolit_outfit, up_gr_thirdab_monolit_outfit
+installed_upgrades      =
+upgrade_scheme          = upgrade_scheme_stalker_outfit
+
+repair_part_bonus	 	= 0.36
+
+; DAY PRESET: HIGH
+detect_range_factor		 = 0.7 	
+aim_time_factor		 	 = 1.1		
+help_distance_factor 	 = 1.0	
+help_timer_factor 		 = 1.0		
+xr_combat_ignore 	 	 = light_inertion
+
+; NIGHT PRESET: LOW
+n_detect_range_factor	 = 0.6	
+n_help_distance_factor 	 = 0.7
+n_help_timer_factor		 = 3.1 
+n_aim_time_factor		 = 1.85		
