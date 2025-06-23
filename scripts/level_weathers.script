@@ -5,7 +5,6 @@ local prev_sec = 0
 local diff_sec = 0
 local prev_sec_5 = 0
 local diff_game_2sec = 0
-local stored_weather = nil -- KCS, new variable used in axr_main.script to force weather change on loading game
 
 class "WeatherManager"
 function WeatherManager:__init()
@@ -80,7 +79,7 @@ function WeatherManager:__init()
 	self.distant_storm_prob = 0.5
 end
 
--- пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ load(). пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ.
+-- Вызывается после load(). Состояние погоды уже загружено.
 function WeatherManager:reset()
 	local ini = ini_file("game.ltx")
 	local weather = utils.cfg_get_string(ini, level.name(), "weathers", db.actor, false, "", "[default]")
@@ -96,7 +95,7 @@ function WeatherManager:reset()
 	end
 	]]--
 	if weather == "[default]" then
-		-- пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
+		-- сетим дефолтовую погоду
 		self.weather_list = xr_logic.parse_condlist(db.actor, level.name(), "weather", "[default]")
 	else
 		self.weather_list = xr_logic.parse_condlist(db.actor, level.name(), "weather", weather)
@@ -290,29 +289,29 @@ end
 
 -- end CC Functions
 
--- пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅ пїЅпїЅпїЅ.
+-- Обновляем погоду раз в час.
 function WeatherManager:update()
 	if(level.is_wfx_playing()) then
 		self.weather_fx = level.get_weather()
 	else
 		self.weather_fx = nil
 	end
-	
-	if self.last_hour~=level.get_time_hours() then
-			self.last_hour=level.get_time_hours()
-			self.next_hour=self.last_hour+1
-			if self.next_hour>23 then
-				self.next_hour=self.next_hour-24
-			end
-			for lvl,st in pairs(self.state) do
-			st.current_state=st.next_state
-			st.next_state=get_next_state(st.graph,st.current_state)
-			end
-			self:change_period()
-		-- пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
-		self:select_weather(false)
+	if not benchmark.weather then
+		if self.last_hour~=level.get_time_hours() then
+				self.last_hour=level.get_time_hours()
+				self.next_hour=self.last_hour+1
+				if self.next_hour>23 then
+					self.next_hour=self.next_hour-24
+				end
+				for lvl,st in pairs(self.state) do
+				st.current_state=st.next_state
+				st.next_state=get_next_state(st.graph,st.current_state)
+				end
+				self:change_period()
+			-- Устанавливаем погоду на текущем уровне
+			self:select_weather(false)
+		end
 	end
-	
 	-- CC applying DOF every sec
 	diff_game_2sec = math.ceil(game.get_game_time():diffSec(self.inited_time)/level.get_time_factor()*5)
 	if (prev_game_2sec~=diff_game_2sec) then
@@ -411,24 +410,10 @@ function WeatherManager:select_weather(now)
 		now = true
 		self.forced_weather_change_on_time_change = false
 	end
-	local function is_valid_weather_section(name)
-		return type(name) == "string"
-			and #name > 0
-			and #name < 64
-			and not string.find(name, "[^%w_%-%.]")
-	end
 	if not(self.weather_fx) then
-		if is_valid_weather_section(weather_section_name) then
-			level.set_weather(weather_section_name, now)
-		else
-			level.set_weather("af3_1_clear", now)
-		end
+		level.set_weather(weather_section_name,now)
 	else
-		if is_valid_weather_section(self.weather_fx) then
-			level.start_weather_fx_from_time(self.weather_fx, self.wfx_time)
-		else
-			level.set_weather("af3_1_clear", now)
-		end
+		level.start_weather_fx_from_time(self.weather_fx, self.wfx_time)
 	end
 	--self.debugMessages[15]:SetText("WEATHER: '"..weather_section_name.."' now '"..tostring(now).."'")
 	-- if xrs_news then
@@ -436,13 +421,13 @@ function WeatherManager:select_weather(now)
 	-- end
 end
 
---    .
+-- Возвращает начальное состояние погоды.
 function WeatherManager:init_by_graph(graph,graph_name)
 	local cur_state=get_next_state(graph,"")
 	local next_state=get_next_state(graph,cur_state)
 	return {current_state=cur_state,next_state=next_state,graph_name=graph_name,graph=graph}
 end
--- пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ.
+-- Возвращает одно из следующих состояний графа, согласно прописанным вероятностям.
 function get_next_state(graph,state)
 	local sum=0
 	for st,prob in pairs(graph) do
@@ -462,42 +447,36 @@ function get_next_state(graph,state)
 	return next_state
 end
 
--- пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+-- Устанавливаем состояние менеджера, распарсивая строку состояния
 function WeatherManager:set_state_as_string(ss)
-	self.state = {}
+	--self.debugMessages[7]:SetText(ss)
+	self.state={}
 	local laststring
-	for lvlstring in string.gmatch(ss or "", "[^;]+") do
-		laststring = lvlstring
+	for lvlstring in string.gmatch(ss,"[^;]+") do
+		laststring=lvlstring
 	end
-
-	printf("set_state_as_string: ss = '%s', laststring = '%s'", tostring(ss), tostring(laststring))
-
-	if not laststring or laststring == "" then
-		printf("WeatherManager:set_state_as_string: empty state, setting default")
-		laststring = "default=clear,clear"
-	end
-
-	local i, j, grname, curs, nexs = string.find(laststring, "([^=]+)=([^,]+),([^,]+)")
-	printf("set_state_as_string: parsed: grname=%s, curs=%s, nexs=%s", tostring(grname), tostring(curs), tostring(nexs))
-	if not grname then
-		abort("WeatherManager:set_state_as_string: malformed state string. "..tostring(ss))
-		return
-	end
-
-	local current_state = self:unpack_state(curs)
-	local next_state = self:unpack_state(nexs)
-	local graph_name = self:unpack_graph_name(grname)
-	local graph = self:get_graph_by_name(graph_name)
-	self.curr_weather = current_state
-	self.next_weather = current_state
-	if graph == nil then
-		-- РЅРµС‚ РіСЂР°С„Р°, РјРѕР¶РЅРѕ Р·Р°Р»РѕРіРёСЂРѕРІР°С‚СЊ
-	else
-		self.state[graph_name] = {current_state = current_state, next_state = next_state, graph_name = graph_name, graph = graph}
-	end
+	
+		local i,j,grname,curs,nexs=string.find(laststring,"([^=]+)=([^,]+),([^,]+)")
+		if not grname then
+			abort("WeatherManager:set_state_as_string: malformed state string. "..ss)
+		end
+		--local lvl_name=self:unpack_level(lvl)
+		local current_state=self:unpack_state(curs)
+		local next_state=self:unpack_state(nexs)
+		local graph_name=self:unpack_graph_name(grname)
+		local graph=self:get_graph_by_name(graph_name)
+		self.curr_weather=current_state	
+		self.next_weather=current_state
+		if graph==nil then
+		-- Старая сохранёнка? Будем считать что на этом уровне - статическая погода
+		else
+			--self.debugMessages[11]:SetText("loaded string="..laststring)
+			--self.debugMessages[12]:SetText("self.state["..graph_name.."]={current_state="..current_state..",next_state="..next_state..",graph_name="..graph_name..",graph=}")
+			self.state[graph_name]={current_state=current_state,next_state=next_state,graph_name=graph_name,graph=graph}
+		end
 end
 
---     
+-- Преобразуем текущее состояние менеджера в строку
 function WeatherManager:get_state_as_string()
 	local lvlstrings={}
 	for lvl_name,st in pairs(self.state) do
@@ -513,7 +492,7 @@ function WeatherManager:get_state_as_string()
 	return table.concat(lvlstrings,";")
 end
 
--- пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ (пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ) пїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
+-- Получить граф (таблицу переходов состояний погоды) по его названию и названию игрового уровня
 function WeatherManager:get_graph_by_name(name)
 	if not self.graphs[name] then
 		self.graphs[name] = xr_s.parse_ini_section_to_array(self.graphs_ini,name)
@@ -521,27 +500,27 @@ function WeatherManager:get_graph_by_name(name)
 	return self.graphs[name]
 end
 
--- пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
+-- Запаковать название вершины графа
 function WeatherManager:pack_state(state)
-	-- пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ.
+	-- Пока паковать не будем.
 	return state
 end
 
--- пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
+-- Распаковать название вершины графа
 function WeatherManager:unpack_state(st)
-	-- пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
+	-- Пока паковать не будем
 	return st
 end
 
--- пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
+-- Запаковать название графа переходов погоды
 function WeatherManager:pack_graph_name(graph_name)
-	-- пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ.
+	-- Пока паковать не будем.
 	return graph_name
 end
 
--- пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
+-- Распаковать название графа переходов погоды
 function WeatherManager:unpack_graph_name(grn)
-	-- пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
+	-- Пока паковать не будем
 	return grn
 end
 
@@ -572,11 +551,7 @@ function WeatherManager:load(F)
 		self.wfx_time = F:r_float()
 	end
 	set_save_marker(F, "load", true, "WeatherManager")
-	-- KCS - storing readed weather name in "global" variable for later usage in axr_main.script,
-	-- self.levelWeather value is lost after loading and forcing weather must be done after atmosphear initialization in axr_main.script
-	-- alun_utils.printf("Saved weather name is %s", self.levelWeather) -- OK
-	-- level_weathers.stored_weather = self.levelWeather
-	level_weathers.stored_weather = state_string
+	
 end
 
 function WeatherManager:save(F)
