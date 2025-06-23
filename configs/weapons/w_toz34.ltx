@@ -518,11 +518,10 @@ bone = scope3
 overriding_hide_bones = rail
 overriding_show_bones = scope4_sight
 
-aim_hud_offset_pos = -0.009800,-0.0183000,-0.15
-aim_hud_offset_rot = 0.007000,0.000000,0.000000
-
-aim_hud_offset_pos_16x9 = -0.009800,-0.0183000,-0.15
-aim_hud_offset_rot_16x9 = 0.001000,0.000000,0.000000
+aim_hud_offset_pos = 0.0032,-0.0465000,0.017
+aim_hud_offset_rot = 0.001000,0.000000,-0.00000
+aim_hud_offset_pos_16x9 = 0.0032,-0.0465000,0.017
+aim_hud_offset_rot_16x9 = 0.001000,0.000000,-0.00000
 
 inertion_aim_origin_offset = 0.01
 inertion_aim_speed = 10 
@@ -535,11 +534,31 @@ bone = scope2
 hud_fov_zoom = 0.85
 use_scope_anims = true ;говорит, что надо использовать анимации с суффиксом _scope в прицеливании с данным прицелом
 
-aim_hud_offset_pos = -0.009100,-0.014700,0.0
-aim_hud_offset_rot = -0.001000,0.000000,0.000000
-
-aim_hud_offset_pos_16x9 = -0.009100,-0.013600,0.0
-aim_hud_offset_rot_16x9 = 0.001000,0.000000,0.000000
+aim_hud_offset_pos = 0.0035,-0.04210,0.132
+aim_hud_offset_rot = 0.001000,0.000000,-0.00000
+aim_hud_offset_pos_16x9 = 0.0035,-0.04210,0.132
+aim_hud_offset_rot_16x9 = 0.001000,0.000000,-0.00000
 
 inertion_aim_origin_offset = 0.02
 inertion_aim_speed = 8
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+[wpn_toz34_short]:wpn_toz34
+    $spawn                      = "weapons\wpn_toz34_short"
+	allow_sprint_while_reload 	= true 
+	scope_status				= 0
+	def_hide_bones				= stock, rail, sight, scope2, scope3, scope4, bullet_blue, bullet_blue2, shell_blue, shell_blue2, shell_red, shell_red2, scope4_sight, barrel, rail
+	def_show_bones				= barrel_short, stock_short
+	cam_dispersion_frac         = 1
+	cam_max_angle				= 26
+	fire_dispersion_base		= 0.26
+	fire_distance				= 75
+	inv_weight					= 2.1
+	description					= st_wpn_toz34_short_descr
+	inv_name					= st_wpn_toz34_short
+	inv_name_short				= st_wpn_toz34_short
+	inv_grid_width  	    	= 3
+	inv_grid_height				= 1
+	inv_grid_x					= 20
+	inv_grid_y      			= 27
