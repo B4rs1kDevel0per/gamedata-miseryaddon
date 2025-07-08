@@ -13,14 +13,14 @@ ef_weapon_type				= 9
 
 repair_group = w1300
 
-def_hide_bones = scope1, scope2, scope3, scope4, barrel_short, flash, laser, bolt_foregrip_rail, stock, sight, sight_short, stock_tactical, magazine, rail, shell_blue, bullet_blue
-def_show_bones = barrel, bolt_foregrip, magazine_short, handler
+def_hide_bones = scope1, scope2, scope3, scope4, barrel_short, flash, laser, bolt_foregrip_rail, handler, sight, sight_short, stock_tactical, magazine, rail, shell_blue, bullet_blue
+def_show_bones = barrel, bolt_foregrip, magazine_short, stock
 
 ammo_in_chamber = true
 ;----------------------------------------------------------------------------
 cost					 	= 19660
 weapon_class			 	        = shotgun
-inv_weight					= 3.06
+inv_weight					= 3.23
 
 installed_upgrades = 
 upgrade_scheme = upgrade_scheme_wincheaster1300
@@ -838,4 +838,26 @@ gl_hud_offset_pos_16x9     = 0.0,0.012,0.07
 gl_hud_offset_rot_16x9     = 0.0,0.0,0.0
 
 inertion_aim_origin_offset = 0.015
-inertion_aim_speed = 10 
+inertion_aim_speed = 10
+
+[wpn_wincheaster1300_short]:wpn_wincheaster1300
+    $spawn                      = "weapons\wpn_wincheaster1300_short"
+	allow_sprint_while_reload 	= true 
+	scope_status				= 0
+	def_hide_bones = scope1, scope2, scope3, scope4, barrel, flash, laser, bolt_foregrip_rail, stock, sight, sight_short, stock_tactical, magazine, rail, shell_blue, bullet_blue
+	def_show_bones = barrel_short, bolt_foregrip, magazine_short, handler
+	cam_dispersion_frac         = 1
+	cam_max_angle				= 26
+	fire_dispersion_base		= 0.26
+	fire_distance				= 75
+	misfire_start_condition		= 0.89
+	inv_weight					= 2.6
+	description					= st_wpn_wincheaster1300_short_descr
+	inv_name					= st_wpn_wincheaster1300_short
+	inv_name_short				= st_wpn_wincheaster1300_short
+	inv_grid_width  	    	= 3
+	inv_grid_height				= 2
+	inv_grid_x					= 20
+	inv_grid_y      			= 27
+	ammo_elapsed		 		= 4
+	ammo_mag_size		 		= 4

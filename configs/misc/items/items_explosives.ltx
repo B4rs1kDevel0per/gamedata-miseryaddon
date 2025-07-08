@@ -2,6 +2,11 @@
 ;;;;;;;; DEPLOYABLE CIVILIAN EXPLOSIVES ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
+[instant_action_fuse]
+condition_to_explode	=0.f
+time_to_explode			=0.f
+set_timer_particles		=vehiclefx\exhaust_1
+
 [explo_jerrycan_fuel]:identity_immunities,delayed_action_fuse,default_weapon_params ;x8
 $spawn 				= "weapons\explosive\mobiltank"
 $prefetch 			= 16
@@ -533,7 +538,7 @@ repair_part_bonus	 	= 0.02
 [explo_jerrycan_fuel_empty]:identity_immunities
 $spawn 				= "devices\roubles"
 $prefetch 			= 16
-class				= S_PDA
+class				= II_ATTCH
 cform				= skeleton
 visual				= dynamics\balon\kanistra.ogf
 radius				= 68; 50
@@ -635,7 +640,7 @@ time_to_explode			= 0.f
 wallmark_section		= explosion_marks
 
 ;звуки
-snd_explode = weapons\explo\fuelcan_boom
+snd_explode = weapons\grenades\f1\layers\f1_explosion_a_1
 immunities_sect			= explosive_metalcan_powder_immunities_sect
 
 repair_part_bonus	 	= 0.01
@@ -1191,7 +1196,7 @@ repair_part_bonus	 	= 0.03
 [explo_balon_gas_empty]:identity_immunities
 $spawn 				= "devices\roubles"
 $prefetch 			= 16
-class				= S_PDA
+class				= II_ATTCH
 cform				= skeleton
 visual				= dynamics\balon\gaz_balon.ogf
 radius				= 68; 50
@@ -1237,7 +1242,7 @@ fire_wound_immunity		= 0.68
 [ied_rpg]:identity_immunities
 $spawn 				= "devices\roubles"
 $prefetch 			= 16
-class				= II_ANTIR
+class				= II_ATTCH
 cform				= skeleton
 visual          	= dynamics\weapons\wpn_ied\wpn_ied_rpg.ogf
 inv_vol = 1
@@ -1260,12 +1265,12 @@ attach_bone_name    = bip01_l_hand
 auto_attach       = false
 
 ; eatable item
-eat_health = 0
-eat_satiety = 0
-eat_power = 0
-eat_radiation = 0
-eat_alcohol = 0
-eat_portions_num = 1
+;eat_health = 0
+;eat_satiety = 0
+;eat_power = 0
+;eat_radiation = 0
+;eat_alcohol = 0
+;eat_portions_num = 1
 
 wounds_heal_perc = 0
 ;-------------------------------------------------------------------------------
@@ -1351,7 +1356,7 @@ hud = wpn_vodka_hud
 [ied]:identity_immunities
 $spawn 				= "devices\roubles"
 $prefetch 			= 16
-class				= II_ANTIR
+class				= II_ATTCH
 cform				= skeleton
 visual				= dynamics\weapons\wpn_ied\wpn_ied.ogf
 
@@ -1374,12 +1379,12 @@ attach_bone_name    = bip01_l_hand
 auto_attach       = false
 
 ; eatable item
-eat_health = 0
-eat_satiety = 0
-eat_power = 0
-eat_radiation = 0
-eat_alcohol = 0
-eat_portions_num = 1
+;eat_health = 0
+;eat_satiety = 0
+;eat_power = 0
+;eat_radiation = 0
+;eat_alcohol = 0
+;eat_portions_num = 1
 
 wounds_heal_perc = 0
 
@@ -1472,7 +1477,7 @@ GroupControlSection   = spawn_group
 discovery_dependency  =
 $spawn 				= "devices\play"
 cform                   = skeleton
-class         = II_ANTIR
+class         = II_ATTCH
 visual				= dynamics\weapons\wpn_pfm1\wpn_pfm1.ogf     
 inv_vol = 1
 
@@ -1493,12 +1498,12 @@ attach_bone_name    = bip01_l_hand
 auto_attach       = false
 
 ; eatable item
-eat_health = 0
-eat_satiety = 0
-eat_power = 0
-eat_radiation = 0
-eat_alcohol = 0
-eat_portions_num = 1
+;eat_health = 0
+;eat_satiety = 0
+;eat_power = 0
+;eat_radiation = 0
+;eat_alcohol = 0
+;eat_portions_num = 1
 
 wounds_heal_perc = 0
             
