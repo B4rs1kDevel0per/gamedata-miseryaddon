@@ -95,9 +95,10 @@ cform           		= skeleton
 hud				= artefact_hud
 animation_slot			= 11
 allow_inertion			= true
-attach_angle_offset		= 0,0,0
-attach_position_offset		= -0.1,-0.1,0
-attach_bone_name		= bip01_root
+attach_angle_offset		= 1.922,1.551,-0.740   ;устанавливается в радианах Angle*PI/180
+attach_position_offset	= -0.3,-0.029,0.037
+attach_bone_name		= bip01_r_hand
+auto_attach			= false
 inv_grid_width			= 1
 inv_grid_height			= 1
 belt				= true
@@ -122,10 +123,10 @@ idle_light_shadow		= false
 item_visual                  	= dynamics\artefacts\artefact_electra_blue_hud
 attach_place_idx		= 0
 
-hands_position          	= 0,0,0
-hands_orientation       	= 0,0,0
-hands_position_16x9     	= 0,0,0
-hands_orientation_16x9  	= 0,0,0
+hands_position				= 0.0, 0.09, -0.09
+hands_orientation			= 0.0, 0.0, 0.0
+hands_position_16x9			= 0.0, 0.09, -0.07
+hands_orientation_16x9		= 0.0, 0.0, 0.0
 
 item_position			= 0,0,0
 item_orientation		= 0,0,0
@@ -138,11 +139,18 @@ gl_hud_offset_rot		= 0,0,0
 lean_hud_offset_pos		= 0,0,0
 lean_hud_offset_rot		= 0,0,0
 
-anm_idle			= dev_artefact_idle
-anm_idle_sprint			= dev_artefact_idle
-anm_hide			= dev_artefact_holster
+anm_idle					= dev_artefact_idle
+anm_idle_moving	 			= dev_artefact_walk
+anm_idle_moving_slow 		= dev_artefact_walk_slow
+anm_idle_moving_crouch 	    = dev_artefact_walk_slow_down
+anm_idle_moving_crouch_slow = dev_artefact_walk_slow_super
+anm_idle_sprint_start	 	= dev_artefact_sprint_start
+anm_idle_sprint	 			= dev_artefact_sprint
+anm_idle_sprint_end	 		= dev_artefact_sprint_end
+
+anm_hide			= dev_artefact_hide
 anm_show			= dev_artefact_draw
-anm_activate			= dev_artefact_use
+anm_activate		= dev_artefact_use
 
 ;------------------------------------------------------------------------------------------
 ;------------------ Артефакты для гравитационной аномалии ---------------------------------

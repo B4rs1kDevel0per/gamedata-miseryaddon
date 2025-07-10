@@ -3,6 +3,10 @@
 		<texture>wpn_crosshair</texture>
 	</wpn_crosshair>
 	
+	<wpn_crosshair_fn2000 anchor="mid-center" x="0" y="0" width="1920" height="1080" stretch="1">
+		<texture>crosshairs_fn2000</texture>
+	</wpn_crosshair_fn2000>
+	
 	<wpn_crosshair_rpg anchor="mid-center" x="0" y="0" width="1920" height="1080" stretch="1">
 		<texture>wpn_crosshair_rpg</texture>
 	</wpn_crosshair_rpg>	
@@ -14,10 +18,6 @@
 	<wpn_crosshair_l85 anchor="mid-center" x="0" y="0" width="1920" height="1080" stretch="1">
 		<texture>wpn_crosshair_l85</texture>
 	</wpn_crosshair_l85>
-
-	<wpn_crosshair_fn2000 anchor="mid-center" x="0" y="0" width="1920" height="1080" stretch="1">
-		<texture>wpn_crosshair_fn2000</texture>
-	</wpn_crosshair_fn2000>
 
 	<wpn_crosshair_bino anchor="mid-center" x="0" y="0" width="1920" height="1080" stretch="1">
 		<texture>wpn_crosshair_bino</texture>

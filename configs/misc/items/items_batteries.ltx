@@ -2,9 +2,10 @@
 ;;;;;;;; BATTERY PACKS ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-[batteries]:booster
+[batteries]:identity_immunities
 $spawn 				= "food and drugs\kolbasa"
 $prefetch 			= 16
+class				= II_ATTCH
 cform				= skeleton
 visual				= dynamics\equipments\trade\battery.ogf
 radius				= 68; 50
@@ -32,9 +33,10 @@ angle_offset			 = 1.570790,1.570790,3.92699
 
 use_sound			= interface\inv_batt
 
-[batteries_dead]:booster
+[batteries_dead]:identity_immunities
 $spawn 				= "food and drugs\kolbasa"
 $prefetch 			= 16
+class				= II_ATTCH
 cform				= skeleton
 visual				= dynamics\equipments\trade\battery.ogf
 radius				= 68; 50
@@ -62,9 +64,10 @@ angle_offset			 = 1.570790,1.570790,3.92699
 
 use_sound			= interface\inv_batt
 
-[batteries_ccell]:booster
+[batteries_ccell]:identity_immunities
 $spawn 				= "food and drugs\kolbasa"
 $prefetch 			= 16
+class				= II_ATTCH
 cform				= skeleton
 visual				= dynamics\equipments\trade\battery.ogf
 radius				= 68; 50
@@ -101,7 +104,8 @@ use_sound			= interface\inv_batt
 [batteries_empty]:identity_immunities
 $spawn 				= "devices\roubles"
 $prefetch 			= 16
-class				= S_PDA
+class				= II_ATTCH
+cform				= skeleton
 cform				= skeleton
 radius				= 68; 50
 

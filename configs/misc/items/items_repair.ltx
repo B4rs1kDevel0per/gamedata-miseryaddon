@@ -15,8 +15,11 @@
 
 ;------Sharpening items-----
 
-[mutant_part_crow_beak]:booster
+[mutant_part_crow_beak]:identity_immunities
 $spawn              = "devices\monster_items\mutant_crow_beak"
+$prefetch 			= 16
+class				= II_ATTCH
+cform				= skeleton
 description         = st_mutant_part_crow_beak_description
 inv_name            = st_mutant_part_crow_beak
 inv_name_short      = st_mutant_part_crow_beak
@@ -43,8 +46,11 @@ repair_parts_include	=
 repair_ammo				= melee 	;KCS - with "melee" listed as ammo, script only allow parts under "repair_only" to be repaired
 repair_use_actor_effects = true     ;Uses actor_effects script. Setup a *_dummy section for the item in actor_effects_data.script
 
-[mutant_part_chimera_kogot]:booster
+[mutant_part_chimera_kogot]:identity_immunities
 $spawn 				= "devices\monster_items\mutant_chimera_cogot"
+$prefetch 			= 16
+class				= II_ATTCH
+cform				= skeleton
 inv_name			= mutant_chimera_cogot
 inv_name_short		= mutant_chimera_cogot
 description			= mutant_chimera_cogot_description
@@ -71,8 +77,11 @@ repair_parts_include	=
 repair_ammo				= melee
 repair_use_actor_effects = true     
 
-[sharpening_stones]:booster ;x4
+[sharpening_stones]:identity_immunities ;x4
 $spawn 				= "devices\repair_kit_10"
+$prefetch 			= 16
+class				= II_ATTCH
+cform				= skeleton
 description			= st_sharpening_stones_descr
 inv_name			= st_sharpening_stones
 inv_name_short			= st_sharpening_stones
@@ -126,8 +135,11 @@ inv_grid_y			= 14
 
 ;------Lubricants and solvents-----
 
-[gun_oil]:booster ; Universal gun spray lubricant ;x2
+[gun_oil]:identity_immunities ; Universal gun spray lubricant ;x2
 $spawn 				= "devices\repair_kit_10"
+$prefetch 			= 16
+class				= II_ATTCH
+cform				= skeleton
 description			= st_gun_oil_descr
 inv_name			= st_gun_oil
 inv_name_short		= st_gun_oil
@@ -162,8 +174,11 @@ inv_weight			= 0.148
 inv_grid_x			= 20
 inv_grid_y			= 16
 
-[gun_oil_ru_d]:booster ;x2
+[gun_oil_ru_d]:identity_immunities ;x2
 $spawn 				= "devices\repair_kit_10"
+$prefetch 			= 16
+class				= II_ATTCH
+cform				= skeleton
 description			= st_gun_oil_ru_d_descr
 inv_name			= st_gun_oil_ru_d
 inv_name_short		= st_gun_oil_ru_d
@@ -198,8 +213,11 @@ inv_weight			= 0.069
 inv_grid_x			= 21
 inv_grid_y			= 16
 
-[gun_oil_ru]:booster ; (Russian gun oil (plastic bottle)) ;x2
+[gun_oil_ru]:identity_immunities ; (Russian gun oil (plastic bottle)) ;x2
 $spawn 				= "devices\repair_kit_10"
+$prefetch 			= 16
+class				= II_ATTCH
+cform				= skeleton
 description			= st_gun_oil_ru_descr
 inv_name			= st_gun_oil_ru
 inv_name_short		= st_gun_oil_ru
@@ -234,8 +252,11 @@ inv_weight			= 0.123
 inv_grid_x			= 22
 inv_grid_y			= 16
 
-[solvent]:booster ; (Cleaning solvent) http://www.midwayusa.com/product/533373/hoppes-9-bore-cleaning-solvent-5-oz-liquid ;x2
+[solvent]:identity_immunities ; (Cleaning solvent) http://www.midwayusa.com/product/533373/hoppes-9-bore-cleaning-solvent-5-oz-liquid ;x2
 $spawn 				= "devices\repair_kit_10"
+$prefetch 			= 16
+class				= II_ATTCH
+cform				= skeleton
 description			= st_solvent_descr
 inv_name			= st_solvent
 inv_name_short			= st_solvent
@@ -275,7 +296,9 @@ inv_grid_y			= 16
 [steel_wool]:identity_immunities ;x2
 $spawn 				= "devices\roubles"
 $prefetch 			= 16
-class				= S_PDA
+class				= II_ATTCH
+cform				= skeleton
+$prefetch 			= 16
 cform				= skeleton
 visual				= dynamics\repair\steel_wool.ogf
 radius				= 68; 50
@@ -308,10 +331,10 @@ inv_grid_y			= 16
 cost				= 447
 inv_weight			= 0.112
 
-[grease]:booster ;x2
+[grease]:identity_immunities ;x2
 $spawn 				= "devices\roubles"
 $prefetch 			= 16
-class				= S_PDA
+class				= II_ATTCH
 cform				= skeleton
 visual				= dynamics\repair\grease.ogf
 radius				= 68; 50
@@ -346,8 +369,11 @@ inv_weight			= 0.171
 
 ;------Barrel blashes-----
 
-[cleaning_kit_p]:booster ; Cleaning kit 9mm .50ae .45 ;x3
+[cleaning_kit_p]:identity_immunities ; Cleaning kit 9mm .50ae .45 ;x3
 $spawn 				= "devices\repair_kit_10"
+$prefetch 			= 16
+class				= II_ATTCH
+cform				= skeleton
 description			= st_cleaning_kit_p_descr
 inv_name			= st_cleaning_kit_p
 inv_name_short		= st_cleaning_kit_p
@@ -390,8 +416,11 @@ inv_weight			= 0.307
 inv_grid_x			= 29
 inv_grid_y			= 10
 
-[cleaning_kit_s]:booster ; Cleaning kit 12ga ;x3
+[cleaning_kit_s]:identity_immunities ; Cleaning kit 12ga ;x3
 $spawn 				= "devices\repair_kit_10"
+$prefetch 			= 16
+class				= II_ATTCH
+cform				= skeleton
 description			= st_cleaning_kit_s_descr
 inv_name			= st_cleaning_kit_s
 inv_name_short		= st_cleaning_kit_s
@@ -434,8 +463,11 @@ inv_weight			= 0.326
 inv_grid_x			= 30
 inv_grid_y			= 10
 
-[cleaning_kit_r5]:booster ; Cleaning kit 5.54mm 5.56mm ;x3
+[cleaning_kit_r5]:identity_immunities ; Cleaning kit 5.54mm 5.56mm ;x3
 $spawn 				= "devices\repair_kit_10"
+$prefetch 			= 16
+class				= II_ATTCH
+cform				= skeleton
 description			= st_cleaning_kit_r5_descr
 inv_name			= st_cleaning_kit_r5
 inv_name_short		= st_cleaning_kit_r5
@@ -478,8 +510,11 @@ inv_weight			= 0.340
 inv_grid_x			= 31
 inv_grid_y			= 10
 
-[cleaning_kit_r7]:booster ; Cleaning kit 7.62mm
+[cleaning_kit_r7]:identity_immunities ; Cleaning kit 7.62mm
 $spawn 				= "devices\repair_kit_10"
+$prefetch 			= 16
+class				= II_ATTCH
+cform				= skeleton
 description			= st_cleaning_kit_r7_descr
 inv_name			= st_cleaning_kit_r7
 inv_name_short		= st_cleaning_kit_r7
@@ -524,8 +559,11 @@ inv_grid_y			= 10
 
 ;------Cleaning Kits------
 
-[cleaning_kit_u]:booster ; Universal cleaning kit ;x3
+[cleaning_kit_u]:identity_immunities ; Universal cleaning kit ;x3
 $spawn 				= "devices\repair_kit_10"
+$prefetch 			= 16
+class				= II_ATTCH
+cform				= skeleton
 description			= st_cleaning_kit_u_descr
 inv_name			= st_cleaning_kit_u
 inv_name_short			= st_cleaning_kit_u
@@ -570,8 +608,11 @@ inv_grid_y			= 10
 
 ;------Gunsmith toolkits-----
 
-[toolkit_p]:booster ; Pistol toolkit with replacement parts ;x4
+[toolkit_p]:identity_immunities ; Pistol toolkit with replacement parts ;x4
 $spawn 				= "devices\repair_kit_10"
+$prefetch 			= 16
+class				= II_ATTCH
+cform				= skeleton
 description			= st_repair_kit_p_descr
 inv_name			= st_repair_kit_p
 inv_name_short		= st_repair_kit_p
@@ -626,7 +667,7 @@ inv_grid_y			= 14
 [toolkit_p_empty]:identity_immunities ; empty container
 $spawn 				= "devices\roubles"
 $prefetch 			= 16
-class				= S_PDA
+class				= II_ATTCH
 cform				= skeleton
 radius				= 68; 50
 
@@ -650,8 +691,11 @@ auto_attach				= false
 
 repair_part_bonus	 	= 0.04
 
-[toolkit_s]:booster ; Shotgun toolkit with replacement parts ;x4
+[toolkit_s]:identity_immunities ; Shotgun toolkit with replacement parts ;x4
 $spawn 				= "devices\repair_kit_10"
+$prefetch 			= 16
+class				= II_ATTCH
+cform				= skeleton
 description			= st_repair_kit_s_descr
 inv_name			= st_repair_kit_s
 inv_name_short		= st_repair_kit_s
@@ -705,7 +749,7 @@ inv_grid_y			= 14
 [toolkit_s_empty]:identity_immunities ; empty container
 $spawn 				= "devices\roubles"
 $prefetch 			= 16
-class				= S_PDA
+class				= II_ATTCH
 cform				= skeleton
 radius				= 68; 50
 
@@ -729,8 +773,11 @@ auto_attach				= false
 
 repair_part_bonus	 	= 0.04
 
-[toolkit_r5]:booster ; NATO rifle toolkit with replacement parts ;x4
+[toolkit_r5]:identity_immunities ; NATO rifle toolkit with replacement parts ;x4
 $spawn 				= "devices\repair_kit_10"
+$prefetch 			= 16
+class				= II_ATTCH
+cform				= skeleton
 description			= st_repair_kit_r5_descr
 inv_name			= st_repair_kit_r5
 inv_name_short		= st_repair_kit_r5
@@ -784,7 +831,7 @@ inv_grid_y			= 14
 [toolkit_r5_empty]:identity_immunities ; empty container
 $spawn 				= "devices\roubles"
 $prefetch 			= 16
-class				= S_PDA
+class				= II_ATTCH
 cform				= skeleton
 radius				= 68; 50
 
@@ -808,8 +855,11 @@ auto_attach				= false
 
 repair_part_bonus	 	= 0.04
 
-[toolkit_r7]:booster ; WP rifle toolkit with replacement parts ;x4
+[toolkit_r7]:identity_immunities ; WP rifle toolkit with replacement parts ;x4
 $spawn 				= "devices\repair_kit_10"
+$prefetch 			= 16
+class				= II_ATTCH
+cform				= skeleton
 description			= st_repair_kit_r7_descr
 inv_name			= st_repair_kit_r7
 inv_name_short		= st_repair_kit_r7
@@ -863,7 +913,7 @@ inv_grid_y			= 14
 [toolkit_r7_empty]:identity_immunities ; empty container
 $spawn 				= "devices\roubles"
 $prefetch 			= 16
-class				= S_PDA
+class				= II_ATTCH
 cform				= skeleton
 radius				= 68; 50
 
@@ -893,8 +943,11 @@ repair_part_bonus	 	= 0.04
 
 ;------Sewing kits-----
 
-[sewing_kit_b]:booster ; (Basic sewing kit) ;x4
+[sewing_kit_b]:identity_immunities ; (Basic sewing kit) ;x4
 $spawn 				= "devices\repair_kit_10"
+$prefetch 			= 16
+class				= II_ATTCH
+cform				= skeleton
 description			= st_sewing_kit_b_descr
 inv_name			= st_sewing_kit_b
 inv_name_short			= st_sewing_kit_b
@@ -944,8 +997,11 @@ inv_weight			= 0.138
 inv_grid_x			= 29
 inv_grid_y			= 14
 
-[sewing_kit_a]:booster ; (Advanced sewing kit) ;x4
+[sewing_kit_a]:identity_immunities ; (Advanced sewing kit) ;x4
 $spawn 				= "devices\repair_kit_10"
+$prefetch 			= 16
+class				= II_ATTCH
+cform				= skeleton
 description			= st_sewing_kit_a_descr
 inv_name			= st_sewing_kit_a
 inv_name_short		= st_sewing_kit_a
@@ -997,8 +1053,11 @@ inv_weight			= 0.221
 inv_grid_x			= 30
 inv_grid_y			= 14
 
-[sewing_kit_h]:booster ; (Heavy sewing kit) ;x4
+[sewing_kit_h]:identity_immunities ; (Heavy sewing kit) ;x4
 $spawn 				= "devices\repair_kit_10"
+$prefetch 			= 16
+class				= II_ATTCH
+cform				= skeleton
 description			= st_sewing_kit_h_descr
 inv_name			= st_sewing_kit_h
 inv_name_short		= st_sewing_kit_h
@@ -1050,8 +1109,11 @@ inv_grid_y			= 14
 
 ;------Glues-----
 
-[glue_b]:booster ; (Basic glue) ;x2
+[glue_b]:identity_immunities ; (Basic glue) ;x2
 $spawn 				= "devices\repair_kit_10"
+$prefetch 			= 16
+class				= II_ATTCH
+cform				= skeleton
 description			= st_glue_b_descr
 inv_name			= st_glue_b
 inv_name_short		= st_glue_b
@@ -1085,8 +1147,11 @@ inv_weight			= 0.069
 inv_grid_x			= 26
 inv_grid_y			= 16
 
-[glue_a]:booster ; (Advanced glue) ;x2
+[glue_a]:identity_immunities ; (Advanced glue) ;x2
 $spawn 				= "devices\repair_kit_10"
+$prefetch 			= 16
+class				= II_ATTCH
+cform				= skeleton
 description			= st_glue_a_descr
 inv_name			= st_glue_a
 inv_name_short		= st_glue_a
@@ -1120,8 +1185,11 @@ inv_weight			= 0.095
 inv_grid_x			= 27
 inv_grid_y			= 16
 
-[glue_e]:booster ; (Extreme glue) ;x2
+[glue_e]:identity_immunities ; (Extreme glue) ;x2
 $spawn 				= "devices\repair_kit_10"
+$prefetch 			= 16
+class				= II_ATTCH
+cform				= skeleton
 description			= st_glue_e_descr
 inv_name			= st_glue_e
 inv_name_short		= st_glue_e
@@ -1157,8 +1225,11 @@ inv_grid_y			= 16
 
 ;------Repair kits-----
 
-[armor_repair_fa]:booster ; (First aid armor repair set (Textile residues and duct tape)) ;x2
+[armor_repair_fa]:identity_immunities ; (First aid armor repair set (Textile residues and duct tape)) ;x2
 $spawn 				= "devices\repair_kit_10"
+$prefetch 			= 16
+class				= II_ATTCH
+cform				= skeleton
 description			= st_armor_repair_fa_descr
 inv_name			= st_armor_repair_fa
 inv_name_short		= st_armor_repair_fa
@@ -1192,8 +1263,11 @@ inv_weight			= 0.173
 inv_grid_x			= 29
 inv_grid_y			= 16
 
-[armor_repair_pro]:booster ; (Professional armor repair set (Chemical substance to fix closed respiratory material shredding)) ;x4
+[armor_repair_pro]:identity_immunities ; (Professional armor repair set (Chemical substance to fix closed respiratory material shredding)) ;x4
 $spawn 				= "devices\repair_kit_10"
+$prefetch 			= 16
+class				= II_ATTCH
+cform				= skeleton
 description			= st_armor_repair_pro_descr
 inv_name			= st_armor_repair_pro
 inv_name_short		= st_armor_repair_pro
@@ -1246,7 +1320,7 @@ inv_grid_y			= 14
 [armor_repair_pro_empty]:identity_immunities ; empty container
 $spawn 				= "devices\roubles"
 $prefetch 			= 16
-class				= S_PDA
+class				= II_ATTCH
 cform				= skeleton
 radius				= 68; 50
 
@@ -1270,8 +1344,11 @@ auto_attach				= false
 
 repair_part_bonus	 	= 0.03
 
-[helmet_repair_kit]:booster ;x3
+[helmet_repair_kit]:identity_immunities ;x3
 $spawn 				= "devices\repair_kit_10"
+$prefetch 			= 16
+class				= II_ATTCH
+cform				= skeleton
 description			= st_helmet_repair_kit_descr
 inv_name			= st_helmet_repair_kit
 inv_name_short		= st_helmet_repair_kit
@@ -1316,7 +1393,7 @@ inv_grid_y			= 10
 [helmet_repair_kit_empty]:identity_immunities ; empty container
 $spawn 				= "devices\roubles"
 $prefetch 			= 16
-class				= S_PDA
+class				= II_ATTCH
 cform				= skeleton
 radius				= 68; 50
 
@@ -1340,8 +1417,11 @@ auto_attach				= false
 
 repair_part_bonus	 	= 0.04
 
-[toolkit_u]:booster ;x4
+[toolkit_u]:identity_immunities ;x4
 $spawn 				= "devices\repair_kit_10"
+$prefetch 			= 16
+class				= II_ATTCH
+cform				= skeleton
 description			= st_repair_kit_descr
 inv_name			= st_repair_kit
 inv_name_short		= st_repair_kit
@@ -1394,7 +1474,7 @@ inv_grid_y			= 64
 [toolkit_u_empty]:identity_immunities ; empty container
 $spawn 				= "devices\roubles"
 $prefetch 			= 16
-class				= S_PDA
+class				= II_ATTCH
 cform				= skeleton
 radius				= 68; 50
 
@@ -1423,7 +1503,7 @@ repair_part_bonus	 	= 0.05
 [textile_patch_b]:identity_immunities ; (Basic textile patch)
 $spawn 				= "devices\roubles"
 $prefetch 			= 16
-class				= S_PDA
+class				= II_ATTCH
 cform				= skeleton
 radius				= 68
 
@@ -1452,7 +1532,7 @@ repair_part_bonus	 	= 0.03
 [textile_patch_m]:identity_immunities ; (Mil spec textile patch)
 $spawn 				= "devices\roubles"
 $prefetch 			= 16
-class				= S_PDA
+class				= II_ATTCH
 cform				= skeleton
 radius				= 68
 
@@ -1481,7 +1561,7 @@ repair_part_bonus	 	= 0.04
 [textile_patch_e]:identity_immunities ; (Enforced textile patch)
 $spawn 				= "devices\roubles"
 $prefetch 			= 16
-class				= S_PDA
+class				= II_ATTCH
 cform				= skeleton
 radius				= 68
 
@@ -1507,8 +1587,11 @@ auto_attach				= false
 
 repair_part_bonus	 	= 0.06
 
-[lighter_refiller5]:booster
+[lighter_refiller5]:identity_immunities
 $spawn 				= "devices\repair_kit_10"
+$prefetch 			= 16
+class				= II_ATTCH
+cform				= skeleton
 description			= st_lighter_refillers_descr
 inv_name			= st_lighter_refiller5
 inv_name_short		= st_lighter_refiller5
@@ -1563,8 +1646,11 @@ inv_grid_y			= 21
 
 ;------ Weapon dismantle kit -----
 
-[wpn_dismantler]:booster ;x5
+[wpn_dismantler]:identity_immunities ;x5
 $spawn				= "devices\repair_kit_10"
+$prefetch 			= 16
+class				= II_ATTCH
+cform				= skeleton
 description			= st_wpn_dismantler_descr
 inv_name			= st_wpn_dismantler
 inv_name_short		= st_wpn_dismantler
@@ -1616,7 +1702,7 @@ inv_grid_y			= 63
 [wpn_dismantler_empty]:identity_immunities ; empty container
 $spawn 				= "devices\roubles"
 $prefetch 			= 16
-class				= S_PDA
+class				= II_ATTCH
 cform				= skeleton
 radius				= 68
 
@@ -1642,8 +1728,11 @@ repair_part_bonus		= 0.03
 
 ;------ Outfit dismantle kit -----
 
-[outfit_dismantler]:booster ;x5
+[outfit_dismantler]:identity_immunities ;x5
 $spawn 				= "devices\repair_kit_10"
+$prefetch 			= 16
+class				= II_ATTCH
+cform				= skeleton
 description			= st_outfit_dismantler_descr
 inv_name			= st_outfit_dismantler
 inv_name_short		= st_outfit_dismantler
@@ -1694,7 +1783,7 @@ inv_grid_x			= 30
 [outfit_dismantler_empty]:identity_immunities ; empty container
 $spawn 				= "devices\roubles"
 $prefetch 			= 16
-class				= S_PDA
+class				= II_ATTCH
 cform				= skeleton
 radius				= 68; 50
 
@@ -1724,8 +1813,11 @@ repair_part_bonus		= 0.03
 
 ;------Weapon spare parts-----
 
-[spareparts]:booster
+[spareparts]:identity_immunities
 $spawn				= "devices\repair_kit_10"
+$prefetch 			= 16
+class				= II_ATTCH
+cform				= skeleton
 description			= st_wpn_spareparts_descr
 inv_name			= st_wpn_spareparts
 inv_name_short		= st_wpn_spareparts
@@ -1752,8 +1844,11 @@ repair_parts_include    = spareparts_small,spareparts ; kit_hunt, textile_patch_
 repair_ammo				= ammo_5.45x39_fmj,ammo_5.45x39_ap,ammo_5.56x45_ss190,ammo_5.56x45_ap,ammo_pkm_100,ammo_762x25mm_tt,ammo_7.62x54_7h1,ammo_50ae,ammo_gauss,ammo_gauss_cardan
 repair_use_actor_effects = true      
 
-[spareparts_small]:booster
+[spareparts_small]:identity_immunities
 $spawn				= "devices\repair_kit_10"
+$prefetch 			= 16
+class				= II_ATTCH
+cform				= skeleton
 description			= st_wpn_spareparts_small_descr
 inv_name			= st_wpn_spareparts_small
 inv_name_short		= st_wpn_spareparts_small
@@ -1783,7 +1878,7 @@ repair_use_actor_effects = true
 [wpn_waste_light]:identity_immunities
 $spawn 				= "devices\roubles"
 $prefetch 			= 16
-class				= S_PDA
+class				= II_ATTCH
 cform				= skeleton
 visual				= dynamics\equipments\waste_small.ogf
 radius				= 68
@@ -1810,7 +1905,7 @@ repair_part_bonus	 	= 0.01
 [wpn_waste_heavy]:identity_immunities
 $spawn 				= "devices\roubles"
 $prefetch 			= 16
-class				= S_PDA
+class				= II_ATTCH
 cform				= skeleton
 visual				= dynamics\equipments\waste_large.ogf
 radius				= 68
@@ -1837,7 +1932,7 @@ repair_part_bonus	 	= 0.02
 [outfit_waste_light]:identity_immunities
 $spawn 				= "devices\roubles"
 $prefetch 			= 16
-class				= S_PDA
+class				= II_ATTCH
 cform				= skeleton
 visual				= dynamics\equipments\outfit_waste_light.ogf
 radius				= 68
@@ -1864,7 +1959,7 @@ repair_part_bonus	 	= 0.03
 [outfit_waste_heavy]:identity_immunities
 $spawn 				= "devices\roubles"
 $prefetch 			= 16
-class				= S_PDA
+class				= II_ATTCH
 cform				= skeleton
 visual				= dynamics\equipments\outfit_waste_heavy.ogf
 radius				= 68
@@ -1891,7 +1986,7 @@ repair_part_bonus	 	= 0.06
 [tech_waste]:identity_immunities
 $spawn 				= "devices\roubles"
 $prefetch 			= 16
-class				= S_PDA
+class				= II_ATTCH
 cform				= skeleton
 visual				= dynamics\equipments\trade\tech_waste.ogf
 radius				= 68
