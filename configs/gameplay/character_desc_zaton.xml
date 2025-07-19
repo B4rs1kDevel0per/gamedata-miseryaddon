@@ -4,13 +4,12 @@
 
 	<specific_character id="actor_degtyarev" no_random = "1">
 		<name>st_actor_name</name>
-		<icon>ui_inGame2_Hero</icon>
+		<icon>ui_portret_Hero2</icon>
 		<map_icon x="2" y="5"></map_icon>
 
 		<team>mp_actor</team>
 		<supplies>
 			[spawn] \n
-			detector_simple \n
 			helm_respirator \n
 			stalker_outfit \n
 			
@@ -43,7 +42,7 @@
 	
 	<specific_character id="actor_partner_default_0" team_default = "1">
 		<name>st_partner_name</name>
-		<icon>ui_inGame2_Hero</icon>
+		<icon>ui_portret_Hero1</icon>
 		<map_icon x="2" y="5"></map_icon>
 
 		<team>mp_actor_2</team>
@@ -73,7 +72,7 @@
 	
 	<specific_character id="actor_partner_default_1" team_default = "1">
 		<name>st_partner_name</name>
-		<icon>ui_inGame2_Hero</icon>
+		<icon>ui_portret_Hero2</icon>
 		<map_icon x="2" y="5"></map_icon>
 
 		<team>mp_actor_3</team>
@@ -124,15 +123,12 @@
 
 		<supplies>
       [spawn] \n
-        wpn_ak74u \n
-        ammo_5.45x39_fmj = 1 \n
-        wpn_beretta \n
-        ammo_9x19_fmj = 1 \n
-        grenade_rgd5 = 1 \n
+
 
 #include "gameplay\character_items.xml"
 #include "gameplay\character_food.xml"
-#include "gameplay\character_drugs.xml"
+#include "gameplay\character_drugs_4.xml"
+#include "gameplay\character_drugs_neutral_4.xml"
     </supplies>
 #include "gameplay\character_criticals_4.xml"
 
@@ -166,15 +162,13 @@
 
 		<supplies>
       [spawn] \n
-      wpn_ak74 = 1 \n
-      ammo_5.45x39_fmj = 1 \n
-      wpn_colt1911 \n
-      ammo_11.43x23_fmj = 1 \n
       detector_advanced = 1 \n
 
 #include "gameplay\character_items_nl.xml"
+#include "gameplay\character_items_4_stalker.xml"
 #include "gameplay\character_food.xml"
-#include "gameplay\character_drugs_2.xml"
+#include "gameplay\character_drugs_4.xml"
+#include "gameplay\character_drugs_neutral_4.xml"
     </supplies>
 
 		<start_dialog>zat_b106_stalker_gonta_start</start_dialog>
@@ -217,15 +211,13 @@
 
 		<supplies>
       [spawn] \n
-	  grenade_f1 = 3 \n
-	  wpn_wincheaster1300 = 1 \n
-      ammo_12x70_buck = 1 \n
-      wpn_colt1911 \n
-      ammo_11.43x23_fmj = 1 \n
+
 
 #include "gameplay\character_items_nd.xml"
+#include "gameplay\character_items_4_stalker.xml"
 #include "gameplay\character_food.xml"
-#include "gameplay\character_drugs_2.xml"
+#include "gameplay\character_drugs_4.xml"
+#include "gameplay\character_drugs_neutral_4.xml"
     </supplies>
 
 		<actor_dialog>jup_b1_stalker_about_scrutiny</actor_dialog>
@@ -250,19 +242,18 @@
 		<snd_config>characters_voice\human_02\stalker\</snd_config>
 		<rank>350</rank>
 		<reputation>0</reputation>
-		<money min="1000" max="1000" infinitive="0" />
-		<visual>actors\stalker_neutral\stalker_neutral_2_face_1</visual>
+		<money min="8460" max="8460" infinitive="0" />
+		<visual>actors\stalker_neutral\stalker_neutral2dmask2</visual>
 
 		<supplies>
       [spawn] \n
-      wpn_ak74 = 1 \n
-      ammo_5.45x39_fmj = 1 \n
-	  wpn_pm \n
-      ammo_9x18_fmj = 1 \n
+
 
 #include "gameplay\character_items_nd.xml"
+#include "gameplay\character_items_4_stalker.xml"
 #include "gameplay\character_food.xml"
-#include "gameplay\character_drugs.xml"
+#include "gameplay\character_drugs_4.xml"
+#include "gameplay\character_drugs_neutral_4.xml"
     </supplies>
 
 		<actor_dialog>jup_b1_stalker_about_scrutiny</actor_dialog>
@@ -288,16 +279,15 @@
 		<rank>250</rank>
 		<reputation>0</reputation>
 		<money min="1000" max="1000" infinitive="0" />
-		<visual>actors\stalker_neutral\stalker_neutral_1_face_1</visual>
+		<visual>actors\stalker_bandit\stalker_bandit_0</visual>
 
 		<supplies>
       [spawn] \n
-      wpn_ak74u \n
-      ammo_5.45x39_fmj = 1 \n
 
 #include "gameplay\character_items_nd_nl.xml"
 #include "gameplay\character_food.xml"
-#include "gameplay\character_drugs.xml"
+#include "gameplay\character_drugs_2.xml"
+#include "gameplay\character_drugs_neutral_2.xml"
     </supplies>
 
 		<actor_dialog>zat_b14_stalker_at_bar_start</actor_dialog>
@@ -306,6 +296,61 @@
 
 #include "gameplay\character_criticals_4.xml"
         </specific_character>
+		
+	<specific_character id="zat_b14_stalker_2" team_default="1">
+		<name>GENERATE_NAME_stalker</name>
+		<icon>ui_inGame2_neutral_3</icon>
+		<map_icon x="1" y="0">
+		</map_icon>
+		<bio>Опытный сталкер. Детальная информация отсутствует.</bio>
+		<class>zat_b14_stalker_2</class>
+		<community>stalker</community>
+		<terrain_sect>stalker_terrain</terrain_sect>
+		<snd_config>characters_voice\human_03\stalker\</snd_config>
+		<rank>30</rank>
+		<reputation>0</reputation>
+		<money min="330" max="1980" infinitive="0" />
+		<visual>actors\stalker_neutral\stalker_neutral_18</visual>
+
+		<supplies>
+      [spawn] \n
+
+#include "gameplay\character_items_nd_nl.xml"
+#include "gameplay\character_food.xml"
+#include "gameplay\character_drugs_2.xml"
+#include "gameplay\character_drugs_neutral_2.xml"
+    </supplies>
+
+#include "gameplay\character_criticals_4.xml"
+        </specific_character>
+
+	<specific_character id="zat_b14_stalker_3" team_default="1">
+		<name>GENERATE_NAME_stalker</name>
+		<icon>ui_inGame2_merc_4</icon>
+		<map_icon x="1" y="0">
+		</map_icon>
+		<bio>Опытный сталкер. Детальная информация отсутствует.</bio>
+		<class>zat_b14_stalker_3</class>
+		<community>stalker</community>
+		<terrain_sect>stalker_terrain</terrain_sect>
+		<snd_config>characters_voice\human_03\stalker\</snd_config>
+		<rank>30</rank>
+		<reputation>0</reputation>
+		<money min="330" max="1980" infinitive="0" />
+		<visual>actors\stalker_merc\stalker_merc_7</visual>
+
+		<supplies>
+      [spawn] \n
+
+#include "gameplay\character_items_nd_nl.xml"
+#include "gameplay\character_food.xml"
+#include "gameplay\character_drugs_2.xml"
+#include "gameplay\character_drugs_neutral_2.xml"
+    </supplies>
+
+#include "gameplay\character_criticals_4.xml"
+        </specific_character>
+
 
 	<specific_character id="zat_a2_stalker_nimble" team_default="1">
 		<name>st_zat_a2_stalker_nimble_name</name>
@@ -320,19 +365,18 @@
 		<rank>400</rank>
 		<reputation>0</reputation>
 		<money min="10000" max="10000" infinitive="0" />
-		<visual>actors\stalker_neutral\stalker_neutral_1_face_1</visual>
+		<visual>actors\stalker_nebo\stalker_nebo_1</visual>
 
 		<supplies>
       [spawn] \n
 	  device_torch \n
-      wpn_ak74u \n
-      ammo_5.45x39_fmj = 1 \n
-	  wpn_pm \n
-      ammo_9x18_fmj = 1 \n
+
 
 #include "gameplay\character_items_nd.xml"
+#include "gameplay\character_items_4_stalker.xml"
 #include "gameplay\character_food.xml"
-#include "gameplay\character_drugs_2.xml"
+#include "gameplay\character_drugs_4.xml"
+#include "gameplay\character_drugs_neutral_4.xml"
     </supplies>
 #include "gameplay\character_criticals_4.xml"
 
@@ -364,14 +408,13 @@
 
 		<supplies>
       [spawn] \n
-      wpn_ak74u \n
-      ammo_5.45x39_fmj = 1 \n
-      wpn_pm \n
-      ammo_9x18_pmm = 1 \n
+
 
 #include "gameplay\character_items_nd.xml"
+#include "gameplay\character_items_4_stalker.xml"
 #include "gameplay\character_food.xml"
-#include "gameplay\character_drugs_2.xml"
+#include "gameplay\character_drugs_4.xml"
+#include "gameplay\character_drugs_neutral_4.xml"
     </supplies>
 #include "gameplay\character_criticals_4.xml"
 
@@ -401,19 +444,18 @@
 		<snd_config>characters_voice\human_02\stalker\</snd_config>
 		<rank>550</rank>
 		<reputation>0</reputation>
-		<money min="8000" max="8000" infinitive="0" />
+		<money min="8000" max="12000" infinitive="0" />
 		<visual>actors\stalker_neutral\stalker_neutral_2_unique_2</visual>
 
 		<supplies>
       [spawn] \n
-      wpn_ak74u \n
-      ammo_5.45x39_fmj = 1 \n
-      wpn_pm \n
-      ammo_9x18_pmm = 1 \n
+
 
 #include "gameplay\character_items_nd.xml"
+#include "gameplay\character_items_4_stalker.xml"
 #include "gameplay\character_food.xml"
-#include "gameplay\character_drugs_2.xml"
+#include "gameplay\character_drugs_4.xml"
+#include "gameplay\character_drugs_neutral_4.xml"
     </supplies>
 	</specific_character>
 
@@ -430,12 +472,14 @@
 		<rank>500</rank>
 		<reputation>0</reputation>
 		<money min="3000" max="3000" infinitive="0" />
-		<visual>actors\stalker_neutral\stalker_neutral_2</visual>
+		<visual>actors\stalker_neutral\stalker_neutral2c</visual>
 
 		<supplies>
       [spawn] \n
 #include "gameplay\character_food.xml"
-#include "gameplay\character_drugs.xml"
+#include "gameplay\character_drugs_4.xml"
+#include "gameplay\character_items_4_stalker.xml"
+#include "gameplay\character_drugs_neutral_4.xml"
     </supplies>
 #include "gameplay\character_criticals_4.xml"
 #include "gameplay\character_dialogs.xml"
@@ -454,20 +498,19 @@
 		<snd_config>characters_voice\human_01\dolg\</snd_config>
 		<rank>600</rank>
 		<reputation>0</reputation>
-		<visual>actors\stalker_dolg\stalker_dolg_4</visual>
+		<visual>actors\stalker_dolg\stalker_dolg3b</visual>
 		<supplies>
 
       [spawn] \n
-      wpn_ak74u \n
-      ammo_5.45x39_ap = 1 \n
-      wpn_fort \n
-      ammo_9x18_pmm = 1 \n
+
 	  device_pda_zat_b5_dealer = 1 \n
 
 #include "gameplay\character_items_nd.xml"
+#include "gameplay\character_items_4_duty.xml"
 #include "gameplay\character_food.xml"
 #include "gameplay\character_drugs_4.xml"
 #include "gameplay\character_drugs_mil.xml"
+#include "gameplay\character_drugs_duty_4.xml"
 
 	</supplies>
 #include "gameplay\character_criticals_4.xml"
@@ -482,7 +525,7 @@
 
 	<specific_character id="zat_b5_dealer_assistant_1" team_default="1">
 		<name>GENERATE_NAME_stalker</name>
-		<icon>ui_portret_merc_2</icon>
+		<icon>ui_portret_dolg_3</icon>
 		<map_icon x="1" y="0">
 		</map_icon>
 		<bio>Опытный сталкер. Детальная информация отсутствует.</bio>
@@ -495,19 +538,17 @@
 		<rank>400</rank>
 		<reputation>0</reputation>
 
-		<visual>actors\stalker_merc\stalker_merc_2</visual>
+		<visual>actors\stalker_dolg\stalker_dolg2a_mask</visual>
 		<supplies>
 
       [spawn] \n
-      wpn_ak74 = 1 \n
-	  ammo_5.45x39_ap = 1 \n
-      wpn_hpsa \n
-      ammo_9x19_pbp = 1 \n
-      grenade_rgd5 = 3 \n
+
 
 #include "gameplay\character_items_nd.xml"
+#include "gameplay\character_items_4_duty.xml"
 #include "gameplay\character_food.xml"
 #include "gameplay\character_drugs_3.xml"
+#include "gameplay\character_drugs_duty_3.xml"
     </supplies>
 #include "gameplay\character_criticals_4.xml"
 #include "gameplay\character_dialogs.xml"
@@ -515,7 +556,7 @@
 
 	<specific_character id="zat_b5_dealer_assistant_2" team_default="1">
 		<name>GENERATE_NAME_stalker</name>
-		<icon>ui_portret_merc_2</icon>
+		<icon>ui_portret_dolg_3</icon>
 		<map_icon x="1" y="0">
 		</map_icon>
 		<bio>Опытный сталкер. Детальная информация отсутствует.</bio>
@@ -562,19 +603,15 @@
 		<rank>300</rank>
 		<reputation>0</reputation>
 
-		<visual>actors\stalker_bandit\stalker_bandit_2</visual>
+		<visual>actors\stalker_bandit\stalker_bandit3b</visual>
 		<supplies>
       [spawn] \n
 
-      wpn_wincheaster1300 \n
-      ammo_12x76_zhekan = 1 \n
-	  wpn_pm \n
-      ammo_9x18_fmj = 1 \n
-      grenade_rgd5 = 2 \n
 
 #include "gameplay\character_items_nd.xml"
 #include "gameplay\character_food.xml"
-#include "gameplay\character_drugs_2.xml"
+#include "gameplay\character_drugs_3.xml"
+#include "gameplay\character_drugs_bandit_3.xml"
     </supplies>
 #include "gameplay\character_criticals_4.xml"
 #include "gameplay\character_dialogs.xml"
@@ -599,15 +636,13 @@
 		<supplies>
 
       [spawn] \n
-      wpn_beretta = 1 \n
-      wpn_ak74 \n
-      ammo_5.45x39_fmj = 1 \n
-      ammo_9x19_fmj = 1 \n
-      grenade_rgd5 = 2 \n
+
 
 #include "gameplay\character_items_nd.xml"
+#include "gameplay\character_items_4_bandit.xml"
 #include "gameplay\character_food.xml"
 #include "gameplay\character_drugs_2.xml"
+#include "gameplay\character_drugs_bandit_2.xml"
     </supplies>
 #include "gameplay\character_criticals_4.xml"
 #include "gameplay\character_dialogs.xml"
@@ -628,18 +663,16 @@
 		<rank>300</rank>
 		<reputation>0</reputation>
 
-		<visual>actors\stalker_bandit\stalker_bandit_1_face_1</visual>
+		<visual>actors\stalker_bandit\stalker_bandit_2</visual>
 		<supplies>
 
       [spawn] \n
-	  wpn_hpsa \n
-      wpn_mp5 \n
-      ammo_9x19_fmj = 1 \n
-      grenade_rgd5 = 1 \n
+
 
 #include "gameplay\character_items_nd.xml"
 #include "gameplay\character_food.xml"
 #include "gameplay\character_drugs_2.xml"
+#include "gameplay\character_drugs_bandit.xml"
     </supplies>
 #include "gameplay\character_criticals_4.xml"
 #include "gameplay\character_dialogs.xml"
@@ -660,18 +693,17 @@
 		<rank>350</rank>
 		<reputation>0</reputation>
 
-		<visual>actors\stalker_bandit\stalker_bandit_1_face_1</visual>
+		<visual>actors\stalker_bandit\stalker_bandit1c_mask</visual>
 		<supplies>
 
       [spawn] \n
-      wpn_beretta = 1 \n
-      wpn_mp5 \n
-      ammo_9x19_pbp = 1 \n
-      grenade_rgd5 = 1 \n
+
 
 #include "gameplay\character_items_nd.xml"
+#include "gameplay\character_items_4_bandit.xml"
 #include "gameplay\character_food.xml"
 #include "gameplay\character_drugs_2.xml"
+#include "gameplay\character_drugs_bandit.xml"
     </supplies>
 #include "gameplay\character_criticals_4.xml"
 #include "gameplay\character_dialogs.xml"
@@ -1021,15 +1053,12 @@
 		<supplies>
 
         [spawn] \n
-        wpn_sig550 \n
-        ammo_5.56x45_ap = 1 \n
-        wpn_beretta \n
-        ammo_9x19_fmj = 1 \n
-        grenade_rgd5 = 3 \n
+
 
 #include "gameplay\character_items_3_nl.xml"
 #include "gameplay\character_food.xml"
-#include "gameplay\character_drugs_3.xml"
+#include "gameplay\character_drugs_4.xml"
+#include "gameplay\character_drugs_neutral_4.xml"
     </supplies>
 #include "gameplay\character_criticals_4.xml"
 
@@ -1094,8 +1123,10 @@
       	wpn_hpsa \n
 
 #include "gameplay\character_items_nd_nl.xml"
+#include "gameplay\character_items_4_stalker.xml"
 #include "gameplay\character_food.xml"
-#include "gameplay\character_drugs_2.xml"
+#include "gameplay\character_drugs_4.xml"
+#include "gameplay\character_drugs_neutral_3.xml"
     </supplies>
  #include "gameplay\character_criticals_4.xml"
 
@@ -1127,12 +1158,6 @@
 		<visual>actors\stalker_neutral\stalker_neutral_2_unique_1</visual>
 		<supplies>
         [spawn] \n
-
-        wpn_ak74 \n
-        ammo_5.45x39_fmj = 1 \n
-     	wpn_pm  \n
-      	ammo_9x18_fmj = 1 \n
-        grenade_rgd5 = 1 \n
 
 #include "gameplay\character_items_2.xml"
 #include "gameplay\character_food.xml"
@@ -1181,20 +1206,18 @@
 		<snd_config>characters_voice\human_03\killer\</snd_config>
 		<rank>550</rank>
 		<reputation>0</reputation>
-		<visual>actors\stalker_merc\stalker_merc_4</visual>
+		<visual>actors\stalker_merc\stalker_merc2c</visual>
 		<supplies>
 
         [spawn] \n
-		wpn_l85 = 1, scope, silencer \n
-		ammo_5.56x45_ap = 1 \n
-		wpn_walther = 1 \n
-		ammo_9x19_pbp = 1 \n
-		grenade_rgd5 = 3 \n
+		letter_mercenary = 1 \n
 
 #include "gameplay\character_items_nd.xml"
+#include "gameplay\character_items_4_merc.xml"
 #include "gameplay\character_drugs_3.xml"
 #include "gameplay\character_drugs_sci.xml"
 #include "gameplay\character_drugs_mil.xml"
+#include "gameplay\character_drugs_merc_4.xml"
     </supplies>
 
 		<start_dialog>zat_b103_merc_dialog_start</start_dialog>
@@ -1226,13 +1249,13 @@
 		<supplies>
 
         [spawn] \n
-		wpn_mp5 = 1, silencer \n
-		ammo_9x19_pbp = 1 \n
-		wpn_beretta \n
-		grenade_rgd5 = 2 \n
 
 #include "gameplay\character_items_nd.xml"
+#include "gameplay\character_items_4_merc.xml"
 #include "gameplay\character_drugs_3.xml"
+#include "gameplay\character_drugs_sci.xml"
+#include "gameplay\character_drugs_mil.xml"
+#include "gameplay\character_drugs_merc_2.xml"
     </supplies>
 
 #include "gameplay\character_dialogs_no_guide.xml"
@@ -1250,18 +1273,18 @@
 		<snd_config>characters_voice\human_03\killer\</snd_config>
 		<rank>400</rank>
 		<reputation>0</reputation>
-		<visual>actors\stalker_merc\stalker_merc_2</visual>
+		<visual>actors\stalker_merc\stalker_merc2c_mask</visual>
 		<supplies>
 
         [spawn] \n
-		wpn_l85 \n
-		ammo_5.56x45_ss190 = 1 \n
-		wpn_beretta \n
-		ammo_9x19_fmj = 1 \n
-		grenade_rgd5 = 2 \n
+
 
 #include "gameplay\character_items_nd.xml"
+#include "gameplay\character_items_4_merc.xml"
 #include "gameplay\character_drugs_3.xml"
+#include "gameplay\character_drugs_sci.xml"
+#include "gameplay\character_drugs_mil.xml"
+#include "gameplay\character_drugs_merc_2.xml"
     </supplies>
 
 #include "gameplay\character_dialogs_no_guide.xml"
@@ -1279,18 +1302,18 @@
 		<snd_config>characters_voice\human_03\killer\</snd_config>
 		<rank>400</rank>
 		<reputation>0</reputation>
-		<visual>actors\stalker_merc\stalker_merc_2</visual>
+		<visual>actors\stalker_merc\stalker_merc2a</visual>
 		<supplies>
 
         [spawn] \n
-		wpn_ak74 \n
-		ammo_5.45x39_fmj = 1 \n
-		wpn_hpsa \n
-		ammo_9x19_fmj = 1 \n
-		grenade_rgd5 = 2 \n
+
 
 #include "gameplay\character_items_nd.xml"
+#include "gameplay\character_items_4_merc.xml"
 #include "gameplay\character_drugs_3.xml"
+#include "gameplay\character_drugs_sci.xml"
+#include "gameplay\character_drugs_mil.xml"
+#include "gameplay\character_drugs_merc_2.xml"
     </supplies>
 
 #include "gameplay\character_dialogs_no_guide.xml"
@@ -1308,16 +1331,15 @@
 		<snd_config>characters_voice\human_03\killer\</snd_config>
 		<rank>400</rank>
 		<reputation>0</reputation>
-		<visual>actors\stalker_merc\stalker_merc_2</visual>
+		<visual>actors\stalker_bandit\stalker_bandit2a_mask</visual>
 		<supplies>
 
         [spawn] \n
-		wpn_mp5 = 1, silencer \n
-		wpn_beretta \n
-		ammo_9x19_fmj = 1 \n
+
 
 #include "gameplay\character_items_nd.xml"
 #include "gameplay\character_drugs_3.xml"
+#include "gameplay\character_drugs_merc_2.xml"
     </supplies>
 
 #include "gameplay\character_dialogs_no_guide.xml"
@@ -1335,17 +1357,15 @@
 		<snd_config>characters_voice\human_03\killer\</snd_config>
 		<rank>400</rank>
 		<reputation>0</reputation>
-		<visual>actors\stalker_merc\stalker_merc_2</visual>
+		<visual>actors\stalker_bandit\stalker_bandit_1</visual>
 		<supplies>
 
         [spawn] \n
-		wpn_l85 \n
-		ammo_5.56x45_ss190  = 1 \n
-		wpn_hpsa \n
-		ammo_9x19_fmj = 2 \n
+
 
 #include "gameplay\character_items_nd.xml"
 #include "gameplay\character_drugs_3.xml"
+#include "gameplay\character_drugs_merc_2.xml"
     </supplies>
 
 #include "gameplay\character_dialogs_no_guide.xml"
@@ -1363,15 +1383,11 @@
 		<snd_config>characters_voice\human_03\killer\</snd_config>
 		<rank>400</rank>
 		<reputation>0</reputation>
-		<visual>actors\stalker_merc\stalker_merc_2</visual>
+		<visual>actors\stalker_bandit\stalker_bandit1c</visual>
 		<supplies>
 
         [spawn] \n
-		wpn_wincheaster1300  \n
-		ammo_12x76_zhekan = 1 \n
-		wpn_hpsa \n
-		ammo_9x19_fmj = 1 \n
-		grenade_rgd5 = 2 \n
+
 
 #include "gameplay\character_items_nd.xml"
 #include "gameplay\character_drugs_3.xml"
@@ -1390,18 +1406,17 @@
 		<snd_config>characters_voice\human_03\killer\</snd_config>
 		<rank>400</rank>
 		<reputation>0</reputation>
-		<visual>actors\stalker_merc\stalker_merc_2</visual>
+		<visual>actors\stalker_merc\stalker_merc_7</visual>
 		<supplies>
 
         [spawn] \n
-		wpn_ak74 = 1 \n
-		ammo_5.45x39_fmj = 1 \n
-		wpn_beretta \n
-		ammo_9x19_fmj = 1 \n
-		grenade_rgd5 = 2 \n
 
 #include "gameplay\character_items_nd.xml"
+#include "gameplay\character_items_4_merc.xml"
 #include "gameplay\character_drugs_3.xml"
+#include "gameplay\character_drugs_sci.xml"
+#include "gameplay\character_drugs_mil.xml"
+#include "gameplay\character_drugs_merc_4.xml"
     </supplies>
 	</specific_character>
 
@@ -1423,19 +1438,15 @@
 		<money min="1500" max="3500" infinitive="0"/>
 		<reputation>0</reputation>
 
-		<visual>actors\stalker_bandit\stalker_bandit_2</visual>
+		<visual>actors\stalker_bandit\stalker_bandit3c</visual>
 		<supplies>
 
       [spawn] \n
-      wpn_ak74 \n
-      ammo_5.45x39_fmj = 1 \n
-      wpn_beretta \n
-      ammo_9x19_fmj = 1 \n
-      grenade_rgd5 = 2 \n
-
 #include "gameplay\character_items_nd.xml"
+#include "gameplay\character_items_4_bandit.xml"
 #include "gameplay\character_food.xml"
 #include "gameplay\character_drugs_2.xml"
+#include "gameplay\character_drugs_bandit_4.xml"
     </supplies>
 #include "gameplay\character_criticals_4.xml"
 
@@ -1465,19 +1476,15 @@
 		<money min="1500" max="3500" infinitive="0"/>
     	<reputation>0</reputation>
 
-    	<visual>actors\stalker_bandit\stalker_bandit_2</visual>
+    	<visual>actors\stalker_neutral\stalker_neutral_2</visual>
    		<supplies>
       	[spawn] \n
 
-     	wpn_ak74 \n
-    	ammo_5.45x39_fmj = 1 \n      
-     	wpn_hpsa \n
-	   	ammo_9x19_fmj = 1 \n
-    	grenade_rgd5 = 2 \n
 
 #include "gameplay\character_items_nd.xml"
 #include "gameplay\character_food.xml"
 #include "gameplay\character_drugs_2.xml"
+#include "gameplay\character_drugs_bandit_2.xml"
 
    	 </supplies>
 #include "gameplay\character_criticals_4.xml"
@@ -1504,15 +1511,11 @@
    		<supplies>
       	[spawn] \n
 
-     	wpn_wincheaster1300 \n
-    	ammo_12x70_buck = 1 \n      
-     	wpn_beretta \n
-	   	ammo_9x19_fmj = 1 \n
-    	grenade_rgd5 = 2 \n
 
 #include "gameplay\character_items_nd.xml"
 #include "gameplay\character_food.xml"
 #include "gameplay\character_drugs_2.xml"
+#include "gameplay\character_drugs_bandit_2.xml"
 
    	 </supplies>
 #include "gameplay\character_criticals_4.xml"
@@ -1536,20 +1539,15 @@
 		<money min="1500" max="3500" infinitive="0"/>
     	<reputation>0</reputation>
 
-    	<visual>actors\stalker_bandit\stalker_bandit_2</visual>
+    	<visual>actors\stalker_neutral\stalker_neutral_2</visual>
    		<supplies>
       	[spawn] \n
 
-     	wpn_mp5 \n
-		ammo_9x19_fmj = 1 \n
-    	wpn_fort \n
-	   	ammo_9x18_pmm = 1 \n
-    	grenade_rgd5 = 2 \n
 
 #include "gameplay\character_items_2.xml"
 #include "gameplay\character_food.xml"
 #include "gameplay\character_drugs_2.xml"
-
+#include "gameplay\character_drugs_bandit_2.xml"
    	 </supplies>
 #include "gameplay\character_criticals_4.xml"
 #include "gameplay\character_dialogs.xml"
@@ -1571,19 +1569,17 @@
 		<money min="1500" max="3500" infinitive="0"/>
 		<reputation>0</reputation>
 
-		<visual>actors\stalker_neutral\stalker_neutral_2_face_1</visual>
+		<visual>actors\stalker_neutral\stalker_neutral_3</visual>
 		<supplies>
 
       [spawn] \n
-      wpn_ak74 \n
-      ammo_5.45x39_fmj = 1 \n
-      wpn_colt1911 = 1 \n
-      ammo_11.43x23_fmj = 1 \n
-      grenade_rgd5 = 1 \n
 
-#include "gameplay\character_items_2.xml"
+
+#include "gameplay\character_items_3.xml"
+#include "gameplay\character_items_4_stalker.xml"
 #include "gameplay\character_food.xml"
-#include "gameplay\character_drugs_2.xml"
+#include "gameplay\character_drugs_4.xml"
+#include "gameplay\character_drugs_neutral_4.xml"
     </supplies>
 #include "gameplay\character_criticals_4.xml"
 
@@ -1616,18 +1612,16 @@
 		<rank>250</rank>
 		<reputation>0</reputation>
 
-		<visual>actors\stalker_neutral\stalker_neutral_1_face_1</visual>
+		<visual>actors\stalker_neutral\stalker_neutral2b_mask</visual>
 		<supplies>
 
       [spawn] \n
-      wpn_bm16 \n
-      ammo_12x70_buck = 1 \n
-      wpn_pm = 1 \n
-      ammo_9x18_fmj = 1 \n
+
 
 #include "gameplay\character_items.xml"
 #include "gameplay\character_food.xml"
-#include "gameplay\character_drugs.xml"
+#include "gameplay\character_drugs_4.xml"
+#include "gameplay\character_drugs_neutral_4.xml"
     </supplies>
 #include "gameplay\character_criticals_4.xml"
 
@@ -1661,8 +1655,9 @@
 		<supplies>
       [spawn] \n
     </supplies>
-#include "gameplay\character_drugs.xml"
-#include "gameplay\character_criticals_4.xml"
+#include "gameplay\character_drugs_2.xml"
+#include "gameplay\character_drugs_neutral_2.xml"
+#include "gameplay\character_criticals_4.xml" 
   </specific_character>
 
 
@@ -1687,14 +1682,11 @@
 		<supplies>
 
       [spawn] \n
-      wpn_ak74 \n
-      ammo_5.45x39_fmj = 1 \n
-      wpn_fort \n
-      ammo_9x18_fmj = 1 \n
-      grenade_rgd5 = 1 \n
+
 
 #include "gameplay\character_items_nd.xml"
-#include "gameplay\character_drugs.xml"
+#include "gameplay\character_items_4_army.xml"
+#include "gameplay\character_drugs_military_4.xml"
 #include "gameplay\character_drugs_mil.xml"
     </supplies>
 #include "gameplay\character_criticals_4.xml"
@@ -1719,14 +1711,11 @@
 		<supplies>
 
       [spawn] \n
-      wpn_ak74 \n
-      ammo_5.45x39_fmj = 1 \n
-      wpn_fort \n
-      ammo_9x18_fmj = 1 \n
-      grenade_rgd5 = 1 \n
+	  letter_military_log = 1 \n
 
 #include "gameplay\character_items_nd.xml"
-#include "gameplay\character_drugs.xml"
+#include "gameplay\character_items_4_army.xml"
+#include "gameplay\character_drugs_military_3.xml"
 #include "gameplay\character_drugs_mil.xml"
     </supplies>
 #include "gameplay\character_criticals_4.xml"
@@ -1751,14 +1740,11 @@
 		<supplies>
 
       [spawn] \n
-      wpn_ak74 \n
-      ammo_5.45x39_fmj = 1 \n
-      wpn_fort \n
-      ammo_9x18_fmj = 1 \n
-      grenade_rgd5 = 1 \n
+
 
 #include "gameplay\character_items_nd.xml"
-#include "gameplay\character_drugs.xml"
+#include "gameplay\character_items_4_army.xml"
+#include "gameplay\character_drugs_military_3.xml"
 #include "gameplay\character_drugs_mil.xml"
     </supplies>
 #include "gameplay\character_criticals_4.xml"
@@ -1786,16 +1772,14 @@
 		<supplies>
 
 		[spawn] \n
-		wpn_l85 = 1 \n
-		ammo_5.56x45_ap = 1 \n
-		wpn_colt1911 = 1 \n
-		ammo_11.43x23_hydro = 1 \n
-		grenade_f1 = 1 \n
+
 		wpn_binoc \n
 
 #include "gameplay\character_food.xml"
+#include "gameplay\character_items_4_stalker.xml"
 #include "gameplay\character_drugs_3.xml"
 #include "gameplay\character_drugs_sci.xml"
+#include "gameplay\character_drugs_neutral_4.xml"
     </supplies>
 #include "gameplay\character_criticals_4.xml"
 
@@ -1822,21 +1806,19 @@
 		<money min="2000" max="4000" infinitive="0"/>
 		<reputation>0</reputation>
 
-		<visual>actors\stalker_neutral\stalker_neutral_2</visual>
+		<visual>actors\stalker_neutral\stalker_neutral_3</visual>
 		<supplies>
 
 		[spawn] \n
 		device_torch \n
-		wpn_abakan = 1, scope \n
-		ammo_5.56x45_ap = 1 \n
-		wpn_walther \n
-		ammo_9x19_pbp = 1 \n
-		grenade_f1 = 1 \n
+
 		wpn_binoc \n
 
 #include "gameplay\character_food.xml"
+#include "gameplay\character_items_4_stalker.xml"
 #include "gameplay\character_drugs_3.xml"
 #include "gameplay\character_drugs_sci.xml"
+#include "gameplay\character_drugs_neutral_3.xml"
     </supplies>
 #include "gameplay\character_criticals_4.xml"
 
@@ -1863,21 +1845,17 @@
 		<money min="1000" max="2500" infinitive="0"/>
 		<reputation>0</reputation>
 
-		<visual>actors\stalker_neutral\stalker_neutral_2_face_1</visual>
+		<visual>actors\stalker_neutral\stalker_neutral_nauchniy</visual>
 		<supplies>
 
 		[spawn] \n
 		device_torch \n
-		wpn_ak74 \n
-		ammo_5.45x39_fmj = 1 \n
-		wpn_hpsa \n
-		ammo_9x19_pbp = 1 \n
-		grenade_rgd5 = 1 \n
 		detector_elite \n
 		wpn_binoc \n
 
 #include "gameplay\character_food.xml"
 #include "gameplay\character_drugs_2.xml"
+#include "gameplay\character_drugs_neutral_2.xml"
     </supplies>
 #include "gameplay\character_criticals_4.xml"
 
@@ -1902,21 +1880,17 @@
 		<money min="1000" max="2500" infinitive="0"/>
 		<reputation>0</reputation>
 
-		<visual>actors\stalker_neutral\stalker_neutral_2_face_1</visual>
+		<visual>actors\stalker_neutral\stalker_neutral_2_mask</visual>
 		<supplies>
 
 		[spawn] \n
 		device_torch \n
-		wpn_ak74u \n
-	 	ammo_5.45x39_fmj = 1 \n
-		wpn_fort \n
-		ammo_9x18_fmj = 1 \n
-		grenade_rgd5 = 1 \n
 		detector_elite \n
 		wpn_binoc \n
 
 #include "gameplay\character_food.xml"
 #include "gameplay\character_drugs_2.xml"
+#include "gameplay\character_drugs_neutral_2.xml"
     </supplies>
 #include "gameplay\character_criticals_4.xml"
 
@@ -1943,17 +1917,16 @@
 		<visual>actors\stalker_bandit\stalker_bandit_3_unique_2</visual>
 		<supplies>
 		[spawn] \n
-		wpn_wincheaster1300 = 1 \n
+		wpn_spas12 = 1 \n
 		ammo_12x70_buck = 2 \n
-		wpn_colt1911 \n
-		ammo_11.43x23_fmj = 1 \n
-		grenade_f1 = 3 \n
 		af_compass = 2 \n
 		zat_b20_noah_pda =1 \n
-      
+
 #include "gameplay\character_items_3_nl.xml"
+#include "gameplay\character_items_4_stalker.xml"
 #include "gameplay\character_food.xml"
-#include "gameplay\character_drugs.xml"
+#include "gameplay\character_drugs_3.xml"
+#include "gameplay\character_drugs_neutral_4.xml"
     </supplies>
 #include "gameplay\character_criticals_4.xml"
 
@@ -1985,20 +1958,17 @@
 		<rank>500</rank>
 		<reputation>0</reputation>
 
-		<visual>actors\stalker_bandit\stalker_bandit_2</visual>
+		<visual>actors\stalker_bandit\stalker_bandit4b</visual>
 		<supplies>
 
       	[spawn] \n
-		wpn_mp5 \n
-		ammo_9x19_pbp = 1 \n
-		wpn_colt1911 \n
-		ammo_11.43x23_hydro = 1 \n
-		grenade_f1 = 2 \n
 		device_pda_port_bandit_leader = 1 \n
 
-#include "gameplay\character_items_nd.xml"	
+#include "gameplay\character_items_nd.xml"
+#include "gameplay\character_items_4_bandit.xml"
 #include "gameplay\character_food.xml"
-#include "gameplay\character_drugs_2.xml"
+#include "gameplay\character_drugs_3.xml"
+#include "gameplay\character_drugs_bandit_4.xml"
     </supplies>
 #include "gameplay\character_criticals_4.xml"
 #include "gameplay\character_dialogs.xml"
@@ -2021,15 +1991,13 @@
 		<supplies>
 
       	[spawn] \n
-		wpn_desert_eagle = 1 \n
-		ammo_11.43x23_fmj = 1 \n
-		wpn_ak74 = 1 \n
-		ammo_5.45x39_fmj = 1 \n
-    	grenade_rgd5 = 1 \n
+
 
 #include "gameplay\character_items_3.xml"
+#include "gameplay\character_items_4_stalker.xml"
 #include "gameplay\character_food.xml"
-#include "gameplay\character_drugs_3.xml"
+#include "gameplay\character_drugs_4.xml"
+#include "gameplay\character_drugs_neutral_4.xml"
     </supplies>
 #include "gameplay\character_criticals_4.xml"
 
@@ -2066,21 +2034,18 @@
 		<rank>550</rank>
 		<reputation>0</reputation>
 
-		<visual>actors\stalker_merc\stalker_merc_4</visual>
+		<visual>actors\stalker_merc\stalker_mercexo4a</visual>
 		<supplies>
 
       [spawn] \n
-      wpn_l85 = 1, silencer, scope \n
-      ammo_5.56x45_ap = 1 \n
-      wpn_walther \n
-      ammo_9x19_pbp = 1 \n
-      grenade_f1 = 4 \n
       zat_b40_pda_1 \n
 
 #include "gameplay\character_items_nd.xml"
+#include "gameplay\character_items_4_merc.xml"
 #include "gameplay\character_food.xml"
 #include "gameplay\character_drugs_3.xml"
 #include "gameplay\character_drugs_sci.xml"
+#include "gameplay\character_drugs_merc_4.xml"
 
     </supplies>
 #include "gameplay\character_criticals_4.xml"
@@ -2102,21 +2067,18 @@
 		<rank>550</rank>
 		<reputation>0</reputation>
 
-		<visual>actors\stalker_merc\stalker_merc_4</visual>
+		<visual>actors\stalker_merc\stalker_merc_9</visual>
 		<supplies>
 
       [spawn] \n
-      wpn_l85 = 1, scope \n
-      ammo_5.56x45_ap = 1 \n
-      wpn_usp = 1, silencer = 1 \n
-      ammo_11.43x23_hydro = 1 \n
-      grenade_f1 = 4 \n
       zat_b40_pda_2 \n
 
 #include "gameplay\character_items_nd.xml"
+#include "gameplay\character_items_4_merc.xml"
 #include "gameplay\character_food.xml"
 #include "gameplay\character_drugs_3.xml"
 #include "gameplay\character_drugs_sci.xml"
+#include "gameplay\character_drugs_merc_4.xml"
     </supplies>
 #include "gameplay\character_criticals_4.xml"
 #include "gameplay\character_dialogs_no_guide.xml"
@@ -2141,17 +2103,16 @@
 		<supplies>
 
 		[spawn] \n
-		wpn_wincheaster1300 = 1 \n
+		wpn_spas12 = 1 \n
 		ammo_12x70_buck = 2 \n
-		wpn_colt1911 \n
-		ammo_11.43x23_fmj = 1 \n
-		grenade_f1 = 3 \n
 		af_compass = 2 \n
 		zat_b20_noah_pda =1 \n
-      
-#include "gameplay\character_items_2.xml"
+
+#include "gameplay\character_items_3.xml"
+#include "gameplay\character_items_4_stalker.xml"
 #include "gameplay\character_food.xml"
 #include "gameplay\character_drugs_3.xml"
+#include "gameplay\character_drugs_neutral_4.xml"
     </supplies>
 
 		<actor_dialog>actor_break_dialog</actor_dialog>
@@ -2175,21 +2136,17 @@
 		<rank>350</rank>
 		<reputation>0</reputation>
 
-		<visual>actors\stalker_neutral\stalker_neutral_2_face_1</visual>
+		<visual>actors\stalker_neutral\stalker_neutral_2_mask</visual>
 		<supplies>
 
 		[spawn] \n
 		zat_b44_barge_pda =1 \n
-		stalker_outfit_barge =1 \n
-		wpn_ak74 \n
-	 	ammo_5.45x39_fmj = 1 \n
-		wpn_fort \n
-		ammo_9x18_fmj = 1 \n
-		grenade_rgd5 = 1 \n
 
 #include "gameplay\character_items_2.xml"
+#include "gameplay\character_items_4_stalker.xml"
 #include "gameplay\character_food.xml"
 #include "gameplay\character_drugs_3.xml"
+#include "gameplay\character_drugs_neutral_3.xml"
     </supplies>
 #include "gameplay\character_criticals_4.xml"
   </specific_character>
@@ -2212,18 +2169,20 @@
 		<rank>350</rank>
 		<reputation>0</reputation>
 
-		<visual>actors\stalker_neutral\stalker_neutral_2</visual>
+		<visual>actors\stalker_sci_red</visual>
 		<supplies>
 
 		[spawn] \n
 		wpn_binoc \n
-		detector_advanced = 1 \n
+		detector_simple = 1 \n
 		device_torch \n
-		wpn_mp5 \n
-		wpn_beretta = 1 \n
-		ammo_9x19_fmj = 1 \n
-        af_fireball = 1 \n
+        af_fireball_lead_box = 1 \n
 
+#include "gameplay\character_items_3.xml"
+#include "gameplay\character_items_4_stalker.xml"
+#include "gameplay\character_food.xml"
+#include "gameplay\character_drugs_3.xml"
+#include "gameplay\character_drugs_neutral_3.xml"
     </supplies>
 		<start_dialog>zat_b53_artefact_hunter_1_gathering_artefacts</start_dialog>
 #include "gameplay\character_criticals_4.xml"
@@ -2247,18 +2206,17 @@
 		<rank>200</rank>
 		<reputation>0</reputation>
 
-		<visual>actors\stalker_neutral\stalker_neutral_1_face_1</visual>
+		<visual>actors\stalker_neutral\stalker_neutral_1_mask</visual>
 		<supplies>
 
 		[spawn] \n
-		wpn_toz34 \n
-		ammo_12x70_buck = 1 \n
-		wpn_pm \n
-		ammo_9x19_fmj = 1 \n
         medkit = 1 \n
 
-#include "gameplay\character_items_nd.xml"
+#include "gameplay\character_items_3.xml"
+#include "gameplay\character_items_4_stalker.xml"
 #include "gameplay\character_food.xml"
+#include "gameplay\character_drugs_3.xml"
+#include "gameplay\character_drugs_neutral_4.xml"
     </supplies>
 
 		<start_dialog>zat_b53_artefact_hunter_2_gathering_artefacts</start_dialog>
@@ -2279,17 +2237,15 @@
     <rank>250</rank>
 	<money min="250" max="1750" infinitive="0"/>
     <reputation>0</reputation>
-    <visual>actors\stalker_neutral\stalker_neutral_1_face_1</visual>
+    <visual>actors\stalker_neutral\stalker_neutral_nauchniy</visual>
     <supplies>
       [spawn] \n
 
-      wpn_bm16 \n
-      ammo_12x70_buck  = 1 \n
-      wpn_pm = 1 \n
-      ammo_9x18_fmj = 1 \n
 #include "gameplay\character_items.xml"
+#include "gameplay\character_items_4_stalker.xml"
 #include "gameplay\character_food.xml"
-#include "gameplay\character_drugs.xml"
+#include "gameplay\character_drugs_4.xml"
+#include "gameplay\character_drugs_neutral_4.xml"
     </supplies>
 #include "gameplay\character_criticals_4.xml"
   </specific_character>
@@ -2309,14 +2265,10 @@
     <supplies>
       [spawn] \n
 
- 	  wpn_ak74u  \n
-      ammo_5.45x39_fmj = 1 \n
-      wpn_pm \n
-      ammo_9x18_fmj = 1 \n
-      grenade_rgd5 = 1 \n
 #include "gameplay\character_items.xml"
 #include "gameplay\character_food.xml"
 #include "gameplay\character_drugs_2.xml"
+#include "gameplay\character_drugs_neutral_2.xml"
     </supplies>
 #include "gameplay\character_criticals_4.xml"
   </specific_character>
@@ -2335,15 +2287,14 @@
     <visual>actors\stalker_neutral\stalker_neutral_3</visual>
     <supplies>
       [spawn] \n
-      
-	  wpn_usp \n
-      ammo_11.43x23_hydro = 1 \n
-      grenade_f1 = 3 \n
+
 
 #include "gameplay\character_items_2.xml"
+#include "gameplay\character_items_4_stalker.xml"
 #include "gameplay\character_food.xml"
 #include "gameplay\character_drugs_3.xml"
 #include "gameplay\character_drugs_sci.xml"
+#include "gameplay\character_drugs_neutral_3.xml"
     </supplies>
 #include "gameplay\character_criticals_4.xml"
   </specific_character>
@@ -2367,14 +2318,13 @@
 		<supplies>
 
       [spawn] \n
-      wpn_ak74 \n
-      ammo_5.45x39_fmj = 1 \n
-      wpn_fort \n
-      ammo_9x18_fmj = 1 \n
+
 
 #include "gameplay\character_items_nd.xml"
-#include "gameplay\character_drugs.xml"
+#include "gameplay\character_items_4_army.xml"
+#include "gameplay\character_drugs_3.xml"
 #include "gameplay\character_drugs_mil.xml"
+#include "gameplay\character_drugs_military_4.xml"
     </supplies>
 #include "gameplay\character_criticals_4.xml"
   </specific_character>
@@ -2398,15 +2348,13 @@
 		<supplies>
 
       [spawn] \n
-      wpn_ak74u \n
-      ammo_5.45x39_fmj = 1 \n
-      wpn_fort \n
-      ammo_9x18_fmj = 1 \n
-      grenade_rgd5 = 1 \n
+
 
 #include "gameplay\character_items_nd.xml"
-#include "gameplay\character_drugs.xml"
+#include "gameplay\character_items_4_army.xml"
+#include "gameplay\character_drugs_3.xml"
 #include "gameplay\character_drugs_mil.xml"
+#include "gameplay\character_drugs_military_4.xml"
     </supplies>
 #include "gameplay\character_criticals_4.xml"
   </specific_character>
@@ -2430,18 +2378,70 @@
 		<supplies>
 
       [spawn] \n
-      wpn_ak74 \n
-      ammo_5.45x39_fmj = 1 \n
-      wpn_pm \n
-      ammo_9x18_fmj = 1 \n
-      grenade_rgd5 = 2 \n
+
 
 #include "gameplay\character_items_nd.xml"
-#include "gameplay\character_drugs.xml"
+#include "gameplay\character_items_4_army.xml"
+#include "gameplay\character_drugs_3.xml"
 #include "gameplay\character_drugs_mil.xml"
+#include "gameplay\character_drugs_military_4.xml"
     </supplies>
 #include "gameplay\character_criticals_4.xml"
   </specific_character>
 
+ <specific_character id="zat_stalker_medic" team_default="1">
+		<name>zat_stalker_medic</name>
+		<icon>ui_inGame2_neutral_1</icon>
+		<map_icon x="1" y="0">
+		</map_icon>
+		<bio>Опытный сталкер. Детальная информация отсутствует.</bio>
+		<class>zat_stalker_medic</class>
+		<community>stalker</community>
+		<terrain_sect>stalker_terrain</terrain_sect>
+		<snd_config>characters_voice\human_03\stalker\</snd_config>
+		<rank>50</rank>
+		<reputation>0</reputation>
+		<money min="480000" max="480000" infinitive="1" />
+		<visual>actors\stalker_neutral\stalker_medic</visual>
+		<supplies>
+                 [spawn] \n
+#include "gameplay\character_items_nd_nl.xml"
+#include "gameplay\character_food.xml"
+#include "gameplay\character_drugs_2.xml"
+             	</supplies>
+        <start_dialog>zat_stalker_medic_dialog_start</start_dialog>
+	<actor_dialog>zat_stalker_medic_health_care_dialog</actor_dialog>
+		<actor_dialog>actor_break_dialog</actor_dialog>
+#include "gameplay\character_criticals_4.xml"
+
+</specific_character>
+
+	<specific_character id="zat_b5_prisoner" team_default="1">
+		<name>GENERATE_NAME_stalker</name>
+		<icon>ui_inGame2_neutral_1</icon>
+		<map_icon x="1" y="0">
+		</map_icon>
+		<bio>Опытный сталкер. Детальная информация отсутствует.</bio>
+
+		<class>zat_b5_prisoner</class>
+		<community>stalker</community>
+		<terrain_sect>stalker_terrain</terrain_sect>
+		<snd_config>characters_voice\human_01\stalker\</snd_config>
+
+		<rank>25</rank>
+		<reputation>0</reputation>
+
+		<visual>actors\stalker_neutral\stalker_neutral0c</visual>
+		<supplies>
+      [spawn] \n
+#include "gameplay\character_items.xml"
+#include "gameplay\character_items_4_stalker.xml"
+#include "gameplay\character_food.xml"
+#include "gameplay\character_drugs_2.xml"
+#include "gameplay\character_drugs_neutral_2.xml"
+    </supplies>
+#include "gameplay\character_criticals_4.xml"
+#include "gameplay\character_dialogs.xml"
+	</specific_character>
 
 </xml>
