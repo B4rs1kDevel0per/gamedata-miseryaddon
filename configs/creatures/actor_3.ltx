@@ -1,23 +1,5 @@
-[actor_terrain_3]
-        255,255,000,255
+[actor_3]:actor
 
-[actor_3]:common_ph_friction_params_on_npc_death
-GroupControlSection                = spawn_group
-$spawn                                         = "actor"
-$ed_icon                                = ed\ed_actor
-$player                                 = on
-$prefetch                                 = 16
-cform                   = skeleton
-class                   = S_ACTOR
-money                                        = 15000;
-rank                                        = 3;
-script_binding                        = bind_stalker.actor_init
-visual                            = actors\stalker_mp\stalker_neutral_1.ogf
-destroyed_vis_name                = dynamics\Dead_Body\skelet_crash
-
-player_hud_section      = actor_hud
-
-terrain                                        = actor_terrain_3
 
 ;---ACCEL---------------------------------------------
 walk_accel              = 8
