@@ -309,6 +309,13 @@ hit_fraction_npc				= 0.38
 [stalker_zombied_4]:body_damage_4,head_damage_0
 hit_fraction_npc				= 0.28
 
+;***************************************************************
+; new BODY SECTIONS
+;***************************************************************
+
+[stalker_freedom_5]:body_damage_4,head_damage_4
+hit_fraction_npc				= 0.18
+
 
 ;***************************************************************
 ; ACTOR BODY SECTIONS
@@ -473,6 +480,29 @@ bip01_l_foot	 	 		= 1.8, 1.25 ; CLASS V
 bip01_r_thigh	 	 		= 1.5, 1.2 ; CLASS V
 bip01_r_calf	 	 		= 1.7, 1.2 ; CLASS V
 bip01_r_foot	 	 		= 1.8, 1.25 ; CLASS V
+
+[actor_body_damage_exo_dolg]
+bip01_pelvis 				= 1.0, 0.8
+bip01_spine 		 		= 1.0, 0.8
+bip01_spine1 		 		= 1.0, 0.8
+bip01_spine2 		 		= 1.0, 0.8
+
+bip01_l_clavicle	 		= 1.0, 0.8
+bip01_l_upperarm	 		= 1.0, 0.8
+bip01_l_forearm	 	 		= 1.0, 0.8
+bip01_l_hand	 	 		= 1.0, 0.8
+
+bip01_r_clavicle	 		= 1.0, 0.8
+bip01_r_upperarm	 		= 1.0, 0.8
+bip01_r_forearm	 	 		= 1.0, 0.8
+bip01_r_hand	 	 		= 1.0, 0.8
+
+bip01_l_thigh	 	 		= 1.0, 0.8
+bip01_l_calf	 	 		= 1.0, 0.8
+bip01_l_foot	 	 		= 1.0, 0.8
+bip01_r_thigh	 	 		= 1.0, 0.8
+bip01_r_calf	 	 		= 1.0, 0.8
+bip01_r_foot	 	 		= 1.0, 0.8
 
 
 ;***************************************************************
@@ -651,11 +681,13 @@ jaw_1 		 		 		= 1.3, 0.75 ; CLASS III
 [actor_armor_medium_with_helmet]:actor_body_damage_medium, actor_head_damage_tactic
 
 [actor_armor_ghillie]:actor_body_damage_light
+
 [actor_armor_heavy]:actor_body_damage_heavy
 
 [actor_armor_sci]:actor_body_damage_sci, actor_head_damage_sci
 
 [actor_armor_exo]:actor_body_damage_exo
+[actor_armor_exo_dolg]:actor_body_damage_exo_dolg, actor_head_damage_battle
 
 ;***************************************************************
 ; ACTOR HELM SECTIONS
@@ -685,6 +717,7 @@ jaw_1 		 		 		= 1.3, 0.75 ; CLASS III
 [actor_armor_light_add_4]:actor_head_damage_hardhat
 
 [actor_armor_light_add_5]:actor_head_damage_tactic
+
 [actor_armor_medium_add_1]:actor_body_damage_add_1, actor_head_damage_zero
 
 [actor_armor_medium_add_2]:actor_body_damage_add_2, actor_head_damage_zero
