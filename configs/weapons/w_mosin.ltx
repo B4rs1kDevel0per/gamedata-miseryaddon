@@ -1,0 +1,437 @@
+[wpn_mosin]:identity_immunities,weapon_probability,default_weapon_params
+GroupControlSection			= spawn_group
+$spawn                   	= "weapons\mosin"					; option for Level Editor
+$npc			 			= on				; option for Level Editor
+$prefetch 		 			= 8
+scheduled                	= off              ; option for ALife Simulator
+cform                    	= skeleton
+class                    	= WP_SHOTG
+description					= gunsl_wpn_mosin_descr
+
+ef_main_weapon_type			= 1
+ef_weapon_type				= 7
+
+repair_group = w1300
+
+def_hide_bones = wpn_scope, wpn_silencer
+def_show_bones = magazin, priklad, priklad1
+
+ammo_in_chamber = true
+;----------------------------------------------------------------------------
+cost					 	= 19660
+weapon_class			 	= shotgun
+inv_weight					= 4.5
+
+installed_upgrades = 
+upgrade_scheme				= upgrade_scheme_mosin
+
+banned_upgrades = up_saiga12_
+
+;--TTX----------------------------------------------------------------------------
+hit_power        		= 1.45, 1.45, 1.45, 1.45
+hit_impulse      		= 190
+hit_type 			= fire_wound
+fire_distance            	= 900
+bullet_speed			= 850		;начальная скорость пули
+rpm                      	= 100            ;60 = 1 секунда
+rpm_empty_click 	   	= 200
+
+hud                      	= wpn_mosin_hud
+
+misfire_probability        = 0.005 ;вероятность осечки при максимальном износе  !!!old - now not working
+;изношенность, при которой появляется шанс осечки
+misfire_start_condition		= 0.76
+;изношеность при которой шанс осечки становится константным
+misfire_end_condition		= 0.1
+;шанс осечки при изношености больше чем misfireStartCondition
+misfire_start_prob	     	= 0.002
+;шанс осечки при изношености больше чем misfireEndCondition
+misfire_end_prob	     	= 0.25
+;увеличение изношености при одиночном выстреле
+condition_shot_dec      	= 0.0002
+;увеличение изношености при выстреле очередью
+condition_queue_shot_dec	= 0.0035
+
+tri_state_reload			= on
+
+ammo_elapsed		 		= 5
+ammo_mag_size		 		= 5
+ammo_class		 			= ammo_7.62x54_7h1, ammo_7.62x54_7h14, ammo_7.62x54_ap
+fire_modes					= 1
+
+;--дисперсия----------------------------------------------------------------------------
+;базовая дисперсия
+fire_dispersion_base		= 0.20  ;угол (в градусах) базовой дисперсии оружия (оружия зажатого в тисках)
+control_inertion_factor		= 1.5f
+crosshair_inertion			= 9.3
+
+;отдача
+cam_return				= 1
+cam_relax_speed         = 15	;скорость возврата в исходное положение
+cam_relax_speed_ai      = 360
+cam_dispersion          = 3.55	;увеличения угла (в градусах) с каждым выстрелом
+cam_dispersion_inc		= 2.9	;увеличениe cam_dispersion с каждым выстрелом
+cam_dispersion_frac		= 1.7
+cam_max_angle			= 50.0	;максимальный угол отдачи
+cam_max_angle_horz		= 50.0	;(degree) maximum shot horizontal degree
+cam_step_angle_horz		= 2.3	;(degree) size of step camera moved in horizontal position while shooting
+
+PDM_disp_base 				= 2.8
+PDM_disp_vel_factor 		= 2.0
+PDM_disp_accel_factor 		= 2.0
+PDM_disp_crouch	 				= 1.0
+PDM_disp_crouch_no_acc 			= 1.0
+
+zoom_cam_relax_speed		= 15     ; scope & ironsight
+zoom_cam_relax_speed_ai		= 360
+zoom_cam_dispersion			= 3.55
+zoom_cam_dispersion_inc		= 2.9
+zoom_cam_dispersion_frac	= 1.7
+zoom_cam_max_angle			= 50.0
+zoom_cam_max_angle_horz		= 50.0
+zoom_cam_step_angle_horz	= 2.3
+
+fire_dispersion_condition_factor = 10	;увеличение дисперсии в процентах при максимальном износе
+
+;---DOF-------------------------------------------------------------------------
+;zoom_dof				= 0.5, 1.0, 350
+reload_dof				= 0.0, 0.5, 5, 2.2
+;-------------------------------------------------------------------------------
+holder_range_modifier	= 2.15               ; во сколько раз увеличивается eye_range
+holder_fov_modifier		= 1.0              ; во сколько раз увеличивается eye_fov
+
+min_radius               	= 0
+max_radius               	= 50
+
+hit_probability_gd_novice	= 1.0
+hit_probability_gd_stalker	= 1.0
+hit_probability_gd_veteran	= 1.0
+hit_probability_gd_master	= 1.0
+
+;-------------------------------------------------------------------------------
+position                 	= -0.024, -0.097, 0.
+orientation              	= 0, -4, 0      ;значение устанавливается в градусах
+
+position_new_anm                = -0.051, -0.083, -0.006
+orientation_new_anm             = -4, -13, 18
+
+shell_point				= 0, 0, -0.25
+shell_particles         = weapons\generic_shells_r
+
+fire_point              = 0.0, 0.158, 0.647
+fire_point2				= 0.0, 0.158, 0.647
+hand_dependence 	 		= 1
+single_handed				= 0
+
+slot 				 		= 2		; // secondary
+animation_slot		 		= 9		; type of the animation that will be used
+use_third_person_anims      = true               ; нужно ли использовать анимацию на мировой модели оружия / есть ли idle анимация
+
+inv_name					= gunsl_wpn_mosin
+inv_name_short				= gunsl_wpn_mosin
+
+inv_grid_width				= 5
+inv_grid_height				= 2
+inv_grid_x					= 0
+inv_grid_y					= 4
+
+upgr_icon_x			= 8
+upgr_icon_y			= 677
+upgr_icon_width		= 287
+upgr_icon_height   	= 135
+
+kill_msg_x				= 0
+kill_msg_y				= 4
+kill_msg_width			= 101
+kill_msg_height			= 30
+
+flame_particles		   	= weapons\generic_weapon05
+smoke_particles		   	= weapons\generic_shoot_00
+
+;--STRAP PARAMETERS-----------------------------------------------------------------
+;под мишкой
+strap_position         		= -0.26,-0.10,0.05			; position (offset) and orientation of the weapon when it is strapped
+strap_orientation      		= -15,-9,110				; (3rd person view in degrees)
+strap_bone0					= bip01_spine2
+strap_bone1					= bip01_spine1
+
+startup_ammo             	= 5
+visual                          = dynamics\weapons\wpn_mosin\wpn_mosin.ogf
+
+light_color		 			= 0.6,0.5,0.3
+light_range		 			= 6.0
+light_var_color		 		= 0.05
+light_var_range		 		= 0.5
+light_time 		 			= 0.2
+
+ph_mass			 			= 3
+
+;addons
+scope_status			= 2
+silencer_status			= 0
+grenade_launcher_status		= 0
+
+
+;silencer_name  = wpn_addon_silencer_hexagon12    
+;silencer_x = 200
+;silencer_y  = 18
+;silencer_light_color    = 0.6,0.5,0.3
+;silencer_light_range    = 0.01
+;silencer_light_var_color= 0.05
+;silencer_light_var_range= 0.01
+;silencer_light_time     = 0.01
+;silencer_smoke_particles   = weapons\generic_shoot_00
+
+scopes_sect		= scope_pu_mosin
+
+zoom_enabled            = true                                               
+zoom_rotate_time	= 0.25
+scope_zoom_factor	= 85
+ironsight_zoom_factor   = 85
+
+;звуки
+snd_draw		    = weapons\winchester1300\mechanics\winchester1300_draw
+snd_holster		    = weapons\winchester1300\mechanics\winchester1300_hide
+snd_shoot		    = weapons\mosin\mosin
+snd_shoot1		    = weapons\mosin\mosin
+snd_shoot2		    = weapons\mosin\mosin
+snd_silncer_shot        = weapons\mosin\mosin_silenced
+snd_silncer_shot1        = weapons\mosin\mosin_silenced
+snd_silncer_shot2        = weapons\mosin\mosin_silenced
+snd_breechblock = weapons\mosin\mosin_zatvor
+snd_breechblock1 = weapons\mosin\mosin_zatvor
+snd_breechblock2 = weapons\mosin\mosin_zatvor
+snd_jam = weapons\mosin\mosin_zatvo
+snd_jammed_click			= weapons\winchester1300\mechanics\winchester1300_check
+
+snd_empty					= weapons\glock17\glock17_dry
+snd_empty1					= weapons\glock17\glock17_dry
+snd_reload		    = weapons\winchester1300\mechanics\winchester1300_reload_start_1
+snd_reload_jammed       = weapons\mosin\mosin_misfire
+snd_shoot_duplet	    = weapons\winchester1300\layers\winchester1300_shoot
+snd_changecartridgetype     = weapons\winchester1300\mechanics\winchester1300_reload_start_1
+
+snd_open_weapon             = weapons\mosin\mosin_reload_start
+snd_open_weapon1             = weapons\mosin\mosin_reload_start
+snd_open_weapon_empty       = weapons\mosin\mosin_reload_start
+snd_add_cartridge	    = weapons\mosin\mosin_reload
+snd_add_cartridge1	    = weapons\mosin\mosin_reload
+snd_add_cartridge2	    = weapons\mosin\mosin_reload
+snd_add_cartridge3	    = weapons\mosin\mosin_reload
+snd_add_cartridge4	    = weapons\mosin\mosin_reload
+snd_add_cartridge5	    = weapons\mosin\mosin_reload
+snd_add_cartridge_empty     = weapons\mosin\mosin_reload
+snd_add_cartridge_preloaded = weapons\mosin\mosin_reload
+snd_close_weapon            = weapons\mosin\mosin_reload_end
+snd_close_weapon_empty      = weapons\mosin\mosin_reload_end
+snd_close_weapon_preloaded  = weapons\mosin\mosin_reload_end
+snd_aim_start           = weapons\aimin\aim_in_6
+snd_aim_end             = weapons\aimout\aim_out_6
+
+wanm_idle_empty = idle
+wanm_idle_jammed = idle
+wanm_shoot_last = shoot
+
+[wpn_mosin_hud]:hud_base
+
+hud_fov = 0.75
+
+shell_point			= = 0, 0, -0.25
+shell_dir                     	= 0.0, 1.0, 0.0
+shell_bone			= wpn_body
+
+
+fire_point		= -0.002, 0.034, 1.109
+fire_bone			= wpn_body
+
+
+attach_place_idx		= 0
+item_visual                   	= dynamics\weapons\wpn_mosin\wpn_mosin_hud
+
+hands_position			= 0.045, -0.045, -0.034
+hands_orientation			= 0.0,0.0,0.0
+
+hands_position_16x9 = 0.045, -0.045, -0.034
+hands_orientation_16x9 = 0.0,0.0,0.0
+
+aim_hud_offset_pos = -0.138, 0.029, -0.225
+aim_hud_offset_rot = -0.0055, -0.0005, 0.0
+
+aim_hud_offset_pos_16x9 = -0.138, 0.065, -0.126
+aim_hud_offset_rot_16x9 = -0.0065, 0.0, 0.0
+
+
+item_position				= 0.0,0.0,0.0
+item_orientation			= 0.0,0.0,0.0
+
+disable_bore = true                                            ;отключение анимации скуки
+
+;Доставание///////////////////////////////////////////////////
+anm_show                   = mosin_draw, idle
+anm_show_empty             = mosin_draw, idle_empty
+anm_show_jammed            = mosin_draw, idle
+
+;Убирание/////////////////////////////////////////////////////
+anm_hide                   = mosin_hide, idle
+anm_hide_empty             = mosin_hide, idle_empty
+anm_hide_jammed            = mosin_hide, idle
+
+;Бездействие//////////////////////////////////////////////////
+anm_idle                            = mosin_idle, idle
+anm_idle_empty                      = mosin_idle, idle_empty
+anm_idle_jammed                     = mosin_idle, idle
+
+;Бездействие в прицеливании///////////////////////////////////
+anm_idle_aim_start             = mosin_aim_start
+anm_idle_aim_start_empty       = mosin_aim_start
+anm_idle_aim_start_jammed      = mosin_aim_start
+
+anm_idle_aim                   = mosin_idle_aim, idle
+anm_idle_aim_empty             = mosin_idle_aim, idle_empty
+anm_idle_aim_jammed            = mosin_idle_aim, idle
+anm_idle_aim_scope             = mosin_idle_aim, idle_aim
+anm_idle_aim_scope_empty       = mosin_idle_aim, idle_aim
+anm_idle_aim_scope_jammed      = mosin_idle_aim, idle_aim
+
+anm_idle_aim_end               = mosin_aim_end
+anm_idle_aim_end_empty         = mosin_aim_end, idle_empty
+anm_idle_aim_end_jammed        = mosin_aim_end, idle
+
+enable_directions_anm_idle_aim = true
+
+;Ходьба ВПЕРЕД//////////////////////////////////////////////////////////////////////////
+anm_idle_moving 					= mosin_walk, idle
+anm_idle_moving_jammed 					= mosin_walk, idle
+anm_idle_moving_empty					= mosin_walk, idle_empty
+
+;Ходьба медленная (SHIFT) ВПЕРЕД//////////////////////////////////////////////////////////////////////////
+anm_idle_moving_slow 					= mosin_walk_slow, idle
+anm_idle_moving_slow_jammed 			= mosin_walk_slow, idle
+anm_idle_moving_slow_empty				= mosin_walk_slow, idle_empty
+
+;Ходьба в полуприсяди (CTRL) ВПЕРЕД//////////////////////////////////////////////////////////////////////////
+anm_idle_moving_crouch 					        = mosin_walk_slow_down, idle
+anm_idle_moving_crouch_jammed 					= mosin_walk_slow_down, idle
+anm_idle_moving_crouch_empty					= mosin_walk_slow_down, idle_empty
+
+;Ходьба в присяде (CTRL+SHIFT) ВПЕРЕД/////////////////////////////////////////////////////////////////////////
+anm_idle_moving_crouch_slow 					= mosin_walk_slow_down, idle
+anm_idle_moving_crouch_slow_jammed 				= mosin_walk_slow_down, idle
+anm_idle_moving_crouch_slow_empty				= mosin_walk_slow_down, idle_empty
+
+;ходьба в прицеливании ВПЕРЕД//////////////////////////////////////////////////////////////////
+anm_idle_aim_moving_forward			= mosin_walk_aim, idle
+anm_idle_aim_moving_forward_empty	= mosin_walk_aim, idle
+anm_idle_aim_moving_forward_jammed	= mosin_walk_aim, idle
+
+;ходьба в прицеливании НАЗАД//////////////////////////////////////////////////////////////////
+anm_idle_aim_moving_back			= mosin_walk_aim, idle
+anm_idle_aim_moving_back_empty		= mosin_walk_aim, idle
+anm_idle_aim_moving_back_jammed		= mosin_walk_aim, idle
+
+
+;ходьба в прицеливании ВЛЕВО//////////////////////////////////////////////////////////////////
+anm_idle_aim_moving_left			= mosin_walk_aim, idle
+anm_idle_aim_moving_left_empty		= mosin_walk_aim, idle
+anm_idle_aim_moving_left_jammed		= mosin_walk_aim, idle
+
+
+;ходьба в прицеливании ВПРАВО//////////////////////////////////////////////////////////////////
+anm_idle_aim_moving_right			= mosin_walk_aim, idle
+anm_idle_aim_moving_right_empty		= mosin_walk_aim, idle
+anm_idle_aim_moving_right_jammed	= mosin_walk_aim, idle
+ 
+
+;ходьба в прицеливании ВПЕРЕД+ВЛЕВО////////////////////////////////////////////////////////////
+anm_idle_aim_moving_forward_left			= mosin_walk_aim, idle
+anm_idle_aim_moving_forward_left_empty		= mosin_walk_aim, idle
+anm_idle_aim_moving_forward_left_jammed		= mosin_walk_aim, idle
+
+
+;ходьба в прицеливании ВПЕРЕД+ВПРАВО///////////////////////////////////////////////////////////
+anm_idle_aim_moving_forward_right			= mosin_walk_aim, idle
+anm_idle_aim_moving_forward_right_empty		= mosin_walk_aim, idle
+anm_idle_aim_moving_forward_right_jammed	= mosin_walk_aim, idle
+
+
+;ходьба в прицеливании НАЗАД+ВЛЕВО/////////////////////////////////////////////////////////////
+anm_idle_aim_moving_back_left			= mosin_walk_aim, idle
+anm_idle_aim_moving_back_left_empty		= mosin_walk_aim, idle
+anm_idle_aim_moving_back_left_jammed	= mosin_walk_aim, idle
+
+
+;ходьба в прицеливании НАЗАД+ВПРАВО////////////////////////////////////////////////////////////
+anm_idle_aim_moving_back_right				= mosin_walk_aim, idle
+anm_idle_aim_moving_back_right_empty		= mosin_walk_aim, idle
+anm_idle_aim_moving_back_right_jammed		= mosin_walk_aim, idle
+
+;ходьба в прицеливании при надетом прицеле////////////////////////////////////////////////////
+anm_idle_aim_scope_moving		        = mosin_walk_aim, idle
+anm_idle_aim_scope_moving_empty	        = mosin_walk_aim, idle
+anm_idle_aim_scope_moving_jammed	    = mosin_walk_aim, idle
+
+
+;Бег//////////////////////////////////////////////////////////////////
+anm_idle_sprint_start 				= mosin_sprint_start
+anm_idle_sprint_start_empty       = mosin_sprint_start, idle_empty
+anm_idle_sprint_start_jammed      = mosin_sprint_start, idle
+
+anm_idle_sprint                   = mosin_sprint
+anm_idle_sprint_empty             = mosin_sprint, idle_empty
+anm_idle_sprint_jammed            = mosin_sprint, idle
+
+anm_idle_sprint_end             = mosin_sprint_end
+anm_idle_sprint_end_empty       = mosin_sprint_end, idle_empty
+anm_idle_sprint_end_jammed      = mosin_sprint_end, idle
+
+;Скука////////////////////////////////////////////////////////////////////
+anm_bore                   = mosin_idle_aim, idle
+anm_bore_empty             = mosin_idle_aim, idle_empty
+anm_bore_jammed            = mosin_idle_aim, idle
+
+;Выстрелы обычными патронами/////////////////////////////////////////////////////////////////////
+anm_shoot                = mosin_shoot, shoot
+anm_shoot_jammed	 = mosin_shoot, shoot
+anm_shoot_last			 = mosin_shoot, shoot
+anm_shoot_aim            = mosin_shoot_aim, shoot
+anm_shoot_aim_jammed	 = mosin_shoot_aim, shoot
+anm_shoot_aim_last		 = mosin_shoot_aim, shoot
+anm_shoot_aim_scope		 = mosin_shoot_aim, shoot
+anm_shoot_aim_scope_last = mosin_shoot_aim, shoot
+anm_shoot_aim_scope_jammed       = mosin_shoot_aim, shoot
+
+;Осечка//////////////////////////////////////////////////
+anm_fakeshoot_empty      = mosin_shoot_last, idle
+anm_fakeshoot_aim_empty      = mosin_shoot_aim, idle
+anm_fakeshoot_jammed     = mosin_shoot_last, idle
+anm_fakeshoot_aim_jammed     = mosin_shoot_aim, idle
+
+;Перезарядка/////////////////////////////////////////////////////////////////////
+anm_open                                 = mosin_reload_full_start, reload_full_start_unempty
+anm_open_empty                                 = mosin_reload_full_start, reload_full_start
+anm_add_cartridge                        = mosin_reload, reload
+anm_add_cartridge_empty                        = mosin_reload, reload_first
+anm_add_cartridge_preloaded		    			= mosin_reload, reload
+anm_add_cartridge_empty_preloaded 				= mosin_reload, reload
+anm_open_jammed			= mosin_reload_full_start
+anm_reload_jammed                    = mosin_misfire, misfire
+anm_reload_jammed_last               = mosin_misfire, misfire
+anm_close                                = mosin_reload_end, reload_end
+
+[scope_pu_mosin]
+scope_name              = wpn_addon_scope_pu
+scope_x                  = 56                 ; offset in inventory icon
+scope_y                 = 4
+bone = wpn_scope
+hud_fov_zoom = 0.4
+use_scope_anims = true ;говорит, что надо использовать анимации с суффиксом _scope в прицеливании с данным прицелом
+
+inertion_aim_origin_offset = 0.02
+inertion_aim_speed = 8
+
+aim_hud_offset_pos = -0.138000,0.029000,-0.225000
+aim_hud_offset_rot = -0.005500,-0.000500,0.000000
+aim_hud_offset_pos_16x9 = -0.138000,0.029000,-0.225000
+aim_hud_offset_rot_16x9 = -0.005500,-0.000500,0.000000
+
+
