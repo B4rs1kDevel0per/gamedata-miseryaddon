@@ -1,7 +1,7 @@
 #include "car_spawns.ltx"
 #include "defines.ltx"
 #include "prefetch\prefetch.ltx"
-#include "environment\environment.ltx"
+;#include "weathers\environment.ltx"
 #include "creatures\monsters.ltx"
 #include "creatures\stalkers.ltx"
 #include "weapons\weapons.ltx"
@@ -9,17 +9,13 @@
 #include "misc\items.ltx"
 #include "misc\common_items.ltx"
 
-
-
-
-
 #include "creatures\actor.ltx"
 #include "zones\zones.ltx"
 #include "misc\postprocess.ltx"
 
 #include "misc\outfit.ltx"
 #include "misc\achievements.ltx"
-;#include "misc\artefacts.ltx"
+#include "misc\artefacts.ltx"
 #include "misc\devices.ltx"
 #include "misc\radiation_counter.ltx"
 #include "misc\quest_items.ltx"
@@ -33,12 +29,8 @@
 
 #include "creatures\game_relations.ltx"
 
-#include "creatures\actor_2.ltx"
-#include "mp\mp_actor_2.ltx"
-
 #include "mp\mp_actor.ltx"
 #include "mp\team_logo.ltx"
-
 #include "mp\weapons_mp\ammo_mp.ltx"
 #include "mp\weapons_mp\weapons_mp.ltx"
 #include "mp\weapons_mp\outfit_mp.ltx"
@@ -214,16 +206,16 @@ min_burn_time = 10000   ;минимальное времљ отvгрvша партиклов (даже если рана уж
 
 [hud_cursor]
 ;все размерv в процентах от длинv экрана
-cross_length    = 0.000         ;длина "палочки" прицела
+cross_length    = 0.006         ;длина "палочки" прицела
 min_radius      = 0.0         ;минимальнvй радиус прицела (при нулевой дисперсии)
-max_radius      = 0.0         ;максимальнvй радиус
-radius_lerp_speed = 0.0          ;скорость интерполљции положений прицела
+max_radius      = 0.8         ;максимальнvй радиус
+radius_lerp_speed = 0.14          ;скорость интерполљции положений прицела
 cross_color     = 0.7,0.7,0.7,0.5   ;цвет прицела
-disp_scale      = 0.00          ;масштаб прицела (относительно радиан)
+disp_scale      = 0.08          ;масштаб прицела (относительно радиан)
 
 [hud_hitmark]
 hit_mark_texture    = ui\ui_hud_hit_mark; ui\ui_empty
-grenade_mark_texture    = ui\ui_hud_hit_mark
+grenade_mark_texture    = ui\ui_hud_grenade_mark
 ;ui\ui_hud_hit_mark
 ;ui\ui_hud_hit_mark_01
 ;ui\ui_hud_hit_mark_02
