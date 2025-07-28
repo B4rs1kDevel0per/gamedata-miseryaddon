@@ -1,0 +1,320 @@
+<w>
+		
+    <file name="ui\ui_actor_ingame">
+		<!--<texture id="ui_ingame_task_icon_big" x="268" y="244" width="30" height="30" />-->
+	
+		<texture id="ui_ingame_hud_yellow_bar" x="72" y="142" width="156" height="2" />
+		<texture id="ui_ingame_hud_yellow_bar_bcg" x="68" y="128" width="164" height="10" />
+
+		<texture id="ui_ingame_hud_squad_voice" x="308" y="214" width="20" height="20" />
+		<texture id="ui_ingame_hud_squad_mute" x="330" y="214" width="20" height="20" />
+
+		<texture id="ui_ingame_hud_item_count_back" x="0" y="178" width="50" height="16" />
+		
+		<texture id="ui_ingame_circle_radiation_green" x="345" y="315" width="17" height="19" />
+		<texture id="ui_ingame_circle_radiation_yellow" x="365" y="315" width="17" height="18" />
+	    <texture id="ui_ingame_circle_radiation_orange" x="385" y="315" width="17" height="18" />
+	    <texture id="ui_ingame_circle_radiation_red" x="405" y="315" width="17" height="18" />
+
+		<texture id="ui_ingame_circle_overweight_green" x="331" y="248" width="17" height="19" />
+		<texture id="ui_ingame_circle_overweight_yellow" x="351" y="248" width="17" height="18" />
+	    <texture id="ui_ingame_circle_overweight_orange" x="371" y="248" width="17" height="18" />
+	    <texture id="ui_ingame_circle_overweight_red" x="391" y="248" width="17" height="18" />		
+		
+		<texture id="ui_ingame_circle_bleeding_green" x="348" y="217" width="17" height="19" />
+		<texture id="ui_ingame_circle_bleeding_yellow" x="368" y="217" width="17" height="18" />
+	    <texture id="ui_ingame_circle_bleeding_orange" x="388" y="217" width="17" height="18" />
+	    <texture id="ui_ingame_circle_bleeding_red" x="408" y="217" width="17" height="18" />	
+
+		<texture id="ui_ingame_circle_hunger_green" x="260" y="315" width="17" height="19" />
+		<texture id="ui_ingame_circle_hunger_yellow" x="280" y="315" width="17" height="18" />
+	    <texture id="ui_ingame_circle_hunger_orange" x="300" y="315" width="17" height="18" />
+	    <texture id="ui_ingame_circle_hunger_red" x="320" y="315" width="17" height="18" />			
+		
+		<texture id="ui_ingame_shield_stamina" x="68" y="91" width="28" height="28" />
+		<texture id="ui_ingame_shield_force" x="106" y="91" width="28" height="28" />
+		<texture id="ui_ingame_shield_blood" x="144" y="91" width="28" height="28" />
+		<texture id="ui_ingame_shield_health" x="182" y="91" width="28" height="28" />
+		<texture id="ui_ingame_shield_radiation_cleanup" x="220" y="91" width="28" height="28" />
+		
+		<texture id="ui_ingame_boost_psy" x="144" y="55" width="28" height="29" />
+		<texture id="ui_ingame_boost_bio" x="182" y="55" width="28" height="29" />
+		<texture id="ui_ingame_boost_rad" x="220" y="55" width="28" height="29" />
+		
+		<texture id="ui_ingame_armor_broken_icon" x="800" y="176" width="17" height="18" />
+		<texture id="ui_ingame_gun_broken_icon" x="893" y="176" width="18" height="18" />
+		
+		<texture id="ui_ingame_pda_msg_bcg" x="0" y="616" width="350" height="50" />
+		
+	    <texture id="ui_ingame_action_wheel_item_e" x="296" y="679" width="70" height="82"/>
+	    <texture id="ui_ingame_action_wheel_item_h" x="374" y="679" width="70" height="82"/>
+		<texture id="ui_ingame_action_wheel_point" x="19" y="740" width="10" height="10"/>
+		
+		<texture id="ui_ingame_action_wheel_hint_b" 	x="356"	y="646" width="8" 	height="20"/>
+	    <texture id="ui_ingame_action_wheel_hint_back" 	x="370"	y="646" width="8" 	height="20"/>
+	    <texture id="ui_ingame_action_wheel_hint_e" 	x="384" y="646" width="8" 	height="20"/>	
+
+		<texture id="ui_ingame_grenade_target" 	x="18" y="31"	width="22" 	height="22"/>			
+		<texture id="ui_ingame_invulnerable_icon" 	x="308" y="248"	width="18" 	height="20"/>		
+		
+		<!--DEFENCE-->
+		<texture id="ui_ingame_hud_df_wave_count" x="836" y="0" width="135" height="50" />
+		<texture id="ui_ingame_hud_df_monsters_count" x="974" y="0" width="50" height="50" />
+		
+		<texture id="ui_ingame_df_nearest_players_0" x="993" y="52" width="31" height="26" />
+		<texture id="ui_ingame_df_nearest_players_1" x="984" y="52" width="8" height="26" />
+		<texture id="ui_ingame_df_nearest_players_2" x="975" y="52" width="8" height="26" />
+		<texture id="ui_ingame_df_nearest_players_3" x="967" y="52" width="7" height="26" />
+		
+		<texture id="ui_ingame_df_artefact" x="942" y="55" width="20" height="20" />
+   </file>
+	<file name="ui\ui_actor_ingame_new">
+		<texture id="ui_ingame_chat_background" 	x="0" y="0" width="412" height="332"/>
+		
+		<texture id="ui_ingame_chat_tab_icon" 		x="0" y="442" width="26" 	height="26"/>
+		
+		<texture id="ui_ingame_chat_dest_team" 		x="47" y="442"	width="8" 	height="10"/>		
+		<texture id="ui_ingame_chat_dest_squad" 	x="47" y="454"	width="8" 	height="10"/>	
+		
+		<texture id="ui_ingame_chat_edit_box_b" 	x="0"	y="334" width="4" 	height="34"/>
+	    <texture id="ui_ingame_chat_edit_box_back" 	x="4"	y="334" width="404" height="34"/>
+	    <texture id="ui_ingame_chat_edit_box_e" 	x="408" y="334" width="4" 	height="34"/>
+
+		<texture id="ui_ingame_chat_edit_box_yellow_b" 		x="0"	y="370" width="4" 	height="34"/>
+	    <texture id="ui_ingame_chat_edit_box_yellow_back" 	x="4"	y="370" width="404" height="34"/>
+		<texture id="ui_ingame_chat_edit_box_yellow_e" 		x="408" y="370" width="4" 	height="34"/>
+
+		<texture id="ui_ingame_chat_edit_box_green_b" 		x="0"	y="406" width="4" 	height="34"/>
+	    <texture id="ui_ingame_chat_edit_box_green_back" 	x="4"	y="406" width="404" height="34"/>
+	    <texture id="ui_ingame_chat_edit_box_green_e" 		x="408" y="406" width="4" 	height="34"/>
+
+		<texture id="ui_minimalistic_scroll_back_b"  		x="28" y="442" 	width="8" 	height="8"/>
+		<texture id="ui_minimalistic_scroll_back_back"  	x="28" y="450" 	width="8" 	height="16"/>
+		<texture id="ui_minimalistic_scroll_back_e"  		x="28" y="466" 	width="8" 	height="8"/>		
+		
+		<texture id="ui_minimalistic_scroll_box_b"   		x="37" y="442" 	width="8" 	height="8"/>
+		<texture id="ui_minimalistic_scroll_box_back"   	x="37" y="450" 	width="8" 	height="16"/>
+		<texture id="ui_minimalistic_scroll_box_e"   		x="37" y="466" 	width="8" 	height="8"/>	
+
+		<texture id="ui_ingame_compass_bar_header_mask" 	x="666" y="0" 	width="246" height="26" />
+		<texture id="ui_ingame_compass_bar_rus" 			x="0" 	y="998" width="966" height="12" />
+		<texture id="ui_ingame_compass_bar_eng" 			x="0" 	y="1012" width="966" height="12" />
+		<texture id="ui_ingame_compass_bar_ukr" 			x="0" 	y="1012" width="966" height="12" />
+
+		<texture id="ui_ingame_dang_zone_psy_yellow" 		x="413" y="331" width="24" height="24" />
+	    <texture id="ui_ingame_dang_zone_psy_orange" 		x="438" y="331" width="24" height="24" />
+	    <texture id="ui_ingame_dang_zone_psy_red" 			x="463" y="331" width="24" height="24" />
+		
+		<texture id="ui_ingame_dang_zone_fire_yellow" 		x="413" y="356" width="24" height="24" />
+	    <texture id="ui_ingame_dang_zone_fire_orange" 		x="438" y="356" width="24" height="24" />
+	    <texture id="ui_ingame_dang_zone_fire_red" 			x="463" y="356" width="24" height="24" />
+		
+		<texture id="ui_ingame_dang_zone_bio_yellow" 		x="413" y="306" width="24" height="24" />
+	    <texture id="ui_ingame_dang_zone_bio_orange" 		x="438" y="306" width="24" height="24" />
+	    <texture id="ui_ingame_dang_zone_bio_red" 			x="463" y="306" width="24" height="24" />
+		
+		<texture id="ui_ingame_dang_zone_radiation_yellow" 	x="413" y="281" width="24" height="24" />
+	    <texture id="ui_ingame_dang_zone_radiation_orange" 	x="438" y="281" width="24" height="24" />
+	    <texture id="ui_ingame_dang_zone_radiation_red" 	x="463" y="281" width="24" height="24" />
+
+		<texture id="ui_ingame_radar_main_window" 		x="413" y="0" width="252" height="280" />
+		<texture id="ui_ingame_minimap_player_pointer" 	x="492" y="286" width="10" height="127" />
+		<texture id="ui_ingame_minimap_fade_danger" 	x="666" y="27" width="246" height="246" />
+
+		<texture id="ui_ingame_hud_squad_red_bar_bcg" 	x="69" y="442" width="170" height="10" />
+		<texture id="ui_ingame_hud_squad_red_bar" 		x="69" y="453" width="164" height="4" />
+		<texture id="ui_ingame_hud_squad_artefact" 		x="240" y="442" width="14" height="14" />
+		<texture id="ui_ingame_hud_squad_invul" 		x="255" y="442" width="13" height="14" />
+		<texture id="ui_ingame_hud_squad_wounded" 		x="269" y="442" width="14" height="14" />
+		<texture id="ui_ingame_hud_squad_dead" 			x="284" y="442" width="13" height="14" />
+		
+		<texture id="ui_ingame_hud_wounded" 		x="414" y="410" width="30" height="30" />
+		<texture id="ui_ingame_hud_dead" 			x="444" y="410" width="30" height="30" />		
+		<texture id="ui_ingame_hud_voice" 			x="441" y="381" width="30" height="30" />		
+
+		<texture id="ui_ingame_medium_health_bar_bcg" 	x="69" y="458" width="262" height="12" />
+		<texture id="ui_ingame_medium_health_bar" 		x="69" y="471" width="256" height="6" />
+		
+		<texture id="ui_ingame_boss_icon" 				x="413" y="381" width="28" height="28" />
+
+		<texture id="ui_ingame_game_info_bcg"	x="0" y="478"	width="262" height="56"/>
+		<texture id="ui_ingame_game_target_bcg"	x="310" y="478"	width="44" height="44"/>
+		<texture id="ui_ingame_game_lives_bcg"	x="402" y="478"	width="44" height="44"/>
+		<texture id="ui_ingame_game_lives_red_bcg"	x="552" y="478"	width="44" height="44"/>
+		<texture id="ui_ingame_zone_stage_bcg"	x="508" y="478"	width="44" height="44"/>
+		<texture id="ui_ingame_game_frags_bcg"	x="596" y="478"	width="44" height="44"/>
+		<texture id="ui_ingame_game_plug_bcg"	x="640" y="478"	width="44" height="44"/>
+		<texture id="ui_ingame_game_frame"		x="355" y="478"	width="46" height="46"/>
+		
+		<texture id="ui_ingame_info_wnd_bar"	x="0" y="535"	width="256" height="2"/>
+		
+		<texture id="ui_ingame_danger_zone_icon"	x="447" y="478"	width="60" height="60"/>
+		
+		<texture id="ui_ingame_notif_caption" 				x="0"	y="538" width="449" height="32"/>
+		<texture id="ui_ingame_notif_caption_additional"	x="332"	y="445" width="205" height="32"/>
+		
+		<texture id="ui_ingame_df_nearest_players_e" 		x="504" y="281" width="42" height="42" />
+		<texture id="ui_ingame_df_nearest_players_d" 		x="547" y="281" width="42" height="42" />
+		<texture id="ui_ingame_df_nearest_players_bar_bcg" 	x="504" y="324" width="160" height="12" />
+		<texture id="ui_ingame_df_nearest_players_bar" 		x="504" y="337" width="154" height="6" />
+		
+		<texture id="ui_ingame_big_yellow_bar_bcg" 	x="0" y="981" width="1240" height="16" />
+		<texture id="ui_ingame_big_yellow_bar" 		x="0" y="970" width="1234" height="10" />
+
+		<texture id="ui_ingame_big_red_header_bcg" x="549" y="874" width="549" height="92" />
+		<texture id="ui_ingame_big_header_bcg" x="0" y="874" width="549" height="92" />
+		<texture id="ui_ingame_big_line" x="0" y="967" width="1009" height="2" />
+
+		<texture id="ui_ingame_default_button_e" x="0" y="831" width="200" height="42" />
+		<texture id="ui_ingame_default_button_h" x="200" y="831" width="200" height="42" />
+		<texture id="ui_ingame_default_button_t" x="200" y="831" width="200" height="42" />
+		<texture id="ui_ingame_default_button_d" x="400" y="831" width="200" height="42" />
+		
+		<texture id="ui_ingame_red_h_button_e" x="0" y="831" width="200" height="42" />
+		<texture id="ui_ingame_red_h_button_h" x="600" y="831" width="200" height="42" />
+		<texture id="ui_ingame_red_h_button_t" x="600" y="831" width="200" height="42" />
+		<texture id="ui_ingame_red_h_button_d" x="400" y="831" width="200" height="42" />
+
+		<texture id="ui_ingame_green_t_button_e" x="0" y="831" width="200" height="42" />
+		<texture id="ui_ingame_green_t_button_h" x="200" y="831" width="200" height="42" />
+		<texture id="ui_ingame_green_t_button_t" x="800" y="831" width="200" height="42" />
+		<texture id="ui_ingame_green_t_button_d" x="400" y="831" width="200" height="42" />			
+
+		<texture id="ui_ingame_task_icon" x="263" y="479" width="38" height="42" />	
+
+		<texture id="ui_ingame_rank_small_1" x="450" y="539" width="26" height="28"/>
+		<texture id="ui_ingame_rank_small_2" x="477" y="539" width="26" height="28"/>
+		<texture id="ui_ingame_rank_small_3" x="504" y="539" width="26" height="28"/>
+		<texture id="ui_ingame_rank_small_4" x="531" y="539" width="26" height="28"/>
+		<texture id="ui_ingame_rank_small_5" x="558" y="539" width="26" height="28"/>
+		
+		<texture id="ui_ingame_rank_1" x="586" y="524" width="40" height="44"/>
+		<texture id="ui_ingame_rank_2" x="627" y="524" width="40" height="44"/>
+		<texture id="ui_ingame_rank_3" x="668" y="524" width="40" height="44"/>
+		<texture id="ui_ingame_rank_4" x="709" y="524" width="40" height="44"/>
+		<texture id="ui_ingame_rank_5" x="750" y="524" width="40" height="44"/>
+
+		<texture id="ui_ingame_hud_quick_slot" x="538" y="425" width="52" height="52" />
+		<texture id="ui_ingame_hud_main_wnd" x="504" y="368" width="226" height="56" />
+		<texture id="ui_ingame_hud_main_no_ammo_highlight" x="666" y="274" width="226" height="56" />
+		<texture id="ui_ingame_hud_safemode_highlight" x="793" y="513" width="226" height="56" />
+		<texture id="ui_ingame_hud_no_item_icon" x="918" y="394" width="202" height="30" />
+		<texture id="ui_ingame_hud_ammo_separator" x="895" y="275" width="2" height="54" />
+		<texture id="ui_ingame_hud_red_bar" x="593" y="425" width="220" height="18" />
+		<texture id="ui_ingame_hud_red_bar_full" x="593" y="456" width="220" height="18" />
+		<texture id="ui_ingame_hud_blue_bar" x="593" y="443" width="220" height="18" />
+		<texture id="ui_ingame_hud_bars_bg" x="504" y="349" width="226" height="18" />
+		<texture id="ui_ingame_hud_bars_bg_full" x="666" y="331" width="226" height="18" />
+		<texture id="ui_ingame_hud_broken_wpn" x="475" y="420" width="24" height="24" />
+		
+		<texture id="ui_ingame_infinity_icon" x="508" y="429" width="29" height="15" />
+		
+		<texture id="ui_ingame_info_panel_left" x="731" y="350" width="229" height="32" />
+		
+		<texture id="ui_ingame_outfit_slot_bcg_e" x="913" y="0" width="184" height="244" />
+		<texture id="ui_ingame_outfit_slot_bcg_h" x="1097" y="0" width="184" height="244" />
+		<texture id="ui_ingame_outfit_slot_bcg_t" x="1097" y="0" width="184" height="244" />
+		<texture id="ui_ingame_outfit_slot_bcg_d" x="913" y="0" width="184" height="244" />
+
+		<texture id="ui_ingame_outfit_slot_icon_e" x="1282" y="170" width="122" height="170" />
+		<texture id="ui_ingame_outfit_slot_icon_h" x="1282" y="0" width="122" height="170" />
+		<texture id="ui_ingame_outfit_slot_icon_t" x="1282" y="0" width="122" height="170" />
+		<texture id="ui_ingame_outfit_slot_icon_d" x="1282" y="170" width="122" height="170" />
+		
+		<texture id="ui_ingame_wpn_slot_bcg_e" x="1406" y="0" width="370" height="122" />
+		<texture id="ui_ingame_wpn_slot_bcg_h" x="1406" y="122" width="370" height="122" />
+		<texture id="ui_ingame_wpn_slot_bcg_t" x="1406" y="122" width="370" height="122" />
+		<texture id="ui_ingame_wpn_slot_bcg_d" x="1406" y="0" width="370" height="122" />
+
+		<texture id="ui_ingame_wpn_slot_icon_e" x="961" y="320" width="253" height="73" />
+		<texture id="ui_ingame_wpn_slot_icon_h" x="913" y="246" width="253" height="73" />
+		<texture id="ui_ingame_wpn_slot_icon_t" x="913" y="246" width="253" height="73" />
+		<texture id="ui_ingame_wpn_slot_icon_d" x="961" y="320" width="253" height="73" />
+
+		<texture id="ui_ingame_pistol_slot_bcg_e" x="1776" y="0" width="246" height="122" />
+		<texture id="ui_ingame_pistol_slot_bcg_h" x="1776" y="122" width="246" height="122" />
+		<texture id="ui_ingame_pistol_slot_bcg_t" x="1776" y="122" width="246" height="122" />
+		<texture id="ui_ingame_pistol_slot_bcg_d" x="1776" y="0" width="246" height="122" />
+		
+		<texture id="ui_ingame_pistol_slot_icon_e" x="1217" y="297" width="62" height="50" />
+		<texture id="ui_ingame_pistol_slot_icon_h" x="1168" y="246" width="62" height="50" />
+		<texture id="ui_ingame_pistol_slot_icon_t" x="1168" y="246" width="62" height="50" />
+		<texture id="ui_ingame_pistol_slot_icon_d" x="1217" y="297" width="62" height="50" />
+
+		<texture id="ui_ingame_small_slot_bcg_e" x="1406" y="244" width="122" height="60" />
+		<texture id="ui_ingame_small_slot_bcg_h" x="1528" y="244" width="122" height="60" />
+		<texture id="ui_ingame_small_slot_bcg_t" x="1528" y="244" width="122" height="60" />
+		<texture id="ui_ingame_small_slot_bcg_d" x="1406" y="244" width="122" height="60" />
+
+		<texture id="ui_ingame_large_slot_bcg_e" x="1650" y="244" width="246" height="60" />
+		<texture id="ui_ingame_large_slot_bcg_h" x="1218" y="349" width="246" height="60" />
+		<texture id="ui_ingame_large_slot_bcg_t" x="1218" y="349" width="246" height="60" />
+		<texture id="ui_ingame_large_slot_bcg_d" x="1650" y="244" width="246" height="60" />
+
+		<texture id="ui_ingame_ammo_slot_icon_e" x="1405" y="306" width="44" height="35" />
+		<texture id="ui_ingame_ammo_slot_icon_h" x="1232" y="247" width="44" height="35" />
+		<texture id="ui_ingame_ammo_slot_icon_t" x="1232" y="247" width="44" height="35" />
+		<texture id="ui_ingame_ammo_slot_icon_d" x="1405" y="306" width="44" height="35" />
+
+		<texture id="ui_ingame_grenade_slot_icon_e" x="1475" y="306" width="23" height="35" />
+		<texture id="ui_ingame_grenade_slot_icon_h" x="1451" y="306" width="23" height="35" />
+		<texture id="ui_ingame_grenade_slot_icon_t" x="1451" y="306" width="23" height="35" />
+		<texture id="ui_ingame_grenade_slot_icon_d" x="1475" y="306" width="23" height="35" />
+	
+		<texture id="ui_ingame_white_mark" x="731" y="383" width="62" height="38" />
+		<texture id="ui_ingame_yellow_mark" x="793" y="383" width="62" height="38" />
+		<texture id="ui_ingame_red_mark" x="855" y="383" width="62" height="38" />
+
+		<texture id="ui_ingame_white_mark_arrow" x="820" y="425" width="62" height="62" />
+		<texture id="ui_ingame_yellow_mark_arrow" x="883" y="425" width="62" height="62" />
+		<texture id="ui_ingame_red_mark_arrow" x="946" y="425" width="62" height="62" />
+		
+		<texture id="ui_ingame_mark_static_icon" x="932" y="320" width="28" height="28" />
+		<texture id="ui_ingame_mark_dynamic_icon" x="909" y="322" width="22" height="26" />
+		<texture id="ui_ingame_mark_med_icon" x="826" y="494" width="24" height="18" />
+		<texture id="ui_ingame_mark_food_icon" x="851" y="488" width="26" height="24" />
+		<texture id="ui_ingame_mark_outfit_icon" x="878" y="492" width="20" height="20" />
+		<texture id="ui_ingame_mark_weapon_icon" x="899" y="494" width="24" height="18" />
+		<texture id="ui_ingame_mark_ammo_icon" x="924" y="496" width="24" height="16" />
+		<texture id="ui_ingame_mark_device_icon" x="1121" y="394" width="16" height="26" />
+		<texture id="ui_ingame_mark_explosive_icon" x="949" y="488" width="29" height="24" />
+		<texture id="ui_ingame_mark_monster_icon" x="1138" y="394" width="24" height="27" />
+		<texture id="ui_ingame_mark_enemy_npc_icon" x="979" y="488" width="26" height="24" />
+		<texture id="ui_ingame_mark_friend_npc_icon" x="1163" y="394" width="26" height="24" />
+		<texture id="ui_ingame_mark_alert_icon" x="1190" y="394" width="26" height="28" />
+		
+		<texture id="ui_ingame_action_wheel_grid_6" x="1499" y="306" width="356" height="356"/>
+		<texture id="ui_ingame_action_wheel_grid_6_select" x="1855" y="306" width="172" height="142"/>
+
+		<texture id="ui_ingame_action_wheel_grid_8" x="1692" y="668" width="356" height="356"/>
+		<texture id="ui_ingame_action_wheel_grid_8_select" x="1916" y="455" width="132" height="141"/>
+		
+		<texture id="ui_ingame_glyph_btn" x="1468" y="349" width="28" height="32"/>
+		<texture id="ui_ingame_tutorial_mouse_movement" x="1009" y="425" width="50" height="54"/>
+		<texture id="ui_ingame_tutorial_mouse_lkm" x="1059" y="425" width="22" height="30"/>
+		<texture id="ui_ingame_tutorial_mouse_rkm" x="1082" y="425" width="22" height="30"/>
+
+		<texture id="ui_ingame_paginator_item_e" x="1480" y="382" width="12" height="12"/>
+		<texture id="ui_ingame_paginator_item_h" x="1468" y="382" width="12" height="12"/>
+		<texture id="ui_ingame_paginator_item_t" x="1468" y="382" width="12" height="12"/>
+		<texture id="ui_ingame_paginator_item_d" x="1480" y="382" width="12" height="12"/>
+		
+		<texture id="ui_ingame_stealth_icon_red" x="1060" y="456" width="32" height="24"/>
+		<texture id="ui_ingame_stealth_icon" x="1092" y="456" width="32" height="24"/>
+
+		<texture id="ui_ingame_gesture_RPS" x="1125" y="423" width="52" height="59"/>
+		<texture id="ui_ingame_gesture_facepalm" x="1449" y="412" width="34" height="36"/>	
+		<texture id="ui_ingame_gesture_greeting" x="1421" y="412" width="27" height="40"/>
+		<texture id="ui_ingame_gesture_threaten" x="1395" y="412" width="25" height="34"/>
+		<texture id="ui_ingame_gesture_clap" x="1348" y="412" width="46" height="37"/>
+		<texture id="ui_ingame_gesture_pay_respect" x="1286" y="412" width="61" height="38"/>
+		<texture id="ui_ingame_gesture_thumb_down" x="1252" y="412" width="33" height="30"/>
+		<texture id="ui_ingame_gesture_thumb_up" x="1218" y="412" width="33" height="28"/>
+	</file>
+	<file name="ui\ui_squad_member">
+		<texture id="ui_squad_member_icon" x="8" y="13" width="16" height="22" />	
+	</file>
+	<file name="ui\ui_squad_leader">
+		<texture id="ui_squad_leader_icon" x="8" y="10" width="16" height="22" />	
+	</file>	
+</w>
