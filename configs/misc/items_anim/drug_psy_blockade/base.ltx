@@ -1,0 +1,86 @@
+#include "eatable_objects.ltx"
+#include "hud_objects.ltx"
+
+
+[drug_psy_blockade]:booster ;x5
+
+;***********************************************************
+hud = drug_psy_blockade_hud_model
+helm_prohibited = false; true
+full_outfit_prohibited = false ;true
+
+base_object = drug_psy_blockade ;показывает, какая секция является базовой для "одинаковых" предметов разной степени целостности
+uses_count = 5	    ;Сколько раз предмет можно использовать
+
+;При первом использовании всегда съедается базовый предмет
+using_2 = drug_psy_blockade2	;Секция предмета, который будет заспавнен после первого использования, и который отвечает за второе использование
+using_3 = drug_psy_blockade3	;Аналогично для второго использования
+using_4 = drug_psy_blockade4
+using_5 = drug_psy_blockade5
+;************************************************************
+
+$spawn 				= "food and drugs\drug_psy_blockade"
+visual				= dynamics\equipments\medical\drug_psy_blockade.ogf
+inv_name			= st_drug_psy_blockade
+inv_name_short		= st_drug_psy_blockade
+description			= st_drug_psy_blockade_descr
+
+inv_grid_width		= 1
+inv_grid_height		= 1
+inv_grid_x			= 2
+inv_grid_y			= 5
+cost				= 9750
+inv_weight			= 0.011
+
+use_sound			= $silent
+
+
+[drug_psy_blockade2]:drug_psy_blockade
+inv_name			= st_drug_psy_blockade2
+inv_name_short		= st_drug_psy_blockade2
+inv_weight			= 0.009
+hud = drug_psy_blockade_hud_model2
+cost				= 7800
+inv_grid_x			= 2
+inv_grid_y			= 6
+
+[drug_psy_blockade3]:drug_psy_blockade
+inv_name			= st_drug_psy_blockade3
+inv_name_short		= st_drug_psy_blockade3
+inv_weight			= 0.007
+hud = drug_psy_blockade_hud_model3
+cost				= 5850
+inv_grid_x			= 2
+inv_grid_y			= 7
+
+[drug_psy_blockade4]:drug_psy_blockade
+inv_name			= st_drug_psy_blockade4
+inv_name_short		= st_drug_psy_blockade4
+inv_weight			= 0.005
+hud = drug_psy_blockade_hud_model4
+cost				= 3900
+inv_grid_x			= 2
+inv_grid_y			= 8
+
+[drug_psy_blockade5]:drug_psy_blockade
+inv_name			= st_drug_psy_blockade5
+inv_name_short		= st_drug_psy_blockade5
+hud = drug_psy_blockade_hud_model5
+inv_weight			= 0.003
+trash_object = drug_psy_blockade_trash
+cost				= 1950
+inv_grid_x			= 2
+inv_grid_y			= 9
+
+[drug_psy_blockade_trash]:gwr_base_trash
+visual                        = dynamics\equipments\medical\drug_psy_blockade_trash.ogf
+
+;направление, в котором предмет отбрасывается
+throw_dir = right
+;смещение точки спавна относительно камеры
+throw_offset_y = -0.6	//вверх-вниз
+throw_offset_x = 0.2	//вперед-назад
+throw_offset_z =  0.6	//положительные - в сторону броска, отрицательное - в противоположную
+
+throw_impulse_y = -90
+throw_impulse_z = 180
