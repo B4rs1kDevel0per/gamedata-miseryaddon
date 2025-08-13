@@ -222,7 +222,6 @@ function options_dialog:OnBtnCancel()
 
 	self:HideDialog()
 	self.owner.shniaga:Show(true)
-	self.owner.news_area:Show(true)
 	
 	RequestStopCaptureAudio()
 end
@@ -297,7 +296,6 @@ function options_dialog:OnKeyboard(dik, keyboard_action)
 			if dik == DIK_keys.DIK_ESCAPE then
 				self:HideDialog()
 				self.owner.shniaga:Show(true)		
-				self.owner.news_area:Show(true)	
 				RequestStopCaptureAudio()
 			end
 
@@ -352,7 +350,6 @@ function options_dialog:OnApplyChanges()
 
 	self:HideDialog()
 	self.owner.shniaga:Show(true)
-	self.owner.news_area:Show(true)
 
 	if false==self.b_restart_system_shown then
 		local opt = COptionsManager()

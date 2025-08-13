@@ -28,13 +28,6 @@ function main_menu:InitControls()
     xml:InitStatic					("background", self)
     self.shniaga					= xml:InitMMShniaga("shniaga_wnd",self);
 
-	self.news_area = CUIWindow()
-	xml:InitWindow("news_area", 0, self.news_area)
-	self.news_area:SetAutoDelete(true)
-	self:AttachChild(self.news_area)
-
-	local btn = xml:Init3tButton("news_area:news_button", self.news_area)
-	self:Register(btn, "news_button")
 
 	self.message_box				= CUIMessageBoxEx()
 	self:Register					(self.message_box, "msg_box")
@@ -115,7 +108,6 @@ end
 function main_menu:OnMsgNo()
 	self.mbox_mode = 0
 	self.shniaga:Show(true)
-	self.news_area:Show(true)
 end
 
 function main_menu:LoadLastSave()
@@ -147,8 +139,6 @@ end
 function main_menu:OnButton_quit_clicked()
 
 	self.shniaga:Show(false)
-	self.news_area:Show(false)
-
 	self.message_box:InitMessageBox("message_box_quit_windows")
 	self.message_box:ShowDialog(true)
 end
@@ -204,7 +194,6 @@ function main_menu:OnButton_save_clicked()
 	--self.save_dlg:ShowDialog(true)
 	
 	--self.shniaga:Show(false)
-	--self.news_area:Show(false)
 	
 	self:OnButton_return_game()
 end
@@ -220,7 +209,6 @@ function main_menu:OnButton_options_clicked()
 	RequestStartCaptureAudio()
 	
 	self.shniaga:Show(false)
-	self.news_area:Show(false)
 end
 
 function main_menu:OnButton_load_clicked()
@@ -233,7 +221,6 @@ function main_menu:OnButton_load_clicked()
 	self.load_dlg:ShowDialog(true)
 	
 	self.shniaga:Show(false)
-	self.news_area:Show(false)
 end
 
 function main_menu:OnButton_network_game_clicked()
@@ -256,7 +243,6 @@ function main_menu:OnButton_multiplayer_clicked()
     self.mp_dlg:ShowDialog(true)
 
 	self.shniaga:Show(false)
-	self.news_area:Show(false)
 
 	local console			= get_console()
 	console:execute			("check_for_updates 0")
@@ -281,7 +267,6 @@ function main_menu:OnButton_internet_clicked()
     self.gs_dlg:ShowDialog(true)
 
 	self.shniaga:Show(false)
-	self.news_area:Show(false)
 
 	local console			= get_console()
 	console:execute			("check_for_updates 0")
@@ -297,7 +282,6 @@ function main_menu:OnButton_localnet_clicked()
     self.ln_dlg:ShowDialog(true)
 
 	self.shniaga:Show(false)
-	self.news_area:Show(false)
 
 	local console			= get_console()
 	console:execute			("check_for_updates 0")
@@ -361,12 +345,10 @@ end
 
 function main_menu:OnAfterCredits()
 	self.shniaga:Show(true)
-	self.news_area:Show(true)
 end
 
 function main_menu:StartCredits()
     self.shniaga:Show(false)
-    self.news_area:Show(false)
     game.start_tutorial("credits_seq")
 end
 

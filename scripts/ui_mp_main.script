@@ -338,7 +338,6 @@ function mp_main:OnBtn_Calncel()
 
 	self:HideDialog()
 	self.owner.shniaga:Show(true)
-	self.owner.news_area:Show(true)
 end
 
 function mp_main:OnBtn_Create()
@@ -627,7 +626,6 @@ function mp_main:OnKeyboard(dik, keyboard_action)
 		if dik == DIK_keys.DIK_ESCAPE then
 			self:HideDialog()
 			self.owner.shniaga:Show(true)
-			self.owner.news_area:Show(true)
 		end
 	end
 

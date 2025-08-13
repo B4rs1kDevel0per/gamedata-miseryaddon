@@ -80,7 +80,6 @@ function localnet_page:LoginOperationResult(profile, descr)
 		end
 		self:HideDialog()
 		self.owner.shniaga:Show(true)
-		self.owner.news_area:Show(true)
 		self.owner:OnButton_multiplayer_clicked()
 	end
 end
@@ -91,7 +90,6 @@ end
 function localnet_page:OnBtnCancel()
 	self:HideDialog()
 	self.owner.shniaga:Show(true)
-	self.owner.news_area:Show(true)
 end
 
 function localnet_page:OnBtnRememberMe()
