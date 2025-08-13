@@ -357,8 +357,16 @@
 		</btn>
 	</menu_main_coop_mm>
 	
-	<menu_sound random="0">
-		<menu_music>music\menu</menu_music>
+	<menu_sound random="9">
+		<menu_music>music\_menu_MISERY_thriller_stereo</menu_music>
+		<menu_music>music\_menu_MISERY_AngelsAndDemons_stereo</menu_music>
+		<menu_music>music\_menu_MISERY_AtriumCarceriEraser_stereo</menu_music>
+		<menu_music>music\_menu_MISERY_bloodinthestreets_stereo</menu_music>
+		<menu_music>music\_menu_MISERY_EdwardArtemiev_stereo</menu_music>
+		<menu_music>music\_menu_MISERY_Emanation_stereo</menu_music>
+		<menu_music>music\_menu_MISERY_HitWithoutWarning_stereo</menu_music>
+		<menu_music>music\_menu_MISERY_NIN_CoronaRadiata_stereo</menu_music>
+		<menu_music>music\_menu_MISERY_ScienceReligion_stereo</menu_music>
     </menu_sound>
 
 
