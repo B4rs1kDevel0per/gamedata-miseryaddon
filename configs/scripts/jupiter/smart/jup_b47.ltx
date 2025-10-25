@@ -1,7 +1,16 @@
-[smart_terrain]
+[smart_terrain];jup_b47
 squad_id = 26
 max_population = 1
-arrive_dist = 80
+arrive_dist = 100
+
+respawn_params = respawn@jup_b47
+
+[respawn@jup_b47]
+spawn_snork
+
+[spawn_snork]
+spawn_squads = monolith_sim_squad_advanced, monolith_sim_squad_veteran
+spawn_num =  0 ; {JUP_B47_ACTOR_PICK_DOCS} 1, 0 ; {+JUP_B47_PRODUCTS_INFO_COMPLITE} 1,0 ; {+JUP_B47_ALL_MERC_DEAD} 1, 0 ; {+JUP_B47_TASK_END} 1, 0 ;
 
 [exclusive]
 jup_b47_merc_attack_01 = jupiter\jup_b47_merc.ltx

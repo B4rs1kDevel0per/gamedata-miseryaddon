@@ -1,20 +1,15 @@
-[smart_terrain]
+[smart_terrain];jup_a12
 squad_id = 3
 max_population = 2
 respawn_params = respawn@jup_a12
-arrive_dist = 75
+arrive_dist = 100
 
 [respawn@jup_a12]
-spawn_bandit@advanced
-spawn_bandit@master
+spawn_killer
 
-[spawn_bandit@advanced]
-spawn_squads = bandit_sim_squad_novice, bandit_sim_squad_advanced
-spawn_num = {+JUP_B218_PRIPYAT_GROUP_GATHERING} 0, {+JUP_A12_TASK_DONE +ZAT_B28_HELI_3_SEARCHED} 4, {+JUP_A12_TASK_DONE +ZAT_B100_HELI_2_SEARCHED} 4, {+JUP_A12_TASK_DONE +ZAT_B101_HELI_5_SEARCHED} 4, 0
-
-[spawn_bandit@master]
-spawn_squads = bandit_sim_squad_advanced, bandit_sim_squad_advanced, bandit_sim_squad_veteran
-spawn_num = {+JUP_A12_TASK_DONE +JUP_B218_PRIPYAT_GROUP_GATHERING} 4, 0
+[spawn_killer]
+spawn_squads = simulation_killer, merc_sim_squad_veteran
+spawn_num = {+JUP_A12_TASK_DONE} 2, 0
 
 [exclusive]
 jup_a12_bandit_chief = jupiter\jup_a12_bandit_chief.ltx

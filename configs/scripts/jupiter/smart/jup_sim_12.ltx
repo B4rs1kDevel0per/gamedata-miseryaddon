@@ -1,3 +1,17 @@
-[smart_terrain]
+[smart_terrain];jup_sim_12
 squad_id = 32
-max_population = 1
+max_population = 3
+
+respawn_params = respawn@jup_sim_12
+
+[respawn@jup_sim_12]
+spawn_controller
+spawn_chimera
+
+[spawn_controller]
+spawn_squads = simulation_gigant_jup_sim_12, simulation_bloodsucker_jup_sim_12
+spawn_num = {+JUP_B9_HELI_1_SEARCHED -JUP_B212_JUPITER_CHIMERA_DEAD} 1, 0
+
+[spawn_chimera]
+spawn_squads = simulation_chimera_jup_sim_12, simulation_gigant_jup_sim_12, simulation_bloodsucker_jup_sim_12, simulation_bloodsucker_jup_sim_12
+spawn_num = {+JUP_B9_HELI_1_SEARCHED +JUP_B212_JUPITER_CHIMERA_DEAD} 1, 0

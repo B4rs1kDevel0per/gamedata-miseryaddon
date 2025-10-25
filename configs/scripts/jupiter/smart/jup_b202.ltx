@@ -1,7 +1,15 @@
-[smart_terrain]
+[smart_terrain];jup_b202
 squad_id = 10
 max_population = 1
-arrive_dist = 80
+;arrive_dist = 300
+respawn_params = respawn@jup_b202
+
+[respawn@jup_b202]
+spawn_bandit@hostile
+
+[spawn_bandit@hostile]
+spawn_squads = bandit_sim_squad_hostile
+spawn_num = {-JUP_B52_ACTOR_ITEMS_CAN_BE_STOLEN} 1, {+JUP_B202_ACTOR_ITEMS_RETURNED} 1, 0
 
 [exclusive]
 jup_b202_stalker_snag_wounded = jupiter\jup_b202_snag_wounded.ltx

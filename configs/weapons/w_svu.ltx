@@ -14,11 +14,11 @@ default_to_ruck         = false
 sprint_allowed          = true
 
 ;-------------------------------------------------------------------------------
-cost                    = 46420
+cost                    = 17000
 weapon_class			= sniper_rifle
 inv_weight              = 4.4
 
-upgrades                = up_gr_firstab_svu, up_gr_seconab_svu, up_gr_thirdab_svu, up_gr_fourtab_svu, up_gr_fourtcd_svu, up_gr_fourtef_svu, up_gr_fifthab_svu
+upgrades                = up_gr_firstab_svu, up_gr_seconab_svu, up_gr_thirdab_svu, up_gr_fourtab_svu
 installed_upgrades      =
 upgrade_scheme          = upgrade_scheme_svu
 
@@ -26,12 +26,12 @@ def_hide_bones = ironsight_off, scope1, scope2, scope3, scope4, scope5, mag20, h
 def_show_bones = ironsight_on, handler, mag10
 
 ;----TTX------------------------------------------------------------------------
-hit_power               = 1.2, 1.2, 1.2, 1.2
-hit_impulse             = 80
+hit_power               = 1.09, 1.09, 1.09, 1.09
+hit_impulse             = 125
 hit_type 				= fire_wound
-fire_distance           = 1190
-bullet_speed		 	= 797 ;800	;начальная скорость пули
-rpm                     = 75
+fire_distance           = 1000
+bullet_speed		 	= 700 ;800	;начальная скорость пули
+rpm                     = 165
 rpm_empty_click         = 10
 
 use_aim_bullet				= false		;Поддерживается ли первая суппер пуля
@@ -41,17 +41,17 @@ hud                     = wpn_svu_hud
 
 misfire_probability        = 0.005 ;вероятность осечки при максимальном износе  !!!old - now not working
 ;изношенность, при которой появляется шанс осечки
-misfire_start_condition		= 0.96
+misfire_start_condition		= 0.7
 ;изношеность при которой шанс осечки становится константным
-misfire_end_condition		= 0.1
+misfire_end_condition		= 0.3
 ;шанс осечки при изношености больше чем misfireStartCondition
-misfire_start_prob	     	= 0.007
+misfire_start_prob	     	= 0.0065
 ;шанс осечки при изношености больше чем misfireEndCondition
-misfire_end_prob	     	= 0.085
+misfire_end_prob	     	= 0.09
 ;увеличение изношености при одиночном выстреле
-condition_shot_dec      	= 0.0019
+condition_shot_dec      	= 0.0083
 ;увеличение изношености при выстреле очередью
-condition_queue_shot_dec	= 0.0019
+condition_queue_shot_dec	= 0.0093
 
 ammo_elapsed			= 10
 ammo_mag_size			= 10
@@ -62,20 +62,20 @@ single_handed           = 0
 
 ;---дисперсия-------------------------------------------------------------------------
 ;базовая дисперсия
-fire_dispersion_base    = 0.02   ;угол (в градусах) базовой дисперсии оружия (оружия зажатого в тисках)
+fire_dispersion_base    = 0.11   ;угол (в градусах) базовой дисперсии оружия (оружия зажатого в тисках)
 control_inertion_factor    	= 1.4f
-crosshair_inertion		= 8.8
+crosshair_inertion		= 6.15
 
 ;отдача
 cam_return				= 1
-cam_relax_speed         = 3.0   ;скорость возврата в исходное положение
+cam_relax_speed         = 12.0   ;скорость возврата в исходное положение
 cam_relax_speed_ai      = 360	;скорость возврата в исходное положение
-cam_dispersion          = 1.94 ;увеличения угла (в градусах) с каждым выстрелом
-cam_dispersion_inc		= 1.94	;увеличениe cam_dispersion с каждым выстрелом
-cam_dispersion_frac		= 1.1	;ствол будет подыматься на cam_dispersion*cam_dispersion_frac +- cam_dispersion*(1-cam_dispersion_frac)
-cam_max_angle           = 50.0   ;максимальный угол отдачи
-cam_max_angle_horz		= 50.0	;(degree) maximum shot horizontal degree
-cam_step_angle_horz     = 2.92 ;(degree) size of step camera moved in horizontal position while shooting
+cam_dispersion          = 5.0 ;увеличения угла (в градусах) с каждым выстрелом
+cam_dispersion_inc		= 2.5	;увеличениe cam_dispersion с каждым выстрелом
+cam_dispersion_frac		= 0.99	;ствол будет подыматься на cam_dispersion*cam_dispersion_frac +- cam_dispersion*(1-cam_dispersion_frac)
+cam_max_angle           = 90.0   ;максимальный угол отдачи
+cam_max_angle_horz		= 3.0	;(degree) maximum shot horizontal degree
+cam_step_angle_horz     = 2.5 ;(degree) size of step camera moved in horizontal position while shooting
 
 PDM_disp_base 			= 1.5
 PDM_disp_vel_factor 	= 6.0
@@ -84,7 +84,7 @@ PDM_disp_crouch	 		= 0.9
 PDM_disp_crouch_no_acc 	= 0.8
 
 
-zoom_cam_relax_speed        = 0.7    ; scope & ironsight
+zoom_cam_relax_speed        = 9.0    ; scope & ironsight
 zoom_cam_relax_speed_ai     = 120.75
 zoom_cam_dispersion         = 2.25
 zoom_cam_dispersion_inc     = 1.5
@@ -103,8 +103,8 @@ reload_dof				= 0.0, 0.5, 5, 2
 holder_range_modifier	= 2.15               ; во сколько раз увеличивается eye_range
 holder_fov_modifier		= 1.0             ; во сколько раз увеличивается eye_fov
 
-min_radius              = 0
-max_radius              = 150
+min_radius              = 10
+max_radius              = 50
 
 hit_probability_gd_novice	= 1
 hit_probability_gd_stalker	= 1
@@ -214,17 +214,17 @@ hud_fov_zoom = 0.75 ;аналогичный параметр работает и
 inertion_aim_origin_offset = 0.007
 inertion_aim_speed = 10
 
-hands_position			= -0.050,0.013,-0.364
+hands_position				= 0.0,0.0,-0.15
 hands_orientation			= 0.0,0.0,0.0
 
-hands_position_16x9			= -0.050,0.013,-0.364
+hands_position_16x9			= 0.0,0.0,-0.15
 hands_orientation_16x9			= 0.0,0.0,0.0
 
-aim_hud_offset_pos = 0.0376,0.012650,0.02
-aim_hud_offset_rot = 0.0,0.0,-0.00
+aim_hud_offset_pos = -0.012,0.025,-0.05
+aim_hud_offset_rot = 0.0,0.0,0.0
 
-aim_hud_offset_pos_16x9 = 0.0376,0.012650,0.02
-aim_hud_offset_rot_16x9 = 0.0,0.0,-0.00
+aim_hud_offset_pos_16x9 = -0.012,0.025,-0.1
+aim_hud_offset_rot_16x9 = 0.0,0.0,0.0
 
 item_position				= 0,0,0
 item_orientation			= 0,0,0
@@ -410,10 +410,11 @@ use_scope_anims = true ;говорит, что надо использовать
 inertion_aim_origin_offset = 0.02
 inertion_aim_speed = 8
 
-aim_hud_offset_pos = 0.0503,-0.0148,0.26
-aim_hud_offset_rot = 0.0,0.0,-0.00
-aim_hud_offset_pos_16x9 = 0.0503,-0.0148,0.26
-aim_hud_offset_rot_16x9 = 0.0,0.0,-0.00
+aim_hud_offset_pos = 0.0,0.0,-0.009
+aim_hud_offset_rot = 0.0,0.0,0.0
+
+aim_hud_offset_pos_16x9 = 0.0,0.0,-0.009
+aim_hud_offset_rot_16x9 = 0.0,0.0,0.0
 
 [scope_pso1m2_svu]
 scope_name 					= wpn_addon_scope_x2.7
@@ -428,10 +429,11 @@ use_scope_anims = true ;говорит, что надо использовать
 inertion_aim_origin_offset = 0.02
 inertion_aim_speed = 8
 
-aim_hud_offset_pos = 0.0503,-0.01580,0.25
-aim_hud_offset_rot = 0.0,0.0,-0.00
-aim_hud_offset_pos_16x9 = 0.0503,-0.01580,0.25
-aim_hud_offset_rot_16x9 = 0.0,0.0,-0.00
+aim_hud_offset_pos = 0.0,0.0,-0.055
+aim_hud_offset_rot = 0.0,0.0,0.0
+
+aim_hud_offset_pos_16x9 = 0.0,0.0,-0.055
+aim_hud_offset_rot_16x9 = 0.0,0.0,0.0
 
 [scope_nvsn_svu]
 scope_name 					= wpn_addon_scope_detector
@@ -450,17 +452,19 @@ overriding_show_bones = ironsight_off
 inertion_aim_origin_offset = 0.01
 inertion_aim_speed = 10 
 
-aim_hud_offset_pos = 0.0533,-0.0439,0.20
-aim_hud_offset_rot = 0.0,0.0,-0.00
-aim_hud_offset_pos_16x9 = 0.0533,-0.0439,0.20
-aim_hud_offset_rot_16x9 = 0.0,0.0,-0.00
+aim_hud_offset_pos = 0.0025,-0.03,-0.09
+aim_hud_offset_rot = 0.0,0.0,0.0
+
+aim_hud_offset_pos_16x9 = 0.0025,-0.03,-0.09
+aim_hud_offset_rot_16x9 = 0.0,0.0,0.0
 
 alter_zoom_allowed = true
 hud_fov_alter_zoom_factor = 0.5
-alter_aim_hud_offset_pos = 0.0376,0.01265,0.02
-alter_aim_hud_offset_rot = 0.0,0.0,-0.00
-alter_aim_hud_offset_pos_16x9 = 0.0376,0.01265,0.02
-alter_aim_hud_offset_rot_16x9 = 0.0,0.0,-0.00
+alter_aim_hud_offset_pos = -0.012,0.025,-0.05
+alter_aim_hud_offset_rot = 0.0,0.0,0.0
+
+alter_aim_hud_offset_pos_16x9 = -0.012,0.025,-0.1
+alter_aim_hud_offset_rot_16x9 = 0.0,0.0,0.0
 
 [scope_nvas_svu]
 scope_name 					= wpn_addon_scope_night
@@ -476,10 +480,11 @@ overriding_show_bones = ironsight_off
 inertion_aim_origin_offset = 0.01
 inertion_aim_speed = 10 
 
-aim_hud_offset_pos = 0.0603,-0.0363,0.20
-aim_hud_offset_rot = 0.0,0.0,-0.00
-aim_hud_offset_pos_16x9 = 0.0603,-0.0363,0.20
-aim_hud_offset_rot_16x9 = 0.0,0.0,-0.00
+aim_hud_offset_pos = 0.011,-0.014,-0.05
+aim_hud_offset_rot = 0.0,0.0,0.0
+
+aim_hud_offset_pos_16x9 = 0.011,-0.014,-0.05
+aim_hud_offset_rot_16x9 = 0.0,0.0,0.0
 
 [scope_cobra_svu]
 scope_name 					= wpn_addon_scope_cobra
@@ -492,11 +497,11 @@ overriding_show_bones = ironsight_off
 hud_fov_zoom = 0.85
 ;use_scope_anims = true ;говорит, что надо использовать анимации с суффиксом _scope в прицеливании с данным прицелом
 
-aim_hud_offset_pos = 0.0410,-0.0149,-0.003
-aim_hud_offset_rot = -0.0015,0.0,-0.00
+aim_hud_offset_pos = -0.0088,0.001,-0.16
+aim_hud_offset_rot = 0.0,0.0,0.0
 
-aim_hud_offset_pos_16x9 = 0.0410,-0.0149,-0.003
-aim_hud_offset_rot_16x9 = -0.0015,0.0,-0.00
+aim_hud_offset_pos_16x9 = -0.0088,0.001,-0.16
+aim_hud_offset_rot_16x9 = 0.0,0.0,0.0
 
 inertion_aim_origin_offset = 0.01
 inertion_aim_speed = 8
@@ -511,11 +516,11 @@ overriding_show_bones = ironsight_off
 hud_fov_zoom = 0.5
 ;use_scope_anims = true ;говорит, что надо использовать анимации с суффиксом _scope в прицеливании с данным прицелом
 
-aim_hud_offset_pos = 0.0506,-0.0139,0.17
-aim_hud_offset_rot = 0.0,0.0,-0.00
+aim_hud_offset_pos = 0.001,-0.0015,-0.13
+aim_hud_offset_rot = 0.0,0.0,0.0
 
-aim_hud_offset_pos_16x9 = 0.0506,-0.0139,0.17
-aim_hud_offset_rot_16x9 = 0.0,0.0,-0.00
+aim_hud_offset_pos_16x9 = 0.001,-0.0015,-0.13
+aim_hud_offset_rot_16x9 = 0.0,0.0,0.0
 
 inertion_aim_origin_offset = 0.01
 inertion_aim_speed = 8
@@ -531,11 +536,11 @@ bone = scope3
 overriding_hide_bones = ironsight_on, sight_on
 overriding_show_bones = ironsight_off
 
-aim_hud_offset_pos = 0.0385,-0.0138,0.22
-aim_hud_offset_rot = 0.0,0.0,-0.00
+aim_hud_offset_pos = -0.0115,0.0,-0.1
+aim_hud_offset_rot = 0.0,0.0,0.0
 
-aim_hud_offset_pos_16x9 = 0.0385,-0.0138,0.22
-aim_hud_offset_rot_16x9 = 0.0,0.0,-0.00
+aim_hud_offset_pos_16x9 = -0.0115,0.0,-0.1
+aim_hud_offset_rot_16x9 = 0.0,0.0,0.0
 
 inertion_aim_origin_offset = 0.01
 inertion_aim_speed = 10 

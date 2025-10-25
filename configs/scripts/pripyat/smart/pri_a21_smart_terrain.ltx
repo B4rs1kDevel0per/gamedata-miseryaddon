@@ -1,7 +1,26 @@
-[smart_terrain]
+[smart_terrain];pri_a21
 squad_id = 23
 max_population = 2
-arrive_dist = 100
+;arrive_dist = 100
+
+respawn_params = respawn@pri_a21
+
+[respawn@pri_a21]
+spawn_bandit@hostile
+spawn_bandit@hostile_2
+spawn_killer
+
+[spawn_bandit@hostile]
+spawn_squads = bandit_sim_squad_hostile_elite
+spawn_num = {-PRI_A21_SENTRY_TASK_DONE +ZAT_A23_ACTOR_HAS_GAUSS_RIFLE_DOCUMENTATION +PRI_A20_TALK_WITH_COLONEL_COMPLETE} 0, 1
+
+[spawn_bandit@hostile_2]
+spawn_squads = bandit_sim_squad_hostile_elite
+spawn_num = {+PRI_A28_ACTOR_IN_ZONE_STAY} 1, 0
+
+[spawn_killer]
+spawn_squads = merc_sim_squad_veteran
+spawn_num = {-PRI_A21_SENTRY_TASK_DONE +ZAT_A23_ACTOR_HAS_GAUSS_RIFLE_DOCUMENTATION +PRI_A20_TALK_WITH_COLONEL_COMPLETE} 0, 1
 
 [exclusive]
 pri_a21_chasovoi = pripyat\pri_a21_chasovoi.ltx

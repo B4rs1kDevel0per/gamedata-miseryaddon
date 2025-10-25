@@ -4,8 +4,19 @@ max_population = 1
 respawn_params = respawn@zat_sim_26
 
 [respawn@zat_sim_26]
-spawn_chimera
+spawn_bloodsucker
+spawn_dog
+spawn_pseudodog
 
-[spawn_chimera]
-spawn_squads = simulation_chimera
-spawn_num = {+ZAT_B106_HUNT_FINISH +ZAT_B28_HELI_3_SEARCHED} 1, {+ZAT_B106_HUNT_FINISH +ZAT_B100_HELI_2_SEARCHED} 1, {+ZAT_B106_HUNT_FINISH +ZAT_B101_HELI_5_SEARCHED} 1, 0
+[spawn_pseudodog]
+spawn_squads = simulation_boar, simulation_flesh
+spawn_num = {+ZAT_B57_BLOODSUCKER_LAIR_CLEAR} 1, 0
+
+[spawn_dog]
+spawn_squads = simulation_pseudodog, simulation_dog
+spawn_num = {+ZAT_B57_BLOODSUCKER_LAIR_CLEAR} 2, 0
+
+[spawn_bloodsucker]
+spawn_squads = simulation_bloodsucker_zat_sim_26
+spawn_num = {+ZAT_B38_FAILED} 2, {+ZAT_B57_BLOODSUCKER_LAIR_CLEAR} 0, 1
+

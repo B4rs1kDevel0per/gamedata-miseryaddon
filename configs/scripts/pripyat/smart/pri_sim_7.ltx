@@ -5,8 +5,13 @@ respawn_only_smart = true
 respawn_params = respawn@pri_sim_7
 
 [respawn@pri_sim_7]
-merc_sim_squad
+spawn_flesh
+spawn_snork
 
-[merc_sim_squad]
-spawn_squads = stalker_sim_squad_advanced, stalker_sim_squad_advanced, stalker_sim_squad_veteran
-spawn_num =  {+PRI_A28_ACTOR_IN_ZONE_STAY} 2, 0
+[spawn_flesh]
+spawn_squads = simulation_flesh
+spawn_num = 1
+
+[spawn_snork]
+spawn_squads = simulation_snork
+spawn_num = 1

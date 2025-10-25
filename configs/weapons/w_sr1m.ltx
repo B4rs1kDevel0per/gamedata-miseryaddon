@@ -18,12 +18,12 @@ control_inertion_factor = 1.0
 repair_group = sr1m
 
 ;-------------------------------------------------------------------------------
-cost					= 14628           ; the price of the item
+cost					= 2700           ; the price of the item
 inv_weight				= 0.9
 
-upgrades = vartree_sr1m_zatvor, vartree_sr1m_mar_reliability, vartree_sr1m_usm, vartree_sr1m_ramka, vartree_sr1m_rail, vartree_sr1m_sights, vartree_sr1m_mag
-installed_upgrades = 
-upgrade_scheme = upgrade_scheme_sr1m
+upgrades                = up_gr_firstab_pm, up_gr_seconab_pm, up_gr_thirdab_pm, up_gr_fourtab_pm, up_gr_fifthab_pm, up_gr_fifthcd_pm
+installed_upgrades      =
+upgrade_scheme          = upgrade_scheme_pm
  
 
 ammo_in_chamber = true
@@ -31,7 +31,7 @@ ammo_in_chamber = true
 def_hide_bones = sight, picatinia, laser, flash, barrel_silencer, barrel_compensator
 def_show_bones = barrel
 ;----TTX--------------------------------------------------------------------------
-hit_power           			= 0.35, 0.35, 0.35, 0.35
+hit_power           			= 1.0, 1.0, 1.0, 1.0
 hit_impulse	 		 			= 75
 hit_type 						= fire_wound
 fire_distance           	= 200
@@ -130,10 +130,10 @@ holder_fov_modifier		= 1.0              ; во сколько раз увели�
 min_radius              	= 0
 max_radius              	= 50
 
-hit_probability_gd_novice	= 1.0
-hit_probability_gd_stalker	= 1.0
-hit_probability_gd_veteran	= 1.0
-hit_probability_gd_master	= 1.0
+hit_probability_gd_novice	= 0.80
+hit_probability_gd_stalker	= 0.80
+hit_probability_gd_veteran	= 0.80
+hit_probability_gd_master	= 0.80
 
 ;-------------------------------------------------------------------------------
 supports_detector = true
@@ -208,7 +208,7 @@ ph_mass                 = 1
 
 ;addons
 scope_status            = 0                   ; 0 - no addon
-silencer_status         = 0                  ; 1 - permanent
+silencer_status         = 2                  ; 1 - permanent
 grenade_launcher_status = 0                   ; 2 - attachable
 
 zoom_enabled					= true
@@ -257,15 +257,17 @@ zoom_dof_focus = 0.50
 hud_fov = 0.75
 hud_fov_zoom = 0.75
 
-hands_position			= -0.036,-0.135,-0.085
-hands_orientation			= 0.0,0.0,-7.0
-hands_position_16x9			= -0.036,-0.135,-0.085
-hands_orientation_16x9			= 0.0,0.0,-7.0
+hands_position				= 0.0,-0.13,0.03
+hands_orientation			= 0.0,0.0,0.0
 
-aim_hud_offset_pos = 0.052200,0.0132000,0.115
-aim_hud_offset_rot = -0.0040000,0.000000,-0.10000
-aim_hud_offset_pos_16x9 = 0.052200,0.0132000,0.115
-aim_hud_offset_rot_16x9 = -0.0040000,0.000000,-0.10000
+hands_position_16x9			= 0.0,-0.13,0.03
+hands_orientation_16x9			= 0.0,0.0,0.0
+
+aim_hud_offset_pos = 0.0003000,0.0135000,0.0
+aim_hud_offset_rot = -0.0040000,0.000000,0.0
+
+aim_hud_offset_pos_16x9 = 0.0003000,0.0135000,0.0
+aim_hud_offset_rot_16x9 = -0.0040000,0.000000,0.0
 
 item_position			= 0.0,0.0,0.0
 item_orientation		= 0.0,0.0,0.0

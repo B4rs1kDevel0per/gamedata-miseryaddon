@@ -1,6 +1,20 @@
-[smart_terrain]
+[smart_terrain]; zat_b100
 squad_id = 52
 max_population = 2
+
+respawn_params = respawn@zat_b100
+
+[respawn@zat_b100]
+spawn_duty@veteran
+spawn_duty@hunter_night
+
+[spawn_duty@veteran]
+spawn_squads = bandit_sim_squad_hostile, bandit_sim_squad_hostile_elite
+spawn_num = {+ZAT_B100_HELI_2_SEARCHED} 2, 0
+
+[spawn_duty@hunter_night]
+spawn_squads = merc_sim_squad_veteran
+spawn_num = {+ZAT_B100_HELI_2_SEARCHED} 1, 0
 
 [exclusive]
 zat_b100_poltergeist_01 = zaton\zat_b100_poltergeist_normal_tele.ltx

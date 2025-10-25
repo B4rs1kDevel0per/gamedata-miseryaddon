@@ -1,5 +1,18 @@
 [smart_terrain];zat_sim_14
 squad_id = 22
 max_population = 1
-spawn_point = zat_sim_14_spawn_point 
- 
+spawn_point = zat_sim_14_spawn_point
+
+respawn_params = respawn@zat_sim_14
+
+[respawn@zat_sim_14]
+sim_killer
+sim_monolith
+
+[sim_killer]
+spawn_squads = merc_sim_squad_veteran
+spawn_num = {-ZAT_B40_ACTOR_HAS_NOTEBOOK} 1, 0
+
+[sim_monolith]
+spawn_squads = simulation_monolith_squad, monolith_sim_squad_veteran
+spawn_num = {+ZAT_B40_ACTOR_HAS_NOTEBOOK} 0, 0

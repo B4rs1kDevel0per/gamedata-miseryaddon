@@ -1,5 +1,14 @@
-[smart_terrain]
+[smart_terrain];jup_b8_smart_terrain
 squad_id = 28
+max_population = 2
+respawn_params = respawn@jup_b8_smart_terrain
+
+[respawn@jup_b8_smart_terrain]
+sim_burer
+
+[sim_burer]
+spawn_squads = monolith_sim_squad_jup_b8_smart_terrain ; simulation_burer_jup_b8_smart_terrain, simulation_gigant_jup_b8_smart_terrain, simulation_controller_jup_b8_smart_terrain, simulation_bloodsucker_jup_b8_smart_terrain
+spawn_num = {+JUP_B8_HELI_4_SEARCHED} 2, {+ZAT_B101_BOTH_HELI_INFO} 2, 0
 
 [exclusive]
 psy_dog_1 = jupiter\jup_b8_psy_dog_1.ltx

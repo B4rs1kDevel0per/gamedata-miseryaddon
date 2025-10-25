@@ -15,11 +15,11 @@ default_to_ruck         = false
 sprint_allowed          = true
 
 ;-------------------------------------------------------------------------------
-cost              	 = 23940            ; the price of the item
+cost              	 = 3300            ; the price of the item
 weapon_class         = assault_rifle      ; the type of the box that will be used in buy-menu in multiplayer mode
 inv_weight        = 3.6                      ; weight in inventory
 
-upgrades                = up_gr_firstab_ak74, up_gr_seconab_ak74, up_gr_thirdab_ak74, up_gr_fourtab_ak74, up_gr_fifthcd_ak74
+upgrades                = up_gr_firstab_ak74, up_gr_seconab_ak74, up_gr_thirdab_ak74, up_gr_fourtab_ak74, up_gr_fifthcd_ak74, up_gr_fifthef_ak74
 installed_upgrades      =
 upgrade_scheme          = upgrade_scheme_ak74
 
@@ -27,12 +27,12 @@ def_show_bones = mag30, handler, foregrip
 def_hide_bones = mag45, mag45_black, mag60, handler2, scope_cobra, scope_rakurs, scope_pso_sniper, scope_kashtan, scope_pka, scope_pso_assault, scope_nv_sniper, scope_nv_assault, flash, light, laser, line, line2, sight, sight2, foregrip_rail, knife, tilnik
 
 ;-““’---------------------------------------------------------------------------
-hit_power            = 0.5, 0.5, 0.5, 0.5
+hit_power            = 1.3, 1.3, 1.3, 1.3
 hit_impulse          = 100    ; size of physic impulse by bullet
 hit_type             = fire_wound            ; [] type of the wound
-fire_distance           = 1000 ;1000                  ; maximum fire distance that bullet can fly
-bullet_speed            = 880                ; starting bullet speed
-rpm                     = 650    ; max round per minute
+fire_distance           = 200 ;1000                  ; maximum fire distance that bullet can fly
+bullet_speed            = 550                ; starting bullet speed
+rpm                     = 680    ; max round per minute
 rpm_empty_click         = 10
 
 ;настройки дл¤ глушител¤
@@ -48,17 +48,17 @@ hud                     = wpn_ak74_hud
 
 misfire_probability        = 0.005 ;веро¤тность осечки при максимальном износе  !!!old - now not working
 ;изношенность, при которой по¤вл¤етс¤ шанс осечки
-misfire_start_condition		= 0.75
+misfire_start_condition		= 0.5
 ;изношеность при которой шанс осечки становитс¤ константным
 misfire_end_condition		= 0.1
 ;шанс осечки при изношености больше чем misfireStartCondition
-misfire_start_prob	     	= 0.007
+misfire_start_prob	     	= 0.003
 ;шанс осечки при изношености больше чем misfireEndCondition
-misfire_end_prob	     	= 0.085
+misfire_end_prob	     	= 0.033
 ;увеличение изношености при одиночном выстреле
-condition_shot_dec      	= 0.0007
+condition_shot_dec      	= 0.0002
 ;увеличение изношености при выстреле очередью
-condition_queue_shot_dec	= 0.0007
+condition_queue_shot_dec	= 0.0005
 
 ammo_elapsed         = 30           ; obsolete
 ammo_mag_size        = 30           ; clip (magazine) size
@@ -78,30 +78,30 @@ reload_dof           = 0.0, 0.5, 5, 2;1.7
 
 ;-ƒисперси¤----------------------------------------------------------------------
 ;params of weapon recoil
-fire_dispersion_base       	= 0.35    ;угол (в градусах) базовой дисперсии оружи¤ (оружи¤ зажатого в тисках)
+fire_dispersion_base       	= 0.19    ;угол (в градусах) базовой дисперсии оружи¤ (оружи¤ зажатого в тисках)
 control_inertion_factor    	= 1.2f
-crosshair_inertion			= 5.8
+crosshair_inertion			= 6
 
 ;отдача
 ;cam_return					= 0
 ;cam_relax_speed             = 10		;скорость возврата в исходное положение
 ;cam_relax_speed_ai      	= 360
-;cam_dispersion              = 0.93		;увеличени¤ угла (в градусах) с первым выстрелом
-;cam_dispersion_inc         	= 0.65		;увеличениe cam_dispersion с каждым выстрелом
-;cam_dispersion_frac        	= 1.1	    ;ствол будет подыматьс¤ на cam_dispersion*cam_dispersion_frac +- cam_dispersion*(1-cam_dispersion_frac)
+;cam_dispersion              = 0.8		;увеличени¤ угла (в градусах) с первым выстрелом
+;cam_dispersion_inc         	= 0.5		;увеличениe cam_dispersion с каждым выстрелом
+;cam_dispersion_frac        	= 1.0	    ;ствол будет подыматьс¤ на cam_dispersion*cam_dispersion_frac +- cam_dispersion*(1-cam_dispersion_frac)
 ;cam_max_angle				= 50.0      ;максимальный угол отдачи
-;cam_max_angle_horz         	= 50.0      ;(degree) maximum shot horizontal degree
-;cam_step_angle_horz        	= 1.15		;(degree) size of step camera moved in horizontal position while shooting
+;cam_max_angle_horz         	= 5.0      ;(degree) maximum shot horizontal degree
+;cam_step_angle_horz        	= 0.35		;(degree) size of step camera moved in horizontal position while shooting
 
 cam_return				= 0
-cam_relax_speed         = 10	; скорость возврата в исходное положение
+cam_relax_speed         = 5		; скорость возврата в исходное положение
 cam_relax_speed_ai      = 360	; скорость возврата в исходное положение для AI
-cam_dispersion          = 0.93       ; увеличения угла (в градусах) при первом выстреле
-cam_dispersion_inc      = 0.65       ; увеличениe cam_dispersion с каждым выстрелом
-cam_dispersion_frac     = 1.1       ; frac * angle + rand(-1,1)*(1-frac) * angle
+cam_dispersion          = 0.55       ; увеличения угла (в градусах) при первом выстреле
+cam_dispersion_inc      = 0.3       ; увеличениe cam_dispersion с каждым выстрелом
+cam_dispersion_frac     = 1.0       ; frac * angle + rand(-1,1)*(1-frac) * angle
 cam_max_angle           = 50.0       ; максимальный угол отдачи
 cam_max_angle_horz      = 50.0       ; (degree) maximum shot horizontal degree
-cam_step_angle_horz     = 1.15       ; (degree) size of step camera moved in horizontal position while shooting
+cam_step_angle_horz     = 1.5       ; (degree) size of step camera moved in horizontal position while shooting
 
 ;zoom_cam_relax_speed         = 10	    ; scope & ironsight
 ;zoom_cam_relax_speed_ai      = 360
@@ -112,18 +112,18 @@ cam_step_angle_horz     = 1.15       ; (degree) size of step camera moved in hor
 ;zoom_cam_max_angle_horz      = 5.0
 ;zoom_cam_step_angle_horz     = 0.3
 
-zoom_cam_relax_speed         = 10     ; scope & ironsight
+zoom_cam_relax_speed         = 5     ; scope & ironsight
 zoom_cam_relax_speed_ai      = 360
-zoom_cam_dispersion          = 0.75
-zoom_cam_dispersion_inc      = 0.53
+zoom_cam_dispersion          = 0.45
+zoom_cam_dispersion_inc      = 0.45
 zoom_cam_dispersion_frac     = 0.7
 zoom_cam_max_angle           = 50.0
-zoom_cam_max_angle_horz      = 50.0
-zoom_cam_step_angle_horz     = 1.05
+zoom_cam_max_angle_horz      = 5.0
+zoom_cam_step_angle_horz     = 0.3
 
-PDM_disp_base 				= 1.0
-PDM_disp_vel_factor 		= 2.5
-PDM_disp_accel_factor 		= 2.5
+PDM_disp_base 				= 1.3
+PDM_disp_vel_factor 		= 1.8
+PDM_disp_accel_factor 		= 1.8
 PDM_disp_crouch	 			= 1.0
 PDM_disp_crouch_no_acc 		= 1.0
 
@@ -136,10 +136,10 @@ holder_fov_modifier     = 1.0              ; во сколько раз увел
 min_radius           = 3           ; [] for AI
 max_radius           = 100          ; [] for AI
 
-hit_probability_gd_novice  = 1.0
-hit_probability_gd_stalker = 1.0
-hit_probability_gd_veteran = 1.0
-hit_probability_gd_master  = 1.0
+hit_probability_gd_novice  = 0.80
+hit_probability_gd_stalker = 0.80
+hit_probability_gd_veteran = 0.80
+hit_probability_gd_master  = 0.80
 
 ;-------------------------------------------------------------------------------
 slot                    = 2                ; // secondary
@@ -291,10 +291,10 @@ gl_dof_focus = 1.0
 
 hud_recalc_koef = 1.5
 
-inertion_pitch_offset_r = 0.01
-inertion_pitch_offset_n = 0.007
-inertion_pitch_offset_d = 0.01
-inertion_origin_offset = 0.03я
+inertion_pitch_offset_r = -0.008
+inertion_pitch_offset_n = -0.006
+inertion_pitch_offset_d = -0.001
+inertion_origin_offset = 0.06
 
 inertion_aim_origin_offset = 0.015
 inertion_aim_speed = 10
@@ -304,25 +304,25 @@ gl_ammo_params_section_0 = wpn_ak74_ammo_bones_vog25
 gl_ammo_params_section_1 = wpn_ak74_ammo_bones_vog25p
 
 
-hands_position			    = -0.000,-0.015,-0.05
+hands_position				= 0.02,-0.02,0.005
 hands_orientation			= 0.0,0.0,0.0
 
-hands_position_16x9			= -0.000,-0.015,-0.05
-hands_orientation_16x9		= 0.0,0.0,0.0
+hands_position_16x9			= 0.02,-0.02,0.005
+hands_orientation_16x9			= 0.0,0.0,0.0
 
 item_position				= 0.0,0.0,0.0
 item_orientation			= 0.0,0.0,0.0
 
-aim_hud_offset_pos    = 0.0202,0.01850,0.090
-aim_hud_offset_rot    = 0.000000,0.000000,-0.0000
+aim_hud_offset_pos         = 0.00030,0.025000,0.000
+aim_hud_offset_rot         = 0.000000,0.000000,0.0000
 
-aim_hud_offset_pos_16x9    = 0.0202,0.01850,0.090
-aim_hud_offset_rot_16x9    = 0.000000,0.000000,-0.0000
+aim_hud_offset_pos_16x9    = 0.00030,0.025000,0.000
+aim_hud_offset_rot_16x9    = 0.000000,0.000000,0.0000
 
-gl_hud_offset_pos     = 0.0000,0.0150,-0.16000
-gl_hud_offset_rot     = 0.000000,0.000000,0.0000
+gl_hud_offset_pos          = -0.0200,0.02000,-0.20000
+gl_hud_offset_rot          = 0.000000,0.000000,0.0000
 
-gl_hud_offset_pos_16x9     = 0.0000,0.0150,-0.16000
+gl_hud_offset_pos_16x9     = -0.0200,0.02000,-0.20000
 gl_hud_offset_rot_16x9     = 0.000000,0.000000,0.0000
 
 lean_hud_offset_pos        = 0,0,0
@@ -762,16 +762,16 @@ bone = scope_pso_sniper
 hud_fov_zoom = 0.4
 use_scope_anims = true ;говорит, что надо использовать анимации с суффиксом _scope в прицеливании с данным прицелом
 
-aim_hud_offset_pos = 0.034600,-0.0143000,0.240
-aim_hud_offset_rot = 0.000000,0.000000,-0.000000
+aim_hud_offset_pos = 0.012500,-0.011000,0.17
+aim_hud_offset_rot = 0.000000,0.000000,0.000000
 
-aim_hud_offset_pos_16x9 = 0.034600,-0.0143000,0.240
-aim_hud_offset_rot_16x9 = 0.000000,0.000000,-0.000000
+aim_hud_offset_pos_16x9 = 0.012500,-0.011000,0.17
+aim_hud_offset_rot_16x9 = 0.000000,0.000000,0.000000
 
-gl_hud_offset_pos     = 0.0000,0.0150,-0.16000
-gl_hud_offset_rot     = 0.000000,0.000000,0.0000
+gl_hud_offset_pos          = -0.0200,0.02000,-0.20000
+gl_hud_offset_rot          = 0.000000,0.000000,0.0000
 
-gl_hud_offset_pos_16x9     = 0.0000,0.0150,-0.16000
+gl_hud_offset_pos_16x9     = -0.0200,0.02000,-0.20000
 gl_hud_offset_rot_16x9     = 0.000000,0.000000,0.0000
 
 inertion_pitch_offset_r_factor = 0.5
@@ -790,16 +790,16 @@ bone = scope_pso_assault
 hud_fov_zoom = 0.4
 use_scope_anims = true ;говорит, что надо использовать анимации с суффиксом _scope в прицеливании с данным прицелом
 
-aim_hud_offset_pos = 0.032700,-0.01470000,0.2400
-aim_hud_offset_rot = 0.000000,0.000000,-0.000000
+aim_hud_offset_pos = 0.013500,-0.009000,0.12
+aim_hud_offset_rot = 0.000000,0.000000,0.000000
 
-aim_hud_offset_pos_16x9 = 0.032700,-0.01470000,0.2400
-aim_hud_offset_rot_16x9 = 0.000000,0.000000,-0.000000
+aim_hud_offset_pos_16x9 = 0.013500,-0.009000,0.12
+aim_hud_offset_rot_16x9 = 0.000000,0.000000,0.000000
 
-gl_hud_offset_pos     = 0.0000,0.0150,-0.16000
-gl_hud_offset_rot     = 0.000000,0.000000,0.0000
+gl_hud_offset_pos          = -0.0200,0.02000,-0.20000
+gl_hud_offset_rot          = 0.000000,0.000000,0.0000
 
-gl_hud_offset_pos_16x9     = 0.0000,0.0150,-0.16000
+gl_hud_offset_pos_16x9     = -0.0200,0.02000,-0.20000
 gl_hud_offset_rot_16x9     = 0.000000,0.000000,0.0000
 
 inertion_pitch_offset_r_factor = 0.5
@@ -818,16 +818,16 @@ bone = scope_rakurs
 hud_fov_zoom = 0.8
 use_scope_anims = true ;говорит, что надо использовать анимации с суффиксом _scope в прицеливании с данным прицелом
 
-aim_hud_offset_pos = 0.020400,-0.0125,0.07000
-aim_hud_offset_rot = 0.000000,0.000000,-0.000000
+aim_hud_offset_pos = 0.000200,-0.00755,0.0
+aim_hud_offset_rot = 0.000000,0.000000,0.0
 
-aim_hud_offset_pos_16x9 = 0.020400,-0.0125,0.07000
-aim_hud_offset_rot_16x9 = 0.000000,0.000000,-0.000000
+aim_hud_offset_pos_16x9 = 0.000200,-0.00755,0.0
+aim_hud_offset_rot_16x9 = 0.000000,0.000000,0.0
 
-gl_hud_offset_pos     = 0.0000,0.0150,-0.16000
-gl_hud_offset_rot     = 0.000000,0.000000,0.0000
+gl_hud_offset_pos          = -0.0200,0.02000,-0.20000
+gl_hud_offset_rot          = 0.000000,0.000000,0.0000
 
-gl_hud_offset_pos_16x9     = 0.0000,0.0150,-0.16000
+gl_hud_offset_pos_16x9     = -0.0200,0.02000,-0.20000
 gl_hud_offset_rot_16x9     = 0.000000,0.000000,0.0000
 
 inertion_aim_origin_offset = 0.005
@@ -842,27 +842,28 @@ use_scope_anims = true ;говорит, что надо использовать
 
 bone = scope_nv_sniper
 
-aim_hud_offset_pos = 0.037050,-0.03380,0.231000
-aim_hud_offset_rot = 0.000000,0.000000,-0.000000
+aim_hud_offset_pos = 0.015350,-0.03700,0.12
+aim_hud_offset_rot = 0.000000,0.000000,0.000000
 
-aim_hud_offset_pos_16x9 = 0.037050,-0.03380,0.231000
-aim_hud_offset_rot_16x9 = 0.000000,0.000000,-0.000000
+aim_hud_offset_pos_16x9 = 0.015350,-0.03700,0.12
+aim_hud_offset_rot_16x9 = 0.000000,0.000000,0.000000
 
-gl_hud_offset_pos     = 0.0000,0.0150,-0.16000
-gl_hud_offset_rot     = 0.000000,0.000000,0.0000
+gl_hud_offset_pos          = -0.0200,0.02000,-0.20000
+gl_hud_offset_rot          = 0.000000,0.000000,0.0000
 
-gl_hud_offset_pos_16x9     = 0.0000,0.0150,-0.16000
-gl_hud_offset_rot_16x9     = 0.000000,0.000000,0.00000
+gl_hud_offset_pos_16x9     = -0.0200,0.02000,-0.20000
+gl_hud_offset_rot_16x9     = 0.000000,0.000000,0.0000
 
 inertion_aim_origin_offset = 0.01
 inertion_aim_speed = 10 
 
 alter_zoom_allowed = true
-hud_fov_alter_zoom_factor = 1.0
-alter_aim_hud_offset_pos    = 0.0202,0.01850,0.090
-alter_aim_hud_offset_rot    0.000000,0.000000,-0.0000
-alter_aim_hud_offset_pos_16x9    = 0.0202,0.01850,0.090
-alter_aim_hud_offset_rot_16x9    0.000000,0.000000,-0.0000
+hud_fov_alter_zoom_factor = 0.5
+alter_aim_hud_offset_pos         = 0.00030,0.025000,-0.0500
+alter_aim_hud_offset_rot         = 0.000000,0.000000,0.0000
+
+alter_aim_hud_offset_pos_16x9    = 0.00030,0.025000,-0.0500
+alter_aim_hud_offset_rot_16x9    = 0.000000,0.000000,0.0000
 
 [scope_nvas_ak74m]
 scope_name 					= wpn_addon_scope_night
@@ -873,16 +874,16 @@ use_scope_anims = true ;говорит, что надо использовать
 
 bone = scope_nv_assault
 
-aim_hud_offset_pos = 0.0433,-0.02570,0.24000
-aim_hud_offset_rot = 0.000000,0.000000,-0.00
+aim_hud_offset_pos = 0.02350,-0.02000,0.11
+aim_hud_offset_rot = 0.000000,0.000000,0.000000
 
-aim_hud_offset_pos_16x9 = 0.0433,-0.02570,0.24000
-aim_hud_offset_rot_16x9 = 0.000000,0.000000,-0.00
+aim_hud_offset_pos_16x9 = 0.02350,-0.02000,0.11
+aim_hud_offset_rot_16x9 = 0.000000,0.000000,0.000000
 
-gl_hud_offset_pos     = 0.0000,0.0150,-0.16000
-gl_hud_offset_rot     = 0.000000,0.000000,0.0000
+gl_hud_offset_pos          = -0.0200,0.02000,-0.20000
+gl_hud_offset_rot          = 0.000000,0.000000,0.0000
 
-gl_hud_offset_pos_16x9     = 0.0000,0.0150,-0.16000
+gl_hud_offset_pos_16x9     = -0.0200,0.02000,-0.20000
 gl_hud_offset_rot_16x9     = 0.000000,0.000000,0.0000
 
 inertion_aim_origin_offset = 0.01
@@ -896,16 +897,16 @@ bone = scope_cobra
 hud_fov_zoom = 0.85
 use_scope_anims = true ;говорит, что надо использовать анимации с суффиксом _scope в прицеливании с данным прицелом
 
-aim_hud_offset_pos = 0.0239000,-0.0165000,-0.00
-aim_hud_offset_rot = 0.0020000,0.000000,-0.000000
+aim_hud_offset_pos = 0.00400,-0.0115000,0.0
+aim_hud_offset_rot = 0.000000,0.000000,0.000000
 
-aim_hud_offset_pos_16x9 = 0.0239000,-0.0165000,-0.00
-aim_hud_offset_rot_16x9 = 0.0020000,0.000000,-0.000000
+aim_hud_offset_pos_16x9 = 0.00400,-0.0115000,0.0
+aim_hud_offset_rot_16x9 = 0.000000,0.000000,0.000000
 
-gl_hud_offset_pos     = 0.0000,0.0150,-0.16000
-gl_hud_offset_rot     = 0.000000,0.000000,0.0000
+gl_hud_offset_pos          = -0.0200,0.02000,-0.20000
+gl_hud_offset_rot          = 0.000000,0.000000,0.0000
 
-gl_hud_offset_pos_16x9     = 0.0000,0.0150,-0.16000
+gl_hud_offset_pos_16x9     = -0.0200,0.02000,-0.20000
 gl_hud_offset_rot_16x9     = 0.000000,0.000000,0.0000
 
 inertion_aim_origin_offset = 0.01
@@ -919,16 +920,16 @@ bone = scope_pka
 hud_fov_zoom = 0.5
 use_scope_anims = true ;говорит, что надо использовать анимации с суффиксом _scope в прицеливании с данным прицелом
 
-aim_hud_offset_pos = 0.0327000,-0.013100,0.19000
-aim_hud_offset_rot = 0.000000,0.000000,-0.00000
+aim_hud_offset_pos = 0.012000,-0.00800,0.05
+aim_hud_offset_rot = 0.000000,0.000000,0.0
 
-aim_hud_offset_pos_16x9 = 0.0327000,-0.013100,0.19000
-aim_hud_offset_rot_16x9 = 0.000000,0.000000,-0.00000
+aim_hud_offset_pos_16x9 = 0.012000,-0.00800,0.05
+aim_hud_offset_rot_16x9 = 0.000000,0.000000,0.0
 
-gl_hud_offset_pos     = 0.0000,0.0150,-0.16000
-gl_hud_offset_rot     = 0.000000,0.000000,0.0000
+gl_hud_offset_pos          = -0.0200,0.02000,-0.20000
+gl_hud_offset_rot          = 0.000000,0.000000,0.0000
 
-gl_hud_offset_pos_16x9     = 0.0000,0.0150,-0.16000
+gl_hud_offset_pos_16x9     = -0.0200,0.02000,-0.20000
 gl_hud_offset_rot_16x9     = 0.000000,0.000000,0.0000
 
 inertion_aim_origin_offset = 0.01
@@ -943,16 +944,17 @@ use_scope_anims = true ;говорит, что надо использовать
 
 bone = scope_kashtan
 
-aim_hud_offset_pos = 0.02260,-0.010500,0.190000
-aim_hud_offset_rot = 0.000000,0.000000,-0.000000
 
-aim_hud_offset_pos_16x9 = 0.02260,-0.010500,0.190000
-aim_hud_offset_rot_16x9 = 0.000000,0.000000,-0.000000
+aim_hud_offset_pos = 0.0030,-0.0065000,0.05
+aim_hud_offset_rot = 0.000000,0.000000,0.0
 
-gl_hud_offset_pos     = 0.0000,0.0150,-0.16000
-gl_hud_offset_rot     = 0.000000,0.000000,0.0000
+aim_hud_offset_pos_16x9 = 0.0030,-0.0065000,0.05
+aim_hud_offset_rot_16x9 = 0.000000,0.000000,0.0
 
-gl_hud_offset_pos_16x9     = 0.0000,0.0150,-0.16000
+gl_hud_offset_pos          = -0.0200,0.02000,-0.20000
+gl_hud_offset_rot          = 0.000000,0.000000,0.0000
+
+gl_hud_offset_pos_16x9     = -0.0200,0.02000,-0.20000
 gl_hud_offset_rot_16x9     = 0.000000,0.000000,0.0000
 
 inertion_aim_origin_offset = 0.01

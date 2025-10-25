@@ -1,4 +1,4 @@
-; Здесь содержатся дескрипшены сквадов, которые потом можно создавать используя спец функции.
+; пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ.
 [zat_b38_bloodsucker_1_lair]:online_offline_group
 faction = monster_predatory_night
 npc = zat_b38_bloodsucker_1
@@ -15,14 +15,14 @@ story_id = zat_b38_bloodsucker_2_lair
 
 [zat_b38_bloodsuckers_sleepers]:online_offline_group
 faction = monster_predatory_night
-npc = bloodsucker_strong, bloodsucker_strong, bloodsucker_weak, bloodsucker_weak, bloodsucker_weak, bloodsucker_strong, bloodsucker_weak, bloodsucker_weak, bloodsucker_weak
+npc = bloodsucker_strong, bloodsucker_strong, bloodsucker_strong, bloodsucker_strong, bloodsucker_weak, bloodsucker_strong, bloodsucker_weak, bloodsucker_weak, bloodsucker_weak
 target_smart = zat_b38u
 spawn_point = zat_b38u_sleeper_bloodsuckers_spawn
 story_id = zat_b38_bloodsuckers_sleepers
 
 [zat_b38_default_bloodsucker]:online_offline_group
 faction = monster_predatory_night
-npc = bloodsucker_weak
+npc = bloodsucker_strong
 target_smart = zat_b38
 on_death = %+ZAT_B38_DEFAULT_BLOODSUCKER_DEATH%
 story_id = zat_b38_default_bloodsucker
@@ -44,12 +44,12 @@ story_id = zat_b14_stalkers
 
 [zat_b57_bloodsuckers]:online_offline_group
 faction = monster_predatory_night
-npc = bloodsucker_weak, bloodsucker_weak
+npc = bloodsucker_strong, bloodsucker_strong
 target_smart = zat_b38 
 spawn_point = zat_b57_bloodsucker_spawn_point
 story_id = zat_b57_bloodsuckers
 
-[zat_b52_port_bandits]:online_offline_group ;Бандиты у портовых кранов
+[zat_b52_port_bandits]:online_offline_group ;пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 relationship = neutral
 faction = bandit
 npc = zat_b52_port_bandit_1, sim_default_bandit_1, sim_default_bandit_1, sim_default_bandit_1, sim_default_bandit_1
@@ -124,7 +124,7 @@ always_arrived = true
 sympathy = 0
 faction = stalker
 npc = zat_b7_stalker_victim_1, sim_default_stalker_0, sim_default_stalker_0, sim_default_stalker_0, sim_default_stalker_0, sim_default_stalker_0, sim_default_stalker_0
-target_smart = zat_b7
+target_smart = {+ZAT_B7_TASK_END} nil, zat_b7
 spawn_point = zat_b7_stalkers_victims_spawn_1
 story_id = zat_b7_stalkers_victims_1
 
@@ -209,14 +209,14 @@ always_arrived = true
 ;-----------------------zaton B33-------------------
 
 [zat_b33_snork_first_wave]:online_offline_group
-faction = monster_zombied_day
+faction = monster_predatory_day
 npc = snork_indoor, snork_indoor, snork_indoor, snork_indoor
 target_smart =  zat_b33
 spawn_point = zat_b33_snork_first_wave_spown
 story_id = zat_b33_snork_first_wave
 
 [zat_b33_snork_second_wave]:online_offline_group
-faction = monster_zombied_day
+faction = monster_predatory_day
 npc = snork_outdoor
 target_smart =  zat_b33
 spawn_point = zat_b33_snork_jump_05_walk
@@ -318,7 +318,7 @@ spawn_point = alex_selo_smart_terrain_mob_home
 faction = killer
 sympathy = 0
 npc = zat_b40_merc_squad_leader_1, zat_b40_merc_squad_leader_2, sim_default_killer_1, sim_default_killer_1, sim_default_killer_1, sim_default_killer_1, sim_default_killer_0, sim_default_killer_0, sim_default_killer_0, sim_default_killer_0
-target_smart = zat_b40_smart_terrain
+target_smart = {-ZAT_B40_ACTOR_HAS_NOTEBOOK} zat_b40_smart_terrain, nil
 spawn_point = zat_b40_smart_terrain_spown_point
 story_id = zat_b40_merc_squad
 
@@ -342,7 +342,7 @@ story_id = zat_b39_dogs_squad
 
 ;-----------------------zaton B53-------------------
 [zat_b53_artefact_hunter_1_squad]:online_offline_group
-faction = stalker
+faction = stalker_sci
 npc = zat_b53_artefact_hunter_1, zat_b53_artefact_hunter_2
 target_smart = {-ZAT_B53_GO_NIL} zat_b53, nil
 spawn_point = zat_b53_artefact_hunter_2_walk
@@ -385,7 +385,7 @@ always_arrived = true
 
 
 [zat_b106_chimera_squad]:online_offline_group
-faction = monster_predatory_night 
+faction = monster_predatory_night
 npc = zat_b106_chimera
 target_smart = zat_b106_smart_terrain
 spawn_point = zat_b106_smart_terrain_zat_b106_sleeper_chimera_walk
@@ -398,17 +398,3 @@ npc = m_poltergeist_normal_tele
 target_smart = {-ZAT_B100_HELI_2_SEARCHED} zat_b100, nil
 spawn_point = zat_b100_poltergeist_01_walk
 story_id = zat_b100_poltergeist_squad_01
-
-;------------------------------- Simulation TEST -------------------------------
-
-[simulation_stalker_for_a1]:online_offline_group
-faction = stalker
-target_smart = {+ZAT_A1_ATACK_FROM_ZAT_SIM_15} zat_a1:nil, nil
-spawn_point = zat_sim_15_spawn_for_a1
-npc = sim_default_stalker_2, sim_default_stalker_0
-
-[simulation_chimera_zaton]:online_offline_group
-faction = monster_predatory_night
-npc_random = chimera_normal
-npc_in_squad = 1, 1
-target_smart = {=is_dark_night} nil, {~50} zat_sim_5, {~50} zat_sim_3, {~50} zat_sim_1, {~50} zat_sim_18, {~50} zat_sim_10, {~50} zat_sim_7, zat_sim_26

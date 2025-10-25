@@ -1,3 +1,6 @@
+dbg = debug_utils
+MODULE = "bind_stalker"
+
 function init    (obj)
 				if (OnClient()) then
 					obj:bind_object(bind_stalker_cl(obj))
@@ -73,7 +76,7 @@ function mp_actor_binder:update_gameover_screen()
 		self:init_gameover_screen()
 	end
 	
-	local count = math.floor(10 - (time_global() - self.gameover_start_time) / 1000)
+	local count = math.floor(3 - (time_global() - self.gameover_start_time) / 1000) -- shorter gameover timer
 	
 	if count >= 0 then
 		self.gameover_wnd:getTimer():SetText(tostring(count))
@@ -853,6 +856,7 @@ end
 function bind_stalker_cl:hit_callback(obj, amount, local_direction, who, bone_index)
 	if who and getLocalActor() and getLocalActor():id() == who:id() then
 		xr_statistic.set_best_weapon(amount, who)
+		debug_utils.INFO(MODULE, "%s hits %s for %s!", who:name(), obj:name(), tonumber(amount)/100)
 	end
 end
 

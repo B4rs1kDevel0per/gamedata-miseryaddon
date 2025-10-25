@@ -1,0 +1,382 @@
+[plugin]
+enable = true
+
+;Communities, Goes by squad behavior community!!! You can add all you want
+communities=stalker,bandit,army,zombied,dolg,freedom,killer,monolith,ecolog
+
+; Create unique sections for specific section names
+special_sections = zat_b14_stalker_2, zat_b14_stalker_3, jup_b19_zombied_1, jup_b19_zombied_2, jup_b1_zombie_1, jup_b1_zombie_2, jup_b1_zombie_3
+
+; Must append _rankname to the community to add your own sections
+
+; Only one listed item from each list will be randomly selected
+; section:addon_flag:ammo_type:ammo_min:ammo_max
+; EXAMPLES
+; wpn_l85:5:1   Spawns l85 with Scope, Silencer and AP ammo
+; wpn_l85        Spawn l85 with default 0 ammo type and 0 addon flags
+; wpn_l85:3:1:100:200 Spawns lr300 with GL and between 100 to 200 ammo
+; ammo_min and ammo_max are optional and override ammo_* variable for individual weapons
+;Note: If you decide to use extra params you must use all 3 params (ie. section:flags:ammo_type)
+
+; Addon Flag ( 0 - no attachment, Scope +1 to flag, GL add +2 to flag, Silencer add + 4 to flag)
+
+; Ammo type corresponds to the ammo_class listed for the weapon. Either 0 or 1. If the first list ammo_class
+; Is AP ammo then ammo_type 0 will Set the ammo_type of the weapon to AP ammo and spawn AP ammo
+; depending on the box count provided.
+
+;   tertiary weapons can be added too
+
+; Specify "none" if you want randomly no weapon in that slot
+
+;extra = section:min_amount:max_amount
+; Add as many items as you like separated by commas.
+
+
+;----------------- SPECIAL SECTIONS
+
+[zat_b14_stalker_2]
+primary = wpn_toz34,wpn_wincheaster1300,wpn_mp5,wpn_mp5sd,wpn_bizon,wpn_ump45,wpn_ak74u,wpn_ak74,wpn_l85,wpn_ak101,wpn_ak74u,wpn_ak74,wpn_l85,wpn_ak101,wpn_lr300
+secondary = wpn_pm,wpn_pb,wpn_pmm,wpn_fort,wpn_fort17,wpn_hpsa,wpn_colt1911,wpn_stechkin,wpn_tt33,wpn_glock17,wpn_beretta,wpn_gsh18
+ammo_1 = 150,250							; Ammo min,max
+ammo_2 = 25,60
+ammo_3 = 5,25             
+
+[zat_b14_stalker_3]
+primary = wpn_toz34,wpn_wincheaster1300,wpn_mp5,wpn_mp5sd,wpn_bizon,wpn_ump45,wpn_ak74u,wpn_ak74,wpn_l85,wpn_ak101,wpn_ak74u,wpn_ak74,wpn_l85,wpn_ak101,wpn_lr300
+secondary = wpn_pm,wpn_pb,wpn_pmm,wpn_fort,wpn_fort17,wpn_hpsa,wpn_colt1911,wpn_stechkin,wpn_tt33,wpn_glock17,wpn_beretta,wpn_gsh18
+ammo_1 = 150,250							; Ammo min,max
+ammo_2 = 25,60
+ammo_3 = 5,25
+
+[jup_b1_zombie_1]
+primary = wpn_wincheaster1300,wpn_mp5,wpn_mp5sd,wpn_bizon,wpn_ump45,wpn_ak74u,wpn_ak74,wpn_l85,wpn_ak101,wpn_ak74u,wpn_ak74,wpn_l85,wpn_ak101,wpn_lr300
+secondary = wpn_pm,wpn_pb,wpn_pmm,wpn_fort,wpn_fort17,wpn_hpsa,wpn_colt1911,wpn_stechkin,wpn_tt33,wpn_glock17,wpn_beretta,wpn_gsh18
+ammo_1 = 150,250							; Ammo min,max
+ammo_2 = 25,60
+ammo_3 = 5,25
+
+[jup_b1_zombie_2]
+primary = wpn_wincheaster1300,wpn_mp5,wpn_mp5sd,wpn_bizon,wpn_ump45,wpn_ak74u,wpn_ak74,wpn_l85,wpn_ak101,wpn_ak74u,wpn_ak74,wpn_l85,wpn_ak101,wpn_lr300
+secondary = wpn_pm,wpn_pb,wpn_pmm,wpn_fort,wpn_fort17,wpn_hpsa,wpn_colt1911,wpn_stechkin,wpn_tt33,wpn_glock17,wpn_beretta,wpn_gsh18
+ammo_1 = 150,250							; Ammo min,max
+ammo_2 = 25,60
+ammo_3 = 5,25
+
+[jup_b1_zombie_3]
+primary = wpn_wincheaster1300,wpn_mp5,wpn_mp5sd,wpn_bizon,wpn_ump45,wpn_ak74u,wpn_ak74,wpn_l85,wpn_ak101,wpn_ak74u,wpn_ak74,wpn_l85,wpn_ak101,wpn_lr300
+secondary = wpn_pm,wpn_pb,wpn_pmm,wpn_fort,wpn_fort17,wpn_hpsa,wpn_colt1911,wpn_stechkin,wpn_tt33,wpn_glock17,wpn_beretta,wpn_gsh18
+ammo_1 = 150,250							; Ammo min,max
+ammo_2 = 25,60
+ammo_3 = 5,25
+
+[jup_b19_zombied_1]
+primary = wpn_wincheaster1300,wpn_mp5,wpn_mp5sd,wpn_bizon,wpn_ump45,wpn_ak74u,wpn_ak74,wpn_l85,wpn_ak101,wpn_ak74u,wpn_ak74,wpn_l85,wpn_ak101,wpn_lr300
+secondary = wpn_pm,wpn_pb,wpn_pmm,wpn_fort,wpn_fort17,wpn_hpsa,wpn_colt1911,wpn_stechkin,wpn_tt33,wpn_glock17,wpn_beretta,wpn_gsh18
+ammo_1 = 150,250							; Ammo min,max
+ammo_2 = 25,60
+ammo_3 = 5,25
+
+[jup_b19_zombied_2]
+primary = wpn_wincheaster1300,wpn_mp5,wpn_mp5sd,wpn_bizon,wpn_ump45,wpn_ak74u,wpn_ak74,wpn_l85,wpn_ak101,wpn_ak74u,wpn_ak74,wpn_l85,wpn_ak101,wpn_lr300
+secondary = wpn_pm,wpn_pb,wpn_pmm,wpn_fort,wpn_fort17,wpn_hpsa,wpn_colt1911,wpn_stechkin,wpn_tt33,wpn_glock17,wpn_beretta,wpn_gsh18
+ammo_1 = 150,250							; Ammo min,max
+ammo_2 = 25,60
+ammo_3 = 5,25
+
+;----------------- STALKER
+[stalker_novice]
+primary = none,none,wpn_toz34,wpn_bm16,wpn_mp5,wpn_bizon,wpn_ak74u,wpn_ump45
+secondary = wpn_pm,wpn_pb,wpn_pmm,wpn_fort,wpn_fort17,wpn_hpsa,wpn_colt1911,wpn_stechkin,wpn_tt33
+ammo_1 = 120,200							; Ammo min,max (automatically spawns correct type)
+ammo_2 = 25,40
+ammo_3 = 5,25
+
+[stalker_experienced]
+primary = wpn_toz34,wpn_wincheaster1300,wpn_mp5,wpn_mp5sd,wpn_bizon,wpn_ump45,wpn_ak74u,wpn_ak74,wpn_l85,wpn_ak101,wpn_ak74u,wpn_ak74,wpn_l85,wpn_ak101,wpn_lr300
+secondary = wpn_pm,wpn_pb,wpn_pmm,wpn_fort,wpn_fort17,wpn_hpsa,wpn_colt1911,wpn_stechkin,wpn_tt33,wpn_glock17,wpn_beretta,wpn_gsh18
+ammo_1 = 150,250							; Ammo min,max
+ammo_2 = 25,60
+ammo_3 = 5,25
+extra = grenade_rgd5:1:5
+
+[stalker_veteran]
+primary = wpn_mp5,wpn_mp5sd,wpn_ump45,wpn_ak74u,wpn_ak74,wpn_l85,wpn_ak101,wpn_ak74u,wpn_ak74,wpn_l85,wpn_ak101,wpn_val,wpn_akm,wpn_abakan,wpn_sig552,wpn_lr300
+secondary = wpn_glock17,wpn_gsh18,wpn_beretta,wpn_grach,wpn_apb,wpn_sig220,wpn_usp,wpn_sig220r,wpn_usp_match
+tertiary = none,wpn_toz34,wpn_wincheaster1300
+ammo_1 = 250,350							; Ammo min,max
+ammo_2 = 25,60
+ammo_3 = 5,25
+extra = grenade_f1:1:5
+
+[stalker_master]
+primary = wpn_ak74,wpn_l85,wpn_ak101,wpn_val,wpn_akm,wpn_abakan,wpn_sig552,wpn_sig550,wpn_groza,wpn_vintorez,wpn_pkm,wpn_saiga12,wpn_svd,wpn_svu,wpn_lr300
+secondary = wpn_glock17,wpn_gsh18,wpn_beretta,wpn_grach,wpn_apb,wpn_sig220,wpn_usp,wpn_sig220r,wpn_usp_match,wpn_fiveseven,wpn_desert_eagle,wpn_sr1m
+tertiary = none,wpn_wincheaster1300,wpn_mp5,wpn_mp5sd,wpn_ump45
+ammo_1 = 250,350
+ammo_2 = 25,60
+ammo_3 = 5,25
+extra = grenade_f1:1:5
+
+;------------------ Bandit
+
+[bandit_novice]
+primary = none,none,wpn_toz34,wpn_bm16,wpn_mp5,wpn_bizon,wpn_ak74u
+secondary = wpn_pm,wpn_pb,wpn_pmm,wpn_fort,wpn_fort17,wpn_stechkin,wpn_tt33
+ammo_1 = 120,200
+ammo_2 = 25,60
+ammo_3 = 5,25
+
+[bandit_experienced]
+primary = wpn_wincheaster1300,wpn_mp5,wpn_mp5sd,wpn_bizon,wpn_ak74u,wpn_ak74,wpn_l85,wpn_ak101,wpn_akm,wpn_lr300
+secondary = wpn_pm,wpn_pb,wpn_pmm,wpn_fort,wpn_fort17,wpn_stechkin,wpn_tt33,wpn_glock17,wpn_beretta,wpn_gsh18,wpn_grach
+ammo_1 = 120,240
+ammo_2 = 25,60
+ammo_3 = 5,25
+
+[bandit_veteran]
+primary = wpn_mp5,wpn_mp5sd,wpn_ak74u,wpn_ak74,wpn_l85,wpn_ak101,wpn_akm,wpn_abakan,wpn_val,wpn_vintorez,wpn_sig552,wpn_lr300
+secondary = wpn_pmm,wpn_fort17,wpn_stechkin,wpn_tt33,wpn_glock17,wpn_beretta,wpn_gsh18,wpn_grach,wpn_apb
+tertiary = none,wpn_toz34,wpn_bm16,wpn_wincheaster1300
+ammo_1 = 240,320
+ammo_2 = 25,60
+ammo_3 = 5,25
+
+[bandit_master]
+primary = wpn_ak74u,wpn_ak74,wpn_l85,wpn_ak101,wpn_akm,wpn_abakan,wpn_val,wpn_vintorez,wpn_sig552,wpn_lr300
+secondary = wpn_stechkin,wpn_tt33,wpn_glock17,wpn_beretta,wpn_gsh18,wpn_grach,wpn_apb,wpn_desert_eagle
+tertiary = wpn_toz34,wpn_bm16,wpn_wincheaster1300
+ammo_1 = 240,320
+ammo_2 = 25,60
+ammo_3 = 5,25
+extra = grenade_f1:1:5
+
+;------------------- Killer
+[killer_novice]
+primary = wpn_ak101,wpn_l85,wpn_mp5,wpn_mp5sd,wpn_ump45,wpn_wincheaster1300,wpn_lr300
+secondary = wpn_colt1911,wpn_hpsa,wpn_glock17,wpn_beretta,wpn_sig220,wpn_usp,wpn_sig220r,wpn_usp_match,wpn_walther
+ammo_1 = 120,240
+ammo_2 = 25,60
+ammo_3 = 5,25
+
+[killer_experienced]
+primary = wpn_ak101,wpn_l85,wpn_mp5,wpn_mp5sd,wpn_ump45,wpn_wincheaster1300,wpn_lr300
+secondary = wpn_colt1911,wpn_hpsa,wpn_glock17,wpn_beretta,wpn_sig220,wpn_usp,wpn_sig220r,wpn_usp_match,wpn_walther
+ammo_1 = 120,320
+ammo_2 = 25,60
+ammo_3 = 5,25
+
+[killer_veteran]
+primary = wpn_ak101,wpn_l85,wpn_ak101,wpn_l85,wpn_sig550,wpn_sig552,wpn_lr300
+secondary = wpn_colt1911,wpn_hpsa,wpn_glock17,wpn_beretta,wpn_sig220,wpn_usp,wpn_sig220r,wpn_usp_match,wpn_walther
+tertiary = none,wpn_wincheaster1300
+ammo_1 = 240,320
+ammo_2 = 25,60
+ammo_3 = 5,25
+extra = grenade_f1:1:5
+
+[killer_master]
+primary = wpn_ak101,wpn_l85,wpn_sig550,wpn_sig552,wpn_lr300
+secondary = wpn_glock17,wpn_beretta,wpn_sig220,wpn_usp,wpn_sig220r,wpn_usp_match,wpn_walther,wpn_desert_eagle,wpn_fiveseven
+tertiary = none,none,none,wpn_wincheaster1300,wpn_wincheaster1300,wpn_saiga12
+ammo_1 = 320,440
+ammo_2 = 45,70
+ammo_3 = 15,35
+extra = grenade_f1:1:5
+
+;------------------ Duty
+[dolg_novice]
+primary = wpn_toz34,wpn_bm16,wpn_wincheaster1300,wpn_bizon,wpn_ak74u,wpn_ak74
+secondary = wpn_pm,wpn_pb,wpn_pmm,wpn_fort,wpn_fort17,wpn_stechkin,wpn_tt33
+ammo_1 = 120,200							; Ammo min,max (automatically spawns correct type)
+ammo_2 = 25,40
+ammo_3 = 5,25
+extra = grenade_rgd5:1:5
+
+[dolg_experienced]
+primary = wpn_toz34,wpn_wincheaster1300,wpn_bizon,wpn_ak74u,wpn_ak74,wpn_ak74,wpn_akm
+secondary = wpn_pm,wpn_pb,wpn_pmm,wpn_fort,wpn_fort17,wpn_stechkin,wpn_tt33,wpn_gsh18,wpn_grach
+ammo_1 = 150,250							; Ammo min,max
+ammo_2 = 25,60
+ammo_3 = 5,25
+extra = grenade_rgd5:1:5
+
+[dolg_veteran]
+primary = wpn_ak74u,wpn_ak74,wpn_ak74,wpn_val,wpn_akm,wpn_abakan,wpn_vintorez
+secondary = wpn_pmm,wpn_stechkin,wpn_apb,wpn_tt33,wpn_gsh18,wpn_grach,wpn_sr1m
+tertiary = none,wpn_toz34,wpn_wincheaster1300
+ammo_1 = 250,350							; Ammo min,max
+ammo_2 = 25,60
+ammo_3 = 5,25
+extra = grenade_f1:1:5
+
+[dolg_master]
+primary = wpn_ak74u,wpn_ak74,wpn_akm,wpn_akm,wpn_abakan,wpn_abakan,wpn_val,wpn_groza,wpn_vintorez,wpn_pkm,wpn_saiga12,wpn_svd,wpn_svu
+secondary = wpn_pmm,wpn_gsh18,wpn_grach,wpn_apb,wpn_sr1m
+tertiary = none,none,none,wpn_wincheaster1300,wpn_wincheaster1300,wpn_saiga12
+ammo_1 = 250,350
+ammo_2 = 25,60
+ammo_3 = 5,25
+extra = grenade_f1:1:5
+
+;------------------ Freedom
+[freedom_novice]
+primary = wpn_ak74,wpn_ak101,wpn_l85,wpn_mp5,wpn_mp5sd,wpn_ump45,wpn_wincheaster1300,wpn_lr300
+secondary = wpn_fort,wpn_fort17,wpn_colt1911,wpn_hpsa,wpn_glock17,wpn_beretta,wpn_sig220,wpn_usp,wpn_sig220r,wpn_usp_match,wpn_walther
+ammo_1 = 120,200							; Ammo min,max (automatically spawns correct type)
+ammo_2 = 25,40
+ammo_3 = 5,25
+extra = grenade_rgd5:1:5
+
+[freedom_experienced]
+primary = wpn_ak74,wpn_ak101,wpn_l85,wpn_mp5,wpn_mp5sd,wpn_ump45,wpn_wincheaster1300,wpn_sig552,wpn_lr300
+secondary = wpn_fort,wpn_fort17,wpn_colt1911,wpn_hpsa,wpn_glock17,wpn_beretta,wpn_sig220,wpn_usp,wpn_sig220r,wpn_usp_match,wpn_walther
+ammo_1 = 150,250							; Ammo min,max
+ammo_2 = 25,60
+ammo_3 = 5,25
+extra = grenade_rgd5:1:5
+
+[freedom_veteran]
+primary = wpn_ak74,wpn_ak101,wpn_l85,wpn_ak101,wpn_l85,wpn_sig550,wpn_sig552,wpn_val,wpn_lr300
+secondary = wpn_glock17,wpn_gsh18,wpn_beretta,wpn_grach,wpn_sig220,wpn_usp,wpn_sig220r,wpn_usp_match,wpn_walther
+tertiary = none,wpn_toz34,wpn_wincheaster1300
+ammo_1 = 250,350							; Ammo min,max
+ammo_2 = 25,60
+ammo_3 = 5,25
+extra = grenade_f1:1:5
+
+[freedom_master]
+primary = wpn_ak74,wpn_l85,wpn_ak101,wpn_sig552,wpn_sig550,wpn_val,wpn_vintorez,wpn_saiga12,wpn_svd,wpn_svu,wpn_lr300
+secondary = wpn_glock17,wpn_gsh18,wpn_beretta,wpn_grach,wpn_sig220,wpn_usp,wpn_sig220r,wpn_usp_match,wpn_walther,wpn_fiveseven,wpn_desert_eagle
+tertiary = none,wpn_wincheaster1300,wpn_mp5,wpn_mp5sd,wpn_ump45
+ammo_1 = 250,350
+ammo_2 = 25,60
+ammo_3 = 5,25
+extra = grenade_f1:1:5
+
+;--------------- Army
+[army_novice]
+primary = wpn_bizon,wpn_ak74u,wpn_ak74
+secondary = wpn_pmm,wpn_pb
+ammo_1 = 120,200							; Ammo min,max (automatically spawns correct type)
+ammo_2 = 25,40
+ammo_3 = 5,25
+extra = grenade_f1:1:5
+
+[army_experienced]
+primary = wpn_bizon,wpn_ak74u,wpn_ak74
+secondary = wpn_pmm,wpn_pb,wpn_gsh18,wpn_grach
+ammo_1 = 150,250							; Ammo min,max
+ammo_2 = 25,60
+ammo_3 = 5,25
+extra = grenade_f1:1:5
+
+[army_veteran]
+primary = wpn_ak74u,wpn_ak74,wpn_val,wpn_abakan,wpn_abakan,wpn_vintorez
+secondary = wpn_pmm,wpn_pb,wpn_gsh18,wpn_grach,wpn_apb,wpn_sr1m
+ammo_1 = 250,350							; Ammo min,max
+ammo_2 = 25,60
+ammo_3 = 5,25
+extra = grenade_f1:1:5
+
+[army_master]
+primary = wpn_ak74,wpn_abakan,wpn_abakan,wpn_val,wpn_groza,wpn_vintorez,wpn_pkm,wpn_saiga12,wpn_svu
+secondary = wpn_pmm,wpn_pb,wpn_gsh18,wpn_grach,wpn_apb,wpn_sr1m
+ammo_1 = 250,350
+ammo_2 = 25,60
+ammo_3 = 5,25
+extra = grenade_f1:1:5
+
+;--------------------------- Monolith
+[monolith_novice]
+primary = wpn_ak74,wpn_ak101,wpn_l85,wpn_mp5,wpn_mp5sd,wpn_ump45,wpn_wincheaster1300,wpn_lr300
+secondary = wpn_fort,wpn_fort17,wpn_colt1911,wpn_hpsa,wpn_glock17,wpn_beretta,wpn_sig220,wpn_usp,wpn_sig220r,wpn_usp_match,wpn_walther
+ammo_1 = 120,200							; Ammo min,max (automatically spawns correct type)
+ammo_2 = 25,40
+ammo_3 = 5,25
+extra = grenade_f1:1:5
+
+[monolith_experienced]
+primary = wpn_wincheaster1300,wpn_mp5,wpn_mp5sd,wpn_bizon,wpn_ump45,wpn_ak74u,wpn_ak74,wpn_l85,wpn_ak101,wpn_ak74u,wpn_ak74,wpn_l85,wpn_ak101,wpn_lr300
+secondary = wpn_pm,wpn_pb,wpn_pmm,wpn_fort,wpn_fort17,wpn_hpsa,wpn_colt1911,wpn_stechkin,wpn_tt33,wpn_glock17,wpn_beretta,wpn_gsh18
+ammo_1 = 150,250							; Ammo min,max
+ammo_2 = 25,60
+ammo_3 = 5,25
+extra = grenade_f1:1:5
+
+[monolith_veteran]
+primary = wpn_ak74,wpn_abakan,wpn_abakan,wpn_val,wpn_groza,wpn_vintorez,wpn_saiga12,wpn_sig552,wpn_l85,wpn_ak101,wpn_sig550,wpn_lr300
+secondary = wpn_pmm,wpn_pb,wpn_gsh18,wpn_grach,wpn_apb,wpn_sr1m
+ammo_1 = 250,350
+ammo_2 = 25,60
+ammo_3 = 5,25
+extra = grenade_f1:1:5
+
+[monolith_master]
+primary = wpn_akm,wpn_akm,wpn_abakan,wpn_abakan,wpn_val,wpn_groza,wpn_vintorez,wpn_pkm,wpn_saiga12,wpn_sig550,wpn_lr300
+secondary = wpn_pmm,wpn_gsh18,wpn_grach,wpn_apb,wpn_sr1m
+tertiary = none,none,none,wpn_wincheaster1300,wpn_wincheaster1300,wpn_saiga12
+ammo_1 = 250,350
+ammo_2 = 25,60
+ammo_3 = 5,25
+extra = grenade_f1:1:5
+
+;---------------------- Zombied
+[zombied_novice]
+primary = none,none,wpn_toz34,wpn_bm16,wpn_mp5,wpn_bizon,wpn_ak74u,wpn_ump45
+secondary = wpn_pm,wpn_pb,wpn_pmm,wpn_fort,wpn_fort17,wpn_hpsa,wpn_colt1911,wpn_stechkin,wpn_tt33
+ammo_1 = 120,200							; Ammo min,max (automatically spawns correct type)
+ammo_2 = 25,40
+ammo_3 = 5,25
+
+[zombied_experienced]
+primary = wpn_wincheaster1300,wpn_mp5,wpn_mp5sd,wpn_bizon,wpn_ump45,wpn_ak74u,wpn_ak74,wpn_l85,wpn_ak101,wpn_ak74u,wpn_ak74,wpn_l85,wpn_ak101,wpn_lr300
+secondary = wpn_pm,wpn_pb,wpn_pmm,wpn_fort,wpn_fort17,wpn_hpsa,wpn_colt1911,wpn_stechkin,wpn_tt33,wpn_glock17,wpn_beretta,wpn_gsh18
+ammo_1 = 150,250							; Ammo min,max
+ammo_2 = 25,60
+ammo_3 = 5,25
+
+[zombied_veteran]
+primary = wpn_ak74u,wpn_ak74,wpn_val,wpn_abakan,wpn_abakan,wpn_vintorez
+secondary = wpn_pmm,wpn_pb,wpn_gsh18,wpn_grach,wpn_apb,wpn_sr1m
+ammo_1 = 250,350							; Ammo min,max
+ammo_2 = 25,60
+ammo_3 = 5,25
+
+[zombied_master]
+primary = wpn_ak74u,wpn_ak74,wpn_val,wpn_abakan,wpn_abakan,wpn_vintorez
+secondary = wpn_pmm,wpn_pb,wpn_gsh18,wpn_grach,wpn_apb,wpn_sr1m
+ammo_1 = 250,350							; Ammo min,max
+ammo_2 = 25,60
+ammo_3 = 5,25
+
+;----------------------- Ecolog
+[ecolog_novice]
+primary = wpn_ak74, wpn_mp5,wpn_wincheaster1300:0:0:20:30
+secondary = wpn_pm
+ammo_1 = 150,250
+ammo_2 = 25,30
+
+[ecolog_experienced]
+primary = wpn_ak74, wpn_wincheaster1300:0:0:30:40,wpn_l85,wpn_abakan
+secondary = wpn_pm,wpn_pb
+ammo_1 = 150,250
+ammo_2 = 45,70
+ammo_3 = 15,35
+
+[ecolog_veteran]
+primary = wpn_ak74, wpn_mp5,wpn_ak74:1:0,wpn_ak74:1:1,wpn_ak74u:0:1,wpn_ak74u,wpn_l85,wpn_l85:0:1
+secondary = wpn_pm:0:1,wpn_pb:0:1,wpn_usp,wpn_walther:0:1
+tertiary = wpn_toz34
+ammo_1 = 250,360
+ammo_2 = 25,60
+ammo_3 = 5,25
+extra = grenade_f1:1:5
+
+[ecolog_master]
+primary = wpn_ak74:5:1,wpn_l85:4:1,wpn_l85:0:1,wpn_l85:5:1,wpn_akm,wpn_val,wpn_abakan,wpn_sig552
+secondary = wpn_usp:0:1,wpn_walther:0:1
+tertiary = wpn_wincheaster1300:0:1,wpn_ump45:0:1
+ammo_1 = 350,460
+ammo_2 = 25,60
+ammo_3 = 5,25
+extra = grenade_f1:1:5

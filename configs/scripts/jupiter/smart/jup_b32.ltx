@@ -1,3 +1,11 @@
-[smart_terrain]
+[smart_terrain];jup_b32
 squad_id = 22
 max_population = 1
+respawn_params = respawn@jup_b32
+
+[respawn@jup_b32]
+spawn@zombied
+
+[spawn@zombied]
+spawn_squads = simulation_zombied_1
+spawn_num = 2

@@ -3,12 +3,16 @@ squad_id = 6
 max_population = 1
 respawn_params = respawn@jup_b19
 
-
 [respawn@jup_b19]
 spawn_zombied
+spawn_mutants
 
 [spawn_zombied]
-spawn_squads = zombied_sim_squad_novice, zombied_sim_squad_novice, zombied_sim_squad_advanced
+spawn_squads = simulation_zombied_1
+spawn_num = {-JUP_B19_AGREED_TO_GO} 1, {+JUP_B19_COMPLETE} 1, {+JUP_B19_YAR_ENEMY_OR_DEAD} 1, 0
+
+[spawn_mutants]
+spawn_squads = simulation_snork, simulation_pseudodog, simulation_dog, simulation_dog, simulation_dog, simulation_pseudodog
 spawn_num = {-JUP_B19_AGREED_TO_GO} 2, {+JUP_B19_COMPLETE} 2, {+JUP_B19_YAR_ENEMY_OR_DEAD} 2, 0
 
 [exclusive]

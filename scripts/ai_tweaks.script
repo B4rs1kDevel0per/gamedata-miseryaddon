@@ -1,0 +1,149 @@
+local dbg = debug_utils
+local MODULE = "ai_tweaks"
+
+-------------------
+-- se_stalker_on_spawn(se_npc)
+-------------------
+function se_stalker_on_spawn(se_npc)
+	if (xrs_rnd_npc_loadout) then xrs_rnd_npc_loadout.on_creation(se_npc) end
+end
+
+-- 								[s_type]			= {inertion,distance,relation}  [Relation 0-all, 1-enemies]
+local sound_threshold = {		["WPN"] 			= {0,0,0},
+								["WPN_shoot"] 		= {2000,1500,0},
+								["WPN_empty"]		= {0,0,1},
+								["WPN_hit"] 		= {10000,650,0},
+								["WPN_reload"] 		= {0,0,1},
+								["MST"]				= {0,0,1},
+								["MST_die"]			= {0,0,1},
+								["MST_damage"]		= {2000,650,1},
+								["MST_step"]		= {0,0,1},
+								["MST_talk"]		= {0,0,1},
+								["MST_attack"]		= {5000,1500,1},
+								["MST_eat"]			= {0,0,1}
+}
+
+-------------------
+-- npc_hear_callback(npc,who,s_type,sound_power)
+-------------------
+function npc_hear_callback(npc,who_id,s_type,dist,sound_power)
+	if not (xr_combat_ignore.npc_in_safe_zone(npc)) then
+		local who = who_id and level.object_by_id(who)
+		if (who) then
+			if not (xr_wounded.is_wounded(npc)) then
+				if (sound_threshold[s_type] and dist <= sound_threshold[s_type][2]) then
+					if (sound_threshold[s_type][3] == 1 and npc:relation(who) == game_object.enemy) or (sound_threshold[s_type][3] == 0) then
+						xr_danger.set_script_danger(npc,sound_threshold[s_type][1] or 2000)
+                        debug_utils.INFO(MODULE, "NPC %s trigger danger off sound %s from obj %s", npc:id(), s_type, who_id)
+					end
+				end
+			end
+
+			if (npc:relation(who) == game_object.enemy) then
+				npc:enable_memory_object(who,true)
+			end
+		end
+	end
+end
+
+-------------------
+-- npc_on_item_take(npc,item)
+-------------------
+function npc_on_item_take(npc,item)
+	if not (npc) then return end
+	if (npc:alive()) then
+		if (xr_visual) then xr_visual.try_to_equip(npc,item) end
+	else
+		if (xr_corpse_detection.on_item_take) then
+			xr_corpse_detection.on_item_take(npc,item)
+		end
+	end
+end
+
+-------------------
+-- npc_on_item_drop(npc,item)
+-------------------
+function npc_on_item_drop(npc,item)
+	if not (npc) then return end
+	if (npc:alive() ~= true and xr_corpse_detection.on_item_drop) then
+		xr_corpse_detection.on_item_drop(npc,item)
+	end
+end
+
+-------------------
+-- npc_addcommonprecondition(action)
+-------------------
+function npc_addcommonprecondition(action)
+	if (xr_gather_items.evaid) then action:add_precondition(world_property(xr_gather_items.evaid,false)) end
+	if (xrs_kill_wounded) then action:add_precondition(world_property(xrs_kill_wounded.evaid,false)) end
+	if (xrs_facer) then action:add_precondition(world_property(xrs_facer.evid_facer,false)) end
+	if (rx_gl) then action:add_precondition(world_property(rx_gl.evid_gl_reload,false)) end
+	if (xrs_surge) then action:add_precondition(world_property(xrs_surge.evid_surge,false)) end
+end
+
+-------------------
+-- npc_on_update(npc,st)
+-------------------
+function npc_on_update(npc,st)
+	if (xr_combat_ignore.npc_on_update) then xr_combat_ignore.npc_on_update(npc,st) end
+	if (rx_gl) then	rx_gl.npc_update(npc,st) end
+	if (xr_eat_medkit) then xr_eat_medkit.npc_update(npc,st) end
+	if (xr_visual) then xr_visual.npc_on_update(npc,st) end
+
+	if (npc:alive()) then
+		local wpn = npc:best_weapon()
+		if (wpn and alun_utils.item_is_fa(wpn)) then
+			local inmag = wpn:get_ammo_in_magazine()
+			if (inmag == 0) then
+				if not (st.weapon_reload) then
+					--st.weapon_reload = true
+					--npc_on_weapon_no_ammo(npc,wpn,st)
+				end
+			else
+				--st.weapon_reload = nil
+			end
+
+			if (LIOSEnable) then
+				local sight_type = npc:sight_params().m_sight_type
+				if (alun_utils.addon_attached(wpn,"sc") and sight_type) and (sight_type == 4 or sight_type == 9 or sight_type == 10) then
+					if not (st.look_in_scope) then
+						npc_on_looking_in_scope(npc,wpn,st,sight_type)
+						st.look_in_scope = true
+					end
+				else
+					st.look_in_scope = nil
+					if (st.range and st.fov) then
+						npc:set_range(st.range)
+						npc:set_fov(st.fov)
+						st.range = nil
+						st.fov = nil
+					end
+				end
+			end
+		end
+	end
+end
+
+-------------------
+-- npc_hit_callback(npc,amount,local_direction,who,bone_index)
+-------------------
+function npc_hit_callback(npc,amount,local_direction,who,bone_index)
+	if (npc and amount > 0 and bone_index ~= "from_death_callback") then
+		xr_danger.set_script_danger(npc,2000)
+		if (xrs_facer) then xrs_facer.hit_callback(npc,amount,local_direction,who,bone_index) end
+	end
+end
+
+-------------------
+-- npc_on_death_callback(npc,who)
+-------------------
+function npc_on_death_callback(npc,who)
+	local id = npc:id()
+	db.storage[id].victim_surrender = nil
+	xr_combat_ignore.safe_zone_npcs[id] = nil
+	if (rx_gl) then
+		rx_gl.death(npc)
+	end
+
+	if (xr_visual) then xr_visual.death_callback(npc,who) end
+end

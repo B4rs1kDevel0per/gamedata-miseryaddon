@@ -231,11 +231,11 @@ max_hear_dist					= 60
 
 default							= 0.5, -1, 0.1
 
-hip								= 1, -1, 0.1
-spine 							= 1, -1, 0.1
-spine_1 						= 1, -1, 0.1
-neck_r							= 1, -1, 0.1
-head_boss 						= 2, -1, 0.5
+hip								= 0.5, -1, 0.1
+spine 							= 0.5, -1, 0.1
+spine_1 						= 0.5, -1, 0.1
+neck_r							= 0.5, -1, 0.1
+head_boss 						= 1, -1, 0.5
 
 ;-------------------------------------------------------------------------
 ; Other Stuff (refactoring needed)
@@ -258,9 +258,9 @@ damage							= m_chimera_damage
 ;species of monster
 species							= chimera
 
-DayTime_Begin					= 0			; начала дня для монстра
-DayTime_End						= 21		; конец дня для монстра
-Min_Satiety						= 0.6		; мин. норма сытости (меньше - уже голодный)
+DayTime_Begin					= 21			; начала дня для монстра
+DayTime_End						= 5		; конец дня для монстра
+Min_Satiety						= 0.00055		; мин. норма сытости (меньше - уже голодный)
 Max_Satiety						= 0.9		; макс. норма сытости (больше - очень сытый)
 
 distance_to_corpse				= 1.2		; дист. до трупа, при которой он переходит в состояние еды
@@ -382,7 +382,7 @@ fire_wound_immunity   	= 0.3
 corpse_visual		 			= monsters\chimera\chimera_dead
 $spawn        = "monsters\chimera\chimera_normal"
 panic_threshold = 0.1
-rank        	= 200
+rank        	= 20
 immunities_sect = chimera_immunities_normal
 spec_rank     	= normal
 

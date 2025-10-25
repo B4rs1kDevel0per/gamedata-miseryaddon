@@ -140,9 +140,9 @@ eat_slice_weight				= 10.0	; уменьшение еды у трупа
 
 bone_head			 			= head	; bone name
 
-DayTime_Begin			= 0			; начала дня для монстра
-DayTime_End				= 21		; конец дня для монстра
-Min_Satiety				= 0.6		; мин. норма сытости (меньше - уже голодный)
+DayTime_Begin			= 22			; начала дня для монстра
+DayTime_End				= 4		; конец дня для монстра
+Min_Satiety				= 0.00055		; мин. норма сытости (меньше - уже голодный)
 Max_Satiety				= 0.9		; макс. норма сытости (больше - очень сытый)
 
 satiety_threshold		= 0.5							; below this value monster fill hunger
@@ -305,7 +305,7 @@ damage					= m_burer_damage
 
 ;species of monster
 species					= burer
-rank					= 100
+rank					= 19
 spec_rank				= weak
 community				= burer
 monster_type			= indoor
@@ -428,11 +428,11 @@ stand_run_fwd_0	 	=	   1,	  0.4,    1,      0.9,    0.6,
 
 default				= 0.5, -1, 0.1
 
-hip					= 1, -1, 0.1
-spine 				= 1, -1, 0.1
-chest	 			= 1, -1, 0.1
-neck				= 1, -1, 0.5
-head	 			= 2, -1, 0.2
+hip					= 0.5, -1, 0.1
+spine 				= 0.5, -1, 0.1
+chest	 			= 0.5, -1, 0.1
+neck				= 0.5, -1, 0.5
+head	 			= 1, -1, 0.2
 
 ;=================================================================================
 ; Burer Scan Effector
@@ -469,5 +469,5 @@ $spawn				= "monsters\burer\burer_normal"
 visual				= monsters\burer\burer
 corpse_visual			= monsters\burer\burer_dead
 icon				= ui_npc_monster_burer
-rank				= 200
+rank				= 19
 spec_rank			= normal

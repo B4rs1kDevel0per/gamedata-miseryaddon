@@ -5,8 +5,8 @@ respawn_only_smart = true
 respawn_params = respawn@pri_sim_2   
 
 [respawn@pri_sim_2]
-spawn_monolith
+spawn@zombied
 
-[spawn_monolith]
-spawn_squads = zombied_sim_squad_advanced, zombied_sim_squad_veteran
-spawn_num = {+PRI_A28_ACTOR_IN_ZONE_STAY} 2, {+PRI_B305_FIFTH_CAM_END} 0, 2
+[spawn@zombied]
+spawn_squads = simulation_zombied_1
+spawn_num = 2

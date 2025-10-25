@@ -112,10 +112,10 @@ MaxAttackDist		= 2.0
 as_min_dist				= 1.0
 as_step					= 0.2
 
-DayTime_Begin		= 0	;6			; начало дня для монстра
-DayTime_End			= 21		; конец дня для монстра
-Min_Satiety			= 0.95	;0.3	;0.6		; мин. норма сытости (меньше - уже голодный)
-Max_Satiety			= 1.0		; макс. норма сытости (больше - очень сытый)
+DayTime_Begin		= 3	;6			; ýð¢ðvð ôý  ôv  ü³ý¿ª¨ð
+DayTime_End			= 22		; ú³ýõ¡ ôý  ôv  ü³ý¿ª¨ð
+Min_Satiety			= 0.00055	;0.3	;0.6		; üøý. ý³¨üð ¿vª³¿ªø (üõý³-õ - ³öõ ó³v³ôýv	)
+Max_Satiety			= 0.9		; üðú¿. ý³¨üð ¿vª³¿ªø (ñ³v³-õ - ³¢õý³ ¿vªv	)
 
 distance_to_corpse	= 1.8		; дист. до трупа, при которой он переходит в состояние еды
 
@@ -244,7 +244,7 @@ anger_loud_threshold	= 0.7
 
 ;species of monster
 species					= pseudodog
-rank					= 200
+rank					= 7
 spec_rank				= weak
 community				= pseudodog
 
@@ -364,11 +364,11 @@ fire_wound_immunity  	= 1.0
 
 default				= 0.3, -1, 0.1
 
-bip01_pelvis 		= 1.0, -1, 0.1
-bip01_spine 		= 1.0, -1, 0.1
-bip01_spine1 		= 1.0, -1, 0.1
-bip01_neck 			= 1.0, -1, 1.5
-bip01_head 			= 2.0, -1, 0.3, 10
+bip01_pelvis 		= 0.5, -1, 0.1
+bip01_spine 		= 0.5, -1, 0.1
+bip01_spine1 		= 0.5, -1, 0.1
+bip01_neck 			= 0.5, -1, 1.5
+bip01_head 			= 1.0, -1, 0.3, 10
 
 ;=================================================================================
 ; PSEUDO-DOG Terrain
@@ -429,7 +429,7 @@ visual				= monsters\pseudodog\pseudodog
 corpse_visual		 = monsters\pseudodog\pseudodog_dead
 icon				= ui_npc_monster_pseudodog
 panic_threshold		= 0; 0.2
-rank				= 300
+rank				= 7
 immunities_sect		= pseudodog_immunities_normal
 attack_params		= pseudodog_attack_params_normal
 spec_rank			= normal
@@ -563,7 +563,7 @@ $spawn				= "monsters\psy_dog\psy_dog_phantom"
 visual				= monsters\pseudodog\pseudodog_grey
 icon				= ui_npc_monster_pseudodog_grey
 class               = SM_DOG_F
-rank				= 200
+rank				= 1
 
 ;jump_delay					= 3000 ;3000
 ;jump_factor					= 3
@@ -597,7 +597,7 @@ visual				= monsters\pseudodog\pseudodog_grey
 corpse_visual		 = monsters\pseudodog\pseudodog_grey_dead
 icon				= ui_npc_monster_pseudodog_grey
 class               = SM_DOG_P
-rank				= 300
+rank				= 13
 
 aura_effector		= psy_dog_aura_effector
 Phantoms_Count	= 2

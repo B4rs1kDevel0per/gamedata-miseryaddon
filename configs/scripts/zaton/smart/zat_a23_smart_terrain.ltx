@@ -1,6 +1,19 @@
 [smart_terrain];zat_a23_smart_terrain
 squad_id = 53
 max_population = 2
+respawn_params = respawn@zat_a23_smart_terrain
+
+[respawn@zat_a23_smart_terrain]
+spawn_duty@veteran
+spawn_duty@hunter_day
+
+[spawn_duty@veteran]
+spawn_squads = simulation_zombied
+spawn_num = {+ZAT_A23_ACTOR_HAS_GAUSS_RIFLE_DOCUMENTATION} 1, 0
+
+[spawn_duty@hunter_day]
+spawn_squads = simulation_burer
+spawn_num = {+ZAT_A23_ACTOR_HAS_GAUSS_RIFLE_DOCUMENTATION} 1, 0
 
 [exclusive]
 zat_a23_zombie_01 = zaton\zat_a23_zombie.ltx

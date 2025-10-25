@@ -1,0 +1,205 @@
+-----------------------------------------------------
+-- alun_utils.lua (minimal for random_loadouts)
+-----------------------------------------------------
+
+local DBG = false
+
+function read_from_ini(ini,section,line,var_type,default)
+	if not (ini) then
+		ini = system_ini()
+	end
+
+	if (section and line and ini:section_exist(section) and ini:line_exist(section,line)) then
+		if (var_type == "bool") then
+			return ini:r_bool(section,line)
+		elseif (var_type == "string") then
+			return ini:r_string(section,line)
+		elseif (var_type == "float") then
+			return ini:r_float(section,line)
+		else
+			return ini:r_string_wq(section,line)
+		end
+	else
+		return default
+	end
+end
+
+function trim(s)
+	-- start SALAAM
+	if (DBG) then printf_msg("[alun_utils] trim") end
+	-- end SALAAM
+	return string.gsub(s, "^%s*(.-)%s*$", "%1")
+end
+
+function string:split(pat)
+  local st, g = 1, self:gmatch("()("..pat..")")
+  local function getter(self, segs, seps, sep, cap1, ...)
+    st = sep and seps + #sep
+    return self:sub(segs, (seps or 0) - 1), cap1 or sep, ...
+  end
+  local function splitter(self)
+    if st then return getter(self, st, g()) end
+  end
+  return splitter, self
+end
+
+function str_explode(str,pattern)
+	-- start SALAAM
+	if (DBG) then printf_msg("[alun_utils] str_explode") end
+	-- end SALAAM
+	local t = {}
+	if (type(str) ~= "string") then return end
+	for word, pat, start in str:split(pattern) do
+		t[#t+1] = trim(word)
+		if (start and pat == pattern) then
+		    t[#t+1] = trim(str:sub(start))
+			break
+		end
+	end
+	return t
+end
+
+function parse_list(ini,key,val,convert)
+	-- start SALAAM
+	if (DBG) then printf_msg("[alun_utils] parse_list") end
+	-- end SALAAM
+	local str = read_from_ini(ini,key,val,"string","")
+	local t = str_explode(str,",")
+	if (convert and #t > 0) then
+		local l = {}
+		for i,v in ipairs(t) do
+			l[v] = true
+		end
+		return l
+	end
+	return t
+end
+
+local ranks
+function get_rank_list()
+	-- start SALAAM
+	if (DBG) then printf_msg("[alun_utils] get_rank_list") end
+	-- end SALAAM
+	if ranks then
+		return ranks
+	end
+	local tmp = parse_list(nil,"game_relations","rating")
+	ranks = {}
+	for i,rn in ipairs(tmp) do
+		if not tonumber(rn) then
+			table.insert(ranks,rn)
+		end
+	end
+	return ranks
+end
+
+function rand_num(a,b)
+	-- start SALAAM
+	if (DBG) then printf_msg("[alun_utils] rand_num") end
+	-- end SALAAM
+	local rnd = math.random
+	if (a and b) then
+		return rnd(a,b)
+	end
+	return rnd()
+end
+
+class "fake_squad"
+function fake_squad:__init()
+
+end
+
+function fake_squad:am_i_reached(squad)
+
+end
+
+function fake_squad:on_reach_target(squad)
+
+end
+
+function fake_squad:on_after_reach_target(squad)
+
+end
+
+function collect_sections(ini,sections)
+	local r,p = {},{}
+	for k,v in ipairs(sections) do
+		if ini:section_exist(v) then
+			local n = ini:line_count(v)
+			if n > 0 then
+				for i = 0,n-1 do
+					local res,id,val = ini:r_line(v,i,"","")
+					if r[id] == nil then
+						r[id] = val
+					end
+				end
+			end
+			p[k] = n
+		else
+			p[k] = 0
+		end
+	end
+	return r,p
+end
+
+function collect_section(ini,section,keytable)
+	local _t = {}
+	if ini:section_exist(section) then
+		local n = ini:line_count(section)
+		if n > 0 then
+			for i = 0,n-1 do
+				local res,id,val = ini:r_line(section,i,"","")
+
+				if not (keytable) then
+					table.insert(_t,id)
+				else
+					_t[id] = val or true
+				end
+			end
+		end
+	end
+	return _t
+end
+
+function get_commander(npc)
+	local squad = npc and get_object_squad(npc)
+	if (squad and squad:commander_id()) then
+		return level.object_by_id(squad:commander_id())
+	end
+end
+
+function get_squad_commander_action(npc)
+	local commander = get_commander(npc)
+	local mgr = commander and commander:motivation_action_manager()
+	if (mgr and mgr:initialized()) then
+		return mgr:current_action_id()
+	end
+end
+
+function item_is_fa(o,c)
+	if not c then
+		c = o and o:clsid()
+	end
+	local t = {
+	[clsid.wpn_pm_s] = true,
+	[clsid.wpn_walther_s] = true,
+	[clsid.wpn_usp45_s] = true,
+	[clsid.wpn_hpsa_s] = true,
+	[clsid.wpn_bm16_s] = true,
+	[clsid.wpn_shotgun_s] = true,
+	[clsid.wpn_auto_shotgun_s] = true,
+	[clsid.wpn_ak74_s] = true,
+	[clsid.wpn_lr300_s] = true,
+	[clsid.wpn_groza_s] = true,
+	[clsid.wpn_val_s] = true,
+	[clsid.wpn_vintorez_s] = true,
+	[clsid.wpn_svu_s] = true,
+	[clsid.wpn_svd_s] = true,
+	[clsid.wpn_rg6_s] = true,
+	[clsid.wpn_rpg7_s] = true,
+	[clsid.wpn_knife_s] = true}
+	if c and t[c] then
+		return true
+	end
+	return false
+end

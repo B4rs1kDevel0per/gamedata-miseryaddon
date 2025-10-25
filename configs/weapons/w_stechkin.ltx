@@ -17,12 +17,12 @@ control_inertion_factor = 1.0
 repair_group = aps
 
 ;-----------------------------------------------------------------------------
-cost					= 9180
+cost					= 1300
 inv_weight				= 1.02
 
-upgrades = vartree_stechkin_shell_ejector, vartree_stechkin_zapiratel, vartree_stechkin_prujina, vartree_stechkin_sights, vartree_stechkin_mag, vartree_stechkin_handle
-installed_upgrades = 
-upgrade_scheme = upgrade_scheme_stechkin
+upgrades                = up_gr_firstab_pm, up_gr_seconab_pm, up_gr_thirdab_pm, up_gr_fourtab_pm, up_gr_fifthab_pm, up_gr_fifthcd_pm
+installed_upgrades      =
+upgrade_scheme          = upgrade_scheme_pm
 
 
 def_hide_bones = sight, barrel_silencer, body
@@ -31,12 +31,12 @@ def_show_bones = barrel
 ammo_in_chamber = true
 
 ;-TTX-----------------------------------------------------------------------------
-hit_power           		= 0.245, 0.245, 0.245, 0.245
-hit_impulse	 		 		= 20
+hit_power           		= 0.9, 0.9, 0.9, 0.9
+hit_impulse	 		 		= 75
 hit_type 					= fire_wound
-fire_distance           = 300
-bullet_speed		 	= 340
-rpm                     = 600
+fire_distance           = 200
+bullet_speed		 	= 145
+rpm                     = 880
 rpm_empty_click         = 10
 
 singleshoots_time_delta  = 0.3                          ;Скорострельность для одиночных выстрелов
@@ -48,17 +48,17 @@ hud                     	= wpn_stechkin_hud
 
 misfire_probability        = 0.005 ;вероятность осечки при максимальном износе  !!!old - now not working
 ;изношенность, при которой появляется шанс осечки
-misfire_start_condition		= 0.88
+misfire_start_condition		= 0.7
 ;изношеность при которой шанс осечки становится константным
-misfire_end_condition		= 0.12
+misfire_end_condition		= 0.1
 ;шанс осечки при изношености больше чем misfireStartCondition
-misfire_start_prob	     	= 0.007
+misfire_start_prob	     	= 0.001
 ;шанс осечки при изношености больше чем misfireEndCondition
 misfire_end_prob	     	= 0.07
 ;увеличение изношености при одиночном выстреле
-condition_shot_dec      	= 0.0013
+condition_shot_dec      	= 0.0010
 ;увеличение изношености при выстреле очередью
-condition_queue_shot_dec	= 0.0018
+condition_queue_shot_dec	= 0.0017
 
 ;////////////////////////////////////////////Осечки////////////////////////////////////////////////////////////
 ;Это - разновидность задержки => происходит только в указанных для задержек пределах
@@ -92,19 +92,19 @@ reload_dof				= 0.0, 0.5, 5, 1.7
 
 ;---дисперсия---------------------------------------------------------------------------
 ;базовая дисперсия
-fire_dispersion_base	= 0.65 			;угол (в градусах) базовой дисперсии оружия (оружия зажатого в тисках)
+fire_dispersion_base	= 0.23 			;угол (в градусах) базовой дисперсии оружия (оружия зажатого в тисках)
 control_inertion_factor = 1.0
-crosshair_inertion		= 4.3
+crosshair_inertion		= 3
 
 ;отдача
 cam_return				= 0
 cam_relax_speed         = 8				;скорость возврата в исходное положение
 cam_relax_speed_ai      = 360
-cam_dispersion          = 0.75				;увеличения угла (в градусах) с каждым выстрелом
-cam_dispersion_inc		= 0.75				;увеличениe cam_dispersion с каждым выстрелом
+cam_dispersion          = 0.55				;увеличения угла (в градусах) с каждым выстрелом
+cam_dispersion_inc		= 0.9				;увеличениe cam_dispersion с каждым выстрелом
 cam_dispersion_frac		= 1.0				;ствол будет подыматься на cam_dispersion*cam_dispersion_frac +- cam_dispersion*(1-cam_dispersion_frac)
-cam_max_angle			= 50.0			;максимальный угол отдачи
-cam_max_angle_horz		= 50.0				;(degree) maximum shot horizontal degree
+cam_max_angle			= 90.0			;максимальный угол отдачи
+cam_max_angle_horz		= 90.0				;(degree) maximum shot horizontal degree
 cam_step_angle_horz		= 1.0				;(degree) size of step camera moved in horizontal posi
 detector_disp_factor            = 3                     ;во сколько раз увеличится дисперсия оружия при активном детекторе в другой руке.
 
@@ -129,10 +129,10 @@ holder_fov_modifier		= 1.0              ; во сколько раз увели�
 min_radius              	= 0
 max_radius              	= 30
 
-hit_probability_gd_novice	= 1.0
-hit_probability_gd_stalker	= 1.0
-hit_probability_gd_veteran	= 1.0
-hit_probability_gd_master	= 1.0
+hit_probability_gd_novice	= 0.80
+hit_probability_gd_stalker	= 0.80
+hit_probability_gd_veteran	= 0.80
+hit_probability_gd_master	= 0.80
 
 ;-------------------------------------------------------------------------------
 supports_detector = true
@@ -268,15 +268,17 @@ zoom_dof_focus = 0.53
 hud_fov = 0.75
 hud_fov_zoom = 0.75
 
-hands_position			= -0.047,-0.13,-0.09
-hands_orientation			= 0.0,0.0,-7.0
-hands_position_16x9			= -0.047,-0.13,-0.09
-hands_orientation_16x9			= 0.0,0.0,-7.0
+hands_position				= 0.0,-0.13,0.03
+hands_orientation			= 0.0,0.0,0.0
 
-aim_hud_offset_pos = 0.0632,0.0039,0.115
-aim_hud_offset_rot = -0.004,0.0,-0.1
-aim_hud_offset_pos_16x9 = 0.0632,0.0039,0.115
-aim_hud_offset_rot_16x9 = -0.004,0.0,-0.1
+hands_position_16x9			= 0.0,-0.13,0.03
+hands_orientation_16x9			= 0.0,0.0,0.0
+
+aim_hud_offset_pos = 0.0005,0.0098,0.0
+aim_hud_offset_rot = -0.004,0.0,0.0
+
+aim_hud_offset_pos_16x9 = 0.0005,0.0098,0.0
+aim_hud_offset_rot_16x9 = -0.004,0.0,0.0
 
 item_position			= 0.0,0.0,0.0
 item_orientation		= 0.0,0.0,0.0

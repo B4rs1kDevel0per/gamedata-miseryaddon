@@ -3,21 +3,31 @@ def_restr = jup_a6_sr_noweap
 safe_restr = jup_a6_sr_light
 smart_control = smart_control
 squad_id = 4
-max_population = {+JUP_B207_ATTACK_STARTED} 4, 3
+max_population = {+JUP_B207_ATTACK_STARTED} 6, 4
 respawn_params = respawn@jup_a6   
 arrive_dist = 65
 
 [respawn@jup_a6]
-spawn_stalker@advanced
 spawn_stalker@master
-
-[spawn_stalker@advanced]
-spawn_squads = stalker_sim_squad_advanced, stalker_sim_squad_advanced, stalker_sim_squad_novice
-spawn_num = {+JUP_B218_PRIPYAT_GROUP_GATHERING} 0, {+ZAT_B28_HELI_3_SEARCHED} 2, {+ZAT_B100_HELI_2_SEARCHED} 2, {+ZAT_B101_HELI_5_SEARCHED} 2, 0
+spawn_stalker@sci
+spawn_stalker@hunter_night
+spawn_stalker@guide
 
 [spawn_stalker@master]
-spawn_squads = stalker_sim_squad_advanced, stalker_sim_squad_advanced, stalker_sim_squad_veteran
-spawn_num = {+JUP_B218_PRIPYAT_GROUP_GATHERING} 2, 0
+spawn_squads = freedom_sim_squad_veteran, duty_sim_squad_veteran
+spawn_num = 2
+
+[spawn_stalker@sci]
+spawn_squads = freedom_sci_simulation_squad
+spawn_num = 1
+
+[spawn_stalker@guide]
+spawn_squads = stalker_hunter_day_simulation_squad, stalker_hunter_night_simulation_squad
+spawn_num = 1
+
+[spawn_stalker@hunter_night]
+spawn_squads = freedom_sim_squad_novice, duty_sim_squad_novice, freedom_sim_squad_advanced, duty_sim_squad_advanced
+spawn_num = 2
 
 [smart_control]
 noweap_zone = jup_a6_sr_noweap

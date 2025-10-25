@@ -5,8 +5,29 @@ respawn_only_smart = true
 respawn_params = respawn@pri_sim_12
 
 [respawn@pri_sim_12]
-sim_tushkano
+spawn_dog
+spawn_pseudodog
+spawn_boar
+spawn_flesh
+spawn_snork
 
-[sim_tushkano]
-spawn_squads = simulation_tushkano
-spawn_num = {+PRI_A18_USE_IDOL_DONE}2, 0
+[spawn_pseudodog]
+spawn_squads = simulation_pseudodog
+spawn_num = 1; {+PRI_A18_USE_IDOL_DONE} 1, 0
+
+[spawn_dog]
+spawn_squads = simulation_dog
+spawn_num = 1; {+PRI_A18_USE_IDOL_DONE} 1, 0
+
+[spawn_boar]
+spawn_squads = simulation_boar
+spawn_num = 1; {+PRI_A18_USE_IDOL_DONE} 1, 0
+
+[spawn_flesh]
+spawn_squads = simulation_flesh
+spawn_num = 1; {+PRI_A18_USE_IDOL_DONE} 1, 0
+
+[spawn_snork]
+spawn_squads = simulation_snork
+spawn_num = 1; {+PRI_A18_USE_IDOL_DONE} 1, 0
+

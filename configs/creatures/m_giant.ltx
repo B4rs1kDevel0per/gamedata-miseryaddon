@@ -119,10 +119,10 @@ Run_Attack_Delay		= 3000,		6000
 
 ;-----------------------------------------------------------------------
 
-DayTime_Begin		= 0			; 
-DayTime_End			= 21		; 
-Min_Satiety			= 0.6		; 
-Max_Satiety			= 0.9		; 
+DayTime_Begin		= 21			; 
+DayTime_End			= 5		; 
+Min_Satiety			= 0.00055		; 
+Max_Satiety			= 0.75		; 
 
 distance_to_corpse	= 1.2		; 
 
@@ -234,7 +234,7 @@ LegsCount			= 2
 
 ;species of monster
 species					= giant
-rank					= 401
+rank					= 21
 spec_rank				= normal
 community				= pseudo_gigant
 
@@ -320,11 +320,11 @@ hit_fraction_monster = 0.2
 ;<hit_scale>	- коэфф. изменения хита (уменьшения здоровья) 
 ;<wound_scale>	- коэфф. изменения величины открытой раны
 
-default				= 1, -1, 0.1
-tail				= 1, -1, 0.1
-spine 				= 1, -1, 0.1
-hip 				= 1, -1, 0.5
-head 				= 2, -1, 0.2, 10
+default				= 0.5, -1, 0.1
+tail				= 0.5, -1, 0.1
+spine 				= 0.5, -1, 0.1
+hip 				= 0.5, -1, 0.5
+head 				= 1.0, -1, 0.2, 10
 
 ;=========================================================================================
 ; Attack Animation Params
@@ -428,7 +428,7 @@ $spawn				= "monsters\gigants\gigant_normal"
 visual				= monsters\psevdogigant\psevdogigant
 corpse_visual	     = monsters\psevdogigant\psevdogigant_dead
 icon				= ui_npc_monster_psevdogigant
-rank				= 401
+rank				= 20
 spec_rank			= normal
 community			= pseudo_gigant
 

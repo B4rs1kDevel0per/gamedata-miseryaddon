@@ -9,7 +9,7 @@ $npc			     = on						; option for Level Editor
 $prefetch 			 = 16
 Scheduled		     = on						; option for ALife Simulator
 Human		     	 = off						; option for ALife Simulator
-Health			     = 350						; option for ALife Simulator
+Health			     = 250						; option for ALife Simulator
 MinSpeed		     = 1.0						; option for ALife Simulator
 MaxSpeed		     = 1.5						; option for ALife Simulator
 going_speed          = 3.0                      ; option for ALife Simulator
@@ -29,7 +29,7 @@ Spawn_Inventory_Item_Probability = 0.0
 ef_creature_type	 = 7				; option for evaluation functions
 ef_weapon_type		 = 2
 ef_detector_type			 = 1
-panic_threshold		= 0.45
+panic_threshold		= 0.1
 
 cform               = skeleton					; collision class
 class               = SM_FLESH					; AI class
@@ -122,7 +122,7 @@ MaxAttackDist			= 2.9
 as_min_dist				= 1.3
 as_step					= 0.4
 
-Melee_Rotation_Factor	= 1.8
+Melee_Rotation_Factor	= 2.6
 ;-------------------------------------------------------------------------
 ; Entity Conditions
 ;-------------------------------------------------------------------------
@@ -139,9 +139,9 @@ power_hit_part 		= 1.0		;0.9			; процент хита, уходящий на 
 psy_health_v		= 0.1						; скорость восстановления psy-здоровья
 
 ;открытые раны
-bleeding_v					= 0.005						; потеря крови при номинальной ране в секунду
-wound_incarnation_v			= 0.004				; крутизна кривой заживления (какой процент раны останется после заживления в игровую секунду)
-min_wound_size				= 0.012
+bleeding_v					= 0.04						; потеря крови при номинальной ране в секунду
+wound_incarnation_v			= 0.05				; крутизна кривой заживления (какой процент раны останется после заживления в игровую секунду)
+min_wound_size				= 0.01
 
 
 sleep_health				= 1.0		;1.5				; коэффициенты скоростей изменения параметров во время сна
@@ -192,10 +192,10 @@ distant_idle_sound_range	= 100.0
 ; Logic
 ;---------------------------------------------------------
 
-DayTime_Begin		= 6			; начала дня для монстра
-DayTime_End			= 21		; конец дня для монстра
-Min_Satiety		= 0.4	;0.6		; мин. норма сытости (меньше - уже голодный)
-Max_Satiety		= 1.0		; макс. норма сытости (больше - очень сытый)
+DayTime_Begin		= 3			; ýð¢ðûð ôý  ôû  üþý¸ª¨ð
+DayTime_End			= 23		; úþýõ¡ ôý  ôû  üþý¸ª¨ð
+Min_Satiety		= 0.00055	;0.6		; üøý. ýþ¨üð ¸vªþ¸ªø (üõý¹°õ - ºöõ óþûþôývù)
+Max_Satiety		= 0.9		; üðú¸. ýþ¨üð ¸vªþ¸ªø (ñþû¹°õ - þ¢õý¹ ¸vªvù)
 
 
 ;-------------------------------------------------------------------------
@@ -250,8 +250,8 @@ attack_params		= m_flesh_attack_params
 ; Vision
 ;---------------------------------------------------------
 
-eye_fov					= 240
-eye_range				= 80	;60	;30
+eye_fov					= 100
+eye_range				= 30	;60	;30
 
 ; number of visible objects monster can handle
 DynamicObjectsCount		= 32
@@ -263,26 +263,26 @@ vision_danger_section		= flesh_vision_danger
 ; иначе возникают артефакты с потерей видимости при переходе от денжера во фри.
 
 [flesh_vision_free]
-min_view_distance   		= 1.2				; коэффициент, который множится на eye_range, в зависимости от угла
-max_view_distance	 		= 1.6				; коэффициент, который множится на eye_range, в зависимости от угла
-visibility_threshold	 	= 60.0				; значение, при достижении суммой которого объект считается видимым
-always_visible_distance 	= 1.35
-time_quant					= 0.004
-decrease_value				= 0.011				; значение, на которое уменьшается вес, если объект попал в фрустум, но отсёкся по каким-то причинам
-velocity_factor		     	= 0.7
-luminocity_factor			= 0.7				; фактор освещения (только для Актёра)
-transparency_threshold		= 0.67
-
-[flesh_vision_danger]
-min_view_distance   		= 1.2				; коэффициент, который множится на eye_range, в зависимости от угла
-max_view_distance	 		= 1.6				; коэффициент, который множится на eye_range, в зависимости от угла
-visibility_threshold	 	= 60				; значение, при достижении суммой которого объект считается видимым
-always_visible_distance 	= 1.35
+min_view_distance   		= 0.4				; коэффициент, который множится на eye_range, в зависимости от угла
+max_view_distance	 		= 1.0				; коэффициент, который множится на eye_range, в зависимости от угла
+visibility_threshold	 	= 100.0				; значение, при достижении суммой которого объект считается видимым
+always_visible_distance 	= 0.2
 time_quant					= 0.001
 decrease_value				= 0.01				; значение, на которое уменьшается вес, если объект попал в фрустум, но отсёкся по каким-то причинам
-velocity_factor		     	= 0.3
-luminocity_factor			= 0.7 				; фактор освещения (только для Актёра)
-transparency_threshold		= 0.67
+velocity_factor		     	= 0.5
+luminocity_factor			= 0.5 				; фактор освещения (только для Актёра)
+transparency_threshold		= 0.25
+
+[flesh_vision_danger]
+min_view_distance   		= 0.4				; коэффициент, который множится на eye_range, в зависимости от угла
+max_view_distance	 		= 1.0				; коэффициент, который множится на eye_range, в зависимости от угла
+visibility_threshold	 	= 100.0				; значение, при достижении суммой которого объект считается видимым
+always_visible_distance 	= 0.2
+time_quant					= 0.001
+decrease_value				= 0.01				; значение, на которое уменьшается вес, если объект попал в фрустум, но отсёкся по каким-то причинам
+velocity_factor		     	= 0.5
+luminocity_factor			= 0.5 				; фактор освещения (только для Актёра)
+transparency_threshold		= 0.25
 
 
 [flesh_terrain]
@@ -293,28 +293,28 @@ transparency_threshold		= 0.67
 ;<hit_scale>	- коэфф. изменения хита (уменьшения здоровья)
 ;<wound_scale>	- коэфф. изменения величины открытой раны
 default				= 0.5,	-1,	0.10
-bip01_pelvis 		= 1.0, -1, 0.1
-bip01_spine 		= 1.0, -1, 0.1
-bip01_neck 			= 1.0, -1, 0.3
-bip01_head 			= 2.0, -1, 0.10
+bip01_pelvis 		= 0.5, -1, 0.1
+bip01_spine 		= 0.5, -1, 0.1
+bip01_neck 			= 0.5, -1, 0.3
+bip01_head 			= 1.0, -1, 0.10
 
 [flesh_protections]
-skin_armor = 0.05
-hit_fraction_monster = 0.9
+skin_armor = 0.1
+hit_fraction_monster = 0.4
 
 ;===========================================================================
 ; Immunities
 ;===========================================================================
 [flesh_immunities]
-burn_immunity			= 1.34				; коэффициенты иммунитета
+burn_immunity			= 1.0				; коэффициенты иммунитета
 strike_immunity			= 1
 shock_immunity			= 1.0
-wound_immunity			= 0.54
+wound_immunity			= 0.15
 radiation_immunity 		= 0.0
 telepatic_immunity 		= 1.0
 chemical_burn_immunity 	= 1.0
 explosion_immunity 		= 0.55
-fire_wound_immunity  	= 0.28
+fire_wound_immunity  	= 1.0
 
 ;===========================================================================
 ; Attack Animation Parameters
@@ -393,7 +393,7 @@ radiation_immunity		= 0.0
 telepatic_immunity		= 0.0
 chemical_burn_immunity	= 0.33
 explosion_immunity		= 0.55
-fire_wound_immunity		= 0.35
+fire_wound_immunity		= 0.75
 
 [flesh_attack_params_weak]
 ;---------------------------------------------------------------------------------------------------------------------------------------------
@@ -416,7 +416,7 @@ visual				= monsters\flesh\flesh
 corpse_visual		= monsters\flesh\flesh_dead
 icon				= ui_npc_monster_flesh
 panic_threshold		= 0.2
-rank				= 150
+rank				= 2
 immunities_sect		= flesh_immunities_normal
 attack_params		= flesh_attack_params_normal
 spec_rank			= normal
@@ -425,14 +425,14 @@ community			= flesh
 
 [flesh_immunities_normal]
 burn_immunity			= 0.3
-strike_immunity			= 0.65
+strike_immunity			= 0.3
 shock_immunity			= 0.3
-wound_immunity			= 0.54
+wound_immunity			= 0.7
 radiation_immunity		= 0.0
 telepatic_immunity		= 0.0
 chemical_burn_immunity	= 0.3
 explosion_immunity		= 0.5
-fire_wound_immunity		= 0.3
+fire_wound_immunity		= 0.7
 
 [flesh_attack_params_normal]
 ;---------------------------------------------------------------------------------------------------------------------------------------------
@@ -456,7 +456,7 @@ visual				= monsters\flesh\flesh_strong
 corpse_visual		= monsters\flesh\flesh_dead
 icon				= ui_npc_monster_flesh_strong
 panic_threshold		= 0.05
-rank				= 200
+rank				= 3
 immunities_sect		= flesh_immunities_strong
 attack_params		= flesh_attack_params_strong
 spec_rank			= strong

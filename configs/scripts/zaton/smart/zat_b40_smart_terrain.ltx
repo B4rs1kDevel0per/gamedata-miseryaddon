@@ -1,6 +1,19 @@
 [smart_terrain];zat_b40_smart_terrain
 squad_id = 38
 max_population = 4
+respawn_params = respawn@zat_b40_smart_terrain
+
+[respawn@zat_b40_smart_terrain]
+sim_monolith
+sim_monolith@sci
+
+[sim_monolith]
+spawn_squads = monolith_sim_squad_advanced_1, monolith_sim_squad_veteran_2
+spawn_num = {+ZAT_B40_MERC_GONE} 0, {ZAT_B40_ACTOR_HAS_NOTEBOOK} 0, 0
+
+[sim_monolith@sci]
+spawn_squads = monolith_sci_simulation_squad
+spawn_num = {+ZAT_B40_MERC_GONE} 0, {ZAT_B40_ACTOR_HAS_NOTEBOOK} 0, 0
 
 [exclusive]
 zat_b40_guard_leader_01 = zaton\zat_b40_mercs.ltx

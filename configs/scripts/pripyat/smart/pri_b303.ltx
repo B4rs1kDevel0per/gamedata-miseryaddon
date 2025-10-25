@@ -1,6 +1,14 @@
-[smart_terrain]
+[smart_terrain];pri_b303
 squad_id = 17
 max_population = 1
+respawn_params = respawn@pri_b303
+
+[respawn@pri_b303]
+spawn_burer
+
+[spawn_burer]
+spawn_squads = simulation_burer
+spawn_num = {+PRI_B303_DOOR_IS_OPEN} 1, 0
 
 [exclusive]
 pri_b303_burer_01 = pripyat\pri_b303_burer_01.ltx

@@ -1,7 +1,7 @@
 [wpn_sig220r]:wpn_sig220
 $spawn               = "weapons\sig220r"   ; name and section in level editor
 description					= st_wpn_sig220r_descr
-cost					= 13400         ; the price of the item
+cost					= 3400         ; the price of the item
 
 def_hide_bones = sight, barrel_silencer, mag, flash, laser
 def_show_bones = barrel
@@ -10,9 +10,9 @@ hud                     	= wpn_sig220r_hud
 condition_shot_dec      	= 0.0017
 condition_queue_shot_dec	= 0.0017
 
-upgrades = vartree_sig220r_body, vartree_sig220r_ramka, vartree_sig220r_shell_ejector, vartree_sig220r_sights, vartree_sig220r_laser, vartree_sig220r_handle
-installed_upgrades = 
-upgrade_scheme = upgrade_scheme_sig220r
+upgrades                = up_gr_firstab_sig220, up_gr_seconab_sig220, up_gr_thirdab_sig220, up_gr_fourtab_sig220, up_gr_fifthab_sig220
+installed_upgrades      =
+upgrade_scheme          = upgrade_scheme_sig220
 
 inv_name                = st_wpn_sig220r
 inv_name_short          = st_wpn_sig220r
@@ -36,6 +36,7 @@ ammo_elapsed		 	= 11
 ammo_mag_size		 	= 11 
 
 visual = dynamics\weapons\wpn_sig220\wpn_sig220r.ogf
+silencer_status         = 2                   ; 1 - permanent
 
 [wpn_sig220r_hud]:wpn_sig220_hud
 item_visual             	= dynamics\weapons\wpn_sig220\wpn_sig220r_hud.ogf

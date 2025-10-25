@@ -1,8 +1,17 @@
-[smart_terrain]
+[smart_terrain];jup_b219
 squad_id = 20
 max_population = 1
 
 arrive_dist  = 100
+
+respawn_params = respawn@jup_b219
+
+[respawn@jup_b219]
+spawn_monolith
+
+[spawn_monolith]
+spawn_squads = simulation_burer_jup_b219, simulation_gigant_jup_b8_smart_terrain, simulation_controller_jup_b219, simulation_bloodsucker_jup_b219
+spawn_num = {+PAS_B400_WAY_BUTTON_PRESSED} 1, 0
 
 [exclusive]
 jup_b219_zulus = jupiter\jup_b219_zulus.ltx

@@ -1,267 +1,230 @@
 [wpn_fn2000]:identity_immunities,weapon_probability,default_weapon_params
 GroupControlSection     = spawn_group
-$spawn               	= "weapons\fn-2000"      ; option for Level Editor
+$spawn						= "weapons\fn-2000"                ; option for Level Editor
 $npc                    = on                                ; option for Level Editor
 $prefetch               = 8
 scheduled               = off                                ; option for ALife Simulator
 cform                   = skeleton
-class                   = WP_GROZA
-description          	= gunsl_wpn_fn2000_descr
+class                   = WP_VAL
+description             = st_wpn_sig552_descr
+
 ef_main_weapon_type     = 2
-ef_weapon_type          = 8
+ef_weapon_type          = 6
+
+default_to_ruck         = false
 default_to_ruck         = false
 sprint_allowed       	= true
 
-;-------------------------------------------------------------------------------
-cost                    = 24200
-weapon_class            = assault_rifle        ; Type of the weapon
-inv_weight           	= 5
+def_hide_bones = scope1, scope2, scope3, scope4, scope5, scope6, light, foregrip_handler, foregrip_sight, ironsight_rail, flash, laser, foregrip_rail, ironsight_sight
+def_show_bones = ironsight
 
-upgrades                = up_gr_firstab_l85, up_gr_seconab_l85, up_gr_thirdab_l85, up_gr_fourtab_l85, up_gr_fourtcd_l85, up_gr_fourtef_l85, up_gr_fifthab_l85, up_gr_fifthcd_l85
+upgrades                = up_gr_firstab_sig550, up_gr_seconab_sig550, up_gr_thirdab_sig550, up_gr_fourtab_sig550, up_gr_fifthab_sig550
 installed_upgrades      =
-upgrade_scheme          = upgrade_scheme_l85
+upgrade_scheme          = upgrade_scheme_sig550
 
-def_show_bones = mag30, ironsight_closed, rail_gl, wpn_scope_fn, bayonet, handguard, flash, laser
-def_hide_bones = scope1, scope2, scope3, scope4, scope5, scope6, scope_fn, rail, rail_handguard, mag40, rail_scope, flash, light, sights, bayonet, handguard, grip, ironsight, laser, line, laser_gl, flash_gl
-launcher_bone = wpn_launcher
-silencer_bone = wpn_silencer
-def_hide_bones_override_when_gl_attached = handguard, rail_handguard, grip, bayonet
+repair_group = sg550
 
-;--TTX--------------------------------------------------------------------------
-hit_power               = 1.1, 1.1, 1.1, 1.1
-hit_impulse             = 100
+;-------------------------------------------------------------------------------
+cost                    = 10000
+weapon_class            = assault_rifle        ; Type of the weapon
+inv_weight              = 3.2
+
+; Параметры для работоспособности сейвов от старых версий мода с заглушками вместо предметов
+banned_upgrades = up_ak74_, up_ak101_
+banned_visuals = dynamics\weapons\wpn_sig550\wpn_sig550
+
+;-------TTX-----------------------------------------------------------------------
+hit_power				= 0.95, 0.95, 0.95, 0.95
+hit_impulse				= 100
 hit_type				= fire_wound
-rpm                     = 850
-fire_distance           = 1000
-bullet_speed            = 940        ;начальная скорость пули
+fire_distance           = 200
+bullet_speed            = 450         ;начальная скорость пули
+rpm                     = 710
 rpm_empty_click         = 10
 
 use_aim_bullet          = false                ;Поддерживается ли первая суппер пуля
-time_to_aim             = 1.0
+time_to_aim             = 3.0
 
 hud                     = wpn_fn2000_hud
 
 misfire_probability        = 0.005 ;вероятность осечки при максимальном износе  !!!old - now not working
 ;изношенность, при которой появляется шанс осечки
-misfire_start_condition		= 0.85
+misfire_start_condition		= 0.6
 ;изношеность при которой шанс осечки становится константным
-misfire_end_condition		= 0.11
+misfire_end_condition		= 0.1
 ;шанс осечки при изношености больше чем misfireStartCondition
-misfire_start_prob	     	= 0.005
+misfire_start_prob	     	= 0.003
 ;шанс осечки при изношености больше чем misfireEndCondition
-misfire_end_prob	     	= 0.06
+misfire_end_prob	     	= 0.045
 ;увеличение изношености при одиночном выстреле
-condition_shot_dec      	= 0.0001
+condition_shot_dec      	= 0.0005
 ;увеличение изношености при выстреле очередью
-condition_queue_shot_dec	= 0.0001
+condition_queue_shot_dec	= 0.0006
+
+ammo_in_chamber = true
 
 ammo_elapsed            = 30
 ammo_mag_size           = 30
 
 ammo_class              = ammo_5.56x45_ss190, ammo_5.56x45_ap
-grenade_class           = ammo_m209, ammo_m397a1
-grenade_bones 			= wpn_launcher_grenade_blue, wpn_launcher_grenade_red ; !!! количество должно совпадать с количеством типов
-fire_modes              = 1, -1
+fire_modes              = 1, 3, -1
 launch_speed            = 0
 hand_dependence         = 1
 single_handed           = 0
 
-;--дисперсия----------------------------------------------------------------------------
+;-дисперсия-----------------------------------------------------------------------------
 ;базовая дисперсия
-fire_dispersion_base    = 0.165    ;угол (в градусах) базовой дисперсии оружия (оружия зажатого в тисках)
-control_inertion_factor = 1.0f
-crosshair_inertion		= 6.20
+fire_dispersion_base    = 0.25        ;угол (в градусах) базовой дисперсии оружия (оружия зажатого в тисках)
+control_inertion_factor = 1.1f
+crosshair_inertion		= 4
 
 ;отдача
-am_return				= 0
-cam_relax_speed         = 8      ;скорость возврата в исходное положение
-cam_relax_speed_ai      = 360
-cam_dispersion          = 0.76      ;увеличения угла (в градусах) с первым выстрелом
-cam_dispersion_inc      = 0.72    ;увеличениe cam_dispersion с каждым выстрелом
-cam_dispersion_frac     = 1.1    ;ствол будет подыматься на cam_dispersion*cam_dispersion_frac +- cam_dispersion*(1-cam_dispersion_frac)
-cam_max_angle           = 50.0         ;максимальный угол отдачи
-cam_max_angle_horz      = 50.0      ;(degree) maximum shot horizontal degree
-cam_step_angle_horz     = 1.65    ;(degree) size of step camera moved in horizontal position while shooting
+cam_return				= 0
+cam_relax_speed         = 5		; скорость возврата в исходное положение
+cam_relax_speed_ai      = 360	; скорость возврата в исходное положение для AI
+cam_dispersion          = 0.6       ; увеличения угла (в градусах) при первом выстреле
+cam_dispersion_inc      = 0.5       ; увеличениe cam_dispersion с каждым выстрелом
+cam_dispersion_frac     = 1.0       ; frac * angle + rand(-1,1)*(1-frac) * angle
+cam_max_angle           = 50.0       ; максимальный угол отдачи
+cam_max_angle_horz      = 50.0       ; (degree) maximum shot horizontal degree
+cam_step_angle_horz     = 1.5       ; (degree) size of step camera moved in horizontal position while shooting
 
-PDM_disp_base 				= 0.85
+PDM_disp_base 				= 1.15
 PDM_disp_vel_factor 		= 2.0
 PDM_disp_accel_factor 		= 2.0
 PDM_disp_crouch	 			= 1.0
 PDM_disp_crouch_no_acc 		= 1.0
 
-zoom_cam_relax_speed         = 7	    ; scope & ironsight
+zoom_cam_relax_speed         = 5     ; scope & ironsight
 zoom_cam_relax_speed_ai      = 360
-zoom_cam_dispersion          = 0.35
-zoom_cam_dispersion_inc      = 0.2
-zoom_cam_dispersion_frac     = 1.0
+zoom_cam_dispersion          = 0.45
+zoom_cam_dispersion_inc      = 0.3
+zoom_cam_dispersion_frac     = 0.8
 zoom_cam_max_angle           = 50.0
 zoom_cam_max_angle_horz      = 50.0
-zoom_cam_step_angle_horz     = 1.25
+zoom_cam_step_angle_horz     = 1.3
 
-fire_dispersion_condition_factor = 11        ;увеличение дисперсии в процентах при максимальном износе
-
+fire_dispersion_condition_factor = 7        ;увеличение дисперсии в процентах при максимальном износе
 ;---DOF-------------------------------------------------------------------------
-zoom_dof						= 0.5, 1.0, 180
-reload_dof					= 0.0, 0.5, 5, 2
+zoom_dof				= 0.5, 1.0, 180
+reload_dof				= 0.0, 0.5, 5, 2
 
 ;-------------------------------------------------------------------------------
-holder_range_modifier   = 1.85             ; во сколько раз увеличивается eye_range
+holder_range_modifier   = 1.0                       ; во сколько раз увеличивается eye_range
 holder_fov_modifier     = 1.0              ; во сколько раз увеличивается eye_fov
 
-hit_probability_gd_novice  = 1.0
-hit_probability_gd_stalker = 1.0
-hit_probability_gd_veteran = 1.0
-hit_probability_gd_master  = 1.0
+min_radius              = 5
+max_radius              = 100
 
-min_radius              = 1
-max_radius              = 150
-
-;-------------------------------------------------------------------------------
+hit_probability_gd_novice  = 0.80
+hit_probability_gd_stalker = 0.80
+hit_probability_gd_veteran = 0.80
+hit_probability_gd_master  = 0.80
+;------------------------------------------------------------------------------
 slot                    = 2                ; // secondary
-animation_slot          = 8                ; type of the animation that will be used
-actor_animation_slot	= 22
+animation_slot          = 2                ; type of the animation that will be used
 use_third_person_anims      = true               ; нужно ли использовать анимацию на мировой модели оружия / есть ли idle анимация
 
-inv_name          		= gunsl_wpn_fn2000
-inv_name_short       	= gunsl_wpn_fn2000
+inv_name                = st_wpn_sig552
+inv_name_short          = st_wpn_sig552
 
 inv_grid_width          = 4
 inv_grid_height         = 2
-inv_grid_x              = 5
-inv_grid_y              = 9
+inv_grid_x              = 10
+inv_grid_y              = 39
 
-upgr_icon_x			= 2100
-upgr_icon_y			= 750
-upgr_icon_width		= 250
-upgr_icon_height   	= 150
+upgr_icon_x		= 1402
+upgr_icon_y		= 550
+upgr_icon_width		= 193
+upgr_icon_height   	= 97
 
-kill_msg_x              = 131
-kill_msg_y              = 123
-kill_msg_width          = 64
+
+kill_msg_x              = 87
+kill_msg_y              = 60
+kill_msg_width          = 62
 kill_msg_height         = 30
 
 ;-------------------------------------------------------------------------------
-position                = -0.026, -0.132, 0.0
+;---normal                  = 0, 1, 0
+;---direction               = 0, 0, 1
+
+position                = -0.026, -0.097, 0.0
 orientation             = 0, 0, 0
 
-position_new_anm                = -0.026, 0.132, 0.0
-orientation_new_anm             = 0, 0, 0
+position_new_anm		= -0.040, -0.095, -0.002
+orientation_new_anm		= 0, -6, 8
 
-fire_point              = 0.0, 0.0, 0.35
-fire_point2             = 0.0, 0.123, 0.398
+fire_point              = 0.000000,0.137000,0.399000
+fire_point2             = 0.0, 0.097, 0.722
 
 flame_particles         = weapons\generic_weapon05
 smoke_particles         = weapons\generic_shoot_00
 grenade_flame_particles = weapons\generic_weapon01
 
-shell_point             = -0.020000,0.186000,0.200000
-shell_dir               = 0.0, 1.0, 0.0
+shell_point             = -0.020000,0.167000,0.082000
+shell_dir               = 0.0, 0.0, 0.4
 shell_particles         = weapons\generic_shells_r
 
 ;--STRAP PARAMETERS-----------------------------------------------------------------
 ;под мишкой
-strap_position         	= -0.15,-0.35,0.27			; position (offset) and orientation of the weapon when it is strapped
-strap_orientation      	= -10,-5,10					; (3rd person view in degrees)
+strap_position          = -0.26,-0.11,0.25                        	; position (offset) and orientation of the weapon when it is strapped
+strap_orientation       = -15,-9,110                                	; (3rd person view in degrees)
 strap_bone0             = bip01_spine2
 strap_bone1             = bip01_spine1
 
 startup_ammo            = 90
 visual                  = dynamics\weapons\wpn_fn2000\wpn_fn2000.ogf
 
-light_disabled				= false
+light_disabled		= false
 light_color             = 0.6,0.5,0.3
-light_range             = 4
+light_range             = 5
 light_var_color         = 0.05
-light_var_range         = 0.1
+light_var_range         = 0.5
 light_time              = 0.2
 
 ph_mass                 = 4
-;cost                   = 2100
 
 ;addons
-scope_status            = 1
-silencer_status         = 2
-grenade_launcher_status = 1
-restricted_gl_and_sil = true
+scope_status            = 2 ;0
+silencer_status         = 2 ;0
+grenade_launcher_status = 0
 
 zoom_enabled            = true                                                ; (on,off)zoom mode (right mouse button)
-zoom_rotate_time		= 0.25
-scope_zoom_factor       = 35                                                ; fov for zoom mode
-ironsight_zoom_factor   = 85
+zoom_rotate_time	= 0.25
+scope_zoom_factor	        = 85
+ironsight_zoom_factor = 85
 
-scopes_sect		= scope_eotech_fn2000_nimble, scope_aimpoint_fn2000_nimble, scope_elcan_fn2000_nimble, scope_pn23_fn2000_nimble
+silencer_name           = wpn_silencer_m4_2000
+silencer_x              = 149
+silencer_y              = 18
+grenade_launcher_name   = wpn_addon_grenade_launcher_m203
+grenade_launcher_x      = 109
+grenade_launcher_y      = 30
 
-
-scope_texture				= wpn_crosshair_gauss
-scope_name 					= wpn_addon_scope
-scope_x 						= 60
-scope_y 						= -2
-
-silencer_name  	        = wpn_addon_silencer_m4_2000
-silencer_x              = 158
-silencer_y              = 12
-grenade_launcher_name   = wpn_addon_grenade_launcher
-grenade_launcher_x      = 95
-grenade_launcher_y      = 25
-grenade_vel 		= 76
-
+scopes_sect		= scope_eotech_fn2000, scope_aimpoint_fn2000, scope_elcan_fn2000, scope_pn23_fn2000
 
 ;звуки
 snd_draw                = weapons\sig552\mechanics\sig552_draw
-snd_holster             = $silent
-snd_shoot					= $silent
-snd_close		= $silent
-snd_unload_mag          = $silent
-snd_jam                 = $silent
-snd_breechblock         = $
-snd_sprint_start        = $silent
-snd_sprint_end          = $silent
-snd_suicide	        = $silent
-snd_stop_suicide	= $silent
-snd_laser_on	        = $silent
-snd_laser_off	        = $silent
-snd_torch_on	        = $silent
-snd_torch_off	        = $silent
-snd_headlamp_on         = $silent
-snd_headlamp_off        = $silent
-snd_nv_on               = $silent
-snd_nv_off              = $silent
-snd_scope_brightness_plus = $silent
-snd_scope_brightness_minus = $silent
-snd_scope_zoom_plus = $silent
-snd_scope_zoom_minus = $silent
-snd_kick		= $silent
-snd_empty               = weapons\glock17\glock17_dry
-snd_empty1               = weapons\glock17\glock17_dry
-snd_empty2               = weapons\glock17\glock17_dry
-snd_reload              = weapons\fn2000\fn2000_reload
-snd_reload_empty        = weapons\fn2000\fn2000_reload_empty
-snd_changecartridgetype = weapons\fn2000\fn2000_reload
-snd_reload_jammed       = weapons\fn2000\fn2000_misfire
-snd_reload_jammed_last  = weapons\fn2000\fn2000_misfire
-snd_aim_start           = $silent
-snd_aim_end             = $silent
-snd_shoot_grenade			= weapons\m203\m203_shoot
-snd_shoot_grenade1			= weapons\m203\m203_shoot
-snd_reload_grenade			= weapons\fn2000\gl1_reload
-snd_load_grenade        = weapons\fn2000\gl1_reload
+snd_holster             = weapons\saiga12\mechanics\saiga12_hide
+snd_shoot		= weapons\silence
 
-snd_ammochange_grenade  = weapons\fn2000\gl1_reload
-snd_change_grenade      = weapons\fn2000\gl1_reload
-
-snd_switch_start		= $silent
-snd_switch_end			= $silent
-snd_bore				= $silent
-snd_bore1				= $silent
-snd_switch_firemode     = $silent
-snd_switch_firemode1     = $silent
-snd_jammed_click     = $silent
-
-;настройки для глушителя
-;silencer_flame_particles  = weapons\generic_weapon01
-silencer_smoke_particles   = weapons\generic_shoot_00
-
-snd_silncer_shot        = weapons\silence
+snd_empty               = weapons\l85\mechanics\l85_dry_1
+snd_empty1               = weapons\l85\mechanics\l85_dry_2
+snd_empty2               = weapons\l85\mechanics\l85_dry_3
+snd_reload              = weapons\sig552\mechanics\sig552_reload
+snd_reload_empty        = weapons\sig552\mechanics\sig552_reload_empty
+snd_reload_jammed       = weapons\sig552\mechanics\sig552_revival
+snd_reload_jammed_last  = weapons\sig552\mechanics\sig552_revival_last
+snd_shutter           = weapons\sig552\mechanics\sig552_shutter
+snd_shoot_grenade       = weapons\silence
+snd_reload_grenade      = weapons\silence
+snd_aim_start           = weapons\ak74\mechanics\ak74_aim_start
+snd_aim_end             = weapons\ak74\mechanics\ak74_aim_end
+snd_bore				= weapons\draw_silent
+snd_bore1				= weapons\mp5_bore
+snd_switch_firemode     = weapons\mp5\mechanics\mp5_firemode_1
+snd_switch_firemode1     = weapons\mp5\mechanics\mp5_firemode_2
+snd_jammed_click     = weapons\sig552\mechanics\sig552_check
 
 snd_shoot_start                = weapons\sig550\layers\sig550_shoot_a_1
 snd_shoot_start1                = weapons\sig550\layers\sig550_shoot_a_2
@@ -271,14 +234,30 @@ snd_silencer_shoot_start1        = weapons\sig552\layers\sig552_silencer_a_2
 snd_silencer_shoot_start2        = weapons\sig552\layers\sig552_silencer_a_3
 
 snd_shoot_loop            = weapons\sig550\layers\sig550_loop_a
-snd_shoot_loop_tail        = weapons\akm\layers\akm_tail_a_1
-snd_shoot_loop_tail1        = weapons\akm\layers\akm_tail_a_2
-snd_shoot_loop_tail2        = weapons\akm\layers\akm_tail_a_3
+snd_shoot_loop_tail        = weapons\groza\layers\groza_tail_a_1
+snd_shoot_loop_tail1        = weapons\groza\layers\groza_tail_a_2
+snd_shoot_loop_tail2        = weapons\groza\layers\groza_tail_a_3
 
 snd_silencer_shoot_loop        = weapons\sig552\layers\sig552_silencer_loop_a
 snd_silencer_shoot_loop_tail        = weapons\val\layers\val_tail_a_1
 snd_silencer_shoot_loop_tail1        = weapons\val\layers\val_tail_a_2
 snd_silencer_shoot_loop_tail2        = weapons\val\layers\val_tail_a_3
+
+snd_scope_brightness_plus = weapons\nv_intensity
+snd_scope_brightness_minus = weapons\nv_intensity
+snd_scope_zoom_plus = weapons\nv_intensity
+snd_scope_zoom_minus = weapons\nv_intensity
+
+;настройки для глушителя
+silencer_hit_power      = 0.9, 0.9, 0.9, 0.9
+silencer_hit_impulse    = 100
+silencer_fire_distance  = 200
+silencer_bullet_speed   = 500
+
+;silencer_flame_particles  = weapons\generic_weapon01
+silencer_smoke_particles   = weapons\generic_shoot_00
+
+snd_silncer_shot        = weapons\silence
 
 silencer_light_color    = 0.6,0.5,0.3
 silencer_light_range    = 0.01
@@ -286,795 +265,306 @@ silencer_light_var_color= 0.05
 silencer_light_var_range= 0.01
 silencer_light_time     = 0.01
 
-wanm_idle_empty = idle
 wanm_shoot_last = shoot
 
-wanm_idle        = idle
-wanm_idle_a      = idle_auto
-wanm_idle_w_gl   = idle_gloff
-wanm_idle_a_w_gl = idle_gloff_auto
-wanm_idle_g      = idle_glon
-wanm_idle_a_g    = idle_glon_auto
-
-wanm_idle_empty        = idle
-wanm_idle_empty_a      = idle_auto
-wanm_idle_empty_w_gl   = idle_gloff
-wanm_idle_empty_a_w_gl = idle_gloff_auto
-wanm_idle_empty_g      = idle_glon
-wanm_idle_empty_a_g    = idle_glon_auto
-
-wanm_idle_jammed        = idle_jammed
-wanm_idle_jammed_a      = idle_auto_jammed
-wanm_idle_jammed_w_gl   = idle_gloff_jammed 
-wanm_idle_jammed_a_w_gl = idle_gloff_auto_jammed
-wanm_idle_jammed_g      = idle_glon_jammed
-wanm_idle_jammed_a_g    = idle_glon_auto_jammed
-
-wanm_shoot        = shoot
-wanm_shoot_a      = shoot_auto
-wanm_shoot_w_gl   = shoot_gloff
-wanm_shoot_a_w_gl = shoot_gloff_auto
-wanm_shoot_g      = idle_glon
-wanm_shoot_a_g    = idle_glon_auto
-
-wanm_shoot_jammed        = idle_jammed
-wanm_shoot_jammed_a      = idle_auto_jammed
-wanm_shoot_jammed_w_gl   = idle_gloff_jammed
-wanm_shoot_jammed_a_w_gl = idle_gloff_auto_jammed
-wanm_shoot_jammed_g      = idle_glon_jammed
-wanm_shoot_jammed_a_g    = idle_glon_auto_jammed
-
-wanm_shoot_last        = shoot
-wanm_shoot_last_a      = shoot_auto
-wanm_shoot_last_w_gl   = shoot_gloff
-wanm_shoot_last_a_w_gl = shoot_gloff_auto
-wanm_shoot_last_g      = idle_glon
-wanm_shoot_last_a_g    = idle_glon_auto
-
-wanm_shoot_last_jammed        = idle_jammed
-wanm_shoot_last_jammed_a      = idle_auto_jammed
-wanm_shoot_last_jammed_w_gl   = idle_gloff_jammed
-wanm_shoot_last_jammed_a_w_gl = idle_gloff_auto_jammed
-wanm_shoot_last_jammed_g      = idle_glon_jammed
-wanm_shoot_last_jammed_a_g    = idle_glon_auto_jammed
-
-wanm_reload        = idle
-wanm_reload_a      = idle_auto
-wanm_reload_w_gl   = idle_gloff
-wanm_reload_a_w_gl = idle_gloff_auto
-wanm_reload_g      = idle_glon
-wanm_reload_a_g    = idle_glon_auto
-
-wanm_reload_empty        = idle
-wanm_reload_empty_a      = idle_auto
-wanm_reload_empty_w_gl   = idle_gloff
-wanm_reload_empty_a_w_gl = idle_gloff_auto
-wanm_reload_empty_g      = idle_glon
-wanm_reload_empty_a_g    = idle_glon_auto
-
-wanm_reload_jammed        = idle
-wanm_reload_jammed_a      = idle_auto
-wanm_reload_jammed_w_gl   = idle_gloff
-wanm_reload_jammed_a_w_gl = idle_gloff_auto
-wanm_reload_jammed_g      = idle_glon_jammed
-wanm_reload_jammed_a_g    = idle_glon_auto_jammed
-
 [wpn_fn2000_hud]:hud_base
-zoom_hide_crosshair		        = true
-attach_place_idx			= 0
-item_visual				= dynamics\weapons\wpn_fn2000\wpn_fn2000_hud.ogf
+zoom_hide_crosshair	= true
+attach_place_idx	= 0
+item_visual		= dynamics\weapons\wpn_sig550\wpn_sig552_hud
 
-hud_fov = 0.75
-hud_fov_zoom = 0.75 ;аналогичный параметр работает и с прицел
+firemode_bones_total = firemode_auto, firemode_single, firemode_triple
+firemode_bones_1 = firemode_single
+firemode_bones_3 = firemode_triple
+firemode_bones_a = firemode_auto
+
+use_advanced_ammo_bones = false
+ammo_params_section = wpn_sig552_ammo_bones
 
 zoom_dof_near = 0.25
 zoom_dof_focus = 0.5
 
-inertion_pitch_offset_r = 0.01
-inertion_pitch_offset_n = 0.007
-inertion_pitch_offset_d = 0.01
-inertion_origin_offset = 0.05
+hud_fov = 0.75
+hud_fov_zoom = 0.75
 
-inertion_aim_origin_offset = 0.015
-inertion_aim_speed = 5
+inertion_aim_origin_offset = 0.01
+inertion_aim_speed = 10
 
-hands_position				        			   = 0.008475,-0.025600,0.068000
-hands_position_16x9								   = 0.008475,-0.025600,0.068000
-hands_orientation			        			   = 0,0,0
-hands_orientation_16x9							   = 0,0,0
+hands_position		    = 0.0,0.01,-0.065
+hands_orientation	    = 0.0,0.0,0.0
 
-item_position				= 0.0,0.0,0.0
-item_orientation			= 0.0,0.0,0.0
+hands_position_16x9	    = 0.0,0.01,-0.065
+hands_orientation_16x9	    = 0.0,0.0,0.0
 
-aim_hud_offset_pos = 0.006861,-0.000396,0.100000
-aim_hud_offset_rot = 0.000000,0.000000,0.000000
-aim_hud_offset_pos_16x9 = 0.006861,-0.000396,0.100000
-aim_hud_offset_rot_16x9 = 0.000000,0.000000,0.000000
+item_position		    = 0.0,0.0,0.0
+item_orientation	    = 0.0,0.0,0.0
 
-gl_hud_offset_pos = -0.009752,0.000000,0.000000
-gl_hud_offset_rot = -0.0,-0.00000,0.000000
+aim_hud_offset_pos         = 0.000500,0.0012,0.000000
+aim_hud_offset_rot         = -0.00300,0.000000,0.000000
 
-gl_hud_offset_pos_16x9 = -0.009752,0.000000,0.000000
-gl_hud_offset_rot_16x9 = -0.0,-0.00000,0.000000
+aim_hud_offset_pos_16x9 = 0.000500,0.0012,0.000000
+aim_hud_offset_rot_16x9 = -0.00300,0.000000,0.000000
 
-alter_aim_hud_offset_pos_16x9 = 0.006732,-0.033242,0.051000
-alter_aim_hud_offset_rot_16x9 = -0.000000,0.000000,0.000000
+gl_hud_offset_pos          = 0.0,0.012,-0.05
+gl_hud_offset_rot          = 0.0,0.0,0.0
+
+gl_hud_offset_pos_16x9     = 0.0,0.012,-0.1
+gl_hud_offset_rot_16x9     = 0.0,0.0,0.0
 
 lean_hud_offset_pos        = 0,0,0
-lean_hud_offset_rot        = 0,0,0
+lean_hud_offset_rot        = 0,0,0	
 
 shell_point		   = 0.0,-9.0,0.0
 shell_dir                  = 0.0,0.0,0.0
 shell_bone	           = bolt
 
-fire_point		   = 0,0.003,0.711
+fire_point		   = 0,0.052,0.426
 fire_bone      	           = wpn_body
-fire_point2		   = 0.0,-0.075,0.697
+fire_point2		   = 0,0.052,0.577
 fire_bone2		   = wpn_body
 
-disable_bore = true                                            ;отключение анимации скуки
-
 ;Доставание///////////////////////////////////////////////////
-anm_show                   = fn2000_draw
-anm_show_empty             = fn2000_draw
-anm_show_jammed            = fn2000_draw, idle_jammed
-anm_show_w_gl              = fn2000_gloff_draw, fn2000_gloff_idle
-anm_show_empty_w_gl        = fn2000_gloff_draw, fn2000_gloff_idle
-anm_show_jammed_w_gl       = fn2000_gloff_draw, fn2000_gloff_idle_jammed
-anm_show_g                 = fn2000_glon_draw, fn2000_glon_idle
-anm_show_empty_g           = fn2000_glon_draw, fn2000_glon_idle
-anm_show_jammed_g          = fn2000_glon_draw, fn2000_glon_idle_jammed
+anm_show                   = sg550_draw
+anm_show_empty             = sg550_draw, idle_empty
+anm_show_jammed            = sg550_draw, idle_jammed
 
 ;Убирание/////////////////////////////////////////////////////
-anm_hide                   = fn2000_hide
-anm_hide_empty             = fn2000_hide
-anm_hide_jammed            = fn2000_hide, idle_jammed
-anm_hide_w_gl              = fn2000_gloff_hide, fn2000_gloff_idle
-anm_hide_empty_w_gl        = fn2000_gloff_hide, fn2000_gloff_idle
-anm_hide_jammed_w_gl       = fn2000_gloff_hide, fn2000_gloff_idle_jammed
-anm_hide_g                 = fn2000_glon_hide, fn2000_glon_idle
-anm_hide_empty_g           = fn2000_glon_hide, fn2000_glon_idle
-anm_hide_jammed_g          = fn2000_glon_hide, fn2000_glon_idle_jammed
+anm_hide                   = sg550_hide
+anm_hide_empty             = sg550_hide, idle_empty
+anm_hide_jammed            = sg550_hide, idle_jammed
 
 ;Бездействие//////////////////////////////////////////////////
-anm_idle                            = fn2000_idle
-anm_idle_empty                      = fn2000_idle
-anm_idle_jammed                     = fn2000_idle, idle_jammed
-anm_idle_slow                       = fn2000_idle
-anm_idle_slow_empty                 = fn2000_idle
-anm_idle_slow_jammed                = fn2000_idle, idle_jammed
-anm_idle_crouch                     = fn2000_idle
-anm_idle_crouch_empty               = fn2000_idle
-anm_idle_crouch_jammed              = fn2000_idle, idle_jammed
-anm_idle_crouch_slow                = fn2000_idle
-anm_idle_crouch_slow_empty          = fn2000_idle
-anm_idle_crouch_slow_jammed         = fn2000_idle, idle_jammed
-
-anm_idle_w_gl                            = fn2000_gloff_idle
-anm_idle_empty_w_gl                      = fn2000_gloff_idle
-anm_idle_jammed_w_gl                     = fn2000_gloff_idle, fn2000_gloff_idle_jammed
-anm_idle_slow_w_gl                       = fn2000_gloff_idle
-anm_idle_slow_empty_w_gl                 = fn2000_gloff_idle
-anm_idle_slow_jammed_w_gl                = fn2000_gloff_idle, fn2000_gloff_idle_jammed
-anm_idle_crouch_w_gl                     = fn2000_gloff_idle
-anm_idle_crouch_empty_w_gl               = fn2000_gloff_idle
-anm_idle_crouch_jammed_w_gl              = fn2000_gloff_idle, fn2000_gloff_idle_jammed
-anm_idle_crouch_slow_w_gl                = fn2000_gloff_idle
-anm_idle_crouch_slow_empty_w_gl          = fn2000_gloff_idle
-anm_idle_crouch_slow_jammed_w_gl         = fn2000_gloff_idle, fn2000_gloff_idle_jammed
-
-anm_idle_g                            = fn2000_glon_idle
-anm_idle_empty_g                      = fn2000_glon_idle
-anm_idle_jammed_g                     = fn2000_glon_idle, fn2000_glon_idle_jammed
-anm_idle_slow_g                       = fn2000_glon_idle
-anm_idle_slow_empty_g                 = fn2000_glon_idle
-anm_idle_slow_jammed_g                = fn2000_glon_idle, fn2000_glon_idle_jammed
-anm_idle_crouch_g                     = fn2000_glon_idle
-anm_idle_crouch_empty_g               = fn2000_glon_idle
-anm_idle_crouch_jammed_g              = fn2000_glon_idle, fn2000_glon_idle_jammed
-anm_idle_crouch_slow_g                = fn2000_glon_idle
-anm_idle_crouch_slow_empty_g          = fn2000_glon_idle
-anm_idle_crouch_slow_jammed_g         = fn2000_glon_idle, fn2000_glon_idle_jammed
-
+anm_idle                            = sg550_idle
+anm_idle_empty                      = sg550_idle, idle_empty
+anm_idle_jammed                     = sg550_idle, idle_jammed
 
 ;Бездействие в прицеливании///////////////////////////////////
-autoshoot_anm_idle_aim_start = true         ;команда заставляет произвести выстрел с задержкой на lock_time, если кнопка выстрела будет нажата раньше заданного времени в lock_time
-lock_time_anm_idle_aim_start = 0.2          ;команда блокирует все действия (кроме выбрасывания оружия) во время отыгрывания обозначенной анимации до окончания заданного времени
-autoshoot_anm_idle_aim_start_empty = true
-lock_time_anm_idle_aim_start_empty = 0.2
-autoshoot_anm_idle_aim_start_jammed = true
-lock_time_anm_idle_aim_start_jammed = 0.2
+anm_idle_aim_start             = sg550_aim_start
+anm_idle_aim_start_empty       = sg550_aim_start, sg550_aim_start_empty
+anm_idle_aim_start_jammed      = sg550_aim_start, sg550_aim_start_jammed
 
-autoshoot_anm_idle_aim_start_w_gl = true         
-lock_time_anm_idle_aim_start_w_gl = 0.2          
-autoshoot_anm_idle_aim_start_empty_w_gl = true
-lock_time_anm_idle_aim_start_empty_w_gl = 0.2
-autoshoot_anm_idle_aim_start_jammed_w_gl = true
-lock_time_anm_idle_aim_start_jammed_w_gl = 0.2
+anm_idle_aim                   = sg550_aim
+anm_idle_aim_empty             = sg550_aim, sg550_aim_empty
+anm_idle_aim_jammed            = sg550_aim, sg550_aim_jammed
+anm_idle_aim_scope             = sg550_aim
+anm_idle_aim_scope_empty       = sg550_aim, sg550_aim_empty
+anm_idle_aim_scope_jammed      = sg550_aim, sg550_aim_jammed
 
-autoshoot_anm_idle_aim_start_g = true         
-lock_time_anm_idle_aim_start_g = 0.2          
-autoshoot_anm_idle_aim_start_empty_g = true
-lock_time_anm_idle_aim_start_empty_g = 0.2
-autoshoot_anm_idle_aim_start_jammed_g = true
-lock_time_anm_idle_aim_start_jammed_g = 0.2
-
-anm_idle_aim_start             = fn2000_aim_start, fn2000_aim_start
-anm_idle_aim_start_empty       = fn2000_aim_start, fn2000_aim_start
-anm_idle_aim_start_jammed      = fn2000_aim_start, fn2000_aim_start_jammed
-
-anm_idle_aim_start_w_gl        = fn2000_gloff_aim_start, fn2000_aim_start
-anm_idle_aim_start_empty_w_gl  = fn2000_gloff_aim_start, fn2000_aim_start
-anm_idle_aim_start_jammed_w_gl = fn2000_gloff_aim_start, fn2000_gloff_aim_start_jammed
-
-anm_idle_aim_start_g           = fn2000_glon_aim_start, fn2000_glon_idle
-anm_idle_aim_start_empty_g     = fn2000_glon_aim_start, fn2000_glon_idle
-anm_idle_aim_start_jammed_g    = fn2000_glon_aim_start, fn2000_glon_idle_jammed
-
-anm_idle_aim                   = fn2000_aim, fn2000_aim
-anm_idle_aim_empty             = fn2000_aim, fn2000_aim
-anm_idle_aim_jammed            = fn2000_aim, fn2000_aim_jammed
-anm_idle_aim_scope             = fn2000_aim, fn2000_aim
-anm_idle_aim_scope_empty       = fn2000_aim, fn2000_aim
-anm_idle_aim_scope_jammed      = fn2000_aim, fn2000_aim_jammed
-
-anm_idle_aim_w_gl                   = fn2000_gloff_aim, fn2000_aim
-anm_idle_aim_empty_w_gl             = fn2000_gloff_aim, fn2000_aim
-anm_idle_aim_jammed_w_gl            = fn2000_gloff_aim, fn2000_gloff_aim_jammed
-anm_idle_aim_scope_w_gl             = fn2000_gloff_aim, fn2000_aim
-anm_idle_aim_scope_empty_w_gl       = fn2000_gloff_aim, fn2000_aim
-anm_idle_aim_scope_jammed_w_gl      = fn2000_gloff_aim, fn2000_gloff_aim_jammed
-
-anm_idle_aim_g                   = fn2000_glon_aim, fn2000_glon_idle
-anm_idle_aim_empty_g             = fn2000_glon_aim, fn2000_glon_idle
-anm_idle_aim_jammed_g            = fn2000_glon_aim, fn2000_glon_idle_jammed
-anm_idle_aim_scope_g             = fn2000_glon_aim, fn2000_glon_idle
-anm_idle_aim_scope_empty_g       = fn2000_glon_aim, fn2000_glon_idle
-anm_idle_aim_scope_jammed_g      = fn2000_glon_aim, fn2000_glon_idle_jammed
-
-
-autoshoot_anm_idle_aim_end = true
-lock_time_anm_idle_aim_end = 0.25
-autoshoot_anm_idle_aim_end_empty = true
-lock_time_anm_idle_aim_end_empty = 0.25
-autoshoot_anm_idle_aim_end_jammed = true
-lock_time_anm_idle_aim_end_jammed = 0.25
-
-autoshoot_anm_idle_aim_end_w_gl = true
-lock_time_anm_idle_aim_end_w_gl = 0.25
-autoshoot_anm_idle_aim_end_empty_w_gl = true
-lock_time_anm_idle_aim_end_empty_w_gl = 0.25
-autoshoot_anm_idle_aim_end_jammed_w_gl = true
-lock_time_anm_idle_aim_end_jammed_w_gl = 0.25
-
-autoshoot_anm_idle_aim_end_g = true
-lock_time_anm_idle_aim_end_g = 0.25
-autoshoot_anm_idle_aim_end_empty_g = true
-lock_time_anm_idle_aim_end_empty_g = 0.25
-autoshoot_anm_idle_aim_end_jammed_g = true
-lock_time_anm_idle_aim_end_jammed_g = 0.25
-
-anm_idle_aim_end               = fn2000_aim_end,fn2000_aim_end
-anm_idle_aim_end_empty         = fn2000_aim_end,fn2000_aim_end
-anm_idle_aim_end_jammed        = fn2000_aim_end, fn2000_aim_end_jammed
-
-anm_idle_aim_end_w_gl          = fn2000_gloff_aim_end,fn2000_aim_end
-anm_idle_aim_end_empty_w_gl    = fn2000_gloff_aim_end,fn2000_aim_end
-anm_idle_aim_end_jammed_w_gl   = fn2000_gloff_aim_end, fn2000_gloff_aim_end_jammed
-
-anm_idle_aim_end_g             = fn2000_glon_aim_end, fn2000_glon_idle
-anm_idle_aim_end_empty_g       = fn2000_glon_aim_end, fn2000_glon_idle
-anm_idle_aim_end_jammed_g      = fn2000_glon_aim_end, fn2000_glon_idle_jammed
+anm_idle_aim_end               = sg550_aim_end
+anm_idle_aim_end_empty         = sg550_aim_end, sg550_aim_end_empty
+anm_idle_aim_end_jammed        = sg550_aim_end, sg550_aim_end_jammed
 
 enable_directions_anm_idle_aim = true
 
 ;Ходьба ВПЕРЕД//////////////////////////////////////////////////////////////////////////
-anm_idle_moving 					= fn2000_walk
-anm_idle_moving_jammed 					= fn2000_walk, idle_jammed
-anm_idle_moving_empty					= fn2000_walk
-
-anm_idle_moving_w_gl 					= fn2000_gloff_walk, fn2000_gloff_idle
-anm_idle_moving_jammed_w_gl 				= fn2000_gloff_walk, fn2000_gloff_idle_jammed
-anm_idle_moving_empty_w_gl				= fn2000_gloff_walk, fn2000_gloff_idle
-
-anm_idle_moving_g 					= fn2000_glon_walk, fn2000_glon_idle
-anm_idle_moving_jammed_g 				= fn2000_glon_walk, fn2000_glon_idle_jammed
-anm_idle_moving_empty_g					= fn2000_glon_walk, fn2000_glon_idle
+anm_idle_moving 					    = sg550_walk
+anm_idle_moving_jammed 					= sg550_walk, idle_jammed
+anm_idle_moving_empty					= sg550_walk, idle_empty
 
 ;Ходьба медленная (SHIFT) ВПЕРЕД//////////////////////////////////////////////////////////////////////////
-anm_idle_moving_slow 					= fn2000_walk_slow
-anm_idle_moving_slow_jammed 				= fn2000_walk_slow, idle_jammed
-anm_idle_moving_slow_empty				= fn2000_walk_slow
-
-anm_idle_moving_slow_w_gl 				= fn2000_gloff_walk_slow, fn2000_gloff_idle
-anm_idle_moving_slow_jammed_w_gl 			= fn2000_gloff_walk_slow, fn2000_gloff_idle_jammed
-anm_idle_moving_slow_empty_w_gl				= fn2000_gloff_walk_slow, fn2000_gloff_idle
-
-anm_idle_moving_slow_g 					= fn2000_glon_walk_slow, fn2000_glon_idle
-anm_idle_moving_slow_jammed_g 				= fn2000_glon_walk_slow, fn2000_glon_idle_jammed
-anm_idle_moving_slow_empty_g				= fn2000_glon_walk_slow, fn2000_glon_idle
+anm_idle_moving_slow 					= sg550_walk_slow
+anm_idle_moving_slow_jammed 			= sg550_walk_slow, idle_jammed
+anm_idle_moving_slow_empty				= sg550_walk_slow, idle_empty
 
 ;Ходьба в полуприсяди (CTRL) ВПЕРЕД//////////////////////////////////////////////////////////////////////////
-anm_idle_moving_crouch 					= fn2000_walk_slow_down
-anm_idle_moving_crouch_jammed 				= fn2000_walk_slow_down, idle_jammed
-anm_idle_moving_crouch_empty				= fn2000_walk_slow_down
-
-anm_idle_moving_crouch_w_gl 			        = fn2000_gloff_walk_slow_down, fn2000_gloff_idle
-anm_idle_moving_crouch_jammed_w_gl 			= fn2000_gloff_walk_slow_down, fn2000_gloff_idle_jammed
-anm_idle_moving_crouch_empty_w_gl			= fn2000_gloff_walk_slow_down, fn2000_gloff_idle
-
-anm_idle_moving_crouch_g 				= fn2000_glon_walk_slow_down, fn2000_glon_idle
-anm_idle_moving_crouch_jammed_g 			= fn2000_glon_walk_slow_down, fn2000_glon_idle_jammed
-anm_idle_moving_crouch_empty_g				= fn2000_glon_walk_slow_down, fn2000_glon_idle
+anm_idle_moving_crouch 					    = sg550_walk_slow_down
+anm_idle_moving_crouch_jammed 				= sg550_walk_slow_down, idle_jammed
+anm_idle_moving_crouch_empty				= sg550_walk_slow_down, idle_empty
 
 ;Ходьба в присяде (CTRL+SHIFT) ВПЕРЕД/////////////////////////////////////////////////////////////////////////
-anm_idle_moving_crouch_slow 				= fn2000_walk_slow_super
-anm_idle_moving_crouch_slow_jammed 			= fn2000_walk_slow_super, idle_jammed
-anm_idle_moving_crouch_slow_empty			= fn2000_walk_slow_super
-
-anm_idle_moving_crouch_slow_w_gl 			= fn2000_gloff_walk_slow_super, fn2000_gloff_idle
-anm_idle_moving_crouch_slow_jammed_w_gl 		= fn2000_gloff_walk_slow_super, fn2000_gloff_idle_jammed
-anm_idle_moving_crouch_slow_empty_w_gl			= fn2000_gloff_walk_slow_super, fn2000_gloff_idle
-
-anm_idle_moving_crouch_slow_g 				= fn2000_glon_walk_slow_super, fn2000_glon_idle
-anm_idle_moving_crouch_slow_jammed_g 			= fn2000_glon_walk_slow_super, fn2000_glon_idle_jammed
-anm_idle_moving_crouch_slow_empty_g			= fn2000_glon_walk_slow_super, fn2000_glon_idle
+anm_idle_moving_crouch_slow 				= sg550_walk_slow_super
+anm_idle_moving_crouch_slow_jammed 			= sg550_walk_slow_super, idle_jammed
+anm_idle_moving_crouch_slow_empty			= sg550_walk_slow_super, idle_empty
 
 ;ходьба в прицеливании ВПЕРЕД//////////////////////////////////////////////////////////////////
-anm_idle_aim_moving_forward                             = fn2000_aim_walk, fn2000_aim
-anm_idle_aim_moving_forward_empty                       = fn2000_aim_walk, fn2000_aim
-anm_idle_aim_moving_forward_jammed                      = fn2000_aim_walk, fn2000_aim_jammed
-
-anm_idle_aim_moving_forward_w_gl                        = fn2000_gloff_aim_walk, fn2000_gloff_aim
-anm_idle_aim_moving_forward_empty_w_gl                  = fn2000_gloff_aim_walk, fn2000_gloff_aim
-anm_idle_aim_moving_forward_jammed_w_gl                 = fn2000_gloff_aim_walk, fn2000_gloff_aim_jammed
-
-anm_idle_aim_moving_forward_g                           = fn2000_glon_aim_walk, fn2000_glon_idle
-anm_idle_aim_moving_forward_empty_g                     = fn2000_glon_aim_walk, fn2000_glon_idle
-anm_idle_aim_moving_forward_jammed_g                    = fn2000_glon_aim_walk, fn2000_glon_idle_jammed
+anm_idle_aim_moving_forward                             = sg550_aim_walk, sg550_aim
+anm_idle_aim_moving_forward_empty                       = sg550_aim_walk, sg550_aim_empty
+anm_idle_aim_moving_forward_jammed                      = sg550_aim_walk, sg550_aim_jammed
 
 ;ходьба в прицеливании НАЗАД//////////////////////////////////////////////////////////////////
-anm_idle_aim_moving_back                                = fn2000_aim_walk, fn2000_aim
-anm_idle_aim_moving_back_empty                          = fn2000_aim_walk, fn2000_aim
-anm_idle_aim_moving_back_jammed                         = fn2000_aim_walk, fn2000_aim_jammed
-
-anm_idle_aim_moving_back_w_gl                           = fn2000_gloff_aim_walk, fn2000_gloff_aim
-anm_idle_aim_moving_back_empty_w_gl                     = fn2000_gloff_aim_walk, fn2000_gloff_aim
-anm_idle_aim_moving_back_jammed_w_gl                    = fn2000_gloff_aim_walk, fn2000_gloff_aim_jammed
-
-anm_idle_aim_moving_back_g                              = fn2000_glon_aim_walk, fn2000_glon_idle
-anm_idle_aim_moving_back_empty_g                        = fn2000_glon_aim_walk, fn2000_glon_idle
-anm_idle_aim_moving_back_jammed_g                       = fn2000_glon_aim_walk, fn2000_glon_idle_jammed
-
+anm_idle_aim_moving_back                                = sg550_aim_walk, sg550_aim
+anm_idle_aim_moving_back_empty                          = sg550_aim_walk, sg550_aim_empty
+anm_idle_aim_moving_back_jammed                         = sg550_aim_walk, sg550_aim_jammed
 
 ;ходьба в прицеливании ВЛЕВО//////////////////////////////////////////////////////////////////
-anm_idle_aim_moving_left                                = fn2000_aim_walk_left, fn2000_aim
-anm_idle_aim_moving_left_empty                          = fn2000_aim_walk_left, fn2000_aim
-anm_idle_aim_moving_left_jammed                         = fn2000_aim_walk_left, fn2000_aim_jammed
-
-anm_idle_aim_moving_left_w_gl                           = fn2000_gloff_aim_walk_left, fn2000_gloff_aim
-anm_idle_aim_moving_left_empty_w_gl                     = fn2000_gloff_aim_walk_left, fn2000_gloff_aim
-anm_idle_aim_moving_left_jammed_w_gl                    = fn2000_gloff_aim_walk_left, fn2000_gloff_aim_jammed
-
-anm_idle_aim_moving_left_g                              = fn2000_glon_aim_walk_left, fn2000_glon_idle
-anm_idle_aim_moving_left_empty_g                        = fn2000_glon_aim_walk_left, fn2000_glon_idle
-anm_idle_aim_moving_left_jammed_g                       = fn2000_glon_aim_walk_left, fn2000_glon_idle_jammed
-
+anm_idle_aim_moving_left                                = sg550_aim_walk_left, sg550_aim
+anm_idle_aim_moving_left_empty                          = sg550_aim_walk_left, sg550_aim_empty
+anm_idle_aim_moving_left_jammed                         = sg550_aim_walk_left, sg550_aim_jammed
 
 ;ходьба в прицеливании ВПРАВО//////////////////////////////////////////////////////////////////
-anm_idle_aim_moving_right                               = fn2000_aim_walk_right, fn2000_aim
-anm_idle_aim_moving_right_empty                         = fn2000_aim_walk_right, fn2000_aim
-anm_idle_aim_moving_right_jammed                        = fn2000_aim_walk_right, fn2000_aim_jammed
-
-anm_idle_aim_moving_right_w_gl                          = fn2000_gloff_aim_walk_right, fn2000_gloff_aim
-anm_idle_aim_moving_right_empty_w_gl                    = fn2000_gloff_aim_walk_right, fn2000_gloff_aim
-anm_idle_aim_moving_right_jammed_w_gl                   = fn2000_gloff_aim_walk_right, fn2000_gloff_aim_jammed
-
-anm_idle_aim_moving_right_g                             = fn2000_glon_aim_walk_right, fn2000_glon_idle
-anm_idle_aim_moving_right_empty_g                       = fn2000_glon_aim_walk_right, fn2000_glon_idle
-anm_idle_aim_moving_right_jammed_g                      = fn2000_glon_aim_walk_right, fn2000_glon_idle_jammed
-
+anm_idle_aim_moving_right                               = sg550_aim_walk_right, sg550_aim
+anm_idle_aim_moving_right_empty                         = sg550_aim_walk_right, sg550_aim_empty
+anm_idle_aim_moving_right_jammed                        = sg550_aim_walk_right, sg550_aim_jammed
 
 ;ходьба в прицеливании ВПЕРЕД+ВЛЕВО////////////////////////////////////////////////////////////
-anm_idle_aim_moving_forward_left                        = fn2000_aim_walk, fn2000_aim
-anm_idle_aim_moving_forward_left_empty                  = fn2000_aim_walk, fn2000_aim
-anm_idle_aim_moving_forward_left_jammed                 = fn2000_aim_walk, fn2000_aim_jammed
-
-anm_idle_aim_moving_forward_left_w_gl                   = fn2000_gloff_aim_walk, fn2000_gloff_aim
-anm_idle_aim_moving_forward_left_empty_w_gl             = fn2000_gloff_aim_walk, fn2000_gloff_aim
-anm_idle_aim_moving_forward_left_jammed_w_gl            = fn2000_gloff_aim_walk, fn2000_gloff_aim_jammed
-
-anm_idle_aim_moving_forward_left_g                      = fn2000_glon_aim_walk, fn2000_glon_idle
-anm_idle_aim_moving_forward_left_empty_g                = fn2000_glon_aim_walk, fn2000_glon_idle
-anm_idle_aim_moving_forward_left_jammed_g               = fn2000_glon_aim_walk, fn2000_glon_idle_jammed
-
+anm_idle_aim_moving_forward_left                        = sg550_aim_walk, sg550_aim
+anm_idle_aim_moving_forward_left_empty                  = sg550_aim_walk, sg550_aim_empty
+anm_idle_aim_moving_forward_left_jammed                 = sg550_aim_walk, sg550_aim_jammed
 
 ;ходьба в прицеливании ВПЕРЕД+ВПРАВО///////////////////////////////////////////////////////////
-anm_idle_aim_moving_forward_right                       = fn2000_aim_walk, fn2000_aim
-anm_idle_aim_moving_forward_right_empty                 = fn2000_aim_walk, fn2000_aim
-anm_idle_aim_moving_forward_right_jammed                = fn2000_aim_walk, fn2000_aim_jammed
-
-anm_idle_aim_moving_forward_right_w_gl                  = fn2000_gloff_aim_walk, fn2000_gloff_aim
-anm_idle_aim_moving_forward_right_empty_w_gl            = fn2000_gloff_aim_walk, fn2000_gloff_aim
-anm_idle_aim_moving_forward_right_jammed_w_gl           = fn2000_gloff_aim_walk, fn2000_gloff_aim_jammed
-
-anm_idle_aim_moving_forward_right_g                     = fn2000_glon_aim_walk, fn2000_glon_idle
-anm_idle_aim_moving_forward_right_empty_g               = fn2000_glon_aim_walk, fn2000_glon_idle
-anm_idle_aim_moving_forward_right_jammed_g              = fn2000_glon_aim_walk, fn2000_glon_idle_jammed
-
+anm_idle_aim_moving_forward_right                       = sg550_aim_walk, sg550_aim
+anm_idle_aim_moving_forward_right_empty                 = sg550_aim_walk, sg550_aim_empty
+anm_idle_aim_moving_forward_right_jammed                = sg550_aim_walk, sg550_aim_jammed
 
 ;ходьба в прицеливании НАЗАД+ВЛЕВО/////////////////////////////////////////////////////////////
-anm_idle_aim_moving_back_left                           = fn2000_aim_walk, fn2000_aim
-anm_idle_aim_moving_back_left_empty                     = fn2000_aim_walk, fn2000_aim
-anm_idle_aim_moving_back_left_jammed                    = fn2000_aim_walk, fn2000_aim_jammed
-
-anm_idle_aim_moving_back_left_w_gl                      = fn2000_gloff_aim_walk, fn2000_gloff_aim
-anm_idle_aim_moving_back_left_empty_w_gl                = fn2000_gloff_aim_walk, fn2000_gloff_aim
-anm_idle_aim_moving_back_left_jammed_w_gl               = fn2000_gloff_aim_walk, fn2000_gloff_aim_jammed
-
-anm_idle_aim_moving_back_left_g                         = fn2000_glon_aim_walk, fn2000_glon_idle
-anm_idle_aim_moving_back_left_empty_g                   = fn2000_glon_aim_walk, fn2000_glon_idle
-anm_idle_aim_moving_back_left_jammed_g                  = fn2000_glon_aim_walk, fn2000_glon_idle_jammed
-
+anm_idle_aim_moving_back_left                           = sg550_aim_walk, sg550_aim
+anm_idle_aim_moving_back_left_empty                     = sg550_aim_walk, sg550_aim_empty
+anm_idle_aim_moving_back_left_jammed                    = sg550_aim_walk, sg550_aim_jammed
 
 ;ходьба в прицеливании НАЗАД+ВПРАВО////////////////////////////////////////////////////////////
-anm_idle_aim_moving_back_right                          = fn2000_aim_walk, fn2000_aim
-anm_idle_aim_moving_back_right_empty                    = fn2000_aim_walk, fn2000_aim
-anm_idle_aim_moving_back_right_jammed                   = fn2000_aim_walk, fn2000_aim_jammed
-
-anm_idle_aim_moving_back_right_w_gl                     = fn2000_gloff_aim_walk, fn2000_gloff_aim
-anm_idle_aim_moving_back_right_empty_w_gl               = fn2000_gloff_aim_walk, fn2000_gloff_aim
-anm_idle_aim_moving_back_right_jammed_w_gl              = fn2000_gloff_aim_walk, fn2000_gloff_aim_jammed
-
-anm_idle_aim_moving_back_right_g                        = fn2000_glon_aim_walk, fn2000_glon_idle
-anm_idle_aim_moving_back_right_empty_g                  = fn2000_glon_aim_walk, fn2000_glon_idle
-anm_idle_aim_moving_back_right_jammed_g                 = fn2000_glon_aim_walk, fn2000_glon_idle_jammed
+anm_idle_aim_moving_back_right                          = sg550_aim_walk, sg550_aim
+anm_idle_aim_moving_back_right_empty                    = sg550_aim_walk, sg550_aim_empty
+anm_idle_aim_moving_back_right_jammed                   = sg550_aim_walk, sg550_aim_jammed
 
 ;ходьба в прицеливании при надетом прицеле////////////////////////////////////////////////////
-anm_idle_aim_scope_moving	                        = fn2000_aim_walk_scope, fn2000_aim
-anm_idle_aim_scope_moving_empty		                = fn2000_aim_walk_scope, fn2000_aim
-anm_idle_aim_scope_moving_jammed	                = fn2000_aim_walk_scope, fn2000_aim_jammed
-
-anm_idle_aim_scope_moving_w_gl	                        = fn2000_gloff_aim_walk_scope, fn2000_gloff_aim
-anm_idle_aim_scope_moving_empty_w_gl		        = fn2000_gloff_aim_walk_scope, fn2000_gloff_aim
-anm_idle_aim_scope_moving_jammed_w_gl	                = fn2000_gloff_aim_walk_scope, fn2000_gloff_aim_jammed
-
-anm_idle_aim_scope_moving_g	                        = fn2000_glon_aim_walk, fn2000_glon_idle
-anm_idle_aim_scope_moving_empty_g		        = fn2000_glon_aim_walk, fn2000_glon_idle
-anm_idle_aim_scope_moving_jammed_g	                = fn2000_glon_aim_walk, fn2000_glon_idle_jammed
+anm_idle_aim_scope_moving	                        = sg550_aim_walk_scope, sg550_aim
+anm_idle_aim_scope_moving_empty		                = sg550_aim_walk_scope, sg550_aim_empty
+anm_idle_aim_scope_moving_jammed	                = sg550_aim_walk_scope, sg550_aim_jammed
 
 ;Бег//////////////////////////////////////////////////////////////////
-lock_time_anm_idle_sprint_start = 0.15
-lock_time_anm_idle_sprint_start_empty = 0.15
-lock_time_anm_idle_sprint_start_jammed = 0.15
+anm_idle_sprint_start             = sg550_sprint_start
+anm_idle_sprint_start_empty       = sg550_sprint_start, idle_empty
+anm_idle_sprint_start_jammed      = sg550_sprint_start, idle_jammed
 
-lock_time_anm_idle_sprint_start_w_gl = 0.15
-lock_time_anm_idle_sprint_start_empty_w_gl = 0.15
-lock_time_anm_idle_sprint_start_jammed_w_gl = 0.15
+anm_idle_sprint                   = sg550_sprint
+anm_idle_sprint_empty             = sg550_sprint, idle_empty
+anm_idle_sprint_jammed            = sg550_sprint, idle_jammed
 
-lock_time_anm_idle_sprint_start_g = 0.15
-lock_time_anm_idle_sprint_start_empty_g = 0.15
-lock_time_anm_idle_sprint_start_jammed_g = 0.15
-
-anm_idle_sprint_start             = fn2000_sprint_start
-anm_idle_sprint_start_empty       = fn2000_sprint_start
-anm_idle_sprint_start_jammed      = fn2000_sprint_start, idle_jammed
-
-anm_idle_sprint_start_w_gl        = fn2000_gloff_sprint_start, fn2000_gloff_idle
-anm_idle_sprint_start_empty_w_gl  = fn2000_gloff_sprint_start, fn2000_gloff_idle
-anm_idle_sprint_start_jammed_w_gl = fn2000_gloff_sprint_start, fn2000_gloff_idle_jammed
-
-anm_idle_sprint_start_g           = fn2000_glon_sprint_start, fn2000_glon_idle
-anm_idle_sprint_start_empty_g     = fn2000_glon_sprint_start, fn2000_glon_idle
-anm_idle_sprint_start_jammed_g    = fn2000_glon_sprint_start, fn2000_glon_idle_jammed
-
-
-anm_idle_sprint                   = fn2000_sprint
-anm_idle_sprint_empty             = fn2000_sprint
-anm_idle_sprint_jammed            = fn2000_sprint, idle_jammed
-
-
-anm_idle_sprint_w_gl              = fn2000_gloff_sprint, fn2000_gloff_idle
-anm_idle_sprint_empty_w_gl        = fn2000_gloff_sprint, fn2000_gloff_idle
-anm_idle_sprint_jammed_w_gl       = fn2000_gloff_sprint, fn2000_gloff_idle_jammed
-
-anm_idle_sprint_g                 = fn2000_glon_sprint, fn2000_glon_idle
-anm_idle_sprint_empty_g           = fn2000_glon_sprint, fn2000_glon_idle
-anm_idle_sprint_jammed_g          = fn2000_glon_sprint, fn2000_glon_idle_jammed
-
-
-
-lock_time_anm_idle_sprint_end             = 0.35
-lock_time_anm_idle_sprint_end_empty       = 0.35
-lock_time_anm_idle_sprint_end_jammed      = 0.35
-
-lock_time_anm_idle_sprint_end_w_gl        = 0.35
-lock_time_anm_idle_sprint_end_empty_w_gl  = 0.35
-lock_time_anm_idle_sprint_end_jammed_w_gl = 0.35
-
-lock_time_anm_idle_sprint_end_g           = 0.35
-lock_time_anm_idle_sprint_end_empty_g     = 0.35
-lock_time_anm_idle_sprint_end_jammed_g    = 0.35
-
-
-anm_idle_sprint_end              = fn2000_sprint_end
-anm_idle_sprint_end_empty        = fn2000_sprint_end
-anm_idle_sprint_end_jammed       = fn2000_sprint_end, idle_jammed
-
-anm_idle_sprint_end_w_gl         = fn2000_gloff_sprint_end, fn2000_gloff_idle
-anm_idle_sprint_end_empty_w_gl   = fn2000_gloff_sprint_end, fn2000_gloff_idle
-anm_idle_sprint_end_jammed_w_gl  = fn2000_gloff_sprint_end, fn2000_gloff_idle_jammed
-
-anm_idle_sprint_end_g            = fn2000_glon_sprint_end, fn2000_glon_idle
-anm_idle_sprint_end_empty_g      = fn2000_glon_sprint_end, fn2000_glon_idle
-anm_idle_sprint_end_jammed_g     = fn2000_glon_sprint_end, fn2000_glon_idle_jammed
-
+anm_idle_sprint_end              = sg550_sprint_end
+anm_idle_sprint_end_empty        = sg550_sprint_end, idle_empty
+anm_idle_sprint_end_jammed       = sg550_sprint_end, idle_jammed
 
 ;Скука////////////////////////////////////////////////////////////////////
-anm_bore                   = fn2000_draw, draw
-anm_bore_empty             = fn2000_draw, draw
-anm_bore_jammed            = fn2000_draw, idle_jammed
-anm_bore_w_gl              = fn2000_gloff_draw, fn2000_gloff_idle
-anm_bore_empty_w_gl        = fn2000_gloff_draw, fn2000_gloff_idle
-anm_bore_jammed_w_gl       = fn2000_gloff_draw, fn2000_gloff_idle_jammed
-anm_bore_g                 = fn2000_glon_draw, fn2000_glon_idle
-anm_bore_empty_g           = fn2000_glon_draw, fn2000_glon_idle
-anm_bore_jammed_g          = fn2000_glon_draw, fn2000_glon_idle_jammed
-
+anm_bore                   = sg550_draw
+anm_bore_empty             = sg550_draw, idle_empty
+anm_bore_jammed            = sg550_draw, idle_jammed
 
 ;Выстрелы обычными патронами/////////////////////////////////////////////////////////////////////
-anm_shoot                      = fn2000_shoot, shoot
-anm_shoot_sil                  =fn2000_shoot, shoot
-anm_shoot_jammed	       = fn2000_shoot, idle_jammed
-anm_shoot_jammed_sil	       = fn2000_shoot, idle_jammed
-anm_shoot_last                 = fn2000_shoot, shoot
-anm_shoot_last_sil             = fn2000_shoot, shoot
-anm_shoot_aim                  = fn2000_aim_shoot, fn2000_aim_shoot
-anm_shoot_aim_sil              = fn2000_aim_shoot, fn2000_aim_shoot
-anm_shoot_aim_jammed	       = fn2000_aim_shoot, fn2000_aim_jammed
-anm_shoot_aim_jammed_sil       = fn2000_aim_shoot, fn2000_aim_jammed
-anm_shoot_aim_last             = fn2000_aim_shoot, fn2000_aim_shoot
-anm_shoot_aim_last_sil         = fn2000_aim_shoot, fn2000_aim_shoot
-anm_shoot_aim_scope            = fn2000_aim_shoot_scope, fn2000_aim_shoot
-anm_shoot_aim_scope_sil        = fn2000_aim_shoot_scope, fn2000_aim_shoot
-anm_shoot_aim_scope_last       = fn2000_aim_shoot_scope, fn2000_aim_shoot
-anm_shoot_aim_scope_last_sil   = fn2000_aim_shoot_scope, fn2000_aim_shoot
-anm_shoot_aim_scope_jammed     = fn2000_aim_shoot_scope, fn2000_aim_jammed
-anm_shoot_aim_scope_jammed_sil = fn2000_aim_shoot_scope, fn2000_aim_jammed
+anm_shoot                      = sg550_shoot
+anm_shoot_jammed	           = sg550_shoot, idle_jammed
+anm_shoot_last                 = sg550_shoot, sg550_shoot_last
+anm_shoot_aim                  = sg550_aim_shoot
+anm_shoot_aim_jammed	       = sg550_aim_shoot, sg550_aim_jammed
+anm_shoot_aim_last             = sg550_aim_shoot, sg550_aim_shoot_last
+anm_shoot_aim_scope            = sg550_aim_shoot_scope, sg550_aim_shoot
+anm_shoot_aim_scope_last       = sg550_aim_shoot_scope, sg550_aim_shoot_last
+anm_shoot_aim_scope_jammed     = sg550_aim_shoot_scope, sg550_aim_jammed
 
-anm_shoot_w_gl                      = fn2000_gloff_shoot, shoot
-anm_shoot_sil_w_gl                  = fn2000_gloff_shoot, shoot
-anm_shoot_jammed_w_gl	            = fn2000_gloff_shoot, fn2000_gloff_idle_jammed
-anm_shoot_jammed_sil_w_gl	    = fn2000_gloff_shoot, fn2000_gloff_idle_jammed
-anm_shoot_last_w_gl                 = fn2000_gloff_shoot, shoot_last
-anm_shoot_last_sil_w_gl             = fn2000_gloff_shoot, shoot_last
-anm_shoot_aim_w_gl                  = fn2000_gloff_aim_shoot,aim_shoot
-anm_shoot_aim_sil_w_gl              = fn2000_gloff_aim_shoot,aim_shoot
-anm_shoot_aim_jammed_w_gl	    = fn2000_gloff_aim_shoot, fn2000_gloff_aim_jammed
-anm_shoot_aim_jammed_sil_w_gl       = fn2000_gloff_aim_shoot, fn2000_gloff_aim_jammed
-anm_shoot_aim_last_w_gl             = fn2000_gloff_aim_shoot,aim_shoot_last
-anm_shoot_aim_last_sil_w_gl         = fn2000_gloff_aim_shoot,aim_shoot_last
-anm_shoot_aim_scope_w_gl            = fn2000_gloff_aim_shoot_scope, fn2000_gloff_aim_shoot
-anm_shoot_aim_scope_sil_w_gl        = fn2000_gloff_aim_shoot_scope, fn2000_gloff_aim_shoot
-anm_shoot_aim_scope_last_w_gl       = fn2000_gloff_aim_shoot_scope, aim_shoot_last
-anm_shoot_aim_scope_last_sil_w_gl   = fn2000_gloff_aim_shoot_scope, aim_shoot_last
-anm_shoot_aim_scope_jammed_w_gl     = fn2000_gloff_aim_shoot_scope, fn2000_gloff_aim_jammed
-anm_shoot_aim_scope_jammed_sil_w_gl = fn2000_gloff_aim_shoot_scope, fn2000_gloff_aim_jammed
+;Осечка//////////////////////////////////////////////////
+anm_fakeshoot_empty                = sg550_dry_empty, idle_empty
+anm_fakeshoot_aim_empty            = sg550_aim_dry, sg550_aim_empty
+anm_fakeshoot_jammed               = sg550_dry, idle_jammed
+anm_fakeshoot_aim_jammed           = sg550_aim_dry, sg550_aim_jammed
 
-
-;Cтрельба с подствола////////////////////////////////////////////////////////////////////
-anm_shoot_g              = fn2000_glon_shoot
-anm_shoot_empty_g        = fn2000_glon_shoot
-anm_shoot_jammed_g       = fn2000_glon_shoot, fn2000_glon_shoot_jammed
-anm_shoot_aim_g          = fn2000_glon_aim_shoot, fn2000_glon_shoot
-anm_shoot_aim_empty_g    = fn2000_glon_aim_shoot, fn2000_glon_shoot
-anm_shoot_aim_jammed_g   = fn2000_glon_aim_shoot, fn2000_glon_shoot_jammed
-
-;Перезарядка подствола///////////////////////////////////////////////////////////////////
-anm_reload_g                   = fn2000_gl_reload
-anm_reload_empty_g             = fn2000_gl_reload, fn2000_gl_reload
-anm_reload_jammed_g            = fn2000_gl_reload, fn2000_gl_reload_jammed
-
-anm_reload_ammochange_g                         = fn2000_gl_changegrenade, fn2000_gl_changegrenade
-
-
-anm_reload_empty_ammochange_g                   = fn2000_gl_changegrenade, fn2000_gl_reload
-
-
-anm_reload_jammed_ammochange_g                  = fn2000_gl_changegrenade, fn2000_gl_changegrenade_jammed
+;Перезарядка/////////////////////////////////////////////////////////////////////
+anm_reload                           = sg550_reload
+anm_reload_empty                     = sg550_reload_empty
+anm_reload_jammed                    = sg550_revival
+anm_reload_jammed_last               = sg550_revival_last
 
 ;Смена режима огня//////////////////////////////////////////////////////////////////////////
 use_firemode_change_anim = true
 
-;1-a
-lock_time_anm_changefiremode_from_1_to_a = 1.17
-anm_changefiremode_from_1_to_a			             = fn2000_firemode, firemode2
-lock_time_anm_changefiremode_from_1_to_a_jammed = 1.17
-anm_changefiremode_from_1_to_a_jammed		             = fn2000_firemode, firemode2
-lock_time_anm_changefiremode_from_1_to_a_empty = 1.17
-anm_changefiremode_from_1_to_a_empty		             = fn2000_firemode, firemode2
+;из автоматического в тройные
+anm_changefiremode_from_-1_to_3			                 = sg550_firemode_a_to_1, sg550_firemode_a_to_3
+anm_changefiremode_from_-1_to_3_jammed		             = sg550_firemode_a_to_1, sg550_firemode_a_to_3_jammed
+anm_changefiremode_from_-1_to_3_empty		             = sg550_firemode_a_to_1, sg550_firemode_a_to_3_empty
 
-anm_changefiremodefrom-1_to_1_w_gl = fn2000_firemode, firemode2
-anm_changefiremodefrom1_to_-1_w_gl = fn2000_firemode, firemode2
+;из тройных в одиночные
+anm_changefiremode_from_3_to_1			                 = sg550_firemode_a_to_1, sg550_firemode_3_to_1
+anm_changefiremode_from_3_to_1_jammed		             = sg550_firemode_a_to_1, sg550_firemode_3_to_1_jammed
+anm_changefiremode_from_3_to_1_empty		             = sg550_firemode_a_to_1, sg550_firemode_3_to_1_empty
 
-lock_time_anm_changefiremode_from_1_to_a_w_gl = 1.17
-anm_changefiremode_from_1_to_a_w_gl			     = fn2000_gloff_firemode, fn2000_gloff_firemode
-lock_time_anm_changefiremode_from_1_to_a_jammed_w_gl = 1.17
-anm_changefiremode_from_1_to_a_jammed_w_gl		     = fn2000_gloff_firemode, fn2000_gloff_firemode
-lock_time_anm_changefiremode_from_1_to_a_empty_w_gl = 1.17
-anm_changefiremode_from_1_to_a_empty_w_gl		     = fn2000_gloff_firemode, fn2000_gloff_firemode
+;из одиночных в автоматический
+anm_changefiremode_from_1_to_-1			                 = sg550_firemode_1_to_a
+anm_changefiremode_from_1_to_-1_jammed		             = sg550_firemode_1_to_a, sg550_firemode_1_to_a_jammed
+anm_changefiremode_from_1_to_-1_empty		             = sg550_firemode_1_to_a, sg550_firemode_1_to_a_empty
 
-lock_time_anm_changefiremode_from_1_to_a_g = 1.17
-anm_changefiremode_from_1_to_a_g			     = fn2000_glon_firemode, fn2000_glon_idle_firemode2
-lock_time_anm_changefiremode_from_1_to_a_jammed_g = 1.17  
-anm_changefiremode_from_1_to_a_jammed_g		             = fn2000_glon_firemode, fn2000_glon_idle_firemode2
-lock_time_anm_changefiremode_from_1_to_a_empty_g = 1.17
-anm_changefiremode_from_1_to_a_empty_g		             = fn2000_glon_firemode, fn2000_glon_idle_firemode2
+;из тройных в автоматический
+anm_changefiremode_from_3_to_-1			                 = sg550_firemode_1_to_a, sg550_firemode_3_to_a
+anm_changefiremode_from_3_to_-1_jammed		             = sg550_firemode_1_to_a, sg550_firemode_3_to_a_jammed
+anm_changefiremode_from_3_to_-1_empty		             = sg550_firemode_1_to_a, sg550_firemode_3_to_a_empty
 
-;a-1
-lock_time_anm_changefiremode_from_a_to_1 = 1.17
-anm_changefiremode_from_a_to_1			             = fn2000_firemode, firemode
-lock_time_anm_changefiremode_from_a_to_1_jammed = 1.17
-anm_changefiremode_from_a_to_1_jammed		             = fn2000_firemode, firemode
-lock_time_anm_changefiremode_from_a_to_1_empty = 1.17
-anm_changefiremode_from_a_to_1_empty		             = fn2000_firemode, firemode
+;из одиночных в тройные
+anm_changefiremode_from_1_to_3			                 = sg550_firemode_1_to_a, sg550_firemode_1_to_3
+anm_changefiremode_from_1_to_3_jammed		             = sg550_firemode_1_to_a, sg550_firemode_1_to_3_jammed
+anm_changefiremode_from_1_to_3_empty		             = sg550_firemode_1_to_a, sg550_firemode_1_to_3_empty
 
-lock_time_anm_changefiremode_from_a_to_1_w_gl = 1.17
-anm_changefiremode_from_a_to_1_w_gl			     = fn2000_gloff_firemode2, fn2000_gloff_firemode2
-lock_time_anm_changefiremode_from_a_to_1_jammed_w_gl = 1.17
-anm_changefiremode_from_a_to_1_jammed_w_gl		     = fn2000_gloff_firemode2, fn2000_gloff_firemode2
-lock_time_anm_changefiremode_from_a_to_1_empty_w_gl = 1.17
-anm_changefiremode_from_a_to_1_empty_w_gl		     = fn2000_gloff_firemode2, fn2000_gloff_firemode2
+;из автоматического в одиночные
+anm_changefiremode_from_-1_to_1			                 = sg550_firemode_a_to_1
+anm_changefiremode_from_-1_to_1_jammed		             = sg550_firemode_a_to_1, sg550_firemode_a_to_1_jammed
+anm_changefiremode_from_-1_to_1_empty		             = sg550_firemode_a_to_1, sg550_firemode_a_to_1_empty
 
-lock_time_anm_changefiremode_from_a_to_1_g = 1.17
-anm_changefiremode_from_a_to_1_g			     = fn2000_glon_firemode
-lock_time_anm_changefiremode_from_a_to_1_jammed_g = 1.17
-anm_changefiremode_from_a_to_1_jammed_g		             = fn2000_glon_firemode, fn2000_glon_idle_firemode
-lock_time_anm_changefiremode_from_a_to_1_empty_g = 1.17
-anm_changefiremode_from_a_to_1_empty_g		             = fn2000_glon_firemode, fn2000_glon_idle_firemode
-
-;Переключение на патроны/////////////////////////////////////////////////////////////////
-anm_switch                 = fn2000_gl_deactivate
-anm_switch_w_gl            = fn2000_gl_deactivate
-anm_switch_empty_w_gl      = fn2000_gl_deactivate
-anm_switch_jammed_w_gl     = fn2000_gl_deactivate, fn2000_gl_deactivate_jammed
-
-;Переключение на гранаты/////////////////////////////////////////////////////////////////
-anm_switch_g              = fn2000_gl_activate
-anm_switch_empty_g        = fn2000_gl_activate
-anm_switch_jammed_g       = fn2000_gl_activate, fn2000_gl_activate_jammed
-
-;Осечка//////////////////////////////////////////////////
-lock_time_anm_fakeshoot_empty      = 0.20
-anm_fakeshoot_empty                = fn2000_dry_empty
-lock_time_anm_fakeshoot_aim_empty  = 0.20
-anm_fakeshoot_aim_empty            = fn2000_aim_dry, aim
-lock_time_anm_fakeshoot_jammed     = 0.90
-anm_fakeshoot_jammed               = fn2000_dry, idle_jammed
-lock_time_anm_fakeshoot_aim_jammed = 0.20
-anm_fakeshoot_aim_jammed           = fn2000_aim_dry, aim
-
-lock_time_anm_fakeshoot_empty_w_gl      = 0.20
-anm_fakeshoot_empty_w_gl                = fn2000_gloff_dry_empty, fn2000_gloff_idle
-lock_time_anm_fakeshoot_aim_empty_w_gl  = 0.20
-anm_fakeshoot_aim_empty_w_gl            = fn2000_gloff_aim_dry, fn2000_gloff_aim
-lock_time_anm_fakeshoot_jammed_w_gl     = 0.90
-anm_fakeshoot_jammed_w_gl               = fn2000_gloff_dry, fn2000_gloff_idle
-lock_time_anm_fakeshoot_aim_jammed_w_gl = 0.20
-anm_fakeshoot_aim_jammed_w_gl           = fn2000_gloff_aim_dry, fn2000_gloff_aim
-
-lock_time_anm_fakeshoot_g     = 0.20
-anm_fakeshoot_g               = fn2000_glon_dry_empty, fn2000_glon_idle
-lock_time_anm_fakeshoot_aim_g = 0.20
-anm_fakeshoot_aim_g           = fn2000_glon_aim_dry, fn2000_glon_idle
-
-lock_time_anm_fakeshoot_jammed_g     = 0.20
-anm_fakeshoot_jammed_g               = fn2000_glon_dry_empty, fn2000_glon_idle_jammed
-lock_time_anm_fakeshoot_aim_jammed_g = 0.20
-anm_fakeshoot_aim_jammed_g           = fn2000_glon_aim_dry, fn2000_glon_idle_jammed
-
-lock_time_anm_fakeshoot_empty_g     = 0.20
-anm_fakeshoot_empty_g               = fn2000_glon_dry_empty, fn2000_glon_idle
-lock_time_anm_fakeshoot_aim_empty_g = 0.20
-anm_fakeshoot_aim_empty_g           = fn2000_glon_aim_dry, fn2000_glon_idle
-
-;Перезарядка/////////////////////////////////////////////////////////////////////
-anm_reload                           = fn2000_reload, fn2000_reload
-anm_reload_empty                     = fn2000_reload_empty, fn2000_reload_empty
-anm_reload_jammed                    = fn2000_revival_scope, revival
-anm_reload_jammed_last               = fn2000_revival_scope, revival
-anm_reload_ammochange                = fn2000_reload, fn2000_reload
-
-anm_reload_w_gl                      = fn2000_gloff_reload, fn2000_reload
-anm_reload_empty_w_gl                = fn2000_gloff_reload_empty, fn2000_reload_empty
-anm_reload_jammed_w_gl               = fn2000_gloff_revival_scope, revival
-anm_reload_jammed_last_w_gl          = fn2000_gloff_revival_scope, revival
-anm_reload_ammochange_w_gl           = fn2000_gloff_reload, fn2000_reload
-
-anm_reload_jammed_noscope            = fn2000_revival, revival 
-anm_reload_jammed_last_noscope       = fn2000_revival, revival
-anm_reload_jammed_w_gl_noscope       = fn2000_gloff_revival, revival
-anm_reload_jammed_last_w_gl_noscope  = fn2000_gloff_revival, revival
-
-[scope_eotech_fn2000_nimble]
+[scope_eotech_fn2000]
 scope_name 					= wpn_addon_scope_susat_x1.6
-scope_x              	= 80                ; offset in inventory icon
-scope_y                 = -10
+scope_x              	= 79                 ; offset in inventory icon
+scope_y                 = -1
 bone = scope1
 
-overriding_hide_bones = ironsight, sights, 2, s2, s4, s5, s6, scope_fn, s3
-overriding_show_bones = ironsight_closed
+overriding_hide_bones = ironsight, ironsight_sight
+overriding_show_bones = ironsight_rail
 
-hud_fov_zoom_factor = 1.0
+hud_fov_zoom = 0.9
 use_scope_anims = true ;говорит, что надо использовать анимации с суффиксом _scope в прицеливании с данным прицелом
 
-aim_hud_offset_pos  = 0.008600,-0.004200,-0.056500
+aim_hud_offset_pos = 0.0001,-0.0221,0.0
+aim_hud_offset_rot = 0.0,0.0,0.0
 
-
-aim_hud_offset_pos_16x9 = 0.008600,-0.004200,-0.056500
-
+aim_hud_offset_pos_16x9 = 0.0001,-0.0221,0.0
+aim_hud_offset_rot_16x9 = 0.0,0.0,0.0
 
 gl_hud_offset_pos = 0.001000,0.022289,-0.03
 gl_hud_offset_rot = 0.043,0.0,0.0
 
-
-gl_hud_offset_pos_16x9 = -0.006098,-0.021629,-0.113593
-gl_hud_offset_rot_16x9 = -0.005328,-0.002448,0.000000
-
-
-
-
-aim_hud_offset_rot								   = 0.000500,0.001000,0.000000
-aim_hud_offset_rot_16x9							   = 0.000500,0.001000,0.000000
+gl_hud_offset_pos_16x9 = 0.001000,0.022289,-0.03
+gl_hud_offset_rot_16x9 = 0.043,0.0,0.0
 
 inertion_aim_origin_offset = 0.015
-inertion_aim_speed = 12
+inertion_aim_speed = 8
 
-
-[scope_aimpoint_fn2000_nimble]
+[scope_aimpoint_fn2000]
 scope_name 					= wpn_addon_scope_susat_dusk
-scope_x              	= 81              ; offset in inventory icon
-scope_y                 = -14
+scope_x              	= 72                ; offset in inventory icon
+scope_y                 = -6
 bone = scope2
 
-overriding_hide_bones = ironsight, sights,scope1, scope3, scope4, scope5, scope6, scope_fn
-overriding_show_bones = ironsight_closed
-hud_fov_zoom_factor = 1.0
+overriding_hide_bones = ironsight, ironsight_sight
+overriding_show_bones = ironsight_rail
+
+hud_fov_zoom = 0.5
 use_scope_anims = true ;говорит, что надо использовать анимации с суффиксом _scope в прицеливании с данным прицелом
 
+aim_hud_offset_pos = 0.0002,-0.0253,0.0
 aim_hud_offset_rot = 0.0,0.0,0.0
-aim_hud_offset_pos = 0.009700,-0.019300,0.195000
 
-aim_hud_offset_rot_16x9 = 0.000000,0.000000,0.000000
-
-aim_hud_offset_pos_16x9 = 0.009700,-0.008800,0.195000
-
+aim_hud_offset_pos_16x9 = 0.0002,-0.0253,0.0
+aim_hud_offset_rot_16x9 = 0.0,0.0,0.0
 
 gl_hud_offset_pos = 0.001000,0.022289,-0.03
 gl_hud_offset_rot = 0.043,0.0,0.0
 
-gl_hud_offset_pos_16x9 = -0.006098,-0.021629,-0.113593
-gl_hud_offset_rot_16x9 = -0.005328,-0.002448,0.000000
+gl_hud_offset_pos_16x9 = 0.001000,0.022289,-0.03
+gl_hud_offset_rot_16x9 = 0.043,0.0,0.0
+
 inertion_aim_origin_offset = 0.015
-inertion_aim_speed = 15
+inertion_aim_speed = 8
 
 
-[scope_elcan_fn2000_nimble]
+[scope_elcan_fn2000]
 scope_name 					= wpn_addon_scope_susat_custom
-scope_x              	= 67                ; offset in inventory icon
-scope_y                 = -10
-hud_fov_zoom_factor = 0.85
+scope_x              	= 48                ; offset in inventory icon
+scope_y                 = -4
+hud_fov_zoom = 0.85
 use_scope_anims = true ;говорит, что надо использовать анимации с суффиксом _scope в прицеливании с данным прицелом
 
 bone = scope3
 
-overriding_hide_bones = ironsight, sights, s1, s2, s4, s5, scope6, scope_fn
-overriding_show_bones = ironsight_closed
+overriding_hide_bones = ironsight, ironsight_sight
+overriding_show_bones = ironsight_rail
 
-aim_hud_offset_pos = 0.009000,-0.008500,-0.148500
+aim_hud_offset_pos = 0.0,-0.029,-0.12
 aim_hud_offset_rot = 0.0,0.0,0.0
 
-aim_hud_offset_pos_16x9 = 0.009000,-0.008500,-0.148500
+aim_hud_offset_pos_16x9 = 0.0,-0.029,-0.12
 aim_hud_offset_rot_16x9 = 0.0,0.0,0.0
 
 gl_hud_offset_pos = 0.001000,0.022289,-0.03
@@ -1088,32 +578,29 @@ inertion_aim_speed = 10
 
 alter_zoom_allowed = true
 hud_fov_alter_zoom_factor = 0.85
-alter_aim_hud_offset_pos = 0.009000,-0.051000,-0.074500
+alter_aim_hud_offset_pos = 0.000200,-0.065100,0.050000
 alter_aim_hud_offset_rot = -0.000100,0.000000,0.000000
-alter_aim_hud_offset_pos_16x9 = 0.009000,-0.051000,-0.074500
+alter_aim_hud_offset_pos_16x9 = 0.000100,-0.067000,-0.103000
 alter_aim_hud_offset_rot_16x9 = -0.004000,0.000000,0.000000
 
 
-[scope_pn23_fn2000_nimble]
+[scope_pn23_fn2000]
 scope_name 					= wpn_addon_scope_susat_night
-scope_x              	= 62            ; offset in inventory icon
-scope_y                 = -14
-hud_fov_zoom_factor = 0.5
+scope_x              	= 42                 ; offset in inventory icon
+scope_y                 = -8
+hud_fov_zoom = 0.5
 use_scope_anims = true ;говорит, что надо использовать анимации с суффиксом _scope в прицеливании с данным прицелом
 
-bone = scope5
+bone = scope4
 
-overriding_hide_bones = ironsight, sights,s1, s2, s3, s5, s6, scope_fn
-overriding_show_bones = ironsight_closed
+overriding_hide_bones = ironsight, ironsight_sight
+overriding_show_bones = ironsight_rail
 
-aim_hud_offset_pos =  0.004000,-0.031500,0.014000
+aim_hud_offset_pos =  0.0,-0.05,0.05
 aim_hud_offset_rot = 0.0,0.0,0.0
 
-
+aim_hud_offset_pos_16x9 =  0.0,-0.05,0.05
 aim_hud_offset_rot_16x9 = 0.0,0.0,0.0
-
-
-aim_hud_offset_pos_16x9 = 0.004000,-0.031500,0.014000
 
 gl_hud_offset_pos = 0.001000,0.022289,-0.03
 gl_hud_offset_rot = 0.043,0.0,0.0
@@ -1123,688 +610,3 @@ gl_hud_offset_rot_16x9 = 0.043,0.0,0.0
 
 inertion_aim_origin_offset = 0.015
 inertion_aim_speed = 10 
-
-[scope_susat_fn2000_nimble]
-scope_name 					= wpn_addon_scope_susat
-scope_x              	= 88               ; offset in inventory icon
-scope_y                 = -12
-bone = scope4
-overriding_hide_bones = ironsight
-overriding_show_bones = ironsight_closed
-
-hud_fov_zoom_factor = 0.55
-use_scope_anims = true ;говорит, что надо использовать анимации с суффиксом _scope в прицеливании с данным прицелом
-
-aim_hud_offset_pos = 0.008000,-0.013500,0.008500
-aim_hud_offset_rot = 0.0,0.0,0.0
-
-
-aim_hud_offset_rot_16x9 = 0.0,0.0,0.0
-
-gl_hud_offset_pos_16x9 = -0.075500,0.026500,0.000000
-gl_hud_offset_rot_16x9 = 0.000000,3.305000,1.149500
-
-aim_hud_offset_pos_16x9 = 0.008000,-0.013500,0.008500
-
-
-gl_hud_offset_pos          = 0.0,0.012,-0.0
-gl_hud_offset_rot          = 0.0,0.0,0.0
-
-gl_hud_offset_pos_16x9 = -0.075500,0.026500,0.000000
-gl_hud_offset_rot_16x9 = 0.000000,3.305000,1.149500
-
-inertion_aim_origin_offset = 0.015
-inertion_aim_speed = 10 
-
-;-----------------------------------------------------------------------------
-; Уникальные
-;-----------------------------------------------------------------------------
-
-[wpn_fn2000_nimble]:wpn_fn2000
-
-$spawn               = "weapons\wpn_fn2000_nimble"   ; name and section in level editor
-$npc                    = on                                ; option for Level Editor
-description          	= gunsl_wpn_fn2000_nimble_descr
-default_to_ruck         = false
-sprint_allowed       	= true
-inv_weight              = 3.39
-def_show_bones = mag30, ironsight,rail_scope, handguard
-def_hide_bones = scope1, scope2, scope3, scope4, scope5, scope6, wpn_scope_fn, rail_handguard, mag40, flash, light, sights, bayonet, grip, mag60, ironsight_closed, laser, laser_gl, flash_gl, mag60
-
-scope_status            = 2
-scopes_sect		= scope_eotech_fn2000_nimble, scope_aimpoint_fn2000_nimble, scope_elcan_fn2000_nimble, scope_pn23_fn2000_nimble, scope_susat_fn2000_nimble
-
-grenade_launcher_status = 2
-
-cost              		= 20000
-
-hud                     = wpn_fn2000_nimble_hud
-hit_power 				= 1.2, 1.2, 1.2, 1.2
-visual                   = dynamics\weapons\wpn_fn2000\wpn_fn2000_nimble.ogf
-hit_impulse					= 100
-hit_type					= fire_wound
-fire_distance           = 250
-bullet_speed         	= 910
-rpm                     = 850
-rpm_empty_click         = 200
-
-scope_zoom_factor       = 85
-
-time_to_aim             = 1.0
-
-wanm_idle        = idle
-wanm_idle_a      = idle_auto
-wanm_idle_w_gl   = idle_gloff
-wanm_idle_a_w_gl = idle_gloff_auto
-wanm_idle_g      = idle_glon
-wanm_idle_a_g    = idle_glon_auto
-
-wanm_idle_empty        = idle
-wanm_idle_empty_a      = idle_auto
-wanm_idle_empty_w_gl   = idle_gloff
-wanm_idle_empty_a_w_gl = idle_gloff_auto
-wanm_idle_empty_g      = idle_glon
-wanm_idle_empty_a_g    = idle_glon_auto
-
-wanm_idle_jammed        = idle_jammed
-wanm_idle_jammed_a      = idle_auto_jammed
-wanm_idle_jammed_w_gl   = idle_gloff_jammed 
-wanm_idle_jammed_a_w_gl = idle_gloff_auto_jammed
-wanm_idle_jammed_g      = idle_glon_jammed
-wanm_idle_jammed_a_g    = idle_glon_auto_jammed
-
-wanm_shoot        = shoot
-wanm_shoot_a      = shoot_auto
-wanm_shoot_w_gl   = shoot_gloff
-wanm_shoot_a_w_gl = shoot_gloff_auto
-wanm_shoot_g      = idle_glon
-wanm_shoot_a_g    = idle_glon_auto
-
-wanm_shoot_jammed        = idle_jammed
-wanm_shoot_jammed_a      = idle_auto_jammed
-wanm_shoot_jammed_w_gl   = idle_gloff_jammed
-wanm_shoot_jammed_a_w_gl = idle_gloff_auto_jammed
-wanm_shoot_jammed_g      = idle_glon_jammed
-wanm_shoot_jammed_a_g    = idle_glon_auto_jammed
-
-wanm_shoot_last        = shoot
-wanm_shoot_last_a      = shoot_auto
-wanm_shoot_last_w_gl   = shoot_gloff
-wanm_shoot_last_a_w_gl = shoot_gloff_auto
-wanm_shoot_last_g      = idle_glon
-wanm_shoot_last_a_g    = idle_glon_auto
-
-wanm_shoot_last_jammed        = idle_jammed
-wanm_shoot_last_jammed_a      = idle_auto_jammed
-wanm_shoot_last_jammed_w_gl   = idle_gloff_jammed
-wanm_shoot_last_jammed_a_w_gl = idle_gloff_auto_jammed
-wanm_shoot_last_jammed_g      = idle_glon_jammed
-wanm_shoot_last_jammed_a_g    = idle_glon_auto_jammed
-
-wanm_reload        = idle
-wanm_reload_a      = idle_auto
-wanm_reload_w_gl   = idle_gloff
-wanm_reload_a_w_gl = idle_gloff_auto
-wanm_reload_g      = idle_glon
-wanm_reload_a_g    = idle_glon_auto
-
-wanm_reload_empty        = idle
-wanm_reload_empty_a      = idle_auto
-wanm_reload_empty_w_gl   = idle_gloff
-wanm_reload_empty_a_w_gl = idle_gloff_auto
-wanm_reload_empty_g      = idle_glon
-wanm_reload_empty_a_g    = idle_glon_auto
-
-wanm_reload_jammed        = idle
-wanm_reload_jammed_a      = idle_auto
-wanm_reload_jammed_w_gl   = idle_gloff
-wanm_reload_jammed_a_w_gl = idle_gloff_auto
-wanm_reload_jammed_g      = idle_glon_jammed
-wanm_reload_jammed_a_g    = idle_glon_auto_jammed
-
-misfire_probability        = 0.005 ;вероятность осечки при максимальном износе  !!!old - now not working
-;изношенность, при которой появляется шанс осечки
-misfire_start_condition		= 0.6
-;изношеность при которой шанс осечки становится константным
-misfire_end_condition		= 0.1
-;шанс осечки при изношености больше чем misfireStartCondition
-misfire_start_prob	     	= 0.005
-;шанс осечки при изношености больше чем misfireEndCondition
-misfire_end_prob	     	= 0.06
-;увеличение изношености при одиночном выстреле
-condition_shot_dec      	= 0.0001
-;увеличение изношености при выстреле очередью
-condition_queue_shot_dec	= 0.0001
-
-;-дисперсия-----------------------------------------------------------------------------
-;базовая дисперсия
-fire_dispersion_base       = 0.165    ;угол (в градусах) базовой дисперсии оружия (оружия зажатого в тисках)
-control_inertion_factor    = 1.0f
-crosshair_inertion			= 6.30
-
-;отдача
-cam_return 				= 0
-cam_relax_speed         = 5    		;скорость возврата в исходное положение
-cam_relax_speed_ai     	= 120.75
-cam_dispersion          = 0.15 		;увеличения угла (в градусах) с каждым выстрелом
-cam_dispersion_inc      = 0.11 		;увеличениe cam_dispersion с каждым выстрелом
-cam_dispersion_frac     = 1.1 		;ствол будет подыматься на cam_dispersion*cam_dispersion_frac +- cam_dispersion*(1-cam_dispersion_frac)
-cam_max_angle           = 50.0		;максимальный угол отдачи
-cam_max_angle_horz      = 50.0      ;(degree) maximum shot horizontal degree
-cam_step_angle_horz     = 1.2 		;(degree) size of step camera moved in horizontal position while shooting
-
-PDM_disp_base 			= 0.8
-PDM_disp_vel_factor		= 1.5
-PDM_disp_accel_factor 		= 1.5
-PDM_disp_crouch	 			= 1.0
-PDM_disp_crouch_no_acc 		= 1.0
-
-zoom_cam_relax_speed         = 5     ; scope & ironsight
-zoom_cam_relax_speed_ai      = 360
-zoom_cam_dispersion          = 0.09
-zoom_cam_dispersion_inc      = 0.09
-zoom_cam_dispersion_frac     = 1.1
-zoom_cam_max_angle           = 50.0
-zoom_cam_max_angle_horz      = 50.0
-zoom_cam_step_angle_horz     = 20.0
-
-fire_dispersion_condition_factor = 12        ;увеличение дисперсии в процентах при максимальном износе
-
-;---DOF-------------------------------------------------------------------------
-;zoom_dof					= 0.5, 1.0, 180
-reload_dof					= 0.0, 0.5, 5, 2
-;-------------------------------------------------------------------------------
-
-holder_range_modifier   = 1.85            ; во сколько раз увеличивается eye_range
-holder_fov_modifier     = 1.0              ; во сколько раз увеличивается eye_fov
-
-min_radius              = 1
-max_radius              = 150
-
-inv_name             = gunsl_wpn_fn2000_nimble
-inv_name_short       = gunsl_wpn_fn2000_nimble
-
-
-inv_grid_width          = 4
-inv_grid_height         = 2
-inv_grid_x              = 20
-inv_grid_y              = 0
-
-upgr_icon_x			= 2400
-upgr_icon_y			= 750
-upgr_icon_width		= 300
-upgr_icon_height   	= 150
-
-kill_msg_x              = 131
-kill_msg_y              = 123
-kill_msg_width          = 64
-kill_msg_height         = 30
-
-position                = -0.026, -0.132, 0.0
-orientation             = 0, 0, 0
-
-fire_point              = 0.000000,0.184,0.35
-fire_point2             = 0.0, 0.123, 0.398
-
-shell_point       		= -0.020000,0.186000,0.200000
-shell_dir            	= 0.0, 1.0, 0.0
-shell_particles         = weapons\generic_shells_r
-
-silencer_status         = 2
-
-[wpn_fn2000_nimble_hud]:wpn_fn2000_hud
-attach_place_idx		= 0
-item_visual                   = dynamics\weapons\wpn_fn2000\wpn_fn2000_nimble_hud.ogf
-
-aim_hud_offset_pos_16x9 = 0.010184,0.024270,-0.019691
-aim_hud_offset_rot_16x9 = 0.000000,0.000000,0.000000
-aim_hud_offset_pos = 0.010184,0.024270,-0.019691
-aim_hud_offset_rot_16x9							   = 0.000000,0.000000,0.000000
-hud_fov_factor = 1.25
-hud_fov_zoom_factor = 1.02
-zoom_dof_near = 0.25
-zoom_dof_focus = 0.5
-gl_hud_offset_rot = -0.006098,-0.021629,-0.113593
-gl_hud_offset_pos = -0.005328,-0.002448,0.000000
-;gl_hud_offset_pos_16x9 = -0.080000,0.06100,0.000000
-;gl_hud_offset_rot_16x9 = -0.003000,-0.010000,0.000000
-
-
-gl_hud_offset_pos_16x9 = -0.006098,-0.021629,-0.113593
-gl_hud_offset_rot_16x9 = -0.005328,-0.002448,0.000000
-
-
-
-
-;gl_hud_offset_pos_16x9 = -0.006710,-0.007776,0.000000
-;gl_hud_offset_rot_16x9 = 0.001290,-0.002150,0.000000
-
-
-
-;gl_hud_offset_pos_16x9 = -0.104227,0.020076,0.000000
-;gl_hud_offset_rot_16x9 = 0.016264,-0.029074,0.000000
-
-`
-
-;gl_hud_offset_pos_16x9 = -0.005294,-0.016625,-0.053025
-;gl_hud_offset_rot_16x9 = -0.000000,-0.033605,0.000000
-
-
-
-
-
-
-anm_idle_aim_start_g           = fs2000_glon_aim_start, fn2000_glon_idle
-anm_idle_aim_start_empty_g     = fs2000_glon_aim_start, fn2000_glon_idle
-anm_idle_aim_start_jammed_g    = fs2000_glon_aim_start, fn2000_glon_idle_jammed
-
-
-
-anm_idle_aim_g                   = fs2000_glon_aim, fn2000_glon_idle
-anm_idle_aim_empty_g             = fs2000_glon_aim, fn2000_glon_idle
-anm_idle_aim_jammed_g            = fs2000_glon_aim, fn2000_glon_idle_jammed
-anm_idle_aim_scope_g             = fs2000_glon_aim, fn2000_glon_idle
-anm_idle_aim_scope_empty_g       = fs2000_glon_aim, fn2000_glon_idle
-anm_idle_aim_scope_jammed_g      = fs2000_glon_aim, fn2000_glon_idle_jammed
-
-
-
-
-anm_idle_aim_end_g             = fs2000_glon_aim_end, fn2000_glon_idle
-anm_idle_aim_end_empty_g       = fs2000_glon_aim_end, fn2000_glon_idle
-anm_idle_aim_end_jammed_g      = fs2000_glon_aim_end, fn2000_glon_idle_jammed
-
-
-anm_shoot                      = fn2000_shoot, shoot
-anm_shoot_sil                  =fn2000_shoot, shoot
-anm_shoot_jammed	       = fn2000_shoot, idle_jammed
-anm_shoot_jammed_sil	       = fn2000_shoot, idle_jammed
-anm_shoot_last                 = fn2000_shoot, shoot
-anm_shoot_last_sil             = fn2000_shoot, shoot
-anm_shoot_aim                  = fn2000_aim_shoot, aim_shoot
-anm_shoot_aim_sil              = fn2000_aim_shoot, aim_shoot
-anm_shoot_aim_jammed	       = fn2000_aim_shoot, aim_jammed
-anm_shoot_aim_jammed_sil       = fn2000_aim_shoot, aim_jammed
-anm_shoot_aim_last             = fn2000_aim_shoot, aim_shoot
-anm_shoot_aim_last_sil         = fn2000_aim_shoot, aim_shoot
-anm_shoot_aim_scope            = fn2000_aim_shoot_scope, aim_shoot
-anm_shoot_aim_scope_sil        = fn2000_aim_shoot_scope, aim_shoot
-anm_shoot_aim_scope_last       = fn2000_aim_shoot_scope, aim_shoot_last
-anm_shoot_aim_scope_last_sil   = fn2000_aim_shoot_scope, aim_shoot_last
-anm_shoot_aim_scope_jammed     = fn2000_aim_shoot_scope, aim_jammed
-anm_shoot_aim_scope_jammed_sil = fn2000_aim_shoot_scope, aim_jammed
-
-anm_shoot_aim_g          = fs2000_glon_aim_shoot, fn2000_glon_shoot
-anm_shoot_aim_empty_g    = fs2000_glon_aim_shoot, fn2000_glon_shoot
-anm_shoot_aim_jammed_g   = fs2000_glon_aim_shoot, fn2000_glon_shoot_jammed
-
-anm_shoot_w_gl                      = fn2000_gloff_shoot, shoot
-anm_shoot_sil_w_gl                  = fn2000_gloff_shoot, shoot
-anm_shoot_jammed_w_gl	            = fn2000_gloff_shoot, idle_jammed
-anm_shoot_jammed_sil_w_gl	    = fn2000_gloff_shoot, idle_jammed
-anm_shoot_last_w_gl                 = fn2000_gloff_shoot, shoot_last
-anm_shoot_last_sil_w_gl             = fn2000_gloff_shoot, shoot_last
-anm_shoot_aim_w_gl                  = fn2000_gloff_aim_shoot, aim_shoot
-anm_shoot_aim_sil_w_gl              = fn2000_gloff_aim_shoot, aim_shoot
-anm_shoot_aim_jammed_w_gl	    = fn2000_gloff_aim_shoot, aim_jammed
-anm_shoot_aim_jammed_sil_w_gl       = fn2000_gloff_aim_shoot, aim_jammed
-anm_shoot_aim_last_w_gl             = fn2000_gloff_aim_shoot, aim_shoot_last
-anm_shoot_aim_last_sil_w_gl         = fn2000_gloff_aim_shoot, aim_shoot_last
-anm_shoot_aim_scope_w_gl            = fn2000_gloff_aim_shoot_scope, aim_shoot
-anm_shoot_aim_scope_sil_w_gl        = fn2000_gloff_aim_shoot_scope, aim_shoot
-anm_shoot_aim_scope_last_w_gl       = fn2000_gloff_aim_shoot_scope, aim_shoot_last
-anm_shoot_aim_scope_last_sil_w_gl   = fn2000_gloff_aim_shoot_scope, aim_shoot
-anm_shoot_aim_scope_jammed_w_gl     = fn2000_gloff_aim_shoot_scope, aim_jammed
-anm_shoot_aim_scope_jammed_sil_w_gl = fn2000_gloff_aim_shoot_scope, aim_jammed
-
-
-
-
-anm_idle_aim_moving_forward_g                           = fs2000_glon_aim_walk, fn2000_glon_idle
-anm_idle_aim_moving_forward_empty_g                     = fs2000_glon_aim_walk, fn2000_glon_idle
-anm_idle_aim_moving_forward_jammed_g                    = fs2000_glon_aim_walk, fn2000_glon_idle_jammed
-
-
-d
-
-anm_idle_aim_moving_back_g                              = fs2000_glon_aim_walk, fn2000_glon_idle
-anm_idle_aim_moving_back_empty_g                        = fs2000_glon_aim_walk, fn2000_glon_idle
-anm_idle_aim_moving_back_jammed_g                       = fs2000_glon_aim_walk, fn2000_glon_idle_jammed
-
-
-
-
-anm_idle_aim_moving_left_g                              = fs2000_glon_aim_walk_left, fn2000_glon_idle
-anm_idle_aim_moving_left_empty_g                        = fs2000_glon_aim_walk_left, fn2000_glon_idle
-anm_idle_aim_moving_left_jammed_g                       = fs2000_glon_aim_walk_left, fn2000_glon_idle_jammed
-
-
-
-
-
-anm_idle_aim_moving_right_g                             = fs2000_glon_aim_walk_right, fn2000_glon_idle
-anm_idle_aim_moving_right_empty_g                       = fs2000_glon_aim_walk_right, fn2000_glon_idle
-anm_idle_aim_moving_right_jammed_g                      = fs2000_glon_aim_walk_right, fn2000_glon_idle_jammed
- 
-
-
-
-anm_idle_aim_moving_forward_left_g                      = fs2000_glon_aim_walk, fn2000_glon_idle
-anm_idle_aim_moving_forward_left_empty_g                = fs2000_glon_aim_walk, fn2000_glon_idle
-anm_idle_aim_moving_forward_left_jammed_g               = fs2000_glon_aim_walk, fn2000_glon_idle_jammed
-
-
-
-
-anm_idle_aim_moving_forward_right_g                     = fs2000_glon_aim_walk, fn2000_glon_idle
-anm_idle_aim_moving_forward_right_empty_g               = fs2000_glon_aim_walk, fn2000_glon_idle
-anm_idle_aim_moving_forward_right_jammed_g              = fs2000_glon_aim_walk, fn2000_glon_idle_jammed
-
-
-
-
-anm_idle_aim_moving_back_left_g                         = fs2000_glon_aim_walk, fn2000_glon_idle
-anm_idle_aim_moving_back_left_empty_g                   = fs2000_glon_aim_walk, fn2000_glon_idle
-anm_idle_aim_moving_back_left_jammed_g                  = fs2000_glon_aim_walk, fn2000_glon_idle_jammed
-
-
-
-anm_idle_aim_moving_back_right_g                        = fs2000_glon_aim_walk, fn2000_glon_idle
-anm_idle_aim_moving_back_right_empty_g                  = fs2000_glon_aim_walk, fn2000_glon_idle
-anm_idle_aim_moving_back_right_jammed_g                 = fs2000_glon_aim_walk, fn2000_glon_idle_jammed
-
-;ходьба в прицеливании при надетом прицеле////////////////////////////////////////////////////
-anm_idle_aim_scope_moving	                        = fn2000_aim_walk_scope, fn2000_aim
-anm_idle_aim_scope_moving_empty		                = fn2000_aim_walk_scope, fn2000_aim
-anm_idle_aim_scope_moving_jammed	                = fn2000_aim_walk_scope, fn2000_aim_jammed
-
-anm_idle_aim_scope_moving_w_gl	                        = fn2000_gloff_aim_walk_scope, fn2000_gloff_aim
-anm_idle_aim_scope_moving_empty_w_gl		        = fn2000_gloff_aim_walk_scope, fn2000_gloff_aim
-anm_idle_aim_scope_moving_jammed_w_gl	                = fn2000_gloff_aim_walk_scope, fn2000_gloff_aim_jammed
-
-anm_idle_aim_scope_moving_g	                        = fs2000_glon_aim_walk, fn2000_glon_idle
-anm_idle_aim_scope_moving_empty_g		        = fs2000_glon_aim_walk, fn2000_glon_idle
-anm_idle_aim_scope_moving_jammed_g	                = fs2000_glon_aim_walk, fn2000_glon_idle_jammed
-
-
-
-
-
-lock_time_anm_fakeshoot_g     = 0.20
-anm_fakeshoot_g               = fn2000_glon_dry_empty, fn2000_glon_idle
-lock_time_anm_fakeshoot_aim_g = 0.20
-anm_fakeshoot_aim_g           = fs2000_glon_aim_dry, fn2000_glon_idle
-
-lock_time_anm_fakeshoot_jammed_g     = 0.20
-anm_fakeshoot_jammed_g               = fn2000_glon_dry_empty, fn2000_glon_idle_jammed
-lock_time_anm_fakeshoot_aim_jammed_g = 0.20
-anm_fakeshoot_aim_jammed_g           = fn2000_aim_dry, fn2000_glon_idle_jammed
-
-lock_time_anm_fakeshoot_empty_g     = 0.20
-anm_fakeshoot_empty_g               = fn2000_glon_dry_empty, fn2000_glon_idle
-lock_time_anm_fakeshoot_aim_empty_g = 0.20
-anm_fakeshoot_aim_empty_g           = fs2000_glon_aim_dry, fn2000_glon_idle
-
-
-
-
-
-
-
-
-anm_fakeshoot_empty                = fn2000_dry_empty
-lock_time_anm_fakeshoot_aim_empty  = 0.20
-anm_fakeshoot_aim_empty            = fn2000_aim_dry, fn2000_aim
-lock_time_anm_fakeshoot_jammed     = 0.70
-anm_fakeshoot_jammed               = fn2000_dry, idle_jammed
-lock_time_anm_fakeshoot_aim_jammed = 0.20
-anm_fakeshoot_aim_jammed           = fn2000_aim_dry, aim_jammed
-inertion_pitch_offset_r = -0.008
-inertion_pitch_offset_n = -0.006
-inertion_pitch_offset_d = -0.001
-inertion_origin_offset = 0.06
-
-inertion_aim_origin_offset = 0.015
-inertion_aim_speed = 10
-
-;Перезарядка подствола///////////////////////////////////////////////////////////////////
-anm_reload_g                   = fn2000_gl_reload
-anm_reload_empty_g             = fn2000_gl_reload, fn2000_gl_reload
-anm_reload_jammed_g            = fn2000_gl_reload, fn2000_gl_reload_jammed
-
-anm_reload_ammochange_g                         = fn2000_gl_changegrenade, fn2000_gl_changegrenade
-
-anm_reload_empty_ammochange_g                   = fn2000_gl_changegrenade, fn2000_gl_reload
-
-anm_reload_jammed_ammochange_g                  = fn2000_gl_changegrenade, fn2000_gl_changegrenade_jammed
-
-[wpn_fn2000_tac_hud]:wpn_fn2000_nimble_hud
-
-
-anm_suicide			= fn2000_grip_suicide
-anm_stop_suicide 		= fn2000_grip_suicide_end
-
-anm_shoot_suicide               = fn2000_suicide, shoot
-anm_shoot_suicide_sil           = fn2000_suicide, shoot
-anm_shoot_last_suicide          = fn2000_suicide, shoot
-anm_shoot_last_suicide_sil      = fn2000_suicide, shoot
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
-
-;Доставание///////////////////////////////////////////////////
-anm_show                   = fn2000_grip_draw
-anm_show_empty             = fn2000_grip_draw
-anm_show_jammed            = fn2000_grip_draw, idle_jammed
-
-;Убирание/////////////////////////////////////////////////////
-anm_hide                   = fn2000_grip_hide
-anm_hide_empty             = fn2000_grip_hide
-anm_hide_jammed            = fn2000_grip_hide, idle_jammed
-
-;Бездействие//////////////////////////////////////////////////
-anm_idle                            = fn2000_grip_idle
-anm_idle_empty                      = fn2000_grip_idle
-anm_idle_jammed                     = fn2000_grip_idle, idle_jammed
-anm_idle_slow                       = fn2000_grip_idle
-anm_idle_slow_empty                 = fn2000_grip_idle
-anm_idle_slow_jammed                = fn2000_grip_idle, idle_jammed
-anm_idle_crouch                     = fn2000_grip_idle
-anm_idle_crouch_empty               = fn2000_grip_idle
-anm_idle_crouch_jammed              = fn2000_grip_idle, idle_jammed
-anm_idle_crouch_slow                = fn2000_grip_idle
-anm_idle_crouch_slow_empty          = fn2000_grip_idle
-anm_idle_crouch_slow_jammed         = fn2000_grip_idle, idle_jammed
-
-;Бездействие в прицеливании///////////////////////////////////
-anm_idle_aim_start             = fn2000_grip_aim_start, fn2000_aim_start
-anm_idle_aim_start_empty       = fn2000_grip_aim_start, fn2000_aim_start
-anm_idle_aim_start_jammed      = fn2000_grip_aim_start, fn2000_aim_start_jammed
-
-anm_idle_aim                   = fn2000_grip_aim, fn2000_aim
-anm_idle_aim_empty             = fn2000_grip_aim, fn2000_aim
-anm_idle_aim_jammed            = fn2000_grip_aim, fn2000_aim_jammed
-anm_idle_aim_scope             = fn2000_grip_aim, fn2000_aim
-anm_idle_aim_scope_empty       = fn2000_grip_aim, fn2000_aim
-anm_idle_aim_scope_jammed      = fn2000_grip_aim, fn2000_aim_jammed
-
-anm_idle_aim_end               = fn2000_grip_aim_end, fn2000_aim_end
-anm_idle_aim_end_empty         = fn2000_grip_aim_end, fn2000_aim_end
-anm_idle_aim_end_jammed        = fn2000_grip_aim_end, fn2000_aim_end_jammed
-
-;Ходьба ВПЕРЕД//////////////////////////////////////////////////////////////////////////
-anm_idle_moving 					= fn2000_grip_walk
-anm_idle_moving_jammed 					= fn2000_grip_walk, idle_jammed
-anm_idle_moving_empty					= fn2000_grip_walk
-
-;Ходьба медленная (SHIFT) ВПЕРЕД//////////////////////////////////////////////////////////////////////////
-anm_idle_moving_slow 					= fn2000_grip_walk_slow
-anm_idle_moving_slow_jammed 				= fn2000_grip_walk_slow, idle_jammed
-anm_idle_moving_slow_empty				= fn2000_grip_walk_slow
-
-;Ходьба в полуприсяди (CTRL) ВПЕРЕД//////////////////////////////////////////////////////////////////////////
-anm_idle_moving_crouch 					= fn2000_grip_walk_slow_down
-anm_idle_moving_crouch_jammed 				= fn2000_grip_walk_slow_down, idle_jammed
-anm_idle_moving_crouch_empty				= fn2000_grip_walk_slow_down
-
-;Ходьба в присяде (CTRL+SHIFT) ВПЕРЕД/////////////////////////////////////////////////////////////////////////
-anm_idle_moving_crouch_slow 				= fn2000_grip_walk_slow_super
-anm_idle_moving_crouch_slow_jammed 			= fn2000_grip_walk_slow_super, idle_jammed
-anm_idle_moving_crouch_slow_empty			= fn2000_grip_walk_slow_super
-
-;ходьба в прицеливании ВПЕРЕД//////////////////////////////////////////////////////////////////
-anm_idle_aim_moving_forward                             = fn2000_grip_aim_walk, fn2000_aim
-anm_idle_aim_moving_forward_empty                       = fn2000_grip_aim_walk, fn2000_aim
-anm_idle_aim_moving_forward_jammed                      = fn2000_grip_aim_walk, fn2000_aim_jammed
-
-;ходьба в прицеливании НАЗАД//////////////////////////////////////////////////////////////////
-anm_idle_aim_moving_back                                = fn2000_grip_aim_walk, fn2000_aim
-anm_idle_aim_moving_back_empty                          = fn2000_grip_aim_walk, fn2000_aim
-anm_idle_aim_moving_back_jammed                         = fn2000_grip_aim_walk, fn2000_aim_jammed
-
-;ходьба в прицеливании ВЛЕВО//////////////////////////////////////////////////////////////////
-anm_idle_aim_moving_left                                = fn2000_grip_aim_walk_left, fn2000_aim
-anm_idle_aim_moving_left_empty                          = fn2000_grip_aim_walk_left, fn2000_aim
-anm_idle_aim_moving_left_jammed                         = fn2000_grip_aim_walk_left, fn2000_aim_jammed
-
-;ходьба в прицеливании ВПРАВО//////////////////////////////////////////////////////////////////
-anm_idle_aim_moving_right                               = fn2000_grip_aim_walk_right, fn2000_aim
-anm_idle_aim_moving_right_empty                         = fn2000_grip_aim_walk_right, fn2000_aim
-anm_idle_aim_moving_right_jammed                        = fn2000_grip_aim_walk_right, fn2000_aim_jammed
-
-;ходьба в прицеливании ВПЕРЕД+ВЛЕВО////////////////////////////////////////////////////////////
-anm_idle_aim_moving_forward_left                        = fn2000_grip_aim_walk, fn2000_aim
-anm_idle_aim_moving_forward_left_empty                  = fn2000_grip_aim_walk, fn2000_aim
-anm_idle_aim_moving_forward_left_jammed                 = fn2000_grip_aim_walk, fn2000_aim_jammed
-
-;ходьба в прицеливании ВПЕРЕД+ВПРАВО///////////////////////////////////////////////////////////
-anm_idle_aim_moving_forward_right                       = fn2000_grip_aim_walk, fn2000_aim
-anm_idle_aim_moving_forward_right_empty                 = fn2000_grip_aim_walk, fn2000_aim
-anm_idle_aim_moving_forward_right_jammed                = fn2000_grip_aim_walk, fn2000_aim_jammed
-
-;ходьба в прицеливании НАЗАД+ВЛЕВО/////////////////////////////////////////////////////////////
-anm_idle_aim_moving_back_left                           = fn2000_grip_aim_walk, fn2000_aim
-anm_idle_aim_moving_back_left_empty                     = fn2000_grip_aim_walk, fn2000_aim
-anm_idle_aim_moving_back_left_jammed                    = fn2000_grip_aim_walk, fn2000_aim_jammed
-
-;ходьба в прицеливании НАЗАД+ВПРАВО////////////////////////////////////////////////////////////
-anm_idle_aim_moving_back_right                          = fn2000_grip_aim_walk, fn2000_aim
-anm_idle_aim_moving_back_right_empty                    = fn2000_grip_aim_walk, fn2000_aim
-anm_idle_aim_moving_back_right_jammed                   = fn2000_grip_aim_walk, fn2000_aim_jammed
-
-;ходьба в прицеливании при надетом прицеле////////////////////////////////////////////////////
-anm_idle_aim_scope_moving	                        = fn2000_grip_aim_walk_scope, fn2000_aim
-anm_idle_aim_scope_moving_empty		                = fn2000_grip_aim_walk_scope, fn2000_aim
-anm_idle_aim_scope_moving_jammed	                = fn2000_grip_aim_walk_scope, fn2000_aim_jammed
-
-;Бег//////////////////////////////////////////////////////////////////
-anm_idle_sprint_start             = fn2000_grip_sprint_start
-anm_idle_sprint_start_empty       = fn2000_grip_sprint_start
-anm_idle_sprint_start_jammed      = fn2000_grip_sprint_start, idle_jammed
-
-anm_idle_sprint                   = fn2000_grip_sprint
-anm_idle_sprint_empty             = fn2000_grip_sprint
-anm_idle_sprint_jammed            = fn2000_grip_sprint, idle_jammed
-
-anm_idle_sprint_end              = fn2000_grip_sprint_end
-anm_idle_sprint_end_empty        = fn2000_grip_sprint_end
-anm_idle_sprint_end_jammed       = fn2000_grip_sprint_end, idle_jammed
-
-;Скука////////////////////////////////////////////////////////////////////
-anm_bore                   = fn2000_grip_draw
-anm_bore_empty             = fn2000_grip_draw
-anm_bore_jammed            = fn2000_grip_draw, idle_jammed
-
-;Выстрелы обычными патронами/////////////////////////////////////////////////////////////////////
-anm_shoot                      = fn2000_grip_shoot, fn2000_shoot
-anm_shoot_sil                  = fn2000_grip_shoot, fn2000_shoot
-anm_shoot_jammed	       = fn2000_grip_shoot, idle_jammed
-anm_shoot_jammed_sil	       = fn2000_grip_shoot, idle_jammed
-anm_shoot_last                 = fn2000_grip_shoot, shoot_last
-anm_shoot_last_sil             = fn2000_grip_shoot, shoot_last
-anm_shoot_aim                  = fn2000_grip_aim_shoot, fn2000_aim_shoot
-anm_shoot_aim_sil              = fn2000_grip_aim_shoot, fn2000_aim_shoot
-anm_shoot_aim_jammed	       = fn2000_grip_aim_shoot, fn2000_aim_jammed
-anm_shoot_aim_jammed_sil       = fn2000_grip_aim_shoot, fn2000_aim_jammed
-anm_shoot_aim_last             = fn2000_grip_aim_shoot, aim_shoot_last
-anm_shoot_aim_last_sil         = fn2000_grip_aim_shoot, aim_shoot_last
-anm_shoot_aim_scope            = fn2000_grip_aim_shoot_scope, fn2000_aim_shoot
-anm_shoot_aim_scope_sil        = fn2000_grip_aim_shoot_scope, fn2000_aim_shoot
-anm_shoot_aim_scope_last       = fn2000_grip_aim_shoot_scope, aim_shoot_last
-anm_shoot_aim_scope_last_sil   = fn2000_grip_aim_shoot_scope, aim_shoot_last
-anm_shoot_aim_scope_jammed     = fn2000_grip_aim_shoot_scope, fn2000_aim_jammed
-anm_shoot_aim_scope_jammed_sil = fn2000_grip_aim_shoot_scope, fn2000_aim_jammed
-
-
-;Осечка//////////////////////////////////////////////////
-anm_fakeshoot_empty                = fn2000_grip_dry_empty
-anm_fakeshoot_aim_empty            = fn2000_grip_aim_dry, fn2000_aim
-anm_fakeshoot_jammed               = fn2000_grip_dry, idle_jammed
-anm_fakeshoot_aim_jammed           = fn2000_grip_aim_dry, fn2000_aim_jammed
-
-;Перезарядка/////////////////////////////////////////////////////////////////////
-anm_reload                           = fn2000_grip_reload, fn2000_reload
-anm_reload_empty                     = fn2000_grip_reload_empty, fn2000_reload_empty
-anm_reload_jammed                    = fn2000_grip_revival, fn2000_revival
-anm_reload_jammed_last               = fn2000_grip_revival, fn2000_revival
-anm_reload_ammochange                = fn2000_grip_reload, fn2000_reload
-anm_reload_empty_ammochange          = fn2000_grip_reload_empty, fn2000_reload_empty
-
-;Анимации устарнения осечки при отсутствии установленного прицела.
-anm_reload_jammed_noscope            = fn2000_grip_revival, fn2000_revival
-anm_reload_jammed_last_noscope       = fn2000_grip_revival, fn2000_revival
-
-;Смена режима огня//////////////////////////////////////////////////////////////////////////
-
-;1-a
-anm_changefiremode_from_1_to_a			             = fn2000_grip_firemode2, firemode2
-anm_changefiremode_from_1_to_a_jammed		             = fn2000_grip_firemode2, firemode2
-anm_changefiremode_from_1_to_a_empty		             = fn2000_grip_firemode2, firemode2
-
-;a-1
-anm_changefiremode_from_a_to_1			             = fn2000_grip_firemode, firemode
-anm_changefiremode_from_a_to_1_jammed		             = fn2000_grip_firemode, firemode
-anm_changefiremode_from_a_to_1_empty		             = fn2000_grip_firemode, firemode
-
-;Разрядка//////////////////////////////////////////////////////////////////////////
-anm_unload_mag                               = fn2000_grip_draw
-anm_unload_mag_jammed                        = fn2000_grip_draw  
-anm_unload_mag_empty                         = fn2000_grip_draw
-
-;включение налобника//////////////////////////////////////////////////////////////////////////
-anm_headlamp_on                             = fn2000_grip_headflash
-anm_headlamp_on_empty                       = fn2000_grip_headflash
-anm_headlamp_on_jammed                      = fn2000_grip_headflash, idle_jammed
-
-;выключение налобника//////////////////////////////////////////////////////////////////////////
-anm_headlamp_off                            = fn2000_grip_headflash
-anm_headlamp_off_empty                      = fn2000_grip_headflash
-anm_headlamp_off_jammed                     = fn2000_grip_headflash, idle_jammed
-
-;включение пнв//////////////////////////////////////////////////////////////////////////
-anm_nv_on                                   = fn2000_grip_headflash
-anm_nv_on_empty                             = fn2000_grip_headflash
-anm_nv_on_jammed                            = fn2000_grip_headflash, idle_jammed
-
-;выключение пнв//////////////////////////////////////////////////////////////////////////
-anm_nv_off                                  = fn2000_grip_headflash
-anm_nv_off_empty                            = fn2000_grip_headflash
-anm_nv_off_jammed                           = fn2000_grip_headflash, idle_jammed
-
-;штык-нож//////////////////////////////////////////////////////////////////////////
-anm_kick = fn2000_grip_bayonet
-anm_kick_empty = fn2000_grip_bayonet
-anm_kick_jammed = fn2000_grip_bayonet, idle_jammed
-
-
-[wpn_fn2000_tac_long_mag_hud]:wpn_fn2000_tac_hud
-item_visual                   = dynamics\weapons\wpn_fn2000\wpn_fn2000_nimble_surefire_hud.ogf
-;Перезарядка/////////////////////////////////////////////////////////////////////
-anm_reload                           = fn2000_grip_reload_60, fn2000_reload
-anm_reload_empty                     = fn2000_grip_reload_empty_60, fn2000_reload_empty
-anm_reload_ammochange                = fn2000_grip_reload_60, fn2000_reload
-anm_reload_empty_ammochange          = fn2000_grip_reload_empty_60, fn2000_reload_empty
-
-anm_reload_w_gl                      = fn2000_gloff_reload_60, fn2000_reload
-anm_reload_empty_w_gl                = fn2000_gloff_reload_empty_60, fn2000_reload_empty
-anm_reload_ammochange_w_gl           = fn2000_gloff_reload_60, fn2000_reload
-anm_reload_empty_ammochange_w_gl     = fn2000_gloff_reload_empty_60, fn2000_reload_empty

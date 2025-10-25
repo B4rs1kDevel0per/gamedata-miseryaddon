@@ -1,0 +1,91 @@
+local dbg = debug_utils
+local MODULE = "nz_loot"
+
+local mutant_parts = {
+	[clsid.bloodsucker_s]	= { 
+								{ amount = 1, chance = 50, item_section = "mutant_part_krovosos_jaw"},
+							},
+	[clsid.boar_s]			= { 
+								{ amount = 4, chance = 40, item_section = "mutant_part_boar_leg"},
+							},
+	[clsid.burer_s]			= { 
+								{ amount = 2, chance = 70, item_section = "mutant_part_burer_hand"},
+							},
+	[clsid.chimera_s]		= { 
+								{ amount = 14, chance = 35, item_section = "mutant_part_chimera_kogot"},
+							},
+	[clsid.controller_s]	= { 
+								{ amount = 2, chance = 70, item_section = "mutant_part_controller_hand"},
+							},
+	[clsid.dog_s]			= {
+								{ amount = 1, chance = 60, item_section = "mutant_part_dog_tail" },
+							},
+	[clsid.flesh_s]			= { 
+								{ amount = 2, chance = 40, item_section = "mutant_part_flesh_eye"},
+							},
+	[clsid.gigant_s]		= { 
+								{ amount = 1, chance = 70, item_section = "mutant_part_giant_eye"},
+							},
+	[clsid.poltergeist_s]	= { 
+								{ amount = 0, chance = 0, item_section = nil},
+							},
+	[clsid.psy_dog_s]		= { 
+								{ amount = 1, chance = 70, item_section = "mutant_part_psevdodog_tail"},
+							},
+	[clsid.pseudodog_s]		= { 
+								{ amount = 1, chance = 50, item_section = "mutant_part_psevdodog_tail"},
+							},
+	[clsid.snork_s]			= { 
+								{ amount = 2, chance = 40, item_section = "mutant_part_snork_leg"},
+							},
+	[clsid.tushkano_s]		= { 
+								{ amount = 1, chance = 70, item_section = "mutant_part_tushkano_head"},
+							},
+}
+
+
+function loot_mutant(obj, actor)
+	debug_utils.INFO(MODULE, "[loot_mutant] setting variables") 
+	local obj_clsid = obj:clsid()
+	local spawns = mutant_parts[obj_clsid]
+	if not spawns then
+		debug_utils.INFO(MODULE, "[loot_mutant] no loot config for clsid %s", tostring(obj_clsid))
+		return
+	end
+	local amount = nil
+	local chance = nil
+	local item_section = nil
+	local items_to_spawn = {}
+	debug_utils.INFO(MODULE, "[loot_mutant] checking spawns") 
+	for k,v in pairs(spawns) do
+		amount = v.amount
+		chance = v.chance
+		item_section = v.item_section
+		if item_section ~= nil and actor ~= nil then
+			for i=1,amount do
+				if math.random(100) < chance then
+					table.insert(items_to_spawn, item_section)
+				end
+			end
+		end
+	end
+	if #items_to_spawn > 0 then
+		debug_utils.INFO(MODULE, "[loot_mutant] SENDING PACKET: LOOT") -- SENDING PACKET
+		local packet = game_cl.GenerateGameMessage(GM_SCRIPT_MUTANT_LOOT)
+		packet:w_u16(actor:id())  -- Send actor's ID so client knows who it's for
+		packet:w_stringZ("st_mutant_loot_found")  -- News ID
+		packet:w_stringZ("mutant_hunter")         -- Icon/tag for the sender
+		u_EventSendReliable(packet)
+		debug_utils.INFO(MODULE, "[loot_mutant] spawning items") 
+		for k,v in pairs(items_to_spawn) do
+			alife():create(v, actor:position(), 0, 0, actor:id())
+		end
+	else
+		debug_utils.INFO(MODULE, "[loot_mutant] SENDING PACKET: NO LOOT") -- SENDING PACKET
+		local packet = game_cl.GenerateGameMessage(GM_SCRIPT_MUTANT_LOOT)
+		packet:w_u16(actor:id())  -- Send actor's ID so client knows who it's for
+		packet:w_stringZ("st_mutant_loot_not_found")  -- News ID
+		packet:w_stringZ("mutant_hunter")         -- Icon/tag for the sender
+		u_EventSendReliable(packet)
+	end
+end

@@ -1,7 +1,20 @@
-[smart_terrain]
+[smart_terrain];jup_b6_anom_2
 squad_id = 27
 max_population = 1
 arrive_dist = 100
+respawn_params = respawn@jup_b6_anom_2
+
+[respawn@jup_b6_anom_2]
+spawn_boar
+spawn_flesh
+
+[spawn_boar]
+spawn_squads = simulation_boar, simulation_flesh
+spawn_num = 2
+
+[spawn_flesh]
+spawn_squads = simulation_flesh
+spawn_num = 0
 
 [exclusive]
 jup_b6_stalker_1_anom_2 = jupiter\jup_b6_stalker_anom_2.ltx

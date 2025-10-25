@@ -4,8 +4,13 @@ max_population = 1
 respawn_params = respawn@jup_sim_1
 
 [respawn@jup_sim_1]
-spawn_pigs
+spawn_boar
+spawn_flesh
 
-[spawn_pigs]
-spawn_squads = simulation_flesh, simulation_mix_boar_flesh, simulation_boar
+[spawn_boar]
+spawn_squads = simulation_boar, simulation_boar, simulation_flesh
+spawn_num = 1
+
+[spawn_flesh]
+spawn_squads = simulation_dog, simulation_dog, simulation_pseudodog
 spawn_num = 1

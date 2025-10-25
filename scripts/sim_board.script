@@ -2,6 +2,9 @@
 --'*        Реестр смарт-террейнов. Игровое поле симуляции.
 --'******************************************************
 
+local dbg = debug_utils
+local MODULE = "sim_board"
+
 --' В этом ltx хранятся дескрипторы сквадов.
 squad_ltx = system_ini()
 setting_ini = ini_file("misc\\simulation.ltx")
@@ -18,117 +21,364 @@ local board = nil
 simulation_activities = {
 	stalker = {
 			squad = nil,
-			smart = { 	base	 = { prec = function(squad, target) return in_time_interval(18,8) and not xr_conditions.surge_started() and not travel_manager.check_squad_for_enemies(squad) and (target:name() == "zat_stalker_base_smart" or target:name() == "jup_a6" or target:name() == "pri_a16") end },
-						surge	 = { prec = function() return xr_conditions.surge_started() end },
-						territory= { prec = function() return in_time_interval(8,18) and not xr_conditions.surge_started() end },
-						resource = { prec = function(squad, target) return in_time_interval(8,18) and not xr_conditions.surge_started() end } -- and squad:has_detector()
+			smart = { 	base				= { prec = function(squad, target) return in_time_interval(16,6) and not xr_conditions.surge_started() and not travel_manager.check_squad_for_enemies(squad) end },
+						base_freedom	 	= { prec = function(squad, target) return in_time_interval(16,6) and not xr_conditions.surge_started() end },
+						base_duty	 		= { prec = function(squad, target) return in_time_interval(16,6) and not xr_conditions.surge_started() end },
+						surge	 			= { prec = function() return xr_conditions.surge_started() end },
+						territory			= { prec = function() return in_time_interval(6,16) and not xr_conditions.surge_started() end },
+--						territory_hostile	= { prec = function() return in_time_interval(6,16) and not xr_conditions.surge_started() end },
+						resource 			= { prec = function(squad, target) return in_time_interval(6,16) and not xr_conditions.surge_started() end }
+					},
+			actor = nil
+	},
+	stalker_sci = {
+			squad = nil,
+			smart = { 	base				= { prec = function(squad, target) return in_time_interval(16,6) and not xr_conditions.surge_started() and not travel_manager.check_squad_for_enemies(squad) end },
+						base_freedom	 	= { prec = function(squad, target) return in_time_interval(16,6) and not xr_conditions.surge_started() end },
+						base_duty	 		= { prec = function(squad, target) return in_time_interval(16,6) and not xr_conditions.surge_started() end },
+--						surge	 			= { prec = function() return xr_conditions.surge_started() end },
+--						territory			= { prec = function(squad, target) return in_time_interval(6,16) and not xr_conditions.surge_started() end },
+						resource 			= { prec = function(squad, target) return in_time_interval(6,16) and not xr_conditions.surge_started() end },
+						resource_hard 		= { prec = function(squad, target) return in_time_interval(6,16) and not xr_conditions.surge_started() end }
+					},
+			actor = nil
+	},
+	stalker_hunter_day = {
+			squad = { 	monster_predatory_day	 	= { prec = function(squad, target) return in_time_interval(4,18)	and not xr_conditions.surge_started() and simulation_objects.sim_dist_to(squad, target) <= 150 end	},
+						monster_predatory_night	 	= { prec = function(squad, target) return in_time_interval(4,18)	and not xr_conditions.surge_started() and simulation_objects.sim_dist_to(squad, target) <= 40  end	},
+						monster_vegetarian	 		= { prec = function(squad, target) return in_time_interval(4,18)	and not xr_conditions.surge_started() and simulation_objects.sim_dist_to(squad, target) <= 150 end	},
+						monster_zombied_day 		= { prec = function(squad, target) return in_time_interval(4,18)	and not xr_conditions.surge_started() and simulation_objects.sim_dist_to(squad, target) <= 40 end	},
+						monster_zombied_night 		= { prec = function(squad, target) return in_time_interval(4,18)	and not xr_conditions.surge_started() and simulation_objects.sim_dist_to(squad, target) <= 40 end	},
+						monster_special	 			= { prec = function(squad, target) return in_time_interval(4,18)	and not xr_conditions.surge_started() and simulation_objects.sim_dist_to(squad, target) <= 40 end	}
+					},
+			smart = { 	base				= { prec = function(squad, target) return in_time_interval(18,4) and not xr_conditions.surge_started() and not travel_manager.check_squad_for_enemies(squad) end },
+--						base_freedom	 	= { prec = function(squad, target) return in_time_interval(18,4) and not xr_conditions.surge_started() end },
+						base_duty	 		= { prec = function(squad, target) return in_time_interval(18,4) and not xr_conditions.surge_started() end },
+						surge	 			= { prec = function() return xr_conditions.surge_started() end },
+--						lair				= { prec = function() return in_time_interval(4,18) and not xr_conditions.surge_started() end },
+						hunting_ground		= { prec = function() return in_time_interval(4,18) and not xr_conditions.surge_started() end }
+					},
+			actor = nil
+	},
+	stalker_hunter_night = {
+			squad = { 	monster_predatory_day	 	= { prec = function(squad, target) return in_time_interval(19,3)	and not xr_conditions.surge_started() and simulation_objects.sim_dist_to(squad, target) <= 75 end	},
+						monster_predatory_night	 	= { prec = function(squad, target) return in_time_interval(19,3)	and not xr_conditions.surge_started() and simulation_objects.sim_dist_to(squad, target) <= 250 end	},
+						monster_vegetarian	 		= { prec = function(squad, target) return in_time_interval(19,3)	and not xr_conditions.surge_started() and simulation_objects.sim_dist_to(squad, target) <= 50 end	},
+						monster_zombied_day 		= { prec = function(squad, target) return in_time_interval(19,3)	and not xr_conditions.surge_started() and simulation_objects.sim_dist_to(squad, target) <= 80 end	},
+						monster_zombied_night 		= { prec = function(squad, target) return in_time_interval(19,3)	and not xr_conditions.surge_started() and simulation_objects.sim_dist_to(squad, target) <= 80 end	},
+						monster_special	 			= { prec = function(squad, target) return in_time_interval(19,3)	and not xr_conditions.surge_started() and simulation_objects.sim_dist_to(squad, target) <= 250 end	}
+					},
+			smart = { 	base				= { prec = function(squad, target) return in_time_interval(3,19) and not xr_conditions.surge_started() and not travel_manager.check_squad_for_enemies(squad) end },
+--						base_freedom	 	= { prec = function(squad, target) return in_time_interval(3,19) and not xr_conditions.surge_started() end },
+						base_duty	 		= { prec = function(squad, target) return in_time_interval(3,19) and not xr_conditions.surge_started() end },
+						surge	 			= { prec = function() return xr_conditions.surge_started() end },
+--						lair				= { prec = function() return in_time_interval(19,3) and not xr_conditions.surge_started() end },
+--						lair_night			= { prec = function() return in_time_interval(19,3) and not xr_conditions.surge_started() end },
+						hunting_ground		= { prec = function() return in_time_interval(19,3) and not xr_conditions.surge_started() end }
+					},
+			actor = nil
+	},
+	stalker_elite = {
+			squad = { 	monster_predatory_day	 	= { prec = function(squad, target) return not xr_conditions.surge_started() and simulation_objects.sim_dist_to(squad, target) <= 50 end	},
+						monster_predatory_night	 	= { prec = function(squad, target) return not xr_conditions.surge_started() and simulation_objects.sim_dist_to(squad, target) <= 50 end	},
+						monster_zombied_day 		= { prec = function(squad, target) return not xr_conditions.surge_started() and simulation_objects.sim_dist_to(squad, target) <= 50 end	},
+						monster_zombied_night 		= { prec = function(squad, target) return not xr_conditions.surge_started() and simulation_objects.sim_dist_to(squad, target) <= 50 end	},
+						monster_special	 			= { prec = function(squad, target) return not xr_conditions.surge_started() and simulation_objects.sim_dist_to(squad, target) <= 50 end	},
+						monolith 					= { prec = function(squad, target) return not xr_conditions.surge_started() and simulation_objects.sim_dist_to(squad, target) <= 65 end	},
+						bandit 						= { prec = function(squad, target) return not xr_conditions.surge_started() and simulation_objects.sim_dist_to(squad, target) <= 50 end	},
+						bandit_elite 				= { prec = function(squad, target) return not xr_conditions.surge_started() and simulation_objects.sim_dist_to(squad, target) <= 80 end	},
+						killer						= { prec = function(squad, target) return not xr_conditions.surge_started() and simulation_objects.sim_dist_to(squad, target) <= 50 end	}
+					},
+			smart = { 	base				= { prec = function(squad, target) return in_time_interval(20,4) and not xr_conditions.surge_started() and not travel_manager.check_squad_for_enemies(squad) end },
+--						base_monolith	 	= { prec = function(squad, target) return in_time_interval(23,3) and not xr_conditions.surge_started() end },
+						base_freedom	 	= { prec = function(squad, target) return in_time_interval(20,4) and not xr_conditions.surge_started() end },
+						base_duty	 		= { prec = function(squad, target) return in_time_interval(20,4) and not xr_conditions.surge_started() end },
+						base_hostile	 	= { prec = function(squad, target) return in_time_interval(23,3) and not xr_conditions.surge_started() end },
+						surge	 			= { prec = function() return xr_conditions.surge_started() end },
+--						territory			= { prec = function() return in_time_interval(4,20) and not xr_conditions.surge_started() end },
+						territory_hostile	= { prec = function() return in_time_interval(4,20) and not xr_conditions.surge_started() end },
+						territory_monolith	= { prec = function() return in_time_interval(4,20) and not xr_conditions.surge_started() end },
+--						resource 			= { prec = function(squad, target) return in_time_interval(4,20) and not xr_conditions.surge_started() end }
+					},
+			actor = nil
+	},	
+--	stalker_elite = {
+--			squad = nil,
+--			smart = nil,
+--			actor = nil
+--	},
+	stalker_guide = {
+			squad = nil,
+			smart = { 	base				= { prec = function(squad, target) return not xr_conditions.surge_started() and not travel_manager.check_squad_for_enemies(squad) end },
+						base_freedom	 	= { prec = function(squad, target) return not xr_conditions.surge_started() and not travel_manager.check_squad_for_enemies(squad) end },
+						base_duty	 		= { prec = function(squad, target) return not xr_conditions.surge_started() and not travel_manager.check_squad_for_enemies(squad) end },
+						surge	 			= { prec = function(squad, target) return xr_conditions.surge_started() and not travel_manager.check_squad_for_enemies(squad) end },
+--						territory			= { prec = function() return in_time_interval(6,16) and not xr_conditions.surge_started() end },
+--						territory_hostile	= { prec = function() return in_time_interval(6,16) and not xr_conditions.surge_started() end },
+--						resource 			= { prec = function(squad, target) return in_time_interval(6,16) and not xr_conditions.surge_started() end }
 					},
 			actor = nil
 	},
 	bandit = {
-			squad = { 	stalker	 = { prec = function(squad, target) return in_time_interval(8,21) and not xr_conditions.surge_started() and simulation_objects.sim_dist_to(squad, target) <= 150 end }
+			squad = nil,
+			smart = { 	base	 			= { prec = function(squad, target) return in_time_interval(19,4) and not xr_conditions.surge_started() and not travel_manager.check_squad_for_enemies(squad) and not (target:name() == "jup_a10_smart_terrain" or target:name() == "pri_a16") end },
+						base_hostile		= { prec = function(squad, target) return in_time_interval(19,4) and not xr_conditions.surge_started() end },
+--						territory			= { prec = function() return in_time_interval(4,19) and not xr_conditions.surge_started() end },
+						territory_hostile	= { prec = function() return in_time_interval(4,19) and not xr_conditions.surge_started() end },
+						surge	 			= { prec = function(squad, target) return xr_conditions.surge_started() and not (target:name() == "zat_stalker_base_smart" or target:name() == "jup_a10_smart_terrain" or target:name() == "pri_a16") end }
 					},
-			smart = { 	base	 = { prec = function(squad, target) return in_time_interval(21,8) and not xr_conditions.surge_started() and not travel_manager.check_squad_for_enemies(squad) and (target:name() == "zat_stalker_base_smart" or target:name() == "jup_a10_smart_terrain") end },
-						territory= { prec = function() return in_time_interval(8,21) and not xr_conditions.surge_started() end },
-						surge	 = { prec = function() return xr_conditions.surge_started() end }
+			actor = { prec = function(squad, target) return in_time_interval(4,19) and travel_manager.check_squad_for_enemies(squad) and simulation_objects.sim_dist_to(squad, target) <= 10 end }
+	},
+	bandit_elite = {
+			squad = { 	stalker	 = { prec = function(squad, target) return in_time_interval(19,4) and not xr_conditions.surge_started() and simulation_objects.sim_dist_to(squad, target) <= 80 end },
+						freedom	 = { prec = function(squad, target) return in_time_interval(19,4) and not xr_conditions.surge_started() and simulation_objects.sim_dist_to(squad, target) <= 50 end },
+						dolg 	 = { prec = function(squad, target) return in_time_interval(19,4) and not xr_conditions.surge_started() and simulation_objects.sim_dist_to(squad, target) <= 50 end }	
 					},
-			actor = { prec = function(squad, target) return story_flags.has_flag("SIM_BANDIT_ATTACK_HARDER") and simulation_objects.sim_dist_to(squad, target) <= 150 end }
+			smart = { 	base_hostile		= { prec = function(squad, target) return in_time_interval(4,19) and not xr_conditions.surge_started() end },
+--						territory			= { prec = function() return in_time_interval(19,4) and not xr_conditions.surge_started() end },
+						territory_hostile	= { prec = function() return in_time_interval(19,4) and not xr_conditions.surge_started() end },
+						resource 			= { prec = function(squad, target) return in_time_interval(19,4) and not xr_conditions.surge_started() end },
+						surge	 			= { prec = function(squad, target) return xr_conditions.surge_started() and not (target:name() == "zat_stalker_base_smart" or target:name() == "jup_a10_smart_terrain" or target:name() == "pri_a16") end }
+					},
+			actor = { prec = function(squad, target) return in_time_interval(20,6) and travel_manager.check_squad_for_enemies(squad) and simulation_objects.sim_dist_to(squad, target) <= 10 end }
 	},
 	dolg = {
-			squad = { 	freedom	 					= { prec = function(squad, target) return in_time_interval(8,19)	and not xr_conditions.surge_started() and simulation_objects.sim_dist_to(squad, target) <= 150 end	},
-						monster_predatory_day	 	= { prec = function(squad, target) return in_time_interval(8,19)	and not xr_conditions.surge_started() and simulation_objects.sim_dist_to(squad, target) <= 150 end	},
-						monster_predatory_night	 	= { prec = function(squad, target) return in_time_interval(8,19)	and not xr_conditions.surge_started() and simulation_objects.sim_dist_to(squad, target) <= 150 end	},
-						monster_vegetarian	 		= { prec = function(squad, target) return in_time_interval(8,19)	and not xr_conditions.surge_started() and simulation_objects.sim_dist_to(squad, target) <= 150 end	},
-						monster_zombied_day	 		= { prec = function(squad, target) return in_time_interval(8,19)	and not xr_conditions.surge_started() and simulation_objects.sim_dist_to(squad, target) <= 150 end	},
-						monster_special	 			= { prec = function(squad, target) return in_time_interval(8,19)	and not xr_conditions.surge_started() and simulation_objects.sim_dist_to(squad, target) <= 150 end	}
+			squad = { 	freedom	 					= { prec = function(squad, target) return in_time_interval(5,18)	and not xr_conditions.surge_started() and simulation_objects.sim_dist_to(squad, target) <= 50 end	},
+						bandit 						= { prec = function(squad, target) return in_time_interval(5,18)	and not xr_conditions.surge_started() and simulation_objects.sim_dist_to(squad, target) <= 70 end	},
+						monster_predatory_day	 	= { prec = function(squad, target) return in_time_interval(5,18)	and not xr_conditions.surge_started() and simulation_objects.sim_dist_to(squad, target) <= 50 end	},
+--						monster_predatory_night	 	= { prec = function(squad, target) return in_time_interval(5,18)	and not xr_conditions.surge_started() and simulation_objects.sim_dist_to(squad, target) <= 25 end	},
+						monster_vegetarian	 		= { prec = function(squad, target) return in_time_interval(5,18)	and not xr_conditions.surge_started() and simulation_objects.sim_dist_to(squad, target) <= 50 end	},
+						monster_zombied_day 		= { prec = function(squad, target) return in_time_interval(18,5)	and not xr_conditions.surge_started() and simulation_objects.sim_dist_to(squad, target) <= 70 end	},
+						monster_zombied_night 		= { prec = function(squad, target) return in_time_interval(18,5)	and not xr_conditions.surge_started() and simulation_objects.sim_dist_to(squad, target) <= 70 end	},
+--						monster_special	 			= { prec = function(squad, target) return in_time_interval(5,18)	and not xr_conditions.surge_started() and simulation_objects.sim_dist_to(squad, target) <= 25 end	}
 					},
-			smart = { 	base	 = { prec = function(squad, target) return in_time_interval(19,8) and not xr_conditions.surge_started() and not travel_manager.check_squad_for_enemies(squad) and (target:name() == "ros_bar_smart_visitors") end },
-						territory= { prec = function() return in_time_interval(8,19) and not xr_conditions.surge_started() end },
-						surge	 = { prec = function() return xr_conditions.surge_started() end }
+			smart = { 	base	 			= { prec = function(squad, target) return in_time_interval(18,5) and not xr_conditions.surge_started() and not travel_manager.check_squad_for_enemies(squad) end },
+						base_duty	 		= { prec = function(squad, target) return in_time_interval(18,5) and not xr_conditions.surge_started() end },
+						territory			= { prec = function(squad, target) return in_time_interval(5,18) and not xr_conditions.surge_started() and not (target:name() == "jup_sim_7" or target:name() == "jup_b200" or target:name() == "jup_sim_4" or target:name() == "jup_sim_20" or target:name() == "jup_b25") end },
+--						territory_hostile	= { prec = function() return in_time_interval(5,18) and not xr_conditions.surge_started() end },
+						surge	 			= { prec = function() return xr_conditions.surge_started() end },
+						resource 			= { prec = function(squad, target) return in_time_interval(5,18) and not xr_conditions.surge_started() and not (target:name() == "jup_sim_7" or target:name() == "jup_b200" or target:name() == "jup_sim_4" or target:name() == "jup_sim_20" or target:name() == "jup_b25") end }
+					},
+			actor = nil
+	},
+	dolg_hunter_day = {
+			squad = { 	monster_predatory_day	 	= { prec = function(squad, target) return in_time_interval(7,19)	and not xr_conditions.surge_started() and simulation_objects.sim_dist_to(squad, target) <= 100 end	},
+						monster_predatory_night	 	= { prec = function(squad, target) return in_time_interval(7,19)	and not xr_conditions.surge_started() and simulation_objects.sim_dist_to(squad, target) <= 50 end	},
+						monster_vegetarian	 		= { prec = function(squad, target) return in_time_interval(7,19)	and not xr_conditions.surge_started() and simulation_objects.sim_dist_to(squad, target) <= 100 end	},
+						monster_zombied_day 		= { prec = function(squad, target) return not xr_conditions.surge_started() and simulation_objects.sim_dist_to(squad, target) <= 80 end	},
+						monster_zombied_night 		= { prec = function(squad, target) return not xr_conditions.surge_started() and simulation_objects.sim_dist_to(squad, target) <= 80 end	},
+						monster_special	 			= { prec = function(squad, target) return in_time_interval(7,19)	and not xr_conditions.surge_started() and simulation_objects.sim_dist_to(squad, target) <= 100 end	}
+					},
+			smart = { 	base	 			= { prec = function(squad, target) return in_time_interval(19,7) and not xr_conditions.surge_started() and not travel_manager.check_squad_for_enemies(squad) end },
+						base_duty	 		= { prec = function(squad, target) return in_time_interval(19,7) and not xr_conditions.surge_started() end },
+--						lair				= { prec = function() return in_time_interval(7,19) and not xr_conditions.surge_started() end },
+--						lair_night			= { prec = function() return in_time_interval(7,19) and not xr_conditions.surge_started() end },
+						surge	 			= { prec = function() return xr_conditions.surge_started() end },
+						hunting_ground		= { prec = function(squad, target) return in_time_interval(7,19) and not xr_conditions.surge_started() and not (target:name() == "jup_sim_7" or target:name() == "jup_b200" or target:name() == "jup_sim_4" or target:name() == "jup_sim_20" or target:name() == "jup_b25") end }
+					},
+			actor = nil
+	},
+	dolg_hunter_night = {
+			squad = { 	monster_predatory_day	 	= { prec = function(squad, target) return in_time_interval(20,5)	and not xr_conditions.surge_started() and simulation_objects.sim_dist_to(squad, target) <= 80 end	},
+						monster_predatory_night	 	= { prec = function(squad, target) return in_time_interval(20,5)	and not xr_conditions.surge_started() and simulation_objects.sim_dist_to(squad, target) <= 120 end	},
+						monster_vegetarian	 		= { prec = function(squad, target) return in_time_interval(20,5)	and not xr_conditions.surge_started() and simulation_objects.sim_dist_to(squad, target) <= 80 end	},
+						monster_zombied_day 		= { prec = function(squad, target) return not xr_conditions.surge_started() and simulation_objects.sim_dist_to(squad, target) <= 80 end	},
+						monster_zombied_night 		= { prec = function(squad, target) return not xr_conditions.surge_started() and simulation_objects.sim_dist_to(squad, target) <= 80 end	},
+						monster_special	 			= { prec = function(squad, target) return in_time_interval(20,5)	and not xr_conditions.surge_started() and simulation_objects.sim_dist_to(squad, target) <= 120 end	}
+					},
+			smart = { 	base	 			= { prec = function(squad, target) return in_time_interval(5,20) and not xr_conditions.surge_started() and not travel_manager.check_squad_for_enemies(squad) end },
+						base_duty	 		= { prec = function(squad, target) return in_time_interval(5,20) and not xr_conditions.surge_started() end },
+--						lair				= { prec = function() return in_time_interval(20,5) and not xr_conditions.surge_started() end },
+--						lair_night			= { prec = function() return in_time_interval(20,5) and not xr_conditions.surge_started() end },
+						surge	 			= { prec = function() return xr_conditions.surge_started() end },
+						hunting_ground		= { prec = function(squad, target) return in_time_interval(20,5) and not xr_conditions.surge_started() and not (target:name() == "jup_sim_7" or target:name() == "jup_b200" or target:name() == "jup_sim_4" or target:name() == "jup_sim_20" or target:name() == "jup_b25") end }
+					},
+			actor = nil
+	},
+	dolg_elite = {
+			squad = { 	freedom	 					= { prec = function(squad, target) return not xr_conditions.surge_started() and simulation_objects.sim_dist_to(squad, target) <= 60 end	},
+						freedom_elite 				= { prec = function(squad, target) return not xr_conditions.surge_started() and simulation_objects.sim_dist_to(squad, target) <= 50 end	},
+						monolith 					= { prec = function(squad, target) return not xr_conditions.surge_started() and simulation_objects.sim_dist_to(squad, target) <= 80 end	},
+						bandit 						= { prec = function(squad, target) return not xr_conditions.surge_started() and simulation_objects.sim_dist_to(squad, target) <= 60 end	},
+						bandit_elite 				= { prec = function(squad, target) return not xr_conditions.surge_started() and simulation_objects.sim_dist_to(squad, target) <= 60 end	},
+						killer						= { prec = function(squad, target) return not xr_conditions.surge_started() and simulation_objects.sim_dist_to(squad, target) <= 60 end	},
+						monster_predatory_day	 	= { prec = function(squad, target) return in_time_interval(19,4)	and not xr_conditions.surge_started() and simulation_objects.sim_dist_to(squad, target) <= 50 end	},
+						monster_predatory_night	 	= { prec = function(squad, target) return not xr_conditions.surge_started() and simulation_objects.sim_dist_to(squad, target) <= 50 end	},
+						monster_vegetarian	 		= { prec = function(squad, target) return in_time_interval(19,4)	and not xr_conditions.surge_started() and simulation_objects.sim_dist_to(squad, target) <= 80 end	},
+						monster_zombied_day 		= { prec = function(squad, target) return not xr_conditions.surge_started() and simulation_objects.sim_dist_to(squad, target) <= 80 end	},
+						monster_zombied_night 		= { prec = function(squad, target) return not xr_conditions.surge_started() and simulation_objects.sim_dist_to(squad, target) <= 80 end	},
+						monster_special	 			= { prec = function(squad, target) return in_time_interval(19,4)	and not xr_conditions.surge_started() and simulation_objects.sim_dist_to(squad, target) <= 50 end	}
+					},
+			smart = { 	base	 			= { prec = function(squad, target) return in_time_interval(4,19) and not xr_conditions.surge_started() and not travel_manager.check_squad_for_enemies(squad) end },
+						base_duty	 		= { prec = function(squad, target) return in_time_interval(4,19) and not xr_conditions.surge_started() end },
+						base_hostile		= { prec = function(squad, target) return in_time_interval(22,4) and not xr_conditions.surge_started() end },
+						base_monolith	 	= { prec = function(squad, target) return in_time_interval(22,4) and not xr_conditions.surge_started() end },
+--						territory			= { prec = function(squad, target) return in_time_interval(19,4) and not xr_conditions.surge_started() and not (target:name() == "jup_sim_7" or target:name() == "jup_b200" or target:name() == "jup_sim_4" or target:name() == "jup_sim_20" or target:name() == "jup_b25") end },
+						territory_hostile	= { prec = function(squad, target) return in_time_interval(19,4) and not xr_conditions.surge_started() and not (target:name() == "jup_sim_7" or target:name() == "jup_b200" or target:name() == "jup_sim_4" or target:name() == "jup_sim_20" or target:name() == "jup_b25") end },
+--						territory_monolith	= { prec = function(squad, target) return in_time_interval(19,4) and not xr_conditions.surge_started() and not (target:name() == "jup_sim_7" or target:name() == "jup_b200" or target:name() == "jup_sim_4" or target:name() == "jup_sim_20" or target:name() == "jup_b25") end },
+--						lair				= { prec = function() return in_time_interval(19,4) and not xr_conditions.surge_started() end },
+--						lair_night			= { prec = function() return in_time_interval(19,4) and not xr_conditions.surge_started() end },
+						surge	 			= { prec = function() return xr_conditions.surge_started() end }
 					},
 			actor = nil
 	},
 	freedom = {
-			squad = {  	dolg						= { prec = function(squad, target) return in_time_interval(8,19) and not xr_conditions.surge_started() and simulation_objects.sim_dist_to(squad, target) <= 150 end }
+			squad = nil,
+			smart = { 	base	 			= { prec = function(squad, target) return in_time_interval(18,6) and not xr_conditions.surge_started() and not travel_manager.check_squad_for_enemies(squad) end },
+						base_freedom	 	= { prec = function(squad, target) return in_time_interval(18,6) and not xr_conditions.surge_started() end },
+--						base_hostile	 	= { prec = function(squad, target) return in_time_interval(6,18) and not xr_conditions.surge_started() end },
+						territory			= { prec = function(squad, target) return in_time_interval(6,18) and not xr_conditions.surge_started() and not (target:name() == "jup_sim_3" or target:name() == "jup_b46" or target:name() == "jup_sim_14" or target:name() == "jup_sim_13" or target:name() == "jup_b1" or target:name() == "jup_sim_9") end },
+--						territory_hostile	= { prec = function(squad, target) return in_time_interval(6,18) and not xr_conditions.surge_started() end },
+						resource 			= { prec = function(squad, target) return in_time_interval(6,18) and not xr_conditions.surge_started() end },
+						surge	 			= { prec = function() return xr_conditions.surge_started() end }
 					},
-			smart = { 	base	 = { prec = function(squad, target) return in_time_interval(19,8) and not xr_conditions.surge_started() and not travel_manager.check_squad_for_enemies(squad) and (target:name() == "zat_stalker_base_smart" or target:name() == "jup_a6" or target:name() == "pri_a16") end },
-						territory= { prec = function() return in_time_interval(8,19) and not xr_conditions.surge_started() end },
-						surge	 = { prec = function() return xr_conditions.surge_started() end }
+			actor = nil
+	},
+	freedom_sci = {
+			squad = nil,
+			smart = { 	base				= { prec = function(squad, target) return in_time_interval(17,6) and not xr_conditions.surge_started() and not travel_manager.check_squad_for_enemies(squad) end },
+						base_freedom	 	= { prec = function(squad, target) return in_time_interval(17,6) and not xr_conditions.surge_started() end },
+--						surge	 			= { prec = function() return xr_conditions.surge_started() end },
+--						territory			= { prec = function(squad, target) return in_time_interval(6,17) and not xr_conditions.surge_started() and not (target:name() == "jup_sim_3" or target:name() == "jup_b46" or target:name() == "jup_sim_14" or target:name() == "jup_sim_13" or target:name() == "jup_b1" or target:name() == "jup_sim_9") end },
+--						territory_hostile	= { prec = function(squad, target) return in_time_interval(6,17) and not xr_conditions.surge_started() end },
+						resource 			= { prec = function(squad, target) return in_time_interval(6,17) and not xr_conditions.surge_started() end },
+						resource_hard 		= { prec = function(squad, target) return in_time_interval(6,17) and not xr_conditions.surge_started() and not (target:name() == "jup_b6_anom_2") end }
+					},
+			actor = nil
+	},
+	freedom_elite = {
+			squad = {  	dolg 						= { prec = function(squad, target) return xr_conditions.surge_started() and simulation_objects.sim_dist_to(squad, target) <= 60 end 	},
+						dolg_elite					= { prec = function(squad, target) return xr_conditions.surge_started() and simulation_objects.sim_dist_to(squad, target) <= 50 end 	},
+						bandit 						= { prec = function(squad, target) return xr_conditions.surge_started() and simulation_objects.sim_dist_to(squad, target) <= 80 end	},
+						bandit_elite 				= { prec = function(squad, target) return xr_conditions.surge_started() and simulation_objects.sim_dist_to(squad, target) <= 60 end	},
+						killer						= { prec = function(squad, target) return xr_conditions.surge_started() and simulation_objects.sim_dist_to(squad, target) <= 80 end	},
+						monolith 					= { prec = function(squad, target) return xr_conditions.surge_started() and simulation_objects.sim_dist_to(squad, target) <= 80 end	}
+					},
+			smart = { 	base	 			= { prec = function(squad, target) return in_time_interval(6,20) and not xr_conditions.surge_started() and not travel_manager.check_squad_for_enemies(squad) end },
+--						base_hostile	 	= { prec = function(squad, target) return in_time_interval(20,6) and not xr_conditions.surge_started() and not (target:name() == "jup_a10_smart_terrain") end },
+						base_freedom	 	= { prec = function(squad, target) return in_time_interval(6,20) and not xr_conditions.surge_started() end },
+						base_monolith	 	= { prec = function(squad, target) return in_time_interval(22,4) and not xr_conditions.surge_started() end },
+--						territory			= { prec = function(squad, target) return in_time_interval(20,6) and not xr_conditions.surge_started() and not (target:name() == "jup_sim_3" or target:name() == "jup_b46" or target:name() == "jup_sim_14" or target:name() == "jup_sim_13" or target:name() == "jup_b1" or target:name() == "jup_sim_9") end },
+						territory_hostile	= { prec = function(squad, target) return in_time_interval(20,6) and not xr_conditions.surge_started() and not (target:name() == "jup_sim_3" or target:name() == "jup_b46" or target:name() == "jup_sim_14" or target:name() == "jup_sim_13" or target:name() == "jup_b1" or target:name() == "jup_sim_9") end },
+--						territory_monolith	= { prec = function() return in_time_interval(20,6) and not xr_conditions.surge_started() end },
+						surge	 			= { prec = function() return xr_conditions.surge_started() end }
 					},
 			actor = nil
 	},
 	killer = {
 			squad = nil,
-			smart = {	territory= { prec = function() return  not xr_conditions.surge_started()  end },
-						surge	 = { prec = function() return xr_conditions.surge_started() end }
+			smart = { 	base_hostile	 	= { prec = function(squad, target) return in_time_interval(4,20) and not xr_conditions.surge_started() end },
+--						territory			= { prec = function(squad, target) return in_time_interval(20,4) and  not xr_conditions.surge_started() end },
+						territory_hostile	= { prec = function() return in_time_interval(20,4) and not xr_conditions.surge_started() end },
+						resource 			= { prec = function(squad, target) return in_time_interval(20,4) and not xr_conditions.surge_started() end },
+						surge	 			= { prec = function(squad, target) return xr_conditions.surge_started() and not (target:name() == "zat_stalker_base_smart" or target:name() == "jup_a10_smart_terrain" or target:name() == "pri_a16") end }
 					},
-			actor = { prec = function(squad, target) return simulation_objects.sim_dist_to(squad, target) <= 150 end }
-
+			actor = nil
+	},
+	monolith = {
+			squad = { 	stalker	 = { prec = function(squad, target) return in_time_interval(21,3) and not xr_conditions.surge_started() and simulation_objects.sim_dist_to(squad, target) <= 100 end },
+						freedom	 = { prec = function(squad, target) return in_time_interval(21,3) and not xr_conditions.surge_started() and simulation_objects.sim_dist_to(squad, target) <= 100 end },
+						dolg 	 = { prec = function(squad, target) return in_time_interval(21,3) and not xr_conditions.surge_started() and simulation_objects.sim_dist_to(squad, target) <= 100 end },
+						bandit	 = { prec = function(squad, target) return in_time_interval(21,3) and not xr_conditions.surge_started() and simulation_objects.sim_dist_to(squad, target) <= 100 end },
+						killer	 = { prec = function(squad, target) return in_time_interval(21,3) and not xr_conditions.surge_started() and simulation_objects.sim_dist_to(squad, target) <= 100 end }
+					},
+			smart = { 	base_monolith	 	= { prec = function(squad, target) return in_time_interval(3,21) and not xr_conditions.surge_started() end },
+--						territory			= { prec = function(squad, target) return in_time_interval(21,3) and not xr_conditions.surge_started() end },
+--						territory_hostile	= { prec = function() return in_time_interval(3,21) and not xr_conditions.surge_started() end },
+						territory_monolith	= { prec = function() return in_time_interval(3,21) and not xr_conditions.surge_started() end },
+--						surge	 			= { prec = function(squad, target) return xr_conditions.surge_started() and not (target:name() == "zat_stalker_base_smart" or target:name() == "jup_a10_smart_terrain" or target:name() == "pri_a16") end },
+--						resource 			= { prec = function(squad, target) return in_time_interval(21,3) and not xr_conditions.surge_started() end }
+					},
+			actor = { prec = function(squad, target) return simulation_objects.sim_dist_to(squad, target) <= 10 end }
+	},
+	monolith_sci = {
+			squad = nil,
+			smart = { 	base_monolith	 	= { prec = function(squad, target) return in_time_interval(3,21) and not xr_conditions.surge_started() end },
+--						territory			= { prec = function(squad, target) return in_time_interval(21,3) and not xr_conditions.surge_started() end },
+--						territory_hostile	= { prec = function() return in_time_interval(3,21) and not xr_conditions.surge_started() end },
+--						territory_monolith	= { prec = function() return in_time_interval(3,21) and not xr_conditions.surge_started() end },
+--						surge	 			= { prec = function(squad, target) return xr_conditions.surge_started() and not (target:name() == "zat_stalker_base_smart" or target:name() == "jup_a10_smart_terrain" or target:name() == "pri_a16") end },
+--						resource 			= { prec = function(squad, target) return in_time_interval(21,3) and not xr_conditions.surge_started() end }
+						resource_monolith 	= { prec = function(squad, target) return in_time_interval(22,2) and not xr_conditions.surge_started() end }
+					},
+			actor = nil
 	},
 	zombied = {
 			squad = nil,
-			smart = {	territory= { prec = function() return true end },
-						lair	 = { prec = function() return true end}
+			smart = { 	lair	 			= { prec = function(squad, target) return not (target:name() == "zat_sim_26") end },
+						lair_night	 		= { prec = function(squad, target) return not (target:name() == "zat_sim_26") end }
 					},
 			actor = nil
-
 	},
 	monster_predatory_day = {
-			squad = { 	monster_vegetarian			= { prec = function() return in_time_interval(6,19)	end	},
-						stalker						= { prec = function(squad, target) return in_time_interval(6, 19) and simulation_objects.sim_dist_to(squad, target) <= 150 end },
-						bandit						= { prec = function(squad, target) return in_time_interval(6, 19) and simulation_objects.sim_dist_to(squad, target) <= 150 end },
-						dolg						= { prec = function(squad, target) return in_time_interval(6, 19) and simulation_objects.sim_dist_to(squad, target) <= 150 end },
-						freedom						= { prec = function(squad, target) return in_time_interval(6, 19) and simulation_objects.sim_dist_to(squad, target) <= 150 end },
-						killer						= { prec = function(squad, target) return in_time_interval(6, 19) and simulation_objects.sim_dist_to(squad, target) <= 150 end }
+			squad = { 	monster_vegetarian			= { prec = function(squad, target) return in_time_interval(3, 22) and simulation_objects.sim_dist_to(squad, target) <= 350 end},
+--						stalker						= { prec = function(squad, target) return in_time_interval(3, 22) and simulation_objects.sim_dist_to(squad, target) <= 60 end },
+--						bandit						= { prec = function(squad, target) return in_time_interval(3, 22) and simulation_objects.sim_dist_to(squad, target) <= 60 end },
+--						dolg						= { prec = function(squad, target) return in_time_interval(3, 22) and simulation_objects.sim_dist_to(squad, target) <= 60 end },
+--						freedom						= { prec = function(squad, target) return in_time_interval(3, 22) and simulation_objects.sim_dist_to(squad, target) <= 60 end },
+--						killer						= { prec = function(squad, target) return in_time_interval(3, 22) and simulation_objects.sim_dist_to(squad, target) <= 60 end }
 					},
-			smart = { 	territory= { prec = function() return  in_time_interval(6, 19)  end },
-						lair	 = { prec = function() return in_time_interval(19,6) end }
+			smart = { 	
+						lair	 		= { prec = function() return in_time_interval(22,3) end },
+						lair_night	 	= { prec = function() return in_time_interval(22,3) end }
 					},
-			actor = { prec = function(squad, target) return in_time_interval(6, 19) and simulation_objects.sim_dist_to(squad, target) <= 150 end }
+--			smart = nil,
+--			actor = { prec = function(squad, target) return in_time_interval(3, 22) and simulation_objects.sim_dist_to(squad, target) <= 60 end }
+			actor = nil
 	},
 	monster_predatory_night = {
-			squad = { 	monster_vegetarian			= { prec = function() return in_time_interval(21,6)	end	},
-						stalker						= { prec = function(squad, target) return in_time_interval(19,6) and simulation_objects.sim_dist_to(squad, target) <= 150 end },
-						bandit						= { prec = function(squad, target) return in_time_interval(19,6) and simulation_objects.sim_dist_to(squad, target) <= 150 end },
-						dolg						= { prec = function(squad, target) return in_time_interval(19,6) and simulation_objects.sim_dist_to(squad, target) <= 150 end },
-						freedom						= { prec = function(squad, target) return in_time_interval(19,6) and simulation_objects.sim_dist_to(squad, target) <= 150 end },
-						killer						= { prec = function(squad, target) return in_time_interval(19,6) and simulation_objects.sim_dist_to(squad, target) <= 150 end }
+			squad = { 	monster_vegetarian			= { prec = function(squad, target) return in_time_interval(22,3) and simulation_objects.sim_dist_to(squad, target) <= 450 end},
+						monster_predatory_day		= { prec = function(squad, target) return in_time_interval(22,3) and simulation_objects.sim_dist_to(squad, target) <= 450 end},
+						stalker						= { prec = function(squad, target) return in_time_interval(22,3) and simulation_objects.sim_dist_to(squad, target) <= 100 end },
+						bandit						= { prec = function(squad, target) return in_time_interval(22,3) and simulation_objects.sim_dist_to(squad, target) <= 100 end },
+						dolg						= { prec = function(squad, target) return in_time_interval(22,3) and simulation_objects.sim_dist_to(squad, target) <= 100 end },
+						freedom						= { prec = function(squad, target) return in_time_interval(22,3) and simulation_objects.sim_dist_to(squad, target) <= 100 end },
+						killer						= { prec = function(squad, target) return in_time_interval(22,3) and simulation_objects.sim_dist_to(squad, target) <= 100 end }
 					},
-			smart = { 	territory= { prec = function() return  in_time_interval(19,6)  end },
-						lair	 = { prec = function() return in_time_interval(6,19) end }
+			smart = { 	
+						lair	 		= { prec = function() return in_time_interval(22,3) end },
+						lair_night	 	= { prec = function() return in_time_interval(3,22) end },
+						lair_night_rest	= { prec = function() return in_time_interval(3,22) end }
 					},
-			actor = { prec = function(squad, target) return in_time_interval(19,6) and simulation_objects.sim_dist_to(squad, target) <= 150 end }
+--			smart = nil,
+			actor = { prec = function(squad, target) return in_time_interval(22,3) and simulation_objects.sim_dist_to(squad, target) <= 100 end }
+--			actor = nil
 	},
 	monster_vegetarian = {
 			squad = nil,
 			smart = {
-						lair	 = { prec = function() return true end }
+						lair	 = { prec = function() return in_time_interval(3,22) end },
+						lair_night	 = { prec = function() return in_time_interval(22,3) end }
 					},
-			actor = { prec = function(squad, target) return in_time_interval(6, 19) and simulation_objects.sim_dist_to(squad, target) <= 150 end }
+			actor = nil
 	},
 	monster_zombied_day = {
-			squad = {	stalker						= { prec = function(squad, target) return in_time_interval(6, 19) and simulation_objects.sim_dist_to(squad, target) <= 150 end },
-						bandit						= { prec = function(squad, target) return in_time_interval(6, 19) and simulation_objects.sim_dist_to(squad, target) <= 150 end },
-						dolg						= { prec = function(squad, target) return in_time_interval(6, 19) and simulation_objects.sim_dist_to(squad, target) <= 150 end },
-						freedom						= { prec = function(squad, target) return in_time_interval(6, 19) and simulation_objects.sim_dist_to(squad, target) <= 150 end },
-						killer						= { prec = function(squad, target) return in_time_interval(6, 19) and simulation_objects.sim_dist_to(squad, target) <= 150 end }
-					 },
-			smart = { 	territory= { prec = function() return  not xr_conditions.surge_started()  end },
-						lair	 = { prec = function() return in_time_interval(19,6) end }
+			squad = {	stalker						= { prec = function(squad, target) return in_time_interval(6, 19) and simulation_objects.sim_dist_to(squad, target) <= 80 end },
+						bandit						= { prec = function(squad, target) return in_time_interval(6, 19) and simulation_objects.sim_dist_to(squad, target) <= 80 end },
+						dolg						= { prec = function(squad, target) return in_time_interval(6, 19) and simulation_objects.sim_dist_to(squad, target) <= 80 end },
+						freedom						= { prec = function(squad, target) return in_time_interval(6, 19) and simulation_objects.sim_dist_to(squad, target) <= 80 end },
+						killer						= { prec = function(squad, target) return in_time_interval(6, 19) and simulation_objects.sim_dist_to(squad, target) <= 80 end }
 					},
-			actor = { prec = function(squad, target) return in_time_interval(6, 19) and simulation_objects.sim_dist_to(squad, target) <= 150 end }
+			smart = { 	territory			= { prec = function() return true  end },
+						territory_hostile 	= { prec = function() return true  end },
+						lair	 			= { prec = function() return true  end },
+						lair_night	 		= { prec = function() return true  end }
+					},
+			actor = { prec = function(squad, target) return in_time_interval(6, 19) and simulation_objects.sim_dist_to(squad, target) <= 80 end }
 	},
 	monster_zombied_night = {
-			squad = {	stalker						= { prec = function(squad, target) return in_time_interval(19,6) and simulation_objects.sim_dist_to(squad, target) <= 150 end },
-						bandit						= { prec = function(squad, target) return in_time_interval(19,6) and simulation_objects.sim_dist_to(squad, target) <= 150 end },
-						dolg						= { prec = function(squad, target) return in_time_interval(19,6) and simulation_objects.sim_dist_to(squad, target) <= 150 end },
-						freedom						= { prec = function(squad, target) return in_time_interval(19,6) and simulation_objects.sim_dist_to(squad, target) <= 150 end },
-						killer						= { prec = function(squad, target) return in_time_interval(19,6) and simulation_objects.sim_dist_to(squad, target) <= 150 end }
-					 },
-			smart = { 	territory= { prec = function() return  in_time_interval(19,6)  end },
-						lair	 = { prec = function() return in_time_interval(6,19) end }
+			squad = {	stalker						= { prec = function(squad, target) return in_time_interval(19,6) and simulation_objects.sim_dist_to(squad, target) <= 80 end },
+						bandit						= { prec = function(squad, target) return in_time_interval(19,6) and simulation_objects.sim_dist_to(squad, target) <= 80 end },
+						dolg						= { prec = function(squad, target) return in_time_interval(19,6) and simulation_objects.sim_dist_to(squad, target) <= 80 end },
+						freedom						= { prec = function(squad, target) return in_time_interval(19,6) and simulation_objects.sim_dist_to(squad, target) <= 80 end },
+						killer						= { prec = function(squad, target) return in_time_interval(19,6) and simulation_objects.sim_dist_to(squad, target) <= 80 end }
 					},
-			actor = { prec = function(squad, target) return in_time_interval(19,6) and simulation_objects.sim_dist_to(squad, target) <= 150 end }
+			smart = { 	territory			= { prec = function() return true  end },
+						territory_hostile 	= { prec = function() return true  end },
+						lair	 			= { prec = function() return true  end },
+						lair_night	 		= { prec = function() return true  end }
+					},
+			actor = { prec = function(squad, target) return in_time_interval(19,6) and simulation_objects.sim_dist_to(squad, target) <= 80 end }
 	},
 	monster_special = {
 			squad = nil,
@@ -234,6 +484,7 @@ function sim_board:create_squad(spawn_smart, sq_id)
 	--local squad = squad_class(self, squad_id, faction_name, settings_id)
 	--squad:init_squad(spawn_smart)
 	printf("Creating squad[%s] in smart[%s]", squad_id, spawn_smart:name())
+	debug_utils.INFO(MODULE, "[create_squad] Creating squad %s [%s], in smart %s [%s]", squad.id, squad_id, spawn_smart.id, spawn_smart:name())
 	--' Определяем в каком смарте создать новый отряд
 	squad:create_npc(spawn_smart)
 	squad:set_squad_relation()
@@ -269,6 +520,7 @@ function sim_board:assign_squad_to_smart(squad, smart_id)
 	-- Если смарта нету (например на загрузке он еще не загружен), то мы загоняем данные
 	-- во временную таблицу. И на загрузке смарта автодобавляем их.
 	--printf("assigned squad %s to smart [%s].", tostring(squad.id), tostring(smart_id))
+	--debug_utils.INFO(MODULE, "[assign_squad_to_smart] assigned squad %s to smart [%s].", tostring(squad.id), tostring(smart_id))
 
 	if smart_id ~= nil and self.smarts[smart_id] == nil then
 	--	printf("   to tmp")
@@ -321,6 +573,7 @@ function sim_board:exit_smart(squad, smart_id)
 	end
 
 	printf("Squad %s exit smart %s. Quan = %s", tostring(squad.id), smart.smrt:name(), tostring(smart.stayed_squad_quan))
+	debug_utils.INFO(MODULE, "[exit_smart] Squad %s exit smart %s. Quan = %s", tostring(squad.id), smart.smrt:name(), tostring(smart.stayed_squad_quan))
 	smart.stayed_squad_quan = smart.stayed_squad_quan - 1
 	smart.squads[squad.id] = nil
 
@@ -345,6 +598,7 @@ function sim_board:enter_smart(squad, smart_id, after_load)
 	end
 	squad.entered_smart = smart_id
 	printf("Squad %s enter smart %s. Quan = %s", tostring(squad.id), smart.smrt:name(), tostring(smart.stayed_squad_quan))
+	debug_utils.INFO(MODULE, "[enter_smart] Squad %s enter smart %s. Quan = %s", tostring(squad.id), smart.smrt:name(), tostring(smart.stayed_squad_quan))
 
 	--smart.smrt:refresh()
 

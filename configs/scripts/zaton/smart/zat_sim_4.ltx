@@ -5,9 +5,23 @@ respawn_only_smart = true
 respawn_params = respawn@zat_sim_4   
 
 [respawn@zat_sim_4]
-spawn_mix_boar_flesh
+spawn_bandit@hostile
+spawn_stalker@veteran
+spawn_killer
+spawn_monolith
 
+[spawn_bandit@hostile]
+spawn_squads = bandit_sim_squad_hostile
+spawn_num = 1
 
-[spawn_mix_boar_flesh]
-spawn_squads = simulation_boar, simulation_flesh, simulation_mix_boar_flesh 
+[spawn_stalker@veteran]
+spawn_squads = stalker_sim_squad_veteran, stalker_hunter_day_simulation_squad
 spawn_num = 2
+
+[spawn_killer]
+spawn_squads = duty_hunter_night_simulation_squad
+spawn_num = 1
+
+[spawn_monolith]
+spawn_squads = stalker_hunter_night_simulation_squad
+spawn_num = 1

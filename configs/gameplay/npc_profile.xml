@@ -6,7 +6,6 @@
 		<class>Actor</class>
 		<specific_character>actor</specific_character>
 	</character>
-	
 	<character id="default">
 		<class>Stalker_general</class>
 	</character>
@@ -37,6 +36,21 @@
 	<character id="sim_default_duty_4">
 		<class>sim_default_duty_4</class>
 	</character>
+	<character id="sim_default_duty_hunter_day_1">
+		<class>sim_default_duty_hunter_day_1</class>
+	</character>
+	<character id="sim_default_duty_hunter_day_2">
+		<class>sim_default_duty_hunter_day_2</class>
+	</character>
+	<character id="sim_default_duty_hunter_night">
+		<class>sim_default_duty_hunter_night</class>
+	</character>
+	<character id="sim_default_duty_commando_1">
+		<class>sim_default_duty_commando_1</class>
+	</character>
+	<character id="sim_default_duty_commando_2">
+		<class>sim_default_duty_commando_2</class>
+	</character>
 	<!-- sim monolith -->
 	<character id="sim_default_monolith_0">
 		<class>sim_default_monolith_0</class>
@@ -53,6 +67,13 @@
 	<character id="sim_default_monolith_4">
 		<class>sim_default_monolith_4</class>
 	</character>
+	<character id="sim_default_monolith_sci_1">
+		<class>sim_default_monolith_sci_1</class>
+	</character>
+	<character id="sim_default_monolith_sci_2">
+		<class>sim_default_monolith_sci_2</class>
+	</character>
+	
 
 	<!-- sim freedom -->
 	<character id="sim_default_freedom_0">
@@ -70,12 +91,15 @@
 	<character id="sim_default_freedom_4">
 		<class>sim_default_freedom_4</class>
 	</character>
+	<character id="sim_default_freedom_sci_1">
+		<class>sim_default_freedom_sci_1</class>
+	</character>
+	<character id="sim_default_freedom_sci_2">
+		<class>sim_default_freedom_sci_2</class>
+	</character>
 
 	<!-- sim bandit -->
 	<character id="sim_default_bandit_0">
-		<class>sim_default_bandit_0</class>
-	</character>
-		<character id="sim_default_bandit">
 		<class>sim_default_bandit_0</class>
 	</character>
 	<character id="sim_default_bandit_1">
@@ -107,8 +131,23 @@
 	<character id="sim_default_stalker_4">
 		<class>sim_default_stalker_4</class>
 	</character>
-
-		<!-- sim nebo -->
+	
+	<character id="sim_default_stalker_sci_1">
+		<class>sim_default_stalker_sci_1</class>
+	</character>
+	<character id="sim_default_stalker_sci_2">
+		<class>sim_default_stalker_sci_2</class>
+	</character>
+	<character id="sim_default_stalker_hunter_day">
+		<class>sim_default_stalker_hunter_day</class>
+	</character>
+	<character id="sim_default_stalker_hunter_night">
+		<class>sim_default_stalker_hunter_night</class>
+	</character>
+	<character id="sim_default_stalker_guide">
+		<class>sim_default_stalker_guide</class>
+	</character>
+	<!-- sim nebo -->
 	<character id="sim_default_nebo_0">
 		<class>sim_default_nebo_0</class>
 	</character>
@@ -124,7 +163,7 @@
 	<character id="sim_default_nebo_4">
 		<class>sim_default_nebo_4</class>
 	</character>
-	
+
 	<!-- sim military -->
 	<character id="sim_default_military_0">
 		<class>sim_default_military_0</class>
@@ -175,49 +214,49 @@
 	<character id="sim_default_zombied_4">
 		<class>sim_default_zombied_4</class>
 	</character>
-	
-	<!-- sim csky -->
+
+
 	<character id="sim_default_csky_0">
 		<class>sim_default_csky_0</class>
 	</character>
 	<character id="sim_default_csky_1">
 		<class>sim_default_csky_1</class>
-	</character>
+   </character>
 	<character id="sim_default_csky_2">
 		<class>sim_default_csky_2</class>
-	</character>
+   </character>
 	<character id="sim_default_csky_3">
 		<class>sim_default_csky_3</class>
-	</character>
+   </character>
 	<character id="sim_default_csky_4">
 		<class>sim_default_csky_4</class>
-	</character>
-	
-	<!-- sim renegade -->
+   </character>
+
+   <!-- Pripyat A15 -->
 	<character id="sim_default_renegade_0">
 		<class>sim_default_renegade_0</class>
-	</character>
+   </character>
 	<character id="sim_default_renegade_1">
 		<class>sim_default_renegade_1</class>
-	</character>
+   </character>
 	<character id="sim_default_renegade_2">
 		<class>sim_default_renegade_2</class>
-	</character>
-	
-	<!-- sim ecolog -->
+   </character>
+
+   <!-- Pripyat B35 -->
 	<character id="sim_default_ecolog_1">
 		<class>sim_default_ecolog_1</class>
-	</character>
+   </character>
 	<character id="sim_default_ecolog_2">
 		<class>sim_default_ecolog_2</class>
-	</character>
+   </character>
 	<character id="sim_default_ecolog_3">
 		<class>sim_default_ecolog_3</class>
-	</character>	
-   
-  <!-- defense -->
-  
+   </character>
+
+   <!-- Pripyat B306 -->
  
+
       <character id="df_br_xrmpe_corpse_1">
 		<class>df_br_xrmpe_corpse_1</class>
    </character>
@@ -250,51 +289,52 @@
    </character>
    <character id="xrmpe_corpse_pol_6">
 		<class>xrmpe_corpse_pol_6</class>
-   </character>
+  </character>
    <character id="xrmpe_corpse_pol_7">
 		<class>xrmpe_corpse_pol_7</class>
-   </character>
+  </character>
 
-	<!-- DEFENCE -->
+  <!-- Jupiter b47 -->
 	<!-- Df_Catacomb -->
 	<!-- Гарик -->
 	<character id="df_cat_zombied_garik">
 		<class>df_cat_zombied_garik</class>
-	</character>
+   </character>
 	<!-- df_prost_anom -->
 	<character id="df_shizik">
 		<class>df_shizik</class>
-	</character>
+   </character>
 	<!-- df monolith -->
 	<character id="df_default_monolith_0">
 		<class>df_default_monolith_0</class>
-	</character>
+   </character>
 	<character id="df_default_monolith_1">
 		<class>df_default_monolith_1</class>
-	</character>
+   </character>
 	<character id="df_default_monolith_2">
 		<class>df_default_monolith_2</class>
-	</character>
+   </character>
 	<character id="df_default_monolith_3">
 		<class>df_default_monolith_3</class>
-	</character>
+   </character>
 	<character id="df_default_monolith_4">
 		<class>df_default_monolith_4</class>
-	</character>
+   </character>
 	<!-- df bandit -->
 	<character id="df_default_bandit_0">
 		<class>df_default_bandit_0</class>
-	</character>	
+   </character>
 	<character id="df_default_bandit_1">
 		<class>df_default_bandit_1</class>
-	</character>	
+	</character>
 	<character id="df_default_bandit_2">
 		<class>df_default_bandit_2</class>
-	</character>	
+   </character>
 	<character id="df_default_bandit_3">
 		<class>df_default_bandit_3</class>
-	</character>	
+	</character>
 	<character id="df_default_bandit_4">
 		<class>df_default_bandit_4</class>
-	</character>
+   </character>
+
 </xml>

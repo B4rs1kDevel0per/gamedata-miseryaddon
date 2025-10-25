@@ -91,16 +91,16 @@ story_id = pri_a17_mon_ambush_5
 
 [pri_a18_monolith_idol_squad]:online_offline_group
 faction = monolith
-npc = sim_default_monolith_1, sim_default_monolith_1, sim_default_monolith_0, sim_default_monolith_0, sim_default_monolith_0
+npc = sim_default_monolith_0, sim_default_monolith_1, sim_default_monolith_2, sim_default_monolith_2, sim_default_monolith_3, sim_default_monolith_3
 spawn_point = pri_a18_terrain_spawn
-target_smart = pri_a18_smart_terrain
+target_smart = {+PRI_A18_USE_IDOL_DONE} nil, pri_a18_smart_terrain
 story_id = pri_a18_monolith_idol_squad
 
 [pri_a18_monolith_post_guard_squad]:online_offline_group
 faction = monolith
-npc = sim_default_monolith_1, sim_default_monolith_1, sim_default_monolith_0, sim_default_monolith_0, sim_default_monolith_0
+npc = sim_default_monolith_1, sim_default_monolith_2, sim_default_monolith_3, sim_default_monolith_3, sim_default_monolith_4
 spawn_point = pri_a18_post_guard_smart_terrain_spawn_point
-target_smart = pri_a18_smart_terrain
+target_smart = {+PRI_A18_USE_IDOL_DONE} nil, pri_a18_smart_terrain
 story_id = pri_a18_monolith_post_guard_squad
 
 [pri_a18_monolith_corridor_squad]:online_offline_group
@@ -631,9 +631,3 @@ npc = sim_default_monolith_3, sim_default_monolith_2, sim_default_monolith_2
 target_smart = {+PRI_A28_CUTSCENES_END} nil, pri_a28_heli
 spawn_point = pri_a28_heli_mono_add_2_spawn
 ;story_id = pri_a28_heli_mono_add_2_final
-
-[simulation_chimera_pripyat]:online_offline_group
-faction = monster_predatory_night
-npc_random = chimera_normal
-npc_in_squad = 1, 1
-target_smart = {=is_dark_night} nil, pri_a17

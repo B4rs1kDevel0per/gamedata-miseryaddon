@@ -15,7 +15,7 @@ default_to_ruck         = false
 sprint_allowed          = true
 
 ;-------------------------------------------------------------------------------
-cost                 	= 36000
+cost                 	= 6000
 weapon_class            = assault_rifle
 inv_weight              = 2.7
 
@@ -28,10 +28,10 @@ def_show_bones = sight_iron, sight_handle
 
 ;--TTX----------------------------------------------------------------------------
 
-hit_power         = 0.3, 0.3, 0.3, 0.3
+hit_power         = 0.95, 0.95, 0.95, 0.95
 hit_impulse       = 100
 hit_type          = fire_wound
-fire_distance        = 700
+fire_distance        = 200
 bullet_speed         = 600 ;начальная скорость пули
 rpm                  = 685
 rpm_empty_click      = 200
@@ -113,10 +113,10 @@ holder_fov_modifier     = 1.0              ; во сколько раз увел
 min_radius              = 0
 max_radius              = 100
 
-hit_probability_gd_novice  = 1.0
-hit_probability_gd_stalker = 1.0
-hit_probability_gd_veteran = 1.0
-hit_probability_gd_master  = 1.0
+hit_probability_gd_novice  = 0.80
+hit_probability_gd_stalker = 0.80
+hit_probability_gd_veteran = 0.80
+hit_probability_gd_master  = 0.80
 
 ;-------------------------------------------------------------------------------
 inv_name             	= st_wpn_lr300
@@ -236,17 +236,17 @@ silencer_smoke_particles   = weapons\generic_shoot_00
 
 snd_silncer_shot        = weapons\silence
 
-snd_shoot_start                = weapons\sig550\layers\sig550_shoot_a_1
-snd_shoot_start1                = weapons\sig550\layers\sig550_shoot_a_2
-snd_shoot_start2                = weapons\sig550\layers\sig550_shoot_a_3
+snd_shoot_start                = weapons\lr300\layers\lr300_shoot_a_1
+snd_shoot_start1                = weapons\lr300\layers\lr300_shoot_a_2
+snd_shoot_start2                = weapons\lr300\layers\lr300_shoot_a_3
 snd_silencer_shoot_start        = weapons\sig552\layers\sig552_silencer_a_1
 snd_silencer_shoot_start1        = weapons\sig552\layers\sig552_silencer_a_2
 snd_silencer_shoot_start2        = weapons\sig552\layers\sig552_silencer_a_3
 
-snd_shoot_loop            = weapons\sig550\layers\sig550_loop_a
-snd_shoot_loop_tail        = weapons\akm\layers\akm_tail_a_1
-snd_shoot_loop_tail1        = weapons\akm\layers\akm_tail_a_2
-snd_shoot_loop_tail2        = weapons\akm\layers\akm_tail_a_3
+snd_shoot_loop            = weapons\lr300\layers\lr300_loop_a
+snd_shoot_loop_tail        = weapons\groza\layers\groza_tail_a_1
+snd_shoot_loop_tail1        = weapons\groza\layers\groza_tail_a_2
+snd_shoot_loop_tail2        = weapons\groza\layers\groza_tail_a_3
 
 snd_silencer_shoot_loop        = weapons\sig552\layers\sig552_silencer_loop_a
 snd_silencer_shoot_loop_tail        = weapons\val\layers\val_tail_a_1

@@ -26,97 +26,182 @@
 ;	Jupiter A12
 ;-----------------------------------------------------------------
 
-[jup_a12_stalker_assaulter]:stalker
+[jup_a12_stalker_assaulter]:stalker_veteran
 $spawn                     = "respawn\jup_a12_stalker_assaulter"
 character_profile     = jup_a12_stalker_assaulter
-spec_rank = novice
+spec_rank = veteran
 community = stalker
 story_id = jup_a12_stalker_assaulter
 
-[jup_a12_stalker_diplomat]:stalker
+;---------------------------------------------------
+
+;[VETERAN_PROFILE]
+
+;---------------------------------------------------
+
+[jup_a12_stalker_diplomat]:stalker_veteran
 $spawn                     = "respawn\jup_a12_stalker_diplomat"
 character_profile     = jup_a12_stalker_diplomat
-spec_rank = novice
+spec_rank = veteran
 community = stalker
 story_id = jup_a12_stalker_diplomat
 
-[jup_a12_stalker_prisoner]:stalker_silent
+;---------------------------------------------------
+
+;[VETERAN_PROFILE]
+
+;---------------------------------------------------
+
+[jup_a12_stalker_prisoner]:stalker_silent_experienced
 $spawn                     = "respawn\jup_a12_stalker_prisoner"
 character_profile     = jup_a12_stalker_prisoner
-spec_rank = novice
+spec_rank = experienced
 community = stalker
 story_id = jup_a12_stalker_prisoner
 
-[jup_a12_bandit_chief]:stalker_silent
+;---------------------------------------------------
+
+;[EXPERIENCED_PROFILE]
+
+;---------------------------------------------------
+
+[jup_a12_bandit_chief]:bandit_stalker_silent_master
 $spawn                     = "respawn\jup_a12_bandit_chief"
 character_profile     = jup_a12_bandit_chief
-spec_rank = novice
+spec_rank = master
 community = bandit
 story_id = jup_a12_bandit_chief
 
-[jup_a12_bandit_guard]:stalker_silent
+;---------------------------------------------------
+
+;[BANDIT_MASTER_PROFILE]
+
+;---------------------------------------------------
+
+[jup_a12_bandit_guard]:bandit_stalker_silent_veteran
 $spawn                     = "respawn\jup_a12_bandit_guard"
 character_profile     = jup_a12_bandit_guard
-spec_rank = novice
+spec_rank = veteran
 community = bandit
 story_id = jup_a12_bandit_guard
 
-[jup_a12_bandit_cashier]:stalker_silent
+;---------------------------------------------------
+
+;[BANDIT_VETERAN_PROFILE]
+
+;---------------------------------------------------
+
+[jup_a12_bandit_cashier]:bandit_stalker_silent_veteran
 $spawn                     = "respawn\jup_a12_bandit_cashier"
 character_profile     = jup_a12_bandit_cashier
-spec_rank = novice
+spec_rank = veteran
 community = bandit
 story_id = jup_a12_bandit_cashier
 
-[jup_a12_merc_cover]:stalker_silent
+;---------------------------------------------------
+
+;[BANDIT_VETERAN_PROFILE]
+
+;---------------------------------------------------
+
+[jup_a12_merc_cover]:bandit_stalker_silent_veteran
 $spawn                     = "respawn\jup_a12_merc_cover"
 character_profile     = jup_a12_merc_cover
-spec_rank = novice
+spec_rank = veteran
 community = stalker
 story_id = jup_a12_merc_cover
+
+;---------------------------------------------------
+
+;[BANDIT_VETERAN_PROFILE]
+
+;---------------------------------------------------
+
 ;-----------------------------------------------------------------
 ;	Jupiter A12
 ;-----------------------------------------------------------------
 
-[jup_b207_merc_illicit_dealer]:stalker
+[jup_b207_merc_illicit_dealer]:stalker_duty_veteran
 $spawn                     = "respawn\jup_b207_merc_illicit_dealer"
 character_profile     = jup_b207_merc_illicit_dealer
 community = killer
 
-[jup_b207_merc_leader]:stalker
+;---------------------------------------------------
+
+;[DUTY_VETERAN_PROFILE]
+
+;---------------------------------------------------
+
+[jup_b207_merc_leader]:stalker_duty_master_exo
 $spawn                     = "respawn\jup_b207_merc_leader"
 character_profile     = jup_b207_merc_leader
 community = killer
 
-[jup_b207_duty_security_squad_leader]:stalker
+;---------------------------------------------------
+
+;[DUTY_MASTER_EXO_PROFILE]
+
+;---------------------------------------------------
+
+[jup_b207_duty_security_squad_leader]:stalker_duty_master
 $spawn                     = "respawn\jup_b207_duty_security_squad_leader"
 character_profile     = jup_b207_duty_security_squad_leader
 community = dolg
 
-[jup_b207_freedom_recon_squad_leader]:stalker
+;---------------------------------------------------
+
+;[DUTY_MASTER_PROFILE]
+
+;---------------------------------------------------
+
+[jup_b207_freedom_recon_squad_leader]:stalker_freedom_mas
 $spawn                     = "respawn\jup_b207_freedom_recon_squad_leader"
 character_profile     = jup_b207_freedom_recon_squad_leader
 community = freedom
 
-[jup_b207_freedom_assault_squad_leader]:stalker
+;---------------------------------------------------
+
+;[FREEDOM_MASTER_PROFILE]
+
+;---------------------------------------------------
+
+[jup_b207_freedom_assault_squad_leader]:stalker_freedom_mas
 $spawn                     = "respawn\jup_b207_freedom_assault_squad_leader"
 character_profile     = jup_b207_freedom_assault_squad_leader
 community = freedom
+
+;---------------------------------------------------
+
+;[FREEDOM_MASTER_PROFILE]
+
+;---------------------------------------------------
 
 ;-----------------------------------------------------------------
 ;	Jupiter A10
 ;-----------------------------------------------------------------
 
-[jup_a10_bandit_leader]:stalker
+[jup_a10_bandit_leader]:stalker_duty_master
 $spawn                     = "respawn\jup_a10_bandit_leader"
 character_profile     = jup_a10_bandit_leader
 story_id = jup_a10_bandit_leader
 
-[jup_a10_stalker_vano]:stalker_silent
+;---------------------------------------------------
+
+;[DUTY_MASTER_PROFILE]
+
+;---------------------------------------------------
+
+[jup_a10_stalker_vano]:stalker_silent_master
 $spawn                     = "respawn\jup_a10_stalker_vano"
 character_profile     = jup_a10_stalker_vano
 story_id = jup_a10_stalker_vano
 ;custom_data = scripts\jupiter\jup_a10_stalker_vano.ltx
+
+;---------------------------------------------------
+
+;[MASTER_PROFILE]
+
+;---------------------------------------------------
 
 ;-----------------------------------------------------------------
 ;	Jupiter B16
@@ -152,14 +237,20 @@ story_id = jup_b217_stalker_tech
 ;-----------------------------------------------------------------
 ;	Jupiter B220
 ;-----------------------------------------------------------------
-[jup_b220_trapper]:stalker_silent
+[jup_b220_trapper]:stalker_silent_master
 $spawn                     = "respawn\jup_b220_trapper"
 character_profile     = jup_b220_trapper
 story_id = jup_b220_trapper
 
+;---------------------------------------------------
+
+;[MASTER_PROFILE]
+
+;---------------------------------------------------
+
 [jup_b212_chimera_killer]:chimera_normal
 $spawn                     = "respawn\jup_b212_chimera_killer"
-panic_threshold = 0.01
+;panic_threshold = 0.01
 story_id = jup_b212_chimera_killer_id
 
 ;--------------------------------------------------------------------------
@@ -192,97 +283,228 @@ fire_wound_immunity   	= 0.2
 ;-----------------------------------------------------------------
 ;	Jupiter B4
 ;-----------------------------------------------------------------
-[jup_b4_monolith_squad_leader_monolith_skin]:stalker_silent
+[jup_b4_monolith_squad_leader_monolith_skin]:stalker_silent_monolith_master
 $spawn                     = "respawn\jup_b4_monolith_squad_leader_monolith_skin"
 character_profile     = jup_b4_monolith_squad_leader_monolith_skin
 story_id = jup_b4_monolith_squad_leader_monolith_skin
 
-[jup_b4_monolith_squad_leader_duty_skin]:stalker_silent
+;---------------------------------------------------
+
+;[MONOLITH_MASTER_PROFILE]
+
+;---------------------------------------------------
+
+[jup_b4_monolith_squad_leader_duty_skin]:stalker_silent_monolith_master
 $spawn                     = "respawn\jup_b4_monolith_squad_leader_duty_skin"
 character_profile     = jup_b4_monolith_squad_leader_duty_skin
 story_id = jup_b4_monolith_squad_leader_duty_skin
 
-[jup_b4_monolith_squad_leader_freedom_skin]:stalker_silent
+;---------------------------------------------------
+
+;[MONOLITH_MASTER_PROFILE]
+
+;---------------------------------------------------
+
+[jup_b4_monolith_squad_leader_freedom_skin]:stalker_silent_monolith_master
 $spawn                     = "respawn\jup_b4_monolith_squad_leader_freedom_skin"
 character_profile     = jup_b4_monolith_squad_leader_freedom_skin
 story_id = jup_b4_monolith_squad_leader_freedom_skin
 
-[jup_b4_monolith_squad_soldier_1_monolith_skin]:stalker_silent
+;---------------------------------------------------
+
+;[MONOLITH_MASTER_PROFILE]
+
+;---------------------------------------------------
+
+[jup_b4_monolith_squad_soldier_1_monolith_skin]:stalker_monolith_veteran
 $spawn                     = "respawn\jup_b4_monolith_squad_soldier_1_monolith_skin"
 character_profile     = jup_b4_monolith_squad_soldier_1_monolith_skin
 
-[jup_b4_monolith_squad_soldier_1_duty_skin]:stalker
+;---------------------------------------------------
+
+;[MONOLITH_VETERAN_PROFILE]
+
+;---------------------------------------------------
+
+[jup_b4_monolith_squad_soldier_1_duty_skin]:stalker_monolith_veteran
 $spawn                     = "respawn\jup_b4_monolith_squad_soldier_1_duty_skin"
 character_profile		= jup_b4_monolith_squad_soldier_1_duty_skin
 
-[jup_b4_monolith_squad_soldier_1_freedom_skin]:stalker
+;---------------------------------------------------
+
+;[MONOLITH_VETERAN_PROFILE]
+
+;---------------------------------------------------
+
+[jup_b4_monolith_squad_soldier_1_freedom_skin]:stalker_monolith_veteran
 $spawn                     = "respawn\jup_b4_monolith_squad_soldier_1_freedom_skin"
 character_profile		= jup_b4_monolith_squad_soldier_1_freedom_skin
 
-[jup_b4_monolith_squad_soldier_2_monolith_skin]:stalker_silent
+;---------------------------------------------------
+
+;[MONOLITH_VETERAN_PROFILE]
+
+;---------------------------------------------------
+
+[jup_b4_monolith_squad_soldier_2_monolith_skin]:stalker_silent_monolith_veteran
 $spawn                     = "respawn\jup_b4_monolith_squad_soldier_2_monolith_skin"
 character_profile     = jup_b4_monolith_squad_soldier_2_monolith_skin
 
-[jup_b4_monolith_squad_soldier_2_duty_skin]:stalker
+;---------------------------------------------------
+
+;[MONOLITH_VETERAN_PROFILE]
+
+;---------------------------------------------------
+
+[jup_b4_monolith_squad_soldier_2_duty_skin]:stalker_monolith_veteran
 $spawn                     = "respawn\jup_b4_monolith_squad_soldier_2_duty_skin"
 character_profile		= jup_b4_monolith_squad_soldier_2_duty_skin
 
-[jup_b4_monolith_squad_soldier_2_freedom_skin]:stalker
+;---------------------------------------------------
+
+;[MONOLITH_VETERAN_PROFILE]
+
+;---------------------------------------------------
+
+[jup_b4_monolith_squad_soldier_2_freedom_skin]:stalker_monolith_veteran
 $spawn                     = "respawn\jup_b4_monolith_squad_soldier_2_freedom_skin"
 character_profile		= jup_b4_monolith_squad_soldier_2_freedom_skin
 
-[jup_b4_monolith_squad_soldier_3_monolith_skin]:stalker_silent
+;---------------------------------------------------
+
+;[MONOLITH_VETERAN_PROFILE]
+
+;---------------------------------------------------
+
+[jup_b4_monolith_squad_soldier_3_monolith_skin]:stalker_monolith_veteran
 $spawn                     = "respawn\jup_b4_monolith_squad_soldier_3_monolith_skin"
 character_profile     = jup_b4_monolith_squad_soldier_3_monolith_skin
 
-[jup_b4_monolith_squad_soldier_3_duty_skin]:stalker
+;---------------------------------------------------
+
+;[MONOLITH_VETERAN_PROFILE]
+
+;---------------------------------------------------
+
+[jup_b4_monolith_squad_soldier_3_duty_skin]:stalker_monolith_veteran
 $spawn                     = "respawn\jup_b4_monolith_squad_soldier_3_duty_skin"
 character_profile		= jup_b4_monolith_squad_soldier_3_duty_skin
 
-[jup_b4_monolith_squad_soldier_3_freedom_skin]:stalker
+;---------------------------------------------------
+
+;[MONOLITH_VETERAN_PROFILE]
+
+;---------------------------------------------------
+
+[jup_b4_monolith_squad_soldier_3_freedom_skin]:stalker_monolith_veteran
 $spawn                     = "respawn\jup_b4_monolith_squad_soldier_3_freedom_skin"
 character_profile		= jup_b4_monolith_squad_soldier_3_freedom_skin
 
-[jup_b4_monolith_squad_soldier_4_monolith_skin]:stalker_silent
+;---------------------------------------------------
+
+;[MONOLITH_VETERAN_PROFILE]
+
+;---------------------------------------------------
+
+[jup_b4_monolith_squad_soldier_4_monolith_skin]:stalker_silent_monolith_veteran
 $spawn                     = "respawn\jup_b4_monolith_squad_soldier_4_monolith_skin"
 character_profile     = jup_b4_monolith_squad_soldier_4_monolith_skin
 
-[jup_b4_monolith_squad_soldier_4_duty_skin]:stalker
+;---------------------------------------------------
+
+;[MONOLITH_VETERAN_PROFILE]
+
+;---------------------------------------------------
+
+[jup_b4_monolith_squad_soldier_4_duty_skin]:stalker_monolith_veteran
 $spawn                     = "respawn\jup_b4_monolith_squad_soldier_4_duty_skin"
 character_profile		= jup_b4_monolith_squad_soldier_4_duty_skin
 
-[jup_b4_monolith_squad_soldier_4_freedom_skin]:stalker
+;---------------------------------------------------
+
+;[MONOLITH_VETERAN_PROFILE]
+
+;---------------------------------------------------
+
+[jup_b4_monolith_squad_soldier_4_freedom_skin]:stalker_monolith_veteran
 $spawn                     = "respawn\jup_b4_monolith_squad_soldier_4_freedom_skin"
 character_profile		= jup_b4_monolith_squad_soldier_4_freedom_skin
 
-[jup_b4_monolith_squad_soldier_5_monolith_skin]:stalker_silent
+;---------------------------------------------------
+
+;[MONOLITH_VETERAN_PROFILE]
+
+;---------------------------------------------------
+
+[jup_b4_monolith_squad_soldier_5_monolith_skin]:stalker_silent_monolith_experienced
 $spawn                     = "respawn\jup_b4_monolith_squad_soldier_5_monolith_skin"
 character_profile     = jup_b4_monolith_squad_soldier_5_monolith_skin
 
-[jup_b4_monolith_squad_soldier_5_duty_skin]:stalker
+;---------------------------------------------------
+
+;[MONOLITH_EXPERIENCED_PROFILE]
+
+;---------------------------------------------------
+
+[jup_b4_monolith_squad_soldier_5_duty_skin]:stalker_monolith_experienced
 $spawn                     = "respawn\jup_b4_monolith_squad_soldier_5_duty_skin"
 character_profile		= jup_b4_monolith_squad_soldier_5_duty_skin
 
-[jup_b4_monolith_squad_soldier_5_freedom_skin]:stalker
+;---------------------------------------------------
+
+;[MONOLITH_EXPERIENCED_PROFILE]
+
+;---------------------------------------------------
+
+[jup_b4_monolith_squad_soldier_5_freedom_skin]:stalker_monolith_experienced
 $spawn                     = "respawn\jup_b4_monolith_squad_soldier_5_freedom_skin"
 character_profile		= jup_b4_monolith_squad_soldier_5_freedom_skin
 
-[jup_b4_freedom_help]:stalker
+;---------------------------------------------------
+
+;[MONOLITH_EXPERIENCED_PROFILE]
+
+;---------------------------------------------------
+
+[jup_b4_freedom_help]:stalker_veteran
 $spawn                     = "respawn\jup_b4_freedom_help"
 character_profile		= jup_b4_freedom_help
 
-[jup_b4_duty_help]:stalker
+;---------------------------------------------------
+
+;[VETERAN_PROFILE]
+
+;---------------------------------------------------
+
+[jup_b4_duty_help]:stalker_veteran
 $spawn                     = "respawn\jup_b4_duty_help"
 character_profile		= jup_b4_duty_help
 
-[jup_b4_freedom_leader]:stalker
+;---------------------------------------------------
+
+;[VETERAN_PROFILE]
+
+;---------------------------------------------------
+
+[jup_b4_freedom_leader]:stalker_freedom_mas
 $spawn                     = "respawn\jup_b4_freedom_leader"
 character_profile		= jup_b4_freedom_leader
 
-[jup_b4_duty_leader]:stalker
+;---------------------------------------------------
+
+;[FREEDOM_MASTER_PROFILE]
+
+;---------------------------------------------------
+
+[jup_b4_duty_leader]:stalker_duty_master
 $spawn                     = "respawn\jup_b4_duty_leader"
 character_profile		= jup_b4_duty_leader
 
+;---------------------------------------------------
+
+;[DUTY_MASTER_PROFILE]
+
+;---------------------------------------------------
 
 ;-----------------------------------------------------------------
 ;	Jupiter B8
@@ -321,45 +543,93 @@ $spawn                     = "respawn\jup_b6_scientist_tech"
 character_profile     = jup_b6_scientist_tech
 story_id = jup_b6_scientist_tech
 
-[jup_b1_stalker_1]:stalker_silent
+[jup_b1_stalker_1]:stalker_silent_veteran
 $spawn                     = "respawn\jup_b1_stalker_1"
 character_profile     = jup_b1_stalker_1
 story_id = jup_b1_stalker_1
 
-[jup_b1_stalker_2]:stalker_silent
+;---------------------------------------------------
+
+;[VETERAN_PROFILE]
+
+;---------------------------------------------------
+
+[jup_b1_stalker_2]:stalker_silent_veteran
 $spawn                     = "respawn\jup_b1_stalker_2"
 character_profile     = jup_b1_stalker_2
 story_id = jup_b1_stalker_2
 
-[jup_b1_stalker_3]:stalker_silent
+;---------------------------------------------------
+
+;[VETERAN_PROFILE]
+
+;---------------------------------------------------
+
+[jup_b1_stalker_3]:stalker_silent_veteran
 $spawn                     = "respawn\jup_b1_stalker_3"
 character_profile     = jup_b1_stalker_3
 story_id = jup_b1_stalker_3
 
-[jup_b1_stalker_4]:stalker_silent
+;---------------------------------------------------
+
+;[VETERAN_PROFILE]
+
+;---------------------------------------------------
+
+[jup_b1_stalker_4]:stalker_silent_veteran
 $spawn                     = "respawn\jup_b1_stalker_4"
 character_profile     = jup_b1_stalker_4
 story_id = jup_b1_stalker_4
 
-[jup_b1_pro_stalker_1]:stalker
+;---------------------------------------------------
+
+;[VETERAN_PROFILE]
+
+;---------------------------------------------------
+
+[jup_b1_pro_stalker_1]:stalker_master
 $spawn                     = "respawn\jup_b1_pro_stalker_1"
 character_profile     = jup_b1_pro_stalker_1
 story_id = jup_b1_stalker_1
 
-[jup_b1_pro_stalker_2]:stalker
+;---------------------------------------------------
+
+;[MASTER_PROFILE]
+
+;---------------------------------------------------
+
+[jup_b1_pro_stalker_2]:stalker_master
 $spawn                     = "respawn\jup_b1_pro_stalker_2"
 character_profile     = jup_b1_pro_stalker_2
 story_id = jup_b1_stalker_2
 
-[jup_b1_pro_stalker_3]:stalker
+;---------------------------------------------------
+
+;[MASTER_PROFILE]
+
+;---------------------------------------------------
+
+[jup_b1_pro_stalker_3]:stalker_master
 $spawn                     = "respawn\jup_b1_pro_stalker_3"
 character_profile     = jup_b1_pro_stalker_3
 story_id = jup_b1_stalker_3
 
-[jup_b1_pro_stalker_4]:stalker
+;---------------------------------------------------
+
+;[MASTER_PROFILE]
+
+;---------------------------------------------------
+
+[jup_b1_pro_stalker_4]:stalker_master
 $spawn                     = "respawn\jup_b1_pro_stalker_4"
 character_profile     = jup_b1_pro_stalker_4
 story_id = jup_b1_stalker_4
+
+;---------------------------------------------------
+
+;[MASTER_PROFILE]
+
+;---------------------------------------------------
 
 [jup_b1_zombie_1]:stalker_zombied
 $spawn                     = "respawn\jup_b1_zombie_1"
@@ -399,81 +669,165 @@ visual        = monsters\krovosos\krovosos_green
 $spawn                     = "respawn\jup_b6_bloodsucker_3"
 visual        = monsters\krovosos\krovosos_green
 
-[jup_b6_freedom_stalker_1]:stalker_silent
+[jup_b6_freedom_stalker_1]:stalker_silent_freedom_exp
 $spawn                     = "respawn\jup_b6_freedom_stalker_1"
 character_profile     = jup_b6_freedom_stalker_1
 story_id = jup_b6_freedom_stalker_1
 
-[jup_b6_freedom_stalker_2]:stalker_silent
+;---------------------------------------------------
+
+;[FREEDOM_EXPERIENCED_PROFILE]
+
+;---------------------------------------------------
+
+[jup_b6_freedom_stalker_2]:stalker_silent_freedom_exp
 $spawn                     = "respawn\jup_b6_freedom_stalker_2"
 character_profile     = jup_b6_freedom_stalker_2
 story_id = jup_b6_freedom_stalker_2
 
-[jup_b6_freedom_stalker_3]:stalker_silent
+;---------------------------------------------------
+
+;[FREEDOM_EXPERIENCED_PROFILE]
+
+;---------------------------------------------------
+
+[jup_b6_freedom_stalker_3]:stalker_silent_freedom_vet
 $spawn                     = "respawn\jup_b6_freedom_stalker_3"
 character_profile     = jup_b6_freedom_stalker_3
 story_id = jup_b6_freedom_stalker_3
 
-[jup_b6_freedom_stalker_4]:stalker_silent
+;---------------------------------------------------
+
+;[FREEDOM_VETERAN_PROFILE]
+
+;---------------------------------------------------
+
+[jup_b6_freedom_stalker_4]:stalker_silent_freedom_mas
 $spawn                     = "respawn\jup_b6_freedom_stalker_4"
 character_profile     = jup_b6_freedom_stalker_4
 story_id = jup_b6_freedom_stalker_4
 
-[jup_b6_duty_stalker_1]:stalker_silent
+;---------------------------------------------------
+
+;[FREEDOM_MASTER_PROFILE]
+
+;---------------------------------------------------
+
+[jup_b6_duty_stalker_1]:stalker_silent_duty_experienced
 $spawn                     = "respawn\jup_b6_duty_stalker_1"
 character_profile     = jup_b6_duty_stalker_1
 story_id = jup_b6_duty_stalker_1
 
-[jup_b6_duty_stalker_2]:stalker_silent
+;---------------------------------------------------
+
+;[DUTY_EXPERIENCED_PROFILE]
+
+;---------------------------------------------------
+
+[jup_b6_duty_stalker_2]:stalker_silent_duty_experienced
 $spawn                     = "respawn\jup_b6_duty_stalker_2"
 character_profile     = jup_b6_duty_stalker_2
 story_id = jup_b6_duty_stalker_2
 
-[jup_b6_duty_stalker_3]:stalker_silent
+;---------------------------------------------------
+
+;[DUTY_EXPERIENCED_PROFILE]
+
+;---------------------------------------------------
+
+[jup_b6_duty_stalker_3]:stalker_silent_duty_veteran
 $spawn                     = "respawn\jup_b6_duty_stalker_3"
 character_profile     = jup_b6_duty_stalker_3
 story_id = jup_b6_duty_stalker_3
 
-[jup_b6_duty_stalker_4]:stalker_silent
+;---------------------------------------------------
+
+;[DUTY_VETERAN_PROFILE]
+
+;---------------------------------------------------
+
+[jup_b6_duty_stalker_4]:stalker_silent_duty_master
 $spawn                     = "respawn\jup_b6_duty_stalker_4"
 character_profile     = jup_b6_duty_stalker_4
 story_id = jup_b6_duty_stalker_4
 
-[jup_b6_stalker_prisoner]:stalker_silent
+;---------------------------------------------------
+
+;[DUTY_MASTER_PROFILE]
+
+;---------------------------------------------------
+
+[jup_b6_stalker_prisoner]:stalker_silent_veteran
 $spawn                     = "respawn\jup_b6_stalker_prisoner"
 character_profile     = jup_b6_stalker_prisoner
 story_id = jup_b6_stalker_prisoner
 
-[jup_b6_stalker_assaulter]:stalker_silent
+;---------------------------------------------------
+
+;[VETERAN_PROFILE]
+
+;---------------------------------------------------
+
+[jup_b6_stalker_assaulter]:stalker_silent_veteran
 $spawn                     = "respawn\jup_b6_stalker_assaulter"
 character_profile     = jup_b6_stalker_assaulter
 story_id = jup_b6_stalker_assaulter
 
-[jup_b6_stalker_diplomat]:stalker_silent
+;---------------------------------------------------
+
+;[VETERAN_PROFILE]
+
+;---------------------------------------------------
+
+[jup_b6_stalker_diplomat]:stalker_silent_veteran
 $spawn                     = "respawn\jup_b6_stalker_diplomat"
 character_profile     = jup_b6_stalker_diplomat
 story_id = jup_b6_stalker_diplomat
 
-[jup_b6_stalker_gonta]:stalker_silent
+;---------------------------------------------------
+
+;[VETERAN_PROFILE]
+
+;---------------------------------------------------
+
+[jup_b6_stalker_gonta]:stalker_silent_master
 $spawn                     = "respawn\jup_b6_stalker_gonta"
 character_profile     = jup_b6_stalker_gonta
 story_id = jup_b6_stalker_gonta
 
-[jup_b6_stalker_garmata]:stalker_silent
+;---------------------------------------------------
+
+;[MASTER_PROFILE]
+
+;---------------------------------------------------
+
+[jup_b6_stalker_garmata]:stalker_silent_master
 $spawn                     = "respawn\jup_b6_stalker_garmata"
 character_profile     = jup_b6_stalker_garmata
 story_id = jup_b6_stalker_garmata
 
-[jup_b6_stalker_crab]:stalker_silent
+;---------------------------------------------------
+
+;[MASTER_PROFILE]
+
+;---------------------------------------------------
+
+[jup_b6_stalker_crab]:stalker_silent_master
 $spawn                     = "respawn\jup_b6_stalker_crab"
 character_profile     = jup_b6_stalker_crab
 story_id = jup_b6_stalker_crab
+
+;---------------------------------------------------
+
+;[MASTER_PROFILE]
+
+;---------------------------------------------------
 
 ;-----------------------------------------------------------------
 ;	Jupiter B25
 ;-----------------------------------------------------------------
 
-[jup_b25_stalker_senya]:stalker_silent
+[jup_b25_stalker_senya]:stalker_silent_master
 $spawn                     = "respawn\jup_b25_stalker_senya"
 character_profile     = jup_b25_stalker_senya
 ;custom_data = scripts\jupiter\jup_b25_stalker_senya.ltx
@@ -481,21 +835,46 @@ story_id = jup_b25_stalker_senya
 sound_death						= ;fight\death\death_
 sound_wounded					= ;fight\friend_hitted\hit_friend_
 
-[jup_b25_freedom_flint]:stalker_silent
+;---------------------------------------------------
+
+;[MASTER_PROFILE]
+
+;---------------------------------------------------
+
+[jup_b25_freedom_flint]:stalker_silent_freedom_mas
 $spawn                     = "respawn\jup_b25_freedom_flint"
 character_profile     = jup_b25_freedom_flint
 story_id = jup_b25_freedom_flint
 
-[jup_b10_stalker_drunk]:stalker_silent
+;---------------------------------------------------
+
+;[FREEDOM_MASTER_PROFILE]
+
+;---------------------------------------------------
+
+[jup_b10_stalker_drunk]:stalker_silent_veteran
 $spawn                     = "respawn\jup_b10_stalker_drunk"
 character_profile     = jup_b10_stalker_drunk
 story_id = jup_b10_stalker_drunk
 
-[jup_b10_stalker_drunk_dead]:stalker_silent
+;---------------------------------------------------
+
+;[VETERAN_PROFILE]
+
+;---------------------------------------------------
+
+[jup_b10_stalker_drunk_dead]:stalker_silent_veteran
 $spawn                     = "respawn\jup_b10_stalker_drunk_dead"
 character_profile     = jup_b10_stalker_drunk_dead
 story_id = jup_b10_stalker_drunk_dead
 custom_data = scripts\jupiter\jup_b10_drunk_dead.ltx
+
+;---------------------------------------------------
+
+;[VETERAN_PROFILE]
+
+;---------------------------------------------------
+
 
 ;-----------------------------------------------------------------
 ;	Jupiter B202
@@ -505,34 +884,58 @@ $spawn                     = "respawn\jup_a6_stalker_medik"
 character_profile     = jup_a6_stalker_medik
 story_id = jup_a6_stalker_medik
 
-[jup_b15_zulus]:stalker_silent
+[jup_b15_zulus]:stalker_silent_master
 $spawn                     = "respawn\jup_b15_zulus"
 character_profile     = jup_b15_zulus
 story_id = jup_b15_zulus
 
-[jup_b202_stalker_snag]:stalker_silent
+;---------------------------------------------------
+
+;[MASTER_PROFILE]
+
+;---------------------------------------------------
+
+[jup_b202_stalker_snag]:stalker_silent_master
 $spawn                     = "respawn\jup_b202_stalker_snag"
 character_profile     = jup_b202_stalker_snag
 story_id = jup_b202_stalker_snag
+
+;---------------------------------------------------
+
+;[MASTER_PROFILE]
+
+;---------------------------------------------------
 
 [jup_a6_stalker_barmen]:stalker_silent
 $spawn                     = "respawn\jup_a6_stalker_barmen"
 character_profile     = jup_a6_stalker_barmen
 story_id = jup_a6_stalker_barmen
 
-[jup_b202_bandit]:stalker_silent
+[jup_b202_bandit]:bandit_stalker_silent_master
 $spawn                     = "respawn\jup_b202_bandit"
 character_profile     = jup_b202_bandit
 story_id = jup_b202_bandit
 
+;---------------------------------------------------
+
+;[BANDIT_MASTER_PROFILE]
+
+;---------------------------------------------------
+
 ;-----------------------------------------------------------------
 ;	Jupiter B19
 ;-----------------------------------------------------------------
-[jup_b19_freedom_yar]:stalker_silent
+[jup_b19_freedom_yar]:stalker_silent_master
 $spawn                     = "respawn\jup_b19_freedom_yar"
 character_profile     = jup_b19_freedom_yar
 community = freedom
 story_id = jup_b19_freedom_yar
+
+;---------------------------------------------------
+
+;[FREEDOM_MASTER_PROFILE]
+
+;---------------------------------------------------
 
 [jup_b19_zombied_1]:stalker_zombied
 $spawn                     = "respawn\jup_b19_zombied_1"
@@ -545,35 +948,65 @@ character_profile     = sim_default_zombied_2
 community = zombied
 
 
-[jup_b19_merc_1]:stalker
+[jup_b19_merc_1]:stalker_duty_veteran
 $spawn                     = "respawn\jup_b19_merc_1"
 character_profile     = jup_b19_merc_1
 community = killer
 story_id = jup_b19_merc_1
 
-[jup_b19_merc_2]:stalker
+;---------------------------------------------------
+
+;[DUTY_VETERAN_PROFILE]
+
+;---------------------------------------------------
+
+[jup_b19_merc_2]:stalker_veteran
 $spawn                     = "respawn\jup_b19_merc_2"
 character_profile     = jup_b19_merc_2
 community = killer
 story_id = jup_b19_merc_2
 
-[jup_b19_merc_3]:stalker
+;---------------------------------------------------
+
+;[VETERAN_PROFILE]
+
+;---------------------------------------------------
+
+[jup_b19_merc_3]:stalker_duty_veteran
 $spawn                     = "respawn\jup_b19_merc_3"
 character_profile     = jup_b19_merc_3
 community = killer
 story_id = jup_b19_merc_3
 
-[jup_b19_merc_4]:stalker
+;---------------------------------------------------
+
+;[DUTY_VETERAN_PROFILE]
+
+;---------------------------------------------------
+
+[jup_b19_merc_4]:stalker_experienced
 $spawn                     = "respawn\jup_b19_merc_4"
 character_profile     = jup_b19_merc_4
 community = killer
 story_id = jup_b19_merc_4
 
-[jup_b19_merc_5]:stalker
+;---------------------------------------------------
+
+;[EXPERIENCED_PROFILE]
+
+;---------------------------------------------------
+
+[jup_b19_merc_5]:stalker_freedom_vet
 $spawn                     = "respawn\jup_b19_merc_5"
 character_profile     = jup_b19_merc_5
 community = killer
 story_id = jup_b19_merc_5
+
+;---------------------------------------------------
+
+;[FREEDOM_VETERAN_PROFILE]
+
+;---------------------------------------------------
 
 ;-----------------------------------------------------------------
 ;	Jupiter B43
@@ -591,101 +1024,197 @@ story_id = jup_b43_stalker_assistant_pri
 ;-------------------------------------------------------------------
 ;   Jupiter B46
 ;-------------------------------------------------------------------
-[jup_b46_duty_founder]:stalker_silent
+[jup_b46_duty_founder]:stalker_silent_duty_master
 $spawn                     = "respawn\jup_b46_duty_founder"
 character_profile     = jup_b46_duty_founder
 ;Health = 0
 custom_data = scripts\zaton\zat_dont_spawn_loot.ltx 
 sound_death						= ;fight\death\death_
 
-[jup_b46_duty_founder_squad_01]:stalker_silent
+;---------------------------------------------------
+
+;[DUTY_MASTER_PROFILE]
+
+;---------------------------------------------------
+
+[jup_b46_duty_founder_squad_01]:stalker_silent_duty_veteran
 $spawn                     = "respawn\jup_b46_duty_founder_squad_01"
 character_profile     = jup_b46_duty_founder_squad_01
 custom_data = scripts\zaton\zat_dont_spawn_loot.ltx
 sound_death						= ;fight\death\death_
 
-[jup_b46_duty_founder_squad_02]:stalker_silent
+;---------------------------------------------------
+
+;[DUTY_VETERAN_PROFILE]
+
+;---------------------------------------------------
+
+[jup_b46_duty_founder_squad_02]:stalker_silent_duty_veteran
 $spawn                     = "respawn\jup_b46_duty_founder_squad_02"
 character_profile     = jup_b46_duty_founder_squad_02
 custom_data = scripts\zaton\zat_dont_spawn_loot.ltx
 sound_death						= ;fight\death\death_
 
-[jup_b46_duty_founder_squad_03]:stalker_silent
+;---------------------------------------------------
+
+;[DUTY_VETERAN_PROFILE]
+
+;---------------------------------------------------
+
+[jup_b46_duty_founder_squad_03]:stalker_silent_duty_veteran
 $spawn                     = "respawn\jup_b46_duty_founder_squad_03"
 character_profile     = jup_b46_duty_founder_squad_03
 custom_data = scripts\zaton\zat_dont_spawn_loot.ltx
 sound_death						= ;fight\death\death_
 
-[jup_b46_duty_founder_squad_04]:stalker_silent
+;---------------------------------------------------
+
+;[DUTY_VETERAN_PROFILE]
+
+;---------------------------------------------------
+
+[jup_b46_duty_founder_squad_04]:stalker_silent_duty_veteran
 $spawn                     = "respawn\jup_b46_duty_founder_squad_04"
 character_profile     = jup_b46_duty_founder_squad_04
 custom_data = scripts\zaton\zat_dont_spawn_loot.ltx
 sound_death						= ;fight\death\death_
 
-[jup_a6_freedom_leader]:stalker_silent
+;---------------------------------------------------
+
+;[DUTY_VETERAN_PROFILE]
+
+;---------------------------------------------------
+
+[jup_a6_freedom_leader]:stalker_silent_freedom_mas
 $spawn                     = "respawn\jup_a6_freedom_leader"
 character_profile     = jup_a6_freedom_leader
 story_id = jup_a6_freedom_leader
 community = freedom
 
-[jup_a6_duty_leader]:stalker_silent
+;---------------------------------------------------
+
+;[FREEDOM_MASTER_PROFILE]
+
+;---------------------------------------------------
+
+[jup_a6_duty_leader]:stalker_silent_duty_master
 $spawn                     = "respawn\jup_a6_duty_leader"
 character_profile     = jup_a6_duty_leader
 story_id = jup_a6_duty_leader
 community = dolg
 
+;---------------------------------------------------
+
+;[DUTY_MASTER_PROFILE]
+
+;---------------------------------------------------
+
 ;--------------------b218 vano_in_suit -----------------------
-[jup_b218_vano_in_suit]:stalker_silent
+[jup_b218_vano_in_suit]:stalker_silent_master
 $spawn                     = "respawn\jup_b218_vano_in_suit"
 character_profile     = jup_b218_vano_in_suit
 story_id = jup_b218_vano_in_suit
+
+;---------------------------------------------------
+
+;[MASTER_PROFILE]
+
+;---------------------------------------------------
 
 [jup_b218_vano_in_suit_strong]:jup_b218_vano_in_suit
 $spawn                     = "respawn\jup_b218_vano_in_suit_strong"
 immunities_sect = stalker_immunities_strong
 
+;---------------------------------------------------
+
+;[MASTER_PROFILE]
+
+;---------------------------------------------------
+
 ;-------------------- Jupiter b47 ------------------------
-[jup_b47_merc_01]:stalker
+[jup_b47_merc_01]:stalker_veteran
 $spawn                     = "respawn\jup_b47_merc_01"
 character_profile     = jup_b47_merc_01
 ;community = killer
 story_id = jup_b47_merc_01
 
-[jup_b47_merc_02]:stalker
+;---------------------------------------------------
+
+;[VETERAN_PROFILE]
+
+;---------------------------------------------------
+
+[jup_b47_merc_02]:bandit_stalker_veteran
 $spawn                     = "respawn\jup_b47_merc_02"
 character_profile     = jup_b47_merc_02
 ;community = killer
 story_id = jup_b47_merc_02
 
-[jup_b47_merc_03]:stalker
+;---------------------------------------------------
+
+;[BANDIT_VETERAN_PROFILE]
+
+;---------------------------------------------------
+
+[jup_b47_merc_03]:stalker_veteran
 $spawn                     = "respawn\jup_b47_merc_03"
 character_profile     = jup_b47_merc_03
 ;community = killer
 story_id = jup_b47_merc_03
 
-[jup_b47_merc_04]:stalker
+;---------------------------------------------------
+
+;[DUTY_VETERAN_PROFILE]
+
+;---------------------------------------------------
+
+[jup_b47_merc_04]:stalker_freedom_vet
 $spawn                     = "respawn\jup_b47_merc_04"
 character_profile     = jup_b47_merc_04
 ;community = killer
 story_id = jup_b47_merc_04
 
-[jup_b47_merc_05]:stalker
+;---------------------------------------------------
+
+;[FREEDOM_VETERAN_PROFILE]
+
+;---------------------------------------------------
+
+[jup_b47_merc_05]:stalker_freedom_exp
 $spawn                     = "respawn\jup_b47_merc_05"
 character_profile     = jup_b47_merc_05
 ;community = killer
 story_id = jup_b47_merc_05
 
-[jup_b47_merc_06]:stalker
+;---------------------------------------------------
+
+;[FREEDOM_EXPERIENCED_PROFILE]
+
+;---------------------------------------------------
+
+[jup_b47_merc_06]:stalker_veteran
 $spawn                     = "respawn\jup_b47_merc_06"
 character_profile     = jup_b47_merc_06
 ;community = killer
 story_id = jup_b47_merc_06
 
-[jup_b47_merc_07]:stalker
+;---------------------------------------------------
+
+;[VETERAN_PROFILE]
+
+;---------------------------------------------------
+
+[jup_b47_merc_07]:bandit_stalker_master
 $spawn                     = "respawn\jup_b47_merc_07"
 character_profile     = jup_b47_merc_07
 ;community = killer
 story_id = jup_b47_merc_07
+
+;---------------------------------------------------
+
+;[BANDIT_MASTER_PROFILE]
+
+;---------------------------------------------------
 
 ;----------------------- b219 -----------------
 
@@ -701,39 +1230,75 @@ character_profile     = jup_b219_stalker_tech
 community = stalker
 story_id = jup_b219_stalker_tech_id
 
-[jup_b219_monolith_squad_leader_freedom_skin]:stalker_silent
+[jup_b219_monolith_squad_leader_freedom_skin]:stalker_silent_monolith_master
 $spawn                     = "respawn\jup_b219_monolith_squad_leader_freedom_skin"
 character_profile     = jup_b219_monolith_squad_leader_freedom_skin
 story_id = jup_b219_monolith_squad_leader_freedom_skin_id
 
-[jup_b219_vano]:stalker_silent
+;---------------------------------------------------
+
+;[MONOLITH_MASTER_PROFILE]
+
+;---------------------------------------------------
+
+[jup_b219_vano]:stalker_silent_master
 $spawn                     = "respawn\jup_b219_vano"
 character_profile     = jup_b219_vano
 story_id = jup_b219_vano_id
 
-[jup_b219_soldier]:stalker_silent
+;---------------------------------------------------
+
+;[MASTER_PROFILE]
+
+;---------------------------------------------------
+
+[jup_b219_soldier]:stalker_silent_duty_experienced
 $spawn                     = "respawn\jup_b219_soldier"
 character_profile     = jup_b219_soldier
 story_id = jup_b219_soldier_id
 
-[jup_b219_zulus]:stalker_silent
+;---------------------------------------------------
+
+;[DUTY_EXPERIENCED_PROFILE]
+
+;---------------------------------------------------
+
+[jup_b219_zulus]:stalker_silent_freedom_mas
 $spawn                     = "respawn\jup_b219_zulus"
 character_profile     = jup_b219_zulus
 story_id = jup_b219_zulus_id
 
+;---------------------------------------------------
+
+;[FREEDOM_MASTER_PROFILE]
+
+;---------------------------------------------------
+
 ;---------------b218 ones more------------------------------------------
 
 ;----------------Ex-monolith Squad leader (freedom) in monolith skin-----------
-[jup_b4_monolith_squad_leader_freedom_mon_skin]:stalker_silent
+[jup_b4_monolith_squad_leader_freedom_mon_skin]:stalker_silent_monolith_master
 $spawn                     = "respawn\jup_b4_monolith_squad_leader_freedom_mon_skin"
 character_profile     = jup_b4_monolith_squad_leader_freedom_mon_skin
 story_id = jup_b4_monolith_squad_leader_freedom_mon_skin
 
+;---------------------------------------------------
+
+;[MONOLITH_MASTER_PROFILE]
+
+;---------------------------------------------------
+
 ;----------------Ex-monolith Squad leader (duty) in monolith skin-----------
-[jup_b4_monolith_squad_leader_duty_mon_skin]:stalker_silent
+[jup_b4_monolith_squad_leader_duty_mon_skin]:stalker_silent_monolith_master
 $spawn                     = "respawn\jup_b4_monolith_squad_leader_duty_mon_skin"
 character_profile     = jup_b4_monolith_squad_leader_duty_mon_skin
 story_id = jup_b4_monolith_squad_leader_duty_mon_skin
+
+;---------------------------------------------------
+
+;[MONOLITH_MASTER_PROFILE]
+
+;---------------------------------------------------
 
 ;-----------------------------------------------------------------
 

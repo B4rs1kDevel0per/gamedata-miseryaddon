@@ -17,19 +17,19 @@ control_inertion_factor = 1.0
 repair_group = glock
 
 ;-------------------------------------------------------------------------------
-cost					= 9350           ; the price of the item
+cost					= 2350           ; the price of the item
 inv_weight				= 0.63
 
-upgrades                = vartree_reliability_glock17, vartree_mag19_glock17, vartree_sights_glock17, vartree_laser_glock17, vartree_torch_glock17
+upgrades                = up_gr_firstab_beretta, up_gr_seconab_beretta, up_gr_thirdab_beretta, up_gr_fourtab_beretta, up_gr_fifthab_beretta, up_gr_fifthcd_beretta
 installed_upgrades      =
-upgrade_scheme          = upgrade_scheme_glock17
+upgrade_scheme          = upgrade_scheme_beretta
 
 def_show_bones = barrel, bolt, mag
 def_hide_bones = flash, laser, line, light, barrel_compensator, barrel_silencer, bolt_auto, bone, bone2, mag2, sight
 ammo_in_chamber = true
 
 ;----TTX--------------------------------------------------------------------------
-hit_power           			= 0.28, 0.28, 0.28, 0.28
+hit_power           			= 0.85, 0.85, 0.85, 0.85
 hit_impulse	 		 			= 75
 hit_type 						= fire_wound
 fire_distance           	= 200
@@ -136,10 +136,10 @@ holder_fov_modifier		= 1.0              ; во сколько раз увели�
 min_radius              	= 0
 max_radius              	= 50
 
-hit_probability_gd_novice	= 1.0
-hit_probability_gd_stalker	= 1.0
-hit_probability_gd_veteran	= 1.0
-hit_probability_gd_master	= 1.0
+hit_probability_gd_novice	= 0.80
+hit_probability_gd_stalker	= 0.80
+hit_probability_gd_veteran	= 0.80
+hit_probability_gd_master	= 0.80
 
 ;-------------------------------------------------------------------------------
 supports_detector = true
@@ -233,19 +233,19 @@ snd_jammed_click     = weapons\pm\mechanics\pm_check
 snd_shoot_start                = weapons\glock17\layers\glock17_shoot_a_1
 snd_shoot_start1                = weapons\glock17\layers\glock17_shoot_a_2
 snd_shoot_start2                = weapons\glock17\layers\glock17_shoot_a_3
-snd_silencer_shoot_start        = weapons\glock17\layers\glock17_silencer_a_1
-snd_silencer_shoot_start1        = weapons\glock17\layers\glock17_silencer_a_2
-snd_silencer_shoot_start2        = weapons\glock17\layers\glock17_silencer_a_3
+snd_silncer_shot        = weapons\glock17\layers\glock17_silencer_a_1
+snd_silncer_shot1        = weapons\glock17\layers\glock17_silencer_a_2
+snd_silncer_shot2        = weapons\glock17\layers\glock17_silencer_a_3
 
-snd_shoot_loop            = weapons\glock17\layers\glock17_loop_a
-snd_shoot_loop_tail        = weapons\glock17\layers\glock17_tail_a
+;snd_shoot_loop            = weapons\glock17\layers\glock17_loop_a
+;snd_shoot_loop_tail        = weapons\glock17\layers\glock17_tail_a
 
-snd_silencer_shoot_loop        = weapons\glock17\layers\glock17_silencer_loop_a
-snd_silencer_shoot_loop_tail    = weapons\glock17\layers\glock17_silencer_tail_a
+;snd_silencer_shoot_loop        = weapons\glock17\layers\glock17_silencer_loop_a
+;snd_silencer_shoot_loop_tail    = weapons\glock17\layers\glock17_silencer_tail_a
 
 ;silencer_flame_particles  = weapons\generic_weapon01
 silencer_smoke_particles 	= weapons\generic_shoot_00
-snd_silncer_shot				= weapons\silence
+;snd_silncer_shot				= weapons\silence
 silencer_light_color			= 0.6,0.5,0.3
 silencer_light_range			= 0.01
 silencer_light_var_color	= 0.05
@@ -258,19 +258,20 @@ zoom_hide_crosshair			= true
 zoom_dof_near = 0.48
 zoom_dof_focus = 0.53
 
-hud_fov = 0.85
+hud_fov = 0.75
 hud_fov_zoom = 0.75
 
-hands_position				= -0.06,-0.125,-0.09
-hands_orientation			= 0.0,0.0,-7.0
+hands_position				= 0.0,-0.13,0.03
+hands_orientation			= 0.0,0.0,0.0
 
-hands_position_16x9			= -0.06,-0.125,-0.09
-hands_orientation_16x9			= 0.0,0.0,-7.0
+hands_position_16x9			= 0.0,-0.13,0.03
+hands_orientation_16x9			= 0.0,0.0,0.0
 
-aim_hud_offset_pos = 0.0752,0.019,0.115
-aim_hud_offset_rot = -0.005,0.0,-0.1
-aim_hud_offset_pos_16x9 = 0.0752,0.019,0.115
-aim_hud_offset_rot_16x9 = -0.005,0.0,-0.1
+aim_hud_offset_pos = 0.0,0.031,0.0
+aim_hud_offset_rot = -0.005,0.0,0.0
+
+aim_hud_offset_pos_16x9 = 0.0,0.031,0.0
+aim_hud_offset_rot_16x9 = -0.005,0.0,0.0
 
 item_position			= 0.0,0.0,0.0
 item_orientation		= 0.0,0.0,0.0
@@ -444,12 +445,3 @@ anm_changefiremode_from_-1_to_1_empty		     = glock17_firemode_a_to_1_empty
 anm_changefiremode_from_3_to_1			     = glock17_firemode_a_to_1
 anm_changefiremode_from_3_to_1_jammed		     = glock17_firemode_a_to_1, glock17_firemode_a_to_1_jammed
 anm_changefiremode_from_3_to_1_empty		     = glock17_firemode_a_to_1_empty
-
-inertion_pitch_offset_r = -0.008
-inertion_pitch_offset_n = -0.006
-inertion_pitch_offset_d = -0.001
-inertion_origin_offset = 0.05
-hud_move_forward_offset_pos = 0,0.008,-0.012
-hud_move_forward_offset_rot = 0,0,3
-hud_move_forward_offset_pos_16x9 = 0,0.008,-0.012
-hud_move_forward_offset_rot_16x9 = 0,0,3

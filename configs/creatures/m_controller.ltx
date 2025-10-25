@@ -119,9 +119,9 @@ MaxAttackDist		= 2.9	;3.8
 as_min_dist				= 0.8
 as_step					= 0.5
 
-DayTime_Begin		= 0			; начала дня для монстра
-DayTime_End			= 21		; конец дня для монстра
-Min_Satiety			= 0.6		; мин. норма сытости (меньше - уже голодный)
+DayTime_Begin		= 21			; начала дня для монстра
+DayTime_End			= 5		; конец дня для монстра
+Min_Satiety			= 0.00055		; мин. норма сытости (меньше - уже голодный)
 Max_Satiety			= 0.9		; макс. норма сытости (больше - очень сытый)
 
 distance_to_corpse	= 1.2		; дист. до трупа, при которой он переходит в состояние еды
@@ -283,7 +283,7 @@ Control_Hit					= weapons\generic_weapon_controller
 
 ;species of monster
 species						= controller
-rank						= 400
+rank						= 18
 spec_rank					= normal
 community					= controller
 
@@ -469,13 +469,13 @@ stand_attack_1 =	  	0.25,		0.55,		    60,        0.0, 1.0, 0.0,		 -1.6, 1.6, -1.
 ;bone_name		 = <hit_scale>,-1,<wound_scale>
 ;<hit_scale>	- коэфф. изменения хита (уменьшения здоровья)
 ;<wound_scale>	- коэфф. изменения величины открытой раны
-default				= 1.0, -1, 0.1
+default				= 0.5, -1, 0.1
 
-bip01_pelvis 		= 1.0, -1, 0.5
-bip01_spine 		= 1.0, -1, 0.5
-bip01_spine1 		= 1.0, -1, 0.5
-bip01_neck 			= 1.0, -1, 1.0
-bip01_head 			= 2.0, -1, 0.5, 10
+bip01_pelvis 		= 0.5, -1, 0.5
+bip01_spine 		= 0.5, -1, 0.5
+bip01_spine1 		= 0.5, -1, 0.5
+bip01_neck 			= 0.5, -1, 1.0
+bip01_head 			= 1.0, -1, 0.5, 10
 
 
 [m_controller_normal]:m_controller_e
@@ -484,7 +484,7 @@ visual				= monsters\controller\controller_1
 corpse_visual		 = monsters\controller\controller_dead
 icon				= ui_npc_monster_controller
 spec_rank			= normal
-rank				= 400
+rank				= 18
 community			= controller
 
 [controller_tubeman]:m_controller_e ; temporary!
@@ -493,7 +493,7 @@ visual				= monsters\controller\controller_1
 corpse_visual		 = monsters\controller\controller_dead
 icon				= ui_npc_monster_controller
 spec_rank			= normal
-rank				= 450
+rank				= 18
 community			= controller
 
 [controller_critical_wound_bones_head]

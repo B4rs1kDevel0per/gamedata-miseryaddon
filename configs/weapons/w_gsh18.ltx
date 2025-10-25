@@ -17,24 +17,24 @@ control_inertion_factor = 1.0
 repair_group = gsh18
 
 ;-------------------------------------------------------------------------------
-cost					= 8980           ; the price of the item
+cost					= 2250           ; the price of the item
 inv_weight				= 0.58
 
-upgrades = vartree_gsh18_ejector, vartree_gsh18_body, vartree_gsh18_sights, vartree_gsh18_handle
-installed_upgrades = 
-upgrade_scheme = upgrade_scheme_gsh18
+upgrades                = up_gr_firstab_beretta, up_gr_seconab_beretta, up_gr_thirdab_beretta, up_gr_fourtab_beretta, up_gr_fifthab_beretta, up_gr_fifthcd_beretta
+installed_upgrades      =
+upgrade_scheme          = upgrade_scheme_beretta
  
 
 ammo_in_chamber = true
 
 def_hide_bones = sight
 ;----TTX--------------------------------------------------------------------------
-hit_power           			= 0.265, 0.265, 0.265, 0.265
-hit_impulse	 		 			= 24
+hit_power           			= 1.0, 1.0, 1.0, 1.0
+hit_impulse	 		 			= 75
 hit_type 						= fire_wound
-fire_distance           	= 400
-bullet_speed		 		= 383
-rpm                     	= 275
+fire_distance           	= 200
+bullet_speed		 		= 225
+rpm                     	= 320
 rpm_empty_click 	 		= 10
 
 ;singleshoots_time_delta  = 0.2                                ;Скорострельность для одиночных выстрелов
@@ -48,19 +48,19 @@ hud                     = wpn_gsh18_hud
 
 
 ;//////////////////////////////////////////Задержки при стрельбе из оружия////////////////////////////////////////////////
-misfire_probability        = 0.005 ;вероятность осечки при максимальном износе  !!!old - now not working
+misfire_probability        = 0.008 ;вероятность осечки при максимальном износе  !!!old - now not working
 ;изношенность, при которой появляется шанс осечки
-misfire_start_condition		= 0.85
+misfire_start_condition		= 0.65
 ;изношеность при которой шанс осечки становится константным
 misfire_end_condition		= 0.1
 ;шанс осечки при изношености больше чем misfireStartCondition
-misfire_start_prob	     	= 0.007
+misfire_start_prob	     	= 0.002
 ;шанс осечки при изношености больше чем misfireEndCondition
-misfire_end_prob	     	= 0.085
+misfire_end_prob	     	= 0.05
 ;увеличение изношености при одиночном выстреле
-condition_shot_dec      	= 0.0014
+condition_shot_dec      	= 0.0015
 ;увеличение изношености при выстреле очередью
-condition_queue_shot_dec	= 0.0014
+condition_queue_shot_dec	= 0.0001
 
 ;////////////////////////////////////////////Осечки////////////////////////////////////////////////////////////
 ;Это - разновидность задержки => происходит только в указанных для задержек пределах
@@ -93,25 +93,25 @@ reload_dof           = 0.0, 0.5, 5, 1.7
 
 ;---дисперсия---------------------------------------------------------------------------
 ;базовая дисперсия
-fire_dispersion_base	= 0.48 ;0.15 			;угол (в градусах) базовой дисперсии оружия (оружия зажатого в тисках)
+fire_dispersion_base	= 0.24 ;0.15 			;угол (в градусах) базовой дисперсии оружия (оружия зажатого в тисках)
 control_inertion_factor = 1.0
-crosshair_inertion   	= 3.8
+crosshair_inertion   	= 2.40
 
 ;отдача
 cam_return				= 0
-cam_relax_speed         = 8				;скорость возврата в исходное положение
+cam_relax_speed         = 7				;скорость возврата в исходное положение
 cam_relax_speed_ai      = 360
-cam_dispersion          = 0.76			;увеличения угла (в градусах) с каждым выстрелом
-cam_dispersion_inc		= 0.88			;увеличениe cam_dispersion с каждым выстрелом
+cam_dispersion          = 1.2			;увеличения угла (в градусах) с каждым выстрелом
+cam_dispersion_inc		= 0.9			;увеличениe cam_dispersion с каждым выстрелом
 cam_dispersion_frac		= 1.0			;ствол будет подыматься на cam_dispersion*cam_dispersion_frac +- cam_dispersion*(1-cam_dispersion_frac)
-cam_max_angle			= 50.0			;максимальный угол отдачи
-cam_max_angle_horz		= 50.0			;(degree) maximum shot horizontal degree
-cam_step_angle_horz		= 0.81			;(degree) size of step camera moved in horizontal position while shooting
+cam_max_angle			= 20.0			;максимальный угол отдачи
+cam_max_angle_horz		= 1.0			;(degree) maximum shot horizontal degree
+cam_step_angle_horz		= 0.5			;(degree) size of step camera moved in horizontal position while shooting
 detector_disp_factor            = 3                     ;во сколько раз увеличится дисперсия оружия при активном детекторе в другой руке.
 
-PDM_disp_base 				= 0.75
-PDM_disp_vel_factor 		= 1.52
-PDM_disp_accel_factor 		= 1.79
+PDM_disp_base 				= 1.2
+PDM_disp_vel_factor 		= 1.1
+PDM_disp_accel_factor 		= 1.1
 PDM_disp_crouch	 				= 0.85
 PDM_disp_crouch_no_acc 			= 0.8
 
@@ -130,10 +130,10 @@ holder_fov_modifier		= 1.0              ; во сколько раз увели�
 min_radius              	= 0
 max_radius              	= 50
 
-hit_probability_gd_novice	= 1.0
-hit_probability_gd_stalker	= 1.0
-hit_probability_gd_veteran	= 1.0
-hit_probability_gd_master	= 1.0
+hit_probability_gd_novice	= 0.80
+hit_probability_gd_stalker	= 0.80
+hit_probability_gd_veteran	= 0.80
+hit_probability_gd_master	= 0.80
 
 ;-------------------------------------------------------------------------------
 supports_detector = true
@@ -251,20 +251,23 @@ silencer_light_time 		= 0.01
 
 [wpn_gsh18_hud]:hud_base
 zoom_hide_crosshair			= true
-zoom_dof_near = 0.28
+zoom_dof_near = 0.48
 zoom_dof_focus = 0.50
 
 hud_fov = 0.75
 hud_fov_zoom = 0.75
 
-hands_position			= -0.037,-0.13,-0.09
-hands_orientation			= 0.0,0.0,-7.0
-hands_position_16x9			= -0.037,-0.13,-0.09
-hands_orientation_16x9			= 0.0,0.0,-7.0
-aim_hud_offset_pos = 0.053200,0.02000,0.115
-aim_hud_offset_rot = 0.002000,0.000000,-0.10000
-aim_hud_offset_pos_16x9 = 0.053200,0.02000,0.115
-aim_hud_offset_rot_16x9 = 0.002000,0.000000,-0.10000
+hands_position				= 0.0,-0.13,0.03
+hands_orientation			= 0.0,0.0,0.0
+
+hands_position_16x9			= 0.0,-0.13,0.03
+hands_orientation_16x9			= 0.0,0.0,0.0
+
+aim_hud_offset_pos = 0.000000,0.026000,0.0
+aim_hud_offset_rot = 0.002000,0.000000,0.0
+
+aim_hud_offset_pos_16x9 = 0.000000,0.026000,0.0
+aim_hud_offset_rot_16x9 = 0.002000,0.000000,0.0
 
 item_position			= 0.0,0.0,0.0
 item_orientation		= 0.0,0.0,0.0
@@ -423,8 +426,3 @@ anm_reload                       = gsh18_reload
 anm_reload_empty                 = gsh18_reload_full
 anm_reload_jammed                = gsh18_revival
 anm_reload_jammed_last           = gsh18_revival_last
-
-inertion_pitch_offset_r = -0.008
-inertion_pitch_offset_n = -0.006
-inertion_pitch_offset_d = -0.001
-inertion_origin_offset = 0.05

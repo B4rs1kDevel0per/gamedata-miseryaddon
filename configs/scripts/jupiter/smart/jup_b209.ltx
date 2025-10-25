@@ -1,14 +1,19 @@
 [smart_terrain]
 squad_id = 17
 max_population = 1
-arrive_dist = 150
+arrive_dist = 200
 respawn_params = respawn@jup_b209
 
 [respawn@jup_b209]
 spawn_snork
+spawn_bloodsucker
 
 [spawn_snork]
-spawn_squads =  simulation_snork
+spawn_squads = simulation_snork, simulation_dog, simulation_pseudodog, simulation_boar, simulation_flesh
+spawn_num = {+JUP_B209_HYPOTHESES_END} 1, 0
+
+[spawn_bloodsucker]
+spawn_squads = simulation_bloodsucker
 spawn_num = {+JUP_B209_HYPOTHESES_END} 1, 0
 
 [exclusive]

@@ -4,16 +4,11 @@ max_population = 2
 respawn_params = respawn@jup_b208
 
 [respawn@jup_b208]
-spawn_tushkano
-spawn_chimera
+spawn_monolith
 
-[spawn_tushkano]
-spawn_squads = simulation_tushkano
-spawn_num = {+JUP_B208_BURERS_HUNT_DONE} 2, 0
-
-[spawn_chimera]
-spawn_squads = simulation_chimera
-spawn_num = {+JUP_B208_BURERS_HUNT_DONE +JUP_B212_JUPITER_CHIMERA_DEAD} 1, 0
+[spawn_monolith]
+spawn_squads = monolith_sim_squad_advanced, monolith_sim_squad_veteran
+spawn_num = {+JUP_B208_BURERS_DEAD} 0, 0
 
 [exclusive]
 burer_1 = jupiter\jup_b208_burers.ltx

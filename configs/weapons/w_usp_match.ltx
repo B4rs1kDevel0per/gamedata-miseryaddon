@@ -1,12 +1,12 @@
 [wpn_usp_match]:wpn_usp
 $spawn                  	= "weapons\usp_match"		; option for Level Editor
 description          	= st_wpn_usp_match_descr
-cost					= 11860         ; the price of the item
+cost					= 3600         ; the price of the item
 inv_weight				= 1.080
 
-upgrades = vartree_wpn_usp_nimble_body, vartree_wpn_usp_nimble_zz, vartree_wpn_usp_nimble_ramka, vartree_wpn_usp_nimble_sights, vartree_wpn_usp_nimble_mag, vartree_wpn_usp_nimble_handle
-installed_upgrades = 
-upgrade_scheme = upgrade_scheme_wpn_usp_nimble
+upgrades                = up_gr_firstab_usp, up_gr_seconab_usp, up_gr_thirdab_usp, up_gr_fourtab_usp, up_gr_fifthab_usp
+installed_upgrades      =
+upgrade_scheme          = upgrade_scheme_usp
 
 hud                     	= wpn_usp_match_hud
 condition_shot_dec      	= 0.0022
@@ -26,7 +26,7 @@ cam_step_angle_horz		= 0.5			;(degree) size of step camera moved in horizontal p
 zoom_cam_dispersion         = 0.4
 zoom_cam_dispersion_inc     = 0.4
 
-hit_power           		= 0.405, 0.405, 0.405, 0.405
+hit_power           		= 1.05, 1.05, 1.05, 1.05
 
 fire_dispersion_condition_factor = 7        ;увеличение дисперсии в процентах при максимальном износе
 inv_name          = st_wpn_usp_match               ; name in inventory
