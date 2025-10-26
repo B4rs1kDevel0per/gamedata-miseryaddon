@@ -39,7 +39,7 @@ full_scale_icon		= 6,6
 ;player_hud_section	= actor_hud_05
 
 ;---------------------------------------------------------------------------------------------
-;		КОСТЮМ НОВИЧКА
+;		КУРТКА НОВИЧКА
 ;---------------------------------------------------------------------------------------------
 [novice_outfit]:outfit_base
 GroupControlSection	= spawn_group
@@ -119,7 +119,159 @@ explosion_immunity			= -0.01
 fire_wound_immunity			= -0.005
 
 ;---------------------------------------------------------------------------------------------
-;		КОСТЮМ НЕЙТРАЛЬНОГО СТАЛКЕРА
+;		TRENCH COAT OUTFIT
+;---------------------------------------------------------------------------------------------
+[coat_outfit]:outfit_base
+GroupControlSection	= spawn_group
+discovery_dependency =
+$spawn 			= "outfit\novice_outfit"
+;$prefetch 		= 32
+class			= E_STLK
+cform           = skeleton
+visual          = dynamics\outfit\novice_outfit
+actor_visual	= actors\stalker_bandit\stalker_bandit4b.ogf
+player_hud_section	= actor_hud_05
+
+ef_equipment_type	= 3
+
+inv_name			= st_coat_name
+inv_name_short			= st_coat_name
+description			= st_coat_description
+inv_weight			= 8.22
+
+additional_inventory_weight2 	= 7.40
+additional_inventory_weight 	= 7.40
+
+inv_grid_width		= 2
+inv_grid_height 	= 3
+inv_grid_x			= 11
+inv_grid_y			= 45
+
+upgr_icon_x			= 814
+upgr_icon_y			= 579
+upgr_icon_width		= 159
+upgr_icon_height   	= 137
+
+full_icon_name		= npc_icon_novice_outfit
+
+cost				= 23320
+slot				= 6
+full_scale_icon		= 0,11		;иконка сталкера в костюме в полный рост
+
+immunities_sect			= sect_coat_outfit_immunities
+power_loss				= 0.65
+control_inertion_factor = 1.19
+
+; NO RESISTANCE
+burn_protection 			= 0.0290 ; 9 kW / m2
+shock_protection 			= 0.840 ; 760 kV
+radiation_protection 			= 0.0022
+chemical_burn_protection 		= 0.014 ; 46 C1 ppm eq.
+telepatic_protection 			= 0 ; 0 mT
+strike_protection 			= 0
+explosion_protection 			= 0.12
+wound_protection			= 0.24
+fire_wound_protection  			= 0.12
+
+hit_fraction_actor				= 0.90
+bones_koeff_protection  		= actor_armor_suit
+artefact_count          = 3
+
+upgrades                = up_gr_firstab_novice_outfit, up_gr_seconab_novice_outfit, up_gr_thirdab_novice_outfit
+installed_upgrades      =
+upgrade_scheme          = upgrade_scheme_novice_outfit
+
+repair_part_bonus	 	= 0.24
+
+[sect_coat_outfit_immunities]
+burn_immunity				= 0.40			;коэффициенты иммунитета самого костюма
+strike_immunity				= 0
+shock_immunity				= 0.015
+wound_immunity				= 0.058
+radiation_immunity = 0.0 ;			= 0.05
+telepatic_immunity			= 0.0
+chemical_burn_immunity		= 0.025
+explosion_immunity			= 0.141
+fire_wound_immunity			= 0.108
+
+;---------------------------------------------------------------------------------------------
+;		TRENCH COAT HEAVY OUTFIT
+;---------------------------------------------------------------------------------------------
+[coat_heavy_outfit]:outfit_base
+GroupControlSection	= spawn_group
+discovery_dependency =
+$spawn 			= "outfit\novice_outfit"
+;$prefetch 		= 32
+class			= E_STLK
+cform           = skeleton
+visual          = dynamics\outfit\novice_outfit
+actor_visual	= actors\stalker_bandit\stalker_bandit_8.ogf ; actors\stalker_neutral\stalker_neutral_2.ogf ; 
+player_hud_section	= actor_hud_02
+
+ef_equipment_type	= 3
+
+inv_name			= st_coat_heavy_name
+inv_name_short			= st_coat_heavy_name
+description			= st_coat_heavy_description
+inv_weight			= 9.48
+
+additional_inventory_weight2 	= 7.85
+additional_inventory_weight 	= 7.85
+
+inv_grid_width		= 2
+inv_grid_height 	= 3
+inv_grid_x			= 13
+inv_grid_y			= 45
+
+upgr_icon_x			= 814
+upgr_icon_y			= 579
+upgr_icon_width		= 159
+upgr_icon_height   	= 137
+
+full_icon_name		= npc_icon_novice_outfit
+
+cost				= 43300
+slot				= 6
+full_scale_icon		= 0,11		;иконка сталкера в костюме в полный рост
+
+immunities_sect			= sect_coat_heavy_outfit_immunities
+power_loss				= 0.70
+control_inertion_factor = 1.28
+
+; NO RESISTANCE
+burn_protection 			= 0.0370 ; 12 kW / m2
+shock_protection 			= 1.180 ; 1065 kV
+radiation_protection 			= 0.0036
+chemical_burn_protection 		= 0.015 ; 50 C1 ppm eq.
+telepatic_protection 			= 0 ; 0 mT
+strike_protection 			= 0
+explosion_protection 			= 0.18
+wound_protection			= 0.24
+fire_wound_protection  			= 0.16
+
+hit_fraction_actor			= 0.48
+bones_koeff_protection  		= actor_armor_suit
+artefact_count          = 2
+
+upgrades                = up_gr_firstab_stalker_outfit, up_gr_seconab_stalker_outfit, up_gr_thirdab_stalker_outfit
+installed_upgrades      =
+upgrade_scheme          = upgrade_scheme_stalker_outfit
+
+repair_part_bonus	 	= 0.28
+
+[sect_coat_heavy_outfit_immunities]
+burn_immunity				= 0.28			;коэффициенты иммунитета самого костюма
+strike_immunity				= 0
+shock_immunity				= 0.009
+wound_immunity				= 0.044
+radiation_immunity = 0.0 ;			= 0.028
+telepatic_immunity			= 0.0
+chemical_burn_immunity		= 0.015
+explosion_immunity			= 0.056
+fire_wound_immunity			= 0.039
+
+;---------------------------------------------------------------------------------------------
+;		КОМБИНЕЗОН ЗАРЯ
 ;---------------------------------------------------------------------------------------------
 [stalker_outfit]:outfit_base
 GroupControlSection	= spawn_group
@@ -203,6 +355,88 @@ telepatic_immunity			= 0.0
 chemical_burn_immunity		= -0.015
 explosion_immunity			= -0.015
 fire_wound_immunity			= -0.005
+
+;---------------------------------------------------------------------------------------------
+;		Маскировочный костюм "Леший"
+;---------------------------------------------------------------------------------------------
+[ghillie_outfit]:outfit_base
+GroupControlSection	= spawn_group
+discovery_dependency =
+$spawn 			= "outfit\ghillie_outfit"
+;$prefetch 		= 32
+class			= E_STLK
+cform           = skeleton
+visual          = dynamics\outfit\ghillie_outfit
+actor_visual	= actors\stalker_new\stalker_ghillie.ogf
+player_hud_section	= actor_hud_ghillie
+
+ef_equipment_type	= 3
+
+inv_name			= ghillie_outfit_name
+inv_name_short		= ghillie_outfit_name
+description			= ghillie_outfit_description
+
+inv_weight			= 13.82
+
+inv_grid_width		= 2
+inv_grid_height		= 3
+inv_grid_x        	= 20
+inv_grid_y        	= 24
+upgr_icon_x			= 1622
+upgr_icon_y			= 383
+upgr_icon_width		= 277
+upgr_icon_height   	= 175
+
+full_icon_name		= npc_icon_ghillie_outfit
+nightvision_sect	= effector_nightvision_3
+helmet_avaliable	= false
+
+cost				= 48710
+slot				= 6
+full_scale_icon		= 14,11			;иконка сталкера в костюме в полный рост
+
+additional_inventory_weight		= 15		; +max_walk_weight
+additional_inventory_weight2	= 15		;	+40 kg
+artefact_count                  = 1
+
+default_to_ruck     = false
+immunities_sect		= sect_ghillie_outfit_immunities
+
+; LOW RESISTANCE
+burn_protection 			= 0.0370 ; 12 kW / m2
+shock_protection 			= 1.180 ; 1065 kV
+radiation_protection 			= 0.0036
+chemical_burn_protection 		= 0.015 ; 50 C1 ppm eq.
+telepatic_protection 			= 0 ; 0 mT
+strike_protection 			= 0
+explosion_protection 			= 0.18
+wound_protection			= 0.24
+fire_wound_protection  			= 0.16
+
+hit_fraction_actor			= 0.48
+bones_koeff_protection 			= actor_armor_light
+
+control_inertion_factor = 1.23
+power_loss 			= 0.68
+
+upgrades                = up_gr_firstab_stalker_outfit, up_gr_seconab_stalker_outfit, up_gr_thirdab_stalker_outfit
+installed_upgrades      =
+upgrade_scheme          = upgrade_scheme_stalker_outfit
+
+repair_part_bonus	 	= 0.24
+
+immunities_sect		= sect_ghillie_outfit_immunities
+
+[sect_ghillie_outfit_immunities]
+burn_immunity				= 0.36			;коэффициенты иммунитета самого костюма
+strike_immunity				= 0
+shock_immunity				= 0.005
+wound_immunity				= 0.051
+radiation_immunity = 0.0 ;			= 0.028
+telepatic_immunity			= 0.0
+chemical_burn_immunity		= 0.018
+explosion_immunity			= 0.066
+fire_wound_immunity			= 0.048
 
 ;---------------------------------------------------------------------------------------------
 ;		ЛЕГКИЙ КОСТЮМ СВОБОДЫ
@@ -2193,7 +2427,7 @@ explosion_immunity			= -0.01
 fire_wound_immunity			= -0.0025
 
 ;---------------------------------------------------------------------------------------------
-;		ОБЫЧНЫЙ КОСТЮМ УЧЕННОГО
+;		ОБЫЧНЫЙ КОСТЮМ УЧЕНОГО
 ;---------------------------------------------------------------------------------------------
 [ecolog_outfit]:outfit_base
 GroupControlSection	= spawn_group
@@ -2266,5 +2500,179 @@ telepatic_immunity			= 0.0
 chemical_burn_immunity		= 0.0
 explosion_immunity			= -0.01
 fire_wound_immunity			= -0.0025
+
+;-----------------------------------------------------------------------------------
+;                        ССП-86
+;-----------------------------------------------------------------------------------
+[ecologist_red_outfit]:outfit_base
+GroupControlSection	= spawn_group
+discovery_dependency =
+$spawn 			= "outfit\ecologist_suit_red_suit"
+$prefetch 		= 32
+class			= E_STLK
+cform           = skeleton
+visual          = dynamics\outfit\ecolog_suit
+actor_visual	= actors\stalker_sci_red.ogf	;actors\stalker_ecolog\stalker_ecolog.ogf
+player_hud_section	= actor_hud_ecolog_red
+
+ef_equipment_type	= 2
+
+inv_name			= st_ecologist_red_outfit_name
+inv_name_short		= st_ecologist_red_outfit_name
+description			= st_ecologist_red_outfit_description
+inv_weight			= 15.14
+slot				= 6
+
+inv_grid_width		= 2
+inv_grid_height		= 3
+inv_grid_x			= 18
+inv_grid_y			= 13
+
+upgr_icon_x			= 716
+upgr_icon_y			= 824
+upgr_icon_width		= 198
+upgr_icon_height   	= 129
+
+full_icon_name		= npc_icon_scientific_outfit
+nightvision_sect	= effector_nightvision_2
+helmet_avaliable	 	= false
+
+cost				=  65500
+full_scale_icon		= 12,11			;иконка сталкера в костюме в полный рост
+
+immunities_sect			= sect_ecologist_red_outfit_immunities
+bones_koeff_protection 	= actor_armor_suit
+hit_fraction_actor		= 0.9
+artefact_count          = 5
+control_inertion_factor = 1.94
+
+additional_inventory_weight2 	= 18
+additional_inventory_weight 	= 18
+
+; MEDIUM RESISTANCE
+burn_protection 				= 1.650 ; 884 kW / m2 (4x prot. suit multiplier)
+shock_protection 				= 2.450 ; 1750 kV
+radiation_protection 			= 0.0390
+chemical_burn_protection 		= 0.1490 ; 4333 C1 ppm eq.
+telepatic_protection 			= 0.1620 ; 74 mT
+strike_protection 				= 0
+explosion_protection 			= 0.22
+wound_protection				= 0.16
+fire_wound_protection  			= 0.24
+
+power_loss						= 0.82
+
+power_restore_speed				= -0.0014
+
+repair_part_bonus	 	= 0.28
+
+[sect_ecologist_red_outfit_immunities]
+burn_immunity				= 0.035	;коэффициенты иммунитета самого костюма
+strike_immunity				= 0.008
+shock_immunity				= 0.0
+wound_immunity				= 0.045
+radiation_immunity = 0.0 ;			= 0.016
+telepatic_immunity			= 0.0
+chemical_burn_immunity		= 0.006
+explosion_immunity			= 0.14
+fire_wound_immunity			= 0.09
+
+[sect_ecologist_red_outfit_immunities_add]
+burn_immunity				= -0.01			;коэффициенты иммунитета самого костюма
+strike_immunity				= 0.0
+shock_immunity				= 0.0
+wound_immunity				= -0.0045
+radiation_immunity = 0.0 ;			= 0.0
+telepatic_immunity			= 0.0
+chemical_burn_immunity		= 0.0
+explosion_immunity			= -0.014
+fire_wound_immunity			= -0.009
+
+;-----------------------------------------------------------------------------------
+;                ССП-99М ЗЕЛЁНЫЙ
+;-----------------------------------------------------------------------------------
+[ecologist_green_outfit]:outfit_base
+GroupControlSection	= spawn_group
+discovery_dependency =
+$spawn 			= "outfit\ecologist_green_outfit"
+$prefetch 		= 32
+class			= E_STLK
+cform           = skeleton
+visual          = dynamics\outfit\ecolog_green_suit
+actor_visual	= actors\stalker_sci_green.ogf	;actors\stalker_ecolog\stalker_ecolog.ogf
+player_hud_section	= actor_hud_ecolog_green
+
+ef_equipment_type	= 2
+
+inv_name			= st_ecologist_green_outfit_name
+inv_name_short		= st_ecologist_green_outfit_name
+description			= st_ecologist_green_outfit_description
+inv_weight			= 16.33
+slot				= 6
+
+inv_grid_width		= 2
+inv_grid_height		= 3
+inv_grid_x			= 22
+inv_grid_y			= 24
+
+upgr_icon_x			= 716
+upgr_icon_y			= 824
+upgr_icon_width		= 198
+upgr_icon_height   	= 129
+
+full_icon_name		= npc_icon_scientific_outfit
+nightvision_sect	= effector_nightvision_2
+helmet_avaliable	 	= false
+
+additional_inventory_weight2 	= 20
+additional_inventory_weight 	= 20
+
+cost				= 68480
+full_scale_icon		= 12,11			;иконка сталкера в костюме в полный рост
+
+immunities_sect			= sect_ecologist_green_outfit_immunities
+bones_koeff_protection 	= actor_armor_suit
+hit_fraction_actor		= 0.77
+artefact_count          = 5
+control_inertion_factor = 1.91
+
+; MEDIUM RESISTANCE
+burn_protection 				= 1.900 ; 1017 kW / m2 (4x prot. suit multiplier)
+shock_protection 				= 2.650 ; 2024 kV
+radiation_protection 			= 0.0390
+chemical_burn_protection 		= 0.1490 ; 4333 C1 ppm. eq.
+telepatic_protection 			= 0.1620 ; 74 mT
+strike_protection 				= 0
+explosion_protection 			= 0.32
+wound_protection				= 0.23
+fire_wound_protection  			= 0.28
+
+power_loss				= 0.82
+
+power_restore_speed				= -0.0014
+
+repair_part_bonus	 	= 0.30
+
+[sect_ecologist_green_outfit_immunities]
+burn_immunity				= 0.028	;коэффициенты иммунитета самого костюма
+strike_immunity				= 0.008
+shock_immunity				= 0.0
+wound_immunity				= 0.03
+radiation_immunity = 0.0 ;		= 0.016
+telepatic_immunity			= 0.0
+chemical_burn_immunity		= 0.005
+explosion_immunity			= 0.09
+fire_wound_immunity			= 0.06
+
+[sect_ecologist_green_outfit_immunities_add]
+burn_immunity				= -0.0014			;коэффициенты иммунитета самого костюма
+strike_immunity				= 0.0008
+shock_immunity				= 0.0
+wound_immunity				= -0.003
+radiation_immunity = 0.0 ;			= 0.0
+telepatic_immunity			= 0.0
+chemical_burn_immunity		= 0.001
+explosion_immunity			= -0.009
+fire_wound_immunity			= -0.006
 
 #include "outfit_addon.ltx"
