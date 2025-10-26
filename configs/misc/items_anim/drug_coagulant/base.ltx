@@ -1,0 +1,89 @@
+#include "eatable_objects.ltx"
+#include "hud_objects.ltx"
+
+
+[drug_coagulant]:booster ;x5
+
+;***********************************************************
+hud = drug_coagulant_hud_model
+helm_prohibited = false; true
+full_outfit_prohibited = false ;true
+
+base_object = drug_coagulant ;показывает, какая секция является базовой для "одинаковых" предметов разной степени целостности
+uses_count = 5	    ;Сколько раз предмет можно использовать
+
+;При первом использовании всегда съедается базовый предмет
+using_2 = drug_coagulant2	;Секция предмета, который будет заспавнен после первого использования, и который отвечает за второе использование
+using_3 = drug_coagulant3	;Аналогично для второго использования
+using_4 = drug_coagulant4
+using_5 = drug_coagulant5
+;************************************************************
+
+$spawn 				= "food and drugs\drug_coagulant"
+visual				= dynamics\equipments\medical\drug_coagulant.ogf
+inv_name			= st_drug_coagulant
+inv_name_short		= st_drug_coagulant
+description			= st_drug_coagulant_descr
+
+inv_grid_width		= 1
+inv_grid_height		= 1
+inv_grid_x			= 1
+inv_grid_y			= 5
+cost				= 3350
+inv_weight			= 0.011
+
+use_sound			= $silent
+
+[drug_coagulant2]:drug_coagulant
+inv_name			= st_drug_coagulant2
+inv_name_short		= st_drug_coagulant2
+inv_weight			= 0.009
+hud = drug_coagulant_hud_model2
+cost				= 2680
+
+inv_grid_x			= 1
+inv_grid_y			= 6
+
+[drug_coagulant3]:drug_coagulant
+inv_name			= st_drug_coagulant3
+inv_name_short		= st_drug_coagulant3
+inv_weight			= 0.007
+hud = drug_coagulant_hud_model3
+cost				= 2010
+
+inv_grid_x			= 1
+inv_grid_y			= 7
+
+[drug_coagulant4]:drug_coagulant
+inv_name			= st_drug_coagulant4
+inv_name_short		= st_drug_coagulant4
+inv_weight			= 0.005
+hud = drug_coagulant_hud_model4
+cost				= 1340
+
+inv_grid_x			= 1
+inv_grid_y			= 8
+
+[drug_coagulant5]:drug_coagulant
+inv_name			= st_drug_coagulant5
+inv_name_short		= st_drug_coagulant5
+hud = drug_coagulant_hud_model5
+inv_weight			= 0.003
+trash_object = drug_coagulant_trash
+cost				= 670
+
+inv_grid_x			= 1
+inv_grid_y			= 9
+
+[drug_coagulant_trash]:gwr_base_trash
+visual                        = dynamics\equipments\medical\drug_coagulant_trash.ogf
+
+;направление, в котором предмет отбрасывается
+throw_dir = right
+;смещение точки спавна относительно камеры
+throw_offset_y = -0.6	//вверх-вниз
+throw_offset_x = 0.2	//вперед-назад
+throw_offset_z =  0.6	//положительные - в сторону броска, отрицательное - в противоположную
+
+throw_impulse_y = -90
+throw_impulse_z = 180
