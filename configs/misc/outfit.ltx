@@ -1720,7 +1720,7 @@ class			= E_STLK
 cform           = skeleton
 visual          = dynamics\outfit\black_coat_outfit
 actor_visual	= actors\stalker_mp\stalker_hero_bandit_4.ogf
-player_hud_section	= actor_hud_01
+player_hud_section	= actor_hud_bandit_trench
 
 ef_equipment_type	= 3
 
@@ -1892,7 +1892,7 @@ class			= E_STLK
 cform           = skeleton
 visual          = dynamics\outfit\cs_light_outfit
 actor_visual	= actors\stalker_mp\stalker_nebo_1
-player_hud_section	= actor_hud_04
+player_hud_section	= actor_hud_12
 
 ef_equipment_type	= 3
 
@@ -2043,7 +2043,7 @@ class			= E_STLK
 cform           = skeleton
 visual          = dynamics\outfit\bandit_outfit
 actor_visual	= actors\stalker_mp\stalker_bandit_1.ogf
-player_hud_section	= actor_hud_01
+player_hud_section	= actor_hud_bandit_novice
 
 ef_equipment_type	= 3
 
@@ -2195,10 +2195,10 @@ fire_wound_immunity			= -0.0025
 ;---------------------------------------------------------------------------------------------
 ;		ОБЫЧНЫЙ КОСТЮМ УЧЕННОГО
 ;---------------------------------------------------------------------------------------------
-[ecolog_outfit]:outfit_base
+[ecolog_red_outfit]:outfit_base
 GroupControlSection	= spawn_group
 discovery_dependency = 
-$spawn 			= "outfit\ecolog_outfit"
+$spawn 			= "outfit\ecolog_red_outfit"
 $prefetch 		= 32
 class			= E_STLK
 cform           = skeleton
@@ -2208,9 +2208,9 @@ player_hud_section	= actor_hud_17
 
 ef_equipment_type	= 2
 
-inv_name			= ecolog_outfit_name
-inv_name_short		= ecolog_outfit_name
-description			= ecolog_outfit_description
+inv_name			= ecolog_red_outfit_name
+inv_name_short		= ecolog_red_outfit_name
+description			= ecolog_red_outfit_description
 inv_weight			= 4.0
 
 slot				= 6
@@ -2224,7 +2224,7 @@ nightvision_sect	= effector_nightvision_3
 cost				= 15000
 full_scale_icon		= 14,6			;иконка сталкера в костюме в полный рост
 
-immunities_sect			= sect_ecolog_outfit_immunities
+immunities_sect			= sect_ecolog_red_outfit_immunities
 helmet_avaliable	 	= false
 
 
@@ -2245,7 +2245,7 @@ artefact_count          = 2
 control_inertion_factor = 1.5
 power_loss				= 0.5
 
-[sect_ecolog_outfit_immunities]
+[sect_ecolog_red_outfit_immunities]
 burn_immunity				= 0.005			;коэффициенты иммунитета самого костюма
 strike_immunity				= 0.01
 shock_immunity				= 0.005
@@ -2256,7 +2256,7 @@ chemical_burn_immunity		= 0.005
 explosion_immunity			= 0.045
 fire_wound_immunity			= 0.025
 
-[sect_ecolog_outfit_immunities_add]
+[sect_ecolog_red_outfit_immunities_add]
 burn_immunity				= -0.01			;коэффициенты иммунитета самого костюма
 strike_immunity				= 0.0
 shock_immunity				= 0.0
@@ -2266,5 +2266,89 @@ telepatic_immunity			= 0.0
 chemical_burn_immunity		= 0.0
 explosion_immunity			= -0.01
 fire_wound_immunity			= -0.0025
+
+[ecologist_green_outfit]:outfit_base
+GroupControlSection	= spawn_group
+discovery_dependency =
+$spawn 			= "outfit\ecologist_green_outfit"
+$prefetch 		= 32
+class			= E_STLK
+cform           = skeleton
+visual          = dynamics\outfit\scientific_outfit
+actor_visual	= actors\stalker_mp\ecolog_green_suit.ogf
+player_hud_section	= actor_hud_18
+
+ef_equipment_type	= 2
+
+inv_name			= st_ecologist_green_outfit_name
+inv_name_short		= st_ecologist_green_outfit_name
+description			= st_ecologist_green_outfit_description
+inv_weight			= 16.33
+slot				= 6
+
+inv_grid_width		= 2
+inv_grid_height		= 3
+inv_grid_x			= 22
+inv_grid_y			= 24
+
+upgr_icon_x			= 716
+upgr_icon_y			= 824
+upgr_icon_width		= 198
+upgr_icon_height   	= 129
+
+full_icon_name		= npc_icon_scientific_outfit
+nightvision_sect	= effector_nightvision_2
+helmet_avaliable	 	= false
+
+additional_inventory_weight2 	= 20
+additional_inventory_weight 	= 20
+
+cost				= 68480
+full_scale_icon		= 12,11			;иконка сталкера в костюме в полный рост
+
+immunities_sect			= sect_ecologist_green_outfit_immunities
+bones_koeff_protection 	= actor_armor_suit
+hit_fraction_actor		= 0.77
+artefact_count          = 5
+control_inertion_factor = 1.91
+
+; MEDIUM RESISTANCE
+burn_protection 				= 1.900 ; 1017 kW / m2 (4x prot. suit multiplier)
+shock_protection 				= 2.650 ; 2024 kV
+radiation_protection 			= 0.0390
+chemical_burn_protection 		= 0.1490 ; 4333 C1 ppm. eq.
+telepatic_protection 			= 0.1620 ; 74 mT
+strike_protection 				= 0
+explosion_protection 			= 0.32
+wound_protection				= 0.23
+fire_wound_protection  			= 0.28
+
+power_loss				= 0.82
+
+power_restore_speed				= -0.0014
+
+repair_part_bonus	 	= 0.30
+
+[sect_ecologist_green_outfit_immunities]
+burn_immunity				= 0.028	;коэффициенты иммунитета самого костюма
+strike_immunity				= 0.008
+shock_immunity				= 0.0
+wound_immunity				= 0.03
+radiation_immunity = 0.0 ;		= 0.016
+telepatic_immunity			= 0.0
+chemical_burn_immunity		= 0.005
+explosion_immunity			= 0.09
+fire_wound_immunity			= 0.06
+
+[sect_ecologist_green_outfit_immunities_add]
+burn_immunity				= -0.0014			;коэффициенты иммунитета самого костюма
+strike_immunity				= 0.0008
+shock_immunity				= 0.0
+wound_immunity				= -0.003
+radiation_immunity = 0.0 ;			= 0.0
+telepatic_immunity			= 0.0
+chemical_burn_immunity		= 0.001
+explosion_immunity			= -0.009
+fire_wound_immunity			= -0.006
 
 #include "outfit_addon.ltx"
