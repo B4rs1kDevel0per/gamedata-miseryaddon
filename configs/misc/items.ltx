@@ -55,7 +55,6 @@ boost_explosion_immunity	= 0.0
 boost_fire_wound_immunity	= 0.0
 ;use_sound			= characters_voice\multiplayer\team_1\voice_roger_3
 
-
 [vodka]:booster
 $spawn 				= "food and drugs\vodka"
 class				= S_BOTTL
@@ -84,11 +83,12 @@ angle_offset			 = 1.570790,1.570790,3.92699
 break_particles		= destroy_fx\destroy_bottle
 break_sound			= material\bottle\collide\bottle_break_1
 
-boost_time				= 38
-boost_radiation_restore	= 0.00044
-eat_alcohol				= 0.124
-eat_satiety				= 0.028
-eat_health				= -0.021
+boost_time				= 35
+boost_radiation_restore	= 0.00038
+
+eat_alcohol				= 0.121
+eat_satiety				= 0.022
+eat_sleepiness				= 0.019
 
 use_hud_anim 			= 1
 
@@ -99,8 +99,8 @@ use_sound			= items\booster\drink_vodka
 [vodka_hud]:hud_base
 attach_place_idx 			= 0
 zoom_hide_crosshair			= true
-hud_fov = 0.75
-hud_fov_zoom = 0.75
+hud_fov = 0.85
+hud_fov_zoom = 0.85
 
 inertion_pitch_offset_r = -0.005
 inertion_pitch_offset_n = -0.005
@@ -128,6 +128,7 @@ anm_show			= vodka
 [vodka_script]:vodka ; не использовать
 $spawn 				= "food and drugs\vodka_script"
 inv_weight			= 0
+
 
 
 [guitar_a]:identity_immunities
@@ -385,9 +386,15 @@ attach_position_offset	= 0.087266, -0.078540, 0.052360
 attach_bone_name		= bip01_r_hand
 auto_attach				= false
 
-boost_time				= 60.0
-boost_radiation_restore	= 0
-boost_power_restore		= 0.04
+boost_time			= 320
+boost_max_weight	= 1.952
+boost_radiation_restore		= 0.000025
+
+boost_power_restore		= 0.0016
+
+eat_alcohol 			= -0.226
+eat_satiety 			= 0.113
+eat_sleepiness				= -0.052
 
 use_hud_anim 			= 1
 
@@ -876,8 +883,15 @@ inv_grid_x				= 22
 inv_grid_y				= 0
 cost					= 75
 
-boost_time				= 70.0
-boost_power_restore		= 0.05
+boost_time			= 320
+boost_max_weight	= 1.952
+boost_radiation_restore		= 0.000025
+
+boost_power_restore		= 0.0016
+
+eat_alcohol 			= -0.226
+eat_satiety 			= 0.113
+eat_sleepiness				= -0.052
 
 hud 				= energy_drink_nonstop_hud
 
@@ -1085,11 +1099,7 @@ boost_fire_wound_immunity	= 1.0
 
 [akvatab4]:akvatab
 
-[mineral_water]:energy_drink_nonstop
 
-[mineral_water2]:mineral_water
-
-[mineral_water3]:mineral_water
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;	INCLUDE

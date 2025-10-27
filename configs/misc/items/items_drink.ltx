@@ -38,14 +38,23 @@ eat_sleepiness			= 0.054
 
 eat_health				= 0.021
 
-use_sound				= interface\inv_drink_flask_effect
+use_hud_anim 			= 1
+
+hud 				= vodka_quality_hud
+
+use_sound			= items\booster\drink_vodka
 
 lsd_factor_mul 		= 1.2
 lsd_factor_sqprop 	= 1.4
 
+
+
 repair_part_bonus		= 0.04
 
 thirst_factor = -0.1
+
+[vodka_quality_hud]:vodka_hud
+item_visual             	= dynamics\devices\dev_vodka\dev_vodka_russian_hud.ogf
 
 [vodka_quality2]:vodka_quality
 inv_name			= st_vodka_quality2
@@ -57,6 +66,7 @@ inv_grid_y			= 6
 cost				= 1842
 
 [vodka_quality3]:vodka_quality
+
 inv_name			= st_vodka_quality3
 inv_name_short		= st_vodka_quality3
 inv_weight			= 0.798
@@ -101,47 +111,144 @@ eat_satiety 			= 0.247
 eat_sleepiness			= 0.018
 eat_health				= 0.042
 
+use_hud_anim 			= 1
+
+hud 				= item_use_fast_hud
+
 use_sound				= interface\inv_drink_flask_beer
 
 thirst_factor = 0.15
 
 lsd_factor_sqprop 	= 1.2
 
-[water_drink]:booster ;350ml
-$spawn				= "food and drugs\energy_drink"
-inv_name			= st_water_drink
-inv_name_short		= st_water_drink
-visual				= dynamics\devices\dev_drink_stalker\dev_drink_water
-description			= st_water_drink_descr
-cost				= 613
+[item_use_fast_hud]:vodka_hud
+hud_fov = 0.1
+hud_fov_zoom = 0.1
 
-inv_grid_width		= 1
-inv_grid_height		= 1
-inv_grid_x			= 17
-inv_grid_y			= 7
-inv_weight			= 0.38
+hands_position				= 10.0,-0.02,0.14
+hands_orientation			= 10.0,0.0,0.0
+hands_position_16x9			= 10.0,-0.02,0.14
+hands_orientation_16x9			= 10.0,0.0,0.0
 
-attach_angle_offset		= 0.000000, 0.000000, 0.000000
-attach_position_offset	= 0.087266, -0.078540, 0.052360
-attach_bone_name		= bip01_r_hand
-auto_attach				= false
+item_position = 0.0,0.0,0.0
+item_orientation = 0.0,0.0,0.0
 
-boost_time				= 32
-boost_radiation_restore	= 0.00021
+aim_hud_offset_pos = -10.171504,0.060500,-0.089010
+aim_hud_offset_rot = 10.048900,0.082240,-0.009000
+aim_hud_offset_pos_16x9 = -10.193470,0.061100,-0.037740
+aim_hud_offset_rot_16x9 = 10.057800,0.111900,-0.011000
 
-eat_alcohol				= -0.14
-eat_satiety 			= 0.112
-eat_sleepiness			= -0.06
-eat_health				= 0.027
+item_visual             	= dynamics\devices\dev_beer\dev_pedobeer_high_hud.ogf
 
-use_sound				= interface\inv_drink_can2
+anm_show			= item_use_fast
 
-repair_part_bonus		= 0.01
+;[water_drink]:booster ;350ml
+;$spawn				= "food and drugs\energy_drink"
+;inv_name			= st_water_drink
+;inv_name_short		= st_water_drink
+;visual				= dynamics\devices\dev_drink_water\dev_drink_water
+;description			= st_water_drink_descr
+;cost				= 613
 
-thirst_factor = 0.35
+;inv_grid_width		= 1
+;inv_grid_height		= 1
+;inv_grid_x			= 17
+;inv_grid_y			= 7
+;inv_weight			= 0.38
 
-lsd_factor = -0.2
+;attach_angle_offset		= 0.000000, 0.000000, 0.000000
+;attach_position_offset	= 0.087266, -0.078540, 0.052360
+;attach_bone_name		= bip01_r_hand
+;auto_attach				= false
 
+;boost_time				= 32
+;boost_radiation_restore	= 0.00021
+
+;eat_alcohol				= -0.14
+;eat_satiety 			= 0.112
+;eat_sleepiness			= -0.06
+;eat_health				= 0.027
+
+;use_hud_anim 			= 1
+
+;hud 				= water_drink_hud
+
+;use_sound				= items\booster\drink_energy
+
+;repair_part_bonus		= 0.01
+
+;thirst_factor = 0.35
+
+;lsd_factor = -0.2
+
+;[water_drink_hud]:energy_drink_hud
+;item_visual             	= dynamics\devices\dev_drink_water\dev_drink_stalker_hud.ogf
+
+;[mineral_water]:vodka
+;$spawn 				= "food and drugs\mineral_water"
+;inv_name			= st_mineral_water
+;inv_name_short			= st_mineral_water
+;visual				= dynamics\devices\dev_water\mineral_water.ogf
+;description			= st_mineral_water_descr
+;cost				= 1719
+
+;inv_grid_width			= 1
+;inv_grid_height			= 2
+;inv_grid_x			= 20
+;inv_grid_y			= 46
+;inv_weight			= 1.035
+
+;attach_angle_offset		= 0.000000, 0.000000, 0.000000
+;attach_position_offset		= 0.087266, -0.078540, 0.052360
+;attach_bone_name		= bip01_r_hand
+;auto_attach			= false
+
+;boost_time			= 28
+;boost_radiation_restore		= 0.00027
+
+;eat_alcohol			= -0.13
+;eat_satiety 			= 0.127
+;eat_sleepiness			= -0.111
+
+;use_hud_anim		= 1
+
+;hud 				= mineral_water_hud
+
+;use_sound			= items\booster\drink_water
+
+
+;[mineral_water_hud]:vodka_hud
+;attach_place_idx 			= 0
+;zoom_hide_crosshair			= true
+;hud_fov = 0.85
+;hud_fov_zoom = 0.85
+
+;inertion_pitch_offset_r = -0.005
+;inertion_pitch_offset_n = -0.005
+;inertion_pitch_offset_d = -0.001
+;inertion_speed = 20
+;inertion_origin_offset = 0.05
+
+;hands_position				= 0.0,-0.02,0.14
+;hands_orientation			= 0.0,0.0,0.0
+;hands_position_16x9			= 0.0,-0.02,0.14
+;hands_orientation_16x9			= 0.0,0.0,0.0
+
+;item_position = 0.0,0.0,0.0
+;item_orientation = 0.0,0.0,0.0
+
+;aim_hud_offset_pos = -0.171504,0.060500,-0.089010
+;aim_hud_offset_rot = 0.048900,0.082240,-0.009000
+;aim_hud_offset_pos_16x9 = -0.193470,0.061100,-0.037740
+;aim_hud_offset_rot_16x9 = 0.057800,0.111900,-0.011000
+
+;item_visual             	= dynamics\devices\dev_water\dev_mineral_water_hud.ogf
+
+;anm_show			= water
+
+;[mineral_water2]:mineral_water
+
+;[mineral_water3]:mineral_water
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;;;;; ZONE-PRODUCED DRINK ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -172,6 +279,10 @@ eat_alcohol				= 0.144
 eat_satiety				= 0.018
 eat_sleepiness			= 0.065
 eat_health				= -0.034
+
+use_hud_anim 			= 1
+
+hud 				= item_use_fast_hud
 
 use_sound			= interface\inv_drink_flask_effect
 
@@ -226,6 +337,10 @@ eat_alcohol				= -0.274
 eat_satiety				= 0.226
 eat_sleepiness			= -0.105
 eat_health				= 0.032
+
+use_hud_anim 			= 1
+
+hud 				= item_use_fast_hud
 
 use_sound				= interface\inv_drink_tea
 
