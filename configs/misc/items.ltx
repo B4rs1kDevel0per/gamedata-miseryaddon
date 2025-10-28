@@ -129,7 +129,44 @@ anm_show			= vodka
 $spawn 				= "food and drugs\vodka_script"
 inv_weight			= 0
 
+[item_use_fast_hud]:vodka_hud
+hud_fov = 0.1
+hud_fov_zoom = 0.1
 
+hands_position				= 10.0,-0.02,0.14
+hands_orientation			= 10.0,0.0,0.0
+hands_position_16x9			= 10.0,-0.02,0.14
+hands_orientation_16x9			= 10.0,0.0,0.0
+
+item_position = 0.0,0.0,0.0
+item_orientation = 0.0,0.0,0.0
+
+aim_hud_offset_pos = -10.171504,0.060500,-0.089010
+aim_hud_offset_rot = 10.048900,0.082240,-0.009000
+aim_hud_offset_pos_16x9 = -10.193470,0.061100,-0.037740
+aim_hud_offset_rot_16x9 = 10.057800,0.111900,-0.011000
+
+item_visual             	= dynamics\devices\dev_beer\dev_pedobeer_high_hud.ogf
+
+anm_show			= item_use_fast
+
+[item_long_use_hud]:item_use_fast_hud
+
+item_visual             	= dynamics\devices\dev_item_long_use\item_use.ogf
+
+anm_show			= item_long_use
+
+[item_use_hud]:item_use_fast_hud
+
+item_visual             	= dynamics\devices\dev_item_use\item_use.ogf
+
+anm_show			= item_use
+
+[item_use_slow_hud]:item_use_fast_hud
+
+item_visual             	= dynamics\devices\dev_item_use_slow\item_slow_use.ogf
+
+anm_show			= item_use_slow
 
 [guitar_a]:identity_immunities
 GroupControlSection		= spawn_group
@@ -448,8 +485,12 @@ inv_grid_height		= 1
 inv_grid_x			= 3
 inv_grid_y			= 18
 
-boost_time				= 5.0
-boost_bleeding_restore	= 0.2
+eat_bleeding	= -1.04
+
+eat_satiety 			= -0.038
+eat_alcohol			= 0.012
+
+eat_sleepiness				= 0.009
 
 use_hud_anim		= 1
 
