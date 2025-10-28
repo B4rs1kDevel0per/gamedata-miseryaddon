@@ -442,8 +442,8 @@ use_sound			= items\booster\drink_energy
 [energy_drink_hud]:hud_base
 attach_place_idx 			= 0
 zoom_hide_crosshair			= true
-hud_fov = 0.75
-hud_fov_zoom = 0.75
+hud_fov = 0.90
+hud_fov_zoom = 0.90
 
 inertion_pitch_offset_r = -0.005
 inertion_pitch_offset_n = -0.005
@@ -478,14 +478,15 @@ inv_name			= st_bandage
 inv_name_short		= st_bandage
 inv_weight			= 0.05	;0.2
 animation_slot 		= 2
-cost				= 80
+cost				= 560
 
 inv_grid_width		= 1
 inv_grid_height		= 1
 inv_grid_x			= 3
 inv_grid_y			= 18
 
-eat_bleeding	= -1.04
+boost_time				= 1.0
+boost_bleeding_restore	= 0.5
 
 eat_satiety 			= -0.038
 eat_alcohol			= 0.012
@@ -501,8 +502,8 @@ use_sound			= items\med\use_bandage
 [bandage_hud]:hud_base
 attach_place_idx 			= 0
 zoom_hide_crosshair			= true
-hud_fov = 0.75
-hud_fov_zoom = 0.75
+hud_fov = 0.90
+hud_fov_zoom = 0.90
 
 inertion_pitch_offset_r = -0.009
 inertion_pitch_offset_n = -0.007
@@ -540,13 +541,16 @@ inv_grid_width		= 1
 inv_grid_height		= 1
 inv_grid_x			= 18
 inv_grid_y			= 12
-cost				= 250
+cost				= 1360
 
 ;eatable item
 ;eat_radiation = -0.5
 
-boost_time			= 10.0
-boost_radiation_restore	= 0.19
+eat_satiety 			= -0.306
+eat_sleepiness				= 0.071
+
+boost_time			= 9.6
+boost_radiation_restore	= 0.0026
 
 use_hud_anim		= 1
 
@@ -556,8 +560,8 @@ use_sound			= items\med\use_antirad
 [antirad_hud]:hud_base
 attach_place_idx 			= 0
 zoom_hide_crosshair			= true
-hud_fov = 0.75
-hud_fov_zoom = 0.75
+hud_fov = 0.86
+hud_fov_zoom = 0.86
 
 hands_position				= 0.0,-0.025,0.1
 hands_orientation			= 0.0,0.0,0.0
@@ -618,10 +622,10 @@ inv_grid_x			= 6
 inv_grid_y			= 14
 cost				= 250
 
-boost_time				= 5.0
-boost_health_restore	= 0.1
+boost_time				= 42.6
+boost_health_restore	= 0.0010
 boost_radiation_restore	= 0.0
-boost_bleeding_restore	= 0.05
+boost_bleeding_restore	= 0.0
 
 use_hud_anim		= 1
 
@@ -631,8 +635,8 @@ use_sound			= items\med\use_medkit
 [medkit_hud]:hud_base
 attach_place_idx 			= 0
 zoom_hide_crosshair			= true
-hud_fov = 0.75
-hud_fov_zoom = 0.75
+hud_fov = 0.90
+hud_fov_zoom = 0.90
 
 hands_position				= 0.0,-0.025,0.11
 hands_orientation			= 0.0,0.0,0.0
@@ -667,10 +671,11 @@ inv_grid_x			= 10
 inv_grid_y			= 10
 cost				= 650
 
-boost_time				= 5.0
-boost_health_restore	= 0.15
+
+boost_time				= 42.6
+boost_health_restore	= 0.0014
 boost_radiation_restore	= 0.0
-boost_bleeding_restore	= 0.2
+boost_bleeding_restore	= 0.0
 
 use_hud_anim		= 1
 
@@ -696,10 +701,9 @@ inv_grid_x			= 12
 inv_grid_y			= 9
 cost				= 800
 
-boost_time				= 10.0
-boost_health_restore	= 0.1
-boost_radiation_restore	= 0.1
-boost_bleeding_restore	= 0.05
+boost_time				= 42.6
+boost_health_restore	= 0.0018
+boost_radiation_restore	= 0.0061
 
 use_hud_anim		= 1
 
@@ -736,8 +740,8 @@ use_sound			= items\booster\drink_hercules
 [drug_booster_hud]:hud_base
 attach_place_idx 			= 0
 zoom_hide_crosshair			= true
-hud_fov = 0.75
-hud_fov_zoom = 0.75
+hud_fov = 0.95
+hud_fov_zoom = 0.95
 
 inertion_pitch_offset_r = -0.005
 inertion_pitch_offset_n = -0.005
@@ -788,8 +792,8 @@ use_sound			= items\med\use_pills
 [drug_coagulant_hud]:hud_base
 attach_place_idx 			= 0
 zoom_hide_crosshair			= true
-hud_fov = 0.65
-hud_fov_zoom = 0.75
+hud_fov = 0.95
+hud_fov_zoom = 0.95
 
 inertion_pitch_offset_r = -0.01
 inertion_pitch_offset_n = -0.01
@@ -1080,15 +1084,7 @@ boost_fire_wound_immunity	= 1.0
 
 [stimpack_scientic]:medkit_scientic
 
-[caffeine]:energy_drink
 
-[caffeine2]:caffeine
-
-[caffeine3]:caffeine
-
-[caffeine4]:caffeine
-
-[caffeine5]:caffeine
 
 [drug_sleepingpills]:drug_booster
 
