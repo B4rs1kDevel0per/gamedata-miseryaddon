@@ -1,14 +1,19 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;;;;; IMPORTED DRINK ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-[vodka2]:vodka
+[vodka_2]:vodka
 description			= st_vodka_descr
 
 inv_name			= st_vodka_2
-inv_name_short			= st_vodka_2
-
+inv_name_short		= st_vodka_2
 inv_weight			= 1.126
+
+inv_grid_width		= 1
+inv_grid_height		= 1
+inv_grid_x			= 20
+inv_grid_y			= 6
 cost				= 1164
+
 boost_time				= 35
 boost_radiation_restore	= 0.00038
 
@@ -16,13 +21,61 @@ eat_alcohol				= 0.121
 eat_satiety				= 0.022
 eat_sleepiness				= 0.019
 
-[vodka2_2]:vodka2
 
-[vodka2_3]:vodka2
-
-[vodka_2]:vodka
+repair_part_bonus	 	= 0.03
 
 [vodka_3]:vodka
+description			= st_vodka_descr
+
+inv_name			= st_vodka_3
+inv_name_short		= st_vodka_3
+inv_weight			= 0.798
+
+inv_grid_width		= 1
+inv_grid_height		= 1
+inv_grid_x			= 20
+inv_grid_y			= 7
+cost				= 682
+
+boost_time				= 35
+boost_radiation_restore	= 0.00038
+
+eat_alcohol				= 0.121
+eat_satiety				= 0.022
+eat_sleepiness				= 0.019
+
+repair_part_bonus	 	= 0.03
+
+
+[vodka2_2]:vodka2
+description			= st_vodka2_descr
+
+inv_name			= st_vodka2_2
+inv_name_short			= st_vodka2_2
+inv_weight			= 1.126
+cost				= 2444
+
+boost_time				= 40
+boost_radiation_restore	= 0.00044
+
+eat_alcohol				= 0.172
+eat_satiety				= 0.042
+eat_sleepiness			= 0.045
+
+[vodka2_3]:vodka2
+description			= st_vodka2_descr
+
+inv_name			= st_vodka2_3
+inv_name_short			= st_vodka2_3
+inv_weight			= 0.798
+cost				= 1372
+boost_time				= 40
+boost_radiation_restore	= 0.00044
+
+eat_alcohol				= 0.172
+eat_satiety				= 0.042
+eat_sleepiness				= 0.045
+
 
 [vodka_quality]:booster ;1l
 $spawn				= "food and drugs\vodka"
@@ -70,15 +123,11 @@ use_sound			= items\booster\drink_vodka
 lsd_factor_mul 		= 1.2
 lsd_factor_sqprop 	= 1.4
 
-
-
 repair_part_bonus		= 0.04
 
 thirst_factor = -0.1
 
 [vodka_quality_hud]:vodka_hud
-item_visual             	= dynamics\devices\dev_vodka\dev_vodka_russian_hud.ogf
-
 [vodka_quality2]:vodka_quality
 inv_name			= st_vodka_quality2
 inv_name_short		= st_vodka_quality2
