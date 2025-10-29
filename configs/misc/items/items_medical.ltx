@@ -32,6 +32,143 @@ use_sound			= interface\inv_medkit
 
 repair_part_bonus	 	= 0.06
 
+[stimpack]:booster
+$spawn 				= "food and drugs\medkit"
+visual				= dynamics\equipments\medical\stim1.ogf
+inv_name			= st_stim_impro
+inv_name_short			= st_stim_impro
+description			= st_stim_impro_descr
+inv_weight			= 0.088
+
+inv_grid_width     = 1
+inv_grid_height    = 1
+inv_grid_x         = 0
+inv_grid_y         = 46
+cost				= 1320 ; 850
+
+boost_time				= 12.75
+boost_health_restore	= 0.0028
+boost_radiation_restore	= 0.0
+
+use_hud_anim 			= 1
+
+hud 				= stimpack_hud
+
+eat_alcohol				= 0.045
+eat_satiety 			= -0.174
+eat_sleepiness				= 0.028
+
+use_sound			= items\med\use_medkit
+
+[stimpack_hud]:medkit_hud
+attach_place_idx 			= 0
+zoom_hide_crosshair			= true
+hud_fov = 0.85
+hud_fov_zoom = 0.85
+
+hands_position				= 0.0,-0.025,0.06
+hands_orientation			= 0.0,0.0,0.0
+hands_position_16x9			= 0.0,-0.025,0.03
+hands_orientation_16x9			= 0.0,0.0,0.0
+
+item_position = 0.0,0.0,0.0
+item_orientation = 0.0,0.0,0.0
+
+aim_hud_offset_pos = -0.171504,0.060500,-0.089010
+aim_hud_offset_rot = 0.048900,0.082240,-0.009000
+aim_hud_offset_pos_16x9 = -0.193470,0.061100,-0.037740
+aim_hud_offset_rot_16x9 = 0.057800,0.111900,-0.011000
+
+item_visual             	= dynamics\devices\dev_stimpack\dev_stimpack_hud.ogf
+
+anm_show			= apteka
+
+
+[stimpack_army_hud]:hud_base
+attach_place_idx 			= 0
+zoom_hide_crosshair			= true
+hud_fov = 0.85
+hud_fov_zoom = 0.85
+
+hands_position				= 0.0,-0.045,0.00
+hands_orientation			= 0.0,0.0,0.0
+hands_position_16x9			= 0.0,-0.045,0.00
+hands_orientation_16x9			= 0.0,0.0,0.0
+
+item_position = 0.0,0.0,0.0
+item_orientation = 0.0,0.0,0.0
+
+aim_hud_offset_pos = -0.171504,0.060500,-0.089010
+aim_hud_offset_rot = 0.048900,0.082240,-0.009000
+aim_hud_offset_pos_16x9 = -0.193470,0.061100,-0.037740
+aim_hud_offset_rot_16x9 = 0.057800,0.111900,-0.011000
+
+item_visual             	= dynamics\devices\dev_stimpack_army\stimulator_hud.ogf
+
+anm_show			= stimulator, idle
+
+
+[stimpack_army]:booster
+$spawn 				= "food and drugs\stimpack_army"
+visual				= dynamics\equipments\medical\stim2.ogf
+inv_name			= st_stim_military
+inv_name_short		= st_stim_military
+description			= st_stim_military_descr
+inv_weight			= 0.094
+
+inv_grid_width     = 1
+inv_grid_height    = 1
+inv_grid_x         = 1
+inv_grid_y         = 46
+cost				= 2250 ; 1650
+
+boost_time				= 10.65
+boost_health_restore	= 0.0047
+boost_radiation_restore	= 0.0
+
+use_hud_anim 			= 1
+
+hud 				= stimpack_army_hud
+
+use_sound			= items\med\use_medkit
+
+eat_alcohol				= 0.05
+eat_satiety 			= -0.26
+
+eat_sleepiness				= 0.054
+
+
+[stimpack_scientic]:booster
+$spawn 				= "food and drugs\medkit_scientic"
+visual				= dynamics\equipments\medical\stim3.ogf
+inv_name			= st_stim_scientic
+inv_name_short			= st_stim_scientic
+description			= st_stim_scientic_descr
+inv_weight			= 0.115
+
+inv_grid_width     = 1
+inv_grid_height    = 1
+inv_grid_x         = 2
+inv_grid_y         = 46
+cost				= 3450 ; 2260
+
+boost_time				= 9.3
+boost_health_restore	= 0.0099
+boost_radiation_restore	= 0.0021
+
+eat_alcohol				= 0.016
+eat_satiety 			= -0.12
+eat_sleepiness				= 0.039
+
+use_hud_anim 			= 1
+
+hud 				= stimpack_scientic_hud
+
+use_sound			= items\med\use_medkit
+
+[stimpack_scientic_hud]:stimpack_army_hud
+item_visual             	= dynamics\devices\dev_stimpack_science\stimulator_hud.ogf
+
 [rebirth]:booster
 $spawn 				= "food and drugs\antirad"
 visual				= dynamics\equipments\medical\rebirth.ogf
@@ -288,7 +425,7 @@ use_hud_anim 			= 1
 
 hud 				= glucose_hud
 
-use_sound			= interface\inv_syringe
+use_sound			= items\med\use_medkit
 
 [glucose_hud]:tetanus_hud
 
@@ -319,7 +456,7 @@ use_hud_anim 			= 1
 
 hud 				= glucose_hud
 
-use_sound			= interface\inv_syringe
+use_sound			= items\med\use_medkit
 
 [cocaine]:booster ;x3
 $spawn 				= "devices\pda"
@@ -365,7 +502,7 @@ eat_health				= -0.075
 
 use_hud_anim 			= 1
 
-hud 				= item_use_hud
+hud 				= item_long_use_hud
 
 use_sound			= interface\inv_sniff_long
 
@@ -576,13 +713,17 @@ eat_sleepiness				= 0.224
 
 use_hud_anim 			= 1
 
-hud 				= shoulder_med_hud
+hud 				= morphine_med_hud
 
 eat_health				= 0.082
 
-use_sound			= interface\inv_syringe
+use_sound			= items\med\use_medkit
 
 lsd_factor		= 0.45
+
+[morphine_med_hud]:stimpack_hud
+item_visual             	= dynamics\devices\dev_morphine\dev_morphine_hud
+
 
 [adrenalin]:booster
 $spawn 				= "food and drugs\energy_drink"
