@@ -66,7 +66,7 @@ lsd_factor		= 0.9
 
 use_sound			= interface\inv_syringe
 
-[caffeine]:energy_drink
+[caffeine]:booster
 $spawn 				= "food and drugs\drug_psy_blockade"
 visual				= dynamics\devices\dev_caffeine\dev_caffeine.ogf
 inv_name			= st_caffeine
@@ -505,13 +505,13 @@ eat_sleepiness				= 0.184
 
 use_hud_anim 			= 1
 
-hud 				= salicidic_acid_hud
+hud 				= shoulder_med_hud
 
 eat_health				= 0.063
 
-use_sound			= interface\inv_syringe
+use_sound			= items\med\use_medkit
 
-[salicidic_acid_hud]:tetanus_hud
+[shoulder_med_hud]:tetanus_hud
 attach_place_idx 			= 0
 zoom_hide_crosshair			= true
 hud_fov = 0.85
@@ -574,6 +574,10 @@ eat_alcohol				= 0.021
 eat_satiety				= -0.356
 eat_sleepiness				= 0.224
 
+use_hud_anim 			= 1
+
+hud 				= shoulder_med_hud
+
 eat_health				= 0.082
 
 use_sound			= interface\inv_syringe
@@ -614,6 +618,10 @@ eat_satiety				= 0.318
 eat_sleepiness				= -0.264
 
 eat_health				= -0.013
+
+use_hud_anim 			= 1
+
+hud 				= item_use_notryaska_hud
 
 use_sound			= interface\inv_syringe
 
