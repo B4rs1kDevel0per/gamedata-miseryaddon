@@ -4,8 +4,8 @@ local MODULE = "nz_loot"
 local mutant_parts = {
 	[clsid.bloodsucker_s]	= { 
 								{ amount = 1, chance = 33, item_section = "hide_bloodsucker"},
-								{ amount = 1, chance = 50, item_section = "mutant_part_krovosos_jaw"},
-								{ amount = 2, chance = 62, item_section = "mutant_part_krovosos_meat"},
+								{ amount = 1, chance = 33, item_section = "mutant_part_krovosos_jaw"},
+								{ amount = 2, chance = 37, item_section = "mutant_part_krovosos_meat"},
 							},
 	[clsid.boar_s]			= { 
 								{ amount = 1, chance = 24, item_section = "hide_boar"},
@@ -273,7 +273,6 @@ local mutant_parts = {
 								{ amount = 1, chance = 0.4, item_section = "adrenalin"},
 								{ amount = 1, chance = 1.2, item_section = "salicidic_acid"},
 								{ amount = 1, chance = 0.9, item_section = "morphine"},
-								{ amount = 1, chance = 0.01, item_section = "detector_advanced"},
 							},
 	[clsid.dog_s]			= {
 								{ amount = 1, chance = 33, item_section = "mutant_part_dog_tail" },
@@ -351,10 +350,8 @@ function loot_mutant(obj, actor)
 		packet:w_stringZ("mutant_hunter")         -- Icon/tag for the sender
 		u_EventSendReliable(packet)
 		debug_utils.INFO(MODULE, "[loot_mutant] spawning items") 
-		if actor:active_slot() == 1 then
-			for k,v in pairs(items_to_spawn) do
-				alife():create(v, actor:position(), 0, 0, actor:id())
-			end
+		for k,v in pairs(items_to_spawn) do
+			alife():create(v, actor:position(), 0, 0, actor:id())
 		end
 	else
 		debug_utils.INFO(MODULE, "[loot_mutant] SENDING PACKET: NO LOOT") -- SENDING PACKET
@@ -363,9 +360,5 @@ function loot_mutant(obj, actor)
 		packet:w_stringZ("st_mutant_loot_not_found")  -- News ID
 		packet:w_stringZ("mutant_hunter")         -- Icon/tag for the sender
 		u_EventSendReliable(packet)
-	end
-	if actor:active_slot() ~= 1 then
-		actor:activate_slot(1)
-		return
 	end
 end
