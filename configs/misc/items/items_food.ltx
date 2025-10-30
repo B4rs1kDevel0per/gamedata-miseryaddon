@@ -41,6 +41,10 @@ thirst_factor 	= -0.1
 
 lsd_factor		= 0.15
 
+use_hud_anim 			= 1
+
+hud 				= item_use_hud
+
 [meat_dog]:booster
 $spawn 				= "food and drugs\kolbasa"
 visual				= dynamics\zpf\meat_dog.ogf
@@ -71,6 +75,10 @@ eat_satiety				= 0.158
 eat_radiation		= 0.045
 
 eat_sleepiness				= 0.0072
+
+use_hud_anim 			= 1
+
+hud 				= item_use_hud
 
 ;eat_health			= -0.046
 
@@ -111,6 +119,10 @@ eat_radiation		= 0.058
 
 eat_sleepiness				= 0.0088
 
+use_hud_anim 			= 1
+
+hud 				= item_use_hud
+
 ;eat_health			= -0.062
 
 use_sound			= interface\inv_eat_paperwrap_2
@@ -149,6 +161,10 @@ eat_satiety				= 0.443
 eat_radiation		= 0.14
 
 eat_sleepiness				= 0.015
+
+use_hud_anim 			= 1
+
+hud 				= item_use_hud
 
 ;eat_health			= -0.117
 
@@ -189,6 +205,10 @@ eat_radiation		= 0.143
 
 eat_sleepiness				= 0.0174
 
+use_hud_anim 			= 1
+
+hud 				= item_use_hud
+
 ;eat_health			= -0.128
 
 use_sound			= interface\inv_eat_paperwrap_2
@@ -227,6 +247,10 @@ eat_satiety				= 0.624
 eat_radiation		= 0.106
 
 eat_sleepiness				= 0.013
+
+use_hud_anim 			= 1
+
+hud 				= item_use_hud
 
 ;eat_health			= -0.084
 
@@ -267,6 +291,10 @@ eat_radiation		= 0.039
 
 eat_sleepiness				= 0.0048
 
+use_hud_anim 			= 1
+
+hud 				= item_use_hud
+
 ;eat_health			= -0.064
 
 use_sound			= interface\inv_eat_paperwrap_2
@@ -306,6 +334,10 @@ eat_radiation		= 0.132
 
 eat_sleepiness				= 0.018
 
+use_hud_anim 			= 1
+
+hud 				= item_use_hud
+
 ;eat_health			= -0.129
 
 use_sound			= interface\inv_eat_paperwrap_2
@@ -313,6 +345,64 @@ use_sound			= interface\inv_eat_paperwrap_2
 thirst_factor 	= -0.3
 
 lsd_factor		= 0.55
+
+[bread_hud]:hud_base
+attach_place_idx 			= 0
+zoom_hide_crosshair			= true
+hud_fov = 0.90
+hud_fov_zoom = 0.90
+
+inertion_pitch_offset_r = -0.005
+inertion_pitch_offset_n = -0.005
+inertion_pitch_offset_d = -0.001
+inertion_speed = 20
+inertion_origin_offset = 0.05
+
+hands_orientation	 					 = 0.000000,0.000000,0.000000
+hands_orientation_16x9 					 = 0.000000,0.000000,0.000000
+hands_position							 = -0.170000,-0.297000,0.140000
+hands_position_16x9						 = -0.170000,-0.297000,0.140000
+
+
+item_position = 0.0,0.0,0.0
+item_orientation = 0.0,0.0,0.0
+
+item_visual             	= dynamics\devices\dev_bread_hud\bread_hud.ogf
+
+anm_show			= bread_eat_hands
+
+[breadold_hud]:bread_hud
+item_visual             	= dynamics\devices\dev_breadold_hud\bread_hud.ogf
+
+[kolbasa_hud]:breadold_hud
+attach_place_idx 			= 0
+zoom_hide_crosshair			= true
+hud_fov = 0.95
+hud_fov_zoom = 0.95
+
+inertion_pitch_offset_r = -0.005
+inertion_pitch_offset_n = -0.005
+inertion_pitch_offset_d = -0.001
+inertion_speed = 20
+inertion_origin_offset = 0.05
+
+hands_position			= -0.0000,0.000,0.0000
+hands_orientation		= 0.0, 0.0, 0.0
+hands_position_16x9 = -0.0000,0.000,0.0000
+hands_orientation_16x9		= 0.0, 0.0, 0.0
+
+
+item_position = 0.0,0.0,0.0
+item_orientation = 0.0,0.0,0.0
+
+aim_hud_offset_pos = -0.171504,0.060500,-0.089010
+aim_hud_offset_rot = 0.048900,0.082240,-0.009000
+aim_hud_offset_pos_16x9 = -0.193470,0.061100,-0.037740
+aim_hud_offset_rot_16x9 = 0.057800,0.111900,-0.011000
+
+item_visual             	= dynamics\devices\dev_kolbasa\kolbasa_hud.ogf
+
+anm_show			= hoc_sausage_use
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;;;;; IMPORTED FOOD ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -349,6 +439,10 @@ eat_sleepiness				= 0.0019
 
 eat_health			= 0.010
 
+use_hud_anim 			= 1
+
+hud 				= bread_hud
+
 use_sound			= interface\inv_eat_paperwrap
 
 thirst_factor = -0.1
@@ -384,6 +478,10 @@ eat_sleepiness				= 0.00187
 
 eat_health			= 0.006
 
+use_hud_anim 			= 1
+
+hud 				= breadold_hud
+
 use_sound			= interface\inv_eat_paperwrap
 
 thirst_factor = -0.15
@@ -418,10 +516,40 @@ eat_health			= -0.029
 eat_satiety				= 0.646
 
 eat_sleepiness				= 0.0192
+use_hud_anim 			= 1
+
+hud 				= kolbasa_hud
 
 use_sound			= interface\inv_eat_paperwrap
 
 thirst_factor = -0.1
+
+[conserva_hud]:hud_base
+attach_place_idx 			= 0
+zoom_hide_crosshair			= true
+hud_fov                     = 0.87
+hud_fov_zoom                = 0.87
+
+inertion_pitch_offset_r     = 0
+inertion_pitch_offset_n     = 0
+inertion_pitch_offset_d     = 0
+inertion_speed              = 20
+inertion_origin_offset      = 0
+
+hands_position				= -0.01,-0.18,0.10
+hands_orientation			= 0.0,0.0,0.0
+
+hands_position_16x9			= -0.01,-0.18,0.10
+hands_orientation_16x9		= 0.0,0.0,0.0
+	
+
+item_position               = 0.0,0.0,0.0
+item_orientation            = 0.0,0.0,0.0
+
+
+item_visual         = dynamics\devices\dev_conserva\conserva_hud.ogf
+
+anm_show			= conserva_eat
 
 [conserva]:booster ; unedible closed can
 $spawn 				= "food and drugs\conserva"
@@ -451,6 +579,11 @@ angle_offset			 = 1.570790,1.570790,3.92699
 eat_satiety			= 0.228
 eat_sleepiness		= 0.0055
 eat_health			= 0.021
+
+use_hud_anim 			= 1
+
+hud 				= conserva_hud
+
 use_sound			= interface\inv_eat_can_open
 
 
@@ -551,6 +684,10 @@ eat_sleepiness			= 0.0021
 
 eat_health			= 0.047
 
+use_hud_anim 			= 1
+
+hud 				= item_use_fast_hud
+
 use_sound			= interface\inv_eat_paperwrap_2
 
 thirst_factor = -0.05
@@ -580,12 +717,19 @@ bone_name				= bip01_r_hand
 position_offset			 = 0.0,0.0,0.0
 angle_offset			 = 1.570790,1.570790,3.92699
 
+hud 				= tomato_hud
+use_hud_anim 			= 1
+
 eat_satiety			= 0.164
 eat_sleepiness		= 0.0012
 eat_health			= 0.026
 use_sound			= interface\inv_eat_can_open
 
 thirst_factor = 0.05
+
+[tomato_hud]:tushonka_hud
+item_visual             	= dynamics\devices\dev_tomatiki\conserva_hud.ogf
+
 
 [sausage]:booster
 $spawn 				= "food and drugs\kolbasa"
