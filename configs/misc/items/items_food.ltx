@@ -527,8 +527,8 @@ thirst_factor = -0.1
 [conserva_hud]:hud_base
 attach_place_idx 			= 0
 zoom_hide_crosshair			= true
-hud_fov = 0.75
-hud_fov_zoom = 0.75
+hud_fov = 0.70
+hud_fov_zoom = 0.70
 
 inertion_pitch_offset_r = -0.005
 inertion_pitch_offset_n = -0.005
@@ -536,9 +536,9 @@ inertion_pitch_offset_d = -0.001
 inertion_speed = 20
 inertion_origin_offset = 0.05
 
-hands_position				= 0.0,-0.02,0.14
+hands_position				= 0.0,-0.02,0.12
 hands_orientation			= 0.0,0.0,0.0
-hands_position_16x9			= 0.0,-0.02,0.14
+hands_position_16x9			= 0.0,-0.02,0.12
 hands_orientation_16x9			= 0.0,0.0,0.0
 
 item_position = 0.0,0.0,0.0
@@ -549,7 +549,7 @@ aim_hud_offset_rot = 0.048900,0.082240,-0.009000
 aim_hud_offset_pos_16x9 = -0.193470,0.061100,-0.037740
 aim_hud_offset_rot_16x9 = 0.057800,0.111900,-0.011000
 
-item_visual             	= gwr\food\conserva\conserva_hud.ogf
+item_visual             	= dynamics\devices\dev_conserva\conserva_hud.ogf
 
 anm_show			= conserva_hands, conserva_hud
 
@@ -629,8 +629,8 @@ use_hud_anim 			= 1
 [tushonka_hud]:vodka_hud
 attach_place_idx 			= 0
 zoom_hide_crosshair			= true
-hud_fov = 0.75
-hud_fov_zoom = 0.75
+hud_fov = 0.70
+hud_fov_zoom = 0.70
 
 inertion_pitch_offset_r = -0.005
 inertion_pitch_offset_n = -0.005
@@ -638,9 +638,9 @@ inertion_pitch_offset_d = -0.001
 inertion_speed = 20
 inertion_origin_offset = 0.05
 
-hands_position				= 0.0,-0.02,0.14
+hands_position				= 0.0,-0.02,0.12
 hands_orientation			= 0.0,0.0,0.0
-hands_position_16x9			= 0.0,-0.02,0.14
+hands_position_16x9			= 0.0,-0.02,0.12
 hands_orientation_16x9			= 0.0,0.0,0.0
 
 item_position = 0.0,0.0,0.0
@@ -927,6 +927,10 @@ eat_sleepiness				= 0.0006
 
 eat_health			= 0.042
 
+use_hud_anim 			= 1
+
+hud 				= item_use_hud
+
 use_sound			= interface\inv_eat_paperwrap
 
 thirst_factor = -0.2
@@ -961,6 +965,10 @@ eat_satiety				= 0.172
 eat_sleepiness				= 0.0005
 
 eat_health			= 0.029
+
+use_hud_anim 			= 1
+
+hud 				= item_use_hud
 
 use_sound			= interface\inv_eat_paperwrap_2
 
@@ -997,6 +1005,10 @@ eat_sleepiness			= 0.0028
 
 eat_health			= 0.059
 
+use_hud_anim 			= 1
+
+hud 				= item_use_hud
+
 use_sound			= interface\inv_eat_paperwrap_2
 
 thirst_factor = -0.05
@@ -1032,6 +1044,10 @@ eat_sleepiness				= 0.0013
 
 eat_health			= 0.052
 
+use_hud_anim 			= 1
+
+hud 				= item_use_hud
+
 use_sound			= interface\inv_eat_paperwrap_2
 
 thirst_factor = -0.05
@@ -1058,6 +1074,10 @@ eat_satiety 			= 0.002
 eat_sleepiness			= -0.014
 
 eat_health			= 0.019
+
+use_hud_anim 			= 1
+
+hud 				= item_use_hud
 
 use_sound			= interface\inv_eat_gum
 
@@ -1126,9 +1146,43 @@ angle_offset			 = 1.570790,1.570790,3.92699
 eat_satiety				= 0.466
 eat_sleepiness				= 0.0023
 eat_health			= 0.059
-use_sound			= interface\inv_eat_ration3
+use_sound			= items\food\use_mre
+
+use_hud_anim		= 1
+
+hud 				= mre_hud
 
 thirst_factor = -0.15
+
+[mre_hud]:hud_base
+attach_place_idx 			= 0
+zoom_hide_crosshair			= true
+hud_fov = 0.85
+hud_fov_zoom = 0.85
+
+inertion_pitch_offset_r = -0.005
+inertion_pitch_offset_n = -0.005
+inertion_pitch_offset_d = -0.001
+inertion_speed = 20
+inertion_origin_offset = 0.05
+
+hands_position			= 0.0, 0.0, 0.0
+hands_orientation		= 0.0, 0.0, 0.0
+
+hands_position_16x9		= 0.0, 0.0, 0.0
+hands_orientation_16x9		= 0.0, 0.0, 0.0
+
+item_position                            = 0.0,0.0,0.0
+item_orientation                         = 0.0,0.0,0.0
+
+aim_hud_offset_pos = -0.171504,0.060500,-0.089010
+aim_hud_offset_rot = 0.048900,0.082240,-0.009000
+aim_hud_offset_pos_16x9 = -0.193470,0.061100,-0.037740
+aim_hud_offset_rot_16x9 = 0.057800,0.111900,-0.011000
+
+item_visual         = dynamics\devices\dev_mre\mre_hud.ogf
+
+anm_show			= use_mre_hand, use_mre
 
 [mre2]:mre
 inv_name			= st_mre2
@@ -1177,9 +1231,18 @@ angle_offset			 = 1.570790,1.570790,3.92699
 eat_satiety				= 0.523
 eat_sleepiness				= 0.0056
 eat_health			= 0.048
-use_sound			= interface\inv_eat_ration1
+
+use_hud_anim 			= 1
+
+hud 				= ration_ru_hud
+
+use_sound			= items\food\use_mre
 
 thirst_factor = -0.15
+
+[ration_ru_hud]:mre_hud
+item_visual         = dynamics\devices\dev_mre_rus\ru_mre_hud.ogf
+
 
 [ration_ru2]:ration_ru
 inv_name			= st_ration_ru2
@@ -1259,9 +1322,17 @@ angle_offset			 = 1.570790,1.570790,3.92699
 eat_satiety				= 0.531
 eat_sleepiness				= 0.0033
 eat_health			= 0.053
-use_sound			= interface\inv_eat_ration2
+
+use_hud_anim 			= 1
+
+hud 				= ration_urk_hud
+
+use_sound			= items\food\use_mre
 
 thirst_factor = -0.15
+
+[ration_urk_hud]:ration_ru_hud
+item_visual         = dynamics\devices\dev_mre_urk\mre_hud.ogf
 
 [ration_ukr2]:ration_ukr
 inv_name			= st_ration_ukr2

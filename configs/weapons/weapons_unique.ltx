@@ -635,3 +635,18 @@ visual				= dynamics\light\light_signal.ogf
 $spawn              = "dynamic_objects\scene_objects\pri_a25_antenna_grenade"
 story_id 			= pri_a25_antenna_grenade
 visual				= dynamics\light\light_signal.ogf
+
+[wpn_akm_black]:wpn_akm
+$spawn                  = "weapons\akm_black"        ; name and section in level editor
+
+def_show_bones = mag30, handler2, foregrip_rail, tilnik, laser, sight, sight2
+def_hide_bones = mag45, mag45_black, mag60, handler, scope_cobra, scope_rakurs, scope_pso_sniper, scope_kashtan, scope_pka, scope_pso_assault, scope_nv_sniper, scope_nv_assault, flash, light, line, line2, foregrip, knife
+
+visual                  = dynamics\weapons\wpn_akm_newblack\wpn_akm.ogf
+
+hud                     = wpn_akm_black_hud
+
+
+[wpn_akm_black_hud]:wpn_akm_hud
+
+item_visual                = dynamics\weapons\wpn_akm_newblack\wpn_akm_hud.ogf
