@@ -27,6 +27,10 @@
 		<texture>wpn_crosshair_pso1sn</texture>
 	</wpn_crosshair_pso1sn>
 	
+	<wpn_crosshair_pso1sn_moist anchor="mid-center" x="0" y="0" width="1920" height="1080" stretch="1">
+		<texture>wpn_crosshair_pso1sn_moist</texture>
+	</wpn_crosshair_pso1sn_moist>
+	
 	<wpn_crosshair_pso1as anchor="mid-center" x="0" y="0" width="1920" height="1080" stretch="1">
 		<texture>wpn_crosshair_pso1as</texture>
 	</wpn_crosshair_pso1as>

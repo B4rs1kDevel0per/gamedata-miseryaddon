@@ -1,29 +1,29 @@
 <w>
-	<main_frame x="19" y="422" width="483" height="239" delay="810"/>
-	<background_frame x="0" y="0" width="483" height="239">
+	<main_frame x="19" y="422" width="545" height="170" delay="810"/>
+	<background_frame x="0" y="0" width="535" height="170">
 		<texture>ui_inGame2_hint_wnd_main_window</texture>
 	</background_frame>
 
-	<static_name x="30" y="28" width="423" height="28" stretch="1" complex_desc="0">
+	<static_name x="30" y="28" width="495" height="20" stretch="1" complex_desc="0">
 		<text font="letterica18" complex_mode="0" align="c" vert_align="c"/>
 	</static_name>
 
-	<static_weight x="30" y="56" width="423" height="28">
+	<static_weight x="30" y="56" width="495" height="20">
 		<text align="l" font="letterica18" r="210" g="210" b="210"/>
 	</static_weight>
 
-	<static_cost x="317" y="56" width="106" height="23">
+	<static_cost x="317" y="56" width="305" height="16">
 		<text font="letterica18" align="r" r="210" g="210" b="210"/>
 	</static_cost>
 
-	<static_no_trade x="30" y="84" width="423" height="28">
+	<static_no_trade x="30" y="84" width="503" height="20">
 		<text align="l" font="letterica16" complex_mode="1"/>
 	</static_no_trade>
 
-	<descr_list x="30" y="84" width="400" height="183" always_show_scroll="0" fit_to_height="1">
+	<descr_list x="30" y="84" width="501" height="130" always_show_scroll="0" fit_to_height="1">
 		<font font="letterica16" r="170" g="170" b="170"/>
 	</descr_list>
-	<description_line x="30" y="70" width="392" height="13" stretch="1">
+	<description_line x="30" y="70" width="467" height="0" stretch="1">
 		<texture>ui_inGame2_hint_wnd_Information</texture>
 	</description_line>
 <!--
