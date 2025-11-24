@@ -35,13 +35,13 @@ radiation_pp_highest_at		= 	0.02
 ;---OFFLINE ALIFE------------------------------------------------------------------
 Scheduled						= on			; option for ALife Simulator
 Human		     				= off			; option for ALife Simulator
-Health							= 300			; option for ALife Simulator
+Health							= 155			; option for ALife Simulator
 MinSpeed						= 1.0			; option for ALife Simulator
 MaxSpeed						= 5.0			; option for ALife Simulator
 going_speed						= 3;4.5			; option for ALife Simulator
 current_level_going_speed		= 3;2					; option for ALife Simulator
 search_speed					= 1.5			; option for ALife Simulator
-MaxHealthValue					= 300			; range [0..200]
+MaxHealthValue					= 125			; range [0..200]
 smart_terrain_choose_interval	= 00:15:00
 ;-----------------------------------------------------------------------------------
 
@@ -50,7 +50,7 @@ script_binding       = bind_monster.bind
 ef_creature_type		= 11						; option for evaluation functions
 ef_weapon_type			= 2
 ef_detector_type		= 1
-panic_threshold		= 0.1
+panic_threshold		= 0.08
 
 cform					 = skeleton					; collision class
 class					 = SM_SNORK					; AI class
@@ -92,7 +92,7 @@ ph_skel_shot_up_factor        = 0.25
 Velocity_Stand		    = 0,		5.5,			5.2,		1,		1
 Velocity_WalkFwdNormal	= 1.05,		3.5,			3.2,		0.02,	2.0
 Velocity_WalkFwdDamaged	= 0.9,		3.5,			3.2,		0.02,	2.0
-Velocity_RunFwdNormal	= 4.5,		3.5,			3.2,		0.4,	1
+Velocity_RunFwdNormal	= 6.9,		3.5,			3.2,		0.4,	1
 Velocity_RunFwdDamaged	= 2.5,		3.5,			3.2,		0.2,	1
 Velocity_Drag			= 1.0,		1.0,			1.0,		1,		1
 Velocity_Steal			= 1.5,		3.0,			3.0,		1,		1
@@ -102,7 +102,7 @@ Velocity_Jump_Stand     = 6.0,		3.0,			0.01,		0.4,	1
 ; acceleration
 Accel_Generic			= 1.5
 Accel_Calm				= 2.5
-Accel_Aggressive		= 12.0
+Accel_Aggressive		= 15.0
 
 ;--------------------------------------------------------------------------
 ; Attack parameters
@@ -155,15 +155,15 @@ morale_v				= 0.01								;скорость восстановления мор�
 health_hit_part 		= 1		;0.8					;процент хита, уходящий на отнимание здоровья
 power_hit_part 			= 1		;0.9					;процент хита, уходящий на отнимание силы
 psy_health_v = 0.1						;скорость восстановления psy-здоровья
+health_restore_v              = 0.00008
 
 ;открытые раны
-bleeding_v					= 0.04						;потеря крови при номинальной ране в секунду
-wound_incarnation_v			= 0.05					;крутизна кривой заживления (какой процент раны останется после заживления в игровую секунду)
-min_wound_size				= 0.01
-
+bleeding_v					= 0.007					;потеря крови при номинальной ране в секунду
+wound_incarnation_v			= 0.0035			;крутизна кривой заживления (какой процент раны останется после заживления в игровую секунду)
+min_wound_size				= 0.0085
 
 ;Health from which to play injured animation
-DamagedThreshold		= 0.2
+DamagedThreshold		= 0.33
 
 ;Sleep Settings
 sleep_health			= 1.0		;1.5				;коэффициенты скоростей изменения параметров во время сна
@@ -177,7 +177,7 @@ eat_freq				=	5.0							; частота укусов в сек
 eat_slice				=	0.01						; увеличение сытости при 1 укусе
 eat_slice_weight		=	10.0						; уменьшение еды у трупа
 
-satiety_threshold		= 0.5							; below this value monster fill hunger
+satiety_threshold		= 0.5  							; below this value monster fill hunger
 
 ;-------------------------------------------------------------------------
 ; Morale
@@ -259,8 +259,8 @@ protections_sect 			= snork_protections
 ;-------------------------------------------------------------------------
 ; Vision
 ;-------------------------------------------------------------------------
-eye_fov						= 110	;140
-eye_range					= 50	;50
+eye_fov						= 170	;140
+eye_range					= 120	;50
 
 vision_free_section			= snork_vision_free
 vision_danger_section		= snork_vision_danger
@@ -269,30 +269,30 @@ vision_danger_section		= snork_vision_danger
 ; иначе возникают артефакты с потерей видимости при переходе от денжера во фри.
 
 [snork_vision_free]
-min_view_distance   		= 0.4				; коэффициент, который множится на eye_range, в зависимости от угла
-max_view_distance	 		= 1.0				; коэффициент, который множится на eye_range, в зависимости от угла
-visibility_threshold	 	= 100.0				; значение, при достижении суммой которого объект считается видимым
-always_visible_distance 	= 0.2
-time_quant					= 0.001
+min_view_distance   		= 0.85				; коэффициент, который множится на eye_range, в зависимости от угла
+max_view_distance	 		= 1.7				; коэффициент, который множится на eye_range, в зависимости от угла
+visibility_threshold	 	= 200.0				; значение, при достижении суммой которого объект считается видимым
+always_visible_distance 	= 0.1
+time_quant					= 0.0015
 decrease_value				= 0.01				; значение, на которое уменьшается вес, если объект попал в фрустум, но отсёкся по каким-то причинам
-velocity_factor		     	= 0.5
-luminocity_factor			= 0.5 				; фактор освещения (только для Актёра)
-transparency_threshold		= 0.25
+velocity_factor		     	= 0.7
+luminocity_factor			= 0.8 				; фактор освещения (только для Актёра)
+transparency_threshold		= 0.67
 
 [snork_vision_danger]
-min_view_distance   		= 0.4				; коэффициент, который множится на eye_range, в зависимости от угла
-max_view_distance	 		= 1.0				; коэффициент, который множится на eye_range, в зависимости от угла
+min_view_distance   		= 0.85				; коэффициент, который множится на eye_range, в зависимости от угла
+max_view_distance	 		= 1.7				; коэффициент, который множится на eye_range, в зависимости от угла
 visibility_threshold	 	= 100.0				; значение, при достижении суммой которого объект считается видимым
-always_visible_distance 	= 0.2
-time_quant					= 0.001
+always_visible_distance 	= 0.1
+time_quant					= 0.0015
 decrease_value				= 0.01				; значение, на которое уменьшается вес, если объект попал в фрустум, но отсёкся по каким-то причинам
-velocity_factor		     	= 0.5
-luminocity_factor			= 0.5 				; фактор освещения (только для Актёра)
-transparency_threshold		= 0.25
+velocity_factor		     	= 0.7
+luminocity_factor			= 0.2				; фактор освещения (только для Актёра)
+transparency_threshold		= 0.1
 
 [snork_protections]
-skin_armor = 0.5
-hit_fraction_monster = 0.3
+skin_armor = 0.35
+hit_fraction_monster = 0.85
 
 ;=================================================================================
 ; SNORK Damage
@@ -301,12 +301,13 @@ hit_fraction_monster = 0.3
 ;bone_name		 = <hit_scale>,-1,<wound_scale>
 ;<hit_scale>	- коэфф. изменения хита (уменьшения здоровья)
 ;<wound_scale>	- коэфф. изменения величины открытой раны
-default				= 0.5,	-1,	0.1
-bip01_pelvis 		= 1.0, -1, 0.1
-bip01_spine 		= 1.0, -1, 0.1
-bip01_spine1 		= 1.0, -1, 0.1
-bip01_neck 			= 1.0, -1, 0.5
-bip01_head 			= 4.0, -1, 0.1, 10
+default				= 0.95,	-1,	0.75
+
+bip01_pelvis 		= 0.7, -1, 0.4
+bip01_spine 		= 0.7, -1, 0.4
+bip01_spine1 		= 0.7, -1, 0.4
+bip01_neck 			= 2.25, -1, 2.2
+bip01_head 			= 3.95, -1, 0.65, 10
 
 [m_snork_attack_effector]
 duality_h			= 0.05;0.01
@@ -348,15 +349,15 @@ stand_steal_0		=	  1,	0.2,    1,	     0.25,    0.7,    0.7,    1.0,     0.7,   1
 ; IMMUNITIES
 ;===========================================================================
 [snork_immunities]
-burn_immunity			= 0.8								;коэффициенты иммунитета
-strike_immunity			= 0.8
-shock_immunity			= 0.8
-wound_immunity			= 0.8	;0.75	;1.0
+burn_immunity = 1.5 ; 3.0 ;			= 0.8								;коэффициенты иммунитета
+strike_immunity			= 1.0
+shock_immunity = 3.0 ;			= 0.8
+wound_immunity			= 0.35	;0.75	;1.0
 radiation_immunity		= 0.01	;0.5
-telepatic_immunity		= 1.0
-chemical_burn_immunity	= 0.8
-explosion_immunity		= 0.8
-fire_wound_immunity		= 1.0
+telepatic_immunity		= 0.0
+chemical_burn_immunity = 0.5 ; = 3.0 ;	= 0.8
+explosion_immunity		= 0.9
+fire_wound_immunity		= 0.25
 
 
 ;*********************************************************************************
@@ -367,7 +368,7 @@ $spawn				= "monsters\snorks\snork_01_weak"
 visual				= monsters\snork\snork_weak
 corpse_visual			= monsters\snork\snork_dead
 icon				= ui_npc_monster_snork
-panic_threshold		= 0.5
+panic_threshold		= 0.08
 rank				= 8
 immunities_sect		= snork_immunities_weak
 attack_params		= snork_attack_params_weak
@@ -376,26 +377,26 @@ community			= snork
 
 
 [snork_immunities_weak]
-burn_immunity			= 0.4								;коэффициенты иммунитета
-strike_immunity			= 0.4
-shock_immunity			= 0.4
-wound_immunity			= 0.8
-radiation_immunity		= 0.0
+burn_immunity = 1.5 ; 3.0 ;			= 0.8								;коэффициенты иммунитета
+strike_immunity			= 0.8
+shock_immunity = 3.0 ;			= 0.8
+wound_immunity			= 0.4	;0.75	;1.0
+radiation_immunity		= 0.01	;0.5
 telepatic_immunity		= 0.0
-chemical_burn_immunity	= 0.4
-explosion_immunity		= 0.4
-fire_wound_immunity		= 1.0
+chemical_burn_immunity = 0.5 ; = 3.0 ;	= 0.8
+explosion_immunity		= 0.95
+fire_wound_immunity		= 0.35
 
 [snork_attack_params_weak]
 ;---------------------------------------------------------------------------------------------------------------------------------------------
 ;	anim			| time[0..1] | hit_power | impulse | impulse_dir (x,y,z)  |	Field of hit_test  (left,right, bottom, top ) |	Test Dist
 ;---------------------------------------------------------------------------------------------------------------------------------------------
 stand_attack_0 =	  	0.30,		0.6,			30,        0.0, 0.5, 0.5,		-1.8, 1.8, -1.8, 1.8,		3.5
-stand_attack_2_1 =	  	0.30,		0.7,			70,        0.0, 1.0, 2.0,		-1.8, 1.8, -1.8, 1.8,		3.5
+stand_attack_2_1 =	  	0.30,		0.6,			70,        0.0, 1.0, 2.0,		-1.8, 1.8, -1.8, 1.8,		3.5
 
 
-stand_run_attack_left_0  =	  	0.40,		0.6,			30,        0.0, 0.5, 0.5,		-1.8, 1.8, -1.8, 1.8,		3.5
-stand_run_attack_right_0  =	  	0.40,		0.6,			30,        0.0, 0.5, 0.5,		-1.8, 1.8, -1.8, 1.8,		3.5
+stand_run_attack_left_0  =	  	0.40,		0.75,			30,        0.0, 0.5, 0.5,		-1.8, 1.8, -1.8, 1.8,		3.5
+stand_run_attack_right_0  =	  	0.40,		0.75,			30,        0.0, 0.5, 0.5,		-1.8, 1.8, -1.8, 1.8,		3.5
 
 
 
@@ -427,25 +428,25 @@ community			= snork
 
 
 [snork_immunities_normal]
-burn_immunity			= 0.3								;коэффициенты иммунитета
-strike_immunity			= 0.3
-shock_immunity			= 0.3
-wound_immunity			= 0.6
-radiation_immunity		= 0.0
+burn_immunity = 1.5 ; 3.0 ;			= 0.8								;коэффициенты иммунитета
+strike_immunity			= 0.8
+shock_immunity = 3.0 ;			= 0.8
+wound_immunity			= 0.35	;0.75	;1.0
+radiation_immunity		= 0.01	;0.5
 telepatic_immunity		= 0.0
-chemical_burn_immunity	= 0.3
-explosion_immunity		= 0.3
-fire_wound_immunity		= 1.0
+chemical_burn_immunity = 0.5 ; = 3.0 ;	= 0.8
+explosion_immunity		= 0.9
+fire_wound_immunity		= 0.30
 
 [snork_attack_params_normal]
 ;---------------------------------------------------------------------------------------------------------------------------------------------
 ;	anim			| time[0..1] | hit_power | impulse | impulse_dir (x,y,z)  |	Field of hit_test  (left,right, bottom, top ) |	Test Dist
 ;---------------------------------------------------------------------------------------------------------------------------------------------
-stand_attack_0 =	  	0.30,		0.6,			30,        0.0, 0.5, 0.5,		-1.8, 1.8, -1.8, 1.8,				3.5
-stand_attack_2_1 =	  	0.30,		0.7,			70,        0.0, 1.0, 2.0,		-1.8, 1.8, -1.8, 1.8,				3.5
+stand_attack_0 =	  	0.30,		0.65,			30,        0.0, 0.5, 0.5,		-1.8, 1.8, -1.8, 1.8,				3.5
+stand_attack_2_1 =	  	0.30,		0.65,			30,        0.0, 1.0, 2.0,		-1.8, 1.8, -1.8, 1.8,				3.5
 
-stand_run_attack_left_0  =	  	0.40,		0.6,			30,        0.0, 0.5, 0.5,		-1.8, 1.8, -1.8, 1.8,		3.5
-stand_run_attack_right_0  =	  	0.40,		0.6,			30,        0.0, 0.5, 0.5,		-1.8, 1.8, -1.8, 1.8,		3.5
+stand_run_attack_left_0  =	  	0.40,		0.75,			30,        0.0, 0.5, 0.5,		-1.8, 1.8, -1.8, 1.8,		3.5
+stand_run_attack_right_0  =	  	0.40,		0.75,			30,        0.0, 0.5, 0.5,		-1.8, 1.8, -1.8, 1.8,		3.5
 
 
 
@@ -466,7 +467,7 @@ $spawn				= "monsters\snorks\snork_03_strong"
 visual				= monsters\snork\snork_strong
 corpse_visual			= monsters\snork\snork_dead
 icon				= ui_npc_monster_snork
-panic_threshold		= 0.05
+panic_threshold		= 0.055
 rank				= 10
 immunities_sect		= snork_immunities_strong
 attack_params		= snork_attack_params_strong
@@ -475,25 +476,25 @@ community			= snork
 
 
 [snork_immunities_strong]
-burn_immunity			= 0.2								;коэффициенты иммунитета
-strike_immunity			= 0.2
-shock_immunity			= 0.2
-wound_immunity			= 0.4
-radiation_immunity		= 0.0
+burn_immunity = 1.5 ; 3.0 ;			= 0.8								;коэффициенты иммунитета
+strike_immunity			= 0.8
+shock_immunity = 3.0 ;			= 0.8
+wound_immunity			= 0.3	;0.75	;1.0
+radiation_immunity		= 0.01	;0.5
 telepatic_immunity		= 0.0
-chemical_burn_immunity	= 0.2
-explosion_immunity		= 0.2
-fire_wound_immunity		= 1.0
+chemical_burn_immunity = 0.5 ; = 3.0 ;	= 0.8
+explosion_immunity		= 0.85
+fire_wound_immunity		= 0.20
 
 [snork_attack_params_strong]
 ;---------------------------------------------------------------------------------------------------------------------------------------------
 ;	anim			| time[0..1] | hit_power | impulse | impulse_dir (x,y,z)  |	Field of hit_test  (left,right, bottom, top ) |	Test Dist
 ;---------------------------------------------------------------------------------------------------------------------------------------------
-stand_attack_0 =	  	0.30,		0.7,			30,        0.0, 0.5, 0.5,		-1.8, 1.8, -1.8, 1.8,				3.5
-stand_attack_2_1 =	  	0.30,		0.8,			70,        0.0, 1.0, 2.0,		-1.8, 1.8, -1.8, 1.8,				3.5
-                                                                                                                          
-stand_run_attack_left_0  =	  	0.40,		0.7,			30,        0.0, 0.5, 0.5,		-1.8, 1.8, -1.8, 1.8,		3.5
-stand_run_attack_right_0  =	  	0.40,		0.7,			30,        0.0, 0.5, 0.5,		-1.8, 1.8, -1.8, 1.8,		3.5
+stand_attack_0 =	  	0.30,		0.65,			30,        0.0, 0.5, 0.5,		-1.8, 1.8, -1.8, 1.8,				3.5
+stand_attack_2_1 =	  	0.30,		0.65,			30,        0.0, 1.0, 2.0,		-1.8, 1.8, -1.8, 1.8,				3.5
+
+stand_run_attack_left_0  =	  	0.40,		0.75,			30,        0.0, 0.5, 0.5,		-1.8, 1.8, -1.8, 1.8,		3.5
+stand_run_attack_right_0  =	  	0.40,		0.75,			30,        0.0, 0.5, 0.5,		-1.8, 1.8, -1.8, 1.8,		3.5
 
 ;=================================================================================
 ; Terrain

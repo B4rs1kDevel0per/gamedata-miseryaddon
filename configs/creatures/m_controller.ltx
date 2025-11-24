@@ -38,7 +38,7 @@ bone_fire			 = bip01_head				; bone name
 weapon_usage		 = 0						; boolean
 
 
-stamina_hit		=	0.2;
+stamina_hit		=	0.33;
 
 ;------------------------------------------------------------------------
 ; Influences
@@ -51,16 +51,18 @@ fire_quadratic_factor	=	0.025
 
 psy_linear_factor		=	0.5
 psy_quadratic_factor	=	0.0
-psy_max_distance		=	12.0
+psy_max_distance		=	25.0
 psy_max_power			=	0.2
 psy_sound				=	anomaly\psy_voices_1_l		;monsters\controller\controller_presence_l
 psy_pp_effector_name	= 	postprocess_psi 				;postprocess_psi
-psy_pp_highest_at		= 	0.1
+psy_pp_highest_at		= 	0.05
 
 radiation_max_distance		=	0
-radiation_max_power			=	0.02
+radiation_max_power			=	0.01
 radiation_linear_factor		=	1
 radiation_quadratic_factor	=	1
+radiation_pp_effector_name	= 	postprocess_rad
+radiation_pp_highest_at		= 	0.02
 
 ;---------------------------------------------------------------------
 ; Physics
@@ -95,7 +97,7 @@ ph_skel_shot_up_factor        = 0.25
 ; speed factors			linear | angular_real | angular_path | min |  max
 
 Velocity_Stand			= 0,		2.4,			2.4,		1,		1
-Velocity_WalkFwdNormal	= 1.5,		6.0,			6.0,		0.02,	2.0
+Velocity_WalkFwdNormal	= 1.7,		6.0,			6.0,		0.02,	2.0
 Velocity_RunFwdNormal	= 5.0,		4.6,			4.6,		0.25,	1
 Velocity_WalkFwdDamaged	= 1.5,		6.0,			6.0,		0.5,	2.0
 Velocity_RunFwdDamaged	= 4.0,  	4.0,			4.0,		0.2,	1
@@ -113,8 +115,8 @@ Accel_Aggressive		= 12.5
 ;--------------------------------------------------------------------------
 ; Attack parameters
 ;--------------------------------------------------------------------------
-MinAttackDist		= 1.5	;0.5
-MaxAttackDist		= 2.9	;3.8
+MinAttackDist		= 1.2	;0.5
+MaxAttackDist		= 2.0	;3.8
 
 as_min_dist				= 0.8
 as_step					= 0.5
@@ -151,18 +153,18 @@ satiety_power_v =      0.001;0.01		;увеличение силы при уменьшении сытости
 satiety_health_v =     0.001;0.03		;увеличение здоровья при уменьшении сытости
 satiety_critical =      -1.0;0.25		;критическое значения сытости (в процентах от 0..1) когда здоровье начианает уменьшаться
 radiation_health_v =    0.01;0.006		;уменьшение здоровья при воздействии радиации
-morale_v			=    0.1			;скорость восстановления морали
+morale_v			=    0			;скорость восстановления морали
 health_hit_part =        0.25;0.1;0.8	;процент хита, уходящий на отнимание здоровья
 power_hit_part =         0.1;0.9		;процент хита, уходящий на отнимание силы
 psy_health_v =           0.1			;скорость восстановления psy-здоровья
-
+health_restore_v              = 0.00007
 
 immunities_sect				= controller_immunities
 
 ;открытые раны
-bleeding_v					= 0.04						;потеря крови при номинальной ране в секунду
-wound_incarnation_v			= 0.05				;крутизна кривой заживления (какой процент раны останется после заживления в игровую секунду)
-min_wound_size				= 0.01
+bleeding_v					= 0.008				;потеря крови при номинальной ране в секунду
+wound_incarnation_v			= 0.001				;крутизна кривой заживления (какой процент раны останется после заживления в игровую секунду)
+min_wound_size				= 0.0105
 
 sleep_health = 1.0		;1.5				;коэффициенты скоростей изменения параметров во время сна
 sleep_power = 1.0		;1.5
@@ -236,7 +238,7 @@ critical_wound_bones_legs	= controller_critical_wound_bones_legs
 
 
 
-DamagedThreshold		= 0.1
+DamagedThreshold		= 0.25
 
 material				= creatures\medium
 DynamicObjectsCount		= 32
@@ -253,7 +255,7 @@ damage					= m_controller_damage
 tube_damage		    		= 0.25
 tube_condition_see_duration = 10	;50
 tube_condition_min_delay    = 2000 ;10000
-tube_condition_min_distance = 5
+tube_condition_min_distance = 3.5
 tube_at_once			    = false ; true for test-mode
 
 
@@ -292,8 +294,8 @@ protections_sect = controller_protections
 ;-------------------------------------------------------------------------
 ; Vision
 ;-------------------------------------------------------------------------
-eye_fov				 = 110	;150
-eye_range			 = 60	;100
+eye_fov				 = 150	;150
+eye_range			 = 90	;100
 
 vision_free_section			= controller_vision_free
 vision_danger_section		= controller_vision_danger
@@ -302,21 +304,21 @@ vision_danger_section		= controller_vision_danger
 ; иначе возникают артефакты с потерей видимости при переходе от денжера во фри.
 
 [controller_vision_free]
-min_view_distance   		= 0.5				; коэффициент, который множится на eye_range, в зависимости от угла
-max_view_distance	 		= 1.0				; коэффициент, который множится на eye_range, в зависимости от угла
+min_view_distance   		= 1.5				; коэффициент, который множится на eye_range, в зависимости от угла
+max_view_distance	 		= 1.8				; коэффициент, который множится на eye_range, в зависимости от угла
 visibility_threshold	 	= 100.0				; значение, при достижении суммой которого объект считается видимым
-always_visible_distance 	= 0.3
-time_quant					= 0.001
+always_visible_distance 	= 0.55
+time_quant					= 0.002
 decrease_value				= 0.01				; значение, на которое уменьшается вес, если объект попал в фрустум, но отсёкся по каким-то причинам
 velocity_factor		     	= 0.5
 luminocity_factor			= 0.5 				; фактор освещения (только для Актёра)
 transparency_threshold		= 0.25
 
 [controller_vision_danger]
-min_view_distance   		= 0.5				; коэффициент, который множится на eye_range, в зависимости от угла
-max_view_distance	 		= 1.0				; коэффициент, который множится на eye_range, в зависимости от угла
-visibility_threshold	 	= 100.0				; значение, при достижении суммой которого объект считается видимым
-always_visible_distance 	= 0.3
+min_view_distance   		= 1.5				; коэффициент, который множится на eye_range, в зависимости от угла
+max_view_distance	 		= 1.8				; коэффициент, который множится на eye_range, в зависимости от угла
+visibility_threshold	 	= 60.0				; значение, при достижении суммой которого объект считается видимым
+always_visible_distance 	= 0.55
 time_quant					= 0.001
 decrease_value				= 0.01				; значение, на которое уменьшается вес, если объект попал в фрустум, но отсёкся по каким-то причинам
 velocity_factor		     	= 0.5
@@ -325,8 +327,8 @@ transparency_threshold		= 0.25
 
 
 [controller_protections]
-skin_armor = 0.5
-hit_fraction_monster = 0.4
+skin_armor = 0.05
+hit_fraction_monster = 0.9
 
 
 
@@ -347,15 +349,15 @@ stand_run_dmg_0	 	=	    1,	   0.01,     1,	    0.25,    0.6,
 ; IMMUNITIES
 ;===========================================================================
 [controller_immunities]
-burn_immunity 						= 1.0				;коэффициенты иммунитета
-strike_immunity 					= 0.9
-shock_immunity 						= 1.0
-wound_immunity 						= 0.2
-radiation_immunity 					= 0.0
-telepatic_immunity 					= 0.0
-chemical_burn_immunity 				= 0.9
-explosion_immunity 					= 1.0
-fire_wound_immunity  				= 1.0
+burn_immunity = 2.0 ; 				= 0.6			;Factors of immunity
+strike_immunity 			= 0.3
+shock_immunity = 2.0 ; 				= 0.5
+wound_immunity				= 0.25
+radiation_immunity 			= 0.0
+telepatic_immunity 			= 0.0
+chemical_burn_immunity = 4.5 ; = 3.0 ; 		= 0.3
+explosion_immunity 					= 0.85
+fire_wound_immunity  				= 0.75
 
 ;=========================================================================================
 ; CONTROL Effector
@@ -398,13 +400,13 @@ color_gray		= 0.333,0.333,0.333
 color_add		= 0,0,0
 time			= 0.3
 time_attack		= 0.05		; fade in
-time_release	        = 0.25		; fade out
+time_release	        = 0.20		; fade out
 
 ; camera effects
-ce_time				= 0.45 ;time
+ce_time				= 0.40 ;time
 ce_amplitude		= -15.0
 ce_period_number	= 1.5 ;2.0
-ce_power			= 1.5 ;0.7 ; power
+ce_power			= 0.7 ;0.7 ; power
 
 ;=========================================================================================
 ; Aura PP Effector
@@ -469,13 +471,13 @@ stand_attack_1 =	  	0.25,		0.55,		    60,        0.0, 1.0, 0.0,		 -1.6, 1.6, -1.
 ;bone_name		 = <hit_scale>,-1,<wound_scale>
 ;<hit_scale>	- коэфф. изменения хита (уменьшения здоровья)
 ;<wound_scale>	- коэфф. изменения величины открытой раны
-default				= 0.5, -1, 0.1
+default				= 1.0, -1, 0.55
 
-bip01_pelvis 		= 0.5, -1, 0.5
-bip01_spine 		= 0.5, -1, 0.5
-bip01_spine1 		= 0.5, -1, 0.5
-bip01_neck 			= 0.5, -1, 1.0
-bip01_head 			= 1.0, -1, 0.5, 10
+bip01_pelvis 		= 0.6, -1, 0.05
+bip01_spine 		= 0.6, -1, 0.05
+bip01_spine1 		= 0.6, -1, 0.05
+bip01_neck 			= 0.9, -1, 2.4
+bip01_head 			= 4.5, -1, 1.6, 10
 
 
 [m_controller_normal]:m_controller_e

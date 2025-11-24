@@ -35,13 +35,13 @@ radiation_pp_highest_at		= 	0.02
 ;---OFFLINE ALIFE------------------------------------------------------------------
 Scheduled						= on			; option for ALife Simulator
 Human		     				= off			; option for ALife Simulator
-Health							= 1000			; option for ALife Simulator
+Health							= 550			; option for ALife Simulator
 MinSpeed						= 1.0			; option for ALife Simulator
 MaxSpeed						= 5.0			; option for ALife Simulator
 going_speed						= 3;4.5			; option for ALife Simulator
 current_level_going_speed		= 3;2					; option for ALife Simulator
 search_speed					= 1.5			; option for ALife Simulator
-MaxHealthValue					= 1000			; range [0..200]
+MaxHealthValue					= 550			; range [0..200]
 smart_terrain_choose_interval	= 00:15:00
 ;-----------------------------------------------------------------------------------
 
@@ -91,16 +91,16 @@ ph_skel_shot_up_factor        	= 0.25
 ;----------------------------------------------------------------------------
 ; speed factors			         linear | angular_real | angular_path | min |  max
 Velocity_Stand					= 0,		3.5,			1.5,		1,		1
-Velocity_RunFwdNormal			= 6.5,		3.5,			2.0,		0.2,	1	
+Velocity_RunFwdNormal			= 8.5,		3.5,			2.0,		0.2,	1
 
 Velocity_RunFwdDamaged			= 5.0,  	3.5,			2.0,		0.2,	1
-Velocity_WalkFwdDamaged			= 2.0,		3.0,			2.0,		0.5,	2.0	
+Velocity_WalkFwdDamaged			= 2.0,		3.0,			2.0,		0.5,	2.0
 Velocity_WalkFwdNormal			= 2.3,		3.2,			1.2,		0.02,	3.0
 Velocity_Drag					= 1.0,		3.0,			3.0,		1,		1
 Velocity_Steal					= 1.5,		3.0,			2.0,		1,		1
 Velocity_Rotate					= 0.0,      6.0,            1.0,        0.1     1
-Velocity_JumpGround				= 8.0,		3.5,			2.0,		0.4,	1
-Velocity_JumpStart				= 8.0,		3.5,			2.0,		0.4,	1
+Velocity_JumpGround				= 8.5,		3.5,			2.0,		0.4,	1
+Velocity_JumpStart				= 9.5,		3.5,			2.0,		0.4,	1
 
 Accel_Generic					= 1.5
 Accel_Calm						= 3.5
@@ -119,7 +119,7 @@ num_prepare_jumps				= 3
 ;--------------------------------------------------------------------------
 ; Attack parameters
 ;--------------------------------------------------------------------------
-MinAttackDist					= 2.8;1.2	;0.5
+MinAttackDist					= 0.3;1.2	;0.5
 MaxAttackDist					= 4.8;2.7	;3.8
 as_min_dist						= 1.2
 as_step							= 0.3
@@ -133,11 +133,11 @@ jump_factor						= 2
 jump_ground_trace_range			= 1.5
 jump_hit_trace_range			= 2
 jump_build_line_distance		= 18.0
-jump_min_distance				= 0.5
-jump_max_distance				= 15.0
-jump_max_angle					= 3.14
-jump_max_height					= 3.5
-jump_auto_aim_factor			= 0.5
+jump_min_distance				= 0.2
+jump_max_distance				= 16.0
+jump_max_angle					= 4.84
+jump_max_height					= 6.0
+jump_auto_aim_factor			= 0.45
 
 
 ;-------------------------------------------------------------------------
@@ -153,17 +153,19 @@ morale_v						= 0.01					;скорость восстановления морали
 health_hit_part					= 1.0		;0.8			;процент хита, уходящий на отнимание здоровья
 power_hit_part					= 1.0		;0.9			;процент хита, уходящий на отнимание силы
 psy_health_v					= 0.1						;скорость восстановления psy-здоровья
+health_restore_v              = 0.00001
+
 
 protections_sect 				= chimera_protections
 immunities_sect					= chimera_immunities
 
 ;открытые раны
-bleeding_v						= 0.04					;потеря крови при номинальной ране в секунду
-wound_incarnation_v				= 0.05				;крутизна кривой заживления (какой процент раны останется после заживления в игровую секунду)
-min_wound_size					= 0.01
+bleeding_v					= 0.006					;потеря крови при номинальной ране в секунду
+wound_incarnation_v			= 0.003			;крутизна кривой заживления (какой процент раны останется после заживления в игровую секунду)
+min_wound_size				= 0.0075
 
 ;Health from which to play injured animation
-DamagedThreshold				= 0.2
+DamagedThreshold				= 0.35
 
 sleep_health 					= 1.0		;1.5				;коэффициенты скоростей изменения параметров во время сна
 sleep_power 					= 1.0		;1.5
@@ -216,7 +218,7 @@ attack_sound_delay				= 12000
 
 sound_distant_idle				= monsters\snork\snork_idle_
 ;sound_distant_idle				= monsters\bloodsucker\idle_
-distant_idle_sound_delay		= 80000
+distant_idle_sound_delay		= 60000
 distant_idle_sound_range		= 100.0	
 
 SoundThreshold					= 0.02             ; range [0..1]
@@ -229,13 +231,13 @@ max_hear_dist					= 60
 ;<hit_scale>	- коэфф. изменения хита (уменьшения здоровья) 
 ;<wound_scale>	- коэфф. изменения величины открытой раны
 
-default							= 0.5, -1, 0.1
+default							= 0.75, -1, 0.6
 
-hip								= 0.5, -1, 0.1
-spine 							= 0.5, -1, 0.1
-spine_1 						= 0.5, -1, 0.1
-neck_r							= 0.5, -1, 0.1
-head_boss 						= 1, -1, 0.5
+hip							= 1, -1, 0.25
+spine 							= 0.75, -1, 0.1
+spine_1 						= 0.75, -1, 0.1
+neck_r							= 0.95, -1, 2.1
+head_boss 						= 1.45, -1, 0.9
 
 ;-------------------------------------------------------------------------
 ; Other Stuff (refactoring needed)
@@ -268,8 +270,8 @@ distance_to_corpse				= 1.2		; дист. до трупа, при которой он переходит в состоя
 ;-------------------------------------------------------------------------
 ; Vision
 ;-------------------------------------------------------------------------
-eye_fov							= 110	;140
-eye_range						= 100	;50
+eye_fov							= 140	;140
+eye_range						= 140	;50
 
 vision_free_section				= chimera_vision_free
 vision_danger_section			= chimera_vision_danger
@@ -279,35 +281,35 @@ vision_danger_section			= chimera_vision_danger
 
 [chimera_vision_free]
 min_view_distance   			= 0.8				; коэффициент, который множится на eye_range, в зависимости от угла
-max_view_distance	 			= 1.0				; коэффициент, который множится на eye_range, в зависимости от угла
-visibility_threshold	 		= 100.0				; значение, при достижении суммой которого объект считается видимым
-always_visible_distance 		= 0.3
+max_view_distance	 			= 1.8				; коэффициент, который множится на eye_range, в зависимости от угла
+visibility_threshold	 		= 170.0				; значение, при достижении суммой которого объект считается видимым
+always_visible_distance 		= 0.6
 time_quant						= 0.001
 decrease_value					= 0.01				; значение, на которое уменьшается вес, если объект попал в фрустум, но отсёкся по каким-то причинам
 velocity_factor		     		= 0.5
-luminocity_factor				= 0.1 				; фактор освещения (только для Актёра)
-transparency_threshold			= 0.25
+luminocity_factor				= 0.8 				; фактор освещения (только для Актёра)
+transparency_threshold			= 0.35
 
 [chimera_vision_danger]
 min_view_distance   			= 0.8				; коэффициент, который множится на eye_range, в зависимости от угла
-max_view_distance	 			= 1.0				; коэффициент, который множится на eye_range, в зависимости от угла
+max_view_distance	 			= 1.8				; коэффициент, который множится на eye_range, в зависимости от угла
 visibility_threshold	 		= 100.0				; значение, при достижении суммой которого объект считается видимым
-always_visible_distance 		= 0.3
+always_visible_distance 		= 0.6
 time_quant						= 0.001
 decrease_value					= 0.01				; значение, на которое уменьшается вес, если объект попал в фрустум, но отсёкся по каким-то причинам
 velocity_factor		     		= 0.5
-luminocity_factor				= 0.1 				; фактор освещения (только для Актёра)
-transparency_threshold			= 0.25
+luminocity_factor				= 0.5 				; фактор освещения (только для Актёра)
+transparency_threshold			= 0.10
 
 [chimera_protections]
-skin_armor = 0.7
-hit_fraction_monster = 0.2
+skin_armor = 0.45
+hit_fraction_monster = 0.75
 
 ;---------------------------------------------------------------------------------------------------------------------------------------------
 ;	anim			| time[0..1] | hit_power | impulse | impulse_dir (x,y,z)  |	Field of hit_test  (left,right, bottom, top ) |	Test Dist
 ;---------------------------------------------------------------------------------------------------------------------------------------------
 [m_chimera_attack_params]
-jump_attack_1  		= 	0.3,		1.0,		350,       0.0, 1.0, 0.0,		-1.8, 1.8, -1.8, 1.8,							  2.5
+jump_attack_1  		= 	0.3,		1.35,		180,       0.0, 1.0, 0.0,		-1.6, 1.6, -1.6, 1.6,							  2.5
 
 [m_chimera_attack_effector]
 duality_h						= 0.1; 0.01 
@@ -341,15 +343,15 @@ stand_run_fwd_0	=	   1,	   0.01,    1,	    0.25,    0.6,
 ; IMMUNITIES
 ;---------------------------------------------------------------------------
 [chimera_immunities]
-burn_immunity     	= 0.1 				;коэффициенты иммунитета 
+burn_immunity = 2.0 ;     	= 0.5 				;коэффициенты иммунитета
 strike_immunity     	= 0.0
-shock_immunity      	= 0.1
-wound_immunity      	= 0.3
+shock_immunity = 2.0 ;      	= 0.1
+wound_immunity      	= 0.25
 radiation_immunity   	= 0.0
 telepatic_immunity    	= 0.0
-chemical_burn_immunity  = 0.1
-explosion_immunity    	= 0.5
-fire_wound_immunity   	= 0.3
+chemical_burn_immunity = 3.5 ; = 3.0 ;  = 0.45
+explosion_immunity    	= 0.18
+fire_wound_immunity   	= 0.075
 
 ;=================================================================================
 ; Terrain
@@ -387,12 +389,12 @@ immunities_sect = chimera_immunities_normal
 spec_rank     	= normal
 
 [chimera_immunities_normal]
-burn_immunity     		= 0.1
-strike_immunity     	= 0.0
-shock_immunity      	= 0.1
-wound_immunity      	= 0.3
+burn_immunity = 3.0 ;     	= 0.5 				;коэффициенты иммунитета
+strike_immunity     	= 0.3
+shock_immunity = 3.0 ;      	= 0.1
+wound_immunity      	= 0.35
 radiation_immunity   	= 0.0
 telepatic_immunity    	= 0.0
-chemical_burn_immunity  = 0.1
-explosion_immunity    	= 0.5
-fire_wound_immunity   	= 0.3
+chemical_burn_immunity = 5.5 ; = 3.0 ;  = 0.45
+explosion_immunity    	= 0.3
+fire_wound_immunity   	= 0.075

@@ -13,13 +13,13 @@
 			novice_outfit \n
 
 			wpn_pmm  \n
-   			ammo_9x18_fmj = 3 \n
+   			ammo_9x18_fmj = 5 \n
    			
 			bandage = 2 \n
 			antirad = 1 \n
-			medkit = 1 \n
+			medkit = 2 \n
 
-			conserva = 1 \n
+			conserva = 2 \n
 			
     </supplies>
 
@@ -41,16 +41,16 @@
 		<team>mp_actor</team>
 		<supplies>
 			[spawn] \n
-			novice_outfit \n
+			white_novice_outfit \n
 
-			wpn_pmm  \n
-   			ammo_9x18_fmj = 3 \n
+			wpn_bm16  \n
+   			ammo_12x70_buck = 4 \n
    			
 			bandage = 2 \n
 			antirad = 1 \n
-			medkit = 1 \n
+			medkit = 2 \n
 
-			conserva = 1 \n
+			tomato = 2 \n
     </supplies>
 	
 	   <money min="2500"  max="3500"  infinitive="0"/>
@@ -71,16 +71,16 @@
 		<team>mp_actor</team>
 		<supplies>
 			[spawn] \n
-			novice_outfit \n
+			cs_light_outfit \n
 
-			wpn_pmm  \n
-   			ammo_9x18_fmj = 3 \n
+			wpn_pm  \n
+   			ammo_9x18_fmj = 5 \n
    			
 			bandage = 2 \n
 			antirad = 1 \n
-			medkit = 1 \n
+			medkit = 2 \n
 
-			conserva = 1 \n
+			tushonka = 2 \n
     </supplies>
 	
 	    <money min="1500"  max="2500"  infinitive="0"/>
@@ -101,16 +101,16 @@
 		<team>mp_actor</team>
 		<supplies>
 			[spawn] \n
-			novice_outfit \n
+			black_coat_outfit \n
 
-			wpn_pmm  \n
-   			ammo_9x18_fmj = 3 \n
+			wpn_toz34  \n
+   			ammo_12x70_buck = 3 \n
    			
 			bandage = 2 \n
 			antirad = 1 \n
-			medkit = 1 \n
+			medkit = 3 \n
 
-			conserva = 1 \n
+			conserva = 2 \n
     </supplies>
 
     <money min="1500"  max="2500"  infinitive="0"/>

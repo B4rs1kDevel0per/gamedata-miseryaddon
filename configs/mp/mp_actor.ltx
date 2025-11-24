@@ -8,32 +8,32 @@ money					= 200;
 
 ;---ACCEL---------------------------------------------
 walk_accel              = 21.5; 18
-walk_back_coef          = 0.61 ;1
+walk_back_coef          = 0.66 ;1
 walk_crouch_coef        = 0.65 ;0.5
 walk_strafe_coef        = 1
 
 run_coef                = 1.710 ;1.8
-run_back_coef           = 1.33 ;1.8
+run_back_coef           = 1.4 ;1.8
 run_crouch_coef         = 1
 run_strafe_coef            = 1
 
 ;---SAFE MODE ACCEL-----------------------------------
-safe_walk_accel            = 12
+safe_walk_accel            = 18
 safe_walk_back_coef        = 1.0
-safe_walk_crouch_coef   = 0.35
+safe_walk_crouch_coef   = 0.75
 safe_walk_strafe_coef    = 1.0
 
-safe_run_coef             = 3.1
-safe_run_back_coef        = 2.8
+safe_run_coef             = 1.8
+safe_run_back_coef        = 1.8
 safe_run_crouch_coef    = 1.0
 safe_run_strafe_coef    = 1.0
 ;-----------------------------------------------------
 
-climb_coef              = 0.72 ;0.7
-sprint_coef             = 1.685 ;1.6
+climb_coef              = 0.5 ;0.7
+sprint_coef             = 1.6 ;1.6
 
-wounded_accel           = 3.7
-turn_wounded_coef        = 0.3
+wounded_accel           = 5.7
+turn_wounded_coef        = 0.4
 
 visual					= actors\stalker_hero\stalker_hero_1.ogf
 destroyed_vis_name		= dynamics\Dead_Body\skelet_crash
@@ -79,16 +79,17 @@ body_remove_time = 80000        ;время уничтожения трупа (�
 ;<bone_pass_bullet> - 0 - после попадания пули в эту кость, эта пуля больше не наносит актеру повреждений
 ;					1 - пуля наносит актеру повреждения как обычно
 ;-1 - нет анимаций, четный номер - спереди, нечетный номер - сзади, УКАЗЫВАЕТСЯ ТОЛЬКО ПЕРЕДНИЙ!!! ЗАДНИЙ НА АВТОМАТЕ
-default			 = 1.0, -1, 0.1
+default					= 0.5, -1, 0.5
+
 bip01_pelvis 		 = 0.75, 4, 1.6	;от ядра до пояса
 bip01_spine 		 = 0.85, 4, 1.8	;в основном без шейпа
 bip01_spine1 		 = 0.85, 4, 1.9	;торс до шеи
 bip01_spine2		 = 0.9, 4, 2.1
-bip01_neck 			 = 0.85, 0, 3.2	;в основном без шейпа
-bip01_head 			 = 2.55, 0, 3.6	;очень большой шейп
-eye_left 			 = 2.55, 0, 2.65	;глаза
-eye_right 			 = 2.55, 0, 2.65	;глаза
-jaw_1 		 	 = 1.85, 0, 1.6	;рот от шеи до носа
+bip01_neck 			 = 0.6, 0, 3.2	;в основном без шейпа
+bip01_head 			 = 1.55, 0, 3.6	;очень большой шейп
+eye_left 			 = 1.55, 0, 2.65	;глаза
+eye_right 			 = 1.55, 0, 2.65	;глаза
+jaw_1 		 	 = 1.45, 0, 1.6	;рот от шеи до носа
 
 bip01_l_clavicle	 = 0.35, 8, 0.65	;плечо + bip01_spine1
 bip01_l_upperarm	 = 0.2, 8, 0.45, 1 ;0.2
@@ -107,57 +108,57 @@ bip01_r_finger0	 	 = 0.01, -1, 0.01, 1
 bip01_r_finger1	 	 = 0.01, -1, 0.01, 1
 bip01_r_finger2	 	 = 0.01, -1, 0.01, 1
 
-bip01_l_thigh	 	 = 0.4, 4, 1.45		;бедро
+bip01_l_thigh	 	 = 0.3, 4, 1.8		;бедро
 bip01_l_calf	 	 = 0.17, 4, 0.85	;голень
 bip01_l_foot	 	 = 0.05, 4, 0.09	;пятка,1
 bip01_l_toe0	 	 = 0.01, -1, 0.12	;пальцы,1
-bip01_r_thigh	 	 = 0.4, 4, 1.45		;бедро
+bip01_r_thigh	 	 = 0.3, 4, 1.8		;бедро
 bip01_r_calf	 	 = 0.17, 4, 0.85		;голень
 bip01_r_foot	 	 = 0.05, 4, 0.09		;пятка,1
 bip01_r_toe0	 	 = 0.01, -1, 0.12		;пальцы,1
 
 
 [mp_actor_immunities]
-burn_immunity 				= 19.2		;коэффициенты иммунитета
-strike_immunity 			= 2.59
-shock_immunity 				= 3.60
-wound_immunity				= 2.68
-radiation_immunity 			= 2.64
-telepatic_immunity 			= 6.20
-chemical_burn_immunity 		= 4.54
-explosion_immunity 			= 1.50
-fire_wound_immunity  		= 1.68
+burn_immunity 				= 2.0
+strike_immunity 			= 1.30
+shock_immunity 				= 2.00
+wound_immunity				= 1.00
+radiation_immunity 			= 1.25
+telepatic_immunity 			= 1.25
+chemical_burn_immunity 			= 2.0
+explosion_immunity 			= 0.84
+fire_wound_immunity  			= 0.64
 
 [mp_actor_wounded_immunities]
-burn_immunity 				= 19.2		;коэффициенты иммунитета
-strike_immunity 			= 2.59
-shock_immunity 				= 3.60
-wound_immunity				= 2.68
-radiation_immunity 			= 2.64
-telepatic_immunity 			= 6.20
-chemical_burn_immunity 		= 4.54
-explosion_immunity 			= 1.50
-fire_wound_immunity  		= 1.68
+burn_immunity 				= 9.6
+strike_immunity 			= 1.29
+shock_immunity 				= 1.80
+wound_immunity				= 1.12
+radiation_immunity 			= 1.32
+telepatic_immunity 			= 3.46
+chemical_burn_immunity 			= 2.27
+explosion_immunity 			= 0.85
+fire_wound_immunity  			= 0.68
 
 [mp_actor_condition]:actor_condition
 satiety_v					= 0.000165	;скорость уменьшения сытости со временем
 radiation_v					= 0.000014	;скорость уменьшения радиации
-satiety_power_v				= 0.00425	;увеличение силы при уменьшении сытости
-satiety_health_v			= 0.000005	;увеличение здоровья при уменьшении сытости
-satiety_critical			= 0.3		;критическое значения сытости (в процентах от 0..1) когда здоровье начианает уменьшаться
-radiation_health_v          = 0.0008    ;уменьшение здоровья при воздействии радиации
+satiety_power_v				= 0.00385	;увеличение силы при уменьшении сытости
+satiety_health_v			= 0.0001	;увеличение здоровья при уменьшении сытости
+satiety_critical			= 0.1		;критическое значения сытости (в процентах от 0..1) когда здоровье начианает уменьшаться
+radiation_health_v          = 0.0015    ;уменьшение здоровья при воздействии радиации
 morale_v					= 0.0001	;скорость восстановления морали
 psy_health_v				= 0.0018	;скорость восстановления psy-здоровья
 alcohol_v					= -0.0008
 health_hit_part				= 1.0		;процент хита, уходящий на отнимание здоровья
-power_hit_part				= 0.035		;процент хита, уходящий на отнимание силы
+power_hit_part				= 0.07		;процент хита, уходящий на отнимание силы
 max_power_leak_speed		= 0.0		;накопление усталости (макс граница, до которой восстанавливается сила) в секунду игрового времени
-max_walk_weight				= 60
+max_walk_weight				= 150
 
 ;---ОТКРЫТЫЕ РАНЫ
-bleeding_v					= 0.0038	;потеря крови при номинальной ране в секунду
+bleeding_v					= 0.0112	;потеря крови при номинальной ране в секунду
 wound_incarnation_v			= 0.0020	;крутизна кривой заживления (какой процент раны заживет в игровую секунду)
-min_wound_size				= 0.0068	;минимальный размер раны, после которого она считается зажившей
+min_wound_size				= 0.0066	;минимальный размер раны, после которого она считается зажившей
 
 sleep_health				= 0.000005	;коэффициенты скоростей изменения параметров во время сна
 sleep_power					= 1.0		
@@ -167,16 +168,16 @@ sleep_psy_health			= 0.0
 
 ;---actor_condition only
 
-jump_power				= 0.15 		;умешьшение силы с прыжком без учета веса ноши
+jump_power				= 0.018 		;умешьшение силы с прыжком без учета веса ноши
 jump_weight_power		= 0.2		;умешьшение силы с прыжком с учетом веса ноши, для максимального допустимого веса
 overweight_jump_k		= 1.03		;коэффициент влияние перегрузки прыжок с весом (умножается на jump_weight_power)
-max_item_mass           = 33
-stand_power				= -0.0074   ;восстановление выносливости
-walk_power				= 0.0002  	;умешьшение силы за секнду во время ходьбы без учета веса ноши
+max_item_mass           = 38
+stand_power				= -0.0069   ;восстановление выносливости
+walk_power				= 0.00001  	;умешьшение силы за секнду во время ходьбы без учета веса ноши
 
 
-walk_weight_power		= 0.00005		;умешьшение силы за секнду во время ходьбы с учетом веса ноши, для максимального допустимого веса
-overweight_walk_k		= 1.09			;коэффициент влияние перегрузки ноши (умножается на walk_weight_power)
+walk_weight_power		= 0.0037		;умешьшение силы за секнду во время ходьбы с учетом веса ноши, для максимального допустимого веса
+overweight_walk_k		= 1.07			;коэффициент влияние перегрузки ноши (умножается на walk_weight_power)
 accel_k					= 1.01		;коэффициент на бег (умножается walk_power, walk_weight_power)
 sprint_k				= 3.5		;коэффициент на "sprint" бег (умножается walk_power, walk_weight_power)
 
@@ -184,8 +185,8 @@ sprint_k				= 3.5		;коэффициент на "sprint" бег (умножае�
 ;---ХРОМОТА
 limping_health_begin = 0.08			;порог здоровья меньше которого актер начинает хромать
 limping_health_end   = 0.12			;порог здоровья больше которого актер перестает хромать
-limping_power_begin  = 0.18			;порог силы меньше которого актер начинает хромать
-limping_power_end	 = 0.29			;порог силы больше которого актер перестает хромать
+limping_power_begin  = 0.09			;порог силы меньше которого актер начинает хромать
+limping_power_end	 = 0.18			;порог силы больше которого актер перестает хромать
 use_limping_state	 = on
 
 cant_walk_power_begin =	0.0015	;порог силы меньше которого актер не может двигаться
@@ -195,10 +196,10 @@ cant_sprint_power_begin =	0.04	;порог силы меньше которог�
 cant_sprint_power_end   =	0.08	;порог силы больше которого актер сможет бежать в спринте
 
 radio_zone_max_power		= 0.055	;пределы зон для датчиков и для инвентаря (% защит броников)
-fire_zone_max_power			= 1.15
-acid_zone_max_power			= 0.25
-psi_zone_max_power			= 0.25
-electra_zone_max_power		= 4.0
+fire_zone_max_power			= 1.25
+acid_zone_max_power			= 1.25
+psi_zone_max_power			= 1.25
+electra_zone_max_power		= 1.25
 
 max_power_restore_speed		= 0.020
 max_fire_wound_protection	= 3.20
