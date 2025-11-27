@@ -950,13 +950,13 @@ item_count_by_category[6] = 1
 item_count_by_category[7] = 1
 
 local zat_b51_costs_table = {}
-zat_b51_costs_table[1] = {prepay_agreed = 700, 		prepay_refused = 1400,	cost = 2800}
-zat_b51_costs_table[2] = {prepay_agreed = 2000, 	prepay_refused = 4000,	cost = 8000}
-zat_b51_costs_table[3] = {prepay_agreed = 4000, 	prepay_refused = 8000,	cost = 16000}
-zat_b51_costs_table[4] = {prepay_agreed = 4000, 	prepay_refused = 8000,	cost = 16000}
-zat_b51_costs_table[5] = {prepay_agreed = 8000, 	prepay_refused = 16000,	cost = 32000}
-zat_b51_costs_table[6] = {prepay_agreed = 6000, 	prepay_refused = 12000,	cost = 24000}
-zat_b51_costs_table[7] = {prepay_agreed = 12000,	prepay_refused = 24000,	cost = 48000}
+zat_b51_costs_table[1] = {prepay_agreed = 4350, 	prepay_refused = 9700,	cost = 19400}
+zat_b51_costs_table[2] = {prepay_agreed = 7560, 	prepay_refused = 16020,	cost = 32040}
+zat_b51_costs_table[3] = {prepay_agreed = 10760, 	prepay_refused = 21520,	cost = 42800}
+zat_b51_costs_table[4] = {prepay_agreed = 11310, 	prepay_refused = 22620,	cost = 44100}
+zat_b51_costs_table[5] = {prepay_agreed = 14420, 	prepay_refused = 28840,	cost = 65400}
+zat_b51_costs_table[6] = {prepay_agreed = 20150, 	prepay_refused = 40300,	cost = 80600}
+zat_b51_costs_table[7] = {prepay_agreed = 22650,	prepay_refused = 44300,	cost = 68690}
 
 local zat_b51_buy_item_table = {}
 zat_b51_buy_item_table[1] = {		[1] = {item = {"wpn_desert_eagle_nimble"}},
@@ -975,11 +975,11 @@ zat_b51_buy_item_table[4] = {	[1] = {item = {"wpn_vintorez_nimble"}},
 								[2] = {item = {"wpn_svu_nimble"}},
 								[3] = {item = {"wpn_svd_nimble"}}
 	}
-zat_b51_buy_item_table[5] = {		[1] = {item = {"helm_tactic", "cs_heavy_outfit"}}
+zat_b51_buy_item_table[5] = {		[1] = {item = {"cs_heavy_outfit"}}
 	}
 zat_b51_buy_item_table[6] = {		[1] = {item = {"scientific_outfit"}}
 	}
-zat_b51_buy_item_table[7] = {		[1] = {item = {"exo_outfit"}}
+zat_b51_buy_item_table[7] = {		[1] = {item = {"ghillie_outfit"}}
 	}
 
 function zat_b51_randomize_item(first_speaker, second_speaker)
