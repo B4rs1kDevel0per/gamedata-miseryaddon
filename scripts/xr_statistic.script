@@ -36,8 +36,16 @@ local function check_for_statistic_table(id)
 	end
 end
 
+function resetActorStatistic()
+	for k,v in pairs(actor_statistic) do
+		add_actor_statistic(k)
+	end
+end
 function getLocalActorStatistic()
-	local id = getLocalActor():id()
+	local id = 0
+	if getLocalActor() then
+		id = getLocalActor():id()
+	end
 	check_for_statistic_table(id)
 	
 	return actor_statistic[id]

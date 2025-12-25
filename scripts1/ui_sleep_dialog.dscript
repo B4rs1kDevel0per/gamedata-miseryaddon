@@ -1,0 +1,18 @@
+function dream_callback2()
+	if getLocalActor() then
+		xr_effects.enable_ui(getLocalActor(), nil)
+	end
+	
+	get_console():execute("snd_volume_music "..tostring(_G.mus_vol))
+	get_console():execute("snd_volume_eff "..tostring(_G.amb_vol))
+	_G.amb_vol = 0
+	_G.mus_vol = 0
+	
+	if OnServer() then
+		story_flags.give_flag("TUTORIAL_SLEEP")
+		story_flags.disable_flag("ACTOR_IS_SLEEPING")
+		story_flags.disable_flag("SLEEP_ACTIVE")
+			
+		xr_effects.scenario_autosave(db.actor,nil,{"st_save_after_sleep"})
+	end
+end

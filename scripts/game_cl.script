@@ -14,6 +14,9 @@ local dbg = debug_utils
 local MODULE = "game_cl"
 
 function ReadStartGameInfo(packet)
+	if GameType() ~= game_cl.game_id_coop then
+		return
+	end
 	xr_logic.pstor_load_all("game_cl", packet)
 	xr_voicedialogs.load_dialogs(packet)
 	sim_squad_scripted_cl_manager.get_squad_manager():read_squads_info(packet)
@@ -225,7 +228,7 @@ function TranslateGameMessage(packet)
 			xr_voicedialogs.add_to_save_table(name)
 		end
 		printf_msg("GM_SCRIPT_SAVE_VOICE_DIALOG: %s", name)
-	elseif _type == GM_SCRIPT_MUTANT_LOOT then
+		elseif _type == GM_SCRIPT_MUTANT_LOOT then
 		debug_utils.INFO(MODULE, "[GM_SCRIPT_MUTANT_LOOT] RUNNING")
 		if OnClient() then
 			debug_utils.INFO(MODULE, "[GM_SCRIPT_MUTANT_LOOT] EXTRACTING PARAMS")
@@ -237,7 +240,6 @@ function TranslateGameMessage(packet)
 				news_manager.send_tip(getLocalActor(), news_id, nil, sender_tag, nil, nil)
 			end
 		end
-	
 	end
 end
 

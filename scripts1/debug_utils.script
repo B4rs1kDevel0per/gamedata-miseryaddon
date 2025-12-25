@@ -1,0 +1,56 @@
+-- Global debug toggle (master switch)
+DEBUG_ENABLED = true
+
+-- debug_utils.script
+
+local DEBUG_MODULES = {
+	["ai_tweaks"] = false,
+	["alun_utils"] = false,
+	["xrs_rnd_npc_loadout"] = false,
+	["se_stalker"] = false,
+	["sim_squad_actions"] = false,
+	["sim_board"] = false,
+	["sim_squad_scripted"] = false,
+	["bind_monster"] = false,
+	["news_manager"] = false,
+	["game_cl"] = false,
+	["nz_loot"] = false,
+	["move_mgr"] = false,
+	["xr_danger"] = false,
+	["xr_combat_ignore"] = false,
+	["xr_corpse_detection"] = false,
+	["xr_gather_items"] = false,
+	["bind_stalker"] = false
+}
+
+local function get_timestamp()
+	local t = os.date("*t")
+	return string.format("%02d:%02d:%02d", t.hour, t.min, t.sec)
+end
+
+-- Base printf wrapper with format protection
+function debug_utils.printf_dbg(module, fmt, ...)
+	if not DEBUG_ENABLED then return end
+	if not DEBUG_MODULES[module] then return end
+	local ok, msg = pcall(string.format, fmt, ...)
+	if not ok then
+		msg = "[FORMAT ERROR]"
+	end
+	printf_msg(string.format("[%s] [%s] %s", get_timestamp(), module, msg))
+end
+
+-- INFO wrapper for status-style messages
+function debug_utils.INFO(module, fmt, ...)
+	debug_utils.printf_dbg(module, "[INFO] " .. fmt, ...)
+end
+
+-- ASSERT that logs a failure but does not crash
+function debug_utils.ASSERT(module, condition, msg_fmt, ...)
+	if condition then return true end
+	if msg_fmt then
+		debug_utils.printf_dbg(module, "[ASSERT FAILED] " .. msg_fmt, ...)
+	else
+		debug_utils.printf_dbg(module, "[ASSERT FAILED] No message provided")
+	end
+	return false
+end

@@ -44,6 +44,18 @@ function generic_object_binder:reinit()
 	self.object:set_callback(callback.sound, 				self.hear_callback, 	self)
 end
 
+function generic_object_binder:use_kick(obj, who)
+	local pos = who:position()
+	local h = hit()
+	h.power = 2
+	h.direction = obj:position():sub(vector():set(pos.x,pos.y+0.3,pos.z))
+	h.bone = "bip01_spine"
+	h.draftsman = who
+	h.impulse = 271
+	h.type = hit.wound
+	obj:hit(h)
+end
+
 function generic_object_binder:update(delta)
 	object_binder.update(self, delta)
 
@@ -116,7 +128,10 @@ function generic_object_binder:update(delta)
 		return
 	end
 	
-	
+	local clstush = self.object:clsid()
+	if (clstush == clsid.tushkano_s) then
+		self.object:set_callback(callback.use_object, self.use_kick, self)
+	end
 	
 	if squad and squad.current_action and squad.current_action.name == "reach_target" then
 		local squad_target = simulation_objects.get_sim_obj_registry().objects[squad.assigned_target_id]
@@ -187,7 +202,7 @@ function generic_object_binder:death_callback(victim, who)
 	xr_combat_ignore.fighting_with_actor_npcs[self.object:id()] = nil
 
 	self:hit_callback(victim, 1, vector():set(0,0,0), who, "from_death_callback")
-	if is_object_actor_by_id(who:id()) then
+	if who and is_object_actor_by_id(who:id()) then
 		xr_statistic.inc_killed_monsters_counter(who:id())
 		xr_statistic.set_best_monster(self.object, who:id())
 	end
@@ -203,7 +218,13 @@ function generic_object_binder:death_callback(victim, who)
 	local h = hit()
 	h.draftsman = self.object
 	h.type = hit.fire_wound
-	h.direction = who:position():sub(self.object:position())
+	
+	if who then
+		h.direction = who:position():sub(self.object:position())
+	else
+		h.direction = self.object:direction()
+	end
+	
 	h:bone("pelvis")
 	h.power = 1
 	h.impulse = 10
@@ -221,7 +242,7 @@ end
 function generic_object_binder:hit_callback(obj, amount, local_direction, who, bone_index)
 --	printf("HIT_CALLBACK: [%s] amount[%s]", obj:name(), amount)
 
-	if(is_object_actor_by_id(who:id())) then
+	if(who and is_object_actor_by_id(who:id())) then
 		xr_statistic.set_best_weapon(amount, who)
 	end
 
@@ -229,7 +250,7 @@ function generic_object_binder:hit_callback(obj, amount, local_direction, who, b
 		xr_logic.issue_event(self.object, self.st.hit, "hit_callback", obj, amount, local_direction, who, bone_index)
 	end
 
-	if amount > 0 then
+	if amount > 0 and who then
 		printf("HIT_CALLBACK: %s amount=%s bone=%s who:id() = [%s] actor:id() = [%s]", obj:name(), amount, tostring(bone_index), who:id(), db.actor:id())
 	end
 end

@@ -58,6 +58,7 @@ function mp_actor_binder:update_delayed_functions()
 		end
 	end
 end
+
 function mp_actor_binder:init_gameover_screen()
 	self.gameover_start_time = time_global()
 	self.gameover_wnd = ui_gameover_wnd.gameover_wnd()
@@ -76,7 +77,7 @@ function mp_actor_binder:update_gameover_screen()
 		self:init_gameover_screen()
 	end
 	
-	local count = math.floor(3 - (time_global() - self.gameover_start_time) / 1000) -- shorter gameover timer
+	local count = math.floor(10 - (time_global() - self.gameover_start_time) / 1000)
 	
 	if count >= 0 then
 		self.gameover_wnd:getTimer():SetText(tostring(count))
@@ -99,6 +100,7 @@ function mp_actor_binder:net_spawn(data)
 	if object_binder.net_spawn(self,data) == false then
 		return false
 	end
+	
 	
 	self.weather_manager:reset()			 
 	db.add_obj(self.object)
@@ -244,7 +246,7 @@ end
 function mp_actor_binder:update(delta)
 	self:update_rps_game()
 	
-	if LocalActor() ~= self.object:id() then
+	if LocalActor() ~= self.object:id() or (IsServerClient() and LocalActor() == self.object:id()) then
 		if OnServer() then
 			-- Апдейт прятание оружия игрока в зоне sr_no_weapon
 			if check_for_weapon_hide_by_zones(self.object:id()) == true then
@@ -261,7 +263,9 @@ function mp_actor_binder:update(delta)
 			
 			xr_sound.update(self.object:id())
 		end
-		return
+		if not IsServerClient() then
+			return
+		end
 	end
 		
 	object_binder.update(self, delta)
@@ -333,7 +337,8 @@ function mp_actor_binder:update(delta)
 	end
 	pda.fill_sleep_zones()
 	
-	self:update_delayed_functions()									   
+	xr_voicedialogs.update()
+	self:update_delayed_functions()								   
 	
 	sim_squad_scripted_cl_manager.get_squad_manager():update()
 	
@@ -404,6 +409,12 @@ function actor_binder:net_spawn(data)
 	if object_binder.net_spawn(self,data) == false then
 		return false
 	end
+	
+	if self.object:id() == SV_OBJECT_ID then
+		db.add_actor(self.object)
+		db.actor.deimos_intensity = self.deimos_intensity
+	end
+	
 	db.add_actor(self.object)
 	db.actor.deimos_intensity = self.deimos_intensity
 	self.deimos_intensity = nil
@@ -597,7 +608,12 @@ function actor_binder:try_start_game()
 			num = num + 1
 		end
 		
-		if num > 0 and get_players_count() - 1 == num then
+		local num_players = get_players_count()
+		if IsDedicatedServer() then
+			num_players = num_players - 1
+		end
+		
+		if num > 0 and num_players == num then
 			story_flags.give_flag("GAME_STARTED")
 		end
 	end
@@ -732,7 +748,7 @@ local function spawn_achivement_items(items_table, count, inv_box_story_id)
 end
 
 function actor_binder:check_detective_achievement()
-	if not story_flags.has_flag("DETECTIVE_ACHIEVEMENT_GAINED") then
+	if not has_alife_info("detective_achievement_gained") then
 		return
 	end
 	if self.last_detective_achievement_spawn_time == nil then
@@ -746,7 +762,7 @@ function actor_binder:check_detective_achievement()
 end
 
 function actor_binder:check_mutant_hunter_achievement()
-	if not story_flags.has_flag("MUTANT_HUNTER_ACHIEVEMENT_GAINED") then
+	if not has_alife_info("mutant_hunter_achievement_gained") then
 		return
 	end
 	if self.last_mutant_hunter_achievement_spawn_time == nil then
@@ -823,6 +839,22 @@ function bind_stalker_cl:net_spawn(data)
 	return true
 end
 
+function bind_stalker_cl:net_import(packet)
+	--object_binder.net_import(self, packet)
+	
+	if dev_debug then
+		if self.st.debug_info == nil then
+			self.st.debug_info = { }
+		end
+	
+		self.st.debug_info.active_section = packet:r_stringZ()
+		self.st.debug_info.best_enemy_name = packet:r_stringZ()
+		
+		self.st.debug_info.squad_id = packet:r_stringZ()
+		self.st.debug_info.squad_current_action = packet:r_stringZ()
+	end	
+end
+
 function bind_stalker_cl:reinit()
 	object_binder.reinit(self)
 	local npc_id = self.object:id()
@@ -864,21 +896,26 @@ function set_level_spot(npc_id, map_spot)
 	if map_spot ~= nil and map_spot ~= 0 then
 		local map_location = ""
 		local hint = ""
+		local profession = 0 --eNone
 		if map_spot == 1 then
 				map_location = "ui_pda2_trader_location"
 				hint = "st_ui_pda_legend_trader"
+				profession = 1 --eTrader
 		elseif map_spot == 2 then
 				map_location = "ui_pda2_mechanic_location"
 				hint = "st_ui_pda_legend_mechanic"
+				profession = 2 --eMechanic
 		elseif map_spot == 3 then
 				map_location = "ui_pda2_scout_location"
 				hint = "st_ui_pda_legend_scout"
+				profession = 3 --eGuider
 		elseif map_spot == 4 then
 				map_location = "ui_pda2_quest_npc_location"
 				hint = "st_ui_pda_legend_vip"
 		elseif map_spot == 5 then
 				map_location = "ui_pda2_medic_location"
 				hint = "st_ui_pda_legend_medic"
+				profession = 4 --eMedic
 		end
 		
 		if level.map_has_object_spot(npc_id, map_location) ~= 0 then
@@ -887,9 +924,10 @@ function set_level_spot(npc_id, map_spot)
 		
 		level.map_add_object_spot(npc_id, map_location, hint)
 		
-		local npc = db.storage[npc_id].object
+		local npc = db.storage[npc_id] and db.storage[npc_id].object
 		if npc ~= nil then
 			npc:set_quest_npc(true)
+			npc:set_profession(profession)
 		end
 	end
 end

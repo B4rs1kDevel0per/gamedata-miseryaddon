@@ -6,48 +6,34 @@
 
 discount_condlist = {+ZAT_A23_ACTOR_HAS_ACCESS_CARD_TO_TESTING_WORKSHOP} %=mech_discount(0.65)%, {+ZAT_B3_TECH_DISCOUNT_2} %=mech_discount(0.8)%, {+ZAT_B3_TECH_DISCOUNT_1} %=mech_discount(0.9)%
 
-wpn_pb
 wpn_pm
-wpn_pmm
+wpn_pb
 wpn_fort
-wpn_fort17
-wpn_apb
-wpn_stechkin
 
 wpn_hpsa
 wpn_beretta
 wpn_walther
-wpn_gsh18
-wpn_glock17
-wpn_grach
-
 wpn_colt1911
-wpn_usp
-wpn_usp_match
-wpn_sig220
-wpn_sig220r
-wpn_desert_eagle
-wpn_desert_eagle_silver
 
-wpn_tt33
-wpn_sr1m
-wpn_fiveseven
+wpn_usp
+wpn_sig220
+wpn_desert_eagle
+
+wpn_bm16
+wpn_toz34
+wpn_wincheaster1300
+wpn_spas12
+wpn_protecta
 
 wpn_mp5
-wpn_mp5sd
-wpn_bizon
-wpn_ump45
 
 wpn_ak74u
 wpn_ak74
-wpn_ak101
 wpn_abakan
-wpn_akm
 
 wpn_l85
 wpn_lr300
 wpn_sig550
-wpn_sig552
 wpn_fn2000
 wpn_g36
 
@@ -63,6 +49,24 @@ wpn_pkm
 wpn_rg-6
 wpn_rpg7
 wpn_gauss
+
+wpn_ak101
+wpn_akm
+wpn_apb
+wpn_bizon
+wpn_desert_eagle_silver
+wpn_fiveseven
+wpn_glock17
+wpn_grach
+wpn_gsh18
+wpn_p90
+wpn_rgm-40
+wpn_saiga12
+wpn_sr1m
+wpn_stechkin
+wpn_tt33
+wpn_ump45
+wpn_usp_match
 
 novice_outfit
 cs_heavy_outfit
@@ -110,182 +114,443 @@ helm_hardhat_snag
 
 [zat_a2_stalker_mechanic_upgr]
 
-up_sect_firsta_ak74u = {!upgrade_hint_kardan(1)} false, true
-up_sect_firstc_ak74u = {!upgrade_hint_kardan(2)} false, true
-up_sect_firstd_ak74u = {!upgrade_hint_kardan(2)} false, true
-up_sect_firste_ak74u = {!upgrade_hint_kardan(3)} false, true
+up_sect_ak74_barrel = {!upgrade_hint_kardan(2)} false, true
+up_sect_ak74_usm_accuracy = {!upgrade_hint_kardan(3)} false, true
+up_sect_ak74_usm_rpm = {!upgrade_hint_kardan(1)} false, true
+up_sect_ak74_usm_rpm_down = {!upgrade_hint_kardan(1)} false, true
+;up_sect_ak74_laser = {!upgrade_hint_kardan(3)} false, true
+;up_sect_ak74_torch = {!upgrade_hint_kardan(1)} false, true
 
-up_sect_secona_ak74u = {!upgrade_hint_kardan(1)} false, true
-up_sect_seconc_ak74u = {!upgrade_hint_kardan(2)} false, true
-up_sect_secone_ak74u = {!upgrade_hint_kardan(3)} false, true
-up_sect_seconf_ak74u = {!upgrade_hint_kardan(3)} false, true
+up_sect_ak74u_barrel = {!upgrade_hint_kardan(2)} false, true
+up_sect_ak74u_usm_accuracy = {!upgrade_hint_kardan(3)} false, true
+up_sect_ak74u_usm_rpm = {!upgrade_hint_kardan(2)} false, true
+up_sect_ak74u_laser = {!upgrade_hint_kardan(3)} false, true
+up_sect_ak74u_torch = {!upgrade_hint_kardan(1)} false, true
+up_sect_ak74u_lastochka = {!upgrade_hint_kardan(1)} false, true
 
-up_sect_thirda_ak74u = {!upgrade_hint_kardan(1)} false, true
-up_sect_thirdc_ak74u = {!upgrade_hint_kardan(2)} false, true
-up_sect_thirdd_ak74u = {!upgrade_hint_kardan(2)} false, true
-up_sect_thirde_ak74u = {!upgrade_hint_kardan(3)} false, true
+up_sect_abakan_barrel_otkat = {!upgrade_hint_kardan(1)} false, true
+up_sect_abakan_usm_accuracy = {!upgrade_hint_kardan(3)} false, true
+up_sect_abakan_usm_rpm = {!upgrade_hint_kardan(2)} false, true
+up_sect_abakan_barrel_compensator = {!upgrade_hint_kardan(2)} false, true
+up_sect_abakan_barrel_bullet_speed = {!upgrade_hint_kardan(3)} false, true
+up_sect_abakan_barrel_accuracy = {!upgrade_hint_kardan(3)} false, true
+up_sect_abakan_zatvor_balancer = {!upgrade_hint_kardan(2)} false, true
+up_sect_abakan_usilenie_korobki = {!upgrade_hint_kardan(1)} false, true
 
-up_sect_fourta_ak74u = true
-up_sect_fourtc_ak74u = {!upgrade_hint_kardan(2)} false, true
-up_sect_fourte_ak74u = {!upgrade_hint_kardan(3)} false, true
+up_sect_l85_mag_fixator = {!upgrade_hint_kardan(1)} false, true
+up_sect_l85_usm_accuracy = {!upgrade_hint_kardan(3)} false, true
+up_sect_l85_usm_rpm = {!upgrade_hint_kardan(2)} false, true
+up_sect_l85_barrel_accuracy = {!upgrade_hint_kardan(3)} false, true
+up_sect_l85_barrel_kompensator = {!upgrade_hint_kardan(2)} false, true
+up_sect_l85_barrel_bullet_speed = {!upgrade_hint_kardan(3)} false, true
+up_sect_l85_zatvor_balancer = {!upgrade_hint_kardan(2)} false, true
+up_sect_l85_flashlaser = {!upgrade_hint_kardan(3)} false, true
+up_sect_l85_firemode = {!upgrade_hint_kardan(1)} false, true
 
-up_sect_fiftha_ak74u = true
+up_sect_val_body_reliability = {!upgrade_hint_kardan(1)} false, true
+up_sect_val_accuracy_usm = {!upgrade_hint_kardan(3)} false, true
+up_sect_val_rpm_usm = {!upgrade_hint_kardan(2)} false, true
+up_sect_val_barrel_speed = {!upgrade_hint_kardan(3)} false, true
+up_sect_val_reliability_barrel = {!upgrade_hint_kardan(2)} false, true
+;up_sect_val_laser = {!upgrade_hint_kardan(3)} false, true
+;up_sect_val_torch = {!upgrade_hint_kardan(1)} false, true
 
-up_sect_firsta_mp5 = true
-up_sect_firstc_mp5 = {!upgrade_hint_kardan(2)} false, true
-up_sect_firstd_mp5 = {!upgrade_hint_kardan(2)} false, true
-up_sect_firste_mp5 = {!upgrade_hint_kardan(3)} false, true
+up_sect_beretta_kompensator = {!upgrade_hint_kardan(1)} false, true
+up_sect_beretta_spusk_rpm = {!upgrade_hint_kardan(1)} false, true
+up_sect_beretta_spusk_recoil = {!upgrade_hint_kardan(2)} false, true
+up_sect_beretta_forced_details = {!upgrade_hint_kardan(2)} false, true
+up_sect_beretta_calibration = {!upgrade_hint_kardan(3)} false, true
+up_sect_beretta_zapiratel = {!upgrade_hint_kardan(1)} false, true
+up_sect_beretta_shell_ejector = {!upgrade_hint_kardan(2)} false, true
+up_sect_beretta_barrel_accuracy = {!upgrade_hint_kardan(2)} false, true
+up_sect_beretta_barrel_bullet_speed = {!upgrade_hint_kardan(3)} false, true
+up_sect_beretta_barrel_silencer = {!upgrade_hint_kardan(1)} false, true
 
-up_sect_secona_mp5 = {!upgrade_hint_kardan(1)} false, true
-up_sect_seconc_mp5 = {!upgrade_hint_kardan(2)} false, true
-up_sect_secone_mp5 = {!upgrade_hint_kardan(3)} false, true
-up_sect_seconf_mp5 = {!upgrade_hint_kardan(3)} false, true
+up_sect_deagle_gazootvod = {!upgrade_hint_kardan(1)} false, true
+up_sect_deagle_barrel_hp = {!upgrade_hint_kardan(1)} false, true
+up_sect_deagle_barrel_accuracy = {!upgrade_hint_kardan(3)} false, true
+up_sect_deagle_barrel_compensator = {!upgrade_hint_kardan(2)} false, true
+up_sect_deagle_usm_accuracy = {!upgrade_hint_kardan(3)} false, true
+up_sect_deagle_usm_rpm = {!upgrade_hint_kardan(2)} false, true
+up_sect_deagle_usm_recoil = {!upgrade_hint_kardan(1)} false, true
+up_sect_deagle_mag_uderzhatel = {!upgrade_hint_kardan(1)} false, true
+up_sect_deagle_mag_balance = {!upgrade_hint_kardan(2)} false, true
+up_sect_deagle_patronnik = {!upgrade_hint_kardan(3)} false, true
+up_sect_deagle_zapiratel = {!upgrade_hint_kardan(1)} false, true
+up_sect_deagle_rail = {!upgrade_hint_kardan(1)} false, true
+;up_sect_deagle_flashlaser = {!upgrade_hint_kardan(3)} false, true
 
-up_sect_thirda_mp5 = {!upgrade_hint_kardan(1)} false, true
-up_sect_thirdc_mp5 = {!upgrade_hint_kardan(2)} false, true
-up_sect_thirdd_mp5 = {!upgrade_hint_kardan(2)} false, true
-up_sect_thirde_mp5 = {!upgrade_hint_kardan(3)} false, true
+up_sect_fiveseven_barrel_sil = {!upgrade_hint_kardan(2)} false, true
+;up_sect_fiveseven_laser = {!upgrade_hint_kardan(3)} false, true
+;up_sect_fiveseven_torch = {!upgrade_hint_kardan(1)} false, true
+up_sect_fiveseven_usm_accuracy = {!upgrade_hint_kardan(3)} false, true
 
-up_sect_fourta_mp5 = {!upgrade_hint_kardan(1)} false, true
-up_sect_fourtc_mp5 = {!upgrade_hint_kardan(2)} false, true
-up_sect_fourte_mp5 = {!upgrade_hint_kardan(3)} false, true
-up_sect_fourtf_mp5 = {!upgrade_hint_kardan(3)} false, true
+up_sect_glock17_barrel_sil = {!upgrade_hint_kardan(1)} false, true
+up_sect_glock17_barrel_kompensator = {!upgrade_hint_kardan(1)} false, true
+;up_sect_glock17_laser = {!upgrade_hint_kardan(3)} false, true
+;up_sect_glock17_torch = {!upgrade_hint_kardan(1)} false, true
+up_sect_glock17_usm_fullautofire = {!upgrade_hint_kardan(2)} false, true
+up_sect_glock17_usm_x3fire = {!upgrade_hint_kardan(2)} false, true
+up_sect_glock17_usm_accuracy = {!upgrade_hint_kardan(3)} false, true
 
-up_sect_fiftha_mp5 = true
-up_sect_fifthc_mp5 = {!upgrade_hint_kardan(2)} false, true
+up_sect_pm_barrel_sil = {!upgrade_hint_kardan(1)} false, true
+up_sect_pm_barrel_hp = {!upgrade_hint_kardan(2)} false, true
+up_sect_pm_usm_accuracy = {!upgrade_hint_kardan(3)} false, true
+up_sect_pm_usm_rpm = {!upgrade_hint_kardan(2)} false, true
+up_sect_pm_recoil = {!upgrade_hint_kardan(1)} false, true
 
-up_sect_firsta_sig550 = {!upgrade_hint_kardan(1)} false, true
-up_sect_firstc_sig550 = {!upgrade_hint_kardan(2)} false, true
-up_sect_firstd_sig550 = {!upgrade_hint_kardan(2)} false, true
-up_sect_firste_sig550 = {!upgrade_hint_kardan(3)} false, true
+up_sect_usp_usm_rpm = {!upgrade_hint_kardan(2)} false, true
+up_sect_usp_usm_recoil = {!upgrade_hint_kardan(1)} false, true
+up_sect_usp_barrel_recoil = {!upgrade_hint_kardan(3)} false, true
+up_sect_usp_barrel_bullet_speed = {!upgrade_hint_kardan(3)} false, true
+up_sect_usp_barrel_accuracy = {!upgrade_hint_kardan(3)} false, true
+up_sect_usp_patronnik = {!upgrade_hint_kardan(3)} false, true
+up_sect_usp_polymer_buffer = {!upgrade_hint_kardan(2)} false, true
+up_sect_usp_zatvor_rpm = {!upgrade_hint_kardan(2)} false, true
+up_sect_usp_zatvor_zapiratel = {!upgrade_hint_kardan(1)} false, true
+up_sect_usp_zatvor_ejector = {!upgrade_hint_kardan(1)} false, true
+;up_sect_usp_flashlaser = {!upgrade_hint_kardan(3)} false, true
 
-up_sect_secona_sig550 = {!upgrade_hint_kardan(1)} false, true
-up_sect_seconc_sig550 = {!upgrade_hint_kardan(2)} false, true
-up_sect_secone_sig550 = {!upgrade_hint_kardan(3)} false, true
-up_sect_seconf_sig550 = {!upgrade_hint_kardan(3)} false, true
+up_sect_bm16_short_barrel = {!upgrade_hint_kardan(1)} false, true
+up_sect_bm16_barrel_dovodka = {!upgrade_hint_kardan(3)} false, true
+up_sect_bm16_barrel_narezka = {!upgrade_hint_kardan(3)} false, true
+up_sect_bm16_short_stock = {!upgrade_hint_kardan(1)} false, true
+up_sect_bm16_calibration = {!upgrade_hint_kardan(3)} false, true
+up_sect_bm16_kurki = {!upgrade_hint_kardan(1)} false, true
+up_sect_bm16_sharnir = {!upgrade_hint_kardan(2)} false, true
+up_sect_bm16_korobka = {!upgrade_hint_kardan(3)} false, true
 
-up_sect_thirda_sig550 = true
-up_sect_thirdc_sig550 = {!upgrade_hint_kardan(2)} false, true
-up_sect_thirdd_sig550 = {!upgrade_hint_kardan(2)} false, true
-up_sect_thirde_sig550 = {!upgrade_hint_kardan(3)} false, true
+up_sect_toz34_barrel = {!upgrade_hint_kardan(1)} false, true
+up_sect_toz34_stock = {!upgrade_hint_kardan(1)} false, true
+up_sect_toz34_usm = {!upgrade_hint_kardan(2)} false, true
+up_sect_toz34_calibration = {!upgrade_hint_kardan(3)} false, true
+up_sect_toz34_barrel_narezka = {!upgrade_hint_kardan(3)} false, true
 
-up_sect_fourta_sig550 = {!upgrade_hint_kardan(1)} false, true
-up_sect_fourtc_sig550 = {!upgrade_hint_kardan(2)} false, true
-up_sect_fourte_sig550 = {!upgrade_hint_kardan(3)} false, true
-up_sect_fourtf_sig550 = {!upgrade_hint_kardan(3)} false, true
+up_sect_mp5_mag_fixator = {!upgrade_hint_kardan(1)} false, true
+up_sect_mp5_barrel_speed = {!upgrade_hint_kardan(3)} false, true
+up_sect_mp5_barrel_compensator = {!upgrade_hint_kardan(2)} false, true
+up_sect_mp5_zatvor_balancer = {!upgrade_hint_kardan(2)} false, true
+up_sect_mp5_extractor = {!upgrade_hint_kardan(1)} false, true
+up_sect_mp5_usm_rpm = {!upgrade_hint_kardan(2)} false, true
+up_sect_mp5_usm_accuracy = {!upgrade_hint_kardan(3)} false, true
+;up_sect_mp5_laser = {!upgrade_hint_kardan(3)} false, true
+;up_sect_mp5_torch = {!upgrade_hint_kardan(1)} false, true
 
-up_sect_fiftha_sig550 = true
+up_sect_ump45_mag_fixator = {!upgrade_hint_kardan(1)} false, true
+up_sect_ump45_barrel_speed = {!upgrade_hint_kardan(3)} false, true
+up_sect_ump45_barrel_compensator = {!upgrade_hint_kardan(2)} false, true
+up_sect_ump45_zatvor_balancer = {!upgrade_hint_kardan(2)} false, true
+up_sect_ump45_extractor = {!upgrade_hint_kardan(1)} false, true
+up_sect_ump45_usm_rpm = {!upgrade_hint_kardan(2)} false, true
+up_sect_ump45_usm_accuracy = {!upgrade_hint_kardan(3)} false, true
+;up_sect_ump45_laser = {!upgrade_hint_kardan(3)} false, true
+;up_sect_ump45_torch = {!upgrade_hint_kardan(1)} false, true
 
-up_sect_firsta_groza = {!upgrade_hint_kardan(1)} false, true
-up_sect_firstc_groza = {!upgrade_hint_kardan(2)} false, true
-up_sect_firstd_groza = {!upgrade_hint_kardan(2)} false, true
-up_sect_firste_groza = {!upgrade_hint_kardan(3)} false, true
-up_sect_firstf_groza = {!upgrade_hint_kardan(3)} false, true
+up_sect_bizon_usm_rpm = {!upgrade_hint_kardan(2)} false, true
+up_sect_bizon_usm_recoil = {!upgrade_hint_kardan(2)} false, true
+up_sect_bizon_barrel_bullet_speed = {!upgrade_hint_kardan(3)} false, true
+up_sect_bizon_barrel_dispersion = {!upgrade_hint_kardan(3)} false, true
+up_sect_bizon_barrel_9x19 = {!upgrade_hint_kardan(3)} false, true
+up_sect_bizon_mag_shnek = {!upgrade_hint_kardan(1)} false, true
+up_sect_bizon_zatvor_balancer = {!upgrade_hint_kardan(2)} false, true
+up_sect_bizon_shell_ejector = {!upgrade_hint_kardan(2)} false, true
+up_sect_bizon_zatvor_prujina = {!upgrade_hint_kardan(1)} false, true
+up_sect_bizon_rail = {!upgrade_hint_kardan(1)} false, true
+;up_sect_bizon_laser = {{!upgrade_hint_kardan(3)} false, true
+;up_sect_bizon_torch = {!upgrade_hint_kardan(1)} false, true
 
-up_sect_secona_groza = {!upgrade_hint_kardan(1)} false, true
-up_sect_seconc_groza = {!upgrade_hint_kardan(2)} false, true
-up_sect_secone_groza = {!upgrade_hint_kardan(3)} false, true
-up_sect_seconf_groza = {!upgrade_hint_kardan(3)} false, true
+up_sect_p90_reliability = {!upgrade_hint_kardan(1)} false, true
+up_sect_p90_usm = {!upgrade_hint_kardan(3)} false, true
+;up_sect_p90_torch = {!upgrade_hint_kardan(1)} false, true
 
-up_sect_thirda_groza = true
-up_sect_thirdc_groza = {!upgrade_hint_kardan(2)} false, true
-up_sect_thirdd_groza = {!upgrade_hint_kardan(2)} false, true
-up_sect_thirde_groza = {!upgrade_hint_kardan(3)} false, true
-up_sect_thirdf_groza = {!upgrade_hint_kardan(3)} false, true
+up_sect_svd_podavatel = {!upgrade_hint_kardan(1)} false, true
+up_sect_svd_zatvor_balanser = {!upgrade_hint_kardan(2)} false, true
+up_sect_svd_zatvor_reliability = {!upgrade_hint_kardan(1)} false, true
+up_sect_svd_usm_reliability = {!upgrade_hint_kardan(1)} false, true
+up_sect_svd_usm_accuracy = {!upgrade_hint_kardan(3)} false, true
+up_sect_svd_usm_rpm = {!upgrade_hint_kardan(2)} false, true
+up_sect_svd_kompensator = {!upgrade_hint_kardan(1)} false, true
+up_sect_svd_gascam = {!upgrade_hint_kardan(1)} false, true
+up_sect_svd_barrel_reliability = {!upgrade_hint_kardan(2)} false, true
+up_sect_svd_barrel_accuracy = {!upgrade_hint_kardan(3)} false, true
+up_sect_svd_barrel_bullet_speed = {!upgrade_hint_kardan(3)} false, true
 
-up_sect_fourta_groza = true
-up_sect_fourtc_groza = {!upgrade_hint_kardan(2)} false, true
-up_sect_fourte_groza = {!upgrade_hint_kardan(3)} false, true
-up_sect_fourtf_groza = {!upgrade_hint_kardan(3)} false, true
+up_sect_svu_prujina = {!upgrade_hint_kardan(1)} false, true
+up_sect_svu_titan_details = {!upgrade_hint_kardan(1)} false, true
+up_sect_svu_usm_rpm = {!upgrade_hint_kardan(2)} false, true
+up_sect_svu_usm_reliability = {!upgrade_hint_kardan(1)} false, true
+up_sect_svu_zatvor_reliability = {!upgrade_hint_kardan(1)} false, true
+up_sect_svu_zatvor_accuracy = {!upgrade_hint_kardan(3)} false, true
+up_sect_svu_zatvor_balancer_recoil = {!upgrade_hint_kardan(2)} false, true
+up_sect_svu_gascam = {!upgrade_hint_kardan(1)} false, true
+up_sect_svu_barrel_recoil = {!upgrade_hint_kardan(2)} false, true
+up_sect_svu_barrel_bullet_speed = {!upgrade_hint_kardan(3)} false, true
+up_sect_svu_barrel_accuracy = {!upgrade_hint_kardan(3)} false, true
 
-up_sect_fiftha_groza = true
+up_sect_vintorez_lightdetails = {!upgrade_hint_kardan(1)} false, true
+up_sect_vintorez_usm_accuracy = {!upgrade_hint_kardan(3)} false, true
+up_sect_vintorez_usm_rpm = {!upgrade_hint_kardan(2)} false, true
+up_sect_vintorez_barrel = {!upgrade_hint_kardan(3)} false, true
+up_sect_vintorez_barrel_accuracy = {!upgrade_hint_kardan(3)} false, true
+;up_sect_vintorez_torch = {!upgrade_hint_kardan(1)} false, true
+;up_sect_vintorez_laser = {!upgrade_hint_kardan(3)} false, true
 
-up_sect_firsta_l85 = {!upgrade_hint_kardan(1)} false, true
-up_sect_firstc_l85 = {!upgrade_hint_kardan(2)} false, true
-up_sect_firste_l85 = {!upgrade_hint_kardan(3)} false, true
-up_sect_firstf_l85 = {!upgrade_hint_kardan(3)} false, true
+up_sect_saiga12_barrel_narezka = {!upgrade_hint_kardan(2)} false, true
+up_sect_saiga12_barrel_dtk = {!upgrade_hint_kardan(2)} false, true
+up_sect_saiga12_usm_rpm = {!upgrade_hint_kardan(3)} false, true
+up_sect_saiga12_usm_recoil = {!upgrade_hint_kardan(3)} false, true
+up_sect_saiga12_patronnik = {!upgrade_hint_kardan(3)} false, true
+up_sect_saiga12_titan_details = {!upgrade_hint_kardan(2)} false, true
+up_sect_saiga12_lightdetails = {!upgrade_hint_kardan(2)} false, true
+up_sect_saiga12_accurate_details = {!upgrade_hint_kardan(2)} false, true
+up_sect_saiga12_light_stock = {!upgrade_hint_kardan(1)} false, true
+up_sect_saiga12_stock_nakladka = {!upgrade_hint_kardan(1)} false, true
 
-up_sect_secona_l85 = true
-up_sect_seconc_l85 = {!upgrade_hint_kardan(2)} false, true
-up_sect_second_l85 = {!upgrade_hint_kardan(2)} false, true
-up_sect_secone_l85 = {!upgrade_hint_kardan(3)} false, true
+up_sect_walther_titan_details = {!upgrade_hint_kardan(1)} false, true
+up_sect_walther_usm_rpm = {!upgrade_hint_kardan(2)} false, true
+up_sect_walther_usm_recoil = {!upgrade_hint_kardan(2)} false, true
+up_sect_walther_barrel_sil = {!upgrade_hint_kardan(2)} false, true
+up_sect_walther_barrel_bullet_speed = {!upgrade_hint_kardan(3)} false, true
+up_sect_walther_barrel_accuracy = {!upgrade_hint_kardan(3)} false, true
+up_sect_walther_patronnik = {!upgrade_hint_kardan(1)} false, true
+up_sect_walther_shell_ejector = {!upgrade_hint_kardan(2)} false, true
+up_sect_walther_zatvor_zapiratel = {!upgrade_hint_kardan(3)} false, true
+up_sect_walther_zatvor_recoil = {!upgrade_hint_kardan(3)} false, true
+up_sect_walther_body = {!upgrade_hint_kardan(1)} false, true
+;up_sect_walther_flashlaser = {!upgrade_hint_kardan(3)} false, true
 
-up_sect_thirda_l85 = {!upgrade_hint_kardan(1)} false, true
-up_sect_thirdc_l85 = {!upgrade_hint_kardan(2)} false, true
-up_sect_thirde_l85 = {!upgrade_hint_kardan(3)} false, true
-up_sect_thirdf_l85 = {!upgrade_hint_kardan(3)} false, true
+up_sect_stechkin_shell_ejector = {!upgrade_hint_kardan(1)} false, true
+up_sect_stechkin_usm_rpm = {!upgrade_hint_kardan(2)} false, true
+up_sect_stechkin_usm_recoil = {!upgrade_hint_kardan(2)} false, true
+up_sect_stechkin_barrel_accuracy = {!upgrade_hint_kardan(3)} false, true
+up_sect_stechkin_barrel_speed = {!upgrade_hint_kardan(3)} false, true
+up_sect_stechkin_zapiratel = {!upgrade_hint_kardan(1)} false, true
+up_sect_stechkin_light_details = {!upgrade_hint_kardan(2)} false, true
+up_sect_stechkin_titan_details = {!upgrade_hint_kardan(2)} false, true
+up_sect_stechkin_zatvor_balancer = {!upgrade_hint_kardan(3)} false, true
+up_sect_stechkin_zatvor_dispersion = {!upgrade_hint_kardan(3)} false, true
+up_sect_stechkin_perevodchik = {!upgrade_hint_kardan(3)} false, true
+up_sect_stechkin_pokritie = {!upgrade_hint_kardan(2)} false, true
+up_sect_stechkin_zaschelka = {!upgrade_hint_kardan(1)} false, true
+up_sect_stechkin_prujina = {!upgrade_hint_kardan(1)} false, true
 
-up_sect_fourta_l85 = true
-up_sect_fourtc_l85 = {!upgrade_hint_kardan(2)} false, true
-up_sect_fourte_l85 = {!upgrade_hint_kardan(3)} false, true
+up_sect_tt33_podacha = {!upgrade_hint_kardan(1)} false, true
+up_sect_tt33_kurok = {!upgrade_hint_kardan(2)} false, true
+up_sect_tt33_usm_rpm = {!upgrade_hint_kardan(2)} false, true
+up_sect_tt33_patronnik = {!upgrade_hint_kardan(3)} false, true
+up_sect_tt33_ejector = {!upgrade_hint_kardan(2)} false, true
+up_sect_tt33_zatvor = {!upgrade_hint_kardan(2)} false, true
+up_sect_tt33_barrel_accuracy = {!upgrade_hint_kardan(2)} false, true
+up_sect_tt33_barrel_speed = {!upgrade_hint_kardan(2)} false, true
+up_sect_tt33_body_reliability = {!upgrade_hint_kardan(1)} false, true
 
-up_sect_fiftha_l85 = true
-up_sect_fifthc_l85 = {!upgrade_hint_kardan(2)} false, true
+up_sect_sr1m_zatvor_balancer = {!upgrade_hint_kardan(1)} false, true
+up_sect_sr1m_ejector = {!upgrade_hint_kardan(2)} false, true
+up_sect_sr1m_patronnik_obturation = {!upgrade_hint_kardan(2)} false, true
+up_sect_sr1m_barrel_sil = {!upgrade_hint_kardan(2)} false, true
+up_sect_sr1m_barrel_accuracy = {!upgrade_hint_kardan(3)} false, true
+up_sect_sr1m_barrel_speed = {!upgrade_hint_kardan(3)} false, true
+up_sect_sr1m_mag_reliability = {!upgrade_hint_kardan(1)} false, true
+up_sect_sr1m_handle_weight = {!upgrade_hint_kardan(1)} false, true
+up_sect_sr1m_handle_inertion = {!upgrade_hint_kardan(1)} false, true
+up_sect_sr1m_body = {!upgrade_hint_kardan(2)} false, true
+up_sect_sr1m_usm_rpm = {!upgrade_hint_kardan(1)} false, true
+up_sect_sr1m_usm_recoil_kurok_myagkii_spusk = {!upgrade_hint_kardan(1)} false, true
+up_sect_sr1m_light_details = {!upgrade_hint_kardan(2)} false, true
+up_sect_sr1m_recoil_compensation_system = {!upgrade_hint_kardan(3)} false, true
+up_sect_sr1m_light_ramka = {!upgrade_hint_kardan(1)} false, true
+up_sect_sr1m_rail = {!upgrade_hint_kardan(2)} false, true
+;up_sect_sr1m_flashlaser = {!upgrade_hint_kardan(3)} false, true
 
-up_sect_firsta_abakan = {!upgrade_hint_kardan(1)} false, true
-up_sect_firstc_abakan = {!upgrade_hint_kardan(2)} false, true
-up_sect_firste_abakan = {!upgrade_hint_kardan(3)} false, true
-up_sect_firstf_abakan = {!upgrade_hint_kardan(3)} false, true
+up_sect_fort_light_details = {!upgrade_hint_kardan(1)} false, true
+up_sect_fort_barrel_sil = {!upgrade_hint_kardan(2)} false, true
+up_sect_fort_barrel_speed = {!upgrade_hint_kardan(2)} false, true
+up_sect_fort_ejector = {!upgrade_hint_kardan(2)} false, true
+up_sect_fort_patronnik_accuracy = {!upgrade_hint_kardan(3)} false, true
+up_sect_fort_zatvor_balancer = {!upgrade_hint_kardan(2)} false, true
+up_sect_fort_podacha = {!upgrade_hint_kardan(1)} false, true
+up_sect_fort_usm_recoil = {!upgrade_hint_kardan(2)} false, true
+up_sect_fort_usm_rpm = {!upgrade_hint_kardan(2)} false, true
+up_sect_fort_body = {!upgrade_hint_kardan(2)} false, true
 
-up_sect_secona_abakan = {!upgrade_hint_kardan(1)} false, true
-up_sect_seconc_abakan = {!upgrade_hint_kardan(2)} false, true
-up_sect_second_abakan = {!upgrade_hint_kardan(2)} false, true
-up_sect_secone_abakan = {!upgrade_hint_kardan(3)} false, true
+up_sect_colt1911_patronnik_accuracy = {!upgrade_hint_kardan(2)} false, true
+up_sect_colt1911_shell_ejector = {!upgrade_hint_kardan(1)} false, true
+up_sect_colt1911_titan_details = {!upgrade_hint_kardan(1)} false, true
+up_sect_colt1911_light_details = {!upgrade_hint_kardan(1)} false, true
+up_sect_colt1911_barrel_sil = {!upgrade_hint_kardan(2)} false, true
+up_sect_colt1911_barrel_speed = {!upgrade_hint_kardan(2)} false, true
+up_sect_colt1911_barrel_accuracy = {!upgrade_hint_kardan(3)} false, true
+up_sect_colt1911_usm_accuracy = {!upgrade_hint_kardan(3)} false, true
+up_sect_colt1911_usm_rpm = {!upgrade_hint_kardan(2)} false, true
+up_sect_colt1911_usm_recoil = {!upgrade_hint_kardan(2)} false, true
+up_sect_colt1911_light_mag_handle = {!upgrade_hint_kardan(1)} false, true
+up_sect_colt1911_zatvor_reliability = {!upgrade_hint_kardan(2)} false, true
+up_sect_colt1911_zatvor_rpm = {!upgrade_hint_kardan(2)} false, true
+up_sect_colt1911_zatvor_recoil = {!upgrade_hint_kardan(2)} false, true
+up_sect_colt1911_recoil_compensation_system = {!upgrade_hint_kardan(3)} false, true
+up_sect_colt1911_bullet_hit_power = {!upgrade_hint_kardan(3)} false, true
 
-up_sect_thirda_abakan = {!upgrade_hint_kardan(1)} false, true
-up_sect_thirdc_abakan = {!upgrade_hint_kardan(2)} false, true
-up_sect_thirdd_abakan = {!upgrade_hint_kardan(2)} false, true
-up_sect_thirde_abakan = {!upgrade_hint_kardan(3)} false, true
+up_sect_grach_usm_rpm = {!upgrade_hint_kardan(1)} false, true
+up_sect_grach_usm_recoil = {!upgrade_hint_kardan(1)} false, true
+up_sect_grach_light_details = {!upgrade_hint_kardan(1)} false, true
+up_sect_grach_titan_details = {!upgrade_hint_kardan(1)} false, true
+up_sect_grach_body_reliability = {!upgrade_hint_kardan(2)} false, true
+up_sect_grach_int_bulletspeed = {!upgrade_hint_kardan(2)} false, true
+up_sect_grach_int_recoil = {!upgrade_hint_kardan(3)} false, true
+up_sect_grach_zatvor_recoil = {!upgrade_hint_kardan(3)} false, true
+up_sect_grach_zatvor_rpm = {!upgrade_hint_kardan(2)} false, true
+up_sect_grach_zatvor_zapiratel = {!upgrade_hint_kardan(3)} false, true
+up_sect_grach_patronnik_accuracy = {!upgrade_hint_kardan(3)} false, true
+up_sect_grach_barrel_recoil = {!upgrade_hint_kardan(2)} false, true
+up_sect_grach_barrel_accuracy = {!upgrade_hint_kardan(3)} false, true
+up_sect_grach_barrel_speed = {!upgrade_hint_kardan(2)} false, true
+up_sect_grach_barrel_sil = {!upgrade_hint_kardan(1)} false, true
+up_sect_grach_light_ramka = {!upgrade_hint_kardan(1)} false, true
+up_sect_grach_hard_ramka = {!upgrade_hint_kardan(1)} false, true
+up_sect_grach_rail = {!upgrade_hint_kardan(1)} false, true
+;up_sect_grach_flashlaser = {!upgrade_hint_kardan(3)} false, true
 
-up_sect_fourta_abakan = {!upgrade_hint_kardan(1)} false, true
-up_sect_fourtc_abakan = {!upgrade_hint_kardan(2)} false, true
-up_sect_fourte_abakan = {!upgrade_hint_kardan(3)} false, true
-up_sect_fourtf_abakan = {!upgrade_hint_kardan(3)} false, true
+up_sect_sig552_mag_lock = {!upgrade_hint_kardan(1)} false, true
+up_sect_sig552_buffer = {!upgrade_hint_kardan(1)} false, true
+up_sect_sig552_korobka = {!upgrade_hint_kardan(1)} false, true
+up_sect_sig552_zatvor_balancer = {!upgrade_hint_kardan(2)} false, true
+up_sect_sig552_zatvor_accuracy = {!upgrade_hint_kardan(3)} false, true
+up_sect_sig552_usm_recoil = {!upgrade_hint_kardan(3)} false, true
+up_sect_sig552_usm_rpm_up = {!upgrade_hint_kardan(2)} false, true
+up_sect_sig552_rpm_speed_down = {!upgrade_hint_kardan(2)} false, true
+up_sect_sig552_shell_ejector = {!upgrade_hint_kardan(1)} false, true
+up_sect_sig552_barrel_accuracy = {!upgrade_hint_kardan(3)} false, true
+up_sect_sig552_barrel_speed = {!upgrade_hint_kardan(2)} false, true
+up_sect_sig552_patronnik = {!upgrade_hint_kardan(3)} false, true
+up_sect_sig552_light_grip = {!upgrade_hint_kardan(1)} false, true
+up_sect_sig552_body_reliability = {!upgrade_hint_kardan(2)} false, true
+up_sect_sig552_tactic_handle = {!upgrade_hint_kardan(1)} false, true
+;up_sect_sig552_flashlaser = {!upgrade_hint_kardan(3)} false, true
 
-up_sect_fiftha_abakan = true
+up_sect_sig550_mag_lock = {!upgrade_hint_kardan(1)} false, true
+up_sect_sig550_zatvor_accuracy = {!upgrade_hint_kardan(3)} false, true
+up_sect_sig550_zatvor_balancer = {!upgrade_hint_kardan(2)} false, true
+up_sect_sig550_barrel_recoil = {!upgrade_hint_kardan(2)} false, true
+up_sect_sig550_barrel_accuracy = {!upgrade_hint_kardan(3)} false, true
+up_sect_sig550_barrel_speed = {!upgrade_hint_kardan(2)} false, true
+up_sect_sig550_shell_ejector = {!upgrade_hint_kardan(1)} false, true
+up_sect_sig550_usm_recoil = {!upgrade_hint_kardan(2)} false, true
+up_sect_sig550_usm_rpm_up = {!upgrade_hint_kardan(2)} false, true
+up_sect_sig550_korobka = {!upgrade_hint_kardan(2)} false, true
+up_sect_sig550_light_stock = {!upgrade_hint_kardan(1)} false, true
+up_sect_sig550_stock_nakladka = {!upgrade_hint_kardan(1)} false, true
+up_sect_sig550_body_reliability = {!upgrade_hint_kardan(2)} false, true
+up_sect_sig550_tac_foregrip = {!upgrade_hint_kardan(2)} false, true
+;up_sect_sig550_flashlaser = {!upgrade_hint_kardan(3)} false, true
 
-up_sect_firsta_g36 = {!upgrade_hint_kardan(1)} false, true
-up_sect_firstc_g36 = {!upgrade_hint_kardan(2)} false, true
-up_sect_firste_g36 = {!upgrade_hint_kardan(3)} false, true
-up_sect_firstf_g36 = {!upgrade_hint_kardan(3)} false, true
+up_sect_sig220_body_reliability = {!upgrade_hint_kardan(1)} false, true
+up_sect_sig220_usm_recoil = {!upgrade_hint_kardan(2)} false, true
+up_sect_sig220_usm_rpm = {!upgrade_hint_kardan(1)} false, true
+up_sect_sig220_barrel_sil = {!upgrade_hint_kardan(1)} false, true
+up_sect_sig220_barrel_accuracy = {!upgrade_hint_kardan(3)} false, true
+up_sect_sig220_barrel_speed = {!upgrade_hint_kardan(2)} false, true
+up_sect_sig220_titan_details = {!upgrade_hint_kardan(1)} false, true
+up_sect_sig220_light_details = {!upgrade_hint_kardan(1)} false, true
+up_sect_sig220_polymer_buffer = {!upgrade_hint_kardan(2)} false, true
+up_sect_sig220_shell_ejector = {!upgrade_hint_kardan(1)} false, true
+up_sect_sig220_zatvor_zapiratel = {!upgrade_hint_kardan(2)} false, true
+up_sect_sig220_patronnik = {!upgrade_hint_kardan(3)} false, true
 
-up_sect_secona_g36 = {!upgrade_hint_kardan(1)} false, true
-up_sect_seconc_g36 = {!upgrade_hint_kardan(2)} false, true
-up_sect_second_g36 = {!upgrade_hint_kardan(2)} false, true
-up_sect_secone_g36 = {!upgrade_hint_kardan(3)} false, true
+up_sect_gsh18_shell_ejector = {!upgrade_hint_kardan(1)} false, true
+up_sect_gsh18_patronnik_obturation = {!upgrade_hint_kardan(2)} false, true
+up_sect_gsh18_patronnik_dispersion = {!upgrade_hint_kardan(3)} false, true
+up_sect_gsh18_barrel_speed = {!upgrade_hint_kardan(2)} false, true
+up_sect_gsh18_barrel_recoil = {!upgrade_hint_kardan(2)} false, true
+up_sect_gsh18_barrel_accuracy = {!upgrade_hint_kardan(3)} false, true
+up_sect_gsh18_body_reliability = {!upgrade_hint_kardan(1)} false, true
+up_sect_gsh18_polymer_buffer = {!upgrade_hint_kardan(2)} false, true
+up_sect_gsh18_ramka = {!upgrade_hint_kardan(2)} false, true
+up_sect_gsh18_usm_rpm = {!upgrade_hint_kardan(2)} false, true
+up_sect_gsh18_usm_recoil = {!upgrade_hint_kardan(3)} false, true
+up_sect_gsh18_usm_reliability = {!upgrade_hint_kardan(2)} false, true
 
-up_sect_thirda_g36 = {!upgrade_hint_kardan(1)} false, true
-up_sect_thirdc_g36 = {!upgrade_hint_kardan(2)} false, true
-up_sect_thirde_g36 = {!upgrade_hint_kardan(3)} false, true
-up_sect_thirdf_g36 = {!upgrade_hint_kardan(3)} false, true
+up_sect_hpsa_shell_ejector = {!upgrade_hint_kardan(1)} false, true
+up_sect_hpsa_zapiratel = {!upgrade_hint_kardan(2)} false, true
+up_sect_hpsa_patronnik = {!upgrade_hint_kardan(3)} false, true
+up_sect_hpsa_barrel_speed = {!upgrade_hint_kardan(2)} false, true
+up_sect_hpsa_barrel_sil = {!upgrade_hint_kardan(1)} false, true
+up_sect_hpsa_barrel_dispersion = {!upgrade_hint_kardan(3)} false, true
+up_sect_hpsa_polymer_buffer = {!upgrade_hint_kardan(1)} false, true
+up_sect_hpsa_usm_recoil = {!upgrade_hint_kardan(2)} false, true
+up_sect_hpsa_usm_rpm = {!upgrade_hint_kardan(1)} false, true
+up_sect_hpsa_body = {!upgrade_hint_kardan(2)} false, true
+up_sect_hpsa_zatvor_balancer = {!upgrade_hint_kardan(2)} false, true
+up_sect_hpsa_light_details = {!upgrade_hint_kardan(1)} false, true
+up_sect_hpsa_titan_details = {!upgrade_hint_kardan(1)} false, true
 
-up_sect_fourta_g36 = true
-up_sect_fourtc_g36 = {!upgrade_hint_kardan(2)} false, true
-up_sect_fourte_g36 = {!upgrade_hint_kardan(3)} false, true
-up_sect_fourtf_g36 = {!upgrade_hint_kardan(3)} false, true
+up_sect_pb_barrel_speed = {!upgrade_hint_kardan(1)} false, true
+up_sect_pb_barrel_compensation = {!upgrade_hint_kardan(2)} false, true
+up_sect_pb_sil_reliability = {!upgrade_hint_kardan(2)} false, true
+up_sect_pb_barrel_accuracy = {!upgrade_hint_kardan(3)} false, true
+up_sect_pb_shell_ejector = {!upgrade_hint_kardan(1)} false, true
+up_sect_pb_patronnik_zapiratel = {!upgrade_hint_kardan(2)} false, true
+up_sect_pb_patronnik_accuracy = {!upgrade_hint_kardan(3)} false, true
+up_sect_pb_usm_rpm = {!upgrade_hint_kardan(2)} false, true
+up_sect_pb_usm_recoil = {!upgrade_hint_kardan(2)} false, true
+up_sect_pb_usm_accuracy = {!upgrade_hint_kardan(3)} false, true
+up_sect_pb_light_details = {!upgrade_hint_kardan(1)} false, true
+up_sect_pb_hard_details = {!upgrade_hint_kardan(1)} false, true
+up_sect_pb_ramka = {!upgrade_hint_kardan(1)} false, true
+up_sect_pb_body_reliability = {!upgrade_hint_kardan(2)} false, true
 
+up_sect_groza_mag_fixator = {!upgrade_hint_kardan(1)} false, true
+up_sect_groza_usm_rpm = {!upgrade_hint_kardan(2)} false, true
+up_sect_groza_usm_rpm_down = {!upgrade_hint_kardan(2)} false, true
+up_sect_groza_usm_accuracy = {!upgrade_hint_kardan(3)} false, true
+up_sect_groza_barrel_accuracy = {!upgrade_hint_kardan(3)} false, true
+up_sect_groza_barrel_speed = {!upgrade_hint_kardan(3)} false, true
+up_sect_groza_barrel_recoil = {!upgrade_hint_kardan(2)} false, true
+up_sect_groza_shell_ejector = {!upgrade_hint_kardan(1)} false, true
+up_sect_groza_zatvor_balancer = {!upgrade_hint_kardan(2)} false, true
+up_sect_groza_patronnik_accuracy = {!upgrade_hint_kardan(3)} false, true
+up_sect_groza_body = {!upgrade_hint_kardan(2)} false, true
+up_sect_groza_stock_inertion = {!upgrade_hint_kardan(1)} false, true
+up_sect_groza_light_stock = {!upgrade_hint_kardan(1)} false, true
+up_sect_groza_gascam = {!upgrade_hint_kardan(2)} false, true
+up_sect_groza_usilenie_korobki = {!upgrade_hint_kardan(2)} false, true
+up_sect_groza_light_details = {!upgrade_hint_kardan(2)} false, true
 
-up_sect_firsta_ak74 = {!upgrade_hint_kardan(1)} false, true
-up_sect_firstc_ak74 = {!upgrade_hint_kardan(2)} false, true
-up_sect_firste_ak74 = {!upgrade_hint_kardan(3)} false, true
-up_sect_firstf_ak74 = {!upgrade_hint_kardan(3)} false, true
+up_sect_rgm40_titan_details = {!upgrade_hint_kardan(1)} false, true
+up_sect_rgm40_light_details = {!upgrade_hint_kardan(1)} false, true
+up_sect_rgm40_body = {!upgrade_hint_kardan(2)} false, true
+up_sect_rgm40_polymer_details = {!upgrade_hint_kardan(1)} false, true
+up_sect_rgm40_recoil_stock = {!upgrade_hint_kardan(2)} false, true
+up_sect_rgm40_light_stock = {!upgrade_hint_kardan(2)} false, true
+up_sect_rgm40_narezka_gren_speed = {!upgrade_hint_kardan(3)} false, true 
 
-up_sect_secona_ak74 = {!upgrade_hint_kardan(1)} false, true
-up_sect_seconc_ak74 = {!upgrade_hint_kardan(2)} false, true
-up_sect_second_ak74 = {!upgrade_hint_kardan(2)} false, true
-up_sect_secone_ak74 = {!upgrade_hint_kardan(3)} false, true
+up_sect_wincheaster1300_barrel_speed = {!upgrade_hint_kardan(2)} false, true
+up_sect_wincheaster1300_barrel_dispersion = {!upgrade_hint_kardan(3)} false, true
+up_sect_wincheaster1300_barrel_short = {!upgrade_hint_kardan(1)} false, true
+up_sect_wincheaster1300_mag = {!upgrade_hint_kardan(1)} false, true
+up_sect_wincheaster1300_shell_ejector = {!upgrade_hint_kardan(1)} false, true
+up_sect_wincheaster1300_body_reliability = {!upgrade_hint_kardan(1)} false, true
+up_sect_wincheaster1300_soft_trigger = {!upgrade_hint_kardan(2)} false, true
+up_sect_wincheaster1300_patronnik_accuracy = {!upgrade_hint_kardan(3)} false, true
+up_sect_wincheaster1300_usm_reliability_details = {!upgrade_hint_kardan(1)} false, true
+up_sect_wincheaster1300_usm_accuracy = {!upgrade_hint_kardan(3)} false, true
+up_sect_wincheaster1300_usm_recoil = {!upgrade_hint_kardan(2)} false, true
+up_sect_wincheaster1300_usm_light_details = {!upgrade_hint_kardan(1)} false, true
+up_sect_wincheaster1300_pompa_kompensator = {!upgrade_hint_kardan(1)} false, true
+up_sect_wincheaster1300_tactical_handle = {!upgrade_hint_kardan(2)} false, true
+;up_sect_wincheaster1300_flashlaser = {!upgrade_hint_kardan(3)} false, true
+up_sect_wincheaster1300_rail = {!upgrade_hint_kardan(1)} false, true
+up_sect_wincheaster1300_stock = {!upgrade_hint_kardan(2)} false, true
 
-up_sect_thirda_ak74 = {!upgrade_hint_kardan(1)} false, true
-up_sect_thirdc_ak74 = {!upgrade_hint_kardan(2)} false, true
-up_sect_thirdd_ak74 = {!upgrade_hint_kardan(2)} false, true
-up_sect_thirde_ak74 = {!upgrade_hint_kardan(3)} false, true
-
-up_sect_fourta_ak74 = {!upgrade_hint_kardan(1)} false, true
-up_sect_fourtc_ak74 = {!upgrade_hint_kardan(2)} false, true
-up_sect_fourte_ak74 = {!upgrade_hint_kardan(3)} false, true
-
-;up_sect_fiftha_ak74 = true
-up_sect_fifthc_ak74 = {!upgrade_hint_kardan(2)} false, true
+up_sect_protecta_barrel_voronenie = {!upgrade_hint_kardan(1)} false, true
+up_sect_protecta_usm_recoil = {!upgrade_hint_kardan(2)} false, true
+up_sect_protecta_usm_rpm = {!upgrade_hint_kardan(2)} false, true
+up_sect_protecta_barrel_silencer = {!upgrade_hint_kardan(2)} false, true
+;up_sect_protecta_laser = {!upgrade_hint_kardan(3)} false, true
+up_sect_protecta_barrel_narezka = {!upgrade_hint_kardan(2)} false, true
+up_sect_protecta_ejector = {!upgrade_hint_kardan(1)} false, true
+up_sect_protecta_light_details = {!upgrade_hint_kardan(1)} false, true
+up_sect_protecta_body_reliability = {!upgrade_hint_kardan(2)} false, true
+up_sect_protecta_stock = {!upgrade_hint_kardan(1)} false, true
 
 up_sect_firsta_lr300 = {!upgrade_hint_kardan(1)} false, true
 up_sect_firstc_lr300 = {!upgrade_hint_kardan(2)} false, true
@@ -309,53 +574,6 @@ up_sect_fourtf_lr300 = {!upgrade_hint_kardan(3)} false, true
 
 up_sect_fiftha_lr300 = true
 
-up_sect_firsta_val = {!upgrade_hint_kardan(1)} false, true
-up_sect_firstc_val = {!upgrade_hint_kardan(2)} false, true
-up_sect_firstd_val = {!upgrade_hint_kardan(2)} false, true
-up_sect_firste_val = {!upgrade_hint_kardan(3)} false, true
-up_sect_firstf_val = {!upgrade_hint_kardan(3)} false, true
-
-up_sect_secona_val = {!upgrade_hint_kardan(1)} false, true
-up_sect_seconc_val = {!upgrade_hint_kardan(2)} false, true
-up_sect_secone_val = {!upgrade_hint_kardan(3)} false, true
-up_sect_seconf_val = {!upgrade_hint_kardan(3)} false, true
-
-up_sect_thirda_val = {!upgrade_hint_kardan(1)} false, true
-up_sect_thirdc_val = {!upgrade_hint_kardan(2)} false, true
-up_sect_thirdd_val = {!upgrade_hint_kardan(2)} false, true
-up_sect_thirde_val = {!upgrade_hint_kardan(3)} false, true
-up_sect_thirdf_val = {!upgrade_hint_kardan(3)} false, true
-
-up_sect_fourta_val = {!upgrade_hint_kardan(1)} false, true
-up_sect_fourtc_val = {!upgrade_hint_kardan(2)} false, true
-up_sect_fourte_val = {!upgrade_hint_kardan(3)} false, true
-up_sect_fourtf_val = {!upgrade_hint_kardan(3)} false, true
-
-up_sect_fiftha_val = true
-
-up_sect_firsta_fn2000 = {!upgrade_hint_kardan(1)} false, true
-up_sect_firstc_fn2000 = {!upgrade_hint_kardan(2)} false, true
-up_sect_firstd_fn2000 = {!upgrade_hint_kardan(2)} false, true
-up_sect_firste_fn2000 = {!upgrade_hint_kardan(3)} false, true
-up_sect_firstf_fn2000 = {!upgrade_hint_kardan(3)} false, true
-
-up_sect_secona_fn2000 = {!upgrade_hint_kardan(1)} false, true
-up_sect_seconc_fn2000 = {!upgrade_hint_kardan(2)} false, true
-up_sect_second_fn2000 = {!upgrade_hint_kardan(2)} false, true
-up_sect_secone_fn2000 = {!upgrade_hint_kardan(3)} false, true
-up_sect_seconf_fn2000 = {!upgrade_hint_kardan(3)} false, true
-
-up_sect_thirda_fn2000 = true
-up_sect_thirdc_fn2000 = {!upgrade_hint_kardan(2)} false, true
-up_sect_thirdd_fn2000 = {!upgrade_hint_kardan(2)} false, true
-up_sect_thirde_fn2000 = {!upgrade_hint_kardan(3)} false, true
-up_sect_thirdf_fn2000 = {!upgrade_hint_kardan(3)} false, true
-
-up_sect_fourta_fn2000 = true
-up_sect_fourtc_fn2000 = {!upgrade_hint_kardan(2)} false, true
-up_sect_fourte_fn2000 = {!upgrade_hint_kardan(3)} false, true
-up_sect_fourtf_fn2000 = {!upgrade_hint_kardan(3)} false, true
-
 up_sect_firsta_pkm = {!upgrade_hint_kardan(1)} false, true
 up_sect_firstc_pkm = {!upgrade_hint_kardan(2)} false, true
 up_sect_firstd_pkm = {!upgrade_hint_kardan(2)} false, true
@@ -375,318 +593,7 @@ up_sect_fourta_pkm = {!upgrade_hint_kardan(1)} false, true
 up_sect_fourtc_pkm = {!upgrade_hint_kardan(2)} false, true
 up_sect_fourte_pkm = {!upgrade_hint_kardan(3)} false, true
 
-up_sect_fiftha_pkm = true
-
-up_sect_firsta_svd = {!upgrade_hint_kardan(1)} false, true
-up_sect_firstc_svd = {!upgrade_hint_kardan(2)} false, true
-up_sect_firstd_svd = {!upgrade_hint_kardan(2)} false, true
-up_sect_firste_svd = {!upgrade_hint_kardan(3)} false, true
-up_sect_firstf_svd = {!upgrade_hint_kardan(3)} false, true
-
-up_sect_secona_svd = {!upgrade_hint_kardan(1)} false, true
-up_sect_seconc_svd = {!upgrade_hint_kardan(2)} false, true
-up_sect_second_svd = {!upgrade_hint_kardan(2)} false, true
-up_sect_secone_svd = {!upgrade_hint_kardan(3)} false, true
-
-up_sect_thirda_svd = {!upgrade_hint_kardan(1)} false, true
-up_sect_thirdc_svd = {!upgrade_hint_kardan(2)} false, true
-up_sect_thirde_svd = {!upgrade_hint_kardan(3)} false, true
-
-up_sect_fourta_svd = true
-up_sect_fourtc_svd = {!upgrade_hint_kardan(2)} false, true
-up_sect_fourte_svd = {!upgrade_hint_kardan(3)} false, true
-up_sect_fourtf_svd = {!upgrade_hint_kardan(3)} false, true
-
-up_sect_firsta_svu = {!upgrade_hint_kardan(1)} false, true
-up_sect_firstc_svu = {!upgrade_hint_kardan(2)} false, true
-up_sect_firste_svu = {!upgrade_hint_kardan(3)} false, true
-up_sect_firstf_svu = {!upgrade_hint_kardan(3)} false, true
-
-up_sect_secona_svu = {!upgrade_hint_kardan(1)} false, true
-up_sect_seconc_svu = {!upgrade_hint_kardan(2)} false, true
-up_sect_second_svu = {!upgrade_hint_kardan(2)} false, true
-up_sect_secone_svu = {!upgrade_hint_kardan(3)} false, true
-up_sect_seconf_svu = {!upgrade_hint_kardan(3)} false, true
-
-up_sect_thirda_svu = {!upgrade_hint_kardan(1)} false, true
-up_sect_thirdc_svu = {!upgrade_hint_kardan(2)} false, true
-
-up_sect_fourta_svu = true
-up_sect_fourtc_svu = {!upgrade_hint_kardan(2)} false, true
-up_sect_fourte_svu = {!upgrade_hint_kardan(3)} false, true
-up_sect_fourtf_svu = {!upgrade_hint_kardan(3)} false, true
-
-up_sect_fiftha_svu = true
-
-up_sect_firsta_bm16 = true
-up_sect_firstc_bm16 = {!upgrade_hint_kardan(2)} false, true
-
-up_sect_secona_bm16 = true
-up_sect_seconc_bm16 = {!upgrade_hint_kardan(2)} false, true
-up_sect_second_bm16 = {!upgrade_hint_kardan(2)} false, true
-
-up_sect_thirda_bm16 = {!upgrade_hint_kardan(1)} false, true
-up_sect_thirdc_bm16 = {!upgrade_hint_kardan(2)} false, true
-
-up_sect_firsta_toz34 =  true
-up_sect_firstc_toz34 = {!upgrade_hint_kardan(2)} false, true
-up_sect_firstd_toz34 = {!upgrade_hint_kardan(2)} false, true
-up_sect_firste_toz34 = {!upgrade_hint_kardan(3)} false, true
-up_sect_firstf_toz34 = {!upgrade_hint_kardan(3)} false, true
-
-up_sect_secona_toz34 =  true
-up_sect_seconc_toz34 = {!upgrade_hint_kardan(2)} false, true
-up_sect_second_toz34 = {!upgrade_hint_kardan(2)} false, true
-
-up_sect_thirda_toz34 = {!upgrade_hint_kardan(1)} false, true
-up_sect_thirdc_toz34 = {!upgrade_hint_kardan(2)} false, true
-up_sect_thirde_toz34 = {!upgrade_hint_kardan(3)} false, true
-up_sect_thirdf_toz34 = {!upgrade_hint_kardan(3)} false, true
-
-up_sect_firsta_wincheaster1300 = true
-up_sect_firstc_wincheaster1300 = {!upgrade_hint_kardan(2)} false, true
-up_sect_firstd_wincheaster1300 = {!upgrade_hint_kardan(2)} false, true
-up_sect_firste_wincheaster1300 = {!upgrade_hint_kardan(3)} false, true
-
-up_sect_secona_wincheaster1300 =  true
-up_sect_seconc_wincheaster1300 = {!upgrade_hint_kardan(2)} false, true
-up_sect_second_wincheaster1300 = {!upgrade_hint_kardan(2)} false, true
-up_sect_secone_wincheaster1300 = {!upgrade_hint_kardan(3)} false, true
-
-up_sect_thirda_wincheaster1300 = {!upgrade_hint_kardan(1)} false, true
-up_sect_thirdc_wincheaster1300 = {!upgrade_hint_kardan(2)} false, true
-up_sect_thirdd_wincheaster1300 = {!upgrade_hint_kardan(2)} false, true
-up_sect_thirde_wincheaster1300 = {!upgrade_hint_kardan(3)} false, true
-up_sect_thirdf_wincheaster1300 = {!upgrade_hint_kardan(3)} false, true
-
-up_sect_firsta_spas12 = true
-up_sect_firstc_spas12 = {!upgrade_hint_kardan(2)} false, true
-up_sect_firstd_spas12 = {!upgrade_hint_kardan(2)} false, true
-up_sect_firste_spas12 = {!upgrade_hint_kardan(3)} false, true
-up_sect_firstf_spas12 = {!upgrade_hint_kardan(3)} false, true
-
-up_sect_secona_spas12 = true
-up_sect_seconc_spas12 = {!upgrade_hint_kardan(2)} false, true
-up_sect_second_spas12 = {!upgrade_hint_kardan(2)} false, true
-
-up_sect_thirda_spas12 = {!upgrade_hint_kardan(1)} false, true
-up_sect_thirdc_spas12 = {!upgrade_hint_kardan(2)} false, true
-up_sect_thirdd_spas12 = {!upgrade_hint_kardan(2)} false, true
-up_sect_thirde_spas12 = {!upgrade_hint_kardan(3)} false, true
-up_sect_thirdf_spas12 = {!upgrade_hint_kardan(3)} false, true
-
-up_sect_firsta_protecta = true
-up_sect_firstc_protecta = {!upgrade_hint_kardan(2)} false, true
-up_sect_firstd_protecta = {!upgrade_hint_kardan(2)} false, true
-up_sect_firste_protecta = {!upgrade_hint_kardan(3)} false, true
-up_sect_firstf_protecta = {!upgrade_hint_kardan(3)} false, true
-
-up_sect_secona_protecta = true
-up_sect_seconc_protecta = {!upgrade_hint_kardan(2)} false, true
-up_sect_second_protecta = {!upgrade_hint_kardan(2)} false, true
-
-up_sect_thirda_protecta = {!upgrade_hint_kardan(1)} false, true
-up_sect_thirdc_protecta = {!upgrade_hint_kardan(2)} false, true
-up_sect_thirdd_protecta = {!upgrade_hint_kardan(2)} false, true
-up_sect_thirde_protecta = {!upgrade_hint_kardan(3)} false, true
-
-up_sect_fourta_protecta = {!upgrade_hint_kardan(1)} false, true
-up_sect_fourtc_protecta = {!upgrade_hint_kardan(2)} false, true
-
-up_sect_firsta_pm = {!upgrade_hint_kardan(1)} false, true
-up_sect_firstc_pm = {!upgrade_hint_kardan(2)} false, true
-up_sect_firstd_pm = {!upgrade_hint_kardan(2)} false, true
-up_sect_firste_pm = {!upgrade_hint_kardan(3)} false, true
-
-up_sect_secona_pm = {!upgrade_hint_kardan(1)} false, true
-up_sect_seconc_pm = {!upgrade_hint_kardan(2)} false, true
-
-up_sect_thirda_pm = true
-up_sect_thirdc_pm = {!upgrade_hint_kardan(2)} false, true
-up_sect_thirdd_pm = {!upgrade_hint_kardan(2)} false, true
-
-up_sect_fourta_pm = true
-up_sect_fourtc_pm = {!upgrade_hint_kardan(2)} false, true
-
-up_sect_fiftha_pm = true
-up_sect_fifthc_pm = {!upgrade_hint_kardan(2)} false, true
-
-up_sect_firsta_pb = {!upgrade_hint_kardan(1)} false, true
-up_sect_firstc_pb = {!upgrade_hint_kardan(2)} false, true
-up_sect_firstd_pb = {!upgrade_hint_kardan(2)} false, true
-up_sect_firste_pb = {!upgrade_hint_kardan(3)} false, true
-
-up_sect_secona_pb = {!upgrade_hint_kardan(1)} false, true
-up_sect_seconc_pb = {!upgrade_hint_kardan(2)} false, true
-
-up_sect_thirda_pb = true
-up_sect_thirdc_pb = {!upgrade_hint_kardan(2)} false, true
-up_sect_thirde_pb = {!upgrade_hint_kardan(3)} false, true
-
-up_sect_fourta_pb = true
-up_sect_fourtc_pb = {!upgrade_hint_kardan(2)} false, true
-
-up_sect_fiftha_pb = true
-
-up_sect_firsta_fort = {!upgrade_hint_kardan(1)} false, true
-up_sect_firstc_fort = {!upgrade_hint_kardan(2)} false, true
-up_sect_firstd_fort = {!upgrade_hint_kardan(2)} false, true
-up_sect_firste_fort = {!upgrade_hint_kardan(3)} false, true
-
-up_sect_secona_fort = {!upgrade_hint_kardan(1)} false, true
-up_sect_seconc_fort = {!upgrade_hint_kardan(2)} false, true
-up_sect_second_fort = {!upgrade_hint_kardan(2)} false, true
-
-up_sect_thirda_fort = true
-up_sect_thirdc_fort = {!upgrade_hint_kardan(2)} false, true
-up_sect_thirdd_fort = {!upgrade_hint_kardan(2)} false, true
-
-up_sect_fourta_fort = true
-up_sect_fourtc_fort = {!upgrade_hint_kardan(2)} false, true
-
-up_sect_fiftha_fort = true
-up_sect_fifthc_fort =  {!upgrade_hint_kardan(2)} false, true
-
-up_sect_firsta_beretta = {!upgrade_hint_kardan(1)} false, true
-up_sect_firstc_beretta = {!upgrade_hint_kardan(2)} false, true
-up_sect_firstd_beretta = {!upgrade_hint_kardan(2)} false, true
-up_sect_firste_beretta = {!upgrade_hint_kardan(3)} false, true
-
-up_sect_secona_beretta = {!upgrade_hint_kardan(1)} false, true
-up_sect_seconc_beretta = {!upgrade_hint_kardan(2)} false, true
-up_sect_second_beretta = {!upgrade_hint_kardan(2)} false, true
-up_sect_secone_beretta = {!upgrade_hint_kardan(3)} false, true
-
-up_sect_thirda_beretta = {!upgrade_hint_kardan(1)} false, true
-up_sect_thirdc_beretta = {!upgrade_hint_kardan(2)} false, true
-up_sect_thirdd_beretta = {!upgrade_hint_kardan(2)} false, true
-
-up_sect_fourta_beretta = true
-up_sect_fourtc_beretta = {!upgrade_hint_kardan(2)} false, true
-
-up_sect_fiftha_beretta = true
-up_sect_fifthc_beretta = {!upgrade_hint_kardan(2)} false, true
-
-up_sect_firsta_walther = {!upgrade_hint_kardan(1)} false, true
-up_sect_firstc_walther = {!upgrade_hint_kardan(2)} false, true
-up_sect_firstd_walther = {!upgrade_hint_kardan(2)} false, true
-up_sect_firste_walther = {!upgrade_hint_kardan(3)} false, true
-
-up_sect_secona_walther = {!upgrade_hint_kardan(1)} false, true
-up_sect_seconc_walther = {!upgrade_hint_kardan(2)} false, true
-up_sect_secone_walther = {!upgrade_hint_kardan(3)} false, true
-up_sect_seconf_walther = {!upgrade_hint_kardan(3)} false, true
-
-up_sect_thirda_walther = {!upgrade_hint_kardan(1)} false, true
-up_sect_thirdc_walther = {!upgrade_hint_kardan(2)} false, true
-up_sect_thirdd_walther = {!upgrade_hint_kardan(2)} false, true
-
-up_sect_fourta_walther = {!upgrade_hint_kardan(1)} false, true
-up_sect_fourtc_walther = {!upgrade_hint_kardan(2)} false, true
-
-up_sect_fiftha_walther = true
-
-up_sect_firsta_hpsa = {!upgrade_hint_kardan(1)} false, true
-up_sect_firstc_hpsa = {!upgrade_hint_kardan(2)} false, true
-up_sect_firstd_hpsa = {!upgrade_hint_kardan(2)} false, true
-up_sect_firste_hpsa = {!upgrade_hint_kardan(3)} false, true
-
-up_sect_secona_hpsa = {!upgrade_hint_kardan(1)} false, true
-up_sect_seconc_hpsa = {!upgrade_hint_kardan(2)} false, true
-up_sect_secone_hpsa = {!upgrade_hint_kardan(3)} false, true
-up_sect_seconf_hpsa = {!upgrade_hint_kardan(3)} false, true
-
-up_sect_thirda_hpsa = true
-up_sect_thirdc_hpsa = {!upgrade_hint_kardan(2)} false, true
-up_sect_thirdd_hpsa = {!upgrade_hint_kardan(2)} false, true
-
-up_sect_fourta_hpsa = {!upgrade_hint_kardan(1)} false, true
-up_sect_fourtc_hpsa = {!upgrade_hint_kardan(2)} false, true
-up_sect_fourte_hpsa = {!upgrade_hint_kardan(3)} false, true
-
-up_sect_fiftha_hpsa = true
-up_sect_fiftha_hpsa = {!upgrade_hint_kardan(2)} false, true
-
-up_sect_firsta_colt1911 = {!upgrade_hint_kardan(1)} false, true
-up_sect_firstc_colt1911 = {!upgrade_hint_kardan(2)} false, true
-up_sect_firstd_colt1911 = {!upgrade_hint_kardan(2)} false, true
-up_sect_firste_colt1911 = {!upgrade_hint_kardan(3)} false, true
-
-up_sect_secona_colt1911 = {!upgrade_hint_kardan(1)} false, true
-up_sect_seconc_colt1911 = {!upgrade_hint_kardan(2)} false, true
-up_sect_second_colt1911 = {!upgrade_hint_kardan(2)} false, true
-up_sect_secone_colt1911 = {!upgrade_hint_kardan(3)} false, true
-
-up_sect_thirda_colt1911 = true
-up_sect_thirdc_colt1911 = {!upgrade_hint_kardan(2)} false, true
-up_sect_thirdd_colt1911 = {!upgrade_hint_kardan(2)} false, true
-
-up_sect_fourta_colt1911 = {!upgrade_hint_kardan(1)} false, true
-up_sect_fourtc_colt1911 = {!upgrade_hint_kardan(2)} false, true
-
-up_sect_fiftha_colt1911 = true
-
-up_sect_firsta_sig220 = {!upgrade_hint_kardan(1)} false, true
-up_sect_firstc_sig220 = {!upgrade_hint_kardan(2)} false, true
-up_sect_firstd_sig220 = {!upgrade_hint_kardan(2)} false, true
-up_sect_firste_sig220 = {!upgrade_hint_kardan(3)} false, true
-
-up_sect_secona_sig220 = {!upgrade_hint_kardan(1)} false, true
-up_sect_seconc_sig220 = {!upgrade_hint_kardan(2)} false, true
-up_sect_secone_sig220 = {!upgrade_hint_kardan(3)} false, true
-up_sect_seconf_sig220 = {!upgrade_hint_kardan(3)} false, true
-
-up_sect_thirda_sig220 = true
-up_sect_thirdc_sig220 = {!upgrade_hint_kardan(2)} false, true
-up_sect_thirdd_sig220 = {!upgrade_hint_kardan(2)} false, true
-
-up_sect_fourta_sig220 = true
-up_sect_fourtc_sig220 = {!upgrade_hint_kardan(2)} false, true
-up_sect_fourte_sig220 = {!upgrade_hint_kardan(3)} false, true
-
-up_sect_fiftha_sig220 = true
-
-up_sect_firsta_usp = {!upgrade_hint_kardan(1)} false, true
-up_sect_firstc_usp = {!upgrade_hint_kardan(2)} false, true
-up_sect_firstd_usp = {!upgrade_hint_kardan(2)} false, true
-up_sect_firste_usp = {!upgrade_hint_kardan(3)} false, true
-
-up_sect_secona_usp = {!upgrade_hint_kardan(1)} false, true
-up_sect_seconc_usp = {!upgrade_hint_kardan(2)} false, true
-up_sect_second_usp = {!upgrade_hint_kardan(2)} false, true
-up_sect_secone_usp = {!upgrade_hint_kardan(3)} false, true
-
-up_sect_thirda_usp = {!upgrade_hint_kardan(1)} false, true
-up_sect_thirdc_usp = {!upgrade_hint_kardan(2)} false, true
-up_sect_thirdd_usp = {!upgrade_hint_kardan(2)} false, true
-up_sect_thirde_usp = {!upgrade_hint_kardan(3)} false, true
-
-up_sect_fourta_usp = {!upgrade_hint_kardan(1)} false, true
-up_sect_fourtc_usp = {!upgrade_hint_kardan(2)} false, true
-up_sect_fourte_usp = {!upgrade_hint_kardan(3)} false, true
-
-up_sect_fiftha_usp = true
-
-up_sect_firsta_desert_eagle = {!upgrade_hint_kardan(1)} false, true
-up_sect_firstc_desert_eagle = {!upgrade_hint_kardan(2)} false, true
-up_sect_firste_desert_eagle = {!upgrade_hint_kardan(3)} false, true
-up_sect_firstf_desert_eagle = {!upgrade_hint_kardan(3)} false, true
-
-up_sect_secona_desert_eagle = {!upgrade_hint_kardan(1)} false, true
-up_sect_seconc_desert_eagle = {!upgrade_hint_kardan(2)} false, true
-up_sect_secone_desert_eagle = {!upgrade_hint_kardan(3)} false, true
-up_sect_seconf_desert_eagle = {!upgrade_hint_kardan(3)} false, true
-
-up_sect_thirda_desert_eagle = true
-up_sect_thirdc_desert_eagle = {!upgrade_hint_kardan(2)} false, true
-up_sect_thirdd_desert_eagle = {!upgrade_hint_kardan(2)} false, true
-up_sect_thirde_desert_eagle = {!upgrade_hint_kardan(3)} false, true
-
-up_sect_fourta_desert_eagle = {!upgrade_hint_kardan(1)} false, true
-up_sect_fourtc_desert_eagle = {!upgrade_hint_kardan(2)} false, true
-
-up_sect_fiftha_desert_eagle = true
-
+;outfits
 up_sect_firsta_novice_outfit = true
 up_sect_firstc_novice_outfit = {!upgrade_hint_kardan(2)} false, true
 up_sect_firste_novice_outfit = {!upgrade_hint_kardan(3)} false, true
@@ -940,48 +847,34 @@ up_sect_seconf_helm_battle = {!upgrade_hint_kardan(3)} false, true
 
 discount_condlist = {+JUP_B200_TECH_MATERIALS_BROUGHT_COUNTER_9  =counter_equal(jup_a6_actor_help_freedom:4)} %=mech_discount(0.95)%, {+JUP_B200_TECH_MATERIALS_BROUGHT_COUNTER_8  =counter_equal(jup_a6_actor_help_freedom:4)} %=mech_discount(0.99)%, {+JUP_B200_TECH_MATERIALS_BROUGHT_COUNTER_7 =counter_equal(jup_a6_actor_help_freedom:4)} %=mech_discount(1.01)%, {+JUP_B200_TECH_MATERIALS_BROUGHT_COUNTER_6 =counter_equal(jup_a6_actor_help_freedom:4)} %=mech_discount(1.03)%, {+JUP_B200_TECH_MATERIALS_BROUGHT_COUNTER_5 =counter_equal(jup_a6_actor_help_freedom:4)} %=mech_discount(1.05)%, {+JUP_B200_TECH_MATERIALS_BROUGHT_COUNTER_4 =counter_equal(jup_a6_actor_help_freedom:4)} %=mech_discount(1.07)%, {+JUP_B200_TECH_MATERIALS_BROUGHT_COUNTER_3 =counter_equal(jup_a6_actor_help_freedom:4)} %=mech_discount(1.09)%, {+JUP_B200_TECH_MATERIALS_BROUGHT_COUNTER_2 =counter_equal(jup_a6_actor_help_freedom:4)} %=mech_discount(1.11)%, {+JUP_B200_TECH_MATERIALS_BROUGHT_COUNTER_1 =counter_equal(jup_a6_actor_help_freedom:4)}  %=mech_discount(1.13)%, {+JUP_B200_TECH_MATERIALS_BROUGHT_COUNTER_9  =counter_equal(jup_a6_actor_help_duty:4)} %=mech_discount(0.65)%, {+JUP_B200_TECH_MATERIALS_BROUGHT_COUNTER_8  =counter_equal(jup_a6_actor_help_duty:4)} %=mech_discount(0.69)%, {+JUP_B200_TECH_MATERIALS_BROUGHT_COUNTER_7 =counter_equal(jup_a6_actor_help_duty:4)} %=mech_discount(0.71)%, {+JUP_B200_TECH_MATERIALS_BROUGHT_COUNTER_6 =counter_equal(jup_a6_actor_help_duty:4)} %=mech_discount(0.73)%, {+JUP_B200_TECH_MATERIALS_BROUGHT_COUNTER_5 =counter_equal(jup_a6_actor_help_duty:4)} %=mech_discount(0.75)%, {+JUP_B200_TECH_MATERIALS_BROUGHT_COUNTER_4 =counter_equal(jup_a6_actor_help_duty:4)} %=mech_discount(0.77)%, {+JUP_B200_TECH_MATERIALS_BROUGHT_COUNTER_3 =counter_equal(jup_a6_actor_help_duty:4)} %=mech_discount(0.79)%, {+JUP_B200_TECH_MATERIALS_BROUGHT_COUNTER_2 =counter_equal(jup_a6_actor_help_duty:4)} %=mech_discount(0.81)%, {+JUP_B200_TECH_MATERIALS_BROUGHT_COUNTER_1 =counter_equal(jup_a6_actor_help_duty:4)}  %=mech_discount(0.83)%, {+JUP_B200_TECH_MATERIALS_BROUGHT_COUNTER_9  =counter_equal(jup_a6_actor_help_stalkers:3)} %=mech_discount(0.65)%, {+JUP_B200_TECH_MATERIALS_BROUGHT_COUNTER_8  =counter_equal(jup_a6_actor_help_stalkers:3)} %=mech_discount(0.69)%, {+JUP_B200_TECH_MATERIALS_BROUGHT_COUNTER_7 =counter_equal(jup_a6_actor_help_stalkers:3)} %=mech_discount(0.71)%, {+JUP_B200_TECH_MATERIALS_BROUGHT_COUNTER_6 =counter_equal(jup_a6_actor_help_stalkers:3)} %=mech_discount(0.73)%, {+JUP_B200_TECH_MATERIALS_BROUGHT_COUNTER_5 =counter_equal(jup_a6_actor_help_stalkers:3)} %=mech_discount(0.75)%, {+JUP_B200_TECH_MATERIALS_BROUGHT_COUNTER_4 =counter_equal(jup_a6_actor_help_stalkers:3)} %=mech_discount(0.77)%, {+JUP_B200_TECH_MATERIALS_BROUGHT_COUNTER_3 =counter_equal(jup_a6_actor_help_stalkers:3)} %=mech_discount(0.79)%, {+JUP_B200_TECH_MATERIALS_BROUGHT_COUNTER_2 =counter_equal(jup_a6_actor_help_stalkers:3)} %=mech_discount(0.81)%, {+JUP_B200_TECH_MATERIALS_BROUGHT_COUNTER_1 =counter_equal(jup_a6_actor_help_stalkers:3)}  %=mech_discount(0.83)%, {+JUP_B200_TECH_MATERIALS_BROUGHT_COUNTER_9} %=mech_discount(0.80)%, {+JUP_B200_TECH_MATERIALS_BROUGHT_COUNTER_8} %=mech_discount(0.84)%, {+JUP_B200_TECH_MATERIALS_BROUGHT_COUNTER_7} %=mech_discount(0.86)%, {+JUP_B200_TECH_MATERIALS_BROUGHT_COUNTER_6} %=mech_discount(0.88)%, {+JUP_B200_TECH_MATERIALS_BROUGHT_COUNTER_5} %=mech_discount(0.90)%, {+JUP_B200_TECH_MATERIALS_BROUGHT_COUNTER_4} %=mech_discount(0.92)%, {+JUP_B200_TECH_MATERIALS_BROUGHT_COUNTER_3} %=mech_discount(0.94)%,  {+JUP_B200_TECH_MATERIALS_BROUGHT_COUNTER_2} %=mech_discount(0.96)%, {+JUP_B200_TECH_MATERIALS_BROUGHT_COUNTER_1} %=mech_discount(0.98)%, {=counter_equal(jup_a6_actor_help_freedom:4)} %=mech_discount(1.15)%, {=counter_equal(jup_a6_actor_help_duty:4)} %=mech_discount(0.85)%, {=counter_equal(jup_a6_actor_help_stalkers:3)} %=mech_discount(0.85)%
 
-wpn_pb
 wpn_pm
-wpn_pmm
+wpn_pb
 wpn_fort
-wpn_fort17
-wpn_apb
-wpn_stechkin
 
 wpn_hpsa
 wpn_beretta
 wpn_walther
-wpn_gsh18
-wpn_glock17
-wpn_grach
-
 wpn_colt1911
-wpn_usp
-wpn_usp_match
-wpn_sig220
-wpn_sig220r
-wpn_desert_eagle
-wpn_desert_eagle_silver
 
-wpn_tt33
-wpn_sr1m
-wpn_fiveseven
+wpn_usp
+wpn_sig220
+wpn_desert_eagle
+
+wpn_bm16
+wpn_toz34
+wpn_wincheaster1300
+wpn_spas12
+wpn_protecta
 
 wpn_mp5
-wpn_mp5sd
-wpn_bizon
-wpn_ump45
 
 wpn_ak74u
 wpn_ak74
-wpn_ak101
 wpn_abakan
-wpn_akm
 
 wpn_l85
 wpn_lr300
 wpn_sig550
-wpn_sig552
 wpn_fn2000
 wpn_g36
 
@@ -997,6 +890,24 @@ wpn_pkm
 wpn_rg-6
 wpn_rpg7
 wpn_gauss
+
+wpn_ak101
+wpn_akm
+wpn_apb
+wpn_bizon
+wpn_desert_eagle_silver
+wpn_fiveseven
+wpn_glock17
+wpn_grach
+wpn_gsh18
+wpn_p90
+wpn_rgm-40
+wpn_saiga12
+wpn_sr1m
+wpn_stechkin
+wpn_tt33
+wpn_ump45
+wpn_usp_match
 
 novice_outfit
 cs_heavy_outfit
@@ -1021,6 +932,7 @@ wpn_protecta_nimble
 wpn_ak74u_snag
 wpn_fort_snag
 
+novice_outfit
 specops_outfit
 military_outfit
 stalker_outfit
@@ -1046,181 +958,401 @@ helm_hardhat_snag
 [jup_b217_stalker_tech_upgr]
 
 
-up_sect_firsta_ak74u = {+JUP_B217_TECH_INSTRUMENT_1_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_1)%
-up_sect_firstc_ak74u = {+JUP_B217_TECH_INSTRUMENT_2_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_2)%
-up_sect_firstd_ak74u = {+JUP_B217_TECH_INSTRUMENT_2_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_2)%
-up_sect_firste_ak74u = {+JUP_B217_TECH_INSTRUMENT_3_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_3)%
+up_sect_ak74_barrel = {+JUP_B217_TECH_INSTRUMENT_2_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_2)%
+up_sect_ak74_usm_accuracy = {+JUP_B217_TECH_INSTRUMENT_3_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_3)%
+up_sect_ak74_usm_rpm = {+JUP_B217_TECH_INSTRUMENT_1_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_2)%
+up_sect_ak74_usm_rpm_down = {+JUP_B217_TECH_INSTRUMENT_1_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_2)%
+up_sect_ak74_torch = {+JUP_B217_TECH_INSTRUMENT_1_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_1)%
 
-up_sect_secona_ak74u = {+JUP_B217_TECH_INSTRUMENT_1_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_1)%
-up_sect_seconc_ak74u = {+JUP_B217_TECH_INSTRUMENT_2_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_2)%
-up_sect_secone_ak74u = {+JUP_B217_TECH_INSTRUMENT_3_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_3)%
-up_sect_seconf_ak74u = {+JUP_B217_TECH_INSTRUMENT_3_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_3)%
+up_sect_ak74u_barrel = {+JUP_B217_TECH_INSTRUMENT_2_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_2)%
+up_sect_ak74u_usm_accuracy = {+JUP_B217_TECH_INSTRUMENT_3_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_3)%
+up_sect_ak74u_usm_rpm = {+JUP_B217_TECH_INSTRUMENT_2_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_2)%
+up_sect_ak74u_torch = {+JUP_B217_TECH_INSTRUMENT_1_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_1)%
+up_sect_ak74u_lastochka = {+JUP_B217_TECH_INSTRUMENT_1_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_1)%
 
-up_sect_thirda_ak74u = {+JUP_B217_TECH_INSTRUMENT_1_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_1)%
-up_sect_thirdc_ak74u = {+JUP_B217_TECH_INSTRUMENT_2_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_2)%
-up_sect_thirdd_ak74u = {+JUP_B217_TECH_INSTRUMENT_2_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_2)%
-up_sect_thirde_ak74u = {+JUP_B217_TECH_INSTRUMENT_3_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_3)%
+up_sect_abakan_barrel_otkat = {+JUP_B217_TECH_INSTRUMENT_1_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_1)%
+up_sect_abakan_usm_accuracy = {+JUP_B217_TECH_INSTRUMENT_3_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_3)%
+up_sect_abakan_usm_rpm = {+JUP_B217_TECH_INSTRUMENT_2_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_2)%
+up_sect_abakan_barrel_compensator = {+JUP_B217_TECH_INSTRUMENT_2_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_2)%
+up_sect_abakan_barrel_bullet_speed = {+JUP_B217_TECH_INSTRUMENT_3_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_3)%
+up_sect_abakan_barrel_accuracy = {+JUP_B217_TECH_INSTRUMENT_3_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_3)%
+up_sect_abakan_zatvor_balancer = {+JUP_B217_TECH_INSTRUMENT_2_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_2)%
+up_sect_abakan_usilenie_korobki = {+JUP_B217_TECH_INSTRUMENT_1_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_1)%
 
-up_sect_fourta_ak74u = true
-up_sect_fourtc_ak74u = {+JUP_B217_TECH_INSTRUMENT_2_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_2)%
-up_sect_fourte_ak74u = {+JUP_B217_TECH_INSTRUMENT_3_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_3)%
+up_sect_l85_mag_fixator = {+JUP_B217_TECH_INSTRUMENT_1_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_1)%
+up_sect_l85_usm_accuracy = {+JUP_B217_TECH_INSTRUMENT_3_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_3)%
+up_sect_l85_usm_rpm = {+JUP_B217_TECH_INSTRUMENT_2_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_2)%
+up_sect_l85_barrel_accuracy = {+JUP_B217_TECH_INSTRUMENT_3_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_3)%
+up_sect_l85_barrel_kompensator = {+JUP_B217_TECH_INSTRUMENT_2_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_2)%
+up_sect_l85_barrel_bullet_speed = {+JUP_B217_TECH_INSTRUMENT_3_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_3)%
+up_sect_l85_zatvor_balancer = {+JUP_B217_TECH_INSTRUMENT_2_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_2)%
+up_sect_l85_firemode = {+JUP_B217_TECH_INSTRUMENT_1_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_1)%
 
-up_sect_fiftha_ak74u = true
+up_sect_val_body_reliability = {+JUP_B217_TECH_INSTRUMENT_1_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_1)%
+up_sect_val_accuracy_usm = {+JUP_B217_TECH_INSTRUMENT_3_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_3)%
+up_sect_val_rpm_usm = {+JUP_B217_TECH_INSTRUMENT_2_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_2)%
+up_sect_val_barrel_speed = {+JUP_B217_TECH_INSTRUMENT_3_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_3)%
+up_sect_val_reliability_barrel = {+JUP_B217_TECH_INSTRUMENT_2_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_2)%
+up_sect_val_torch = {+JUP_B217_TECH_INSTRUMENT_1_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_1)%
 
-up_sect_firsta_mp5 = true
-up_sect_firstc_mp5 = {+JUP_B217_TECH_INSTRUMENT_2_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_2)%
-up_sect_firstd_mp5 = {+JUP_B217_TECH_INSTRUMENT_2_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_2)%
-up_sect_firste_mp5 = {+JUP_B217_TECH_INSTRUMENT_3_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_3)%
+up_sect_beretta_kompensator = {+JUP_B217_TECH_INSTRUMENT_1_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_1)%
+up_sect_beretta_spusk_rpm = {+JUP_B217_TECH_INSTRUMENT_1_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_1)%
+up_sect_beretta_spusk_recoil = {+JUP_B217_TECH_INSTRUMENT_2_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_2)%
+up_sect_beretta_forced_details = {+JUP_B217_TECH_INSTRUMENT_2_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_2)%
+up_sect_beretta_calibration = {+JUP_B217_TECH_INSTRUMENT_3_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_3)%
+up_sect_beretta_zapiratel = {+JUP_B217_TECH_INSTRUMENT_1_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_1)%
+up_sect_beretta_shell_ejector = {+JUP_B217_TECH_INSTRUMENT_2_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_2)%
+up_sect_beretta_barrel_accuracy = {+JUP_B217_TECH_INSTRUMENT_2_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_2)%
+up_sect_beretta_barrel_bullet_speed = {+JUP_B217_TECH_INSTRUMENT_3_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_3)%
+up_sect_beretta_barrel_silencer = {+JUP_B217_TECH_INSTRUMENT_1_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_1)%
 
-up_sect_secona_mp5 = {+JUP_B217_TECH_INSTRUMENT_1_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_1)%
-up_sect_seconc_mp5 = {+JUP_B217_TECH_INSTRUMENT_2_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_2)%
-up_sect_secone_mp5 = {+JUP_B217_TECH_INSTRUMENT_3_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_3)%
-up_sect_seconf_mp5 = {+JUP_B217_TECH_INSTRUMENT_3_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_3)%
+up_sect_deagle_gazootvod = {+JUP_B217_TECH_INSTRUMENT_1_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_1)%
+up_sect_deagle_barrel_hp = {+JUP_B217_TECH_INSTRUMENT_1_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_1)%
+up_sect_deagle_barrel_accuracy = {+JUP_B217_TECH_INSTRUMENT_3_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_3)%
+up_sect_deagle_barrel_compensator = {+JUP_B217_TECH_INSTRUMENT_2_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_2)%
+up_sect_deagle_usm_accuracy = {+JUP_B217_TECH_INSTRUMENT_3_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_3)%
+up_sect_deagle_usm_rpm = {+JUP_B217_TECH_INSTRUMENT_2_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_2)%
+up_sect_deagle_usm_recoil = {+JUP_B217_TECH_INSTRUMENT_1_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_1)%
+up_sect_deagle_mag_uderzhatel = {+JUP_B217_TECH_INSTRUMENT_1_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_1)%
+up_sect_deagle_mag_balance = {+JUP_B217_TECH_INSTRUMENT_2_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_2)%
+up_sect_deagle_patronnik = {+JUP_B217_TECH_INSTRUMENT_3_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_3)%
+up_sect_deagle_zapiratel = {+JUP_B217_TECH_INSTRUMENT_1_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_1)%
+up_sect_deagle_rail = {+JUP_B217_TECH_INSTRUMENT_1_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_1)%
 
-up_sect_thirda_mp5 = {+JUP_B217_TECH_INSTRUMENT_1_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_1)%
-up_sect_thirdc_mp5 = {+JUP_B217_TECH_INSTRUMENT_2_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_2)%
-up_sect_thirdd_mp5 = {+JUP_B217_TECH_INSTRUMENT_2_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_2)%
-up_sect_thirde_mp5 = {+JUP_B217_TECH_INSTRUMENT_3_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_3)%
+up_sect_fiveseven_barrel_sil = {+JUP_B217_TECH_INSTRUMENT_2_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_2)%
+up_sect_fiveseven_usm_accuracy= {+JUP_B217_TECH_INSTRUMENT_3_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_3)%
 
-up_sect_fourta_mp5 = {+JUP_B217_TECH_INSTRUMENT_1_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_1)%
-up_sect_fourtc_mp5 = {+JUP_B217_TECH_INSTRUMENT_2_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_2)%
-up_sect_fourte_mp5 = {+JUP_B217_TECH_INSTRUMENT_3_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_3)%
-up_sect_fourtf_mp5 = {+JUP_B217_TECH_INSTRUMENT_3_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_3)%
+up_sect_glock17_barrel_sil = {+JUP_B217_TECH_INSTRUMENT_1_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_1)%
+up_sect_glock17_barrel_kompensator = {+JUP_B217_TECH_INSTRUMENT_1_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_1)%
+up_sect_glock17_usm_fullautofire = {+JUP_B217_TECH_INSTRUMENT_2_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_2)%
+up_sect_glock17_usm_x3fire = {+JUP_B217_TECH_INSTRUMENT_2_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_2)%
+up_sect_glock17_usm_accuracy = {+JUP_B217_TECH_INSTRUMENT_3_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_3)%
 
-up_sect_fiftha_mp5 = true
-up_sect_fifthc_mp5 = {+JUP_B217_TECH_INSTRUMENT_2_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_2)%
+up_sect_pm_barrel_sil = {+JUP_B217_TECH_INSTRUMENT_1_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_1)%
+up_sect_pm_barrel_hp = {+JUP_B217_TECH_INSTRUMENT_2_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_2)%
+up_sect_pm_usm_accuracy = {+JUP_B217_TECH_INSTRUMENT_3_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_3)%
+up_sect_pm_usm_rpm = {+JUP_B217_TECH_INSTRUMENT_2_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_2)%
+up_sect_pm_recoil = {+JUP_B217_TECH_INSTRUMENT_1_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_1)%
 
-up_sect_firsta_sig550 = {+JUP_B217_TECH_INSTRUMENT_1_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_1)%
-up_sect_firstc_sig550 = {+JUP_B217_TECH_INSTRUMENT_2_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_2)%
-up_sect_firstd_sig550 = {+JUP_B217_TECH_INSTRUMENT_2_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_2)%
-up_sect_firste_sig550 = {+JUP_B217_TECH_INSTRUMENT_3_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_3)%
+up_sect_usp_usm_rpm = {+JUP_B217_TECH_INSTRUMENT_2_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_2)%
+up_sect_usp_usm_recoil = {+JUP_B217_TECH_INSTRUMENT_1_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_1)%
+up_sect_usp_barrel_recoil = {+JUP_B217_TECH_INSTRUMENT_3_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_3)%
+up_sect_usp_barrel_bullet_speed = {+JUP_B217_TECH_INSTRUMENT_3_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_3)%
+up_sect_usp_barrel_accuracy = {+JUP_B217_TECH_INSTRUMENT_3_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_3)%
+up_sect_usp_patronnik = {+JUP_B217_TECH_INSTRUMENT_3_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_3)%
+up_sect_usp_polymer_buffer = {+JUP_B217_TECH_INSTRUMENT_2_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_2)%
+up_sect_usp_zatvor_rpm = {+JUP_B217_TECH_INSTRUMENT_2_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_2)%
+up_sect_usp_zatvor_zapiratel = {+JUP_B217_TECH_INSTRUMENT_1_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_1)%
+up_sect_usp_zatvor_ejector = {+JUP_B217_TECH_INSTRUMENT_1_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_1)%
 
-up_sect_secona_sig550 = {+JUP_B217_TECH_INSTRUMENT_1_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_1)%
-up_sect_seconc_sig550 = {+JUP_B217_TECH_INSTRUMENT_2_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_2)%
-up_sect_secone_sig550 = {+JUP_B217_TECH_INSTRUMENT_3_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_3)%
-up_sect_seconf_sig550 = {+JUP_B217_TECH_INSTRUMENT_3_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_3)%
+up_sect_bm16_short_barrel = {+JUP_B217_TECH_INSTRUMENT_1_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_1)%
+up_sect_bm16_barrel_dovodka = {+JUP_B217_TECH_INSTRUMENT_3_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_3)%
+up_sect_bm16_barrel_narezka = {+JUP_B217_TECH_INSTRUMENT_3_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_3)%
+up_sect_bm16_short_stock = {+JUP_B217_TECH_INSTRUMENT_1_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_1)%
+up_sect_bm16_calibration = {+JUP_B217_TECH_INSTRUMENT_3_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_3)%
+up_sect_bm16_kurki = {+JUP_B217_TECH_INSTRUMENT_1_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_1)%
+up_sect_bm16_sharnir = {+JUP_B217_TECH_INSTRUMENT_2_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_2)%
+up_sect_bm16_korobka = {+JUP_B217_TECH_INSTRUMENT_3_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_3)%
 
-up_sect_thirda_sig550 = true
-up_sect_thirdc_sig550 = {+JUP_B217_TECH_INSTRUMENT_2_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_2)%
-up_sect_thirdd_sig550 = {+JUP_B217_TECH_INSTRUMENT_2_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_2)%
-up_sect_thirde_sig550 = {+JUP_B217_TECH_INSTRUMENT_3_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_3)%
+up_sect_toz34_barrel = {+JUP_B217_TECH_INSTRUMENT_1_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_1)%
+up_sect_toz34_stock = {+JUP_B217_TECH_INSTRUMENT_1_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_1)%
+up_sect_toz34_usm = {+JUP_B217_TECH_INSTRUMENT_2_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_2)%
+up_sect_toz34_calibration = {+JUP_B217_TECH_INSTRUMENT_3_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_3)%
+up_sect_toz34_barrel_narezka = {+JUP_B217_TECH_INSTRUMENT_3_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_3)%
 
-up_sect_fourta_sig550 = {+JUP_B217_TECH_INSTRUMENT_1_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_1)%
-up_sect_fourtc_sig550 = {+JUP_B217_TECH_INSTRUMENT_2_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_2)%
-up_sect_fourte_sig550 = {+JUP_B217_TECH_INSTRUMENT_3_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_3)%
-up_sect_fourtf_sig550 = {+JUP_B217_TECH_INSTRUMENT_3_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_3)%
+up_sect_mp5_mag_fixator = {+JUP_B217_TECH_INSTRUMENT_1_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_1)%
+up_sect_mp5_barrel_speed = {+JUP_B217_TECH_INSTRUMENT_3_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_3)%
+up_sect_mp5_barrel_compensator = {+JUP_B217_TECH_INSTRUMENT_2_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_2)%
+up_sect_mp5_zatvor_balancer = {+JUP_B217_TECH_INSTRUMENT_2_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_2)%
+up_sect_mp5_extractor = {+JUP_B217_TECH_INSTRUMENT_1_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_1)%
+up_sect_mp5_usm_rpm = {+JUP_B217_TECH_INSTRUMENT_2_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_2)%
+up_sect_mp5_usm_accuracy = {+JUP_B217_TECH_INSTRUMENT_3_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_3)%
 
-up_sect_fiftha_sig550 = true
+up_sect_ump45_mag_fixator = {+JUP_B217_TECH_INSTRUMENT_1_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_1)%
+up_sect_ump45_barrel_speed = {+JUP_B217_TECH_INSTRUMENT_3_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_3)%
+up_sect_ump45_barrel_compensator = {+JUP_B217_TECH_INSTRUMENT_2_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_2)%
+up_sect_ump45_zatvor_balancer = {+JUP_B217_TECH_INSTRUMENT_2_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_2)%
+up_sect_ump45_extractor = {+JUP_B217_TECH_INSTRUMENT_1_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_1)%
+up_sect_ump45_usm_rpm = {+JUP_B217_TECH_INSTRUMENT_2_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_2)%
+up_sect_ump45_usm_accuracy = {+JUP_B217_TECH_INSTRUMENT_3_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_3)%
 
-up_sect_firsta_groza = {+JUP_B217_TECH_INSTRUMENT_1_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_1)%
-up_sect_firstc_groza = {+JUP_B217_TECH_INSTRUMENT_2_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_2)%
-up_sect_firstd_groza = {+JUP_B217_TECH_INSTRUMENT_2_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_2)%
-up_sect_firste_groza = {+JUP_B217_TECH_INSTRUMENT_3_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_3)%
-up_sect_firstf_groza = {+JUP_B217_TECH_INSTRUMENT_3_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_3)%
+up_sect_bizon_usm_rpm = {+JUP_B217_TECH_INSTRUMENT_2_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_2)%
+up_sect_bizon_usm_recoil = {+JUP_B217_TECH_INSTRUMENT_2_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_2)%
+up_sect_bizon_barrel_bullet_speed = {+JUP_B217_TECH_INSTRUMENT_3_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_3)%
+up_sect_bizon_barrel_dispersion = {+JUP_B217_TECH_INSTRUMENT_3_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_3)%
+up_sect_bizon_barrel_9x19 = {+JUP_B217_TECH_INSTRUMENT_3_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_3)%
+up_sect_bizon_mag_shnek = {+JUP_B217_TECH_INSTRUMENT_1_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_1)%
+up_sect_bizon_zatvor_balancer = {+JUP_B217_TECH_INSTRUMENT_3_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_3)%
+up_sect_bizon_shell_ejector = {+JUP_B217_TECH_INSTRUMENT_3_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_3)%
+up_sect_bizon_zatvor_prujina = {+JUP_B217_TECH_INSTRUMENT_1_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_1)%
+up_sect_bizon_rail = {+JUP_B217_TECH_INSTRUMENT_1_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_1)%
 
-up_sect_secona_groza = {+JUP_B217_TECH_INSTRUMENT_1_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_1)%
-up_sect_seconc_groza = {+JUP_B217_TECH_INSTRUMENT_2_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_2)%
-up_sect_secone_groza = {+JUP_B217_TECH_INSTRUMENT_3_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_3)%
-up_sect_seconf_groza = {+JUP_B217_TECH_INSTRUMENT_3_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_3)%
+up_sect_p90_reliability = {+JUP_B217_TECH_INSTRUMENT_1_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_1)%
+up_sect_p90_usm = {+JUP_B217_TECH_INSTRUMENT_3_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_3)%
 
-up_sect_thirda_groza = true
-up_sect_thirdc_groza = {+JUP_B217_TECH_INSTRUMENT_2_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_2)%
-up_sect_thirdd_groza = {+JUP_B217_TECH_INSTRUMENT_2_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_2)%
-up_sect_thirde_groza = {+JUP_B217_TECH_INSTRUMENT_3_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_3)%
-up_sect_thirdf_groza = {+JUP_B217_TECH_INSTRUMENT_3_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_3)%
+up_sect_svd_podavatel = {+JUP_B217_TECH_INSTRUMENT_1_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_1)%
+up_sect_svd_zatvor_balanser = {+JUP_B217_TECH_INSTRUMENT_2_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_2)%
+up_sect_svd_zatvor_reliability = {+JUP_B217_TECH_INSTRUMENT_1_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_1)%
+up_sect_svd_usm_reliability = {+JUP_B217_TECH_INSTRUMENT_1_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_1)%
+up_sect_svd_usm_accuracy = {+JUP_B217_TECH_INSTRUMENT_3_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_3)%
+up_sect_svd_usm_rpm = {+JUP_B217_TECH_INSTRUMENT_2_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_2)%
+up_sect_svd_kompensator = {+JUP_B217_TECH_INSTRUMENT_1_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_1)%
+up_sect_svd_gascam = {+JUP_B217_TECH_INSTRUMENT_1_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_1)%
+up_sect_svd_barrel_reliability = {+JUP_B217_TECH_INSTRUMENT_2_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_2)%
+up_sect_svd_barrel_accuracy = {+JUP_B217_TECH_INSTRUMENT_3_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_3)%
+up_sect_svd_barrel_bullet_speed = {+JUP_B217_TECH_INSTRUMENT_3_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_3)%
 
-up_sect_fourta_groza = true
-up_sect_fourtc_groza = {+JUP_B217_TECH_INSTRUMENT_2_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_2)%
-up_sect_fourte_groza = {+JUP_B217_TECH_INSTRUMENT_3_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_3)%
-up_sect_fourtf_groza = {+JUP_B217_TECH_INSTRUMENT_3_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_3)%
+up_sect_svu_prujina = {+JUP_B217_TECH_INSTRUMENT_1_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_1)%
+up_sect_svu_titan_details = {+JUP_B217_TECH_INSTRUMENT_1_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_1)%
+up_sect_svu_usm_rpm = {+JUP_B217_TECH_INSTRUMENT_2_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_2)%
+up_sect_svu_usm_reliability = {+JUP_B217_TECH_INSTRUMENT_1_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_1)%
+up_sect_svu_zatvor_reliability = {+JUP_B217_TECH_INSTRUMENT_1_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_1)%
+up_sect_svu_zatvor_accuracy = {+JUP_B217_TECH_INSTRUMENT_3_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_3)%
+up_sect_svu_zatvor_balancer_recoil = {+JUP_B217_TECH_INSTRUMENT_2_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_2)%
+up_sect_svu_gascam = {+JUP_B217_TECH_INSTRUMENT_1_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_1)%
+up_sect_svu_barrel_recoil = {+JUP_B217_TECH_INSTRUMENT_2_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_2)%
+up_sect_svu_barrel_bullet_speed = {+JUP_B217_TECH_INSTRUMENT_3_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_3)%
+up_sect_svu_barrel_accuracy = {+JUP_B217_TECH_INSTRUMENT_3_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_3)%
 
-up_sect_fiftha_groza = true
+up_sect_vintorez_lightdetails = {+JUP_B217_TECH_INSTRUMENT_1_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_1)%
+up_sect_vintorez_usm_accuracy = {+JUP_B217_TECH_INSTRUMENT_3_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_3)%
+up_sect_vintorez_usm_rpm = {+JUP_B217_TECH_INSTRUMENT_2_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_2)%
+up_sect_vintorez_barrel = {+JUP_B217_TECH_INSTRUMENT_3_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_3)%
+up_sect_vintorez_barrel_accuracy = {+JUP_B217_TECH_INSTRUMENT_3_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_3)%
 
-up_sect_firsta_l85 = {+JUP_B217_TECH_INSTRUMENT_1_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_1)%
-up_sect_firstc_l85 = {+JUP_B217_TECH_INSTRUMENT_2_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_2)%
-up_sect_firste_l85 = {+JUP_B217_TECH_INSTRUMENT_3_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_3)%
-up_sect_firstf_l85 = {+JUP_B217_TECH_INSTRUMENT_3_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_3)%
+up_sect_saiga12_barrel_narezka = {+JUP_B217_TECH_INSTRUMENT_2_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_2)%
+up_sect_saiga12_barrel_dtk = {+JUP_B217_TECH_INSTRUMENT_2_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_2)%
+up_sect_saiga12_usm_rpm = {+JUP_B217_TECH_INSTRUMENT_3_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_3)%
+up_sect_saiga12_usm_recoil = {+JUP_B217_TECH_INSTRUMENT_3_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_3)%
+up_sect_saiga12_patronnik = {+JUP_B217_TECH_INSTRUMENT_3_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_3)%
+up_sect_saiga12_titan_details = {+JUP_B217_TECH_INSTRUMENT_2_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_2)%
+up_sect_saiga12_lightdetails = {+JUP_B217_TECH_INSTRUMENT_2_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_2)%
+up_sect_saiga12_accurate_details = {+JUP_B217_TECH_INSTRUMENT_2_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_2)%
+up_sect_saiga12_light_stock = {+JUP_B217_TECH_INSTRUMENT_1_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_1)%
+up_sect_saiga12_stock_nakladka = {+JUP_B217_TECH_INSTRUMENT_1_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_1)%
 
-up_sect_secona_l85 = true
-up_sect_seconc_l85 = {+JUP_B217_TECH_INSTRUMENT_2_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_2)%
-up_sect_second_l85 = {+JUP_B217_TECH_INSTRUMENT_2_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_2)%
-up_sect_secone_l85 = {+JUP_B217_TECH_INSTRUMENT_3_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_3)%
+up_sect_walther_titan_details = {+JUP_B217_TECH_INSTRUMENT_1_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_1)%
+up_sect_walther_usm_rpm = {+JUP_B217_TECH_INSTRUMENT_2_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_2)%
+up_sect_walther_usm_recoil = {+JUP_B217_TECH_INSTRUMENT_2_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_2)%
+up_sect_walther_barrel_sil = {+JUP_B217_TECH_INSTRUMENT_2_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_2)%
+up_sect_walther_barrel_bullet_speed = {+JUP_B217_TECH_INSTRUMENT_3_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_3)%
+up_sect_walther_barrel_accuracy = {+JUP_B217_TECH_INSTRUMENT_3_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_3)%
+up_sect_walther_patronnik = {+JUP_B217_TECH_INSTRUMENT_1_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_1)%
+up_sect_walther_shell_ejector = {+JUP_B217_TECH_INSTRUMENT_2_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_2)%
+up_sect_walther_zatvor_zapiratel = {+JUP_B217_TECH_INSTRUMENT_3_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_3)%
+up_sect_walther_zatvor_recoil = {+JUP_B217_TECH_INSTRUMENT_3_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_3)%
+up_sect_walther_body = {+JUP_B217_TECH_INSTRUMENT_1_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_1)%
 
-up_sect_thirda_l85 = {+JUP_B217_TECH_INSTRUMENT_1_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_1)%
-up_sect_thirdc_l85 = {+JUP_B217_TECH_INSTRUMENT_2_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_2)%
-up_sect_thirde_l85 = {+JUP_B217_TECH_INSTRUMENT_3_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_3)%
-up_sect_thirdf_l85 = {+JUP_B217_TECH_INSTRUMENT_3_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_3)%
+up_sect_stechkin_shell_ejector = {+JUP_B217_TECH_INSTRUMENT_1_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_1)%
+up_sect_stechkin_usm_rpm = {+JUP_B217_TECH_INSTRUMENT_2_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_2)%
+up_sect_stechkin_usm_recoil = {+JUP_B217_TECH_INSTRUMENT_2_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_2)%
+up_sect_stechkin_barrel_accuracy = {+JUP_B217_TECH_INSTRUMENT_3_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_3)%
+up_sect_stechkin_barrel_speed = {+JUP_B217_TECH_INSTRUMENT_3_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_3)%
+up_sect_stechkin_zapiratel = {+JUP_B217_TECH_INSTRUMENT_1_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_1)%
+up_sect_stechkin_light_details = {+JUP_B217_TECH_INSTRUMENT_2_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_2)%
+up_sect_stechkin_titan_details = {+JUP_B217_TECH_INSTRUMENT_2_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_2)%
+up_sect_stechkin_zatvor_balancer = {+JUP_B217_TECH_INSTRUMENT_3_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_3)%
+up_sect_stechkin_zatvor_dispersion = {+JUP_B217_TECH_INSTRUMENT_3_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_3)%
+up_sect_stechkin_perevodchik = {+JUP_B217_TECH_INSTRUMENT_3_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_3)%
+up_sect_stechkin_pokritie = {+JUP_B217_TECH_INSTRUMENT_2_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_2)%
+up_sect_stechkin_zaschelka = {+JUP_B217_TECH_INSTRUMENT_1_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_1)%
+up_sect_stechkin_prujina = {+JUP_B217_TECH_INSTRUMENT_1_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_1)%
 
-up_sect_fourta_l85 = true
-up_sect_fourtc_l85 = {+JUP_B217_TECH_INSTRUMENT_2_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_2)%
-up_sect_fourte_l85 = {+JUP_B217_TECH_INSTRUMENT_3_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_3)%
+up_sect_tt33_podacha = {+JUP_B217_TECH_INSTRUMENT_1_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_1)%
+up_sect_tt33_kurok = {+JUP_B217_TECH_INSTRUMENT_2_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_2)%
+up_sect_tt33_usm_rpm = {+JUP_B217_TECH_INSTRUMENT_2_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_2)%
+up_sect_tt33_patronnik = {+JUP_B217_TECH_INSTRUMENT_3_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_3)%
+up_sect_tt33_ejector = {+JUP_B217_TECH_INSTRUMENT_2_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_2)%
+up_sect_tt33_zatvor = {+JUP_B217_TECH_INSTRUMENT_2_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_2)%
+up_sect_tt33_barrel_accuracy = {+JUP_B217_TECH_INSTRUMENT_2_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_2)%
+up_sect_tt33_barrel_speed = {+JUP_B217_TECH_INSTRUMENT_2_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_2)%
+up_sect_tt33_body_reliability = {+JUP_B217_TECH_INSTRUMENT_1_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_1)%
 
-up_sect_fiftha_l85 = true
-up_sect_fifthc_l85 = {+JUP_B217_TECH_INSTRUMENT_2_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_2)%
+up_sect_sr1m_zatvor_balancer = {+JUP_B217_TECH_INSTRUMENT_1_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_1)%
+up_sect_sr1m_ejector = {+JUP_B217_TECH_INSTRUMENT_2_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_2)%
+up_sect_sr1m_patronnik_obturation = {+JUP_B217_TECH_INSTRUMENT_2_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_2)%
+up_sect_sr1m_barrel_sil = {+JUP_B217_TECH_INSTRUMENT_2_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_2)%
+up_sect_sr1m_barrel_accuracy = {+JUP_B217_TECH_INSTRUMENT_3_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_3)%
+up_sect_sr1m_barrel_speed = {+JUP_B217_TECH_INSTRUMENT_3_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_3)%
+up_sect_sr1m_mag_reliability = {+JUP_B217_TECH_INSTRUMENT_1_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_1)%
+up_sect_sr1m_handle_weight = {+JUP_B217_TECH_INSTRUMENT_1_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_1)%
+up_sect_sr1m_handle_inertion = {+JUP_B217_TECH_INSTRUMENT_1_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_1)%
+up_sect_sr1m_body = {+JUP_B217_TECH_INSTRUMENT_2_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_2)%
+up_sect_sr1m_usm_rpm = {+JUP_B217_TECH_INSTRUMENT_1_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_1)%
+up_sect_sr1m_usm_recoil_kurok_myagkii_spusk = {+JUP_B217_TECH_INSTRUMENT_1_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_1)%
+up_sect_sr1m_light_details = {+JUP_B217_TECH_INSTRUMENT_2_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_2)%
+up_sect_sr1m_recoil_compensation_system = {+JUP_B217_TECH_INSTRUMENT_3_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_3)%
+up_sect_sr1m_light_ramka = {+JUP_B217_TECH_INSTRUMENT_1_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_1)%
+up_sect_sr1m_rail = {+JUP_B217_TECH_INSTRUMENT_2_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_2)%
 
-up_sect_firsta_abakan = {+JUP_B217_TECH_INSTRUMENT_1_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_1)%
-up_sect_firstc_abakan = {+JUP_B217_TECH_INSTRUMENT_2_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_2)%
-up_sect_firste_abakan = {+JUP_B217_TECH_INSTRUMENT_3_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_3)%
-up_sect_firstf_abakan = {+JUP_B217_TECH_INSTRUMENT_3_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_3)%
+up_sect_fort_light_details = {+JUP_B217_TECH_INSTRUMENT_1_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_1)%
+up_sect_fort_barrel_sil = {+JUP_B217_TECH_INSTRUMENT_2_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_2)%
+up_sect_fort_barrel_speed = {+JUP_B217_TECH_INSTRUMENT_2_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_2)%
+up_sect_fort_ejector = {+JUP_B217_TECH_INSTRUMENT_2_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_2)%
+up_sect_fort_patronnik_accuracy = {+JUP_B217_TECH_INSTRUMENT_3_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_3)%
+up_sect_fort_zatvor_balancer = {+JUP_B217_TECH_INSTRUMENT_2_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_2)%
+up_sect_fort_podacha = {+JUP_B217_TECH_INSTRUMENT_1_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_1)%
+up_sect_fort_usm_recoil = {+JUP_B217_TECH_INSTRUMENT_2_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_2)%
+up_sect_fort_usm_rpm = {+JUP_B217_TECH_INSTRUMENT_2_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_2)%
+up_sect_fort_body = {+JUP_B217_TECH_INSTRUMENT_2_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_2)%
 
-up_sect_secona_abakan = {+JUP_B217_TECH_INSTRUMENT_1_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_1)%
-up_sect_seconc_abakan = {+JUP_B217_TECH_INSTRUMENT_2_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_2)%
-up_sect_second_abakan = {+JUP_B217_TECH_INSTRUMENT_2_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_2)%
-up_sect_secone_abakan = {+JUP_B217_TECH_INSTRUMENT_3_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_3)%
+up_sect_colt1911_patronnik_accuracy = {+JUP_B217_TECH_INSTRUMENT_2_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_2)%
+up_sect_colt1911_shell_ejector = {+JUP_B217_TECH_INSTRUMENT_1_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_1)%
+up_sect_colt1911_titan_details = {+JUP_B217_TECH_INSTRUMENT_1_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_1)%
+up_sect_colt1911_light_details = {+JUP_B217_TECH_INSTRUMENT_1_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_1)%
+up_sect_colt1911_barrel_sil = {+JUP_B217_TECH_INSTRUMENT_2_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_2)%
+up_sect_colt1911_barrel_speed = {+JUP_B217_TECH_INSTRUMENT_2_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_2)%
+up_sect_colt1911_barrel_accuracy = {+JUP_B217_TECH_INSTRUMENT_3_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_3)%
+up_sect_colt1911_usm_accuracy = {+JUP_B217_TECH_INSTRUMENT_3_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_3)%
+up_sect_colt1911_usm_rpm = {+JUP_B217_TECH_INSTRUMENT_2_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_2)%
+up_sect_colt1911_usm_recoil = {+JUP_B217_TECH_INSTRUMENT_2_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_2)%
+up_sect_colt1911_light_mag_handle = {+JUP_B217_TECH_INSTRUMENT_1_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_1)%
+up_sect_colt1911_zatvor_reliability = {+JUP_B217_TECH_INSTRUMENT_2_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_2)%
+up_sect_colt1911_zatvor_rpm = {+JUP_B217_TECH_INSTRUMENT_2_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_2)%
+up_sect_colt1911_zatvor_recoil = {+JUP_B217_TECH_INSTRUMENT_2_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_2)%
+up_sect_colt1911_recoil_compensation_system = {+JUP_B217_TECH_INSTRUMENT_3_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_3)%
+up_sect_colt1911_bullet_hit_power = {+JUP_B217_TECH_INSTRUMENT_3_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_3)%
 
-up_sect_thirda_abakan = {+JUP_B217_TECH_INSTRUMENT_1_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_1)%
-up_sect_thirdc_abakan = {+JUP_B217_TECH_INSTRUMENT_2_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_2)%
-up_sect_thirdd_abakan = {+JUP_B217_TECH_INSTRUMENT_2_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_2)%
-up_sect_thirde_abakan = {+JUP_B217_TECH_INSTRUMENT_3_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_3)%
+up_sect_grach_usm_rpm = {+JUP_B217_TECH_INSTRUMENT_1_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_1)%
+up_sect_grach_usm_recoil = {+JUP_B217_TECH_INSTRUMENT_1_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_1)%
+up_sect_grach_light_details = {+JUP_B217_TECH_INSTRUMENT_1_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_1)%
+up_sect_grach_titan_details = {+JUP_B217_TECH_INSTRUMENT_1_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_1)%
+up_sect_grach_body_reliability = {+JUP_B217_TECH_INSTRUMENT_2_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_2)%
+up_sect_grach_int_bulletspeed = {+JUP_B217_TECH_INSTRUMENT_2_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_2)%
+up_sect_grach_int_recoil = {+JUP_B217_TECH_INSTRUMENT_3_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_3)%
+up_sect_grach_zatvor_recoil = {+JUP_B217_TECH_INSTRUMENT_3_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_3)%
+up_sect_grach_zatvor_rpm = {+JUP_B217_TECH_INSTRUMENT_2_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_2)%
+up_sect_grach_zatvor_zapiratel = {+JUP_B217_TECH_INSTRUMENT_3_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_3)%
+up_sect_grach_patronnik_accuracy = {+JUP_B217_TECH_INSTRUMENT_3_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_3)%
+up_sect_grach_barrel_recoil = {+JUP_B217_TECH_INSTRUMENT_2_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_2)%
+up_sect_grach_barrel_accuracy = {+JUP_B217_TECH_INSTRUMENT_3_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_3)%
+up_sect_grach_barrel_speed = {+JUP_B217_TECH_INSTRUMENT_2_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_2)%
+up_sect_grach_barrel_sil = {+JUP_B217_TECH_INSTRUMENT_1_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_1)%
+up_sect_grach_light_ramka = {+JUP_B217_TECH_INSTRUMENT_1_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_1)%
+up_sect_grach_hard_ramka = {+JUP_B217_TECH_INSTRUMENT_1_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_1)%
+up_sect_grach_rail = {+JUP_B217_TECH_INSTRUMENT_1_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_1)%
 
-up_sect_fourta_abakan = {+JUP_B217_TECH_INSTRUMENT_1_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_1)%
-up_sect_fourtc_abakan = {+JUP_B217_TECH_INSTRUMENT_2_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_2)%
-up_sect_fourte_abakan = {+JUP_B217_TECH_INSTRUMENT_3_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_3)%
-up_sect_fourtf_abakan = {+JUP_B217_TECH_INSTRUMENT_3_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_3)%
+up_sect_sig550_mag_lock = {+JUP_B217_TECH_INSTRUMENT_1_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_1)%
+up_sect_sig550_zatvor_accuracy = {+JUP_B217_TECH_INSTRUMENT_3_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_3)%
+up_sect_sig550_zatvor_balancer = {+JUP_B217_TECH_INSTRUMENT_2_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_2)%
+up_sect_sig550_barrel_recoil = {+JUP_B217_TECH_INSTRUMENT_2_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_2)%
+up_sect_sig550_barrel_accuracy = {+JUP_B217_TECH_INSTRUMENT_3_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_3)%
+up_sect_sig550_barrel_speed = {+JUP_B217_TECH_INSTRUMENT_2_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_2)%
+up_sect_sig550_shell_ejector = {+JUP_B217_TECH_INSTRUMENT_1_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_1)%
+up_sect_sig550_usm_recoil = {+JUP_B217_TECH_INSTRUMENT_2_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_2)%
+up_sect_sig550_usm_rpm_up = {+JUP_B217_TECH_INSTRUMENT_2_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_2)%
+up_sect_sig550_korobka = {+JUP_B217_TECH_INSTRUMENT_2_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_2)%
+up_sect_sig550_light_stock = {+JUP_B217_TECH_INSTRUMENT_1_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_1)%
+up_sect_sig550_stock_nakladka = {+JUP_B217_TECH_INSTRUMENT_1_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_1)%
+up_sect_sig550_body_reliability = {+JUP_B217_TECH_INSTRUMENT_2_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_2)%
+up_sect_sig550_tac_foregrip = {+JUP_B217_TECH_INSTRUMENT_2_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_2)%
 
-up_sect_fiftha_abakan = true
+up_sect_sig220_body_reliability = {+JUP_B217_TECH_INSTRUMENT_1_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_1)%
+up_sect_sig220_usm_recoil = {+JUP_B217_TECH_INSTRUMENT_2_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_2)%
+up_sect_sig220_usm_rpm = {+JUP_B217_TECH_INSTRUMENT_1_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_1)%
+up_sect_sig220_barrel_sil = {+JUP_B217_TECH_INSTRUMENT_1_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_1)%
+up_sect_sig220_barrel_accuracy = {+JUP_B217_TECH_INSTRUMENT_3_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_3)%
+up_sect_sig220_barrel_speed = {+JUP_B217_TECH_INSTRUMENT_2_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_2)%
+up_sect_sig220_titan_details = {+JUP_B217_TECH_INSTRUMENT_1_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_1)%
+up_sect_sig220_light_details = {+JUP_B217_TECH_INSTRUMENT_1_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_1)%
+up_sect_sig220_polymer_buffer = {+JUP_B217_TECH_INSTRUMENT_2_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_2)%
+up_sect_sig220_shell_ejector = {+JUP_B217_TECH_INSTRUMENT_1_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_1)%
+up_sect_sig220_zatvor_zapiratel = {+JUP_B217_TECH_INSTRUMENT_2_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_2)%
+up_sect_sig220_patonnik = {+JUP_B217_TECH_INSTRUMENT_3_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_3)%
 
-up_sect_firsta_g36 = {+JUP_B217_TECH_INSTRUMENT_1_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_1)%
-up_sect_firstc_g36 = {+JUP_B217_TECH_INSTRUMENT_2_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_2)%
-up_sect_firste_g36 = {+JUP_B217_TECH_INSTRUMENT_3_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_3)%
-up_sect_firstf_g36 = {+JUP_B217_TECH_INSTRUMENT_3_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_3)%
+up_sect_gsh18_shell_ejector = {+JUP_B217_TECH_INSTRUMENT_1_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_1)%
+up_sect_gsh18_patronnik_obturation = {+JUP_B217_TECH_INSTRUMENT_2_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_2)%
+up_sect_gsh18_patronnik_dispersion = {+JUP_B217_TECH_INSTRUMENT_3_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_3)%
+up_sect_gsh18_barrel_speed = {+JUP_B217_TECH_INSTRUMENT_2_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_2)%
+up_sect_gsh18_barrel_recoil = {+JUP_B217_TECH_INSTRUMENT_2_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_2)%
+up_sect_gsh18_barrel_accuracy = {+JUP_B217_TECH_INSTRUMENT_3_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_3)%
+up_sect_gsh18_body_reliability = {+JUP_B217_TECH_INSTRUMENT_1_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_1)%
+up_sect_gsh18_polymer_buffer = {+JUP_B217_TECH_INSTRUMENT_2_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_2)%
+up_sect_gsh18_ramka = {+JUP_B217_TECH_INSTRUMENT_2_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_2)%
+up_sect_gsh18_usm_rpm = {+JUP_B217_TECH_INSTRUMENT_2_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_2)%
+up_sect_gsh18_usm_recoil = {+JUP_B217_TECH_INSTRUMENT_3_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_3)%
+up_sect_gsh18_usm_reliability = {+JUP_B217_TECH_INSTRUMENT_2_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_2)%
 
-up_sect_secona_g36 = {+JUP_B217_TECH_INSTRUMENT_1_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_1)%
-up_sect_seconc_g36 = {+JUP_B217_TECH_INSTRUMENT_2_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_2)%
-up_sect_second_g36 = {+JUP_B217_TECH_INSTRUMENT_2_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_2)%
-up_sect_secone_g36 = {+JUP_B217_TECH_INSTRUMENT_3_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_3)%
+up_sect_hpsa_shell_ejector = {+JUP_B217_TECH_INSTRUMENT_1_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_1)%
+up_sect_hpsa_zapiratel = {+JUP_B217_TECH_INSTRUMENT_2_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_2)%
+up_sect_hpsa_patronnik = {+JUP_B217_TECH_INSTRUMENT_3_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_3)%
+up_sect_hpsa_barrel_speed = {+JUP_B217_TECH_INSTRUMENT_2_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_2)%
+up_sect_hpsa_barrel_sil = {+JUP_B217_TECH_INSTRUMENT_1_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_1)%
+up_sect_hpsa_barrel_dispersion = {+JUP_B217_TECH_INSTRUMENT_3_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_3)%
+up_sect_hpsa_polymer_buffer = {+JUP_B217_TECH_INSTRUMENT_1_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_1)%
+up_sect_hpsa_usm_recoil = {+JUP_B217_TECH_INSTRUMENT_2_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_2)%
+up_sect_hpsa_usm_rpm = {+JUP_B217_TECH_INSTRUMENT_1_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_1)%
+up_sect_hpsa_body = {+JUP_B217_TECH_INSTRUMENT_2_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_2)%
+up_sect_hpsa_zatvor_balancer = {+JUP_B217_TECH_INSTRUMENT_2_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_2)%
+up_sect_hpsa_light_details = {+JUP_B217_TECH_INSTRUMENT_1_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_1)%
+up_sect_hpsa_titan_details = {+JUP_B217_TECH_INSTRUMENT_1_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_1)%
 
-up_sect_thirda_g36 = {+JUP_B217_TECH_INSTRUMENT_1_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_1)%
-up_sect_thirdc_g36 = {+JUP_B217_TECH_INSTRUMENT_2_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_2)%
-up_sect_thirde_g36 = {+JUP_B217_TECH_INSTRUMENT_3_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_3)%
-up_sect_thirdf_g36 = {+JUP_B217_TECH_INSTRUMENT_3_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_3)%
+up_sect_pb_barrel_speed = {+JUP_B217_TECH_INSTRUMENT_1_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_1)%
+up_sect_pb_barrel_compensation = {+JUP_B217_TECH_INSTRUMENT_2_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_2)%
+up_sect_pb_sil_reliability = {+JUP_B217_TECH_INSTRUMENT_2_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_2)%
+up_sect_pb_barrel_accuracy = {+JUP_B217_TECH_INSTRUMENT_3_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_3)%
+up_sect_pb_shell_ejector = {+JUP_B217_TECH_INSTRUMENT_1_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_1)%
+up_sect_pb_patronnik_zapiratel = {+JUP_B217_TECH_INSTRUMENT_2_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_2)%
+up_sect_pb_patronnik_accuracy = {+JUP_B217_TECH_INSTRUMENT_3_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_3)%
+up_sect_pb_usm_rpm = {+JUP_B217_TECH_INSTRUMENT_2_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_2)%
+up_sect_pb_usm_recoil = {+JUP_B217_TECH_INSTRUMENT_2_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_2)%
+up_sect_pb_usm_accuracy = {+JUP_B217_TECH_INSTRUMENT_3_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_3)%
+up_sect_pb_light_details = {+JUP_B217_TECH_INSTRUMENT_1_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_1)%
+up_sect_pb_hard_details = {+JUP_B217_TECH_INSTRUMENT_1_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_1)%
+up_sect_pb_ramka = {+JUP_B217_TECH_INSTRUMENT_1_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_1)%
+up_sect_pb_body_reliability = {+JUP_B217_TECH_INSTRUMENT_2_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_2)%
 
-up_sect_fourta_g36 = true
-up_sect_fourtc_g36 = {+JUP_B217_TECH_INSTRUMENT_2_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_2)%
-up_sect_fourte_g36 = {+JUP_B217_TECH_INSTRUMENT_3_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_3)%
-up_sect_fourtf_g36 = {+JUP_B217_TECH_INSTRUMENT_3_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_3)%
+up_sect_groza_mag_fixator = {+JUP_B217_TECH_INSTRUMENT_1_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_1)%
+up_sect_groza_usm_rpm = {+JUP_B217_TECH_INSTRUMENT_2_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_2)%
+up_sect_groza_usm_rpm_down = {+JUP_B217_TECH_INSTRUMENT_2_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_2)%
+up_sect_groza_usm_accuracy = {+JUP_B217_TECH_INSTRUMENT_3_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_3)%
+up_sect_groza_barrel_accuracy = {+JUP_B217_TECH_INSTRUMENT_3_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_3)%
+up_sect_groza_barrel_speed = {+JUP_B217_TECH_INSTRUMENT_3_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_3)%
+up_sect_groza_barrel_recoil = {+JUP_B217_TECH_INSTRUMENT_2_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_2)%
+up_sect_groza_shell_ejector = {+JUP_B217_TECH_INSTRUMENT_1_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_1)%
+up_sect_groza_zatvor_balancer = {+JUP_B217_TECH_INSTRUMENT_2_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_2)%
+up_sect_groza_patronnik_accuracy = {+JUP_B217_TECH_INSTRUMENT_3_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_3)%
+up_sect_groza_body = {+JUP_B217_TECH_INSTRUMENT_2_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_2)%
+up_sect_groza_stock_inertion = {+JUP_B217_TECH_INSTRUMENT_1_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_1)%
+up_sect_groza_light_stock = {+JUP_B217_TECH_INSTRUMENT_1_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_1)%
+up_sect_groza_gascam = {+JUP_B217_TECH_INSTRUMENT_2_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_2)%
+up_sect_groza_usilenie_korobki = {+JUP_B217_TECH_INSTRUMENT_2_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_2)%
+up_sect_groza_light_details = {+JUP_B217_TECH_INSTRUMENT_2_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_2)%
 
-up_sect_firsta_ak74 = {+JUP_B217_TECH_INSTRUMENT_1_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_1)%
-up_sect_firstc_ak74 = {+JUP_B217_TECH_INSTRUMENT_2_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_2)%
-up_sect_firste_ak74 = {+JUP_B217_TECH_INSTRUMENT_3_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_3)%
-up_sect_firstf_ak74 = {+JUP_B217_TECH_INSTRUMENT_3_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_3)%
+up_sect_rgm40_titan_details = {+JUP_B217_TECH_INSTRUMENT_1_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_1)%
+up_sect_rgm40_light_details = {+JUP_B217_TECH_INSTRUMENT_1_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_1)%
+up_sect_rgm40_body = {+JUP_B217_TECH_INSTRUMENT_2_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_2)%
+up_sect_rgm40_polymer_details = {+JUP_B217_TECH_INSTRUMENT_1_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_1)%
+up_sect_rgm40_recoil_stock = {+JUP_B217_TECH_INSTRUMENT_2_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_2)%
+up_sect_rgm40_light_stock = {+JUP_B217_TECH_INSTRUMENT_2_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_2)%
+up_sect_rgm40_narezka_gren_speed = {+JUP_B217_TECH_INSTRUMENT_3_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_3)%
 
-up_sect_secona_ak74 = {+JUP_B217_TECH_INSTRUMENT_1_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_1)%
-up_sect_seconc_ak74 = {+JUP_B217_TECH_INSTRUMENT_2_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_2)%
-up_sect_second_ak74 = {+JUP_B217_TECH_INSTRUMENT_2_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_2)%
-up_sect_secone_ak74 = {+JUP_B217_TECH_INSTRUMENT_3_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_3)%
+up_sect_wincheaster1300_barrel_speed = {+JUP_B217_TECH_INSTRUMENT_2_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_2)%
+up_sect_wincheaster1300_barrel_dispersion = {+JUP_B217_TECH_INSTRUMENT_3_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_3)%
+up_sect_wincheaster1300_barrel_short = {+JUP_B217_TECH_INSTRUMENT_1_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_1)%
+up_sect_wincheaster1300_mag = {+JUP_B217_TECH_INSTRUMENT_1_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_1)%
+up_sect_wincheaster1300_shell_ejector = {+JUP_B217_TECH_INSTRUMENT_1_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_1)%
+up_sect_wincheaster1300_body_reliability = {+JUP_B217_TECH_INSTRUMENT_1_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_1)%
+up_sect_wincheaster1300_soft_trigger = {+JUP_B217_TECH_INSTRUMENT_2_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_2)%
+up_sect_wincheaster1300_patronnik_accuracy = {+JUP_B217_TECH_INSTRUMENT_3_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_3)%
+up_sect_wincheaster1300_usm_reliability_details = {+JUP_B217_TECH_INSTRUMENT_1_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_1)%
+up_sect_wincheaster1300_usm_accuracy = {+JUP_B217_TECH_INSTRUMENT_3_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_3)%
+up_sect_wincheaster1300_usm_recoil = {+JUP_B217_TECH_INSTRUMENT_2_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_2)%
+up_sect_wincheaster1300_usm_light_details = {+JUP_B217_TECH_INSTRUMENT_1_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_1)%
+up_sect_wincheaster1300_pompa_kompensator = {+JUP_B217_TECH_INSTRUMENT_1_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_1)%
+up_sect_wincheaster1300_tactical_handle = {+JUP_B217_TECH_INSTRUMENT_2_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_2)%
+up_sect_wincheaster1300_rail = {+JUP_B217_TECH_INSTRUMENT_1_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_1)%
+up_sect_wincheaster1300_stock = {+JUP_B217_TECH_INSTRUMENT_2_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_2)%
 
-up_sect_thirda_ak74 = {+JUP_B217_TECH_INSTRUMENT_1_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_1)%
-up_sect_thirdc_ak74 = {+JUP_B217_TECH_INSTRUMENT_2_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_2)%
-up_sect_thirdd_ak74 = {+JUP_B217_TECH_INSTRUMENT_2_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_2)%
-up_sect_thirde_ak74 = {+JUP_B217_TECH_INSTRUMENT_3_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_3)%
-
-up_sect_fourta_ak74 = {+JUP_B217_TECH_INSTRUMENT_1_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_1)%
-up_sect_fourtc_ak74 = {+JUP_B217_TECH_INSTRUMENT_2_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_2)%
-up_sect_fourte_ak74 = {+JUP_B217_TECH_INSTRUMENT_3_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_3)%
-
-;up_sect_fiftha_ak74 = true
-up_sect_fifthc_ak74 = {+JUP_B217_TECH_INSTRUMENT_2_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_2)%
+up_sect_protecta_barrel_voronenie = {+JUP_B217_TECH_INSTRUMENT_1_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_1)%
+up_sect_protecta_usm_recoil = {+JUP_B217_TECH_INSTRUMENT_2_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_2)%
+up_sect_protecta_usm_rpm = {+JUP_B217_TECH_INSTRUMENT_2_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_2)%
+up_sect_protecta_barrel_silencer = {+JUP_B217_TECH_INSTRUMENT_2_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_2)%
+up_sect_protecta_barrel_narezka = {+JUP_B217_TECH_INSTRUMENT_2_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_2)%
+up_sect_protecta_ejector = {+JUP_B217_TECH_INSTRUMENT_1_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_1)%
+up_sect_protecta_light_details = {+JUP_B217_TECH_INSTRUMENT_1_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_1)%
+up_sect_protecta_body_reliability = {+JUP_B217_TECH_INSTRUMENT_2_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_2)%
+up_sect_protecta_stock = {+JUP_B217_TECH_INSTRUMENT_1_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_1)%
 
 up_sect_firsta_lr300 = {+JUP_B217_TECH_INSTRUMENT_1_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_1)%
 up_sect_firstc_lr300 = {+JUP_B217_TECH_INSTRUMENT_2_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_2)%
@@ -1244,53 +1376,6 @@ up_sect_fourtf_lr300 = {+JUP_B217_TECH_INSTRUMENT_3_BROUGHT}, false %=upgrade_hi
 
 up_sect_fiftha_lr300 = true
 
-up_sect_firsta_val = {+JUP_B217_TECH_INSTRUMENT_1_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_1)%
-up_sect_firstc_val = {+JUP_B217_TECH_INSTRUMENT_2_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_2)%
-up_sect_firstd_val = {+JUP_B217_TECH_INSTRUMENT_2_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_2)%
-up_sect_firste_val = {+JUP_B217_TECH_INSTRUMENT_3_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_3)%
-up_sect_firstf_val = {+JUP_B217_TECH_INSTRUMENT_3_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_3)%
-
-up_sect_secona_val = {+JUP_B217_TECH_INSTRUMENT_1_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_1)%
-up_sect_seconc_val = {+JUP_B217_TECH_INSTRUMENT_2_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_2)%
-up_sect_secone_val = {+JUP_B217_TECH_INSTRUMENT_3_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_3)%
-up_sect_seconf_val = {+JUP_B217_TECH_INSTRUMENT_3_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_3)%
-
-up_sect_thirda_val = {+JUP_B217_TECH_INSTRUMENT_1_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_1)%
-up_sect_thirdc_val = {+JUP_B217_TECH_INSTRUMENT_2_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_2)%
-up_sect_thirdd_val = {+JUP_B217_TECH_INSTRUMENT_2_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_2)%
-up_sect_thirde_val = {+JUP_B217_TECH_INSTRUMENT_3_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_3)%
-up_sect_thirdf_val = {+JUP_B217_TECH_INSTRUMENT_3_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_3)%
-
-up_sect_fourta_val = {+JUP_B217_TECH_INSTRUMENT_1_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_1)%
-up_sect_fourtc_val = {+JUP_B217_TECH_INSTRUMENT_2_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_2)%
-up_sect_fourte_val = {+JUP_B217_TECH_INSTRUMENT_3_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_3)%
-up_sect_fourtf_val = {+JUP_B217_TECH_INSTRUMENT_3_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_3)%
-
-up_sect_fiftha_val = true
-
-up_sect_firsta_fn2000 = {+JUP_B217_TECH_INSTRUMENT_1_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_1)%
-up_sect_firstc_fn2000 = {+JUP_B217_TECH_INSTRUMENT_2_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_2)%
-up_sect_firstd_fn2000 = {+JUP_B217_TECH_INSTRUMENT_2_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_2)%
-up_sect_firste_fn2000 = {+JUP_B217_TECH_INSTRUMENT_3_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_3)%
-up_sect_firstf_fn2000 = {+JUP_B217_TECH_INSTRUMENT_3_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_3)%
-
-up_sect_secona_fn2000 = {+JUP_B217_TECH_INSTRUMENT_1_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_1)%
-up_sect_seconc_fn2000 = {+JUP_B217_TECH_INSTRUMENT_2_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_2)%
-up_sect_second_fn2000 = {+JUP_B217_TECH_INSTRUMENT_2_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_2)%
-up_sect_secone_fn2000 = {+JUP_B217_TECH_INSTRUMENT_3_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_3)%
-up_sect_seconf_fn2000 = {+JUP_B217_TECH_INSTRUMENT_3_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_3)%
-
-up_sect_thirda_fn2000 = true
-up_sect_thirdc_fn2000 = {+JUP_B217_TECH_INSTRUMENT_2_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_2)%
-up_sect_thirdd_fn2000 = {+JUP_B217_TECH_INSTRUMENT_2_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_2)%
-up_sect_thirde_fn2000 = {+JUP_B217_TECH_INSTRUMENT_3_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_3)%
-up_sect_thirdf_fn2000 = {+JUP_B217_TECH_INSTRUMENT_3_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_3)%
-
-up_sect_fourta_fn2000 = true
-up_sect_fourtc_fn2000 = {+JUP_B217_TECH_INSTRUMENT_2_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_2)%
-up_sect_fourte_fn2000 = {+JUP_B217_TECH_INSTRUMENT_3_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_3)%
-up_sect_fourtf_fn2000 = {+JUP_B217_TECH_INSTRUMENT_3_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_3)%
-
 up_sect_firsta_pkm = {+JUP_B217_TECH_INSTRUMENT_1_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_1)%
 up_sect_firstc_pkm = {+JUP_B217_TECH_INSTRUMENT_2_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_2)%
 up_sect_firstd_pkm = {+JUP_B217_TECH_INSTRUMENT_2_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_2)%
@@ -1311,316 +1396,6 @@ up_sect_fourtc_pkm = {+JUP_B217_TECH_INSTRUMENT_2_BROUGHT}, false %=upgrade_hint
 up_sect_fourte_pkm = {+JUP_B217_TECH_INSTRUMENT_3_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_3)%
 
 up_sect_fiftha_pkm = true
-
-up_sect_firsta_svd = {+JUP_B217_TECH_INSTRUMENT_1_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_1)%
-up_sect_firstc_svd = {+JUP_B217_TECH_INSTRUMENT_2_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_2)%
-up_sect_firstd_svd = {+JUP_B217_TECH_INSTRUMENT_2_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_2)%
-up_sect_firste_svd = {+JUP_B217_TECH_INSTRUMENT_3_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_3)%
-up_sect_firstf_svd = {+JUP_B217_TECH_INSTRUMENT_3_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_3)%
-
-up_sect_secona_svd = {+JUP_B217_TECH_INSTRUMENT_1_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_1)%
-up_sect_seconc_svd = {+JUP_B217_TECH_INSTRUMENT_2_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_2)%
-up_sect_second_svd = {+JUP_B217_TECH_INSTRUMENT_2_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_2)%
-up_sect_secone_svd = {+JUP_B217_TECH_INSTRUMENT_3_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_3)%
-
-up_sect_thirda_svd = {+JUP_B217_TECH_INSTRUMENT_1_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_1)%
-up_sect_thirdc_svd = {+JUP_B217_TECH_INSTRUMENT_2_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_2)%
-up_sect_thirde_svd = {+JUP_B217_TECH_INSTRUMENT_3_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_3)%
-
-up_sect_fourta_svd = true
-up_sect_fourtc_svd = {+JUP_B217_TECH_INSTRUMENT_2_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_2)%
-up_sect_fourte_svd = {+JUP_B217_TECH_INSTRUMENT_3_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_3)%
-up_sect_fourtf_svd = {+JUP_B217_TECH_INSTRUMENT_3_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_3)%
-
-up_sect_firsta_svu = {+JUP_B217_TECH_INSTRUMENT_1_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_1)%
-up_sect_firstc_svu = {+JUP_B217_TECH_INSTRUMENT_2_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_2)%
-up_sect_firste_svu = {+JUP_B217_TECH_INSTRUMENT_3_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_3)%
-up_sect_firstf_svu = {+JUP_B217_TECH_INSTRUMENT_3_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_3)%
-
-up_sect_secona_svu = {+JUP_B217_TECH_INSTRUMENT_1_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_1)%
-up_sect_seconc_svu = {+JUP_B217_TECH_INSTRUMENT_2_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_2)%
-up_sect_second_svu = {+JUP_B217_TECH_INSTRUMENT_2_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_2)%
-up_sect_secone_svu = {+JUP_B217_TECH_INSTRUMENT_3_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_3)%
-up_sect_seconf_svu = {+JUP_B217_TECH_INSTRUMENT_3_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_3)%
-
-up_sect_thirda_svu = {+JUP_B217_TECH_INSTRUMENT_1_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_1)%
-up_sect_thirdc_svu = {+JUP_B217_TECH_INSTRUMENT_2_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_2)%
-
-up_sect_fourta_svu = true
-up_sect_fourtc_svu = {+JUP_B217_TECH_INSTRUMENT_2_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_2)%
-up_sect_fourte_svu = {+JUP_B217_TECH_INSTRUMENT_3_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_3)%
-up_sect_fourtf_svu = {+JUP_B217_TECH_INSTRUMENT_3_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_3)%
-
-up_sect_fiftha_svu = true
-
-up_sect_firsta_bm16 = true
-up_sect_firstc_bm16 = {+JUP_B217_TECH_INSTRUMENT_2_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_2)%
-
-up_sect_secona_bm16 = true
-up_sect_seconc_bm16 = {+JUP_B217_TECH_INSTRUMENT_2_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_2)%
-up_sect_second_bm16 = {+JUP_B217_TECH_INSTRUMENT_2_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_2)%
-
-up_sect_thirda_bm16 = {+JUP_B217_TECH_INSTRUMENT_1_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_1)%
-up_sect_thirdc_bm16 = {+JUP_B217_TECH_INSTRUMENT_2_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_2)%
-
-up_sect_firsta_toz34 =  true
-up_sect_firstc_toz34 = {+JUP_B217_TECH_INSTRUMENT_2_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_2)%
-up_sect_firstd_toz34 = {+JUP_B217_TECH_INSTRUMENT_2_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_2)%
-up_sect_firste_toz34 = {+JUP_B217_TECH_INSTRUMENT_3_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_3)%
-up_sect_firstf_toz34 = {+JUP_B217_TECH_INSTRUMENT_3_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_3)%
-
-up_sect_secona_toz34 =  true
-up_sect_seconc_toz34 = {+JUP_B217_TECH_INSTRUMENT_2_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_2)%
-up_sect_second_toz34 = {+JUP_B217_TECH_INSTRUMENT_2_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_2)%
-
-up_sect_thirda_toz34 = {+JUP_B217_TECH_INSTRUMENT_1_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_1)%
-up_sect_thirdc_toz34 = {+JUP_B217_TECH_INSTRUMENT_2_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_2)%
-up_sect_thirde_toz34 = {+JUP_B217_TECH_INSTRUMENT_3_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_3)%
-up_sect_thirdf_toz34 = {+JUP_B217_TECH_INSTRUMENT_3_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_3)%
-
-up_sect_firsta_wincheaster1300 = true
-up_sect_firstc_wincheaster1300 = {+JUP_B217_TECH_INSTRUMENT_2_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_2)%
-up_sect_firstd_wincheaster1300 = {+JUP_B217_TECH_INSTRUMENT_2_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_2)%
-up_sect_firste_wincheaster1300 = {+JUP_B217_TECH_INSTRUMENT_3_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_3)%
-
-up_sect_secona_wincheaster1300 = true
-up_sect_seconc_wincheaster1300 = {+JUP_B217_TECH_INSTRUMENT_2_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_2)%
-up_sect_second_wincheaster1300 = {+JUP_B217_TECH_INSTRUMENT_2_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_2)%
-up_sect_secone_wincheaster1300 = {+JUP_B217_TECH_INSTRUMENT_3_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_3)%
-
-up_sect_thirda_wincheaster1300 = {+JUP_B217_TECH_INSTRUMENT_1_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_1)%
-up_sect_thirdc_wincheaster1300 = {+JUP_B217_TECH_INSTRUMENT_2_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_2)%
-up_sect_thirdd_wincheaster1300 = {+JUP_B217_TECH_INSTRUMENT_2_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_2)%
-up_sect_thirde_wincheaster1300 = {+JUP_B217_TECH_INSTRUMENT_3_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_3)%
-up_sect_thirdf_wincheaster1300 = {+JUP_B217_TECH_INSTRUMENT_3_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_3)%
-
-up_sect_firsta_spas12 = true
-up_sect_firstc_spas12 = {+JUP_B217_TECH_INSTRUMENT_2_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_2)%
-up_sect_firstd_spas12 = {+JUP_B217_TECH_INSTRUMENT_2_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_2)%
-up_sect_firste_spas12 = {+JUP_B217_TECH_INSTRUMENT_3_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_3)%
-up_sect_firstf_spas12 = {+JUP_B217_TECH_INSTRUMENT_3_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_3)%
-
-up_sect_secona_spas12 = true
-up_sect_seconc_spas12 = {+JUP_B217_TECH_INSTRUMENT_2_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_2)%
-up_sect_second_spas12 = {+JUP_B217_TECH_INSTRUMENT_2_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_2)%
-
-up_sect_thirda_spas12 = {+JUP_B217_TECH_INSTRUMENT_1_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_1)%
-up_sect_thirdc_spas12 = {+JUP_B217_TECH_INSTRUMENT_2_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_2)%
-up_sect_thirdd_spas12 = {+JUP_B217_TECH_INSTRUMENT_2_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_2)%
-up_sect_thirde_spas12 = {+JUP_B217_TECH_INSTRUMENT_3_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_3)%
-up_sect_thirdf_spas12 = {+JUP_B217_TECH_INSTRUMENT_3_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_3)%
-
-up_sect_firsta_protecta = true
-up_sect_firstc_protecta = {+JUP_B217_TECH_INSTRUMENT_2_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_2)%
-up_sect_firstd_protecta = {+JUP_B217_TECH_INSTRUMENT_2_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_2)%
-up_sect_firste_protecta = {+JUP_B217_TECH_INSTRUMENT_3_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_3)%
-up_sect_firstf_protecta = {+JUP_B217_TECH_INSTRUMENT_3_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_3)%
-
-up_sect_secona_protecta = true
-up_sect_seconc_protecta = {+JUP_B217_TECH_INSTRUMENT_2_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_2)%
-up_sect_second_protecta = {+JUP_B217_TECH_INSTRUMENT_2_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_2)%
-
-up_sect_thirda_protecta = {+JUP_B217_TECH_INSTRUMENT_1_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_1)%
-up_sect_thirdc_protecta = {+JUP_B217_TECH_INSTRUMENT_2_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_2)%
-up_sect_thirdd_protecta = {+JUP_B217_TECH_INSTRUMENT_2_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_2)%
-up_sect_thirde_protecta = {+JUP_B217_TECH_INSTRUMENT_3_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_3)%
-
-up_sect_fourta_protecta = {+JUP_B217_TECH_INSTRUMENT_1_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_1)%
-up_sect_fourtc_protecta = {+JUP_B217_TECH_INSTRUMENT_2_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_2)%
-
-up_sect_firsta_pm = {+JUP_B217_TECH_INSTRUMENT_1_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_1)%
-up_sect_firstc_pm = {+JUP_B217_TECH_INSTRUMENT_2_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_2)%
-up_sect_firstd_pm = {+JUP_B217_TECH_INSTRUMENT_2_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_2)%
-up_sect_firste_pm = {+JUP_B217_TECH_INSTRUMENT_3_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_3)%
-
-up_sect_secona_pm = {+JUP_B217_TECH_INSTRUMENT_1_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_1)%
-up_sect_seconc_pm = {+JUP_B217_TECH_INSTRUMENT_2_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_2)%
-
-up_sect_thirda_pm = true
-up_sect_thirdc_pm = {+JUP_B217_TECH_INSTRUMENT_2_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_2)%
-up_sect_thirdd_pm = {+JUP_B217_TECH_INSTRUMENT_2_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_2)%
-
-up_sect_fourta_pm = true
-up_sect_fourtc_pm = {+JUP_B217_TECH_INSTRUMENT_2_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_2)%
-
-up_sect_fiftha_pm = true
-up_sect_fifthc_pm = {+JUP_B217_TECH_INSTRUMENT_2_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_2)%
-
-up_sect_firsta_pb = {+JUP_B217_TECH_INSTRUMENT_1_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_1)%
-up_sect_firstc_pb = {+JUP_B217_TECH_INSTRUMENT_2_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_2)%
-up_sect_firstd_pb = {+JUP_B217_TECH_INSTRUMENT_2_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_2)%
-up_sect_firste_pb = {+JUP_B217_TECH_INSTRUMENT_3_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_3)%
-
-up_sect_secona_pb = {+JUP_B217_TECH_INSTRUMENT_1_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_1)%
-up_sect_seconc_pb = {+JUP_B217_TECH_INSTRUMENT_2_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_2)%
-
-up_sect_thirda_pb = true
-up_sect_thirdc_pb = {+JUP_B217_TECH_INSTRUMENT_2_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_2)%
-up_sect_thirde_pb = {+JUP_B217_TECH_INSTRUMENT_3_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_3)%
-
-up_sect_fourta_pb = true
-up_sect_fourtc_pb = {+JUP_B217_TECH_INSTRUMENT_2_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_2)%
-
-up_sect_fiftha_pb = true
-
-up_sect_firsta_fort = {+JUP_B217_TECH_INSTRUMENT_1_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_1)%
-up_sect_firstc_fort = {+JUP_B217_TECH_INSTRUMENT_2_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_2)%
-up_sect_firstd_fort = {+JUP_B217_TECH_INSTRUMENT_2_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_2)%
-up_sect_firste_fort = {+JUP_B217_TECH_INSTRUMENT_3_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_3)%
-
-up_sect_secona_fort = {+JUP_B217_TECH_INSTRUMENT_1_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_1)%
-up_sect_seconc_fort = {+JUP_B217_TECH_INSTRUMENT_2_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_2)%
-up_sect_second_fort = {+JUP_B217_TECH_INSTRUMENT_2_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_2)%
-
-up_sect_thirda_fort = true
-up_sect_thirdc_fort = {+JUP_B217_TECH_INSTRUMENT_2_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_2)%
-up_sect_thirdd_fort = {+JUP_B217_TECH_INSTRUMENT_2_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_2)%
-
-up_sect_fourta_fort = true
-up_sect_fourtc_fort = {+JUP_B217_TECH_INSTRUMENT_2_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_2)%
-
-up_sect_fiftha_fort = true
-up_sect_fifthc_fort = {+JUP_B217_TECH_INSTRUMENT_2_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_2)%
-
-up_sect_firsta_beretta = {+JUP_B217_TECH_INSTRUMENT_1_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_1)%
-up_sect_firstc_beretta = {+JUP_B217_TECH_INSTRUMENT_2_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_2)%
-up_sect_firstd_beretta = {+JUP_B217_TECH_INSTRUMENT_2_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_2)%
-up_sect_firste_beretta = {+JUP_B217_TECH_INSTRUMENT_3_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_3)%
-
-up_sect_secona_beretta = {+JUP_B217_TECH_INSTRUMENT_1_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_1)%
-up_sect_seconc_beretta = {+JUP_B217_TECH_INSTRUMENT_2_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_2)%
-up_sect_second_beretta = {+JUP_B217_TECH_INSTRUMENT_2_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_2)%
-up_sect_secone_beretta = {+JUP_B217_TECH_INSTRUMENT_3_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_3)%
-
-up_sect_thirda_beretta = {+JUP_B217_TECH_INSTRUMENT_1_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_1)%
-up_sect_thirdc_beretta = {+JUP_B217_TECH_INSTRUMENT_2_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_2)%
-up_sect_thirdd_beretta = {+JUP_B217_TECH_INSTRUMENT_2_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_2)%
-
-up_sect_fourta_beretta = {+JUP_B217_TECH_INSTRUMENT_1_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_1)%
-up_sect_fourtc_beretta = {+JUP_B217_TECH_INSTRUMENT_2_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_2)%
-
-up_sect_fiftha_beretta = true
-up_sect_fifthc_beretta = {+JUP_B217_TECH_INSTRUMENT_2_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_2)%
-
-up_sect_firsta_walther = {+JUP_B217_TECH_INSTRUMENT_1_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_1)%
-up_sect_firstc_walther = {+JUP_B217_TECH_INSTRUMENT_2_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_2)%
-up_sect_firstd_walther = {+JUP_B217_TECH_INSTRUMENT_2_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_2)%
-up_sect_firste_walther = {+JUP_B217_TECH_INSTRUMENT_3_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_3)%
-
-up_sect_secona_walther = {+JUP_B217_TECH_INSTRUMENT_1_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_1)%
-up_sect_seconc_walther = {+JUP_B217_TECH_INSTRUMENT_2_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_2)%
-up_sect_secone_walther = {+JUP_B217_TECH_INSTRUMENT_3_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_3)%
-up_sect_seconf_walther = {+JUP_B217_TECH_INSTRUMENT_3_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_3)%
-
-up_sect_thirda_walther = {+JUP_B217_TECH_INSTRUMENT_1_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_1)%
-up_sect_thirdc_walther = {+JUP_B217_TECH_INSTRUMENT_2_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_2)%
-up_sect_thirdd_walther = {+JUP_B217_TECH_INSTRUMENT_2_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_2)%
-
-up_sect_fourta_walther = {+JUP_B217_TECH_INSTRUMENT_1_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_1)%
-up_sect_fourtc_walther = {+JUP_B217_TECH_INSTRUMENT_2_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_2)%
-
-up_sect_fiftha_walther = true
-
-up_sect_firsta_hpsa = {+JUP_B217_TECH_INSTRUMENT_1_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_1)%
-up_sect_firstc_hpsa = {+JUP_B217_TECH_INSTRUMENT_2_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_2)%
-up_sect_firstd_hpsa = {+JUP_B217_TECH_INSTRUMENT_2_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_2)%
-up_sect_firste_hpsa = {+JUP_B217_TECH_INSTRUMENT_3_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_3)%
-
-up_sect_secona_hpsa = {+JUP_B217_TECH_INSTRUMENT_1_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_1)%
-up_sect_seconc_hpsa = {+JUP_B217_TECH_INSTRUMENT_2_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_2)%
-up_sect_secone_hpsa = {+JUP_B217_TECH_INSTRUMENT_3_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_3)%
-up_sect_seconf_hpsa = {+JUP_B217_TECH_INSTRUMENT_3_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_3)%
-
-up_sect_thirda_hpsa = {+JUP_B217_TECH_INSTRUMENT_1_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_1)%
-up_sect_thirdc_hpsa = {+JUP_B217_TECH_INSTRUMENT_2_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_2)%
-up_sect_thirdd_hpsa = {+JUP_B217_TECH_INSTRUMENT_2_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_2)%
-
-up_sect_fourta_hpsa = {+JUP_B217_TECH_INSTRUMENT_1_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_1)%
-up_sect_fourtc_hpsa = {+JUP_B217_TECH_INSTRUMENT_2_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_2)%
-up_sect_fourte_hpsa = {+JUP_B217_TECH_INSTRUMENT_3_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_3)%
-
-up_sect_fiftha_hpsa = true
-up_sect_fiftha_hpsa = {+JUP_B217_TECH_INSTRUMENT_2_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_2)%
-
-up_sect_firsta_colt1911 = {+JUP_B217_TECH_INSTRUMENT_1_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_1)%
-up_sect_firstc_colt1911 = {+JUP_B217_TECH_INSTRUMENT_2_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_2)%
-up_sect_firstd_colt1911 = {+JUP_B217_TECH_INSTRUMENT_2_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_2)%
-up_sect_firste_colt1911 = {+JUP_B217_TECH_INSTRUMENT_3_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_3)%
-
-up_sect_secona_colt1911 = {+JUP_B217_TECH_INSTRUMENT_1_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_1)%
-up_sect_seconc_colt1911 = {+JUP_B217_TECH_INSTRUMENT_2_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_2)%
-up_sect_second_colt1911 = {+JUP_B217_TECH_INSTRUMENT_2_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_2)%
-up_sect_secone_colt1911 = {+JUP_B217_TECH_INSTRUMENT_3_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_3)%
-
-up_sect_secona_colt1911 = true
-up_sect_seconc_colt1911 = {+JUP_B217_TECH_INSTRUMENT_2_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_2)%
-up_sect_second_colt1911 = {+JUP_B217_TECH_INSTRUMENT_2_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_2)%
-
-up_sect_fourta_colt1911 = {+JUP_B217_TECH_INSTRUMENT_1_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_1)%
-up_sect_fourtc_colt1911 = {+JUP_B217_TECH_INSTRUMENT_2_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_2)%
-
-up_sect_fiftha_colt1911 = true
-
-up_sect_firsta_sig220 = {+JUP_B217_TECH_INSTRUMENT_1_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_1)%
-up_sect_firstc_sig220 = {+JUP_B217_TECH_INSTRUMENT_2_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_2)%
-up_sect_firstd_sig220 = {+JUP_B217_TECH_INSTRUMENT_2_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_2)%
-up_sect_firste_sig220 = {+JUP_B217_TECH_INSTRUMENT_3_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_3)%
-
-up_sect_secona_sig220 = {+JUP_B217_TECH_INSTRUMENT_1_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_1)%
-up_sect_seconc_sig220 = {+JUP_B217_TECH_INSTRUMENT_2_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_2)%
-up_sect_secone_sig220 = {+JUP_B217_TECH_INSTRUMENT_3_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_3)%
-up_sect_seconf_sig220 = {+JUP_B217_TECH_INSTRUMENT_3_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_3)%
-
-up_sect_thirda_sig220 = {+JUP_B217_TECH_INSTRUMENT_1_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_1)%
-up_sect_thirdc_sig220 = {+JUP_B217_TECH_INSTRUMENT_2_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_2)%
-up_sect_thirdd_sig220 = {+JUP_B217_TECH_INSTRUMENT_2_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_2)%
-
-up_sect_fourta_sig220 = {+JUP_B217_TECH_INSTRUMENT_1_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_1)%
-up_sect_fourtc_sig220 = {+JUP_B217_TECH_INSTRUMENT_2_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_2)%
-up_sect_fourte_sig220 = {+JUP_B217_TECH_INSTRUMENT_3_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_3)%
-
-up_sect_fiftha_sig220 = true
-
-up_sect_firsta_usp = {+JUP_B217_TECH_INSTRUMENT_1_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_1)%
-up_sect_firstc_usp = {+JUP_B217_TECH_INSTRUMENT_2_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_2)%
-up_sect_firstd_usp = {+JUP_B217_TECH_INSTRUMENT_2_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_2)%
-up_sect_firste_usp = {+JUP_B217_TECH_INSTRUMENT_3_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_3)%
-
-up_sect_secona_usp = {+JUP_B217_TECH_INSTRUMENT_1_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_1)%
-up_sect_seconc_usp = {+JUP_B217_TECH_INSTRUMENT_2_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_2)%
-up_sect_second_usp = {+JUP_B217_TECH_INSTRUMENT_2_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_2)%
-up_sect_secone_usp = {+JUP_B217_TECH_INSTRUMENT_3_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_3)%
-
-up_sect_thirda_usp = {+JUP_B217_TECH_INSTRUMENT_1_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_1)%
-up_sect_thirdc_usp = {+JUP_B217_TECH_INSTRUMENT_2_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_2)%
-up_sect_thirdd_usp = {+JUP_B217_TECH_INSTRUMENT_2_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_2)%
-up_sect_thirde_usp = {+JUP_B217_TECH_INSTRUMENT_3_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_3)%
-
-up_sect_fourta_usp = {+JUP_B217_TECH_INSTRUMENT_1_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_1)%
-up_sect_fourtc_usp = {+JUP_B217_TECH_INSTRUMENT_2_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_2)%
-up_sect_fourte_usp = {+JUP_B217_TECH_INSTRUMENT_3_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_3)%
-
-up_sect_fiftha_usp  = true
-
-up_sect_firsta_desert_eagle = {+JUP_B217_TECH_INSTRUMENT_1_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_1)%
-up_sect_firstc_desert_eagle = {+JUP_B217_TECH_INSTRUMENT_2_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_2)%
-up_sect_firste_desert_eagle = {+JUP_B217_TECH_INSTRUMENT_3_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_3)%
-up_sect_firstf_desert_eagle = {+JUP_B217_TECH_INSTRUMENT_3_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_3)%
-
-up_sect_secona_desert_eagle = {+JUP_B217_TECH_INSTRUMENT_1_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_1)%
-up_sect_seconc_desert_eagle = {+JUP_B217_TECH_INSTRUMENT_2_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_2)%
-up_sect_secone_desert_eagle = {+JUP_B217_TECH_INSTRUMENT_3_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_3)%
-up_sect_seconf_desert_eagle = {+JUP_B217_TECH_INSTRUMENT_3_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_3)%
-
-up_sect_thirda_desert_eagle = true
-up_sect_thirdc_desert_eagle = {+JUP_B217_TECH_INSTRUMENT_2_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_2)%
-up_sect_thirdd_desert_eagle = {+JUP_B217_TECH_INSTRUMENT_2_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_2)%
-up_sect_thirde_desert_eagle = {+JUP_B217_TECH_INSTRUMENT_3_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_3)%
-
-up_sect_fourta_desert_eagle = {+JUP_B217_TECH_INSTRUMENT_1_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_1)%
-up_sect_fourtc_desert_eagle = {+JUP_B217_TECH_INSTRUMENT_2_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_2)%
-
-up_sect_fiftha_desert_eagle = true
 
 up_sect_firsta_novice_outfit = true
 up_sect_firstc_novice_outfit = {+JUP_B217_TECH_INSTRUMENT_2_BROUGHT}, false %=upgrade_hint(st_upgr_toolkit_2)%
@@ -1899,537 +1674,6 @@ helm_hardhat_snag
 
 [jup_b6_scientist_tech_upgr]
 
-up_sect_firsta_ak74u = false
-up_sect_firstc_ak74u = false
-up_sect_firstd_ak74u = false
-up_sect_firste_ak74u = false
-
-up_sect_secona_ak74u = false
-up_sect_seconc_ak74u = false
-up_sect_secone_ak74u = false
-up_sect_seconf_ak74u = false
-
-up_sect_thirda_ak74u = false
-up_sect_thirdc_ak74u = false
-up_sect_thirdd_ak74u = false
-up_sect_thirde_ak74u = false
-
-up_sect_fourta_ak74u = false
-up_sect_fourtc_ak74u = false
-up_sect_fourte_ak74u = false
-
-up_sect_firsta_mp5 = false
-up_sect_firstc_mp5 = false
-up_sect_firstd_mp5 = false
-up_sect_firste_mp5 = false
-
-up_sect_secona_mp5 = false
-up_sect_seconc_mp5 = false
-up_sect_secone_mp5 = false
-up_sect_seconf_mp5 = false
-
-up_sect_thirda_mp5 = false
-up_sect_thirdc_mp5 = false
-up_sect_thirdd_mp5 = false
-up_sect_thirde_mp5 = false
-
-up_sect_fourta_mp5 = false
-up_sect_fourtc_mp5 = false
-up_sect_fourte_mp5 = false
-up_sect_fourtf_mp5 = false
-
-up_sect_firsta_sig550 = false
-up_sect_firstc_sig550 = false
-up_sect_firstd_sig550 = false
-up_sect_firste_sig550 = false
-
-up_sect_secona_sig550 = false
-up_sect_seconc_sig550 = false
-up_sect_secone_sig550 = false
-up_sect_seconf_sig550 = false
-
-up_sect_thirda_sig550 = false
-up_sect_thirdc_sig550 = false
-up_sect_thirdd_sig550 = false
-up_sect_thirde_sig550 = false
-
-up_sect_fourta_sig550 = false
-up_sect_fourtc_sig550 = false
-up_sect_fourte_sig550 = false
-up_sect_fourtf_sig550 = false
-
-up_sect_firsta_groza = false
-up_sect_firstc_groza = false
-up_sect_firstd_groza = false
-up_sect_firste_groza = false
-up_sect_firstf_groza = false
-
-up_sect_secona_groza = false
-up_sect_seconc_groza = false
-up_sect_secone_groza = false
-up_sect_seconf_groza = false
-
-up_sect_thirda_groza = false
-up_sect_thirdc_groza = false
-up_sect_thirdd_groza = false
-up_sect_thirde_groza = false
-up_sect_thirdf_groza = false
-
-up_sect_fourta_groza = false
-up_sect_fourtc_groza = false
-up_sect_fourte_groza = false
-up_sect_fourtf_groza = false
-
-up_sect_firsta_l85 = false
-up_sect_firstc_l85 = false
-up_sect_firste_l85 = false
-up_sect_firstf_l85 = false
-
-up_sect_secona_l85 = false
-up_sect_seconc_l85 = false
-up_sect_second_l85 = false
-up_sect_secone_l85 = false
-
-up_sect_thirda_l85 = false
-up_sect_thirdc_l85 = false
-up_sect_thirde_l85 = false
-;up_sect_thirdf_l85 = false
-
-up_sect_fourta_l85 = false
-up_sect_fourtc_l85 = false
-up_sect_fourte_l85 = false
-
-up_sect_firsta_abakan = false
-up_sect_firstc_abakan = false
-up_sect_firste_abakan = false
-up_sect_firstf_abakan = false
-
-up_sect_secona_abakan = false
-up_sect_seconc_abakan = false
-up_sect_second_abakan = false
-up_sect_secone_abakan = false
-
-up_sect_thirda_abakan = false
-up_sect_thirdc_abakan = false
-up_sect_thirdd_abakan = false
-up_sect_thirde_abakan = false
-
-up_sect_fourta_abakan = false
-up_sect_fourtc_abakan = false
-up_sect_fourte_abakan = false
-up_sect_fourtf_abakan = false
-
-up_sect_firsta_g36 = false
-up_sect_firstc_g36 = false
-up_sect_firste_g36 = false
-up_sect_firstf_g36 = false
-
-up_sect_secona_g36 = false
-up_sect_seconc_g36 = false
-up_sect_second_g36 = false
-up_sect_secone_g36 = false
-
-up_sect_thirda_g36 = false
-up_sect_thirdc_g36 = false
-up_sect_thirde_g36 = false
-up_sect_thirdf_g36 = false
-
-up_sect_fourta_g36 = false
-up_sect_fourtc_g36 = false
-up_sect_fourte_g36 = false
-up_sect_fourtf_g36 = false
-
-up_sect_firsta_ak74 = false
-up_sect_firstc_ak74 = false
-up_sect_firste_ak74 = false
-up_sect_firstf_ak74 = false
-
-up_sect_secona_ak74 = false
-up_sect_seconc_ak74 = false
-up_sect_second_ak74 = false
-up_sect_secone_ak74 = false
-
-up_sect_thirda_ak74 = false
-up_sect_thirdc_ak74 = false
-up_sect_thirdd_ak74 = false
-up_sect_thirde_ak74 = false
-
-up_sect_fourta_ak74 = false
-up_sect_fourtc_ak74 = false
-up_sect_fourte_ak74 = false
-
-up_sect_firsta_lr300 = false
-up_sect_firstc_lr300 = false
-up_sect_firstd_lr300 = false
-up_sect_firste_lr300 = false
-
-up_sect_secona_lr300 = false
-up_sect_seconc_lr300 = false
-up_sect_secone_lr300 = false
-up_sect_seconf_lr300 = false
-
-up_sect_thirda_lr300 = false
-up_sect_thirdc_lr300 = false
-up_sect_thirdd_lr300 = false
-up_sect_thirde_lr300 = false
-
-up_sect_fourta_lr300 = false
-up_sect_fourtc_lr300 = false
-up_sect_fourte_lr300 = false
-up_sect_fourtf_lr300 = false
-
-up_sect_firsta_val = false
-up_sect_firstc_val = false
-up_sect_firstd_val = false
-up_sect_firste_val = false
-up_sect_firstf_val = false
-
-up_sect_secona_val = false
-up_sect_seconc_val = false
-up_sect_secone_val = false
-up_sect_seconf_val = false
-
-up_sect_thirda_val = false
-up_sect_thirdc_val = false
-up_sect_thirdd_val = false
-up_sect_thirde_val = false
-up_sect_thirdf_val = false
-
-up_sect_fourta_val = false
-up_sect_fourtc_val = false
-up_sect_fourte_val = false
-up_sect_fourtf_val = false
-
-up_sect_firsta_fn2000 = false
-up_sect_firstc_fn2000 = false
-up_sect_firstd_fn2000 = false
-up_sect_firste_fn2000 = false
-up_sect_firstf_fn2000 = false
-
-up_sect_secona_fn2000 = false
-up_sect_seconc_fn2000 = false
-up_sect_second_fn2000 = false
-up_sect_secone_fn2000 = false
-up_sect_seconf_fn2000 = false
-
-up_sect_thirda_fn2000 = false
-up_sect_thirdc_fn2000 = false
-up_sect_thirdd_fn2000 = false
-up_sect_thirde_fn2000 = false
-up_sect_thirdf_fn2000 = false
-
-up_sect_fourta_fn2000 = false
-up_sect_fourtc_fn2000 = false
-up_sect_fourte_fn2000 = false
-up_sect_fourtf_fn2000 = false
-
-up_sect_firsta_pkm = false
-up_sect_firstc_pkm = false
-up_sect_firstd_pkm = false
-up_sect_firste_pkm = false
-
-up_sect_secona_pkm = false
-up_sect_seconc_pkm = false
-up_sect_secone_pkm = false
-up_sect_seconf_pkm = false
-
-up_sect_thirda_pkm = false
-up_sect_thirdc_pkm = false
-up_sect_thirdd_pkm = false
-up_sect_thirde_pkm = false
-
-up_sect_fourta_pkm = false
-up_sect_fourtc_pkm = false
-up_sect_fourte_pkm = false
-
-up_sect_firsta_svd = false
-up_sect_firstc_svd = false
-up_sect_firstd_svd = false
-up_sect_firste_svd = false
-up_sect_firstf_svd = false
-
-up_sect_secona_svd = false
-up_sect_seconc_svd = false
-up_sect_second_svd = false
-up_sect_secone_svd = false
-
-up_sect_thirda_svd = false
-up_sect_thirdc_svd = false
-up_sect_thirde_svd = false
-
-up_sect_fourta_svd = false
-up_sect_fourtc_svd = false
-up_sect_fourte_svd = false
-up_sect_fourtf_svd = false
-
-up_sect_firsta_svu = false
-up_sect_firstc_svu = false
-up_sect_firste_svu = false
-up_sect_firstf_svu = false
-
-up_sect_secona_svu = false
-up_sect_seconc_svu = false
-up_sect_second_svu = false
-up_sect_secone_svu = false
-up_sect_seconf_svu = false
-
-up_sect_thirda_svu = false
-up_sect_thirdc_svu = false
-
-up_sect_fourta_svu = false
-up_sect_fourtc_svu = false
-up_sect_fourte_svu = false
-up_sect_fourtf_svu = false
-
-up_sect_firsta_bm16 = false
-up_sect_firstc_bm16 = false
-
-up_sect_secona_bm16 = false
-up_sect_seconc_bm16 = false
-up_sect_second_bm16 = false
-
-up_sect_thirda_bm16 = false
-up_sect_thirdc_bm16 = false
-
-up_sect_firsta_toz34 = false
-up_sect_firstc_toz34 = false
-up_sect_firstd_toz34 = false
-up_sect_firste_toz34 = false
-up_sect_firstf_toz34 = false
-
-up_sect_secona_toz34 = false
-up_sect_seconc_toz34 = false
-up_sect_second_toz34 = false
-
-up_sect_thirda_toz34 = false
-up_sect_thirdc_toz34 = false
-up_sect_thirde_toz34 = false
-up_sect_thirdf_toz34 = false
-
-up_sect_firsta_wincheaster1300 = false
-up_sect_firstc_wincheaster1300 = false
-up_sect_firstd_wincheaster1300 = false
-up_sect_firste_wincheaster1300 = false
-
-up_sect_secona_wincheaster1300 = false
-up_sect_seconc_wincheaster1300 = false
-up_sect_second_wincheaster1300 = false
-up_sect_secone_wincheaster1300 = false
-
-up_sect_thirda_wincheaster1300 = false
-up_sect_thirdc_wincheaster1300 = false
-up_sect_thirdd_wincheaster1300 = false
-up_sect_thirde_wincheaster1300 = false
-up_sect_thirdf_wincheaster1300 = false
-
-up_fourta_wincheaster1300 = false
-up_fourtc_wincheaster1300 = false
-up_fourte_wincheaster1300 = false
-
-up_sect_firsta_spas12 = false
-up_sect_firstc_spas12 = false
-up_sect_firstd_spas12 = false
-up_sect_firste_spas12 = false
-up_sect_firstf_spas12 = false
-
-up_sect_secona_spas12 = false
-up_sect_seconc_spas12 = false
-up_sect_second_spas12 = false
-
-up_sect_thirda_spas12 = false
-up_sect_thirdc_spas12 = false
-up_sect_thirdd_spas12 = false
-up_sect_thirde_spas12 = false
-up_sect_thirdf_spas12 = false
-
-up_sect_firsta_protecta = false
-up_sect_firstc_protecta = false
-up_sect_firstd_protecta = false
-up_sect_firste_protecta = false
-up_sect_firstf_protecta = false
-
-up_sect_secona_protecta = false
-up_sect_seconc_protecta = false
-up_sect_second_protecta = false
-
-up_sect_thirda_protecta = false
-up_sect_thirdc_protecta = false
-up_sect_thirdd_protecta = false
-up_sect_thirde_protecta = false
-
-up_sect_fourta_protecta = false
-up_sect_fourtc_protecta = false
-
-up_sect_firsta_pm = false
-up_sect_firstc_pm = false
-up_sect_firstd_pm = false
-up_sect_firste_pm = false
-
-up_sect_secona_pm = false
-up_sect_seconc_pm = false
-
-up_sect_thirda_pm = false
-up_sect_thirdc_pm = false
-up_sect_thirdd_pm = false
-
-up_sect_fourta_pm = false
-up_sect_fourtc_pm = false
-
-up_sect_firsta_pb = false
-up_sect_firstc_pb = false
-up_sect_firstd_pb = false
-up_sect_firste_pb = false
-
-up_sect_secona_pb = false
-up_sect_seconc_pb = false
-
-up_sect_thirda_pb = false
-up_sect_thirdc_pb = false
-up_sect_thirde_pb = false
-
-up_sect_fourta_pb = false
-up_sect_fourtc_pb = false
-
-up_sect_firsta_fort = false
-up_sect_firstc_fort = false
-up_sect_firstd_fort = false
-up_sect_firste_fort = false
-
-up_sect_secona_fort = false
-up_sect_seconc_fort = false
-up_sect_second_fort = false
-
-up_sect_thirda_fort = false
-up_sect_thirdc_fort = false
-up_sect_thirdd_fort = false
-
-up_sect_fourta_fort = false
-up_sect_fourtc_fort = false
-
-up_sect_firsta_beretta = false
-up_sect_firstc_beretta = false
-up_sect_firstd_beretta = false
-up_sect_firste_beretta = false
-
-up_sect_secona_beretta = false
-up_sect_seconc_beretta = false
-up_sect_second_beretta = false
-up_sect_secone_beretta = false
-
-up_sect_thirda_beretta = false
-up_sect_thirdc_beretta = false
-up_sect_thirdd_beretta = false
-
-up_sect_fourta_beretta = false
-up_sect_fourtc_beretta = false
-
-up_sect_firsta_walther = false
-up_sect_firstc_walther = false
-up_sect_firstd_walther = false
-up_sect_firste_walther = false
-
-up_sect_secona_walther = false
-up_sect_seconc_walther = false
-up_sect_secone_walther = false
-up_sect_seconf_walther = false
-
-up_sect_thirda_walther = false
-up_sect_thirdc_walther = false
-up_sect_thirdd_walther = false
-
-up_sect_fourta_walther = false
-up_sect_fourtc_walther = false
-
-up_sect_firsta_hpsa = false
-up_sect_firstc_hpsa = false
-up_sect_firstd_hpsa = false
-up_sect_firste_hpsa = false
-
-up_sect_secona_hpsa = false
-up_sect_seconc_hpsa = false
-up_sect_secone_hpsa = false
-up_sect_seconf_hpsa = false
-
-up_sect_thirda_hpsa = false
-up_sect_thirdc_hpsa = false
-up_sect_thirdd_hpsa = false
-
-up_sect_fourta_hpsa = false
-up_sect_fourtc_hpsa = false
-up_sect_fourte_hpsa = false
-
-up_sect_firsta_colt1911 = false
-up_sect_firstc_colt1911 = false
-up_sect_firstd_colt1911 = false
-up_sect_firste_colt1911 = false
-
-up_sect_secona_colt1911 = false
-up_sect_seconc_colt1911 = false
-up_sect_second_colt1911 = false
-up_sect_secone_colt1911 = false
-
-up_sect_secona_colt1911 = false
-up_sect_seconc_colt1911 = false
-up_sect_second_colt1911 = false
-
-up_sect_fourta_colt1911 = false
-up_sect_fourtc_colt1911 = false
-
-up_sect_firsta_sig220 = false
-up_sect_firstc_sig220 = false
-up_sect_firstd_sig220 = false
-up_sect_firste_sig220 = false
-
-up_sect_secona_sig220 = false
-up_sect_seconc_sig220 = false
-up_sect_secone_sig220 = false
-up_sect_seconf_sig220 = false
-
-up_sect_thirda_sig220 = false
-up_sect_thirdc_sig220 = false
-up_sect_thirdd_sig220 = false
-
-up_sect_fourta_sig220 = false
-up_sect_fourtc_sig220 = false
-up_sect_fourte_sig220 = false
-
-up_sect_firsta_usp = false
-up_sect_firstc_usp = false
-up_sect_firstd_usp = false
-up_sect_firste_usp = false
-
-up_sect_secona_usp = false
-up_sect_seconc_usp = false
-up_sect_second_usp = false
-up_sect_secone_usp = false
-
-up_sect_thirda_usp = false
-up_sect_thirdc_usp = false
-up_sect_thirdd_usp = false
-up_sect_thirde_usp = false
-
-up_sect_fourta_usp = false
-up_sect_fourtc_usp = false
-up_sect_fourte_usp = false
-
-up_sect_firsta_desert_eagle = false
-up_sect_firstc_desert_eagle = false
-up_sect_firste_desert_eagle = false
-up_sect_firstf_desert_eagle = false
-
-up_sect_secona_desert_eagle = false
-up_sect_seconc_desert_eagle = false
-up_sect_secone_desert_eagle = false
-up_sect_seconf_desert_eagle = false
-
-up_sect_thirda_desert_eagle = false
-up_sect_thirdc_desert_eagle = false
-up_sect_thirdd_desert_eagle = false
-up_sect_thirde_desert_eagle = false
-
-up_sect_fourta_desert_eagle = false
-up_sect_fourtc_desert_eagle = false
-
 up_sect_firsta_novice_outfit = false
 up_sect_firstc_novice_outfit = false
 up_sect_firste_novice_outfit = false
@@ -2685,783 +1929,6 @@ discount_condlist = {+PRI_A25_FREE_REPAIR} %=mech_discount(0.00)%
 
 [jup_b19_freedom_yar_upgr]
 
-up_sect_firsta_ak74u = false
-up_sect_firstc_ak74u = false
-up_sect_firstd_ak74u = false
-up_sect_firste_ak74u = false
-
-up_sect_secona_ak74u = false
-up_sect_seconc_ak74u = false
-up_sect_secone_ak74u = false
-up_sect_seconf_ak74u = false
-
-up_sect_thirda_ak74u = false
-up_sect_thirdc_ak74u = false
-up_sect_thirdd_ak74u = false
-up_sect_thirde_ak74u = false
-
-up_sect_fourta_ak74u = false
-up_sect_fourtc_ak74u = false
-up_sect_fourte_ak74u = false
-
-up_sect_firsta_mp5 = false
-up_sect_firstc_mp5 = false
-up_sect_firstd_mp5 = false
-up_sect_firste_mp5 = false
-
-up_sect_secona_mp5 = false
-up_sect_seconc_mp5 = false
-up_sect_secone_mp5 = false
-up_sect_seconf_mp5 = false
-
-up_sect_thirda_mp5 = false
-up_sect_thirdc_mp5 = false
-up_sect_thirdd_mp5 = false
-up_sect_thirde_mp5 = false
-
-up_sect_fourta_mp5 = false
-up_sect_fourtc_mp5 = false
-up_sect_fourte_mp5 = false
-up_sect_fourtf_mp5 = false
-
-up_sect_firsta_sig550 = false
-up_sect_firstc_sig550 = false
-up_sect_firstd_sig550 = false
-up_sect_firste_sig550 = false
-
-up_sect_secona_sig550 = false
-up_sect_seconc_sig550 = false
-up_sect_secone_sig550 = false
-up_sect_seconf_sig550 = false
-
-up_sect_thirda_sig550 = false
-up_sect_thirdc_sig550 = false
-up_sect_thirdd_sig550 = false
-up_sect_thirde_sig550 = false
-
-up_sect_fourta_sig550 = false
-up_sect_fourtc_sig550 = false
-up_sect_fourte_sig550 = false
-up_sect_fourtf_sig550 = false
-
-up_sect_firsta_groza = false
-up_sect_firstc_groza = false
-up_sect_firstd_groza = false
-up_sect_firste_groza = false
-up_sect_firstf_groza = false
-
-up_sect_secona_groza = false
-up_sect_seconc_groza = false
-up_sect_secone_groza = false
-up_sect_seconf_groza = false
-
-up_sect_thirda_groza = false
-up_sect_thirdc_groza = false
-up_sect_thirdd_groza = false
-up_sect_thirde_groza = false
-up_sect_thirdf_groza = false
-
-up_sect_fourta_groza = false
-up_sect_fourtc_groza = false
-up_sect_fourte_groza = false
-up_sect_fourtf_groza = false
-
-up_sect_firsta_l85 = false
-up_sect_firstc_l85 = false
-up_sect_firste_l85 = false
-up_sect_firstf_l85 = false
-
-up_sect_secona_l85 = false
-up_sect_seconc_l85 = false
-up_sect_second_l85 = false
-up_sect_secone_l85 = false
-
-up_sect_thirda_l85 = false
-up_sect_thirdc_l85 = false
-up_sect_thirde_l85 = false
-;up_sect_thirdf_l85 = false
-
-up_sect_fourta_l85 = false
-up_sect_fourtc_l85 = false
-up_sect_fourte_l85 = false
-
-up_sect_firsta_abakan = false
-up_sect_firstc_abakan = false
-up_sect_firste_abakan = false
-up_sect_firstf_abakan = false
-
-up_sect_secona_abakan = false
-up_sect_seconc_abakan = false
-up_sect_second_abakan = false
-up_sect_secone_abakan = false
-
-up_sect_thirda_abakan = false
-up_sect_thirdc_abakan = false
-up_sect_thirdd_abakan = false
-up_sect_thirde_abakan = false
-
-up_sect_fourta_abakan = false
-up_sect_fourtc_abakan = false
-up_sect_fourte_abakan = false
-up_sect_fourtf_abakan = false
-
-up_sect_firsta_g36 = false
-up_sect_firstc_g36 = false
-up_sect_firste_g36 = false
-up_sect_firstf_g36 = false
-
-up_sect_secona_g36 = false
-up_sect_seconc_g36 = false
-up_sect_second_g36 = false
-up_sect_secone_g36 = false
-
-up_sect_thirda_g36 = false
-up_sect_thirdc_g36 = false
-up_sect_thirde_g36 = false
-up_sect_thirdf_g36 = false
-
-up_sect_fourta_g36 = false
-up_sect_fourtc_g36 = false
-up_sect_fourte_g36 = false
-up_sect_fourtf_g36 = false
-
-up_sect_firsta_ak74 = false
-up_sect_firstc_ak74 = false
-up_sect_firste_ak74 = false
-up_sect_firstf_ak74 = false
-
-up_sect_secona_ak74 = false
-up_sect_seconc_ak74 = false
-up_sect_second_ak74 = false
-up_sect_secone_ak74 = false
-
-up_sect_thirda_ak74 = false
-up_sect_thirdc_ak74 = false
-up_sect_thirdd_ak74 = false
-up_sect_thirde_ak74 = false
-
-up_sect_fourta_ak74 = false
-up_sect_fourtc_ak74 = false
-up_sect_fourte_ak74 = false
-
-up_sect_firsta_lr300 = false
-up_sect_firstc_lr300 = false
-up_sect_firstd_lr300 = false
-up_sect_firste_lr300 = false
-
-up_sect_secona_lr300 = false
-up_sect_seconc_lr300 = false
-up_sect_secone_lr300 = false
-up_sect_seconf_lr300 = false
-
-up_sect_thirda_lr300 = false
-up_sect_thirdc_lr300 = false
-up_sect_thirdd_lr300 = false
-up_sect_thirde_lr300 = false
-
-up_sect_fourta_lr300 = false
-up_sect_fourtc_lr300 = false
-up_sect_fourte_lr300 = false
-up_sect_fourtf_lr300 = false
-
-up_sect_firsta_val = false
-up_sect_firstc_val = false
-up_sect_firstd_val = false
-up_sect_firste_val = false
-up_sect_firstf_val = false
-
-up_sect_secona_val = false
-up_sect_seconc_val = false
-up_sect_secone_val = false
-up_sect_seconf_val = false
-
-up_sect_thirda_val = false
-up_sect_thirdc_val = false
-up_sect_thirdd_val = false
-up_sect_thirde_val = false
-up_sect_thirdf_val = false
-
-up_sect_fourta_val = false
-up_sect_fourtc_val = false
-up_sect_fourte_val = false
-up_sect_fourtf_val = false
-
-up_sect_firsta_fn2000 = false
-up_sect_firstc_fn2000 = false
-up_sect_firstd_fn2000 = false
-up_sect_firste_fn2000 = false
-up_sect_firstf_fn2000 = false
-
-up_sect_secona_fn2000 = false
-up_sect_seconc_fn2000 = false
-up_sect_second_fn2000 = false
-up_sect_secone_fn2000 = false
-up_sect_seconf_fn2000 = false
-
-up_sect_thirda_fn2000 = false
-up_sect_thirdc_fn2000 = false
-up_sect_thirdd_fn2000 = false
-up_sect_thirde_fn2000 = false
-up_sect_thirdf_fn2000 = false
-
-up_sect_fourta_fn2000 = false
-up_sect_fourtc_fn2000 = false
-up_sect_fourte_fn2000 = false
-up_sect_fourtf_fn2000 = false
-
-up_sect_firsta_pkm = false
-up_sect_firstc_pkm = false
-up_sect_firstd_pkm = false
-up_sect_firste_pkm = false
-
-up_sect_secona_pkm = false
-up_sect_seconc_pkm = false
-up_sect_secone_pkm = false
-up_sect_seconf_pkm = false
-
-up_sect_thirda_pkm = false
-up_sect_thirdc_pkm = false
-up_sect_thirdd_pkm = false
-up_sect_thirde_pkm = false
-
-up_sect_fourta_pkm = false
-up_sect_fourtc_pkm = false
-up_sect_fourte_pkm = false
-
-up_sect_firsta_svd = false
-up_sect_firstc_svd = false
-up_sect_firstd_svd = false
-up_sect_firste_svd = false
-up_sect_firstf_svd = false
-
-up_sect_secona_svd = false
-up_sect_seconc_svd = false
-up_sect_second_svd = false
-up_sect_secone_svd = false
-
-up_sect_thirda_svd = false
-up_sect_thirdc_svd = false
-up_sect_thirde_svd = false
-
-up_sect_fourta_svd = false
-up_sect_fourtc_svd = false
-up_sect_fourte_svd = false
-up_sect_fourtf_svd = false
-
-up_sect_firsta_svu = false
-up_sect_firstc_svu = false
-up_sect_firste_svu = false
-up_sect_firstf_svu = false
-
-up_sect_secona_svu = false
-up_sect_seconc_svu = false
-up_sect_second_svu = false
-up_sect_secone_svu = false
-up_sect_seconf_svu = false
-
-up_sect_thirda_svu = false
-up_sect_thirdc_svu = false
-
-up_sect_fourta_svu = false
-up_sect_fourtc_svu = false
-up_sect_fourte_svu = false
-up_sect_fourtf_svu = false
-
-up_sect_firsta_bm16 = false
-up_sect_firstc_bm16 = false
-
-up_sect_secona_bm16 = false
-up_sect_seconc_bm16 = false
-up_sect_second_bm16 = false
-
-up_sect_thirda_bm16 = false
-up_sect_thirdc_bm16 = false
-
-up_sect_firsta_toz34 = false
-up_sect_firstc_toz34 = false
-up_sect_firstd_toz34 = false
-up_sect_firste_toz34 = false
-up_sect_firstf_toz34 = false
-
-up_sect_secona_toz34 = false
-up_sect_seconc_toz34 = false
-up_sect_second_toz34 = false
-
-up_sect_thirda_toz34 = false
-up_sect_thirdc_toz34 = false
-up_sect_thirde_toz34 = false
-up_sect_thirdf_toz34 = false
-
-up_sect_firsta_wincheaster1300 = false
-up_sect_firstc_wincheaster1300 = false
-up_sect_firstd_wincheaster1300 = false
-up_sect_firste_wincheaster1300 = false
-
-up_sect_secona_wincheaster1300 = false
-up_sect_seconc_wincheaster1300 = false
-up_sect_second_wincheaster1300 = false
-up_sect_secone_wincheaster1300 = false
-
-up_sect_thirda_wincheaster1300 = false
-up_sect_thirdc_wincheaster1300 = false
-up_sect_thirdd_wincheaster1300 = false
-up_sect_thirde_wincheaster1300 = false
-up_sect_thirdf_wincheaster1300 = false
-
-up_fourta_wincheaster1300 = false
-up_fourtc_wincheaster1300 = false
-up_fourte_wincheaster1300 = false
-
-up_sect_firsta_spas12 = false
-up_sect_firstc_spas12 = false
-up_sect_firstd_spas12 = false
-up_sect_firste_spas12 = false
-up_sect_firstf_spas12 = false
-
-up_sect_secona_spas12 = false
-up_sect_seconc_spas12 = false
-up_sect_second_spas12 = false
-
-up_sect_thirda_spas12 = false
-up_sect_thirdc_spas12 = false
-up_sect_thirdd_spas12 = false
-up_sect_thirde_spas12 = false
-up_sect_thirdf_spas12 = false
-
-up_sect_firsta_protecta = false
-up_sect_firstc_protecta = false
-up_sect_firstd_protecta = false
-up_sect_firste_protecta = false
-up_sect_firstf_protecta = false
-
-up_sect_secona_protecta = false
-up_sect_seconc_protecta = false
-up_sect_second_protecta = false
-
-up_sect_thirda_protecta = false
-up_sect_thirdc_protecta = false
-up_sect_thirdd_protecta = false
-up_sect_thirde_protecta = false
-
-up_sect_fourta_protecta = false
-up_sect_fourtc_protecta = false
-
-up_sect_firsta_pm = false
-up_sect_firstc_pm = false
-up_sect_firstd_pm = false
-up_sect_firste_pm = false
-
-up_sect_secona_pm = false
-up_sect_seconc_pm = false
-
-up_sect_thirda_pm = false
-up_sect_thirdc_pm = false
-up_sect_thirdd_pm = false
-
-up_sect_fourta_pm = false
-up_sect_fourtc_pm = false
-
-up_sect_firsta_pb = false
-up_sect_firstc_pb = false
-up_sect_firstd_pb = false
-up_sect_firste_pb = false
-
-up_sect_secona_pb = false
-up_sect_seconc_pb = false
-
-up_sect_thirda_pb = false
-up_sect_thirdc_pb = false
-up_sect_thirde_pb = false
-
-up_sect_fourta_pb = false
-up_sect_fourtc_pb = false
-
-up_sect_firsta_fort = false
-up_sect_firstc_fort = false
-up_sect_firstd_fort = false
-up_sect_firste_fort = false
-
-up_sect_secona_fort = false
-up_sect_seconc_fort = false
-up_sect_second_fort = false
-
-up_sect_thirda_fort = false
-up_sect_thirdc_fort = false
-up_sect_thirdd_fort = false
-
-up_sect_fourta_fort = false
-up_sect_fourtc_fort = false
-
-up_sect_firsta_beretta = false
-up_sect_firstc_beretta = false
-up_sect_firstd_beretta = false
-up_sect_firste_beretta = false
-
-up_sect_secona_beretta = false
-up_sect_seconc_beretta = false
-up_sect_second_beretta = false
-up_sect_secone_beretta = false
-
-up_sect_thirda_beretta = false
-up_sect_thirdc_beretta = false
-up_sect_thirdd_beretta = false
-
-up_sect_fourta_beretta = false
-up_sect_fourtc_beretta = false
-
-up_sect_firsta_walther = false
-up_sect_firstc_walther = false
-up_sect_firstd_walther = false
-up_sect_firste_walther = false
-
-up_sect_secona_walther = false
-up_sect_seconc_walther = false
-up_sect_secone_walther = false
-up_sect_seconf_walther = false
-
-up_sect_thirda_walther = false
-up_sect_thirdc_walther = false
-up_sect_thirdd_walther = false
-
-up_sect_fourta_walther = false
-up_sect_fourtc_walther = false
-
-up_sect_firsta_hpsa = false
-up_sect_firstc_hpsa = false
-up_sect_firstd_hpsa = false
-up_sect_firste_hpsa = false
-
-up_sect_secona_hpsa = false
-up_sect_seconc_hpsa = false
-up_sect_secone_hpsa = false
-up_sect_seconf_hpsa = false
-
-up_sect_thirda_hpsa = false
-up_sect_thirdc_hpsa = false
-up_sect_thirdd_hpsa = false
-
-up_sect_fourta_hpsa = false
-up_sect_fourtc_hpsa = false
-up_sect_fourte_hpsa = false
-
-up_sect_firsta_colt1911 = false
-up_sect_firstc_colt1911 = false
-up_sect_firstd_colt1911 = false
-up_sect_firste_colt1911 = false
-
-up_sect_secona_colt1911 = false
-up_sect_seconc_colt1911 = false
-up_sect_second_colt1911 = false
-up_sect_secone_colt1911 = false
-
-up_sect_secona_colt1911 = false
-up_sect_seconc_colt1911 = false
-up_sect_second_colt1911 = false
-
-up_sect_fourta_colt1911 = false
-up_sect_fourtc_colt1911 = false
-
-up_sect_firsta_sig220 = false
-up_sect_firstc_sig220 = false
-up_sect_firstd_sig220 = false
-up_sect_firste_sig220 = false
-
-up_sect_secona_sig220 = false
-up_sect_seconc_sig220 = false
-up_sect_secone_sig220 = false
-up_sect_seconf_sig220 = false
-
-up_sect_thirda_sig220 = false
-up_sect_thirdc_sig220 = false
-up_sect_thirdd_sig220 = false
-
-up_sect_fourta_sig220 = false
-up_sect_fourtc_sig220 = false
-up_sect_fourte_sig220 = false
-
-up_sect_firsta_usp = false
-up_sect_firstc_usp = false
-up_sect_firstd_usp = false
-up_sect_firste_usp = false
-
-up_sect_secona_usp = false
-up_sect_seconc_usp = false
-up_sect_second_usp = false
-up_sect_secone_usp = false
-
-up_sect_thirda_usp = false
-up_sect_thirdc_usp = false
-up_sect_thirdd_usp = false
-up_sect_thirde_usp = false
-
-up_sect_fourta_usp = false
-up_sect_fourtc_usp = false
-up_sect_fourte_usp = false
-
-up_sect_firsta_desert_eagle = false
-up_sect_firstc_desert_eagle = false
-up_sect_firste_desert_eagle = false
-up_sect_firstf_desert_eagle = false
-
-up_sect_secona_desert_eagle = false
-up_sect_seconc_desert_eagle = false
-up_sect_secone_desert_eagle = false
-up_sect_seconf_desert_eagle = false
-
-up_sect_thirda_desert_eagle = false
-up_sect_thirdc_desert_eagle = false
-up_sect_thirdd_desert_eagle = false
-up_sect_thirde_desert_eagle = false
-
-up_sect_fourta_desert_eagle = false
-up_sect_fourtc_desert_eagle = false
-
-up_sect_firsta_novice_outfit = false
-up_sect_firstc_novice_outfit = false
-up_sect_firste_novice_outfit = false
-
-up_sect_secona_novice_outfit = false
-up_sect_seconc_novice_outfit = false
-up_sect_second_novice_outfit = false
-
-up_sect_thirda_novice_outfit = false
-
-up_sect_firsta_stalker_outfit = false
-up_sect_firstc_stalker_outfit = false
-up_sect_firstd_stalker_outfit = false
-up_sect_firste_stalker_outfit = false
-
-up_sect_secona_stalker_outfit = false
-up_sect_seconc_stalker_outfit = false
-up_sect_second_stalker_outfit = false
-up_sect_secone_stalker_outfit = false
-up_sect_seconf_stalker_outfit = false
-
-up_sect_thirda_stalker_outfit = false
-up_sect_thirdc_stalker_outfit = false
-up_sect_thirdd_stalker_outfit = false
-up_sect_thirde_stalker_outfit = false
-
-up_sect_firsta_svoboda_light_outfit = false
-up_sect_firstc_svoboda_light_outfit = false
-up_sect_firste_svoboda_light_outfit = false
-up_sect_firstf_svoboda_light_outfit = false
-
-up_sect_secona_svoboda_light_outfit = false
-up_sect_seconc_svoboda_light_outfit = false
-up_sect_second_svoboda_light_outfit = false
-up_sect_secone_svoboda_light_outfit = false
-up_sect_seconf_svoboda_light_outfit = false
-
-up_sect_thirda_svoboda_light_outfit = false
-up_sect_thirdc_svoboda_light_outfit = false
-up_sect_thirdd_svoboda_light_outfit = false
-up_sect_thirde_svoboda_light_outfit = false
-
-up_sect_firsta_dolg_outfit = false
-up_sect_firstc_dolg_outfit = false
-up_sect_firste_dolg_outfit = false
-up_sect_firstf_dolg_outfit = false
-
-up_sect_secona_dolg_outfit = false
-up_sect_seconc_dolg_outfit = false
-up_sect_second_dolg_outfit = false
-up_sect_secone_dolg_outfit = false
-
-up_sect_thirda_dolg_outfit = false
-up_sect_thirdc_dolg_outfit = false
-up_sect_thirde_dolg_outfit = false
-
-up_sect_firsta_specops_outfit = false
-up_sect_firstc_specops_outfit = false
-up_sect_firstd_specops_outfit = false
-up_sect_firste_specops_outfit = false
-up_sect_firstf_specops_outfit = false
-
-up_sect_secona_specops_outfit = false
-up_sect_seconc_specops_outfit = false
-up_sect_second_specops_outfit = false
-up_sect_secone_specops_outfit = false
-
-up_sect_thirda_specops_outfit = false
-up_sect_thirdc_specops_outfit = false
-up_sect_thirde_specops_outfit = false
-
-up_sect_firsta_svoboda_heavy_outfit = false
-up_sect_firstc_svoboda_heavy_outfit = false
-up_sect_firste_svoboda_heavy_outfit = false
-up_sect_firstf_svoboda_heavy_outfit = false
-
-up_sect_secona_svoboda_heavy_outfit = false
-up_sect_seconc_svoboda_heavy_outfit = false
-up_sect_second_svoboda_heavy_outfit = false
-up_sect_secone_svoboda_heavy_outfit = false
-up_sect_seconf_svoboda_heavy_outfit = false
-
-up_sect_thirda_svoboda_heavy_outfit = false
-up_sect_thirdc_svoboda_heavy_outfit = false
-up_sect_thirdd_svoboda_heavy_outfit = false
-up_sect_thirde_svoboda_heavy_outfit = false
-
-up_sect_firsta_cs_heavy_outfit = false
-up_sect_firstc_cs_heavy_outfit = false
-up_sect_firstd_cs_heavy_outfit = false
-up_sect_firste_cs_heavy_outfit = false
-up_sect_firstf_cs_heavy_outfit = false
-
-up_sect_secona_cs_heavy_outfit = false
-up_sect_seconc_cs_heavy_outfit = false
-up_sect_second_cs_heavy_outfit = false
-up_sect_secone_cs_heavy_outfit = false
-up_sect_seconf_cs_heavy_outfit = false
-
-up_sect_thirda_cs_heavy_outfit = false
-up_sect_thirdc_cs_heavy_outfit = false
-up_sect_thirdd_cs_heavy_outfit = false
-up_sect_thirde_cs_heavy_outfit = false
-
-up_sect_fourta_cs_heavy_outfit = false
-up_sect_fourtc_cs_heavy_outfit = false
-up_sect_fourte_cs_heavy_outfit = false
-
-up_sect_firsta_dolg_heavy_outfit = false
-up_sect_firstc_dolg_heavy_outfit = false
-up_sect_firstd_dolg_heavy_outfit = false
-up_sect_firste_dolg_heavy_outfit = false
-up_sect_firstf_dolg_heavy_outfit = false
-
-up_sect_secona_dolg_heavy_outfit = false
-up_sect_seconc_dolg_heavy_outfit = false
-up_sect_second_dolg_heavy_outfit = false
-up_sect_secone_dolg_heavy_outfit = false
-
-up_sect_thirda_dolg_heavy_outfit = false
-up_sect_thirdc_dolg_heavy_outfit = false
-up_sect_thirdd_dolg_heavy_outfit = false
-up_sect_thirde_dolg_heavy_outfit = false
-
-up_sect_fourta_dolg_heavy_outfit = false
-up_sect_fourtc_dolg_heavy_outfit = false
-up_sect_fourte_dolg_heavy_outfit = false
-
-up_sect_firsta_military_outfit = false
-up_sect_firstc_military_outfit = false
-up_sect_firstd_military_outfit = false
-up_sect_firste_military_outfit = false
-up_sect_firstf_military_outfit = false
-
-up_sect_secona_military_outfit = false
-up_sect_seconc_military_outfit = false
-up_sect_second_military_outfit = false
-up_sect_secone_military_outfit = false
-up_sect_seconf_military_outfit = false
-
-up_sect_thirda_military_outfit = false
-up_sect_thirdc_military_outfit = false
-up_sect_thirdd_military_outfit = false
-up_sect_thirde_military_outfit = false
-
-up_sect_fourta_military_outfit = false
-up_sect_fourtc_military_outfit = false
-up_sect_fourte_military_outfit = false
-
-up_sect_firsta_scientific_outfit = false
-up_sect_firstc_scientific_outfit = false
-up_sect_firstd_scientific_outfit = false
-up_sect_firste_scientific_outfit = false
-up_sect_firstf_scientific_outfit = false
-
-up_sect_secona_scientific_outfit = false
-up_sect_seconc_scientific_outfit = false
-up_sect_second_scientific_outfit = false
-up_sect_secone_scientific_outfit = {false
-up_sect_seconf_scientific_outfit = false
-
-up_sect_thirda_scientific_outfit = false
-up_sect_thirdc_scientific_outfit = false
-up_sect_thirdd_scientific_outfit = false
-up_sect_thirde_scientific_outfit = false
-
-up_sect_fourta_scientific_outfit = false
-up_sect_fourtc_scientific_outfit = false
-up_sect_fourte_scientific_outfit = false
-
-up_sect_fiftha_scientific_outfit = false
-up_sect_fifthc_scientific_outfit = false
-up_sect_fifthe_scientific_outfit = false
-up_sect_fifthf_scientific_outfit = false
-
-up_sect_firsta_exo_outfit = false
-up_sect_firstc_exo_outfit = false
-up_sect_firstd_exo_outfit = false
-up_sect_firste_exo_outfit = false
-up_sect_firstf_exo_outfit = false
-
-up_sect_secona_exo_outfit = false
-up_sect_seconc_exo_outfit = false
-up_sect_second_exo_outfit = false
-up_sect_secone_exo_outfit = false
-up_sect_seconf_exo_outfit = false
-
-up_sect_thirda_exo_outfit = false
-up_sect_thirdc_exo_outfit = false
-up_sect_thirdd_exo_outfit = false
-up_sect_thirde_exo_outfit = false
-
-up_sect_fourta_exo_outfit = false
-up_sect_fourtc_exo_outfit = false
-up_sect_fourtd_exo_outfit = false
-up_sect_fourte_exo_outfit = false
-up_sect_fourtf_exo_outfit = false
-
-up_sect_fiftha_exo_outfit = false
-up_sect_fifthc_exo_outfit = false
-up_sect_fifthd_exo_outfit = false
-up_sect_fifthe_exo_outfit = false
-
-up_sect_firsta_helm_respirator = false
-up_sect_firstc_helm_respirator = false
-up_sect_firstd_helm_respirator = false
-
-up_sect_firsta_helm_hardhat = false
-up_sect_firstc_helm_hardhat = false
-up_sect_firstd_helm_hardhat = false
-
-up_sect_secona_helm_hardhat = false
-
-up_sect_firsta_helm_protective = false
-up_sect_firstc_helm_protective = false
-up_sect_firstd_helm_protective = false
-up_sect_firste_helm_protective = false
-up_sect_firstf_helm_protective = false
-
-up_sect_secona_helm_protective = false
-up_sect_seconc_helm_protective = false
-up_sect_secone_helm_protective = false
-
-up_sect_firsta_helm_tactic = false
-up_sect_firstc_helm_tactic = false
-up_sect_firstd_helm_tactic = false
-up_sect_firste_helm_tactic = false
-up_sect_firstf_helm_tactic = false
-
-up_sect_secona_helm_tactic = false
-up_sect_seconc_helm_tactic = false
-up_sect_secone_helm_tactic = false
-up_sect_seconf_helm_tactic = false
-
-up_sect_firsta_helm_battle = false
-up_sect_firstc_helm_battle = false
-up_sect_firstd_helm_battle = false
-up_sect_firste_helm_battle = false
-
-up_sect_secona_helm_battle = false
-up_sect_seconc_helm_battle = false
-up_sect_second_helm_battle = false
-up_sect_secone_helm_battle = false
-up_sect_seconf_helm_battle = false
-
-
 ;************************************************
 ;****************** Кирилов *********************
 ;************************************************
@@ -3471,781 +1938,3 @@ up_sect_seconf_helm_battle = false
 discount_condlist = {+PRI_A25_FREE_REPAIR} %=mech_discount(0.00)%
 
 [pri_a22_army_signaller_upgr]
-
-up_sect_firsta_ak74u = false
-up_sect_firstc_ak74u = false
-up_sect_firstd_ak74u = false
-up_sect_firste_ak74u = false
-
-up_sect_secona_ak74u = false
-up_sect_seconc_ak74u = false
-up_sect_secone_ak74u = false
-up_sect_seconf_ak74u = false
-
-up_sect_thirda_ak74u = false
-up_sect_thirdc_ak74u = false
-up_sect_thirdd_ak74u = false
-up_sect_thirde_ak74u = false
-
-up_sect_fourta_ak74u = false
-up_sect_fourtc_ak74u = false
-up_sect_fourte_ak74u = false
-
-up_sect_firsta_mp5 = false
-up_sect_firstc_mp5 = false
-up_sect_firstd_mp5 = false
-up_sect_firste_mp5 = false
-
-up_sect_secona_mp5 = false
-up_sect_seconc_mp5 = false
-up_sect_secone_mp5 = false
-up_sect_seconf_mp5 = false
-
-up_sect_thirda_mp5 = false
-up_sect_thirdc_mp5 = false
-up_sect_thirdd_mp5 = false
-up_sect_thirde_mp5 = false
-
-up_sect_fourta_mp5 = false
-up_sect_fourtc_mp5 = false
-up_sect_fourte_mp5 = false
-up_sect_fourtf_mp5 = false
-
-up_sect_firsta_sig550 = false
-up_sect_firstc_sig550 = false
-up_sect_firstd_sig550 = false
-up_sect_firste_sig550 = false
-
-up_sect_secona_sig550 = false
-up_sect_seconc_sig550 = false
-up_sect_secone_sig550 = false
-up_sect_seconf_sig550 = false
-
-up_sect_thirda_sig550 = false
-up_sect_thirdc_sig550 = false
-up_sect_thirdd_sig550 = false
-up_sect_thirde_sig550 = false
-
-up_sect_fourta_sig550 = false
-up_sect_fourtc_sig550 = false
-up_sect_fourte_sig550 = false
-up_sect_fourtf_sig550 = false
-
-up_sect_firsta_groza = false
-up_sect_firstc_groza = false
-up_sect_firstd_groza = false
-up_sect_firste_groza = false
-up_sect_firstf_groza = false
-
-up_sect_secona_groza = false
-up_sect_seconc_groza = false
-up_sect_secone_groza = false
-up_sect_seconf_groza = false
-
-up_sect_thirda_groza = false
-up_sect_thirdc_groza = false
-up_sect_thirdd_groza = false
-up_sect_thirde_groza = false
-up_sect_thirdf_groza = false
-
-up_sect_fourta_groza = false
-up_sect_fourtc_groza = false
-up_sect_fourte_groza = false
-up_sect_fourtf_groza = false
-
-up_sect_firsta_l85 = false
-up_sect_firstc_l85 = false
-up_sect_firste_l85 = false
-up_sect_firstf_l85 = false
-
-up_sect_secona_l85 = false
-up_sect_seconc_l85 = false
-up_sect_second_l85 = false
-up_sect_secone_l85 = false
-
-up_sect_thirda_l85 = false
-up_sect_thirdc_l85 = false
-up_sect_thirde_l85 = false
-;up_sect_thirdf_l85 = false
-
-up_sect_fourta_l85 = false
-up_sect_fourtc_l85 = false
-up_sect_fourte_l85 = false
-
-up_sect_firsta_abakan = false
-up_sect_firstc_abakan = false
-up_sect_firste_abakan = false
-up_sect_firstf_abakan = false
-
-up_sect_secona_abakan = false
-up_sect_seconc_abakan = false
-up_sect_second_abakan = false
-up_sect_secone_abakan = false
-
-up_sect_thirda_abakan = false
-up_sect_thirdc_abakan = false
-up_sect_thirdd_abakan = false
-up_sect_thirde_abakan = false
-
-up_sect_fourta_abakan = false
-up_sect_fourtc_abakan = false
-up_sect_fourte_abakan = false
-up_sect_fourtf_abakan = false
-
-up_sect_firsta_g36 = false
-up_sect_firstc_g36 = false
-up_sect_firste_g36 = false
-up_sect_firstf_g36 = false
-
-up_sect_secona_g36 = false
-up_sect_seconc_g36 = false
-up_sect_second_g36 = false
-up_sect_secone_g36 = false
-
-up_sect_thirda_g36 = false
-up_sect_thirdc_g36 = false
-up_sect_thirde_g36 = false
-up_sect_thirdf_g36 = false
-
-up_sect_fourta_g36 = false
-up_sect_fourtc_g36 = false
-up_sect_fourte_g36 = false
-up_sect_fourtf_g36 = false
-
-up_sect_firsta_ak74 = false
-up_sect_firstc_ak74 = false
-up_sect_firste_ak74 = false
-up_sect_firstf_ak74 = false
-
-up_sect_secona_ak74 = false
-up_sect_seconc_ak74 = false
-up_sect_second_ak74 = false
-up_sect_secone_ak74 = false
-
-up_sect_thirda_ak74 = false
-up_sect_thirdc_ak74 = false
-up_sect_thirdd_ak74 = false
-up_sect_thirde_ak74 = false
-
-up_sect_fourta_ak74 = false
-up_sect_fourtc_ak74 = false
-up_sect_fourte_ak74 = false
-
-up_sect_firsta_lr300 = false
-up_sect_firstc_lr300 = false
-up_sect_firstd_lr300 = false
-up_sect_firste_lr300 = false
-
-up_sect_secona_lr300 = false
-up_sect_seconc_lr300 = false
-up_sect_secone_lr300 = false
-up_sect_seconf_lr300 = false
-
-up_sect_thirda_lr300 = false
-up_sect_thirdc_lr300 = false
-up_sect_thirdd_lr300 = false
-up_sect_thirde_lr300 = false
-
-up_sect_fourta_lr300 = false
-up_sect_fourtc_lr300 = false
-up_sect_fourte_lr300 = false
-up_sect_fourtf_lr300 = false
-
-up_sect_firsta_val = false
-up_sect_firstc_val = false
-up_sect_firstd_val = false
-up_sect_firste_val = false
-up_sect_firstf_val = false
-
-up_sect_secona_val = false
-up_sect_seconc_val = false
-up_sect_secone_val = false
-up_sect_seconf_val = false
-
-up_sect_thirda_val = false
-up_sect_thirdc_val = false
-up_sect_thirdd_val = false
-up_sect_thirde_val = false
-up_sect_thirdf_val = false
-
-up_sect_fourta_val = false
-up_sect_fourtc_val = false
-up_sect_fourte_val = false
-up_sect_fourtf_val = false
-
-up_sect_firsta_fn2000 = false
-up_sect_firstc_fn2000 = false
-up_sect_firstd_fn2000 = false
-up_sect_firste_fn2000 = false
-up_sect_firstf_fn2000 = false
-
-up_sect_secona_fn2000 = false
-up_sect_seconc_fn2000 = false
-up_sect_second_fn2000 = false
-up_sect_secone_fn2000 = false
-up_sect_seconf_fn2000 = false
-
-up_sect_thirda_fn2000 = false
-up_sect_thirdc_fn2000 = false
-up_sect_thirdd_fn2000 = false
-up_sect_thirde_fn2000 = false
-up_sect_thirdf_fn2000 = false
-
-up_sect_fourta_fn2000 = false
-up_sect_fourtc_fn2000 = false
-up_sect_fourte_fn2000 = false
-up_sect_fourtf_fn2000 = false
-
-up_sect_firsta_pkm = false
-up_sect_firstc_pkm = false
-up_sect_firstd_pkm = false
-up_sect_firste_pkm = false
-
-up_sect_secona_pkm = false
-up_sect_seconc_pkm = false
-up_sect_secone_pkm = false
-up_sect_seconf_pkm = false
-
-up_sect_thirda_pkm = false
-up_sect_thirdc_pkm = false
-up_sect_thirdd_pkm = false
-up_sect_thirde_pkm = false
-
-up_sect_fourta_pkm = false
-up_sect_fourtc_pkm = false
-up_sect_fourte_pkm = false
-
-up_sect_firsta_svd = false
-up_sect_firstc_svd = false
-up_sect_firstd_svd = false
-up_sect_firste_svd = false
-up_sect_firstf_svd = false
-
-up_sect_secona_svd = false
-up_sect_seconc_svd = false
-up_sect_second_svd = false
-up_sect_secone_svd = false
-
-up_sect_thirda_svd = false
-up_sect_thirdc_svd = false
-up_sect_thirde_svd = false
-
-up_sect_fourta_svd = false
-up_sect_fourtc_svd = false
-up_sect_fourte_svd = false
-up_sect_fourtf_svd = false
-
-up_sect_firsta_svu = false
-up_sect_firstc_svu = false
-up_sect_firste_svu = false
-up_sect_firstf_svu = false
-
-up_sect_secona_svu = false
-up_sect_seconc_svu = false
-up_sect_second_svu = false
-up_sect_secone_svu = false
-up_sect_seconf_svu = false
-
-up_sect_thirda_svu = false
-up_sect_thirdc_svu = false
-
-up_sect_fourta_svu = false
-up_sect_fourtc_svu = false
-up_sect_fourte_svu = false
-up_sect_fourtf_svu = false
-
-up_sect_firsta_bm16 = false
-up_sect_firstc_bm16 = false
-
-up_sect_secona_bm16 = false
-up_sect_seconc_bm16 = false
-up_sect_second_bm16 = false
-
-up_sect_thirda_bm16 = false
-up_sect_thirdc_bm16 = false
-
-up_sect_firsta_toz34 = false
-up_sect_firstc_toz34 = false
-up_sect_firstd_toz34 = false
-up_sect_firste_toz34 = false
-up_sect_firstf_toz34 = false
-
-up_sect_secona_toz34 = false
-up_sect_seconc_toz34 = false
-up_sect_second_toz34 = false
-
-up_sect_thirda_toz34 = false
-up_sect_thirdc_toz34 = false
-up_sect_thirde_toz34 = false
-up_sect_thirdf_toz34 = false
-
-up_sect_firsta_wincheaster1300 = false
-up_sect_firstc_wincheaster1300 = false
-up_sect_firstd_wincheaster1300 = false
-up_sect_firste_wincheaster1300 = false
-
-up_sect_secona_wincheaster1300 = false
-up_sect_seconc_wincheaster1300 = false
-up_sect_second_wincheaster1300 = false
-up_sect_secone_wincheaster1300 = false
-
-up_sect_thirda_wincheaster1300 = false
-up_sect_thirdc_wincheaster1300 = false
-up_sect_thirdd_wincheaster1300 = false
-up_sect_thirde_wincheaster1300 = false
-up_sect_thirdf_wincheaster1300 = false
-
-up_fourta_wincheaster1300 = false
-up_fourtc_wincheaster1300 = false
-up_fourte_wincheaster1300 = false
-
-up_sect_firsta_spas12 = false
-up_sect_firstc_spas12 = false
-up_sect_firstd_spas12 = false
-up_sect_firste_spas12 = false
-up_sect_firstf_spas12 = false
-
-up_sect_secona_spas12 = false
-up_sect_seconc_spas12 = false
-up_sect_second_spas12 = false
-
-up_sect_thirda_spas12 = false
-up_sect_thirdc_spas12 = false
-up_sect_thirdd_spas12 = false
-up_sect_thirde_spas12 = false
-up_sect_thirdf_spas12 = false
-
-up_sect_firsta_protecta = false
-up_sect_firstc_protecta = false
-up_sect_firstd_protecta = false
-up_sect_firste_protecta = false
-up_sect_firstf_protecta = false
-
-up_sect_secona_protecta = false
-up_sect_seconc_protecta = false
-up_sect_second_protecta = false
-
-up_sect_thirda_protecta = false
-up_sect_thirdc_protecta = false
-up_sect_thirdd_protecta = false
-up_sect_thirde_protecta = false
-
-up_sect_fourta_protecta = false
-up_sect_fourtc_protecta = false
-
-up_sect_firsta_pm = false
-up_sect_firstc_pm = false
-up_sect_firstd_pm = false
-up_sect_firste_pm = false
-
-up_sect_secona_pm = false
-up_sect_seconc_pm = false
-
-up_sect_thirda_pm = false
-up_sect_thirdc_pm = false
-up_sect_thirdd_pm = false
-
-up_sect_fourta_pm = false
-up_sect_fourtc_pm = false
-
-up_sect_firsta_pb = false
-up_sect_firstc_pb = false
-up_sect_firstd_pb = false
-up_sect_firste_pb = false
-
-up_sect_secona_pb = false
-up_sect_seconc_pb = false
-
-up_sect_thirda_pb = false
-up_sect_thirdc_pb = false
-up_sect_thirde_pb = false
-
-up_sect_fourta_pb = false
-up_sect_fourtc_pb = false
-
-up_sect_firsta_fort = false
-up_sect_firstc_fort = false
-up_sect_firstd_fort = false
-up_sect_firste_fort = false
-
-up_sect_secona_fort = false
-up_sect_seconc_fort = false
-up_sect_second_fort = false
-
-up_sect_thirda_fort = false
-up_sect_thirdc_fort = false
-up_sect_thirdd_fort = false
-
-up_sect_fourta_fort = false
-up_sect_fourtc_fort = false
-
-up_sect_firsta_beretta = false
-up_sect_firstc_beretta = false
-up_sect_firstd_beretta = false
-up_sect_firste_beretta = false
-
-up_sect_secona_beretta = false
-up_sect_seconc_beretta = false
-up_sect_second_beretta = false
-up_sect_secone_beretta = false
-
-up_sect_thirda_beretta = false
-up_sect_thirdc_beretta = false
-up_sect_thirdd_beretta = false
-
-up_sect_fourta_beretta = false
-up_sect_fourtc_beretta = false
-
-up_sect_firsta_walther = false
-up_sect_firstc_walther = false
-up_sect_firstd_walther = false
-up_sect_firste_walther = false
-
-up_sect_secona_walther = false
-up_sect_seconc_walther = false
-up_sect_secone_walther = false
-up_sect_seconf_walther = false
-
-up_sect_thirda_walther = false
-up_sect_thirdc_walther = false
-up_sect_thirdd_walther = false
-
-up_sect_fourta_walther = false
-up_sect_fourtc_walther = false
-
-up_sect_firsta_hpsa = false
-up_sect_firstc_hpsa = false
-up_sect_firstd_hpsa = false
-up_sect_firste_hpsa = false
-
-up_sect_secona_hpsa = false
-up_sect_seconc_hpsa = false
-up_sect_secone_hpsa = false
-up_sect_seconf_hpsa = false
-
-up_sect_thirda_hpsa = false
-up_sect_thirdc_hpsa = false
-up_sect_thirdd_hpsa = false
-
-up_sect_fourta_hpsa = false
-up_sect_fourtc_hpsa = false
-up_sect_fourte_hpsa = false
-
-up_sect_firsta_colt1911 = false
-up_sect_firstc_colt1911 = false
-up_sect_firstd_colt1911 = false
-up_sect_firste_colt1911 = false
-
-up_sect_secona_colt1911 = false
-up_sect_seconc_colt1911 = false
-up_sect_second_colt1911 = false
-up_sect_secone_colt1911 = false
-
-up_sect_secona_colt1911 = false
-up_sect_seconc_colt1911 = false
-up_sect_second_colt1911 = false
-
-up_sect_fourta_colt1911 = false
-up_sect_fourtc_colt1911 = false
-
-up_sect_firsta_sig220 = false
-up_sect_firstc_sig220 = false
-up_sect_firstd_sig220 = false
-up_sect_firste_sig220 = false
-
-up_sect_secona_sig220 = false
-up_sect_seconc_sig220 = false
-up_sect_secone_sig220 = false
-up_sect_seconf_sig220 = false
-
-up_sect_thirda_sig220 = false
-up_sect_thirdc_sig220 = false
-up_sect_thirdd_sig220 = false
-
-up_sect_fourta_sig220 = false
-up_sect_fourtc_sig220 = false
-up_sect_fourte_sig220 = false
-
-up_sect_firsta_usp = false
-up_sect_firstc_usp = false
-up_sect_firstd_usp = false
-up_sect_firste_usp = false
-
-up_sect_secona_usp = false
-up_sect_seconc_usp = false
-up_sect_second_usp = false
-up_sect_secone_usp = false
-
-up_sect_thirda_usp = false
-up_sect_thirdc_usp = false
-up_sect_thirdd_usp = false
-up_sect_thirde_usp = false
-
-up_sect_fourta_usp = false
-up_sect_fourtc_usp = false
-up_sect_fourte_usp = false
-
-up_sect_firsta_desert_eagle = false
-up_sect_firstc_desert_eagle = false
-up_sect_firste_desert_eagle = false
-up_sect_firstf_desert_eagle = false
-
-up_sect_secona_desert_eagle = false
-up_sect_seconc_desert_eagle = false
-up_sect_secone_desert_eagle = false
-up_sect_seconf_desert_eagle = false
-
-up_sect_thirda_desert_eagle = false
-up_sect_thirdc_desert_eagle = false
-up_sect_thirdd_desert_eagle = false
-up_sect_thirde_desert_eagle = false
-
-up_sect_fourta_desert_eagle = false
-up_sect_fourtc_desert_eagle = false
-
-up_sect_firsta_novice_outfit = false
-up_sect_firstc_novice_outfit = false
-up_sect_firste_novice_outfit = false
-
-up_sect_secona_novice_outfit = false
-up_sect_seconc_novice_outfit = false
-up_sect_second_novice_outfit = false
-
-up_sect_thirda_novice_outfit = false
-
-up_sect_firsta_stalker_outfit = false
-up_sect_firstc_stalker_outfit = false
-up_sect_firstd_stalker_outfit = false
-up_sect_firste_stalker_outfit = false
-
-up_sect_secona_stalker_outfit = false
-up_sect_seconc_stalker_outfit = false
-up_sect_second_stalker_outfit = false
-up_sect_secone_stalker_outfit = false
-up_sect_seconf_stalker_outfit = false
-
-up_sect_thirda_stalker_outfit = false
-up_sect_thirdc_stalker_outfit = false
-up_sect_thirdd_stalker_outfit = false
-up_sect_thirde_stalker_outfit = false
-
-up_sect_firsta_svoboda_light_outfit = false
-up_sect_firstc_svoboda_light_outfit = false
-up_sect_firste_svoboda_light_outfit = false
-up_sect_firstf_svoboda_light_outfit = false
-
-up_sect_secona_svoboda_light_outfit = false
-up_sect_seconc_svoboda_light_outfit = false
-up_sect_second_svoboda_light_outfit = false
-up_sect_secone_svoboda_light_outfit = false
-up_sect_seconf_svoboda_light_outfit = false
-
-up_sect_thirda_svoboda_light_outfit = false
-up_sect_thirdc_svoboda_light_outfit = false
-up_sect_thirdd_svoboda_light_outfit = false
-up_sect_thirde_svoboda_light_outfit = false
-
-up_sect_firsta_dolg_outfit = false
-up_sect_firstc_dolg_outfit = false
-up_sect_firste_dolg_outfit = false
-up_sect_firstf_dolg_outfit = false
-
-up_sect_secona_dolg_outfit = false
-up_sect_seconc_dolg_outfit = false
-up_sect_second_dolg_outfit = false
-up_sect_secone_dolg_outfit = false
-
-up_sect_thirda_dolg_outfit = false
-up_sect_thirdc_dolg_outfit = false
-up_sect_thirde_dolg_outfit = false
-
-up_sect_firsta_specops_outfit = false
-up_sect_firstc_specops_outfit = false
-up_sect_firstd_specops_outfit = false
-up_sect_firste_specops_outfit = false
-up_sect_firstf_specops_outfit = false
-
-up_sect_secona_specops_outfit = false
-up_sect_seconc_specops_outfit = false
-up_sect_second_specops_outfit = false
-up_sect_secone_specops_outfit = false
-
-up_sect_thirda_specops_outfit = false
-up_sect_thirdc_specops_outfit = false
-up_sect_thirde_specops_outfit = false
-
-up_sect_firsta_svoboda_heavy_outfit = false
-up_sect_firstc_svoboda_heavy_outfit = false
-up_sect_firste_svoboda_heavy_outfit = false
-up_sect_firstf_svoboda_heavy_outfit = false
-
-up_sect_secona_svoboda_heavy_outfit = false
-up_sect_seconc_svoboda_heavy_outfit = false
-up_sect_second_svoboda_heavy_outfit = false
-up_sect_secone_svoboda_heavy_outfit = false
-up_sect_seconf_svoboda_heavy_outfit = false
-
-up_sect_thirda_svoboda_heavy_outfit = false
-up_sect_thirdc_svoboda_heavy_outfit = false
-up_sect_thirdd_svoboda_heavy_outfit = false
-up_sect_thirde_svoboda_heavy_outfit = false
-
-up_sect_firsta_cs_heavy_outfit = false
-up_sect_firstc_cs_heavy_outfit = false
-up_sect_firstd_cs_heavy_outfit = false
-up_sect_firste_cs_heavy_outfit = false
-up_sect_firstf_cs_heavy_outfit = false
-
-up_sect_secona_cs_heavy_outfit = false
-up_sect_seconc_cs_heavy_outfit = false
-up_sect_second_cs_heavy_outfit = false
-up_sect_secone_cs_heavy_outfit = false
-up_sect_seconf_cs_heavy_outfit = false
-
-up_sect_thirda_cs_heavy_outfit = false
-up_sect_thirdc_cs_heavy_outfit = false
-up_sect_thirdd_cs_heavy_outfit = false
-up_sect_thirde_cs_heavy_outfit = false
-
-up_sect_fourta_cs_heavy_outfit = false
-up_sect_fourtc_cs_heavy_outfit = false
-up_sect_fourte_cs_heavy_outfit = false
-
-up_sect_firsta_dolg_heavy_outfit = false
-up_sect_firstc_dolg_heavy_outfit = false
-up_sect_firstd_dolg_heavy_outfit = false
-up_sect_firste_dolg_heavy_outfit = false
-up_sect_firstf_dolg_heavy_outfit = false
-
-up_sect_secona_dolg_heavy_outfit = false
-up_sect_seconc_dolg_heavy_outfit = false
-up_sect_second_dolg_heavy_outfit = false
-up_sect_secone_dolg_heavy_outfit = false
-
-up_sect_thirda_dolg_heavy_outfit = false
-up_sect_thirdc_dolg_heavy_outfit = false
-up_sect_thirdd_dolg_heavy_outfit = false
-up_sect_thirde_dolg_heavy_outfit = false
-
-up_sect_fourta_dolg_heavy_outfit = false
-up_sect_fourtc_dolg_heavy_outfit = false
-up_sect_fourte_dolg_heavy_outfit = false
-
-up_sect_firsta_military_outfit = false
-up_sect_firstc_military_outfit = false
-up_sect_firstd_military_outfit = false
-up_sect_firste_military_outfit = false
-up_sect_firstf_military_outfit = false
-
-up_sect_secona_military_outfit = false
-up_sect_seconc_military_outfit = false
-up_sect_second_military_outfit = false
-up_sect_secone_military_outfit = false
-up_sect_seconf_military_outfit = false
-
-up_sect_thirda_military_outfit = false
-up_sect_thirdc_military_outfit = false
-up_sect_thirdd_military_outfit = false
-up_sect_thirde_military_outfit = false
-
-up_sect_fourta_military_outfit = false
-up_sect_fourtc_military_outfit = false
-up_sect_fourte_military_outfit = false
-
-up_sect_firsta_scientific_outfit = false
-up_sect_firstc_scientific_outfit = false
-up_sect_firstd_scientific_outfit = false
-up_sect_firste_scientific_outfit = false
-up_sect_firstf_scientific_outfit = false
-
-up_sect_secona_scientific_outfit = false
-up_sect_seconc_scientific_outfit = false
-up_sect_second_scientific_outfit = false
-up_sect_secone_scientific_outfit = false
-up_sect_seconf_scientific_outfit = false
-
-up_sect_thirda_scientific_outfit = false
-up_sect_thirdc_scientific_outfit = false
-up_sect_thirdd_scientific_outfit = false
-up_sect_thirde_scientific_outfit = false
-
-up_sect_fourta_scientific_outfit = false
-up_sect_fourtc_scientific_outfit = false
-up_sect_fourte_scientific_outfit = false
-
-up_sect_fiftha_scientific_outfit = false
-up_sect_fifthc_scientific_outfit = false
-up_sect_fifthe_scientific_outfit = false
-up_sect_fifthf_scientific_outfit = false
-
-up_sect_firsta_exo_outfit = false
-up_sect_firstc_exo_outfit = false
-up_sect_firstd_exo_outfit = false
-up_sect_firste_exo_outfit = false
-up_sect_firstf_exo_outfit = false
-
-up_sect_secona_exo_outfit = false
-up_sect_seconc_exo_outfit = false
-up_sect_second_exo_outfit = false
-up_sect_secone_exo_outfit = false
-up_sect_seconf_exo_outfit = false
-
-up_sect_thirda_exo_outfit = false
-up_sect_thirdc_exo_outfit = false
-up_sect_thirdd_exo_outfit = false
-up_sect_thirde_exo_outfit = false
-
-up_sect_fourta_exo_outfit = false
-up_sect_fourtc_exo_outfit = false
-up_sect_fourtd_exo_outfit = false
-up_sect_fourte_exo_outfit = false
-up_sect_fourtf_exo_outfit = false
-
-up_sect_fiftha_exo_outfit = false
-up_sect_fifthc_exo_outfit = false
-up_sect_fifthd_exo_outfit = false
-up_sect_fifthe_exo_outfit = false
-
-up_sect_firsta_helm_respirator = false
-up_sect_firstc_helm_respirator = false
-up_sect_firstd_helm_respirator = false
-
-up_sect_firsta_helm_hardhat = false
-up_sect_firstc_helm_hardhat = false
-up_sect_firstd_helm_hardhat = false
-
-up_sect_secona_helm_hardhat = false
-
-up_sect_firsta_helm_protective = false
-up_sect_firstc_helm_protective = false
-up_sect_firstd_helm_protective = false
-up_sect_firste_helm_protective = false
-up_sect_firstf_helm_protective = false
-
-up_sect_secona_helm_protective = false
-up_sect_seconc_helm_protective = false
-up_sect_secone_helm_protective = false
-
-up_sect_firsta_helm_tactic = false
-up_sect_firstc_helm_tactic = false
-up_sect_firstd_helm_tactic = false
-up_sect_firste_helm_tactic = false
-up_sect_firstf_helm_tactic = false
-
-up_sect_secona_helm_tactic = false
-up_sect_seconc_helm_tactic = false
-up_sect_secone_helm_tactic = false
-up_sect_seconf_helm_tactic = false
-
-up_sect_firsta_helm_battle = false
-up_sect_firstc_helm_battle = false
-up_sect_firstd_helm_battle = false
-up_sect_firste_helm_battle = false
-
-up_sect_secona_helm_battle = false
-up_sect_seconc_helm_battle = false
-up_sect_second_helm_battle = false
-up_sect_secone_helm_battle = false
-up_sect_seconf_helm_battle = false
-
-

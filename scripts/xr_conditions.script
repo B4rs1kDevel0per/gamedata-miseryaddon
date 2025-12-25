@@ -646,7 +646,7 @@ function actor_has_item(actor, npc, p)
     local local_actor = db.mp_actors[LocalActor()]
     
     --shitty hack, sorry
-    if OnServer() then
+    if IsDedicatedServer() then
 		if npc then
 			local_actor = getNearestActor(npc)
 		else
@@ -1702,11 +1702,28 @@ end
 
 --xrmpe stuff starts here
 function isServer(actor, npc)
+	if npc and db.storage[npc:id()] and db.storage[npc:id()].sv_cl_copy and IsServerClient() then
+		return false;
+	end
+	
 	return OnServer()
 end
 
 function isClient(actor, npc)
+	if npc and db.storage[npc:id()] and db.storage[npc:id()].sv_cl_copy and IsServerClient() then
+		printf_msg("faking client")
+		return true;
+	end
+	
 	return OnClient()
+end
+
+function isServerClient(actor, npc)
+	return IsServerClient()
+end
+
+function isDedicatedServer(actor, npc)
+	return IsDedicatedServer()
 end
 
 function has_flag(actor, npc, p)
@@ -1833,4 +1850,17 @@ end
 
 function ClientsConnectedToActors(actor, npc)
 	return IsAllClientsConnectedToActors()
+end
+
+function actor_pressed_has_item(actor, npc, p)
+	if OnServer() and npc then
+		local last_entity_pressed_id = db.storage[npc:id()] and db.storage[npc:id()].last_entity_pressed_id
+		if last_entity_pressed_id then
+			local actor = db.storage[last_entity_pressed_id] and db.storage[last_entity_pressed_id].object
+			
+			return p[1] ~= nil and actor and actor:alive() and actor:object( p[1] ) ~= nil
+		end
+	end
+	
+    return false
 end

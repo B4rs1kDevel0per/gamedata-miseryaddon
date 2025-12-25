@@ -1,0 +1,10 @@
+function main ()
+	story_flags.give_flag("PRI_A28_ACTOR_IN_ZONE_STAY")
+	story_flags.give_flag("KINGPIN_GAINED")
+	story_flags.give_flag("SIM_DUTY_HELP_HARDER")
+ 	story_flags.give_flag("JUP_A10_VANO_AGREE_GO_UND")
+ 	story_flags.give_flag("JUP_B218_MONOLITH_HIRED")
+ 	story_flags.give_flag("JUP_B218_SOLDIER_HIRED")
+ 	story_flags.give_flag("PRI_A28_STRELOK_DEAD")
+ 	story_flags.give_flag("PRI_A28_KOVAL_DEAD")
+end

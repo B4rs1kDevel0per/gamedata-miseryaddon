@@ -252,7 +252,7 @@ end
 function motivator_binder:hit_callback(obj, amount, local_direction, who, bone_index)
 	-- FIXME: коллбеки неплохо было бы регистрировать в общем storage, а не посхемно...
 	-- просто всегда ставить их при включении схемы и снимать при отключении.
-	if(is_object_actor_by_id(who:id())) then
+	if(who and is_object_actor_by_id(who:id())) then
 		xr_statistic.set_best_weapon(amount, who)
 
 --[[
@@ -323,7 +323,7 @@ function motivator_binder:death_callback(victim, who)
 	local npc = self.object
 	--stalker_generic.remove_level_spot(npc, st)
 	--' end  --
-	if is_object_actor_by_id(who:id()) then
+	if who and is_object_actor_by_id(who:id()) then
 		xr_statistic.inc_killed_stalkers_counter(who:id())
 	end
 
@@ -589,32 +589,6 @@ function motivator_binder:help_wounded_callback(who_id)
 	--first_speaker:change_character_reputation(10);
 end
 
-function motivator_binder:net_export(packet)
-	--object_binder.net_export(self, packet)
-	if dev_debug then
-		local best_enemy_name = "nil"
-		if self.object:best_enemy() ~= nil then
-			best_enemy_name = self.object:best_enemy():name()
-		end
-		
-		local squad = get_object_squad(self.object)
-		local squad_id = "nil"
-		local squad_current_action = "nil"
-		if squad ~= nil then
-			squad_id = squad:section_name()
-			if squad.current_action ~= nil then
-				local target = squad.assigned_target_id and alife():object(squad.assigned_target_id) and alife():object(squad.assigned_target_id):name()
-				squad_current_action = squad.current_action.name .."["..tostring(target).."]"
-			end
-		end
-		
-		packet:w_stringZ(tostring(self.st.active_section))
-		packet:w_stringZ(tostring(best_enemy_name))
-		
-		packet:w_stringZ(tostring(squad_id))
-		packet:w_stringZ(tostring(squad_current_action))
-	end	
-end
 
 function AddToMotivator(npc)
 	if alife() then

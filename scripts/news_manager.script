@@ -265,7 +265,7 @@ function relocate_item(actor, type, item, amount)
 	
 	local _actor = db.actor
 	if OnClient() then
-		_actor = db.mp_actors[LocalActor()]
+		_actor = getLocalActor()
 	end
 	
 	if _actor == nil then return false end
