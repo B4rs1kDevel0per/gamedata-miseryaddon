@@ -1,0 +1,1411 @@
+<w>
+	<main x="0" y="0" width="515" height="1080">
+	    <auto_static x="0" y="0" width="515" height="1080" stretch="1">
+		    <texture>ui_inGame2_repair_panel</texture>
+	    </auto_static>
+	</main>
+	<back x="0" y="0" width="515" height="1080"/>
+	<scheme x="36" y="409" width="438" height="637" />
+	<item_static x="255" y="301" width="470" height="190" stretch="1" align="c" alignment="c"/>
+	<repair_button x="355" y="156" width="128" height="41" hint="ui_repair_button_hint" stretch="1">
+		<window_name>repair_button</window_name>
+		<texture>ui_inGame2_repair_button</texture>
+		<text align="c" font="letterica18" r="200" g="200" b="200">ui_st_inv_repair</text>
+	</repair_button>
+	<cell_states>
+	    <state>
+	        <type>enabled</type>
+	        <back_texture></back_texture>
+	        <point_texture>ui_inGame2_upgrade_on_weapon_lamp_empty_highlighted</point_texture>
+	    </state>
+	    <state>
+	        <type>highlight</type>
+	        <back_texture>ui_inGame2_upgrade_on_icon_lamp_yellow_highlighted</back_texture>
+	        <point_texture>ui_inGame2_upgrade_on_weapon_lamp_yellow_highlighted</point_texture>
+	    </state>
+	    <state>
+	        <type>touched</type>
+	        <back_texture>ui_inGame2_upgrade_on_icon_lamp_yellow_highlighted</back_texture>
+	        <point_texture>ui_inGame2_upgrade_on_weapon_lamp_yellow_highlighted</point_texture>
+	    </state>
+	    <state>
+	        <type>selected</type>
+	        <back_texture>ui_inGame2_upgrade_on_icon_lamp_green_upgraded</back_texture>
+	        <point_texture>ui_inGame2_upgrade_on_weapon_lamp_green_upgraded</point_texture>
+	    </state>
+	    <state>
+	        <type>unknown</type>
+	        <back_texture>ui_inGame2_upgrade_on_icon_lamp_red_disabled</back_texture>
+	        <point_texture>ui_inGame2_upgrade_on_weapon_lamp_red_disabled</point_texture>
+	    </state>
+	    <state>
+	        <type>disabled_parent</type>
+	        <back_texture></back_texture>
+	        <point_texture>ui_inGame2_upgrade_on_weapon_lamp_empty_highlighted</point_texture>
+	    </state>
+	    <state>
+	        <type>disabled_group</type>
+	        <back_texture>ui_inGame2_upgrade_on_icon_lamp_red_disabled</back_texture>
+	        <point_texture>ui_inGame2_upgrade_on_weapon_lamp_red_disabled</point_texture>
+	    </state>
+	    <state>
+	        <type>disabled_money</type>
+	        <back_texture></back_texture>
+	        <point_texture>ui_inGame2_upgrade_on_weapon_lamp_empty_highlighted</point_texture>
+	    </state>
+	    <state>
+	        <type>disabled_quest</type>
+	        <back_texture></back_texture>
+	        <point_texture>ui_inGame2_upgrade_on_weapon_lamp_empty_highlighted</point_texture>
+	    </state>
+	    <state>
+	        <type>disabled_highlight</type>
+	        <back_texture></back_texture>
+	        <point_texture>ui_inGame2_upgrade_on_weapon_lamp_empty_highlighted</point_texture>
+	    </state>
+	</cell_states>
+
+	<templates>
+		<cell_item x="0" y="0" width="170" height="62"/>
+<!-- outfit upgrade schemes -->
+	    <template name="upgrade_scheme_novice_outfit">
+	        <column>
+	            <cell x="0" y="34" point_x="264" point_y="316"/>
+	            <cell x="0" y="177" point_x="302" point_y="352"/>
+	            <cell x="0" y="321" point_x="302" point_y="316"/>
+	        </column>
+	        <column>
+	            <cell x="151" y="34" point_x="283" point_y="260"/>
+	            <cell x="151" y="143" point_x="321" point_y="274"/>
+	            <cell x="151" y="212" point_x="377" point_y="274"/>
+	        </column>
+	        <column>
+		        <cell x="302" y="34" point_x="330" point_y="323"/>
+	        </column>
+	    </template>
+	    <template name="upgrade_scheme_stalker_outfit">
+	        <column>
+	            <cell x="0" y="34" point_x="308" point_y="338"/>
+	            <cell x="0" y="177" point_x="368" point_y="338"/>
+	            <cell x="0" y="321" point_x="308" point_y="211"/>
+	        </column>
+	        <column>
+	            <cell x="151" y="0" point_x="349" point_y="281"/>
+	            <cell x="151" y="69" point_x="245" point_y="267"/>
+	            <cell x="151" y="143" point_x="264" point_y="281"/>
+	            <cell x="151" y="212" point_x="340" point_y="239"/>
+	            <cell x="151" y="287" point_x="255" point_y="366"/>
+	            <cell x="151" y="356" point_x="308" point_y="373"/>
+	        </column>
+	        <column>
+	            <cell x="302" y="34" point_x="308" point_y="288"/>
+	            <cell x="302" y="143" point_x="368" point_y="338"/>
+	            <cell x="302" y="212" point_x="396" point_y="260"/>
+	            <cell x="302" y="321" point_x="358" point_y="366"/>
+	        </column>
+	    </template>
+	    <template name="upgrade_scheme_svoboda_light_outfit">
+	        <column>
+	            <cell x="0" y="34" point_x="274" point_y="267"/>
+	            <cell x="0" y="177" point_x="396" point_y="253"/>
+	            <cell x="0" y="321" point_x="283" point_y="218"/>
+	        </column>
+	        <column>
+		        <cell x="151" y="34" point_x="349" point_y="239"/>
+	            <cell x="151" y="143" point_x="283" point_y="239"/>
+	            <cell x="151" y="212" point_x="308" point_y="246"/>
+	            <cell x="151" y="287" point_x="340" point_y="302"/>
+	            <cell x="151" y="356" point_x="368" point_y="309"/>
+	        </column>
+	        <column>
+	            <cell x="302" y="0" point_x="308" point_y="288"/>
+	            <cell x="302" y="69" point_x="308" point_y="323"/>
+	            <cell x="302" y="143" point_x="368" point_y="225"/>
+	            <cell x="302" y="212" point_x="198" point_y="239"/>
+	            <cell x="302" y="321" point_x="274" point_y="302"/>
+	        </column>
+	    </template>
+	    <template name="upgrade_scheme_dolg_outfit">
+	        <column>
+		        <cell x="0" y="34" point_x="260" point_y="295"/>
+		        <cell x="0" y="177" point_x="415" point_y="267"/>
+		        <cell x="0" y="321" point_x="368" point_y="239"/>
+	        </column>
+	        <column>
+		        <cell x="151" y="34" point_x="349" point_y="295"/>
+	            <cell x="151" y="143" point_x="500" point_y="281"/>
+	            <cell x="151" y="212" point_x="160" point_y="274"/>
+	            <cell x="151" y="321" point_x="255" point_y="366"/>
+	        </column>
+	        <column>
+	            <cell x="302" y="0" point_x="283" point_y="239"/>
+	            <cell x="302" y="69" point_x="321" point_y="274"/>
+	            <cell x="302" y="177" point_x="304" point_y="295"/>
+	            <cell x="302" y="321" point_x="353" point_y="366"/>
+	        </column>
+	    </template>
+	    <template name="upgrade_scheme_specops">
+	        <column>
+	            <cell x="0" y="34" point_x="308" point_y="260"/>
+	            <cell x="0" y="177" point_x="434" point_y="239"/>
+	            <cell x="0" y="321" point_x="345" point_y="366"/>
+	        </column>
+	        <column>
+	            <cell x="151" y="0" point_x="236" point_y="232"/>
+	            <cell x="151" y="69" point_x="372" point_y="229"/>
+	            <cell x="151" y="143" point_x="123" point_y="277"/>
+	            <cell x="151" y="212" point_x="308" point_y="323"/>
+	            <cell x="151" y="321" point_x="358" point_y="271"/>
+	        </column>
+	        <column>
+	            <cell x="302" y="0" point_x="308" point_y="288"/>
+	            <cell x="302" y="69" point_x="283" point_y="239"/>
+	            <cell x="302" y="177" point_x="308" point_y="225"/>
+	            <cell x="302" y="321" point_x="330" point_y="302"/>
+	        </column>
+	    </template>
+	    <template name="upgrade_scheme_svoboda_heavy_outfit">
+	        <column>
+	            <cell x="0" y="34" point_x="264" point_y="253"/>
+	            <cell x="0" y="177" point_x="308" point_y="226"/>
+	            <cell x="0" y="321" point_x="347" point_y="366"/>
+	        </column>
+	        <column>
+		        <cell x="151" y="34" point_x="377" point_y="225"/>
+	            <cell x="151" y="143" point_x="340" point_y="267"/>
+	            <cell x="151" y="212" point_x="343" point_y="218"/>
+	            <cell x="151" y="287" point_x="240" point_y="295"/>
+	            <cell x="151" y="356" point_x="372" point_y="295"/>
+	        </column>
+	        <column>
+	            <cell x="302" y="0" point_x="308" point_y="260"/>
+	            <cell x="302" y="69" point_x="340" point_y="246"/>
+	            <cell x="302" y="143" point_x="308" point_y="288"/>
+	            <cell x="302" y="212" point_x="308" point_y="288"/>
+	            <cell x="302" y="321" point_x="332" point_y="305"/>
+	        </column>
+	    </template>
+	    <template name="upgrade_scheme_cs_heavy_outfit">
+	        <column>
+	            <cell x="0" y="34" point_x="387" point_y="253"/>
+	            <cell x="0" y="177" point_x="270" point_y="281"/>
+	            <cell x="0" y="321" point_x="368" point_y="274"/>
+	            <cell x="0" y="464" point_x="379" point_y="309"/>
+	        </column>
+	        <column>
+	            <cell x="151" y="0" point_x="270" point_y="246"/>
+	            <cell x="151" y="69" point_x="270" point_y="246"/>
+	            <cell x="151" y="143" point_x="306" point_y="229"/>
+	            <cell x="151" y="212" point_x="306" point_y="229"/>
+	            <cell x="151" y="287" point_x="245" point_y="274"/>
+	            <cell x="151" y="356" point_x="358" point_y="316"/>
+	            <cell x="151" y="464" point_x="226" point_y="311"/>
+	        </column>
+	        <column>
+	            <cell x="302" y="0" point_x="362" point_y="222"/>
+	            <cell x="302" y="69" point_x="306" point_y="274"/>
+	            <cell x="302" y="143" point_x="306" point_y="312"/>
+	            <cell x="302" y="212" point_x="306" point_y="312"/>
+	            <cell x="302" y="321" point_x="255" point_y="316"/>
+	            <cell x="302" y="464" point_x="368" point_y="274"/>
+	        </column>
+	    </template>
+	    <template name="upgrade_scheme_dolg_heavy_outfit">
+	        <column>
+	            <cell x="0" y="34" point_x="217" point_y="211"/>
+	            <cell x="0" y="177" point_x="406" point_y="240"/>
+	            <cell x="0" y="321" point_x="387" point_y="391"/>
+	            <cell x="0" y="464" point_x="351" point_y="349"/>
+	        </column>
+	        <column>
+	            <cell x="151" y="0" point_x="306" point_y="248"/>
+	            <cell x="151" y="69" point_x="343" point_y="267"/>
+	            <cell x="151" y="143" point_x="262" point_y="214"/>
+	            <cell x="151" y="212" point_x="142" point_y="253"/>
+	            <cell x="151" y="287" point_x="387" point_y="371"/>
+	            <cell x="151" y="356" point_x="283" point_y="345"/>
+	            <cell x="151" y="464" point_x="351" point_y="349"/>
+	        </column>
+	        <column>
+	            <cell x="302" y="0" point_x="306" point_y="285"/>
+	            <cell x="302" y="69" point_x="334" point_y="224"/>
+	            <cell x="302" y="177" point_x="306" point_y="197"/>
+	            <cell x="302" y="321" point_x="234" point_y="370"/>
+	            <cell x="302" y="464" point_x="351" point_y="349"/>
+	        </column>
+	    </template>
+	    <template name="upgrade_scheme_military_outfit">
+	        <column>
+	            <cell x="0" y="34" point_x="226" point_y="221"/>
+	            <cell x="0" y="177" point_x="408" point_y="243"/>
+	            <cell x="0" y="321" point_x="385" point_y="384"/>
+	            <cell x="0" y="464" point_x="349" point_y="343"/>
+	        </column>
+	        <column>
+	            <cell x="151" y="0" point_x="306" point_y="260"/>
+	            <cell x="151" y="69" point_x="336" point_y="277"/>
+	            <cell x="151" y="143" point_x="292" point_y="217"/>
+	            <cell x="151" y="212" point_x="292" point_y="217"/>
+	            <cell x="151" y="287" point_x="383" point_y="363"/>
+	            <cell x="151" y="356" point_x="264" point_y="263"/>
+	            <cell x="151" y="464" point_x="349" point_y="343"/>
+	        </column>
+	        <column>
+	            <cell x="302" y="0" point_x="306" point_y="285"/>
+	            <cell x="302" y="69" point_x="345" point_y="228"/>
+	            <cell x="302" y="143" point_x="306" point_y="204"/>
+	            <cell x="302" y="212" point_x="306" point_y="204"/>
+	            <cell x="302" y="321" point_x="240" point_y="359"/>
+	            <cell x="302" y="464" point_x="349" point_y="343"/>
+	        </column>
+	    </template>
+	    <template name="upgrade_scheme_scientific_outfit">
+	        <column>
+	            <cell x="0" y="34" point_x="266" point_y="316"/>
+	            <cell x="0" y="177" point_x="196" point_y="293"/>
+	            <cell x="0" y="321" point_x="255" point_y="269"/>
+				<cell x="0" y="437" point_x="372" point_y="302"/>
+	            <cell x="0" y="548" point_x="362" point_y="243"/>
+	        </column>
+	        <column>
+	            <cell x="151" y="0" point_x="289" point_y="301"/>
+	            <cell x="151" y="69" point_x="326" point_y="301"/>
+	            <cell x="151" y="143" point_x="326" point_y="349"/>
+	            <cell x="151" y="212" point_x="326" point_y="349"/>
+	            <cell x="151" y="287" point_x="353" point_y="278"/>
+	            <cell x="151" y="356" point_x="247" point_y="388"/>
+				<cell x="151" y="437" point_x="362" point_y="388"/>
+	            <cell x="151" y="548" point_x="306" point_y="222"/>
+	        </column>
+	        <column>
+	            <cell x="302" y="0" point_x="347" point_y="316"/>
+	            <cell x="302" y="69" point_x="336" point_y="371"/>
+	            <cell x="302" y="143" point_x="306" point_y="319"/>
+	            <cell x="302" y="212" point_x="306" point_y="319"/>
+	            <cell x="302" y="321" point_x="247" point_y="388"/>
+				<cell x="302" y="437" point_x="360" point_y="388"/>
+	            <cell x="302" y="515" point_x="306" point_y="184"/>
+	            <cell x="302" y="584" point_x="251" point_y="243"/>
+	        </column>
+	    </template>
+	    <template name="upgrade_scheme_exo_outfit">
+	        <column>
+	            <cell x="0" y="34" point_x="177" point_y="288"/>
+	            <cell x="0" y="177" point_x="402" point_y="283"/>
+	            <cell x="0" y="285" point_x="243" point_y="304"/>
+	            <cell x="0" y="404" point_x="219" point_y="243"/>
+	            <cell x="0" y="551" point_x="334" point_y="252"/>
+	        </column>
+	        <column>
+	            <cell x="151" y="0" point_x="370" point_y="270"/>
+	            <cell x="151" y="69" point_x="306" point_y="311"/>
+	            <cell x="151" y="143" point_x="279" point_y="267"/>
+	            <cell x="151" y="212" point_x="279" point_y="267"/>
+	            <cell x="151" y="285" point_x="245" point_y="390"/>
+	            <cell x="151" y="361" point_x="94" point_y="293"/>
+	            <cell x="151" y="435" point_x="134" point_y="283"/>
+	            <cell x="151" y="518" point_x="304" point_y="191"/>
+	            <cell x="151" y="586" point_x="291" point_y="221"/>
+	        </column>
+	        <column>
+	            <cell x="302" y="0" point_x="306" point_y="311"/>
+	            <cell x="302" y="69" point_x="349" point_y="291"/>
+	            <cell x="302" y="143" point_x="304" point_y="270"/>
+	            <cell x="302" y="212" point_x="304" point_y="270"/>
+	            <cell x="302" y="285" point_x="245" point_y="390"/>
+	            <cell x="302" y="361" point_x="385" point_y="243"/>
+	            <cell x="302" y="435" point_x="504" point_y="281"/>
+	            <cell x="302" y="551"  point_x="304" point_y="208"/>
+	        </column>
+	    </template>
+<!-- helm upgrade schemes -->
+	    <template name="upgrade_scheme_helm_respirator">
+	        <column>
+	            <cell x="0" y="34" point_x="306" point_y="267"/>
+	        </column>
+	        <column>
+	            <cell x="151" y="0" point_x="308" point_y="373"/>
+	            <cell x="151" y="69" point_x="358" point_y="315"/>
+	        </column>
+	    </template>
+	    <template name="upgrade_scheme_helm_hardhat">
+	        <column>
+	            <cell x="0" y="34" point_x="400" point_y="332"/>
+	            <cell x="0" y="177" point_x="323" point_y="302"/>
+	        </column>
+	        <column>
+	            <cell x="151" y="0" point_x="317" point_y="215"/>
+	            <cell x="151" y="69" point_x="400" point_y="332"/>
+	        </column>
+	    </template>
+	    <template name="upgrade_scheme_helm_protective">
+	        <column>
+	            <cell x="0" y="34" point_x="306" point_y="195"/>
+	            <cell x="0" y="177" point_x="306" point_y="338"/>
+	        </column>
+	        <column>
+	            <cell x="151" y="0" point_x="398" point_y="368"/>
+	            <cell x="151" y="69" point_x="411" point_y="277"/>
+	            <cell x="151" y="177" point_x="223" point_y="224"/>
+	        </column>
+	        <column>
+	            <cell x="302" y="0" point_x="392" point_y="222"/>
+	            <cell x="302" y="69" point_x="306" point_y="278"/>
+	            <cell x="302" y="177" point_x="306" point_y="338"/>
+	        </column>
+	    </template>
+	    <template name="upgrade_scheme_helm_tactic">
+	        <column>
+	            <cell x="0" y="34" point_x="326" point_y="360"/>
+	            <cell x="0" y="177" point_x="402" point_y="322"/>
+	        </column>
+	        <column>
+	            <cell x="151" y="0" point_x="342" point_y="218"/>
+	            <cell x="151" y="69" point_x="381" point_y="285"/>
+	            <cell x="151" y="177" point_x="313" point_y="293"/>
+	        </column>
+	        <column>
+	            <cell x="302" y="0" point_x="249" point_y="278"/>
+	            <cell x="302" y="69" point_x="411" point_y="363"/>
+	            <cell x="302" y="177" point_x="391" point_y="211"/>
+	        </column>
+	    </template>
+	    <template name="upgrade_scheme_helm_battle">
+	        <column>
+	            <cell x="0" y="34" point_x="419" point_y="329"/>
+	            <cell x="0" y="177" point_x="375" point_y="357"/>
+	        </column>
+	        <column>
+	            <cell x="151" y="0" point_x="328" point_y="245"/>
+	            <cell x="151" y="69" point_x="419" point_y="329"/>
+	            <cell x="151" y="143" point_x="225" point_y="236"/>
+	            <cell x="151" y="212" point_x="302" point_y="210"/>
+	        </column>
+	        <column>
+	            <cell x="302" y="34" point_x="296" point_y="354"/>
+	            <cell x="302" y="177" point_x="302" point_y="210"/>
+	        </column>
+	    </template>
+<!-- weapon upgrade schemes -->
+
+	    <template name="upgrade_scheme_vintorez_nimble">
+	        <column>
+	            <cell x="0" y="34" point_x="115" point_y="288"/>
+	            <cell x="0" y="152" point_x="95" point_y="281"/>
+	            <cell x="0" y="221" point_x="95" point_y="281"/>
+	            <cell x="0" y="343" point_x="85" point_y="295"/>
+	            <cell x="0" y="465" point_x="85" point_y="253"/>
+	        </column>
+	        <column>
+	            <cell x="150" y="0" point_x="105" point_y="281"/>
+	            <cell x="150" y="69" point_x="105" point_y="281"/>
+	            <cell x="150" y="186" point_x="130" point_y="281"/>
+	            <cell x="150" y="308" point_x="25" point_y="302"/>
+	            <cell x="150" y="378" point_x="25" point_y="302"/>
+	        </column>
+	        <column>
+	            <cell x="300" y="0" point_x="100" point_y="295"/>
+	            <cell x="300" y="69" point_x="100" point_y="295"/>
+	            <cell x="300" y="152" point_x="140" point_y="288"/>
+	            <cell x="300" y="221" point_x="85" point_y="288"/>
+	            <cell x="300" y="308" point_x="25" point_y="253"/>
+	            <cell x="300" y="378" point_x="25" point_y="253"/>
+	        </column>
+	    </template>
+
+	    <template name="upgrade_scheme_vintorez_remastered">
+	        <column>
+	            <cell x="0" y="34" point_x="115" point_y="288"/>
+	            <cell x="0" y="186" point_x="95" point_y="281"/>
+	            <cell x="0" y="343" point_x="85" point_y="295"/>
+	            <cell x="0" y="465" point_x="85" point_y="253"/>
+	        </column>
+	        <column>
+	            <cell x="150" y="0" point_x="105" point_y="281"/>
+	            <cell x="150" y="69" point_x="105" point_y="281"/>
+	            <cell x="150" y="152" point_x="95" point_y="281"/>
+	            <cell x="150" y="221" point_x="95" point_y="281"/>
+	            <cell x="150" y="343" point_x="85" point_y="295"/>
+	            <cell x="150" y="465" point_x="85" point_y="253"/>
+	        </column>
+	        <column>
+	            <cell x="300" y="34" point_x="115" point_y="288"/>
+	            <cell x="300" y="186" point_x="95" point_y="281"/>
+	            <cell x="300" y="343" point_x="85" point_y="295"/>
+	            <cell x="300" y="431" point_x="85" point_y="253"/>
+	            <cell x="300" y="500" point_x="85" point_y="253"/>
+	        </column>
+	    </template>
+
+	    <template name="upgrade_scheme_vintorez_nimble_resolution_16_by_9">
+	        <column>
+	            <cell x="0" y="24" point_x="115" point_y="205"/>
+	            <cell x="0" y="122" point_x="95" point_y="200"/>
+	            <cell x="0" y="171" point_x="95" point_y="200"/>
+	            <cell x="0" y="273" point_x="85" point_y="210"/>
+	            <cell x="0" y="365" point_x="85" point_y="180"/>
+	        </column>
+	        <column>
+	            <cell x="80" y="0" point_x="105" point_y="200"/>
+	            <cell x="80" y="49" point_x="105" point_y="200"/>
+	            <cell x="80" y="146" point_x="130" point_y="200"/>
+	            <cell x="80" y="248" point_x="25" point_y="215"/>
+	            <cell x="80" y="298" point_x="25" point_y="215"/>
+	        </column>
+	        <column>
+	            <cell x="160" y="0" point_x="100" point_y="210"/>
+	            <cell x="160" y="49" point_x="100" point_y="210"/>
+	            <cell x="160" y="122" point_x="140" point_y="205"/>
+	            <cell x="160" y="171" point_x="85" point_y="205"/>
+	            <cell x="160" y="248" point_x="25" point_y="202"/>
+	            <cell x="160" y="298" point_x="25" point_y="202"/>
+	        </column>
+	    </template>
+
+	    <template name="upgrade_scheme_vintorez_remastered_resolution_16_by_9">
+	        <column>
+	            <cell x="0" y="24" point_x="115" point_y="205"/>
+	            <cell x="0" y="126" point_x="130" point_y="200"/>
+	            <cell x="0" y="228" point_x="85" point_y="210"/>
+	            <cell x="0" y="330" point_x="85" point_y="180"/>
+	        </column>
+	        <column>
+	            <cell x="80" y="0" point_x="105" point_y="200"/>
+	            <cell x="80" y="49" point_x="105" point_y="200"/>
+	            <cell x="80" y="102" point_x="95" point_y="200"/>
+	            <cell x="80" y="151" point_x="95" point_y="200"/>
+	            <cell x="80" y="228" point_x="25" point_y="215"/>
+	            <cell x="80" y="330" point_x="165" point_y="185"/>
+	        </column>
+	        <column>
+	            <cell x="160" y="24" point_x="100" point_y="210"/>
+	            <cell x="160" y="126" point_x="140" point_y="205"/>
+	            <cell x="160" y="228" point_x="85" point_y="205"/>
+	            <cell x="160" y="306" point_x="125" point_y="180"/>
+	            <cell x="160" y="353" point_x="125" point_y="180"/>
+	        </column>
+	    </template>
+
+	    <template name="upgrade_scheme_vintorez_nimble_resolution_4_by_3">
+	        <column>
+	            <cell x="0" y="24" point_x="115" point_y="205"/>
+	            <cell x="0" y="102" point_x="130" point_y="200"/>
+	            <cell x="0" y="151" point_x="130" point_y="200"/>
+	            <cell x="0" y="228" point_x="85" point_y="210"/>
+	            <cell x="0" y="330" point_x="85" point_y="180"/>
+	        </column>
+	        <column>
+	            <cell x="100" y="0" point_x="105" point_y="200"/>
+	            <cell x="100" y="49" point_x="105" point_y="200"/>
+	            <cell x="100" y="126" point_x="95" point_y="200"/>
+	            <cell x="100" y="204" point_x="25" point_y="215"/>
+	            <cell x="100" y="253" point_x="25" point_y="215"/>
+	        </column>
+	        <column>
+	            <cell x="200" y="0" point_x="100" point_y="210"/>
+	            <cell x="200" y="49" point_x="100" point_y="210"/>
+	            <cell x="200" y="102" point_x="140" point_y="205"/>
+	            <cell x="200" y="151" point_x="140" point_y="205"/>
+	            <cell x="200" y="204" point_x="90" point_y="220"/>
+	            <cell x="200" y="253" point_x="85" point_y="205"/>
+	        </column>
+	    </template>
+	    <template name="upgrade_scheme_vintorez_remastered_resolution_4_by_3">
+	        <column>
+	            <cell x="0" y="24" point_x="115" point_y="205"/>
+	            <cell x="0" y="102" point_x="130" point_y="200"/>
+	            <cell x="0" y="151" point_x="130" point_y="200"/>
+	            <cell x="0" y="228" point_x="85" point_y="210"/>
+	            <cell x="0" y="330" point_x="85" point_y="180"/>
+	        </column>
+	        <column>
+	            <cell x="100" y="0" point_x="105" point_y="200"/>
+	            <cell x="100" y="49" point_x="105" point_y="200"/>
+	            <cell x="100" y="126" point_x="95" point_y="200"/>
+	            <cell x="100" y="204" point_x="25" point_y="215"/>
+	            <cell x="100" y="253" point_x="25" point_y="215"/>
+	        </column>
+	        <column>
+	            <cell x="200" y="0" point_x="100" point_y="210"/>
+	            <cell x="200" y="49" point_x="100" point_y="210"/>
+	            <cell x="200" y="102" point_x="140" point_y="205"/>
+	            <cell x="200" y="151" point_x="140" point_y="205"/>
+	            <cell x="200" y="204" point_x="90" point_y="220"/>
+	            <cell x="200" y="253" point_x="85" point_y="205"/>
+	        </column>
+	    </template>
+
+	    <template name="upgrade_scheme_ak_universal">
+	        <column>
+	            <cell x="0" y="34" point_x="151" point_y="260"/>
+	            <cell x="0" y="177" point_x="191" point_y="257"/>
+	            <cell x="0" y="321" point_x="211" point_y="262"/>
+	            <cell x="0" y="464" point_x="198" point_y="271"/>
+	        </column>
+	        <column>
+	            <cell x="151" y="34" point_x="258" point_y="266"/>
+	            <cell x="151" y="143" point_x="168" point_y="273"/>
+	            <cell x="151" y="212" point_x="275" point_y="276"/>
+	            <cell x="151" y="287" point_x="432" point_y="288"/>
+	            <cell x="151" y="356" point_x="298" point_y="273"/>
+	            <cell x="151" y="464" point_x="230" point_y="273"/>
+	            <cell x="151" y="575" point_x="577" point_y="235"/>
+	        </column>
+	        <column>
+	            <cell x="302" y="0" point_x="170" point_y="252"/>
+	            <cell x="302" y="69" point_x="136" point_y="271"/>
+	            <cell x="302" y="177" point_x="255" point_y="280"/>
+	            <cell x="302" y="321" point_x="349" point_y="271"/>
+	            <cell x="302" y="464" point_x="155" point_y="297"/>
+	        </column>
+	    </template>
+	    <template name="upgrade_scheme_sig_universal">
+	        <column>
+	            <cell x="0" y="34" point_x="160" point_y="283"/>
+	            <cell x="0" y="177" point_x="140" point_y="262"/>
+	            <cell x="0" y="321" point_x="325" point_y="273"/>
+	            <cell x="0" y="464" point_x="181" point_y="273"/>
+	            <cell x="0" y="575" point_x="217" point_y="314"/>
+	        </column>
+	        <column>
+	            <cell x="151" y="0" point_x="228" point_y="259"/>
+	            <cell x="151" y="69" point_x="168" point_y="257"/>
+	            <cell x="151" y="177" point_x="215" point_y="273"/>
+	            <cell x="151" y="287" point_x="285" point_y="270"/>
+	            <cell x="151" y="356" point_x="360" point_y="276"/>
+	            <cell x="151" y="464" point_x="215" point_y="273"/>
+	        </column>
+	        <column>
+	            <cell x="302" y="34" point_x="192" point_y="257"/>
+	            <cell x="302" y="143" point_x="168" point_y="257"/>
+	            <cell x="302" y="212" point_x="194" point_y="257"/>
+	            <cell x="302" y="321" point_x="502" point_y="285"/>
+	            <cell x="302" y="430" point_x="142" point_y="301"/>
+	            <cell x="302" y="499" point_x="194" point_y="257"/>
+	        </column>
+	    </template>
+
+	    <template name="upgrade_scheme_saiga12k">
+	        <column>
+	            <cell x="0" y="34" point_x="462" point_y="295"/>
+	            <cell x="0" y="177" point_x="66" point_y="281"/>
+	            <cell x="0" y="321" point_x="104" point_y="274"/>
+	            <cell x="0" y="464" point_x="142" point_y="281"/>
+	        </column>
+	        <column>
+	            <cell x="151" y="0" point_x="500" point_y="302"/>
+	            <cell x="151" y="69" point_x="566" point_y="309"/>
+	            <cell x="151" y="143" point_x="66" point_y="309"/>
+	            <cell x="151" y="212" point_x="57" point_y="295"/>
+	            <cell x="151" y="287" point_x="311" point_y="302"/>
+	            <cell x="151" y="356" point_x="208" point_y="288"/>
+	        </column>
+	        <column>
+	            <cell x="302" y="0" point_x="396" point_y="295"/>
+	            <cell x="302" y="69" point_x="547" point_y="302"/>
+	            <cell x="302" y="287" point_x="123" point_y="281"/>
+	            <cell x="302" y="356" point_x="132" point_y="267"/>
+	        </column>
+	    </template>
+	    <template name="upgrade_scheme_universal_pistol_045">
+	        <column>
+	            <cell x="0" y="34" point_x="123" point_y="239"/>
+	            <cell x="0" y="177" point_x="245" point_y="260"/>
+	            <cell x="0" y="321" point_x="142" point_y="274"/>
+	            <cell x="0" y="464" point_x="179" point_y="295"/>
+	            <cell x="0" y="575" point_x="94" point_y="359"/>
+	        </column>
+	        <column>
+	            <cell x="151" y="0" point_x="189" point_y="260"/>
+	            <cell x="151" y="69" point_x="160" point_y="246"/>
+	            <cell x="151" y="177" point_x="311" point_y="260"/>
+	            <cell x="151" y="287" point_x="104" point_y="316"/>
+	            <cell x="151" y="356" point_x="94" point_y="288"/>
+	            <cell x="151" y="464" point_x="160" point_y="274"/>
+	        </column>
+	        <column>
+	            <cell x="302" y="34" point_x="113" point_y="260"/>
+	            <cell x="302" y="143" point_x="283" point_y="260"/>
+	            <cell x="302" y="212" point_x="283" point_y="260"/>
+	            <cell x="302" y="464" point_x="142" point_y="260"/>
+	        </column>
+	    </template>
+	    <template name="upgrade_scheme_universal_pistol_919">
+	        <column>
+	            <cell x="0" y="34" point_x="142" point_y="232"/>
+	            <cell x="0" y="177" point_x="292" point_y="246"/>
+	            <cell x="0" y="321" point_x="160" point_y="253"/>
+	            <cell x="0" y="464" point_x="208" point_y="288"/>
+ 	            <cell x="0" y="575" point_x="425" point_y="260"/>
+	        </column>
+	        <column>
+	            <cell x="151" y="0" point_x="85" point_y="225"/>
+	            <cell x="151" y="69" point_x="236" point_y="239"/>
+	            <cell x="151" y="177" point_x="330" point_y="246"/>
+	            <cell x="151" y="287" point_x="113" point_y="316"/>
+	            <cell x="151" y="356" point_x="113" point_y="281"/>
+	            <cell x="151" y="464" point_x="189" point_y="267"/>
+	        </column>
+	        <column>
+	            <cell x="302" y="34" point_x="123" point_y="253"/>
+	            <cell x="302" y="143" point_x="264" point_y="105"/>
+	            <cell x="302" y="212" point_x="264" point_y="105"/>
+	        </column>
+	    </template>
+
+	    <template name="upgrade_scheme_universal_pistol_918">
+	        <column>
+	            <cell x="0" y="34" point_x="255" point_y="225"/>
+	            <cell x="0" y="177" point_x="377" point_y="239"/>
+	            <cell x="0" y="321" point_x="217" point_y="260"/>
+	            <cell x="0" y="464" point_x="302" point_y="288"/>
+	            <cell x="0" y="575" point_x="189" point_y="366"/>
+	        </column>
+	        <column>
+	            <cell x="151" y="0" point_x="208" point_y="232"/>
+	            <cell x="151" y="69" point_x="340" point_y="232"/>
+	            <cell x="151" y="143" point_x="406" point_y="246"/>
+	            <cell x="151" y="212" point_x="453" point_y="246"/>
+	            <cell x="151" y="287" point_x="208" point_y="316"/>
+	            <cell x="151" y="356" point_x="217" point_y="281"/>
+	            <cell x="151" y="464" point_x="179" point_y="225"/>
+	            <cell x="151" y="575" point_x="453" point_y="246"/>
+	        </column>
+	        <column>
+	            <cell x="302" y="34" point_x="264" point_y="246"/>
+	        </column>
+	    </template>
+
+	    <template name="upgrade_scheme_abakan">
+	        <column>
+	            <cell x="0" y="34" point_x="298" point_y="273"/>
+	            <cell x="0" y="177" point_x="162" point_y="255"/>
+	            <cell x="0" y="321" point_x="196" point_y="264"/>
+	            <cell x="0" y="464" point_x="275" point_y="277"/>
+	        </column>
+	        <column>
+	            <cell x="151" y="34" point_x="317" point_y="281"/>
+	            <cell x="151" y="143" point_x="232" point_y="257"/>
+	            <cell x="151" y="212" point_x="162" point_y="263"/>
+	            <cell x="151" y="287" point_x="347" point_y="278"/>
+	            <cell x="151" y="356" point_x="275" point_y="277"/>
+	            <cell x="151" y="464" point_x="198" point_y="264"/>
+	        </column>
+	        <column>
+	            <cell x="302" y="0" point_x="198" point_y="264"/>
+	            <cell x="302" y="69" point_x="266" point_y="262"/>
+	            <cell x="302" y="177" point_x="275" point_y="277"/>
+	            <cell x="302" y="321" point_x="177" point_y="264"/>
+	            <cell x="302" y="430" point_x="138" point_y="298"/>
+	            <cell x="302" y="499" point_x="185" point_y="255"/>
+	        </column>
+	    </template>
+	    <template name="upgrade_scheme_ak74">
+	        <column>
+	            <cell x="0" y="34" point_x="151" point_y="260"/>
+	            <cell x="0" y="177" point_x="191" point_y="257"/>
+	            <cell x="0" y="321" point_x="211" point_y="262"/>
+	            <cell x="0" y="464" point_x="198" point_y="271"/>
+	            <cell x="0" y="575" point_x="577" point_y="298"/>
+	        </column>
+	        <column>
+	            <cell x="151" y="34" point_x="258" point_y="266"/>
+	            <cell x="151" y="143" point_x="168" point_y="273"/>
+	            <cell x="151" y="212" point_x="275" point_y="276"/>
+	            <cell x="151" y="287" point_x="432" point_y="288"/>
+	            <cell x="151" y="356" point_x="298" point_y="273"/>
+	            <cell x="151" y="464" point_x="230" point_y="273"/>
+	            <cell x="151" y="575" point_x="577" point_y="235"/>
+	        </column>
+	        <column>
+	            <cell x="302" y="0" point_x="170" point_y="252"/>
+	            <cell x="302" y="69" point_x="136" point_y="271"/>
+	            <cell x="302" y="177" point_x="255" point_y="280"/>
+	            <cell x="302" y="321" point_x="349" point_y="271"/>
+	            <cell x="302" y="464" point_x="155" point_y="297"/>
+	        </column>
+	    </template>
+	    <template name="upgrade_scheme_ak74u">
+	        <column>
+	            <cell x="0" y="34" point_x="228" point_y="239"/>
+	            <cell x="0" y="177" point_x="264" point_y="222"/>
+	            <cell x="0" y="321" point_x="219" point_y="222"/>
+	            <cell x="0" y="464" point_x="264" point_y="222"/>
+	            <cell x="0" y="575" point_x="317" point_y="316"/>
+	        </column>
+	        <column>
+	            <cell x="151" y="0" point_x="334" point_y="224"/>
+	            <cell x="151" y="69" point_x="355" point_y="229"/>
+	            <cell x="151" y="177" point_x="355" point_y="229"/>
+	            <cell x="151" y="287" point_x="228" point_y="239"/>
+	            <cell x="151" y="356" point_x="247" point_y="231"/>
+	            <cell x="151" y="464" point_x="309" point_y="224"/>
+	        </column>
+	        <column>
+	            <cell x="302" y="34" point_x="287" point_y="226"/>
+	            <cell x="302" y="143" point_x="219" point_y="222"/>
+	            <cell x="302" y="212" point_x="200" point_y="232"/>
+	            <cell x="302" y="321" point_x="228" point_y="239"/>
+	            <cell x="302" y="464" point_x="281" point_y="245"/>
+	        </column>
+	    </template>
+	    <template name="upgrade_scheme_beretta">
+	        <column>
+	            <cell x="0" y="34" point_x="132" point_y="239"/>
+	            <cell x="0" y="177" point_x="283" point_y="253"/>
+	            <cell x="0" y="321" point_x="132" point_y="274"/>
+	            <cell x="0" y="464" point_x="170" point_y="288"/>
+	            <cell x="0" y="575" point_x="415" point_y="260"/>
+	        </column>
+	        <column>
+	            <cell x="151" y="0" point_x="226" point_y="246"/>
+	            <cell x="151" y="69" point_x="104" point_y="239"/>
+	            <cell x="151" y="143" point_x="255" point_y="253"/>
+	            <cell x="151" y="212" point_x="321" point_y="253"/>
+	            <cell x="151" y="287" point_x="75" point_y="309"/>
+	            <cell x="151" y="356" point_x="85" point_y="295"/>
+	            <cell x="151" y="464" point_x="160" point_y="274"/>
+	            <cell x="151" y="575" point_x="321" point_y="253"/>
+	        </column>
+	        <column>
+	            <cell x="302" y="34" point_x="113" point_y="260"/>
+	            <cell x="302" y="177" point_x="255" point_y="253"/>
+	        </column>
+	    </template>
+	    <template name="upgrade_scheme_bm16">
+	        <column>
+	            <cell x="0" y="34" point_x="509" point_y="295"/>
+	            <cell x="0" y="177" point_x="113" point_y="288"/>
+	            <cell x="0" y="321" point_x="189" point_y="302"/>
+	        </column>
+	        <column>
+	            <cell x="151" y="34" point_x="245" point_y="267"/>
+	            <cell x="151" y="143" point_x="132" point_y="295"/>
+	            <cell x="151" y="212" point_x="142" point_y="281"/>
+	            <cell x="151" y="321" point_x="189" point_y="281"/>
+	        </column>
+	    </template>
+	    <template name="upgrade_scheme_colt1911">
+	        <column>
+	            <cell x="0" y="34" point_x="245" point_y="225"/>
+	            <cell x="0" y="177" point_x="330" point_y="232"/>
+	            <cell x="0" y="321" point_x="208" point_y="253"/>
+	            <cell x="0" y="464" point_x="255" point_y="281"/>
+	            <cell x="0" y="575" point_x="160" point_y="366"/>
+	        </column>
+	        <column>
+	            <cell x="151" y="0" point_x="208" point_y="225"/>
+	            <cell x="151" y="69" point_x="292" point_y="232"/>
+	            <cell x="151" y="143" point_x="377" point_y="253"/>
+	            <cell x="151" y="212" point_x="481" point_y="239"/>
+	            <cell x="151" y="287" point_x="179" point_y="316"/>
+	            <cell x="151" y="356" point_x="170" point_y="281"/>
+	            <cell x="151" y="464" point_x="255" point_y="260"/>
+	        </column>
+	        <column>
+	            <cell x="302" y="34" point_x="179" point_y="218"/>
+	            <cell x="302" y="177" point_x="434" point_y="239"/>
+	        </column>
+	    </template>
+	    <template name="upgrade_scheme_desert_eagle">
+	        <column>
+	            <cell x="0" y="34" point_x="226" point_y="225"/>
+	            <cell x="0" y="177" point_x="387" point_y="239"/>
+	            <cell x="0" y="321" point_x="198" point_y="260"/>
+	            <cell x="0" y="464" point_x="255" point_y="281"/>
+	            <cell x="0" y="575" point_x="179" point_y="373"/>
+	        </column>
+	        <column>
+	            <cell x="151" y="34" point_x="170" point_y="218"/>
+	            <cell x="151" y="177" point_x="491" point_y="246"/>
+	            <cell x="151" y="287" point_x="151" point_y="338"/>
+	            <cell x="151" y="356" point_x="160" point_y="295"/>
+	            <cell x="151" y="464" point_x="236" point_y="260"/>
+	        </column>
+	        <column>
+	            <cell x="302" y="0" point_x="255" point_y="225"/>
+	            <cell x="302" y="69" point_x="160" point_y="239"/>
+	            <cell x="302" y="143" point_x="434" point_y="246"/>
+	            <cell x="302" y="212" point_x="311" point_y="232"/>
+	            <cell x="302" y="321" point_x="151" point_y="359"/>
+	        </column>
+	    </template>
+	    <template name="upgrade_scheme_fn2000">
+	        <column>
+	            <cell x="0" y="34" point_x="179" point_y="288"/>
+	            <cell x="0" y="177" point_x="208" point_y="274"/>
+	            <cell x="0" y="321" point_x="151" point_y="267"/>
+	            <cell x="0" y="471" point_x="208" point_y="225"/>
+	        </column>
+	        <column>
+	            <cell x="151" y="0" point_x="226" point_y="281"/>
+	            <cell x="151" y="69" point_x="396" point_y="288"/>
+	            <cell x="151" y="143" point_x="349" point_y="281"/>
+	            <cell x="151" y="212" point_x="349" point_y="281"/>
+	            <cell x="151" y="287" point_x="255" point_y="274"/>
+	            <cell x="151" y="356" point_x="113" point_y="260"/>
+	            <cell x="151" y="471" point_x="330" point_y="225"/>
+	        </column>
+	        <column>
+	            <cell x="302" y="0" point_x="179" point_y="260"/>
+	            <cell x="302" y="69" point_x="472" point_y="288"/>
+	            <cell x="302" y="143" point_x="236" point_y="267"/>
+	            <cell x="302" y="212" point_x="236" point_y="267"/>
+	            <cell x="302" y="287" point_x="302" point_y="281"/>
+	            <cell x="302" y="356" point_x="274" point_y="239"/>
+	            <cell x="302" y="436" point_x="274" point_y="239"/>
+	            <cell x="302" y="506" point_x="208" point_y="225"/>
+	        </column>
+	    </template>
+	    <template name="upgrade_scheme_fort">
+	        <column>
+	            <cell x="0" y="34" point_x="255" point_y="225"/>
+	            <cell x="0" y="177" point_x="377" point_y="239"/>
+	            <cell x="0" y="321" point_x="217" point_y="260"/>
+	            <cell x="0" y="464" point_x="302" point_y="288"/>
+	            <cell x="0" y="575" point_x="189" point_y="366"/>
+	        </column>
+	        <column>
+	            <cell x="151" y="0" point_x="208" point_y="232"/>
+	            <cell x="151" y="69" point_x="340" point_y="232"/>
+	            <cell x="151" y="143" point_x="406" point_y="246"/>
+	            <cell x="151" y="212" point_x="453" point_y="246"/>
+	            <cell x="151" y="287" point_x="208" point_y="316"/>
+	            <cell x="151" y="356" point_x="217" point_y="281"/>
+	            <cell x="151" y="464" point_x="179" point_y="225"/>
+	            <cell x="151" y="575" point_x="453" point_y="246"/>
+	        </column>
+	        <column>
+	            <cell x="302" y="34" point_x="264" point_y="246"/>
+	        </column>
+	    </template>
+	    <template name="upgrade_scheme_g36">
+	        <column>
+	            <cell x="0" y="34" point_x="208" point_y="295"/>
+	            <cell x="0" y="177" point_x="151" point_y="274"/>
+	            <cell x="0" y="321" point_x="509" point_y="302"/>
+	            <cell x="0" y="464" point_x="255" point_y="246"/>
+	        </column>
+	        <column>
+	            <cell x="151" y="34" point_x="255" point_y="288"/>
+	            <cell x="151" y="143" point_x="47" point_y="281"/>
+	            <cell x="151" y="212" point_x="47" point_y="281"/>
+	            <cell x="151" y="321" point_x="566" point_y="309"/>
+	            <cell x="151" y="464" point_x="236" point_y="225"/>
+	        </column>
+	        <column>
+	            <cell x="302" y="0" point_x="406" point_y="288"/>
+	            <cell x="302" y="69" point_x="226" point_y="267"/>
+	            <cell x="302" y="177" point_x="189" point_y="267"/>
+	            <cell x="302" y="287" point_x="453" point_y="295"/>
+	            <cell x="302" y="356" point_x="453" point_y="295"/>
+	            <cell x="302" y="430" point_x="208" point_y="232"/>
+	            <cell x="302" y="499" point_x="208" point_y="232"/>
+	        </column>
+	    </template>
+	    <template name="upgrade_scheme_groza">
+	        <column>
+	            <cell x="0" y="34" point_x="274" point_y="295"/>
+	            <cell x="0" y="177" point_x="226" point_y="260"/>
+	            <cell x="0" y="321" point_x="132" point_y="253"/>
+	            <cell x="0" y="464" point_x="236" point_y="281"/>
+	            <cell x="0" y="575" point_x="151" point_y="323"/>
+	        </column>
+	        <column>
+	            <cell x="151" y="0" point_x="170" point_y="260"/>
+	            <cell x="151" y="69" point_x="170" point_y="260"/>
+	            <cell x="151" y="177" point_x="283" point_y="281"/>
+	            <cell x="151" y="287" point_x="104" point_y="246"/>
+	            <cell x="151" y="356" point_x="104" point_y="246"/>
+	            <cell x="151" y="464" point_x="236" point_y="316"/>
+	        </column>
+	        <column>
+	            <cell x="302" y="0" point_x="189" point_y="260"/>
+	            <cell x="302" y="69" point_x="189" point_y="260"/>
+	            <cell x="302" y="143" point_x="75" point_y="260"/>
+	            <cell x="302" y="212" point_x="113" point_y="267"/>
+	            <cell x="302" y="287" point_x="94" point_y="274"/>
+	            <cell x="302" y="356" point_x="179" point_y="267"/>
+	            <cell x="302" y="430" point_x="245" point_y="267"/>
+	            <cell x="302" y="499" point_x="245" point_y="267"/>
+	        </column>
+	    </template>
+	    <template name="upgrade_scheme_hpsa">
+	        <column>
+	            <cell x="0" y="34" point_x="236" point_y="232"/>
+	            <cell x="0" y="177" point_x="425" point_y="246"/>
+	            <cell x="0" y="321" point_x="198" point_y="260"/>
+	            <cell x="0" y="464" point_x="264" point_y="288"/>
+	            <cell x="0" y="575" point_x="170" point_y="366"/>
+	        </column>
+	        <column>
+	            <cell x="151" y="0" point_x="189" point_y="232"/>
+	            <cell x="151" y="69" point_x="330" point_y="239"/>
+	            <cell x="151" y="177" point_x="481" point_y="246"/>
+	            <cell x="151" y="287" point_x="179" point_y="316"/>
+	            <cell x="151" y="356" point_x="170" point_y="274"/>
+	            <cell x="151" y="464" point_x="245" point_y="267"/>
+	            <cell x="151" y="575" point_x="481" point_y="246"/>
+	        </column>
+	        <column>
+	            <cell x="302" y="34" point_x="425" point_y="267"/>
+	            <cell x="302" y="143" point_x="387" point_y="239"/>
+	            <cell x="302" y="212" point_x="387" point_y="239"/>
+	            <cell x="302" y="464" point_x="274" point_y="260"/>
+	        </column>
+	    </template>
+	    <template name="upgrade_scheme_l85">
+	        <column>
+	            <cell x="0" y="34" point_x="187" point_y="278"/>
+	            <cell x="0" y="177" point_x="258" point_y="312"/>
+	            <cell x="0" y="321" point_x="447" point_y="298"/>
+	            <cell x="0" y="464" point_x="113" point_y="228"/>
+	        </column>
+	        <column>
+	            <cell x="151" y="34" point_x="208" point_y="330"/>
+	            <cell x="151" y="143" point_x="238" point_y="302"/>
+	            <cell x="151" y="212" point_x="166" point_y="288"/>
+	            <cell x="151" y="321" point_x="534" point_y="305"/>
+	        </column>
+	        <column>
+	            <cell x="302" y="0" point_x="94" point_y="274"/>
+	            <cell x="302" y="69" point_x="142" point_y="277"/>
+	            <cell x="302" y="177" point_x="226" point_y="281"/>
+	            <cell x="302" y="287" point_x="355" point_y="290"/>
+	            <cell x="302" y="356" point_x="402" point_y="294"/>
+	        </column>
+	    </template>
+	    <template name="upgrade_scheme_lr300">
+	        <column>
+	            <cell x="0" y="34" point_x="215" point_y="276"/>
+	            <cell x="0" y="177" point_x="151" point_y="269"/>
+	            <cell x="0" y="321" point_x="240" point_y="278"/>
+	            <cell x="0" y="464" point_x="187" point_y="281"/>
+	            <cell x="0" y="575" point_x="228" point_y="336"/>
+	        </column>
+	        <column>
+	            <cell x="151" y="0" point_x="364" point_y="291"/>
+	            <cell x="151" y="69" point_x="321" point_y="271"/>
+	            <cell x="151" y="177" point_x="343" point_y="288"/>
+	            <cell x="151" y="287" point_x="196" point_y="260"/>
+	            <cell x="151" y="356" point_x="194" point_y="276"/>
+	            <cell x="151" y="464" point_x="177" point_y="297"/>
+	        </column>
+	        <column>
+	            <cell x="302" y="34" point_x="262" point_y="280"/>
+	            <cell x="302" y="143" point_x="170" point_y="267"/>
+	            <cell x="302" y="212" point_x="162" point_y="283"/>
+	            <cell x="302" y="321" point_x="226" point_y="293"/>
+	            <cell x="302" y="430" point_x="162" point_y="316"/>
+	            <cell x="302" y="499" point_x="206" point_y="291"/>
+	        </column>
+	    </template>
+	    <template name="upgrade_scheme_mp5">
+	        <column>
+	            <cell x="0" y="34" point_x="153" point_y="233"/>
+	            <cell x="0" y="177" point_x="245" point_y="239"/>
+	            <cell x="0" y="321" point_x="151" point_y="253"/>
+	            <cell x="0" y="464" point_x="211" point_y="260"/>
+	            <cell x="0" y="575" point_x="274" point_y="326"/>
+	        </column>
+	        <column>
+	            <cell x="151" y="0" point_x="185" point_y="246"/>
+	            <cell x="151" y="69" point_x="262" point_y="253"/>
+	            <cell x="151" y="177" point_x="236" point_y="262"/>
+	            <cell x="151" y="287" point_x="209" point_y="291"/>
+	            <cell x="151" y="356" point_x="192" point_y="269"/>
+	            <cell x="151" y="464" point_x="355" point_y="260"/>
+	            <cell x="151" y="575" point_x="455" point_y="259"/>
+	        </column>
+	        <column>
+	            <cell x="302" y="34" point_x="225" point_y="228"/>
+	            <cell x="302" y="143" point_x="204" point_y="239"/>
+	            <cell x="302" y="212" point_x="281" point_y="240"/>
+	            <cell x="302" y="321" point_x="172" point_y="269"/>
+	            <cell x="302" y="430" point_x="168" point_y="309"/>
+	            <cell x="302" y="499" point_x="404" point_y="259"/>
+	        </column>
+	    </template>
+	    <template name="upgrade_scheme_mp5_nimble">
+	        <column>
+	            <cell x="0" y="34" point_x="153" point_y="233"/>
+	            <cell x="0" y="177" point_x="245" point_y="239"/>
+	            <cell x="0" y="321" point_x="151" point_y="253"/>
+	            <cell x="0" y="464" point_x="211" point_y="260"/>
+	            <cell x="0" y="575" point_x="274" point_y="326"/>
+	        </column>
+	        <column>
+	            <cell x="151" y="0" point_x="185" point_y="246"/>
+	            <cell x="151" y="69" point_x="262" point_y="253"/>
+	            <cell x="151" y="177" point_x="236" point_y="262"/>
+	            <cell x="151" y="287" point_x="209" point_y="291"/>
+	            <cell x="151" y="356" point_x="192" point_y="269"/>
+	            <cell x="151" y="464" point_x="355" point_y="260"/>
+	        </column>
+	        <column>
+	            <cell x="302" y="34" point_x="225" point_y="228"/>
+	            <cell x="302" y="143" point_x="204" point_y="239"/>
+	            <cell x="302" y="212" point_x="281" point_y="240"/>
+	            <cell x="302" y="321" point_x="172" point_y="269"/>
+	            <cell x="302" y="430" point_x="168" point_y="309"/>
+	            <cell x="302" y="499" point_x="404" point_y="259"/>
+	        </column>
+	    </template>
+	    <template name="upgrade_scheme_pb">
+	        <column>
+	            <cell x="0" y="34" point_x="142" point_y="239"/>
+	            <cell x="0" y="177" point_x="302" point_y="267"/>
+	            <cell x="0" y="321" point_x="123" point_y="260"/>
+	            <cell x="0" y="464" point_x="189" point_y="288"/>
+	            <cell x="0" y="575" point_x="104" point_y="352"/>
+	        </column>
+	        <column>
+	            <cell x="151" y="0" point_x="236" point_y="246"/>
+	            <cell x="151" y="69" point_x="104" point_y="239"/>
+	            <cell x="151" y="177" point_x="415" point_y="274"/>
+	            <cell x="151" y="321" point_x="113" point_y="309"/>
+	            <cell x="151" y="464" point_x="160" point_y="260"/>
+	        </column>
+	        <column>
+	            <cell x="302" y="34" point_x="170" point_y="239"/>
+	            <cell x="302" y="321" point_x="113" point_y="281"/>
+	        </column>
+	    </template>
+	    <template name="upgrade_scheme_pkm">
+	        <column>
+	            <cell x="0" y="34" point_x="104" point_y="260"/>
+	            <cell x="0" y="177" point_x="170" point_y="267"/>
+	            <cell x="0" y="321" point_x="132" point_y="260"/>
+	            <cell x="0" y="464" point_x="38" point_y="260"/>
+	            <cell x="0" y="575" point_x="189" point_y="316"/>
+	        </column>
+	        <column>
+	            <cell x="151" y="0" point_x="189" point_y="253"/>
+	            <cell x="151" y="69" point_x="170" point_y="253"/>
+	            <cell x="151" y="177" point_x="132" point_y="239"/>
+	            <cell x="151" y="287" point_x="406" point_y="295"/>
+	            <cell x="151" y="356" point_x="368" point_y="295"/>
+	            <cell x="151" y="464" point_x="94" point_y="253"/>
+	        </column>
+	        <column>
+	            <cell x="302" y="34" point_x="274" point_y="274"/>
+	            <cell x="302" y="143" point_x="151" point_y="246"/>
+	            <cell x="302" y="212" point_x="151" point_y="260"/>
+	            <cell x="302" y="321" point_x="566" point_y="316"/>
+	            <cell x="302" y="464" point_x="85" point_y="253"/>
+	        </column>
+	    </template>
+	    <template name="upgrade_scheme_pm">
+	        <column>
+	            <cell x="0" y="34" point_x="245" point_y="225"/>
+	            <cell x="0" y="177" point_x="358" point_y="239"/>
+	            <cell x="0" y="321" point_x="236" point_y="260"/>
+	            <cell x="0" y="464" point_x="311" point_y="281"/>
+	            <cell x="0" y="575" point_x="226" point_y="359"/>
+	        </column>
+	        <column>
+	            <cell x="151" y="0" point_x="217" point_y="218"/>
+	            <cell x="151" y="69" point_x="283" point_y="225"/>
+	            <cell x="151" y="177" point_x="425" point_y="239"/>
+	            <cell x="151" y="287" point_x="226" point_y="309"/>
+	            <cell x="151" y="356" point_x="217" point_y="281"/>
+	            <cell x="151" y="464" point_x="198" point_y="239"/>
+	            <cell x="151" y="575" point_x="387" point_y="239"/>
+	        </column>
+	        <column>
+	            <cell x="302" y="34" point_x="283" point_y="225"/>
+	        </column>
+	    </template>
+	    <template name="upgrade_scheme_protecta">
+	        <column>
+	            <cell x="0" y="34" point_x="434" point_y="293"/>
+	            <cell x="0" y="177" point_x="174" point_y="269"/>
+	            <cell x="0" y="321" point_x="228" point_y="264"/>
+	            <cell x="0" y="464" point_x="321" point_y="312"/>
+	        </column>
+	        <column>
+	            <cell x="151" y="0" point_x="558" point_y="314"/>
+	            <cell x="151" y="69" point_x="579" point_y="315"/>
+	            <cell x="151" y="143" point_x="430" point_y="340"/>
+	            <cell x="151" y="212" point_x="430" point_y="340"/>
+	            <cell x="151" y="287" point_x="206" point_y="260"/>
+	            <cell x="151" y="356" point_x="279" point_y="262"/>
+	            <cell x="151" y="464" point_x="251" point_y="308"/>
+	        </column>
+	        <column>
+	            <cell x="302" y="0" point_x="349" point_y="281"/>
+	            <cell x="302" y="69" point_x="579" point_y="315"/>
+	            <cell x="302" y="321" point_x="219" point_y="278"/>
+	        </column>
+	    </template>
+	    <template name="upgrade_scheme_sig220">
+	        <column>
+	            <cell x="0" y="34" point_x="123" point_y="239"/>
+	            <cell x="0" y="177" point_x="245" point_y="260"/>
+	            <cell x="0" y="321" point_x="142" point_y="274"/>
+	            <cell x="0" y="464" point_x="179" point_y="295"/>
+	            <cell x="0" y="575" point_x="94" point_y="359"/>
+	        </column>
+	        <column>
+	            <cell x="151" y="0" point_x="189" point_y="260"/>
+	            <cell x="151" y="69" point_x="160" point_y="246"/>
+	            <cell x="151" y="177" point_x="311" point_y="260"/>
+	            <cell x="151" y="287" point_x="104" point_y="316"/>
+	            <cell x="151" y="356" point_x="94" point_y="288"/>
+	            <cell x="151" y="464" point_x="160" point_y="274"/>
+	        </column>
+	        <column>
+	            <cell x="302" y="34" point_x="113" point_y="260"/>
+	            <cell x="302" y="143" point_x="283" point_y="260"/>
+	            <cell x="302" y="212" point_x="283" point_y="260"/>
+	            <cell x="302" y="464" point_x="142" point_y="260"/>
+	        </column>
+	    </template>
+	    <template name="upgrade_scheme_sig550">
+	        <column>
+	            <cell x="0" y="34" point_x="160" point_y="283"/>
+	            <cell x="0" y="177" point_x="140" point_y="262"/>
+	            <cell x="0" y="321" point_x="325" point_y="273"/>
+	            <cell x="0" y="464" point_x="181" point_y="273"/>
+	            <cell x="0" y="575" point_x="217" point_y="314"/>
+	        </column>
+	        <column>
+	            <cell x="151" y="0" point_x="228" point_y="259"/>
+	            <cell x="151" y="69" point_x="168" point_y="257"/>
+	            <cell x="151" y="177" point_x="215" point_y="273"/>
+	            <cell x="151" y="287" point_x="285" point_y="270"/>
+	            <cell x="151" y="356" point_x="360" point_y="276"/>
+	            <cell x="151" y="464" point_x="215" point_y="273"/>
+	        </column>
+	        <column>
+	            <cell x="302" y="34" point_x="192" point_y="257"/>
+	            <cell x="302" y="143" point_x="168" point_y="257"/>
+	            <cell x="302" y="212" point_x="194" point_y="257"/>
+	            <cell x="302" y="321" point_x="502" point_y="285"/>
+	            <cell x="302" y="430" point_x="142" point_y="301"/>
+	            <cell x="302" y="499" point_x="194" point_y="257"/>
+	        </column>
+	    </template>
+	    <template name="upgrade_scheme_spas12">
+	        <column>
+	            <cell x="0" y="34" point_x="462" point_y="295"/>
+	            <cell x="0" y="177" point_x="66" point_y="281"/>
+	            <cell x="0" y="321" point_x="104" point_y="274"/>
+	            <cell x="0" y="464" point_x="142" point_y="281"/>
+	        </column>
+	        <column>
+	            <cell x="151" y="0" point_x="500" point_y="302"/>
+	            <cell x="151" y="69" point_x="566" point_y="309"/>
+	            <cell x="151" y="143" point_x="66" point_y="309"/>
+	            <cell x="151" y="212" point_x="57" point_y="295"/>
+	            <cell x="151" y="287" point_x="311" point_y="302"/>
+	            <cell x="151" y="356" point_x="208" point_y="288"/>
+	        </column>
+	        <column>
+	            <cell x="302" y="0" point_x="396" point_y="295"/>
+	            <cell x="302" y="69" point_x="547" point_y="302"/>
+	            <cell x="302" y="287" point_x="123" point_y="281"/>
+	            <cell x="302" y="356" point_x="132" point_y="267"/>
+	        </column>
+	    </template>
+	    <template name="upgrade_scheme_svd">
+	        <column>
+	            <cell x="0" y="34" point_x="292" point_y="309"/>
+	            <cell x="0" y="177" point_x="462" point_y="274"/>
+	            <cell x="0" y="321" point_x="57" point_y="330"/>
+	        </column>
+	        <column>
+	            <cell x="151" y="0" point_x="292" point_y="260"/>
+	            <cell x="151" y="69" point_x="245" point_y="260"/>
+	            <cell x="151" y="143" point_x="500" point_y="274"/>
+	            <cell x="151" y="212" point_x="547" point_y="274"/>
+	            <cell x="151" y="321" point_x="179" point_y="267"/>
+	        </column>
+	        <column>
+	            <cell x="302" y="0" point_x="302" point_y="281"/>
+	            <cell x="302" y="69" point_x="283" point_y="295"/>
+	            <cell x="302" y="321" point_x="236" point_y="281"/>
+	        </column>
+	    </template>
+	    <template name="upgrade_scheme_svu">
+	        <column>
+	            <cell x="0" y="34" point_x="245" point_y="309"/>
+	            <cell x="0" y="177" point_x="311" point_y="295"/>
+	            <cell x="0" y="321" point_x="38" point_y="281"/>
+	            <cell x="0" y="464" point_x="142" point_y="253"/>
+	        </column>
+	        <column>
+	            <cell x="151" y="34" point_x="85" point_y="295"/>
+	            <cell x="151" y="143" point_x="472" point_y="316"/>
+	            <cell x="151" y="212" point_x="387" point_y="309"/>
+	            <cell x="151" y="321" point_x="94" point_y="267"/>
+	        </column>
+	        <column>
+	            <cell x="302" y="0" point_x="113" point_y="288"/>
+	            <cell x="302" y="69" point_x="170" point_y="281"/>
+	            <cell x="302" y="143" point_x="519" point_y="316"/>
+	            <cell x="302" y="212" point_x="425" point_y="309"/>
+	        </column>
+	    </template>
+	    <template name="upgrade_scheme_toz34">
+	        <column>
+	            <cell x="0" y="34" point_x="406" point_y="295"/>
+	            <cell x="0" y="177" point_x="75" point_y="274"/>
+	            <cell x="0" y="321" point_x="160" point_y="253"/>
+	        </column>
+	        <column>
+	            <cell x="151" y="0" point_x="462" point_y="309"/>
+	            <cell x="151" y="69" point_x="462" point_y="309"/>
+	            <cell x="151" y="143" point_x="123" point_y="274"/>
+	            <cell x="151" y="212" point_x="57" point_y="253"/>
+	            <cell x="151" y="321" point_x="151" point_y="274"/>
+	        </column>
+	        <column>
+	            <cell x="302" y="0" point_x="160" point_y="232"/>
+	            <cell x="302" y="69" point_x="566" point_y="323"/>
+	            <cell x="302" y="287" point_x="179" point_y="246"/>
+	            <cell x="302" y="356" point_x="160" point_y="232"/>
+	        </column>
+	    </template>
+	    <template name="upgrade_scheme_usp">
+	        <column>
+	            <cell x="0" y="34" point_x="132" point_y="239"/>
+	            <cell x="0" y="177" point_x="236" point_y="239"/>
+	            <cell x="0" y="321" point_x="123" point_y="253"/>
+	            <cell x="0" y="464" point_x="189" point_y="288"/>
+	            <cell x="0" y="575" point_x="113" point_y="359"/>
+	        </column>
+	        <column>
+	            <cell x="151" y="0" point_x="104" point_y="232"/>
+	            <cell x="151" y="69" point_x="160" point_y="239"/>
+	            <cell x="151" y="143" point_x="264" point_y="246"/>
+	            <cell x="151" y="212" point_x="302" point_y="246"/>
+	            <cell x="151" y="287" point_x="94" point_y="309"/>
+	            <cell x="151" y="356" point_x="104" point_y="281"/>
+	            <cell x="151" y="464" point_x="160" point_y="267"/>
+	        </column>
+	        <column>
+	            <cell x="302" y="34" point_x="94" point_y="260"/>
+	            <cell x="302" y="177" point_x="208" point_y="239"/>
+	            <cell x="302" y="321" point_x="75" point_y="267"/>
+	            <cell x="302" y="464" point_x="75" point_y="239"/>
+	        </column>
+	    </template>
+	    <template name="upgrade_scheme_val">
+	        <column>
+	            <cell x="0" y="34" point_x="213" point_y="277"/>
+	            <cell x="0" y="177" point_x="94" point_y="280"/>
+	            <cell x="0" y="321" point_x="198" point_y="269"/>
+	            <cell x="0" y="464" point_x="175" point_y="273"/>
+	            <cell x="0" y="575" point_x="258" point_y="456"/>
+	        </column>
+	        <column>
+	            <cell x="151" y="0" point_x="198" point_y="267"/>
+	            <cell x="151" y="69" point_x="564" point_y="301"/>
+	            <cell x="151" y="177" point_x="38" point_y="287"/>
+	            <cell x="151" y="287" point_x="215" point_y="278"/>
+	            <cell x="151" y="356" point_x="258" point_y="271"/>
+	            <cell x="151" y="464" point_x="198" point_y="267"/>
+	        </column>
+	        <column>
+	            <cell x="302" y="0" point_x="238" point_y="281"/>
+	            <cell x="302" y="69" point_x="230" point_y="264"/>
+	            <cell x="302" y="143" point_x="198" point_y="267"/>
+	            <cell x="302" y="212" point_x="215" point_y="278"/>
+	            <cell x="302" y="287" point_x="268" point_y="287"/>
+	            <cell x="302" y="356" point_x="238" point_y="281"/>
+	            <cell x="302" y="430" point_x="232" point_y="264"/>
+	            <cell x="302" y="499" point_x="257" point_y="271"/>
+	        </column>
+	    </template>
+	    <template name="upgrade_scheme_vintorez">
+	        <column>
+	            <cell x="0" y="34" point_x="217" point_y="288"/>
+	            <cell x="0" y="177" point_x="245" point_y="281"/>
+	            <cell x="0" y="321" point_x="160" point_y="295"/>
+	            <cell x="0" y="464" point_x="160" point_y="253"/>
+	        </column>
+	        <column>
+	            <cell x="151" y="0" point_x="198" point_y="281"/>
+	            <cell x="151" y="69" point_x="198" point_y="281"/>
+	            <cell x="151" y="143" point_x="179" point_y="281"/>
+	            <cell x="151" y="212" point_x="179" point_y="281"/>
+	            <cell x="151" y="321" point_x="47" point_y="302"/>
+	            <cell x="151" y="464" point_x="311" point_y="260"/>
+	        </column>
+	        <column>
+	            <cell x="302" y="0" point_x="189" point_y="295"/>
+	            <cell x="302" y="69" point_x="189" point_y="295"/>
+	            <cell x="302" y="177" point_x="264" point_y="288"/>
+	            <cell x="302" y="287" point_x="170" point_y="309"/>
+	            <cell x="302" y="356" point_x="160" point_y="288"/>
+	            <cell x="302" y="430" point_x="236" point_y="253"/>
+	            <cell x="302" y="496" point_x="236" point_y="253"/>
+	        </column>
+	    </template>
+	    <template name="upgrade_scheme_walther">
+	        <column>
+	            <cell x="0" y="34" point_x="142" point_y="232"/>
+	            <cell x="0" y="177" point_x="292" point_y="246"/>
+	            <cell x="0" y="321" point_x="160" point_y="253"/>
+	            <cell x="0" y="464" point_x="208" point_y="288"/>
+ 	            <cell x="0" y="575" point_x="425" point_y="260"/>
+	        </column>
+	        <column>
+	            <cell x="151" y="0" point_x="85" point_y="225"/>
+	            <cell x="151" y="69" point_x="236" point_y="239"/>
+	            <cell x="151" y="177" point_x="330" point_y="246"/>
+	            <cell x="151" y="287" point_x="113" point_y="316"/>
+	            <cell x="151" y="356" point_x="113" point_y="281"/>
+	            <cell x="151" y="464" point_x="189" point_y="267"/>
+	        </column>
+	        <column>
+	            <cell x="302" y="34" point_x="123" point_y="253"/>
+	            <cell x="302" y="143" point_x="264" point_y="105"/>
+	            <cell x="302" y="212" point_x="264" point_y="105"/>
+	        </column>
+	    </template>
+	    <template name="upgrade_scheme_wincheaster1300">
+	        <column>
+	            <cell x="0" y="34" point_x="434" point_y="288"/>
+	            <cell x="0" y="177" point_x="57" point_y="281"/>
+	            <cell x="0" y="321" point_x="85" point_y="281"/>
+	        </column>
+	        <column>
+	            <cell x="151" y="0" point_x="500" point_y="295"/>
+	            <cell x="151" y="69" point_x="500" point_y="295"/>
+	            <cell x="151" y="143" point_x="57" point_y="309"/>
+	            <cell x="151" y="212" point_x="123" point_y="267"/>
+	            <cell x="151" y="287" point_x="208" point_y="288"/>
+	            <cell x="151" y="356" point_x="75" point_y="267"/>
+	        </column>
+	        <column>
+	            <cell x="302" y="34" point_x="217" point_y="267"/>
+	            <cell x="302" y="177" point_x="189" point_y="267"/>
+	            <cell x="302" y="287" point_x="94" point_y="267"/>
+	            <cell x="302" y="356" point_x="132" point_y="281"/>
+	        </column>
+	    </template>
+	    <template name="upgrade_scheme_wincheaster1300_new">
+	        <column>
+	            <cell x="0" y="34" point_x="434" point_y="288"/>
+	            <cell x="0" y="177" point_x="57" point_y="281"/>
+	            <cell x="0" y="321" point_x="85" point_y="281"/>
+	        </column>
+	        <column>
+	            <cell x="151" y="0" point_x="500" point_y="295"/>
+	            <cell x="151" y="69" point_x="500" point_y="295"/>
+	            <cell x="151" y="143" point_x="57" point_y="309"/>
+	            <cell x="151" y="212" point_x="123" point_y="267"/>
+	            <cell x="151" y="287" point_x="208" point_y="288"/>
+	            <cell x="151" y="356" point_x="75" point_y="267"/>
+	        </column>
+	        <column>
+	            <cell x="302" y="34" point_x="217" point_y="267"/>
+	            <cell x="302" y="177" point_x="189" point_y="267"/>
+	            <cell x="302" y="287" point_x="94" point_y="267"/>
+	            <cell x="302" y="356" point_x="132" point_y="281"/>
+	        </column>
+	    </template>
+	</templates>
+</w>
