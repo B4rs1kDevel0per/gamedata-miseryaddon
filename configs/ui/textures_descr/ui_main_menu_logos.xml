@@ -4,6 +4,6 @@
 		<texture id="ui_mainmenu_logo_pol" x="0" y="0" width="432" height="163" />
 		<texture id="ui_mainmenu_logo_rus" x="0" y="163" width="432" height="163" />
 		<texture id="ui_mainmenu_logo_ukr" x="0" y="326" width="432" height="163" />
-		<texture id="ui_mainmenu_logo_por_br" x="0" y="0" width="432" height="163"
+		<texture id="ui_mainmenu_logo_por_br" x="0" y="0" width="432" height="163" />
 	</file>
 </w>
