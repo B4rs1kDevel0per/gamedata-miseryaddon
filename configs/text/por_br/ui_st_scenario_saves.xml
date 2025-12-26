@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="windows-1251" ?>
+<string_table>
+	<string id="st_save_uni_travel_generic">
+		<text>movendo-se dentro de uma area</text>
+	</string>
+	<string id="st_save_uni_travel_zat_to_jup">
+		<text>movendo-se de Zaton para Yanov</text>
+	</string>
+	<string id="st_save_uni_travel_zat_to_pri">
+		<text>movendo-se de Zaton para Pripyat</text>
+	</string>
+	<string id="st_save_uni_travel_jup_to_zat">
+		<text>movendo-se de Yanov para Zaton</text>
+	</string>
+	<string id="st_save_uni_travel_jup_to_pri">
+		<text>movendo-se de Yanov para Pripyat</text>
+	</string>
+	<string id="st_save_uni_travel_pri_to_zat">
+		<text>movendo-se de Pripyat para Zaton</text>
+	</string>
+	<string id="st_save_uni_travel_pri_to_jup">
+		<text>movendo-se de Pripyat para Yanov</text>
+	</string>
+	<string id="st_save_uni_pri_to_labx8">
+		<text>movendo-se de Pripyat para X8</text>
+	</string>
+	<string id="st_save_uni_labx8_to_pri">
+		<text>movendo-se de X8 para Pripyat</text>
+	</string>
+	<string id="st_save_uni_surge_start">
+		<text>emissao</text>
+	</string>
+	<string id="st_save_zat_a1_game_start">
+		<text>inicio do jogo</text>
+	</string>
+	<string id="st_save_zat_a2_reached_skadovsk">
+		<text>chegada ao Skadovsk</text>
+	</string>
+	<string id="st_save_jup_b9_searched_heli_1">
+		<text>Stingray 1 examinado</text>
+	</string>
+	<string id="st_save_zat_b100_searched_heli_2">
+		<text>Stingray 2 examinado</text>
+	</string>
+	<string id="st_save_zat_b28_searched_heli_3">
+		<text>Stingray 3 examinado</text>
+	</string>
+	<string id="st_save_jup_b8_searched_heli_4">
+		<text>Stingray 4 examinado</text>
+	</string>
+	<string id="st_save_zat_b101_searched_heli_5">
+		<text>Stingray 5 examinado</text>
+	</string>
+	<string id="st_save_zat_b18_noah_showed_teleport">
+		<text>chegando ao plato</text>
+	</string>
+	<string id="st_save_jup_b217_arrived_to_jup">
+		<text>chegada a Yanov</text>
+	</string>
+	<string id="st_save_jup_a9_got_underpass_docs">
+		<text>caminho para Pripyat encontrado</text>
+	</string>
+	<string id="st_save_jup_b15_drunk_with_zulu">
+		<text>Zulu se junta ao esquadrao</text>
+	</string>
+	<string id="st_save_jup_a10_gonna_return_debt">
+		<text>divida de Vano paga</text>
+	</string>
+	<string id="st_save_jup_b218_vano_in_squad">
+		<text>Vano se junta ao esquadrao</text>
+	</string>
+	<string id="st_save_jup_b206_got_anomalous_plant">
+		<text>planta anomala coletada</text>
+	</string>
+	<string id="st_save_jup_b218_sokolov_in_squad">
+		<text>Sokolov se junta ao esquadrao</text>
+	</string>
+	<string id="st_save_jup_b218_strider_in_squad">
+		<text>Strider se junta ao esquadrao</text>
+	</string>
+	<string id="st_save_jup_b218_travel_jup_to_pas">
+		<text>esquadrao montado</text>
+	</string>
+	<string id="st_save_pas_b400_underpass_start">
+		<text>chegada na passagem subterranea</text>
+	</string>
+	<string id="st_save_uni_travel_pas_to_pri">
+		<text>chegada a Pripyat</text>
+	</string>
+	<string id="st_save_pri_a16_arrived_to_pri">
+		<text>forcas militares localizadas</text>
+	</string>
+	<string id="st_save_pri_a17_hospital_start">
+		<text>arma nao identificada capturada</text>
+	</string>
+	<string id="st_save_pri_a20_found_dead_recon">
+		<text>esquadrao de reconhecimento encontrado</text>
+	</string>
+	<string id="st_save_pri_a18_met_reinforcement">
+		<text>reforcos chegaram</text>
+	</string>
+	<string id="st_save_pri_a18_searched_antenna">
+		<text>“antena” examinada</text>
+	</string>
+	<string id="st_save_pri_a21_approached_mad_sentry">
+		<text>sentinela desaparecido encontrado</text>
+	</string>
+	<string id="st_save_pri_a21_killed_controller">
+		<text>controlador perto da sentinela morto</text>
+	</string>
+	<string id="st_save_zat_a23_entered_test_center">
+		<text>oficina de testes acessada</text>
+	</string>
+	<string id="st_save_zat_a23_got_gauss_docs">
+		<text>documentacao do rifle Gauss encontrada</text>
+	</string>
+	<string id="st_save_pri_a22_found_dead_squad">
+		<text>combatente morto encontrado</text>
+	</string>
+	<string id="st_save_pri_a25_gonna_place_explosive">
+		<text>entrada para o jardim de infancia</text>
+	</string>
+	<string id="st_save_pri_a25_freed_medic">
+		<text>medico militar resgatado</text>
+	</string>
+	<string id="st_save_pri_a28_talked_with_ssu">
+		<text>comunicacoes estabelecidas com a Sede</text>
+	</string>
+	<string id="st_save_pri_a28_evacutaion_start">
+		<text>evacuacao de Pripyat iniciada</text>
+	</string>
+	<string id="st_save_pri_a28_evacuation_end">
+		<text>helicopteros de evacuacao alcancados</text>
+	</string>
+	<string id="st_save_uni_zone_to_reality">
+		<text>evacuacao completa</text>
+	</string>
+	<string id="st_save_jup_b209_placed_mutant_scanner">
+		<text>detector de mutantes</text>
+	</string>
+	<string id="st_save_jup_a12_gave_artefact_for_hostage">
+		<text>resgate pago por refem</text>
+	</string>
+	<string id="st_save_jup_a12_met_with_liberators">
+		<text>refem libertado</text>
+	</string>
+	<string id="st_save_jup_b6_arrived_to_ash_heap">
+		<text>medicoes da anomalia de Ash Heap</text>
+	</string>
+	<string id="st_save_jup_b6_arrived_to_fen">
+		<text>medicoes da anomalia de Plavni</text>
+	</string>
+	<string id="st_save_zat_b38_met_with_grouse">
+		<text>covil do bloodsucker</text>
+	</string>
+	<string id="st_save_jup_b19_arrived_to_kopachy">
+		<text>enviado a Kopachy</text>
+	</string>
+	<string id="st_save_zat_b40_warned_by_mercs">
+		<text>aproximacao da estacao de processamento de residuos</text>
+	</string>
+	<string id="st_save_zat_b7_met_with_robbers">
+		<text>stalker atingido</text>
+	</string>
+	<string id="st_save_zat_b33_got_container">
+		<text>conteiner encontrado no esconderijo</text>
+	</string>
+	<string id="st_save_zat_b106_arrived_to_chimera_lair">
+		<text>cacando a quimera</text>
+	</string>
+	<string id="st_save_jup_b16_passed_labyrinth">
+		<text>Oasis encontrado</text>
+	</string>
+	<string id="st_save_pri_b35_ready_to_snipe">
+		<text>Operacao One Shot iniciada</text>
+	</string>
+	<string id="st_save_jup_b1_entered_railroad_tunnel">
+		<text>busca pela fonte da emissao psy</text>
+	</string>
+	<string id="st_save_jup_b47_got_admin_docs">
+		<text>documentos administrativos</text>
+	</string>
+	<string id="st_save_zat_b103_warned_by_mercs">
+		<text>aproximacao da oficina da subestacao</text>
+	</string>
+	<string id="st_save_zat_b5_met_with_others">
+		<text>negocio na estacao dos guardas-florestais</text>
+	</string>
+	<string id="st_save_jup_b207_arrived_to_duty_depot">
+		<text>deposito da Duty</text>
+	</string>
+	<string id="st_save_zat_b14_got_altered_wheel">
+		<text>fonte de brilho estranho encontrada</text>
+	</string>
+	<string id="st_save_pri_b301_arrived_to_help_zulu">
+		<text>Zulu encontrado</text>
+	</string>
+	<string id="st_save_zat_b42_arrived_to_controler_lair">
+		<text>caverna perigosa</text>
+	</string>
+	<string id="st_save_pri_a28_evacuation_heli">
+		<text>decolagem do helicoptero de evacuacao</text>
+	</string>
+	<string id="st_save_after_sleep">
+		<text>apos o sono</text>
+	</string>
+</string_table>

@@ -168,7 +168,7 @@
     <rank>30</rank>
     <reputation>0</reputation>
 	<money min="500" max="1500" infinitive="0"/>
-    <visual>actors\stalker_bandit\stalker_bandit_1</visual>
+    <visual>actors\stalker_dolg\stalker_dolg_rookie</visual>
     <supplies>
 #include "gameplay\character_items.xml"
 #include "gameplay\character_food.xml"
@@ -187,7 +187,7 @@
     <rank>30</rank>
     <reputation>0</reputation>
 	<money min="500" max="1500" infinitive="0"/>
-    <visual>actors\stalker_bandit\stalker_bandit_1_face_1</visual>
+    <visual>actors\stalker_dolg\stalker_dolg_rookie</visual>
     <supplies>
 #include "gameplay\character_items.xml"
 #include "gameplay\character_food.xml"
@@ -206,7 +206,7 @@
     <rank>30</rank>
     <reputation>0</reputation>
 	<money min="500" max="1500" infinitive="0"/>
-    <visual>actors\stalker_bandit\stalker_bandit_1</visual>
+    <visual>actors\stalker_dolg\stalker_dolg_rookie</visual>
     <supplies>
 #include "gameplay\character_items.xml"
 #include "gameplay\character_food.xml"
@@ -225,7 +225,7 @@
     <rank>30</rank>
     <reputation>0</reputation>
 	<money min="500" max="1500" infinitive="0"/>
-    <visual>actors\stalker_bandit\stalker_bandit_1_face_1</visual>
+    <visual>actors\stalker_dolg\stalker_dolg_rookie</visual>
     <supplies>
 #include "gameplay\character_items.xml"
 #include "gameplay\character_food.xml"

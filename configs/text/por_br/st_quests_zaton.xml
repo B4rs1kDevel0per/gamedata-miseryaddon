@@ -1,0 +1,780 @@
+<?xml version="1.0" encoding="windows-1251" ?>
+<string_table>
+	<string id="zat_a2_reach_base_name">
+        <text>Local seguro: chegar a Skadovsk</text>
+    </string>
+    <string id="zat_a2_reach_base_text">
+        <text>Os unicos lugares relativamente seguros na Zona sao grandes acampamentos. O mais proximo e Skadovsk - e para la que voce deve ir.</text>
+    </string>
+    <string id="zat_b100_guide_maps_01_name">
+        <text>Mapas da area: encontrar alguem interessado nos mapas</text>
+    </string>
+    <string id="zat_b100_guide_maps_02_name">
+        <text>Mapas da area: oferecer os mapas ao Piloto</text>
+    </string>
+    <string id="zat_b100_guide_maps_02_text">
+        <text>E possivel que Piloto, o guia local, possa se interessar por mapas da area entre Zaton e Jupiter.</text>
+    </string>
+    <string id="zat_b100_heli_2_crash_name">
+        <text>Stingray 2: investigar o local do acidente</text>
+    </string>
+    <string id="zat_b100_heli_2_crash_text">
+        <text>Investigar o local do acidente do Stingray 2.</text>
+    </string>
+    <string id="zat_b101_heli_5_crash_name">
+        <text>Stingray 5: investigar o local do acidente</text>
+    </string>
+    <string id="zat_b101_heli_5_crash_name_02">
+        <text>Stingray 5: encontrar a razao para a queima eletronica</text>
+    </string>
+    <string id="zat_b101_heli_5_crash_name_03">
+        <text>Esquadrao Stingray: encontrar a fonte das cargas que atingiram os dois helicopteros</text>
+    </string>
+    <string id="zat_b101_heli_5_crash_text">
+        <text>Investigar o local do acidente do Stingray 5.</text>
+    </string>
+    <string id="zat_b101_heli_5_crash_text_02">
+        <text>Voce deve encontrar a fonte da poderosa carga eletrica que atingiu o helicoptero Stingray 5.</text>
+    </string>
+    <string id="zat_b101_heli_5_crash_text_03">
+        <text>Voce deve descobrir o que causou a queima dos eletronicos nos Stingray 4 e 5. Parece que eles foram atingidos por poderosas cargas eletricas.</text>
+    </string>
+    <string id="zat_b103_merc_bring_supplies_name">
+        <text>Comida: pegar comida para os mercenarios</text>
+    </string>
+    <string id="zat_b103_merc_bring_supplies_text">
+        <text>O esquadrao mercenario nas oficinas da subestacao te pediu para trazer-lhes seis latas de carne, pedacos de salsicha ou pao.</text>
+    </string>
+    <string id="zat_b103_merc_supplies_got_name">
+        <text>Comida: levar a comida para os mercenarios</text>
+    </string>
+    <string id="zat_b103_merc_supplies_got_text">
+        <text>Voce deve levar a comida que coletou para os mercenarios nas oficinas da subestacao.</text>
+    </string>
+    <string id="zat_b103_toolkit_2_substation_workshop_name">
+        <text>Ferramentas: investigar as oficinas da subestacao</text>
+    </string>
+    <string id="zat_b103_toolkit_2_substation_workshop_text">
+        <text>Dizem que pode haver ferramentas nas oficinas da subestacao. Voce pode ate encontrar as que o tecnico esta procurando.</text>
+    </string>
+    <string id="zat_b106_find_chimera_name">
+        <text>Cacando a quimera: encontrar o mutante enquanto ele esta dormindo</text>
+    </string>
+    <string id="zat_b106_find_chimera_text">
+        <text>Voce precisa encontrar a quimera antes que ela acorde.</text>
+    </string>
+    <string id="zat_b106_found_soroka_name">
+        <text>Em busca de Pega: informar Gonta</text>
+    </string>
+    <string id="zat_b106_found_soroka_text">
+        <text>Parece que Pega, o stalker que entregou o esquadrao de Gonta, foi encontrado. Ele se juntou a Freedom e agora se autodenomina Flint.</text>
+    </string>
+    <string id="zat_b106_kill_chimera_name">
+        <text>Cacando a quimera: matar o mutante</text>
+    </string>
+    <string id="zat_b106_kill_chimera_text">
+        <text>A quimera esta acordada e voce deve mata-la antes que seja tarde demais.</text>
+    </string>
+    <string id="zat_b106_meet_with_gonta_at_night_name">
+        <text>Cacando a quimera: encontrar Gonta no bar as 3 da manha</text>
+    </string>
+    <string id="zat_b106_meet_with_gonta_at_night_text">
+        <text>Voce deve encontrar Gonta antes do nascer do sol para se juntar ao seu esquadrao na caca a quimera.</text>
+    </string>
+    <string id="zat_b106_receipt_reward_name">
+        <text>Cacando a quimera: informar Trapper</text>
+    </string>
+    <string id="zat_b106_receipt_reward_text">
+        <text>Voce deve informar a um stalker chamado Trapper que a caca a quimera foi bem-sucedida. Ele deve te dar uma recompensa.</text>
+    </string>
+    <string id="zat_b106_search_soroka_name">
+        <text>Em busca de Pega: encontrar o stalker</text>
+    </string>
+    <string id="zat_b106_search_soroka_text">
+        <text>Um stalker chamado Pega entregou o esquadrao de Gonta para ser atacado por uma quimera. Eles te pediram para encontrar o bastardo.</text>
+    </string>
+    <string id="zat_b107_evacuation_jupiter_name">
+        <text>Locais de evacuacao: investigar a posicao B205</text>
+    </string>
+    <string id="zat_b107_evacuation_jupiter_text">
+        <text>O mapa que voce encontrou em um dos helicopteros indicava locais de evacuacao. Voce deve verificar se os soldados foram para o local B205</text>
+    </string>
+    <string id="zat_b107_evacuation_pripyat_1_name">
+        <text>Locais de evacuacao: investigar a posicao B28</text>
+    </string>
+    <string id="zat_b107_evacuation_pripyat_1_text">
+        <text>O mapa que voce encontrou em um dos helicopteros indicava locais de evacuacao. Voce deve verificar se os soldados foram para o local B28</text>
+    </string>
+    <string id="zat_b107_evacuation_pripyat_2_name">
+        <text>Local de evacuacao: encontrar as coordenadas do local B28</text>
+    </string>
+    <string id="zat_b107_evacuation_pripyat_2_text">
+        <text>A caixa preta de um dos helicopteros Stingray tinha uma gravacao onde o comandante do esquadrao designa uma posicao na qual o esquadrao deve convergir. Esta posicao e o ponto de evacuacao B28 e voce precisa descobrir suas coordenadas.</text>
+    </string>
+    <string id="zat_b107_evacuation_pripyat_3_name">
+        <text>Local de evacuacao: chegar ao local B28</text>
+    </string>
+    <string id="zat_b107_evacuation_pripyat_3_text">
+        <text>A posicao na qual os soldados devem convergir fica em Pripyat. Encontre uma maneira de chegar la.</text>
+    </string>
+    <string id="zat_b107_evacuation_zaton_name">
+        <text>Locais de evacuacao: investigar a posicao B2</text>
+    </string>
+    <string id="zat_b107_evacuation_zaton_text">
+        <text>O mapa que voce encontrou em um dos helicopteros indicava locais de evacuacao. Voce deve verificar se os soldados foram para o local B2</text>
+    </string>
+    <string id="zat_b14_bring_strange_object_name">
+        <text>Fenomeno estranho: levar o artefato para Beard</text>
+    </string>
+    <string id="zat_b14_bring_strange_object_text">
+        <text>A fonte do brilho estranho era um artefato igualmente estranho. Com certeza sera de interesse para Beard.</text>
+    </string>
+    <string id="zat_b14_learn_about_strange_occurrence_by_stalkers_name">
+        <text>Fenomeno estranho: perguntar aos stalkers sobre o artefato</text>
+    </string>
+    <string id="zat_b14_learn_about_strange_occurrence_by_stalkers_text">
+        <text>Stalkers podem saber algo sobre o artefato estranho ou podem sugerir alguem que saiba. Voce deve falar com eles.</text>
+    </string>
+    <string id="zat_b14_learn_about_strange_occurrence_name">
+        <text>Fenomeno estranho: encontrar a fonte do brilho na estacao de dragagem</text>
+    </string>
+    <string id="zat_b14_learn_about_strange_occurrence_text">
+        <text>Um brilho estranho foi avistado na estacao de dragagem. Beard te pediu para encontrar a fonte.</text>
+    </string>
+    <string id="zat_b14_take_artefact_name">
+        <text>Fenomeno estranho: pegar o artefato</text>
+    </string>
+    <string id="zat_b14_take_artefact_text">
+        <text>A fonte do brilho estranho era um artefato igualmente estranho. Voce deve pega-lo.</text>
+    </string>
+    <string id="zat_b14_tell_svyaznoy_about_all_name">
+        <text>Fenomeno estranho: contar a Beard sobre o artefato</text>
+    </string>
+    <string id="zat_b14_tell_svyaznoy_about_all_text">
+        <text>A fonte do brilho estranho era um artefato igualmente estranho. Mesmo que voce nao tenha o artefato, voce deve contar a Beard sobre ele.</text>
+    </string>
+    <string id="zat_b20_cross_the_teleport_name">
+        <text>Chegando ao plato: pular na anomalia</text>
+    </string>
+    <string id="zat_b20_cross_the_teleport_text">
+        <text>Parece que o caminho para o plato e atraves da anomalia. Voce precisa pular nela.</text>
+    </string>
+    <string id="zat_b20_find_the_teleport_name">
+        <text>Chegando ao plato: encontrar o caminho secreto de Noah</text>
+    </string>
+    <string id="zat_b20_find_the_teleport_text">
+        <text>O PDA de Noah mencionou seu proprio "caminho secreto" para o plato. Voce precisa encontra-lo.</text>
+    </string>
+    <string id="zat_b20_plato_talk_to_noah_name">
+        <text>Chegando ao plato: descobrir como chegar la com Noah</text>
+    </string>
+    <string id="zat_b20_plato_talk_to_noah_text">
+        <text>Dizem que um stalker chamado Noah conhece um caminho para o plato. Voce precisa descobrir como chegar la.</text>
+    </string>
+    <string id="zat_b22_bring_proof_name">
+        <text>Stalkers desaparecidos: trazer de volta a prova do envolvimento de Tremor</text>
+    </string>
+    <string id="zat_b22_bring_proof_text">
+        <text>Voce precisa levar o PDA com as gravacoes de Tremor para Skadovsk e mostra-lo a Beard. As gravacoes deixam claro que o medico foi o responsavel pelos desaparecimentos dos stalkers.</text>
+    </string>
+    <string id="zat_b22_find_proof_name">
+        <text>Stalkers desaparecidos: encontrar a prova do envolvimento de Tremor</text>
+    </string>
+    <string id="zat_b22_find_proof_text">
+        <text>Voce precisa verificar se Tremor deixou alguma evidencia de seu envolvimento nos desaparecimentos dos stalkers.</text>
+    </string>
+    <string id="zat_b28_heli_3_crash_name">
+        <text>Stingray 3: investigar o local do acidente</text>
+    </string>
+    <string id="zat_b28_heli_3_crash_text">
+        <text>Investigar o local do acidente do Stingray 3.</text>
+    </string>
+    <string id="zat_b29_simple_bring_text_1">
+        <text>Voce precisa trazer o artefato para Beard, mas o tempo de vantagem expirou. Agora seus concorrentes tambem estao procurando o artefato.</text>
+    </string>
+    <string id="zat_b29_simple_bring_text_2">
+        <text>Voce precisa trazer o artefato para Beard. Lembre-se: seus concorrentes tambem estao procurando por ele.</text>
+    </string>
+    <string id="zat_b29_simple_bring_text_3">
+        <text>Voce precisa trazer o artefato para Beard, mas ha um relatorio de que outro grupo ja encontrou um. Voce deve rastrear o sinal e tentar completar o trabalho antes que seus concorrentes o facam.</text>
+    </string>
+    <string id="zat_b29_simple_bring_text_4">
+        <text>Voce precisa trazer o artefato para Beard, mas outro grupo ja fez isso. Agora voce so recebera metade da sua taxa pelo artefato.</text>
+    </string>
+    <string id="zat_b29_simple_bring_text_5">
+        <text>Voce precisa trazer o artefato para Beard.</text>
+    </string>
+    <string id="zat_b29_simple_bring_title_16">
+        <text>Pedido de artefato: trazer de volta um Gravi</text>
+    </string>
+    <string id="zat_b29_simple_bring_title_17">
+        <text>Pedido de artefato: trazer de volta um Olho</text>
+    </string>
+    <string id="zat_b29_simple_bring_title_18">
+        <text>Pedido de artefato: trazer de volta uma Bolha</text>
+    </string>
+    <string id="zat_b29_simple_bring_title_19">
+        <text>Pedido de artefato: trazer de volta uma Concha</text>
+    </string>
+    <string id="zat_b29_simple_bring_title_20">
+        <text>Pedido de artefato: trazer de volta um Peixe Dourado</text>
+    </string>
+    <string id="zat_b29_simple_bring_title_21">
+        <text>Pedido de artefato: trazer de volta uma Chama</text>
+    </string>
+    <string id="zat_b29_simple_bring_title_22">
+        <text>Pedido de artefato: trazer de volta um Vagalume</text>
+    </string>
+    <string id="zat_b29_simple_bring_title_23">
+        <text>Pedido de artefato: trazer de volta um Floco de Neve</text>
+    </string>
+    <string id="zat_b29_simple_find_text_1">
+        <text>Voce precisa encontrar o artefato para Beard, mas o tempo de vantagem expirou. Agora seus concorrentes tambem estao procurando o artefato.</text>
+    </string>
+    <string id="zat_b29_simple_find_text_2">
+        <text>Voce precisa encontrar o artefato para Beard. Lembre-se: seus concorrentes tambem estao procurando por ele.</text>
+    </string>
+    <string id="zat_b29_simple_find_text_3">
+        <text>Voce precisa encontrar o artefato para Beard, mas ha um relatorio de que outro grupo ja encontrou um. Voce deve rastrear o sinal e tentar completar o trabalho antes que seus concorrentes o facam.</text>
+    </string>
+    <string id="zat_b29_simple_find_text_4">
+        <text>Voce precisa encontrar o artefato para Beard, mas outro grupo ja completou o pedido. Agora voce so recebera metade da sua taxa pelo artefato.</text>
+    </string>
+    <string id="zat_b29_simple_find_text_5">
+        <text>Voce precisa encontrar o artefato para Beard.</text>
+    </string>
+    <string id="zat_b29_simple_find_title_16">
+        <text>Pedido de artefato: encontrar um Gravi</text>
+    </string>
+    <string id="zat_b29_simple_find_title_17">
+        <text>Pedido de artefato: encontrar um Olho</text>
+    </string>
+    <string id="zat_b29_simple_find_title_18">
+        <text>Pedido de artefato: encontrar uma Bolha</text>
+    </string>
+    <string id="zat_b29_simple_find_title_19">
+        <text>Pedido de artefato: encontrar uma Concha</text>
+    </string>
+    <string id="zat_b29_simple_find_title_20">
+        <text>Pedido de artefato: encontrar um Peixe Dourado</text>
+    </string>
+    <string id="zat_b29_simple_find_title_21">
+        <text>Pedido de artefato: encontrar uma Chama</text>
+    </string>
+    <string id="zat_b29_simple_find_title_22">
+        <text>Pedido de artefato: encontrar um Vagalume</text>
+    </string>
+    <string id="zat_b29_simple_find_title_23">
+        <text>Pedido de artefato: encontrar um Floco de Neve</text>
+    </string>
+    <string id="zat_b30_compass_to_barmen_task_find_name">
+        <text>Bussola: localizar Noah e descobrir onde voce pode obter o artefato raro</text>
+    </string>
+    <string id="zat_b30_compass_to_barmen_task_find_text">
+        <text>Voce precisa localizar Noah na velha barca e descobrir onde voce pode obter o raro artefato Bussola. Beard tem procurado pelo artefato por um longo tempo e ele esta disposto a pagar bem por ele.</text>
+    </string>
+    <string id="zat_b30_compass_to_barmen_task_give_name">
+        <text>Bussola: levar o artefato para Beard</text>
+    </string>
+    <string id="zat_b30_compass_to_sultan_task_find_name">
+        <text>Bussola: descobrir onde voce pode obter o artefato raro com Noah</text>
+    </string>
+    <string id="zat_b30_compass_to_sultan_task_find_text">
+        <text>Sultan quer interceptar o artefato que Beard esta procurando. Voce precisa localizar Noah na velha barca e descobrir onde voce pode obter o artefato.</text>
+    </string>
+    <string id="zat_b30_compass_to_sultan_task_give_name">
+        <text>Bussola: levar o artefato para Sultan</text>
+    </string>
+    <string id="zat_b30_compass_to_sultan_task_give_text">
+        <text>O artefato que Noah te deu e a Bussola que Sultan esta procurando.</text>
+    </string>
+    <string id="zat_b30_percent_task_name">
+        <text>Negocio obscuro: pegar sua parte com Beard</text>
+    </string>
+    <string id="zat_b30_percent_task_text">
+        <text>Voce deve pegar sua parte da receita de Beard com ele.</text>
+    </string>
+    <string id="zat_b30_sultan_task_1_name">
+        <text>Negocio tentador: falar com Sultan</text>
+    </string>
+    <string id="zat_b30_sultan_task_1_text">
+        <text>Owl, o comerciante, acredita que Beard nao esta cumprindo o acordo e sugere que voce entre em contato com Sultan, o chefe do crime local, para obter ajuda.</text>
+    </string>
+    <string id="zat_b30_sultan_task_2_name">
+        <text>Negocio obscuro: pegar detectores dos stalkers</text>
+    </string>
+    <string id="zat_b30_sultan_task_2_text">
+        <text>Voce deve fazer o que puder para tirar os prototipos de detector dos stalkers que estao procurando por artefatos para Beard. Se ele nao tiver detectores, ele tera que concordar com os termos de Sultan.</text>
+    </string>
+    <string id="zat_b30_sultan_task_3_name">
+        <text>Negocio obscuro: falar com Sultan</text>
+    </string>
+	<string id="zat_b30_sultan_task_3_text">
+        <text>Beard nao tem os detectores, entao voce deve falar com Sultan para descobrir se ele resolveu o problema com os outros fornecedores de Beard.</text>
+    </string>
+    <string id="zat_b30_sultan_task_4_name">
+        <text>Negocio obscuro: forcar Beard a trabalhar para Sultan</text>
+    </string>
+    <string id="zat_b30_sultan_task_4_text">
+        <text>Agora que Beard nao tem mais fornecedores ou detectores, ele nao pode fazer nada sozinho - force-o a trabalhar para Sultan.</text>
+    </string>
+    <string id="zat_b30_sultan_task_6_name">
+        <text>Negocio obscuro: descobrir sobre os negocios atuais de Beard</text>
+    </string>
+    <string id="zat_b30_sultan_task_6_text">
+        <text>Voce precisa descobrir em que negocio Beard esta envolvido no momento. Isso ajudara a cortar seus canais de fornecimento.</text>
+    </string>
+    <string id="zat_b30_sultan_task_7_name">
+        <text>Negocio obscuro: pegar o segundo detector dos stalkers</text>
+    </string>
+    <string id="zat_b30_sultan_task_7_text">
+        <text>Voce deve fazer o que puder para tirar os prototipos de detector dos stalkers que estao procurando por artefatos para Beard. Se ele nao tiver detectores, ele tera que concordar com os termos de Sultan.</text>
+    </string>
+    <string id="zat_b30_task_1_name">
+        <text>Negocio tentador: trazer para Novikov tres detectores Veles</text>
+    </string>
+    <string id="zat_b30_task_1_text">
+        <text>Owl, o comerciante, te ofereceu para participar de um empreendimento lucrativo. Seu trabalho e encontrar tres detectores Veles e leva-los para Novikov no bunker dos cientistas.</text>
+    </string>
+    <string id="zat_b30_task_2_name">
+        <text>Negocio tentador: esperar ate que Owl receba os detectores</text>
+    </string>
+    <string id="zat_b30_task_2_text">
+        <text>Novikov aceitou os detectores e prometeu envia-los de volta para Owl ele mesmo. Voce precisa esperar que ele termine de trabalhar com os detectores e depois descobrir os resultados com Owl.</text>
+    </string>
+    <string id="zat_b30_task_3_name">
+        <text>Negocio tentador: falar com Owl</text>
+    </string>
+    <string id="zat_b30_task_3_text">
+        <text>Owl, o comerciante, te contatou pelo radio para te dizer que ele esta tendo problemas e que ele quer te ver.</text>
+    </string>
+    <string id="zat_b30_task_4_name">
+        <text>Negocio tentador: convencer Beard a manter o acordo</text>
+    </string>
+    <string id="zat_b30_task_4_text">
+        <text>Owl, o comerciante, acredita que Beard nao esta cumprindo o acordo. Voce precisa falar com ele e convence-lo a parar de violar o acordo.</text>
+    </string>
+    <string id="zat_b30_task_5_name">
+        <text>Negocio tentador: exigir uma parte de Owl</text>
+    </string>
+    <string id="zat_b30_task_5_text">
+        <text>Beard acredita que nao deve nada a Owl - voce precisa descobrir quem esta certo e exigir sua parte dessa pessoa.</text>
+    </string>
+    <string id="zat_b33_zaporojec_text_01">
+        <text>Snag te pediu para trazer o conteiner dele. Ele o escondeu em um antigo carro Zaporozhets, que caiu em uma fenda apos um terremoto. Snag tem medo de descer la porque esta cheio de snorks.</text>
+    </string>
+    <string id="zat_b33_zaporojec_text_02">
+        <text>Voce tem o conteiner de Snag e agora deve leva-lo de volta ao dono para dividir o conteudo de forma justa.</text>
+    </string>
+    <string id="zat_b38_den_of_the_bloodsucker_inform_stalkers_name">
+        <text>Toca do bloodsucker: avisar os stalkers</text>
+    </string>
+    <string id="zat_b38_den_of_the_bloodsucker_inform_stalkers_text">
+        <text>Voce precisa informar os stalkers sobre a toca do bloodsucker sob o complexo de antenas Krug.</text>
+    </string>
+    <string id="zat_b38_den_of_the_bloodsucker_tell_barman_about_all_name">
+        <text>Toca do bloodsucker: avisar a Beard</text>
+    </string>
+    <string id="zat_b38_den_of_the_bloodsucker_tell_barman_about_all_text">
+        <text>Voce deve contar a Beard sobre a toca do bloodsucker encontrada debaixo do complexo de antenas Krug para que ele possa decidir como proteger os stalkers.</text>
+    </string>
+    <string id="zat_b38_disappearance_stalkers_clean_den_of_the_bloodsucker_name">
+        <text>Stalkers desaparecidos: seguir Grouse</text>
+    </string>
+    <string id="zat_b38_disappearance_stalkers_clean_den_of_the_bloodsucker_text">
+        <text>Grouse te pediu para investigar o predio abandonado do complexo de antenas com ele. Ele avistou bloodsuckers e quer verificar se o cacador esta la.</text>
+    </string>
+    <string id="zat_b38_disappearance_stalkers_deal_with_medic_name">
+        <text>Stalkers desaparecidos: descobrir o que aconteceu</text>
+    </string>
+    <string id="zat_b38_disappearance_stalkers_deal_with_medic_text">
+        <text>Parece que Tremor nao e tao inocente quanto parecia. Voce precisa descobrir o que aconteceu.</text>
+    </string>
+    <string id="zat_b38_disappearance_stalkers_find_cop_near_port_krans_name">
+        <text>Stalkers desaparecidos: encontrar Grouse</text>
+    </string>
+    <string id="zat_b38_disappearance_stalkers_find_cop_near_port_krans_text">
+        <text>Grouse foi em direcao aos guindastes do cais por algum motivo - talvez ele tenha descoberto algo sobre os stalkers desaparecidos, entao voce deve procura-lo la.</text>
+    </string>
+    <string id="zat_b38_disappearance_stalkers_find_out_where_is_cop_name">
+        <text>Stalkers desaparecidos: descobrir onde Grouse esta</text>
+    </string>
+    <string id="zat_b38_disappearance_stalkers_find_out_where_is_cop_text">
+        <text>Grouse nao esta onde ele normalmente esta. Voce deve perguntar a Beard onde ele foi.</text>
+    </string>
+    <string id="zat_b38_disappearance_stalkers_find_to_be_missing_hunter_name">
+        <text>Stalkers desaparecidos: encontrar o cacador desaparecido</text>
+    </string>
+    <string id="zat_b38_disappearance_stalkers_find_to_be_missing_hunter_text">
+        <text>Grouse te pediu para ajudar a encontrar o cacador desaparecido. O cacador deveria encontrar a toca do bloodsucker. De acordo com as informacoes atuais, sao os bloodsuckers os responsaveis pelos recentes desaparecimentos de stalkers.</text>
+    </string>
+    <string id="zat_b38_disappearance_stalkers_get_out_from_den_of_the_bloodsucker_name">
+        <text>Stalkers desaparecidos: sair da toca do bloodsucker</text>
+    </string>
+    <string id="zat_b38_disappearance_stalkers_get_out_from_den_of_the_bloodsucker_text">
+        <text>Voce descobriu uma toca de bloodsucker no porao e que seus residentes estao em algum tipo de transe. Voce deve sair daqui e fazer isso em silencio.</text>
+    </string>
+    <string id="zat_b38_disappearance_stalkers_meet_cop_24h_past_name">
+        <text>Stalkers desaparecidos: encontrar Grouse</text>
+    </string>
+    <string id="zat_b38_disappearance_stalkers_meet_cop_24h_past_text">
+        <text>Voce provavelmente deveria encontrar Grouse e discutir a busca pelo cacador desaparecido.</text>
+    </string>
+    <string id="zat_b38_disappearance_stalkers_meet_cop_later_name">
+        <text>Stalkers desaparecidos: encontrar Grouse mais tarde</text>
+    </string>
+    <string id="zat_b38_disappearance_stalkers_meet_cop_later_text">
+        <text>Nao havia vestigios de Danila, o cacador, no predio do complexo de antenas. No entanto, Grouse parece estar perplexo com o que voce encontrou la dentro e ele te pediu para se encontrarem mais tarde para discutir o assunto com mais detalhes.</text>
+    </string>
+    <string id="zat_b38_disappearance_stalkers_meet_ment_name">
+        <text>Stalkers desaparecidos: encontrar Grouse</text>
+    </string>
+    <string id="zat_b38_disappearance_stalkers_meet_ment_text">
+        <text>O local que Grouse indicou tinha um bloodsucker morto e nenhum sinal de Danila, o cacador. No entanto, parece que Grouse encontrou algo interessante e ele esta te pedindo para se juntar a ele.</text>
+    </string>
+    <string id="zat_b38_disappearance_stalkers_tell_barmen_about_medic_text">
+        <text>Acontece que os bloodsuckers nao tinham nada a ver com os desaparecimentos de stalkers - foi Tremor, o medico de Skadovsk.</text>
+    </string>
+    <string id="zat_b3_get_tools_1_2_name">
+        <text>Ferramentas: trazer ferramentas para Cardan</text>
+    </string>
+    <string id="zat_b3_get_tools_1_2_text">
+        <text>Cardan te pediu para pegar dois conjuntos de ferramentas: um para trabalho basico e um para trabalho fino. O tecnico te pagara pelas ferramentas e podera realizar modificacoes mais avancadas em armas e armaduras.</text>
+    </string>
+    <string id="zat_b3_get_tools_1_3_name">
+        <text>Ferramentas: trazer ferramentas para Cardan</text>
+    </string>
+    <string id="zat_b3_get_tools_1_3_text">
+        <text>Cardan te pediu para pegar dois conjuntos de ferramentas: um para trabalho basico e um para calibracao. O tecnico te pagara pelas ferramentas e podera realizar modificacoes mais avancadas em armas e armaduras.</text>
+    </string>
+    <string id="zat_b3_get_tools_1_name">
+        <text>Ferramentas: trazer ferramentas para Cardan</text>
+    </string>
+    <string id="zat_b3_get_tools_1_text">
+        <text>Cardan te pediu para pegar um conjunto de ferramentas para trabalho basico. O tecnico te pagara pelas ferramentas e podera realizar modificacoes mais avancadas em armas e armaduras.</text>
+    </string>
+    <string id="zat_b3_get_tools_2_3_name">
+        <text>Ferramentas: trazer ferramentas para Cardan</text>
+    </string>
+    <string id="zat_b3_get_tools_2_3_text">
+        <text>Cardan te pediu para pegar dois conjuntos de ferramentas: um para trabalho fino e um para calibracao. O tecnico te pagara pelas ferramentas e podera realizar modificacoes mais avancadas em armas e armaduras.</text>
+    </string>
+    <string id="zat_b3_get_tools_2_name">
+        <text>Ferramentas: trazer ferramentas para Cardan</text>
+    </string>
+    <string id="zat_b3_get_tools_2_text">
+        <text>Cardan te pediu para pegar um conjunto de ferramentas para trabalho fino. O tecnico te pagara pelas ferramentas e podera realizar modificacoes mais avancadas em armas e armaduras.</text>
+    </string>
+    <string id="zat_b3_get_tools_3_name">
+        <text>Ferramentas: trazer ferramentas para Cardan</text>
+    </string>
+    <string id="zat_b3_get_tools_3_text">
+        <text>Cardan te pediu para pegar um conjunto de ferramentas para calibracao. O tecnico te pagara pelas ferramentas e podera realizar modificacoes mais avancadas em armas e armaduras.</text>
+    </string>
+    <string id="zat_b3_mechanic_toolkit_search_name">
+        <text>Ferramentas: trazer ferramentas para Cardan</text>
+    </string>
+    <string id="zat_b3_mechanic_toolkit_search_text">
+        <text>Cardan te pediu para pegar tres conjuntos de ferramentas: um para trabalho basico, um para trabalho fino e um para calibracao. O tecnico te pagara pelas ferramentas e podera realizar modificacoes mais avancadas em armas e armaduras.</text>
+    </string>
+    <string id="zat_b40_reconnoitre_merc_camp_01_name">
+        <text>Acampamento mercenario: pegar qualquer informacao que voce possa encontrar</text>
+    </string>
+    <string id="zat_b40_reconnoitre_merc_camp_01_text">
+        <text>Owl, o comerciante, prometeu um bom pagamento por qualquer midia que voce possa encontrar no acampamento mercenario na estacao de processamento de residuos. Ele esta interessado nos planos dos mercenarios.</text>
+    </string>
+    <string id="zat_b40_reconnoitre_merc_camp_02_name">
+        <text>Acampamento mercenario: pegar qualquer informacao que voce possa encontrar</text>
+    </string>
+    <string id="zat_b40_reconnoitre_merc_camp_02_text">
+        <text>Owl, o comerciante, prometeu um bom pagamento por qualquer midia que voce possa encontrar no acampamento mercenario na estacao de processamento de residuos. Ele esta interessado nos planos dos mercenarios.</text>
+    </string>
+    <string id="zat_b44_tech_buddies_barge_name">
+        <text>Tres camaradas: descobrir o destino de Barge</text>
+    </string>
+    <string id="zat_b44_tech_buddies_barge_text">
+        <text>Cardan te pediu para transmitir suas desculpas ao seu camarada, um stalker chamado Barge. Eles tiveram uma discussao e Barge partiu em uma direcao desconhecida.</text>
+    </string>
+    <string id="zat_b44_tech_buddies_both_name">
+        <text>Tres camaradas: descobrir o destino de Barge e Joker</text>
+    </string>
+    <string id="zat_b44_tech_buddies_both_text">
+        <text>Cardan te pediu para transmitir suas desculpas aos seus camaradas, stalkers chamados Barge e Joker. Eles tiveram uma discussao e seus camaradas partiram em uma direcao desconhecida.</text>
+    </string>
+    <string id="zat_b44_tech_buddies_joker_name">
+        <text>Tres camaradas: descobrir o destino de Joker</text>
+    </string>
+    <string id="zat_b44_tech_buddies_joker_text">
+        <text>Cardan te pediu para transmitir suas desculpas ao seu camarada, um stalker chamado Joker. Eles tiveram uma discussao e Joker partiu em uma direcao desconhecida.</text>
+    </string>
+    <string id="zat_b51_nimble_items_get_order_name">
+        <text>Pedido especial: coletar os bens</text>
+    </string>
+    <string id="zat_b51_nimble_items_get_order_text">
+        <text>Os bens foram entregues - hora de coleta-los de Nimble.</text>
+    </string>
+    <string id="zat_b51_nimble_items_wait_order_name">
+        <text>Pedido especial: esperar pela entrega</text>
+    </string>
+    <string id="zat_b51_nimble_items_wait_order_text">
+        <text>O pedido foi feito, entao agora voce deve esperar Nimble pegar os bens.</text>
+    </string>
+    <string id="zat_b52_reputation_find_snag_name">
+        <text>Reputacao: encontrar Snag</text>
+    </string>
+    <string id="zat_b52_reputation_find_snag_text">
+        <text>Voce precisa encontrar Snag e forca-lo a manter a boca fechada. Nimble nunca negociou com bens roubados, enquanto Snag parece desonesto com mais frequencia. Ele foi visto pela ultima vez nos guindastes do cais, entao ele ainda pode estar la.</text>
+    </string>
+    <string id="zat_b52_reputation_find_snag_text_2">
+        <text>Voce precisa encontrar Snag e forca-lo a manter a boca fechada. Snag nao esta nos guindastes do cais, mas os bandidos podem saber onde ele esta.</text>
+    </string>
+    <string id="zat_b52_reputation_find_snag_text_3">
+        <text>Voce precisa encontrar Snag e forca-lo a manter a boca fechada. Parece que os bandidos estao envolvidos nisso, entao eles devem saber onde procura-lo.</text>
+    </string>
+    <string id="zat_b52_reputation_find_snag_text_4">
+        <text>Voce precisa encontrar Snag e forca-lo a manter a boca fechada. Nao ha pistas sobre seu paradeiro no momento.</text>
+    </string>
+    <string id="zat_b52_reputation_find_snag_text_5">
+        <text>Voce precisa encontrar Snag e forca-lo a manter a boca fechada. A julgar pelo PDA encontrado em um dos bandidos, o povo de Sultan esta procurando por Snag. Infelizmente, nao ha pistas sobre onde ele pode ser encontrado.</text>
+    </string>
+    <string id="zat_b52_reputation_know_there_snog_name">
+        <text>Reputacao: descobrir para onde Snag desapareceu</text>
+    </string>
+    <string id="zat_b52_reputation_know_there_snog_text">
+        <text>Snag nao esta onde costumava estar, entao voce deve perguntar aos moradores se eles viram para onde ele foi.</text>
+    </string>
+    <string id="zat_b52_reputation_know_there_snog_text_2">
+        <text>Voce precisa encontrar Snag e forca-lo a manter a boca fechada. Ele nao esta onde costumava estar. Talvez Sultan saiba onde Snag esta.</text>
+    </string>
+    <string id="zat_b52_reputation_know_there_snog_text_3">
+        <text>Voce precisa encontrar Snag e forca-lo a manter a boca fechada. Ele nao esta onde costumava estar. Talvez Beard saiba onde Snag esta.</text>
+    </string>
+    <string id="zat_b52_reputation_tell_snag_name">
+        <text>Reputacao: falar com Snag</text>
+    </string>
+    <string id="zat_b52_reputation_tell_snag_text">
+        <text>Voce precisa encontrar Snag e forca-lo a manter a boca fechada. Nimble nunca negociou com bens roubados, enquanto Snag parece desonesto com mais frequencia.</text>
+    </string>
+    <string id="zat_b57_den_of_the_bloodsucker_destroy_lair_name">
+        <text>Toca do bloodsucker: encontrar o duto de ventilacao</text>
+    </string>
+    <string id="zat_b57_den_of_the_bloodsucker_destroy_lair_text">
+        <text>Encontre o duto de ventilacao para encher a toca do bloodsucker com gas venenoso.</text>
+    </string>
+    <string id="zat_b57_den_of_the_bloodsucker_find_gas_name">
+        <text>Toca do bloodsucker: encontrar gas venenoso</text>
+    </string>
+    <string id="zat_b57_den_of_the_bloodsucker_find_gas_text">
+        <text>Voce precisara de gas venenoso para destruir a toca do bloodsucker. Owl deve saber onde voce pode conseguir um pouco.</text>
+    </string>
+    <string id="zat_b57_den_of_the_bloodsucker_find_gas_text_2">
+        <text>Voce precisara de gas venenoso para destruir a toca do bloodsucker. Owl afirma que voce encontrara os recipientes de gas no comboio militar deserto.</text>
+    </string>
+    <string id="zat_b57_den_of_the_bloodsucker_get_gas_name">
+        <text>Toca do bloodsucker: encontrar as chaves para o conteiner</text>
+    </string>
+    <string id="zat_b57_den_of_the_bloodsucker_get_gas_text">
+        <text>Os documentos que voce encontrou mencionam chaves para o conteiner do recipiente de gas. Voce precisa encontra-las.</text>
+    </string>
+    <string id="zat_b57_den_of_the_bloodsucker_open_gas_box_name">
+        <text>Toca do bloodsucker: encontrar uma maneira de abrir o conteiner do recipiente de gas</text>
+    </string>
+    <string id="zat_b57_den_of_the_bloodsucker_open_gas_box_text">
+        <text>O conteiner com o recipiente de gas esta trancado. Voce precisa encontrar uma maneira de abri-lo.</text>
+    </string>
+    <string id="zat_b57_den_of_the_bloodsucker_place_gas_name">
+        <text>Toca do bloodsucker: posicionar o recipiente de gas</text>
+    </string>
+    <string id="zat_b57_den_of_the_bloodsucker_place_gas_text">
+        <text>Posicione o recipiente de gas no sistema de ventilacao do porao do complexo de antenas. O gas deve entrar pelo duto de ventilacao e encher o porao, matando os bloodsuckers.</text>
+    </string>
+    <string id="zat_b57_den_of_the_bloodsucker_tell_stalkers_about_destroy_lair_name">
+        <text>Toca do bloodsucker: informar a Beard que a toca foi destruida</text>
+    </string>
+    <string id="zat_b57_den_of_the_bloodsucker_tell_stalkers_about_destroy_lair_text">
+        <text>Informe a Beard que voce destruiu a toca do bloodsucker, garantindo a seguranca dos stalkers de Skadovsk.</text>
+    </string>
+    <string id="zat_b57_den_of_the_bloodsucker_twist_vintil_name">
+        <text>Toca do bloodsucker: girar a valvula</text>
+    </string>
+    <string id="zat_b57_den_of_the_bloodsucker_twist_vintil_text">
+        <text>Gire a valvula para permitir que o gas venenoso encha o porao com a toca do bloodsucker pelo duto de ventilacao.</text>
+    </string>
+    <string id="zat_b57_den_of_the_bloodsucker_wait_destroy_name">
+        <text>Toca do bloodsucker: esperar ate que o gas faca efeito</text>
+    </string>
+    <string id="zat_b57_den_of_the_bloodsucker_wait_destroy_text">
+        <text>Voce precisa ter certeza de que o gas encheu a toca e que os bloodsuckers estao mortos.</text>
+    </string>
+    <string id="zat_b5_come_to_bandits_name">
+        <text>Transacao: encontrar os bandidos na estacao de guarda florestal</text>
+    </string>
+    <string id="zat_b5_come_to_bandits_text">
+        <text>Sultan te pediu para participar de uma transacao com um comerciante. Voce precisa acompanhar o pessoal dele e protege-los caso algo aconteca.</text>
+    </string>
+	<string id="zat_b5_come_to_dealer_name">
+        <text> Transacao: encontrar o comerciante</text>
+    </string>
+    <string id="zat_b5_come_to_dealer_text">
+        <text>Owl te ofereceu um trabalho - proteger um comerciante durante uma transacao. Claramente, a transacao e obscura e pode nao correr muito bem.</text>
+    </string>
+    <string id="zat_b5_come_to_stalkers_name">
+        <text> Transacao: encontrar os stalkers na estacao de guarda florestal</text>
+    </string>
+    <string id="zat_b5_come_to_stalkers_text">
+        <text>Encontre os stalkers na estacao de guarda florestal e ajude-os a interromper a transacao entre os bandidos e o comerciante de armas.</text>
+    </string>
+    <string id="zat_b5_cover_dealer_name">
+        <text>Transacao: proteger o comerciante</text>
+    </string>
+    <string id="zat_b5_cover_dealer_text">
+        <text>O comerciante explicou seu trabalho - protege-lo durante a transacao.</text>
+    </string>
+    <string id="zat_b5_intercept_talking_name">
+        <text>Transacao: escutar a conversa</text>
+    </string>
+    <string id="zat_b5_intercept_talking_text">
+        <text>Os stalkers querem ouvir a conversa entre os bandidos e o comerciante de armas.</text>
+    </string>
+    <string id="zat_b5_kill_dealer_name">
+        <text>Transacao: interromper a venda de armas</text>
+    </string>
+    <string id="zat_b5_kill_dealer_text">
+        <text>Faca o que for preciso para interromper a transacao entre os bandidos e o comerciante.</text>
+    </string>
+    <string id="zat_b5_kill_stalkers_name">
+        <text>Transacao: eliminar testemunhas</text>
+    </string>
+    <string id="zat_b5_kill_stalkers_text">
+        <text>A transacao do comerciante nao deu certo, entao voce precisa eliminar todas as testemunhas.</text>
+    </string>
+    <string id="zat_b5_protect_dealer_name">
+        <text>Transacao: proteger o comerciante</text>
+    </string>
+    <string id="zat_b5_protect_dealer_text">
+        <text>Voce precisa proteger o comerciante. Alem disso, ele te ordenou para eliminar todas as testemunhas da transacao, incluindo seus clientes.</text>
+    </string>
+    <string id="zat_b5_search_body_name">
+        <text>Transacao: revistar o comerciante</text>
+    </string>
+    <string id="zat_b5_search_body_text">
+        <text>O comerciante pode ter informacoes importantes que podem ser uteis mais tarde. Voce deve pega-las.</text>
+    </string>
+    <string id="zat_b5_secure_bandits_name">
+        <text>Transacao: proteger os bandidos durante a transacao</text>
+    </string>
+    <string id="zat_b5_secure_bandits_text">
+        <text>Fique alerta e proteja os bandidos enquanto eles estao negociando com o comerciante.</text>
+    </string>
+    <string id="zat_b5_speak_dealer_name">
+        <text>Transacao: falar com o comerciante</text>
+    </string>
+    <string id="zat_b5_speak_dealer_text">
+        <text>A transacao com os bandidos esta completa, entao voce deve coletar sua recompensa.</text>
+    </string>
+    <string id="zat_b5_talk_barmen_name">
+        <text>Transacao: coletar sua recompensa de Beard</text>
+    </string>
+    <string id="zat_b5_talk_barmen_text">
+        <text>Beard te prometeu uma recompensa se voce interrompesse a transacao entre os bandidos e o comerciante. Com a transacao completamente estragada, voce pode ir e coletar sua recompensa.</text>
+    </string>
+    <string id="zat_b5_talk_to_sultan_name">
+        <text>Transacao: falar com o lider dos bandidos</text>
+    </string>
+    <string id="zat_b5_talk_to_sultan_text">
+        <text>Voce precisa informar o lider dos bandidos que esta pronto para participar da transacao.</text>
+    </string>
+    <string id="zat_b7_stalkers_raiders_name">
+        <text>O ataque: decidir o que fazer</text>
+    </string>
+    <string id="zat_b7_stalkers_raiders_raiders_name">
+        <text>O ataque: atacar os stalkers</text>
+    </string>
+    <string id="zat_b7_stalkers_raiders_stalkers_reward_name">
+        <text>O ataque: coletar sua recompensa</text>
+    </string>
+    <string id="zat_b7_stalkers_raiders_stalkers_reward_text">
+        <text>O ataque ao acampamento foi repelido, entao voce pode falar com os stalkers para pegar sua recompensa. Eles provavelmente teriam tido um tempo muito dificil se nao tivessem sido avisados sobre o ataque.</text>
+    </string>
+    <string id="zat_b7_stalkers_raiders_text">
+        <text>Um grupo de stalkers se transformou em uma existencia de bandidos, roubando seu proprio tipo. Voce precisa decidir se quer participar do assalto deles, avisar os stalkers ou nao se envolver.</text>
+    </string>
+    <string id="zat_b7_stalkers_raiders_wait_name">
+        <text>O ataque: esperar o horario combinado</text>
+    </string>
+    <string id="zat_b7_stalkers_raiders_time_name">
+        <text>O ataque: esperar o momento certo</text>
+    </string>
+    <string id="zat_b33_zaporojec_name">
+        <text>Esconderijo inacessivel: levar o conteiner para Snag</text>
+    </string>
+    <string id="zat_b5_talk_stalkers_name">
+        <text>Transacao: falar com o lider do esquadrao stalker</text>
+    </string>
+    <string id="zat_b5_talk_stalkers_text">
+        <text>A transacao foi sabotada, o comerciante de armas esta morto. Fale com o lider do esquadrao stalker.</text>
+    </string>
+    <string id="zat_b38_disappearance_stalkers_tell_barmen_about_medic_name">
+        <text>Stalkers desaparecidos: contar ao pessoal de Skadovsk o que aconteceu</text>
+    </string>
+    <string id="zat_b57_den_of_the_bloodsucker_open_container_text">
+        <text>Voce precisa abrir o conteiner usando as chaves que encontrou e tirar o tanque de gas venenoso.</text>
+    </string>
+    <string id="zat_b57_den_of_the_bloodsucker_open_container_name">
+        <text>Toca do bloodsucker: tirar o tanque de gas do conteiner</text>
+    </string>
+    <string id="zat_b7_stalkers_raiders_backstab_name">
+        <text>O ataque: atacar os ladroes</text>
+    </string>
+    <string id="zat_b7_stalkers_raiders_backstab_text">
+        <text>Atacar os ladroes por tras ajudara os stalkers a repelir o ataque deles.</text>
+    </string>
+    <string id="zat_b7_stalkers_raiders_meet_name">
+        <text>O ataque: encontrar os ladroes</text>
+    </string>
+    <string id="zat_b7_stalkers_raiders_raiders_text">
+        <text>Junte-se aos ladroes para atacar o acampamento stalker.</text>
+    </string>
+    <string id="zat_b7_stalkers_raiders_stalkers_name">
+        <text>O ataque: juntar-se aos ladroes</text>
+    </string>
+    <string id="zat_b7_stalkers_raiders_stalkers_text">
+        <text>Stalkers te pediram para ajuda-los a repelir o ataque dos ladroes. Voce deve se juntar aos ladroes. Quando eles comecarem o assalto, voce podera ataca-los por tras com impunidade.</text>
+    </string>
+    <string id="zat_b7_stalkers_raiders_meet_text">
+        <text>Os ladroes devem estar esperando perto de Shevchenko. Voce precisara encontra-los para participar do assalto ao acampamento stalker.</text>
+    </string>
+    <string id="zat_b7_stalkers_raiders_wait_text">
+        <text>Espere pelo encontro com os ladroes. Eles querem atacar o acampamento stalker depois da meia-noite, enquanto ainda esta escuro. O local de encontro combinado e Shevchenko.</text>
+    </string>
+    <string id="zat_b7_stalkers_raiders_raiders_reward_name">
+        <text>O ataque: pegar sua parte</text>
+    </string>
+    <string id="zat_b7_stalkers_raiders_raiders_reward_text">
+        <text>O ataque aos stalkers foi bem-sucedido e voce deve pegar sua parte do saque.</text>
+    </string>
+    <string id="zat_b7_stalkers_raiders_time_text">
+        <text>Espere o momento certo em que os ladroes estao distraidos pelo ataque. Voce pode entao ataca-los por tras para ajudar os stalkers de Shevchenko.</text>
+    </string>
+    <string id="zat_b30_sultan_task_8_name">
+        <text>Negocio obscuro: comecar a trabalhar para Beard</text>
+    </string>
+    <string id="zat_b30_sultan_task_8_text">
+        <text>Para tirar os prototipos de detector dos stalkers que trabalham para Beard, voce precisa se misturar a eles. Isso permitira que voce descubra onde estao seus concorrentes.</text>
+    </string>
+    <string id="zat_b33_zaporojec_text_03">
+        <text>Voce precisa pegar o conteiner e entrega-lo ao dono.</text>
+    </string>
+    <string id="zat_b100_guide_maps_01_text">
+        <text>O computador de bordo do Stingray 2 tinha mapas da area entre Zaton e Jupiter. Voce deve encontrar alguem que possa usa-los.</text>
+    </string>
+    <string id="zat_b20_ask_a_stalkers_name">
+        <text>Chegando ao plato: falar com os stalkers</text>
+    </string>
+    <string id="zat_b20_ask_a_stalkers_text">
+        <text>Parece que nao ha um caminho direto para o plato. Pergunte aos stalkers locais sobre outras maneiras de chegar la.</text>
+    </string>
+    <string id="zat_b30_compass_to_barmen_task_give_text">
+        <text>O artefato que voce pegou de Noah e a Bussola que Beard quer.</text>
+    </string>
+</string_table>

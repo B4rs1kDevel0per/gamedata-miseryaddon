@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="windows-1251" ?>
+<string_table>
+	<string id="zat_b12_conteiner_full_locked">
+		<text>O conteiner esta trancado. Duas chaves sao necessarias para abri-lo.</text>
+	</string>
+	<string id="zat_b12_conteiner_has_one_key">
+		<text>Usar chave ($$ACTION_USE$$)</text>
+	</string>
+	<string id="zat_b12_conteiner_has_two_key">
+		<text>Usar chaves ($$ACTION_USE$$)</text>
+	</string>
+	<string id="zat_b12_conteiner_locked">
+		<text>O conteiner esta trancado. Voce precisa da segunda chave para abri-lo.</text>
+	</string>
+	<string id="zat_b12_conteiner_open">
+		<text>Abrir conteiner ($$ACTION_USE$$)</text>
+	</string>
+	<string id="zat_b14_door_locked_hint">
+		<text>O mecanismo da porta foi bloqueado por dentro.</text>
+	</string>
+	<string id="zat_b57_balon_use_hint">
+		<text>Conectar tanque de gas ($$ACTION_USE$$)</text>
+	</string>
+	<string id="zat_b57_gas_warning">
+		<text>Atencao! Perigo quimico!</text>
+	</string>
+	<string id="zat_b57_vintil_press">
+		<text>Girar valvula ($$ACTION_USE$$)</text>
+	</string>
+	<string id="zat_b33_car_searching_tip">
+		<text>Procurar carro ($$ACTION_USE$$)</text>
+	</string>
+	<string id="jup_b10_ufo_searching_tips">
+		<text>Procurar aeronave ($$ACTION_USE$$)</text>
+	</string>
+	<string id="jup_b1_bar_door">
+		<text>Porta emperrada</text>
+	</string>
+	<string id="jup_b1_door_is_closed">
+		<text>A porta esta trancada por dentro</text>
+	</string>
+	<string id="jup_b202_treasures_closed">
+		<text>Cofre trancado</text>
+	</string>
+	<string id="jup_b205_tip_door_closed">
+		<text>Codigo necessario</text>
+	</string>
+	<string id="jup_b205_tip_door_decode">
+		<text>Digitar codigo ($$ACTION_USE$$)</text>
+	</string>
+	<string id="jup_b206_use_plant">
+		<text>Pegar planta ($$ACTION_USE$$)</text>
+	</string>
+	<string id="jup_b209_scanner_place_tips">
+		<text>Configurar scanner ($$ACTION_USE$$)</text>
+	</string>
+	<string id="jup_b209_scanner_remove_tips">
+		<text>Pegar scanner ($$ACTION_USE$$)</text>
+	</string>
+	<string id="st_jup_b41_door_locked">
+		<text>Voce deve esperar o cais se tornar hermetico</text>
+	</string>
+	<string id="pas_b400_tip_switcher">
+		<text>Ativar interruptor ($$ACTION_USE$$)</text>
+	</string>
+	<string id="pri_a18_use_idol">
+		<text>Examinar dispositivo ($$ACTION_USE$$)</text>
+	</string>
+	<string id="pri_a25_blow_up_enter_door">
+		<text>Plantar explosivos ($$ACTION_USE$$)</text>
+	</string>
+	<string id="pri_a28_talk_with_stupid_medic">
+		<text>Recuperar ($$ACTION_USE$$)</text>
+	</string>
+	<string id="pri_b306_elevator_door_locked_used">
+		<text>Elevador sem energia</text>
+	</string>
+	<string id="pri_b306_generator_use">
+		<text>Ativar gerador ($$ACTION_USE$$)</text>
+	</string>
+	<string id="st_pri_b306_go_down">
+		<text>Pegar o elevador para baixo ($$ACTION_USE$$)</text>
+	</string>
+	<string id="st_lx8_button_press_true">
+		<text>Acesso concedido</text>
+	</string>
+	<string id="st_lx8_lift_button">
+		<text>Pegar o elevador para cima ($$ACTION_USE$$)</text>
+	</string>
+	<string id="lx8_raduga">
+		<text>Supressor de agressao Arco-Iris\nmodelo de complexo de emissoes externas\nescala 1:20</text>
+	</string>
+
+	<string id="st_resupply_ready">
+		<text>Voce pode reabastecer suprimentos medicos e municao visitando o Tenente Rogovets e o Tenente Kirillov.</text>
+	</string>
+	<string id="st_freeplay_text_ok">
+		<text>Voce nao conseguiu chegar aos helicopteros e a equipe de evacuacao deixou a Zona sem voce.</text>
+	</string>
+	<string id="st_freeplay_text_yes_no">
+		<text>Voce esta pronto para deixar a Zona? Nao ha como voltar atras.</text>
+	</string>
+	<string id="st_gameover_sub">
+		<text>UM DOS JOGADORES MORREU</text>
+	</string>
+	<string id="st_gameover_load_after">
+		<text>CARREGANDO ULTIMO SALVAMENTO EM:</text>
+	</string>
+	<string id="st_game_over_uppercase">
+		<text>FIM DE JOGO</text>
+	</string>
+	<string id="st_zat_b57_gas_timer">
+		<text>A PULVERIZACAO DE GAS TERMINA EM</text>
+	</string>
+		<string id="st_pri_a28_helis_leave_timer">
+		<text>HELICOPTEROS PARTINDO</text>
+	</string>
+	
+	<string id="st_ach_balance_advocate">
+		<text>Voce alcancou a conquista Homem do Equilibrio.</text>
+	</string>
+	<string id="st_ach_battle_systems_master">
+		<text>YVoce alcancou a conquista Mestre em Sistemas de Armas.</text>
+	</string>
+	<string id="st_ach_detective">
+		<text>Voce alcancou a conquista Detetive.</text>
+	</string>
+	<string id="st_ach_diplomat">
+		<text>Voce alcancou a conquista Diplomata.</text>
+	</string>
+	<string id="st_ach_friend_of_duty">
+		<text>Voce alcancou a conquista Amigo da Duty.</text>
+	</string>
+	<string id="st_ach_friend_of_freedom">
+		<text>Voce alcancou a conquista Amigo da Freedom.</text>
+	</string>
+	<string id="st_ach_friend_of_stalkers">
+		<text>Voce alcancou a conquista Amigo dos Stalkers.</text>
+	</string>
+	<string id="st_ach_herald_of_justice">
+		<text>Voce alcancou a conquista Mensageiro da Justica.</text>
+	</string>
+	<string id="st_ach_high_tech_master">
+		<text>Voce alcancou a conquista Especialista em Alta Tecnologia.</text>
+	</string>
+	<string id="st_ach_information_dealer">
+		<text>Voce alcancou a conquista Traficante de Informacoes.</text>
+	</string>
+	<string id="st_ach_keeper_of_secrets">
+		<text>Voce alcancou a conquista Guardiao dos Segredos.</text>
+	</string>
+	<string id="st_ach_kingpin">
+		<text>Voce alcancou a conquista Chefe.</text>
+	</string>
+	<string id="st_ach_leader">
+		<text>Voce alcancou a conquista Lider.</text>
+	</string>
+	<string id="st_ach_mutant_hunter">
+		<text>Voce alcancou a conquista Cacador de Mutantes.</text>
+	</string>
+	<string id="st_ach_one_of_the_lads">
+		<text>Voce alcancou a conquista Um dos Nossos.</text>
+	</string>
+	<string id="st_ach_pioneer">
+		<text>Voce alcancou a conquista Pioneiro.</text>
+	</string>
+	<string id="st_ach_research_man">
+		<text>Voce alcancou a conquista Assistente de Pesquisa.</text>
+	</string>
+	<string id="st_ach_seeker">
+		<text>Voce alcancou a conquista Cacador de Artefatos.</text>
+	</string>
+	<string id="st_ach_skilled_stalker">
+		<text>Voce alcancou a conquista Stalker Experiente.</text>
+	</string>
+	<string id="st_ach_wealthy">
+		<text>Voce alcancou a conquista Cliente Rico.</text>
+	</string>
+	<string id="st_ach_wheel_litter_sisyphus">
+		<text>Voce alcancou a conquista Trabalho de Sisifo.</text>
+	</string>
+	<string id="st_coop_desc">
+		<text>Com a ajuda de seu grupo, o agente especial da USS, Major Degtyarev, e enviado para a Zona para procurar os helicopteros militares desaparecidos e investigar a falha da Operacao Fairway..</text>
+	</string>
+	<string id="st_coop_name">
+		<text>CALL OF PRIPYAT</text>
+	</string>
+</string_table>

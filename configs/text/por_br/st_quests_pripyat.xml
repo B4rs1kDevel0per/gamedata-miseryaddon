@@ -1,0 +1,345 @@
+<?xml version="1.0" encoding="windows-1251" ?>
+<string_table>
+	<string id="pri_a17_get_gauss_rifle_documentation_name">
+        <text>Item 62: encontrar documentos na oficina de testes</text>
+    </string>
+    <string id="pri_a17_get_gauss_rifle_documentation_text">
+        <text>Voce precisa encontrar documentos sobre o item 62. Os documentos devem esclarecer se a arma poderia ter sido usada para abater os helicopteros.</text>
+    </string>
+    <string id="pri_a17_get_in_cover_name">
+        <text>Arma nao identificada: se abrigar no predio</text>
+    </string>
+    <string id="pri_a17_get_in_cover_text">
+        <text>Voce deve se abrigar no predio e repelir o ataque do Monolith.</text>
+    </string>
+    <string id="pri_a17_get_info_name">
+        <text>Arma nao identificada: encontrar informacoes</text>
+    </string>
+    <string id="pri_a17_get_info_text">
+        <text>A arma nao esta operacional e nao esta claro como ela funciona. Voce precisa encontrar um tecnico que possa entender a arma nao identificada.</text>
+    </string>
+    <string id="pri_a17_kill_preacher_name">
+        <text>Arma nao identificada: matar o lider do esquadrao Monolith</text>
+    </string>
+    <string id="pri_a17_kill_preacher_text">
+        <text>Voce deve matar o lider do esquadrao Monolith, o que esta usando a arma nao identificada.</text>
+    </string>
+    <string id="pri_a17_maraud_name">
+        <text>Arma nao identificada: procurar nos combatentes Monolith mortos</text>
+    </string>
+    <string id="pri_a17_maraud_text">
+        <text>Os combatentes Monolith devem ter a arma nao identificada com eles - encontre-a.</text>
+    </string>
+    <string id="pri_a17_stalker_tech_produce_62_get_info_name">
+        <text>Arma nao identificada: falar com Cardan</text>
+    </string>
+    <string id="pri_a17_stalker_tech_produce_62_get_info_text">
+        <text>Cardan ja deve ter se livrado de sua ressaca agora - hora de falar com ele sobre a arma nao identificada.</text>
+    </string>
+    <string id="pri_a17_stalker_tech_produce_62_show_name">
+        <text>Arma nao identificada: esperar Cardan voltar a si</text>
+    </string>
+    <string id="pri_a17_stalker_tech_produce_62_show_text">
+        <text>Cardan provavelmente sabe sobre a arma - voce precisa falar com ele quando ele acordar.</text>
+    </string>
+    <string id="pri_a17_talk_with_kovalski_about_gauss_rifle_information_name">
+        <text>Rifle Gauss: falar com Kovalsky sobre a arma</text>
+    </string>
+    <string id="pri_a17_talk_with_kovalski_about_gauss_rifle_information_text">
+        <text>Voce precisa contar a Kovalsky tudo o que aprendeu sobre o item 62.</text>
+    </string>
+    <string id="pri_a17_task_find_gauss_rifle_name">
+        <text>Arma nao identificada: juntar-se ao esquadrao</text>
+    </string>
+    <string id="pri_a17_task_find_gauss_rifle_text">
+        <text>Voce precisa se juntar ao esquadrao especial para capturar a arma juntos.</text>
+    </string>
+    <string id="pri_a17_task_get_gauss_rifle_from_preacher_name">
+        <text>Arma nao identificada: pegar a arma</text>
+    </string>
+    <string id="pri_a17_task_get_gauss_rifle_from_preacher_text">
+        <text>Voce precisa pegar a arma do lider do esquadrao Monolith.</text>
+    </string>
+    <string id="pri_a17_task_give_gauss_rifle_to_kovalski_name">
+        <text>Arma nao identificada: levar a arma para Kovalsky</text>
+    </string>
+    <string id="pri_a17_task_give_gauss_rifle_to_kovalski_text">
+        <text>Voce tem a arma - agora voce deve mostra-la a Kovalsky e descobrir se a arma poderia ter causado os acidentes de helicoptero.</text>
+    </string>
+    <string id="pri_a17_watch_recons_six_name">
+        <text>Arma nao identificada: participar da emboscada do Monolith</text>
+    </string>
+    <string id="pri_a17_watch_recons_six_text">
+        <text>A unidade de reconhecimento militar esta montando uma emboscada para atacar o esquadrao Monolith. Voce deve participar da operacao.</text>
+    </string>
+    <string id="pri_a18_get_reinforcement_name">
+        <text>Forcas do Monolith: encontrar os reforcos</text>
+    </string>
+    <string id="pri_a18_get_reinforcement_text">
+        <text>Kovalsky enviou reforcos para te ajudar a eliminar o esquadrao Monolith escondido na livraria.</text>
+    </string>
+    <string id="pri_a18_go_post_name">
+        <text>Forcas do Monolith: limpar a livraria</text>
+    </string>
+    <string id="pri_a18_go_post_text">
+        <text>Voce precisa eliminar todas as forcas do Monolith no predio. Grandes unidades do Monolith sao um perigo para o acampamento militar.</text>
+    </string>
+    <string id="pri_a18_use_idol_name">
+        <text>Forcas do Monolith: investigar a estranha construcao</text>
+    </string>
+    <string id="pri_a18_use_idol_text">
+        <text>Havia um dispositivo estranho no predio. Investigue este dispositivo.</text>
+    </string>
+    <string id="pri_a19_lab_x8_investigation_name">
+        <text>Laboratorio X8: encontrar documentos sobre experimentos</text>
+    </string>
+    <string id="pri_a19_lab_x8_investigation_text">
+        <text>A informacao que voce encontrou se refere a um laboratorio central, designado X8. Ele pode conter informacoes sobre experimentos secretos conduzidos na Zona.</text>
+    </string>
+    <string id="pri_a20_check_recon_squad_task_name">
+        <text>Unidade de reconhecimento desaparecida: encontrar o esquadrao</text>
+    </string>
+    <string id="pri_a20_check_recon_squad_task_text">
+        <text>A unidade de reconhecimento despachada por Kovalsky desapareceu apos uma estranha sessao de comunicacao. Voce deve encontra-los para descobrir o que aconteceu.</text>
+    </string>
+    <string id="pri_a21_chasovoi_body_search_name">
+        <text>Sentinela desaparecido: investigar a area onde a sentinela morreu</text>
+    </string>
+    <string id="pri_a21_chasovoi_body_search_text">
+        <text>A sentinela estava se comportando de forma muito estranha, entao voce deve investigar e encontrar a razao para isso.</text>
+    </string>
+    <string id="pri_a21_find_chasovoi_name">
+        <text>Sentinela desaparecido: encontrar a sentinela</text>
+    </string>
+    <string id="pri_a21_find_chasovoi_text">
+        <text>Um dos soldados desapareceu de seu posto - voce precisa encontra-lo e determinar por que ele desapareceu.</text>
+    </string>
+    <string id="pri_a21_kill_kontroler_name">
+        <text>Sentinela desaparecido: matar o controlador</text>
+    </string>
+    <string id="pri_a21_kill_kontroler_text">
+        <text>Havia um controlador perto da sentinela desaparecida - ele deve ser eliminado.</text>
+    </string>
+    <string id="pri_a22_find_dead_squad_name">
+        <text>Interferencia de radio: encontrar o esquadrao desaparecido</text>
+    </string>
+    <string id="pri_a22_find_dead_squad_text">
+        <text>O esquadrao que estava procurando a fonte de interferencia de radio desapareceu - voce precisa encontra-lo.</text>
+    </string>
+    <string id="pri_a22_search_bodys_name">
+        <text>Interferencia de radio: procurar nos corpos</text>
+    </string>
+    <string id="pri_a22_search_bodys_text">
+        <text>Procure nos corpos - isso pode ajudar a estabelecer por que eles morreram.</text>
+    </string>
+    <string id="pri_a22_search_yarmoshuk_body_name">
+        <text>Interferencia de radio: procurar no corpo</text>
+    </string>
+    <string id="pri_a22_search_yarmoshuk_body_text">
+        <text>Procure no corpo - isso pode ajudar a estabelecer por que ele morreu.</text>
+    </string>
+    <string id="pri_a25_blow_up_door_name">
+        <text>Interferencia de radio: explodir a porta</text>
+    </string>
+    <string id="pri_a25_blow_up_door_text">
+        <text>Voce tera que explodir a porta usando explosivos para entrar no predio.</text>
+    </string>
+    <string id="pri_a25_check_freezer_knock_name">
+        <text>Interferencia de radio: investigar o som</text>
+    </string>
+    <string id="pri_a25_check_freezer_knock_text">
+        <text>Ha um barulho vindo da geladeira - parece que alguem esta trancado dentro dela. Investigue.</text>
+    </string>
+    <string id="pri_a25_destroy_antenna_name">
+        <text>Interferencia de radio: eliminar a fonte de interferencia</text>
+    </string>
+    <string id="pri_a25_destroy_antenna_text">
+        <text>Voce localizou a fonte de interferencia de radio - voce precisa destrui-la.</text>
+    </string>
+    <string id="pri_a25_find_antenna_name">
+        <text>Interferencia de radio: encontrar a fonte de interferencia</text>
+    </string>
+    <string id="pri_a25_find_antenna_text">
+        <text>Ha uma fonte de interferencia de radio no predio - encontre-a.</text>
+    </string>
+    <string id="pri_a25_find_explosive_name">
+        <text>Interferencia de radio: encontrar os explosivos</text>
+    </string>
+    <string id="pri_a25_find_explosive_text">
+        <text>O esquadrao enviado para procurar a fonte de interferencia tinha explosivos. Encontre-os para limpar a entrada para o predio.</text>
+    </string>
+    <string id="pri_a25_remove_source_of_hindrances_name">
+        <text>Interferencia de radio: entrar no predio da creche</text>
+    </string>
+    <string id="pri_a25_remove_source_of_hindrances_text">
+        <text>A fonte do sinal esta em algum lugar no predio da creche, entao voce deve entrar.</text>
+    </string>
+    <string id="pri_a28_cover_militarys_name">
+        <text>Evacuacao: cobrir os militares</text>
+    </string>
+    <string id="pri_a28_cover_militarys_text">
+        <text>Strelok pode estar morto, mas voce ainda tem que ajudar os militares a chegar aos helicopteros.</text>
+    </string>
+    <string id="pri_a28_cover_strelok_name">
+        <text>Evacuacao: cobrir Strelok</text>
+    </string>
+    <string id="pri_a28_cover_strelok_text">
+        <text>O QG esta interessado nas informacoes que Strelok tem a oferecer. Voce deve leva-lo para os helicopteros.</text>
+    </string>
+    <string id="pri_a28_go_hellis_name">
+        <text>Evacuacao: chegar aos helicopteros</text>
+    </string>
+    <string id="pri_a28_go_hellis_text">
+        <text>Todos estao mortos - voce tera que chegar aos helicopteros por conta propria.</text>
+    </string>
+    <string id="pri_a28_talk_with_kovalski_name">
+        <text>Evacuacao: falar com Kovalsky</text>
+    </string>
+    <string id="pri_a28_talk_with_kovalski_text">
+        <text>Voce precisa falar com Kovalsky antes que a evacuacao comece.</text>
+    </string>
+    <string id="pri_a28_tell_kovalski_when_ready_name">
+        <text>Evacuacao: dizer a Kovalsky que voce esta pronto</text>
+    </string>
+    <string id="pri_a28_tell_kovalski_when_ready_text">
+        <text>Voce deve informar a Kovalsky que voce esta pronto para iniciar a evacuacao.</text>
+    </string>
+    <string id="pri_a28_wait_surge_end_name">
+        <text>Evacuacao: esperar a emissao terminar</text>
+    </string>
+    <string id="pri_a28_wait_surge_end_text">
+        <text>Voce precisa esperar a emissao terminar.</text>
+    </string>
+    <string id="pri_b305_check_unknown_signal_1_name">
+        <text>Desconhecido: investigar a fonte do sinal</text>
+    </string>
+    <string id="pri_b305_check_unknown_signal_1_text">
+        <text>Kirillov identificou um sinal estranho nao muito longe da base. Voce precisa investigar a fonte do sinal.</text>
+    </string>
+    <string id="pri_b305_check_unknown_signal_2_name">
+        <text>Desconhecido: seguir o sinal</text>
+    </string>
+    <string id="pri_b305_check_unknown_signal_2_text">
+        <text>As coordenadas do sinal estao acessiveis novamente, entao siga-as.</text>
+    </string>
+    <string id="pri_b305_check_unknown_signal_3_name">
+        <text>Desconhecido: investigar o ultimo local conhecido do sinal</text>
+    </string>
+    <string id="pri_b305_check_unknown_signal_3_text">
+        <text>O sinal desapareceu no quintal do predio, entao investigue o ultimo local conhecido do sinal.</text>
+    </string>
+    <string id="pri_b305_check_unknown_signal_4_name">
+        <text>Desconhecido: preparar para um ataque a base</text>
+    </string>
+    <string id="pri_b305_check_unknown_signal_4_text">
+        <text>Volte para a base do exercito e se prepare para um provavel ataque.</text>
+    </string>
+    <string id="pri_b305_kovalskiy_talk_name">
+        <text>Interferencia de radio: falar com Kovalsky</text>
+    </string>
+    <string id="pri_b305_kovalskiy_talk_text">
+        <text>O Coronel Kovalsky pediu para falar com voce.</text>
+    </string>
+    <string id="pri_b306_task_1_name">
+        <text>Laboratorio X8: entrar no poco do elevador</text>
+    </string>
+    <string id="pri_b306_task_1_text">
+        <text>A entrada para o laboratorio subterraneo fica abaixo do centro de servico Yubileiny, e a unica maneira de entrar e pelo poco do elevador.</text>
+    </string>
+    <string id="pri_b306_task_2_name">
+        <text>Laboratorio X8: encontrar o gerador</text>
+    </string>
+    <string id="pri_b306_task_2_text">
+        <text>A energia para as portas do poco do elevador foi cortada. Abri-las exigira que voce encontre e ative o gerador de emergencia.</text>
+    </string>
+    <string id="pri_b306_task_3_name">
+        <text>Laboratorio X8: descer para o laboratorio</text>
+    </string>
+    <string id="pri_b306_task_3_text">
+        <text>Voce precisa usar o elevador para entrar no laboratorio X8, que fica abaixo do centro de servico Yubileiny.</text>
+    </string>
+    <string id="pri_b35_task_envoy_name">
+        <text>Um tiro: eliminar o mensageiro</text>
+    </string>
+    <string id="pri_b35_task_envoy_text">
+        <text>Voce deve eliminar o mensageiro. Com ele morto, os mercenarios nao poderao encontrar o laboratorio.</text>
+    </string>
+    <string id="pri_b35_task_envoy_wait_name">
+        <text>Um tiro: esperar as pessoas do cliente</text>
+    </string>
+    <string id="pri_b35_task_envoy_wait_text">
+        <text>Espere as pessoas do cliente aparecerem e mate o lider delas. Com ele morto, os mercenarios nao poderao encontrar o laboratorio.</text>
+    </string>
+    <string id="pri_b35_task_merc_name">
+        <text>Um tiro: matar o lider do esquadrao mercenario</text>
+    </string>
+    <string id="pri_b35_task_merc_text">
+        <text>Voce deve matar o lider do esquadrao mercenario. Com ele morto, os mercenarios ficarao desorganizados e nao serao uma grande ameaca.</text>
+    </string>
+    <string id="pri_b35_task_merc_wait_name">
+        <text>Um tiro: esperar os mercenarios aparecerem</text>
+    </string>
+    <string id="pri_b35_task_merc_wait_text">
+        <text>Voce deve esperar os mercenarios aparecerem e matar o lider deles. Com ele morto, os mercenarios ficarao desorganizados e nao serao uma grande ameaca.</text>
+    </string>
+    <string id="pri_b35_task_reward_name">
+        <text>Um tiro: falar com Kovalsky</text>
+    </string>
+    <string id="pri_b35_task_reward_text">
+        <text>Relate os resultados da missao a Kovalsky.</text>
+    </string>
+    <string id="pri_a19_lab_x8_investigation_1_name">
+        <text>Laboratorio X8: sair do complexo subterraneo ou continuar procurando documentos</text>
+    </string>
+    <string id="pri_a19_lab_x8_investigation_1_text">
+        <text>Voce encontrou documentos e agora pode sair do laboratorio, no entanto, ainda pode haver outros documentos dentro do complexo.</text>
+    </string>
+    <string id="pri_a19_lab_x8_investigation_2_name">
+        <text>Laboratorio X8: sair do complexo subterraneo ou continuar procurando documentos</text>
+    </string>
+    <string id="pri_a19_lab_x8_investigation_2_text">
+        <text>Voce encontrou documentos e agora pode sair do laboratorio, no entanto, ainda pode haver outros documentos dentro do complexo.</text>
+    </string>
+    <string id="pri_a19_lab_x8_investigation_3_name">
+        <text>Laboratorio X8: sair do complexo subterraneo</text>
+    </string>
+    <string id="pri_a19_lab_x8_investigation_3_text">
+        <text>Parece que voce coletou todos os documentos no laboratorio. Voce pode agora sair do complexo subterraneo.</text>
+    </string>
+    <string id="pri_a18_wait_reinf_name">
+        <text>Forcas do Monolith: esperar por reforcos</text>
+    </string>
+    <string id="pri_a18_wait_reinf_text">
+        <text>Voce precisa esperar por reforcos enviados por Kovalsky para eliminar as forcas do Monolith na livraria</text>
+    </string>
+    <string id="pri_a22_talk_with_kovalski_name">
+        <text>Uma palavra em particular: falar com Kovalsky</text>
+    </string>
+    <string id="pri_a22_talk_with_kovalski_text">
+        <text>Voce precisa falar com Kovalsky. Parece que ele tem algo importante para dizer.</text>
+    </string>
+    <string id="pri_a28_defend_helis_name">
+        <text>Evacuacao: resistir perto dos helicopteros</text>
+    </string>
+    <string id="pri_a28_defend_helis_text">
+        <text>Voce deve proteger os helicopteros do inimigo ate que eles possam decolar.</text>
+    </string>
+    <string id="pri_a28_save_medic_name">
+        <text>Evacuacao: reanimar o medico</text>
+    </string>
+    <string id="pri_a28_save_medic_text">
+        <text>Parece que o medico foi atingido novamente por forcas nao identificadas. Reanime-o o mais rapido possivel.</text>
+    </string>
+    <string id="pri_a28_return_to_helis_name">
+        <text>Evacuacao: voltar para os helicopteros</text>
+    </string>
+    <string id="pri_a28_return_to_helis_text">
+        <text>Voce deve voltar para os helicopteros, pois eles podem estar prontos para decolar a qualquer momento.</text>
+    </string>
+    <string id="pri_a28_helis_gonna_fly_name">
+        <text>Evacuacao: voltar para os helicopteros o mais rapido possivel</text>
+    </string>
+    <string id="pri_a28_helis_gonna_fly_text">
+        <text>Os helicopteros estao prontos para a decolagem. Voce deve embarcar em um deles imediatamente - os pilotos nao podem esperar muito.</text>
+    </string>
+</string_table>

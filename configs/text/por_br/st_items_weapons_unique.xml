@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="windows-1251" ?>
+<string_table>
+	<string id="st_wpn_wincheaster1300_trapper">
+        <text>Predator</text>
+    </string>
+    <string id="st_wpn_wincheaster1300_trapper_descr">
+        <text>Uma espingarda de acao de bomba feita sob medida que pertencia a Trapper. A unica exigencia do cacador em relacao a sua arma era que ela precisasse matar predadores com um unico tiro. Essa filosofia era baseada na crenca de que, nao importando quantas pessoas um animal tivesse matado, ele ainda era apenas um animal e, portanto, nao deveria sofrer.</text>
+    </string>
+    <string id="st_wpn_umirotvoritel">
+        <text>Unidentified weapon</text>
+    </string>
+    <string id="st_wpn_umirotvoritel_descr">
+        <text>Uma arma desconhecida, cujo mecanismo de disparo nao foi estabelecido. A arma parece defeituosa - apertar o gatilho nao faz nada.</text>
+    </string>
+    <string id="st_wpn_vintorez_nimble">
+        <text>Tide</text>
+    </string>
+    <string id="st_wpn_vintorez_nimble_descr">
+        <text>Uma arma feita para unidades militares com base no rifle de precisao silencioso. O rifle tem maior poder de parada do que o Vintar BC, seu antecessor, a custa de sua taxa de disparo, o que permite ao atirador eliminar as forcas inimigas uma a uma sem revelar sua posicao.</text>
+    </string>
+    <string id="st_wpn_usp_nimble">
+        <text>March</text>
+    </string>
+    <string id="st_wpn_usp_nimble_descr">
+        <text>Uma pistola compacta de grande calibre com movimento de ferrolho curto e conjunto de ferrolho leve. Pertenceu a um mercenario chamado Wolfhound. Parece ser uma pistola UDP Compact modificada.</text>
+    </string>
+    <string id="st_wpn_svu_nimble">
+        <text>SVU2-A</text>
+    </string>
+    <string id="st_wpn_svu_nimble_descr">
+        <text>Este rifle de precisao encurtado com uma taxa de disparo aumentada e o proximo passo na evolucao do rifle de precisao SVUmk-2. Esta arma pertencia a Max, o lendario guardiao do Freedom.</text>
+    </string>
+    <string id="st_wpn_svd_nimble">
+        <text>Lynx</text>
+    </string>
+    <string id="st_wpn_svd_nimble_descr">
+        <text>Uma versao montada a mao do rifle de precisao SVDm-2. Nao e diferente na aparencia, mas oferece uma combinacao ideal de precisao e poder de parada.</text>
+    </string>
+    <string id="st_wpn_spas12_nimble">
+        <text>Carabineer</text>
+    </string>
+    <string id="st_wpn_spas12_nimble_descr">
+        <text>Uma espingarda do exercito projetada especificamente para unidades de assalto com base no SPSA-14. Capaz de disparo automatico como seu antecessor, mas oferece melhor compensacao de recuo gracas a um sistema balanceado e sem choque.</text>
+    </string>
+    <string id="st_wpn_sig550_strelok">
+        <text>Strelok's SGI-5k</text>
+    </string>
+    <string id="st_wpn_sig550_strelok_descr">
+        <text>Um rifle de assalto SGI-5k de fabricacao suica. Embora nao seja novo, e claro que o proprietario anterior cuidou bem dele: a arma foi desmontada e remontada, com cada componente ajustado para um desempenho ideal, aumentando o poder de parada. A letra "S" foi esculpida na coronha, junto com 16 pequenas entalhes.</text>
+    </string>
+    <string id="st_wpn_sig220_nimble">
+        <text>Alpine</text>
+    </string>
+    <string id="st_wpn_sig220_nimble_descr">
+        <text>Um modelo unico da pistola SIP-t M200. Parte de uma pequena edicao limitada feita para uma unidade de forcas especiais nao identificada. O modelo se beneficia de uma capacidade de carregador aumentada, um cano de aco de alta durabilidade e um receptor de polimero ultraduravel.</text>
+    </string>
+    <string id="st_wpn_pkm_zulus">
+        <text>Zulu's RP-74</text>
+    </string>
+    <string id="st_wpn_pkm_zulus_descr">
+        <text>Esta arma pertencia anteriormente a Zulu. Suas caracteristicas especiais incluem uma caixa de municao ampliada e um design de mecanismo de retracao particularmente confiavel. As modificacoes significaram um aumento no peso da arma, mas isso nao era um problema para o ultimo proprietario.</text>
+    </string>
+    <string id="st_wpn_mp5_nimble">
+        <text>Frasier</text>
+    </string>
+    <string id="st_wpn_mp5_nimble_descr">
+        <text>Um prototipo de submetralhadora baseado no excelente modelo Viper 5. Projetado como uma arma de combate de proxima geracao para combate em espacos confinados, ele se beneficia de um calibre, taxa de disparo e precisao mais altos.</text>
+    </string>
+    <string id="st_wpn_groza_nimble">
+        <text>Storm</text>
+    </string>
+    <string id="st_wpn_groza_nimble_descr">
+        <text>Uma versao experimental de um sistema de rifle de assalto e lancador de granadas, uma modificacao russa do Tunder S14 padrao, esta arma foi especialmente projetada para unidades que operam na Zona. Notavel por sua capacidade de carregador aumentada.</text>
+    </string>
+    <string id="st_wpn_desert_eagle_nimble">
+        <text>Steppe Eagle</text>
+    </string>
+    <string id="st_wpn_desert_eagle_nimble_descr">
+        <text>Uma pistola feita a mao baseada no design do Black Kite. Os componentes sao ajustados para alcancar uma precisao incrivel para uma pistola deste tipo.</text>
+    </string>
+</string_table>

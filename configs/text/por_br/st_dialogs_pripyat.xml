@@ -1,0 +1,906 @@
+<?xml version="1.0" encoding="windows-1251" ?>
+<string_table>
+	<string id="jup_b15_zulus_b301_after_fight_0">
+		<text>Hah! Isso mostrou a eles! Obrigado por me ajudar. Se nao fosse por voce, aqueles bastardos teriam me engolido em pouco tempo. Sabe, voce e um bom stalker, afinal... Desculpe-me por ter ficado irritado la atras, mas voce poderia ter me dito que e da USS antes.</text>
+	</string>
+	<string id="jup_b15_zulus_b301_after_fight_1">
+		<text>Sem problemas. E melhor irmos para o acampamento militar - e mais seguro la.</text>
+	</string>
+	<string id="jup_b15_zulus_b301_after_fight_11">
+		<text>Sim, com certeza sera melhor do que vagar por Pripyat sozinho.</text>
+	</string>
+	<string id="jup_b15_zulus_b301_after_fight_111">
+		<text>Vamos, entao.</text>
+	</string>
+	<string id="jup_b15_zulus_b301_after_fight_112">
+		<text>Eu tenho alguns negocios para terminar aqui, mas voce pode ir na frente. O acampamento fica no predio da lavanderia.</text>
+	</string>
+	<string id="jup_b15_zulus_b301_after_fight_2">
+		<text>Hora de eu ir.</text>
+	</string>
+	<string id="jup_b15_zulus_b301_reward_dialog_0">
+		<text>Espere... Pegue isso... E a metralhadora mais confiavel da Zona.</text>
+	</string>
+	<string id="jup_b15_zulus_b301_reward_dialog_1">
+		<text>Espere, voce nao precisa mais dela?</text>
+	</string>
+	<string id="jup_b15_zulus_b301_reward_dialog_11">
+		<text>Eu sempre terei algo para lutar contra alguns mutantes. Alem disso, eu decidi voltar - Garry vai me levar para Jupiter. Entao voce vai precisar mais dela. Pegue-a e use-a bem.</text>
+	</string>
+	<string id="jup_b15_zulus_b301_reward_dialog_111">
+		<text>Boa sorte para voce.</text>
+	</string>
+	<string id="jup_b15_zulus_b301_reward_dialog_2">
+		<text>Obrigado, e uma otima arma.</text>
+	</string>
+	<string id="jup_b15_zulus_b301_reward_dialog_21">
+		<text>Hah! Nao e otima, e a melhor da Zona. Ela e modificada, entao e um pouco pesada, mas voce nao precisa correr quando tem esse tipo de canhao com voce - deixe o inimigo fazer a corrida!</text>
+	</string>
+	<string id="jup_b15_zulus_b301_reward_dialog_211">
+		<text>Tchau.</text>
+	</string>
+	<string id="jup_b15_zulus_b301_reward_dialog_3">
+		<text>Legal!</text>
+	</string>
+	<string id="jup_b43_stalker_assistant_b301_about_zulus_0">
+		<text>Voce sabe para onde o Zulu foi?</text>
+	</string>
+	<string id="jup_b43_stalker_assistant_b301_about_zulus_1">
+		<text>Ele partiu... Ele me pediu para leva-lo a Jupiter e nos nos separamos nao muito longe da usina. Ele nao me disse para onde estava indo.</text>
+	</string>
+	<string id="jup_b43_stalker_assistant_b35_about_merc_0">
+		<text>Espere... Eu tive uma experiencia bastante desagradavel que quero compartilhar... Alguns mercenarios me pediram para leva-los a Pripyat. Inicialmente eles me convenceram com uma taxa suculenta, mas logo percebi que estava em uma enrascada... Eles nao me deixaram sair de sua vista por um segundo e me ameacaram com uma arma. Consegui escapar quando nos aproximamos de Pripyat, mas eles com certeza ja estao na cidade, entao tome cuidado.</text>
+	</string>
+	<string id="jup_b43_stalker_assistant_b35_about_merc_1">
+		<text>Voce ouviu o que os mercenarios estavam conversando por acaso?</text>
+	</string>
+	<string id="jup_b43_stalker_assistant_b35_about_merc_11">
+		<text>Parte disso, sim. Eles claramente nao tinham intencao de me deixar viver, entao nao esconderam seus planos. Eles estavam principalmente discutindo sobre encontrar as pessoas do cliente, que iriam mostrar a eles o objeto e o proposito de sua missao.</text>
+	</string>
+	<string id="jup_b43_stalker_assistant_b35_about_merc_111">
+		<text>Onde o encontro vai acontecer?</text>
+	</string>
+	<string id="jup_b43_stalker_assistant_b35_about_merc_1111">
+		<text>Perto daqui, no patio do complexo de apartamentos.</text>
+	</string>
+	<string id="jup_b43_stalker_assistant_b35_about_merc_2">
+		<text>Obrigado pela informacao.</text>
+	</string>
+	<string id="jup_b43_stalker_assistant_b35_about_merc_actor_0">
+		<text>Voce mencionou os mercenarios - voce ouviu o que eles estavam conversando?</text>
+	</string>
+	<string id="jup_b43_stalker_assistant_b35_about_merc_actor_1">
+		<text>Parte disso, sim. Eles claramente nao tinham intencao de me deixar viver, entao nao esconderam seus planos. Eles estavam principalmente discutindo sobre encontrar as pessoas do cliente, que iriam mostrar a eles o objeto e o proposito de sua missao.</text>
+	</string>
+	<string id="jup_b43_stalker_assistant_b35_about_merc_actor_11">
+		<text>Onde o encontro vai acontecer?</text>
+	</string>
+	<string id="jup_b43_stalker_assistant_b35_about_merc_actor_111">
+		<text>Perto daqui, no patio do complexo de apartamentos.</text>
+	</string>
+	<string id="pri_a15_sokolov_arranged_outfit_0">
+		<text>Eu fiz alguns arranjos com os cientistas sobre um traje - va ver Hermann sobre isso.</text>
+	</string>
+	<string id="pri_a15_sokolov_arranged_outfit_1">
+		<text>OK... Onde e o ponto de encontro?</text>
+	</string>
+	<string id="pri_a15_sokolov_arranged_outfit_11">
+		<text>Perto da estacao Yanov, no lugar do Zulu.</text>
+	</string>
+	<string id="pri_a15_sokolov_arranged_outfit_111">
+		<text>Esta cheio de stalkers! Que tal voce me levar la, porque se eu aparecer sozinho pode haver problemas. Se voce estiver comigo, eles nao vao atirar porque eles te conhecem.</text>
+	</string>
+	<string id="pri_a15_sokolov_evacuation_point_0">
+		<text>Para qual ponto de evacuacao voce foi?</text>
+	</string>
+	<string id="pri_a15_sokolov_evacuation_point_1">
+		<text>Desculpe, eu nao posso discutir isso - e classificado.</text>
+	</string>
+	<string id="pri_a15_sokolov_goto_zulus_0">
+		<text>Vamos ver o Zulu.</text>
+	</string>
+	<string id="pri_a15_sokolov_goto_zulus_1">
+		<text>OK. Mas primeiro nos vamos precisar ir ver Hermann para pegar o traje cientifico.</text>
+	</string>
+	<string id="pri_a15_sokolov_goto_zulus_11">
+		<text>Vamos.</text>
+	</string>
+	<string id="pri_a15_sokolov_goto_zulus_2">
+		<text>Eu iria... Mas ha uma emissao la fora. Vamos esperar um pouco?</text>
+	</string>
+	<string id="pri_a15_sokolov_jupiter_0">
+		<text>Como voce veio parar aqui?</text>
+	</string>
+	<string id="pri_a15_sokolov_jupiter_1">
+		<text>Meu helicoptero caiu em uma oficina de Jupiter e atravessou o teto. Eu sou o unico sobrevivente - consegui sair da usina de Jupiter e seguir para o ponto de evacuacao mais proximo, mas nao havia ninguem la. Entao eu conheci Garry e ele me levou para o bunker.</text>
+	</string>
+	<string id="pri_a15_sokolov_need_outfit_0">
+		<text>Voce vai precisar de um traje com um modulo respiratorio de ciclo fechado para chegar a Pripyat.</text>
+	</string>
+	<string id="pri_a15_sokolov_occupation_0">
+		<text>O que voce faz aqui?</text>
+	</string>
+	<string id="pri_a15_sokolov_occupation_1">
+		<text>Minhas ordens sao para prosseguir para o ponto de evacuacao, mas a Zona e muito perigosa. Eu sou um piloto, nao um soldado de elite! E por isso que estou esperando aqui na esperanca de ser resgatado assim que a operacao for concluida.</text>
+	</string>
+	<string id="pri_a15_sokolov_pripyat_group_0">
+		<text>Eu estou montando um esquadrao para ir a Pripyat. Quer se juntar a mim?</text>
+	</string>
+	<string id="pri_a15_sokolov_pripyat_group_1">
+		<text>Pripyat? Sabe, eu acho que sim... Talvez alguns dos nossos rapazes tenham sobrevivido e chegado la... Ha um ponto de evacuacao em Pripyat, entao esse e na verdade o meu destino. Eu nunca conseguiria ir sozinho, mas estou disposto a tentar junto com seu esquadrao.</text>
+	</string>
+	<string id="pri_a15_sokolov_pripyat_ready_0">
+		<text>Voce esta pronto para ir?</text>
+	</string>
+	<string id="pri_a15_sokolov_pripyat_ready_1">
+		<text>Eu acho que voce poderia dizer que sim.</text>
+	</string>
+	<string id="pri_a15_sokolov_start_dialog_11">
+		<text>Ola, stalker.</text>
+	</string>
+	<string id="pri_a15_sokolov_start_dialog_12">
+		<text>E ai.</text>
+	</string>
+	<string id="pri_a15_sokolov_start_dialog_13">
+		<text>Ola.</text>
+	</string>
+	<string id="pri_a15_sokolov_start_dialog_14">
+		<text>Ola, Major.</text>
+	</string>
+	<string id="pri_a15_sokolov_where_from_0">
+		<text>Onde voce conseguiu um uniforme militar?</text>
+	</string>
+	<string id="pri_a15_sokolov_where_from_1">
+		<text>Heh... Bem, eu acho que todo mundo sabe que os helicopteros militares cairam a essa altura... Eu sou o Tenente Sokolov, copiloto de um dos helicopteros.</text>
+	</string>
+	<string id="pri_a16_colonel_a21_about_sentry_dialog_0">
+		<text>Sobre aquele sentinela...</text>
+	</string>
+	<string id="pri_a16_colonel_a21_about_sentry_dialog_1">
+		<text>O sinal dele esta vindo da antiga mercearia, mas ele nao esta respondendo... Talvez ele tenha perdido o radio... E dificil ter certeza neste momento. Nos precisamos encontra-lo...</text>
+	</string>
+	<string id="pri_a16_colonel_a21_about_sentry_dialog_11">
+		<text>Obrigado, Coronel! Eu acho que vou conseguir.</text>
+	</string>
+	<string id="pri_a16_colonel_a21_about_sentry_pass_task_dialog_0">
+		<text>Sobre aquele sentinela...</text>
+	</string>
+	<string id="pri_a16_colonel_a21_about_sentry_pass_task_dialog_1">
+		<text>Bem... E tudo por causa daquele controlador... Isso provavelmente foi o que aconteceu com o esquadrao de reconhecimento tambem. Isso os fez atirar uns nos outros... Essas criaturas sao algumas das piores da Zona, e nos nao fomos treinados para lutar contra elas. O controlador veio como uma completa surpresa para nos e nos perdemos homens mais uma vez...</text>
+	</string>
+	<string id="pri_a16_colonel_a21_about_sentry_pass_task_dialog_11">
+		<text>Pelo menos este controlador foi eliminado.</text>
+	</string>
+	<string id="pri_a16_colonel_a21_about_sentry_pass_task_dialog_111">
+		<text>Eu espero que as coisas se acalmem um pouco agora... Eu estou grato pela sua ajuda, Major. Eu suspeito que voce deve ter usado bastante municao no decorrer desta missao... Encontre o Tenente Kirillov e peca a ele para lhe fornecer o kit necessario.</text>
+	</string>
+	<string id="pri_a16_colonel_a21_about_sentry_pass_task_dialog_1111">
+		<text>Obrigado, Coronel!</text>
+	</string>
+	<string id="pri_a16_colonel_a21_about_sentry_pass_task_dialog_12">
+		<text>Nao se preocupe, Coronel... Eu vou lidar com aquele mutante.</text>
+	</string>
+	<string id="pri_a17_military_base_commander_actor_dialog_1_0">
+		<text>Voce pode me dar mais detalhes sobre a missao?</text>
+	</string>
+	<string id="pri_a17_military_base_commander_actor_dialog_1_11">
+		<text>Quem e ele?</text>
+	</string>
+	<string id="pri_a17_military_colonel_kovalski_a25_base_reminding_1_0">
+		<text>Se nos nao encontrarmos a fonte de interferencia logo, teremos pouco a fazer alem de esperar e morrer. O primeiro ataque em massa do Monolito vai destruir os militares em pedacos... E a operacao resultara em fracasso definitivo...</text>
+	</string>
+	<string id="pri_a17_military_colonel_kovalski_a25_base_reminding_1_1">
+		<text>Eu vou tentar encontrar a fonte o mais rapido possivel.</text>
+	</string>
+	<string id="pri_a17_military_colonel_kovalski_a25_base_reminding_2_0">
+		<text>Entao, Major? Voce encontrou a fonte de interferencia de radio?</text>
+	</string>
+	<string id="pri_a17_military_colonel_kovalski_a25_base_reminding_2_1">
+		<text>Nao, eu ainda estou trabalhando nisso...</text>
+	</string>
+	<string id="pri_a17_military_colonel_kovalski_b35_about_merc_start_0">
+		<text>Garry me contou sobre o incidente com os mercenarios...</text>
+	</string>
+	<string id="pri_a17_military_colonel_kovalski_b35_about_merc_start_1">
+		<text>Sim, ele me contou sobre isso tambem... Assim que Garry escapou, ele veio para ca com medo de ser perseguido. Felizmente - tanto para ele quanto para nos - os mercenarios nao o rastrearam... Nos estamos monitorando o local onde os mercenarios e as pessoas do cliente supostamente se encontrariam, mas esta tudo quieto... Eu adoraria saber o que os mercenarios estao procurando aqui...</text>
+	</string>
+	<string id="pri_a17_military_colonel_kovalski_b35_actor_know_about_merc_0">
+		<text>Eu tenho informacoes de que os mercenarios estao procurando por um laboratorio secreto em Pripyat.</text>
+	</string>
+	<string id="pri_a17_military_colonel_kovalski_b35_actor_know_about_merc_1">
+		<text>Um laboratorio secreto, aqui em Pripyat? Mas onde voce conseguiu essa informacao?</text>
+	</string>
+	<string id="pri_a17_military_colonel_kovalski_b35_actor_know_about_merc_11">
+		<text>De um caderno de um mercenario em Zaton. Tambem e confirmado por uma historia contada para mim por um stalker chamado Tio Yar.</text>
+	</string>
+	<string id="pri_a17_military_colonel_kovalski_b35_actor_know_about_merc_111">
+		<text>Hrm... Voce sabe de mais alguma coisa?</text>
+	</string>
+	<string id="pri_a17_military_colonel_kovalski_b35_actor_know_about_merc_1111">
+		<text>Eles estao procurando pelo laboratorio central. Eu consegui descobrir as coordenadas dele durante minha investigacao.</text>
+	</string>
+	<string id="pri_a17_military_colonel_kovalski_b35_actor_know_about_merc_11111">
+		<text>Se isso for verdade, significa que nos temos outro inimigo alem dos zumbis e fanaticos... Nos precisamos decidir um curso de acao.</text>
+	</string>
+	<string id="pri_a17_military_colonel_kovalski_b35_actor_know_about_merc_111111">
+		<text>Nos devemos observar o encontro e eliminar o representante do cliente, se possivel - isso garantira que ninguem va para o laboratorio X8 por um tempo.</text>
+	</string>
+	<string id="pri_a17_military_colonel_kovalski_b35_actor_know_about_merc_1111111">
+		<text>Essa e uma boa solucao, pois embora nao descubramos quem mais sabe sobre o laboratorio, pelo menos garantiremos que os mercenarios nao o alcancem. Ao mesmo tempo, os mercenarios reagirao rapido e serao uma ameaca para nos. Tente matar ambos os alvos se puder. Eu vou ordenar ao Tenente Kirillov para ir com voce.</text>
+	</string>
+	<string id="pri_a17_military_colonel_kovalski_b35_actor_know_about_merc_11111111">
+		<text>OK.</text>
+	</string>
+	<string id="pri_a17_military_colonel_kovalski_b35_actor_know_about_merc_11111112">
+		<text>Espere, talvez devessemos escolher o outro alvo.</text>
+	</string>
+	<string id="pri_a17_military_colonel_kovalski_b35_actor_know_about_merc_111111121">
+		<text>Decida qual alvo e a prioridade.</text>
+	</string>
+	<string id="pri_a17_military_colonel_kovalski_b35_actor_know_about_merc_111112">
+		<text>Nos precisamos eliminar o lider mercenario - faca isso e o esquadrao de mercenarios sem cabeca nao sera mais um grande problema.</text>
+	</string>
+	<string id="pri_a17_military_colonel_kovalski_b35_actor_know_about_merc_1111121">
+		<text>Essa e uma solucao decente, mas o mensageiro provavelmente escapara e entao entregara a informacao sobre os laboratorios em outro lugar, de modo que os mercenarios ainda o alcancarao eventualmente. Tente matar ambos os alvos se puder. Eu vou ordenar ao Tenente Kirillov para ir com voce.</text>
+	</string>
+	<string id="pri_a17_military_colonel_kovalski_b35_actor_know_about_merc_111113">
+		<text>Eu nao tenho tempo para isso.</text>
+	</string>
+	<string id="pri_a17_military_colonel_kovalski_b35_actor_know_about_merc_12">
+		<text>De um caderno de um mercenario em Zaton.</text>
+	</string>
+	<string id="pri_a17_military_colonel_kovalski_b35_actor_know_about_merc_13">
+		<text>Uma historia contada para mim pelo Tio Yar, um stalker da estacao Yanov.</text>
+	</string>
+	<string id="pri_a17_military_colonel_kovalski_b35_reward_0">
+		<text>Sobre os mercenarios...</text>
+	</string>
+	<string id="pri_a17_military_colonel_kovalski_b35_reward_1">
+		<text>Otimo trabalho - ambos os alvos foram mortos. Agora os mercenarios nao entrarao em nosso caminho e evitarao interesse desnecessario no laboratorio. Voce pode ficar com o rifle. Aqui esta mais municao para ele.</text>
+	</string>
+	<string id="pri_a17_military_colonel_kovalski_b35_reward_2">
+		<text>Bom, agora que o lider esta morto, os mercenarios nao serao um problema para nos. Mas, ja que as pessoas do cliente escaparam, elas podem aparecer no laboratorio. Fique alerta... Voce pode ficar com o rifle. Aqui esta mais municao para ele.</text>
+	</string>
+	<string id="pri_a17_military_colonel_kovalski_b35_reward_3">
+		<text>Bom - agora que a pessoa que sabia a localizacao do laboratorio esta morta, os mercenarios nao o encontrarao. Mas, novamente, eu duvido que eles sairao de Pripyat e isso significa que eles serao uma ameaca constante para nos. Fique alerta... Voce pode ficar com o rifle. Aqui esta mais municao para ele.</text>
+	</string>
+	<string id="pri_a17_military_colonel_kovalski_b35_reward_4">
+		<text>Entao, voce mudou o alvo no ultimo minuto? Bem, foi uma decisao decente. Agora que o lider esta morto, os mercenarios nao serao um problema para nos. Mas, ja que as pessoas do cliente escaparam, elas podem aparecer no laboratorio. Fique alerta... Voce pode ficar com o rifle. Aqui esta mais municao para ele.</text>
+	</string>
+	<string id="pri_a17_military_colonel_kovalski_b35_reward_5">
+		<text>Entao, voce mudou o alvo no ultimo minuto? Bem, foi uma decisao decente. Agora que a pessoa que sabia a localizacao do laboratorio esta morta, os mercenarios nao o encontrarao. Mas, novamente, eu duvido que eles sairao de Pripyat e isso significa que eles serao uma ameaca constante para nos. Fique alerta... Voce pode ficar com o rifle. Aqui esta mais municao para ele.</text>
+	</string>
+	<string id="pri_a17_military_colonel_kovalski_b35_reward_6">
+		<text>Isso nao foi tao bem. O lider mercenario esta vivo e o homem do cliente tambem. Agora os mercenarios sabem sobre nos e serao tanto uma ameaca quanto as forcas do Monolito. Alem disso, eles agora sabem a localizacao do laboratorio, entao e apenas uma questao de tempo ate eles aparecerem la. Fique alerta... Voce pode ficar com o rifle. Aqui esta mais municao para ele.</text>
+	</string>
+	<string id="pri_a17_military_colonel_kovalski_evacuation_ready_0">
+		<text>Prepare seus soldados, Coronel. Eu estou pronto para ir.</text>
+	</string>
+	<string id="pri_a17_military_colonel_kovalski_evacuation_ready_1">
+		<text>OK. Cubra o Strelok, Major. Nos vamos cuidar de nos mesmos.</text>
+	</string>
+	<string id="pri_a17_military_colonel_kovalski_evacuation_start_11">
+		<text>Entao... Entre nos, voce e Strelok tem mais experiencia na Zona. A diferenca e que enquanto a experiencia de Strelok permanece boatos, o fato de que voce e um profissional e claro como o dia. O que eu estou tentando dizer e que eu estou contando com voce, Major. Fique de olho no Strelok - nao ha muitos de nos sobrando.</text>
+	</string>
+	<string id="pri_a17_military_colonel_kovalski_evacuation_start_12">
+		<text>O esquadrao esta pronto para partir. Nos estamos apenas esperando por voce, Major.</text>
+	</string>
+	<string id="pri_a17_military_recon_squad_after_scene_dialog_0">
+		<text>Parece que os loucos estao todos mortos. Pegue aquele rifle e vamos dar o fora daqui enquanto podemos.</text>
+	</string>
+	<string id="pri_a17_military_recon_squad_after_scene_dialog_1">
+		<text>Faz sentido para mim.</text>
+	</string>
+	<string id="pri_a17_military_recon_squad_ambush_actor_ready_0">
+		<text>Eu estou pronto, vamos nos mover.</text>
+	</string>
+	<string id="pri_a17_military_recon_squad_ambush_actor_ready_1">
+		<text>OK. O esquadrao esta pronto.</text>
+	</string>
+	<string id="pri_a17_military_recon_squad_ambush_actor_ready_11">
+		<text>Partir.</text>
+	</string>
+	<string id="pri_a17_military_recon_squad_ambush_actor_ready_2">
+		<text>Nos teremos que esperar. Eu nao quero perder homens na emissao.</text>
+	</string>
+	<string id="pri_a17_military_recon_squad_ambush_dialog_0">
+		<text>Eu sou o Capitao Tarasov. Voce pode ser um Major, mas eu estou no comando aqui e isso significa que minhas ordens nao estao em discussao. As vidas de cada homem no esquadrao dependem disso. O plano e o seguinte: nos nos posicionamos na secao oeste do hospital e esperamos as forcas do Monolito aparecerem. Nos temos que trabalhar rapidamente para garantir que nao atraimos atencao desnecessaria.</text>
+	</string>
+	<string id="pri_a17_military_recon_squad_ambush_dialog_1">
+		<text>Entendido, vamos la.</text>
+	</string>
+	<string id="pri_a17_military_recon_squad_ambush_dialog_11">
+		<text>OK. O esquadrao esta pronto.</text>
+	</string>
+	<string id="pri_a17_military_recon_squad_ambush_dialog_111">
+		<text>Partir.</text>
+	</string>
+	<string id="pri_a17_military_recon_squad_ambush_dialog_12">
+		<text>Nos teremos que esperar. Eu nao quero perder homens na emissao.</text>
+	</string>
+	<string id="pri_a17_military_recon_squad_ambush_dialog_2">
+		<text>Espere, Capitao, eu nao estou pronto ainda.</text>
+	</string>
+	<string id="pri_a22_army_signaller_about_rfi_source_0">
+		<text>Algo novo na frente de interferencia?</text>
+	</string>
+	<string id="pri_a22_army_signaller_about_rfi_source_1">
+		<text>Eu identifiquei muitas fontes, uma das quais esta em algum lugar proximo. Se for destruida, nos podemos muito bem ser capazes de nos comunicar com o QG.</text>
+	</string>
+	<string id="pri_a22_army_signaller_about_rfi_source_2">
+		<text>Eu descobri as coordenadas da fonte de interferencia. Deve ser algum tipo de transmissor especializado, de alta frequencia ou ate mesmo de micro-ondas.</text>
+	</string>
+	<string id="pri_a22_army_signaller_about_rfi_source_3">
+		<text>O dispositivo que voce destruiu era a fonte de interferencia - provavelmente ha muitos deles, mas nos ja estabelecemos comunicacoes com o QG.</text>
+	</string>
+	<string id="pri_a22_army_signaller_about_signal_0">
+		<text>Fale-me sobre o sinal.</text>
+	</string>
+	<string id="pri_a22_army_signaller_about_signal_1">
+		<text>O sinal continua aparecendo e desaparecendo, mas toda vez que ele reaparece, esta mais perto da base.</text>
+	</string>
+	<string id="pri_a22_army_signaller_about_signal_11">
+		<text>E so isso?</text>
+	</string>
+	<string id="pri_a22_army_signaller_about_signal_111">
+		<text>Nao exatamente - a questao e que o sinal esta sendo transmitido em frequencias que raramente sao usadas para comunicacao por radio.</text>
+	</string>
+	<string id="pri_a22_army_signaller_about_signal_12">
+		<text>Entendi.</text>
+	</string>
+	<string id="pri_a22_army_signaller_b35_about_merc_0">
+		<text>Pegue esta arma e municao... Voce pode relaxar por agora - eu vou observar a posicao do outro lado e entrar em contato com voce assim que eles aparecerem.</text>
+	</string>
+	<string id="pri_a22_army_signaller_b35_about_merc_1">
+		<text>OK.</text>
+	</string>
+	<string id="pri_a22_army_signaller_start_dialog_11">
+		<text>Saudacoes. Eu sou o Tenente Kirillov. Eu sou responsavel pela manutencao de armas e armazenamento de municao.</text>
+	</string>
+	<string id="pri_a22_army_signaller_start_dialog_111">
+		<text>Voce tem alguma municao?</text>
+	</string>
+	<string id="pri_a22_army_signaller_start_dialog_1111">
+		<text>Sim, nos invadimos um armazem do Monolito outro dia e ele estava cheio de municao para cada tipo de arma que voce encontra na Zona... Eu me pergunto como eles conseguem tanta artilharia aqui... Eu acho que um dos guardas do perimetro deve estar vendendo para eles...</text>
+	</string>
+	<string id="pri_a22_army_signaller_start_dialog_112">
+		<text>Entao voce tambem pode consertar minhas armas?</text>
+	</string>
+	<string id="pri_a22_army_signaller_start_dialog_1121">
+		<text>Claro. Nos fomos treinados para consertar todos os tipos de armas.</text>
+	</string>
+	<string id="pri_a22_army_signaller_start_dialog_113">
+		<text>Entendi.</text>
+	</string>
+	<string id="pri_a22_army_signaller_start_dialog_12">
+		<text>Saudacoes.</text>
+	</string>
+	<string id="pri_a22_army_signaller_start_dialog_13">
+		<text>De onde veio essa dor de cabeca...</text>
+	</string>
+	<string id="pri_a22_army_signaller_start_dialog_14">
+		<text>Aqui esta, o momento da verdade - eu me pergunto se nos vamos conseguir sair ou nao...</text>
+	</string>
+	<string id="pri_a22_army_signaller_supply_ammo_0">
+		<text>Eu preciso de municao.</text>
+	</string>
+	<string id="pri_a22_army_signaller_supply_ammo_1">
+		<text>Sem problemas... Do que exatamente voce precisa?</text>
+	</string>
+	<string id="pri_a22_army_signaller_supply_ammo_11">
+		<text>Municao de pistola 9x18...</text>
+	</string>
+	<string id="pri_a22_army_signaller_supply_ammo_111">
+		<text>Aqui... Algo mais?</text>
+	</string>
+	<string id="pri_a22_army_signaller_supply_ammo_112">
+		<text>Aqui...</text>
+	</string>
+	<string id="pri_a22_army_signaller_supply_ammo_12">
+		<text>Municao de pistola 9x19...</text>
+	</string>
+	<string id="pri_a22_army_signaller_supply_ammo_13">
+		<text>Municao de pistola 11.43x23...</text>
+	</string>
+	<string id="pri_a22_army_signaller_supply_ammo_14">
+		<text>Municao de espingarda...</text>
+	</string>
+	<string id="pri_a22_army_signaller_supply_ammo_15">
+		<text>Municao de rifle de assalto 5.45x39...</text>
+	</string>
+	<string id="pri_a22_army_signaller_supply_ammo_16">
+		<text>Municao de rifle de assalto 5.56x45...</text>
+	</string>
+	<string id="pri_a22_army_signaller_supply_ammo_17">
+		<text>Municao de rifle de assalto 9x39...</text>
+	</string>
+	<string id="pri_a22_army_signaller_supply_ammo_18">
+		<text>Municao de rifle de precisao...</text>
+	</string>
+	<string id="pri_a22_army_signaller_supply_ammo_19">
+		<text>Municao de metralhadora...</text>
+	</string>
+	<string id="pri_a22_army_signaller_supply_ammo_2">
+		<text>Eu nao posso te dar mais, Major... As ordens do Coronel sao para conservar municao.</text>
+	</string>
+	<string id="pri_a22_army_signaller_supply_ammo_20">
+		<text>OK, esqueca isso.</text>
+	</string>
+	<string id="pri_a22_army_signaller_supply_grenade_0">
+		<text>Eu preciso de granadas.</text>
+	</string>
+	<string id="pri_a22_army_signaller_supply_grenade_1">
+		<text>Sem problemas... Que tipo?</text>
+	</string>
+	<string id="pri_a22_army_signaller_supply_grenade_11">
+		<text>Granadas de mao.</text>
+	</string>
+	<string id="pri_a22_army_signaller_supply_grenade_111">
+		<text>Aqui...</text>
+	</string>
+	<string id="pri_a22_army_signaller_supply_grenade_12">
+		<text>Municao de lancador VOG-25.</text>
+	</string>
+	<string id="pri_a22_army_signaller_supply_grenade_13">
+		<text>Municao de lancador M209.</text>
+	</string>
+	<string id="pri_a22_army_signaller_supply_grenade_14">
+		<text>Na verdade, deixa pra la.</text>
+	</string>
+	<string id="pri_a22_army_signaller_supply_grenade_2">
+		<text>Eu nao posso te dar mais, Major... As ordens do Coronel sao para conservar municao.</text>
+	</string>
+	<string id="pri_a25_army_medic_need_health_care_0">
+		<text>Eu preciso de assistencia medica.</text>
+	</string>
+	<string id="pri_a25_army_medic_need_health_care_1">
+		<text>Eu estou sempre feliz em ajudar. Vamos dar uma olhada...</text>
+	</string>
+	<string id="pri_a25_army_medic_need_health_care_111">
+		<text>E isso, voce esta saudavel e pronto para ir.</text>
+	</string>
+	<string id="pri_a25_army_medic_rescued_0">
+		<text>Como voce se sente depois do que aconteceu?</text>
+	</string>
+	<string id="pri_a25_army_medic_rescued_1">
+		<text>Eu estou bem agora... Eu estava em estado de choque depois do jardim de infancia, mas assim que a emissao comecou eu sai disso bem rapido...</text>
+	</string>
+	<string id="pri_a25_army_medic_start_dialog_12">
+		<text>Saudacoes.</text>
+	</string>
+	<string id="pri_a25_army_medic_start_dialog_13">
+		<text>O principal e chegar aos helicopteros.</text>
+	</string>
+	<string id="pri_a25_army_medic_supply_medicine_0">
+		<text>Eu preciso de suprimentos medicos.</text>
+	</string>
+	<string id="pri_a25_army_medic_supply_medicine_1">
+		<text>Vamos ver o que eu tenho. Aqui, pegue isto...</text>
+	</string>
+	<string id="pri_a25_army_medic_supply_medicine_2">
+		<text>Desculpe, eu nao tenho muito sobrando, entao eu nao posso te dar mais.</text>
+	</string>
+	<string id="pri_b305_strelok_about_base_0">
+		<text>Nos monitoramos seu sinal de radio.</text>
+	</string>
+	<string id="pri_b305_strelok_about_base_1">
+		<text>Sim. Eu contatei um stalker chamado Guia. Ele me disse como chegar a este lugar atraves dos tuneis subterraneos.</text>
+	</string>
+	<string id="pri_b305_strelok_about_base_11">
+		<text>Quem e o Guia?</text>
+	</string>
+	<string id="pri_b305_strelok_about_base_111">
+		<text>Ele e um stalker lendario - eles dizem que ele pode te levar a qualquer lugar na Zona... Os rapazes do exercito tem sorte de te-lo conhecido - eles nao teriam vivido muito sem ele.</text>
+	</string>
+	<string id="pri_b305_strelok_about_base_12">
+		<text>Como voce sabia que os militares estao aqui?</text>
+	</string>
+	<string id="pri_b305_strelok_about_base_121">
+		<text>O Guia me disse - foi ele quem trouxe Kovalsky e seu esquadrao para ca.</text>
+	</string>
+	<string id="pri_b305_strelok_about_base_13">
+		<text>Entendi.</text>
+	</string>
+	<string id="pri_b305_strelok_about_information_0">
+		<text>Que informacao voce quer entregar ao Governo?</text>
+	</string>
+	<string id="pri_b305_strelok_about_information_1">
+		<text>Muitas coisas... Eu tenho certeza de que a informacao que eu tenho pode ser usada para destruir a Zona. Eu pensei que eu poderia fazer isso sozinho... Mas acabou sendo muito mais complicado. As pessoas que comecaram isso nao estavam mais no controle... Eu vou explicar tudo quando sairmos daqui.</text>
+	</string>
+	<string id="pri_b305_strelok_about_station_0">
+		<text>O que voce viu no sarcofago?</text>
+	</string>
+	<string id="pri_b305_strelok_about_station_1">
+		<text>E tudo falso... O Monolito, o Concedente de Desejos, e apenas uma mentira, um dispositivo que nubla sua mente. E as pessoas por tras disso estao se escondendo em outro lugar...</text>
+	</string>
+	<string id="pri_b305_strelok_about_station_11">
+		<text>Voce sabe quem esta por tras disso?</text>
+	</string>
+	<string id="pri_b305_strelok_about_station_111">
+		<text>Talvez sim, talvez nao... Eu nao sei mais no que acreditar... Apesar disso, eu descobri mais do que eles queriam que eu soubesse.</text>
+	</string>
+	<string id="pri_b305_strelok_about_station_12">
+		<text>OK, chega disso.</text>
+	</string>
+	<string id="pri_b305_strelok_dialog_11">
+		<text>Eu vou compartilhar tudo o que sei. Contanto que esta informacao chegue as pessoas certas.</text>
+	</string>
+	<string id="pri_b305_strelok_note_0">
+		<text>Eu encontrei os esconderijos do seu grupo no caminho para ca...</text>
+	</string>
+	<string id="pri_b305_strelok_note_1">
+		<text>Eu me pergunto como voce conseguiu encontra-los... Deveria haver alguns registros la dentro, voce encontrou algum?</text>
+	</string>
+	<string id="pri_b305_strelok_note_11">
+		<text>Sim, eu encontrei estas tres anotacoes.</text>
+	</string>
+	<string id="pri_b305_strelok_note_111">
+		<text>Obrigado... Fantasma e Presa eram meus amigos... Juntos nos conseguimos passar pelo Queimador de Cerebro e chegar a Usina Nuclear de Chernobyl. Infelizmente, eles dois morreram. Apos o nosso retorno, nos nos separamos - eu estava ferido e fiquei com o Doutor nos pantanos. Eu nao os vi novamente... Foi so muito mais tarde que eu soube que o Presa foi morto por mercenarios e o Fantasma morreu porque ele confiou nos cientistas... De qualquer forma, isso e passado... Agora eu sei o que precisa ser feito para garantir que meus amigos nao morreram em vao.</text>
+	</string>
+	<string id="pri_b305_strelok_note_12">
+		<text>Sim, aqui esta sua mensagem para o Fantasma.</text>
+	</string>
+	<string id="pri_b305_strelok_note_121">
+		<text>Obrigado... Fantasma era meu amigo... Juntos com o Fantasma e o Presa nos conseguimos passar pelo Queimador de Cerebro e chegar a Usina Nuclear de Chernobyl... Apos o nosso retorno do centro, nos nos separamos - eu estava ferido e fiquei com o Doutor nos pantanos. Eu nao os vi novamente... Foi so muito mais tarde que eu soube que o Presa foi morto por mercenarios e o Fantasma morreu porque ele confiou nos cientistas...</text>
+	</string>
+	<string id="pri_b305_strelok_note_13">
+		<text>Sim, aqui esta a anotacao do Presa para voce.</text>
+	</string>
+	<string id="pri_b305_strelok_note_131">
+		<text>Obrigado... Presa era meu amigo... Juntos com o Fantasma e o Presa nos conseguimos passar pelo Queimador de Cerebro e chegar a Usina Nuclear de Chernobyl... Apos o nosso retorno do centro, nos nos separamos - eu estava ferido e fiquei com o Doutor nos pantanos. Eu nao os vi novamente... Foi so muito mais tarde que eu soube que o Presa foi morto por mercenarios e o Fantasma morreu porque ele confiou nos cientistas...</text>
+	</string>
+	<string id="pri_b305_strelok_note_14">
+		<text>Sim, aqui esta sua mensagem para o Presa.</text>
+	</string>
+	<string id="pri_b305_strelok_note_141">
+		<text>Obrigado... Presa era meu amigo... Juntos com o Fantasma e o Presa nos conseguimos passar pelo Queimador de Cerebro e chegar a Usina Nuclear de Chernobyl... Apos o nosso retorno do centro, nos nos separamos - eu estava ferido e fiquei com o Doutor nos pantanos. Eu nao os vi novamente... Foi so muito mais tarde que eu soube que o Presa foi morto por mercenarios e o Fantasma morreu porque ele confiou nos cientistas...</text>
+	</string>
+	<string id="pri_b305_strelok_note_15">
+		<text>Sim, aqui esta sua anotacao para o Fantasma e a anotacao do Presa para voce.</text>
+	</string>
+	<string id="pri_b305_strelok_note_151">
+		<text>Obrigado... Fantasma e Presa eram meus amigos... Juntos nos conseguimos passar pelo Queimador de Cerebro e chegar a Usina Nuclear de Chernobyl. Infelizmente, eles dois morreram. Apos o nosso retorno, nos nos separamos - eu estava ferido e fiquei com o Doutor nos pantanos. Eu nao os vi novamente... Foi so muito mais tarde que eu soube que o Presa foi morto por mercenarios e o Fantasma morreu porque ele confiou nos cientistas...</text>
+	</string>
+	<string id="pri_b305_strelok_note_16">
+		<text>Sim, aqui esta sua anotacao para o Fantasma e outra para o Presa.</text>
+	</string>
+	<string id="pri_b305_strelok_note_161">
+		<text>Obrigado... Fantasma e Presa eram meus amigos... Juntos nos conseguimos passar pelo Queimador de Cerebro e chegar a Usina Nuclear de Chernobyl. Infelizmente, eles dois morreram. Apos o nosso retorno, nos nos separamos - eu estava ferido e fiquei com o Doutor nos pantanos. Eu nao os vi novamente... Foi so muito mais tarde que eu soube que o Presa foi morto por mercenarios e o Fantasma morreu porque ele confiou nos cientistas...</text>
+	</string>
+	<string id="pri_b305_strelok_note_17">
+		<text>Sim, aqui esta sua mensagem para o Presa e a mensagem dele para voce.</text>
+	</string>
+	<string id="pri_b305_strelok_note_171">
+		<text>Obrigado... Presa era meu amigo... Juntos com o Fantasma e o Presa nos conseguimos passar pelo Queimador de Cerebro e chegar a Usina Nuclear de Chernobyl... Apos o nosso retorno do centro, nos nos separamos - eu estava ferido e fiquei com o Doutor nos pantanos. Eu nao os vi novamente... Foi so muito mais tarde que eu soube que o Presa foi morto por mercenarios e o Fantasma morreu porque ele confiou nos cientistas...</text>
+	</string>
+	<string id="pri_b305_strelok_note_18">
+		<text>Sim. Infelizmente, eu nao os tenho comigo.</text>
+	</string>
+	<string id="pri_a25_army_medic_need_health_care_2">
+		<text>Vamos dar uma olhada... Voce esta em apuros, Major... Quer dizer, voce provavelmente passaria no exame medico do Programa Espacial, mas tirando isso voce esta em pessima forma! Hah!</text>
+	</string>
+	<string id="pri_a17_military_recon_squad_ambush_dialog_21">
+		<text>Vamos, Major. O pessoal do Monolito nao vai esperar.</text>
+	</string>
+	<string id="pri_a16_colonel_a21_about_sentry_start_0">
+		<text>Major, estamos com um sentinela desaparecido - ele deixou seu posto. O sinal do farol dele esta vindo da mercearia, mas ele nao esta respondendo. Deus sabe o que aconteceu la. Ele pode ter surtado - a queda do helicoptero abalou o garoto pra valer. Voce pode verificar o sinal do farol para mim?</text>
+	</string>
+	<string id="pri_a16_colonel_a21_about_sentry_start_1">
+		<text>Eu vou.</text>
+	</string>
+	<string id="pri_a16_colonel_a21_about_sentry_start_2">
+		<text>Eu nao posso prometer nada.</text>
+	</string>
+	<string id="pri_a16_military_colonel_a20_find_recon_squd_dialog_0">
+		<text>Major, nos precisamos encontrar a unidade de reconhecimento.</text>
+	</string>
+	<string id="pri_a17_military_base_commander_actor_dialog_1_1">
+		<text>Voce e o esquadrao de assalto precisam seguir para o objeto A17 - o Capitao Tarasov vai te mostrar. O alvo sao duas alas do hospital conectadas por uma passagem. Forcas do Monolito estao atualmente na ala oeste. Voce deve montar uma emboscada na outra ala. Eles devem ter o rifle com eles, provavelmente carregado pelo maior maluco.</text>
+	</string>
+	<string id="pri_a17_military_base_commander_actor_dialog_1_111">
+		<text>Ele e provavelmente o lider daquele esquadrao. Os rapazes o viram fazendo um sermao para seus combatentes. Literalmente! Tenha cuidado - quem sabe o que voce pode esperar dele?</text>
+	</string>
+	<string id="pri_a17_military_base_commander_actor_dialog_1_12">
+		<text>Entendido, Coronel.</text>
+	</string>
+	<string id="pri_a17_military_base_commander_task_dialog_0">
+		<text>Saudacoes. Eu sou o Coronel Kovalsky, comandante desta unidade.</text>
+	</string>
+	<string id="pri_a17_military_base_commander_task_dialog_1">
+		<text>Eu sou o Major Degtyarev, USS. Eu estou autorizado a investigar o fracasso da Operacao Fairway.</text>
+	</string>
+	<string id="pri_a17_military_base_commander_task_dialog_11">
+		<text>Entendo. Entao escute, Major. A Operacao Fairway foi pro ralo junto com nossos helicopteros. Metade dos meus rapazes estao mortos e nos nao temos comunicacao com o QG. Eu quero saber por que a operacao falhou tanto quanto voce.</text>
+	</string>
+	<string id="pri_a17_military_base_commander_task_dialog_111">
+		<text>Alguma ideia?</text>
+	</string>
+	<string id="pri_a17_military_base_commander_task_dialog_1111">
+		<text>Minha unica ideia e que os helicopteros foram abatidos. Abatidos usando uma arma extremamente poderosa sobre a qual nao sabemos muito. Combatentes do Monolito usaram uma contra nos durante o primeiro ataque a Usina Nuclear de Chernobyl... Eu estou planejando capturar uma dessas armas e investigar. Se voce quiser participar da acao, o esquadrao do Monolito carregando esta arma foi rastreado, e a equipe de assalto esta esperando meu sinal para comecar a operacao. O que voce diz?</text>
+	</string>
+	<string id="pri_a17_military_base_commander_task_dialog_11111">
+		<text>Eu concordo com a condicao de que voce me forneca todas as informacoes que voce tem e me de completa liberdade de acao.</text>
+	</string>
+	<string id="pri_a17_military_colonel_kovalski_a23_about_gauss_labx8_0">
+		<text>Eu tenho informacoes sobre a arma nao identificada, o rifle Gauss.</text>
+	</string>
+	<string id="pri_a17_military_colonel_kovalski_a23_about_gauss_labx8_1">
+		<text>Uau! Como isso funciona? Pode ser usado para abater um helicoptero?</text>
+	</string>
+	<string id="pri_a17_military_colonel_kovalski_a23_about_gauss_labx8_11">
+		<text>Tecnicamente pode, mas a bala acelerada teria deixado buracos nos helicopteros, e nao havia nenhum.</text>
+	</string>
+	<string id="pri_a17_military_colonel_kovalski_a23_about_gauss_labx8_111">
+		<text>Droga... Isso e um beco sem saida, entao. Eu nao tenho outras ideias. Tudo o que podemos fazer agora e ficar sentados no meio desta Zona do caralho e esperar que eles venham nos buscar... OK, ja chega de reclamar. Vamos nos preocupar com as coisas que podemos afetar aqui e agora. Gracas a voce, nos agora sabemos que nos esconder nao vai nos manter a salvo daquelas balas aceleradas, e isso ja e alguma coisa. Entao, obrigado, Major. Eu entrarei em contato com voce se tivermos algo novo.</text>
+	</string>
+	<string id="pri_a17_military_colonel_kovalski_a23_about_gauss_labx8_12">
+		<text>Tecnicamente pode, mas os Stngray 4 e 5 cairam devido a falhas eletronicas. Balas aceleradas nao poderiam ter feito isso.</text>
+	</string>
+	<string id="pri_a17_got_gauss_0">
+		<text>Como a operacao esta indo?</text>
+	</string>
+	<string id="pri_a17_got_gauss_1">
+		<text>O Sargento Morozov foi morto. Combatentes do Monolito nos levaram a uma armadilha sacrificando seus proprios homens.</text>
+	</string>
+	<string id="pri_a17_got_gauss_11">
+		<text>Bastardos! Eles nao poderiam ter sabido sobre nosso plano... Entao nos perdemos nosso atirador. E quanto ao objetivo da operacao?</text>
+	</string>
+	<string id="pri_a17_got_gauss_2">
+		<text>Nos tivemos algumas perdas... Combatentes do Monolito nos levaram a uma armadilha sacrificando seus proprios homens.</text>
+	</string>
+	<string id="pri_a17_got_gauss_21">
+		<text>Bastardos! Eles nao poderiam ter sabido sobre nosso plano... Entao nos perdemos alguns homens. E quanto ao objetivo da operacao?</text>
+	</string>
+	<string id="pri_a17_got_gauss_3">
+		<text>O esquadrao esta morto... Combatentes do Monolito nos levaram a uma armadilha sacrificando seus proprios homens.</text>
+	</string>
+	<string id="pri_a17_got_gauss_31">
+		<text>Bastardos! Eles nao poderiam ter sabido sobre nosso plano... Entao nos perdemos Tarasov e seus homens. E quanto ao objetivo da operacao?</text>
+	</string>
+	<string id="pri_a17_got_gauss_4">
+		<text>Eu peguei a arma. Ela foi danificada durante o combate.</text>
+	</string>
+	<string id="pri_a17_got_gauss_41">
+		<text>Entao nao podemos determinar se ela foi usada para abater os helicopteros. Escute, Major: voce tem conexoes entre os stalkers. E possivel que eles tenham encontrado esta arma antes. Eles devem ter tecnicos entre eles. Voce vai tentar falar com eles?</text>
+	</string>
+	<string id="pri_a17_got_gauss_411">
+		<text>OK.</text>
+	</string>
+	<string id="pri_a17_got_gauss_4111">
+		<text>Bom... Ah, a proposito. Outro stalker chegou aqui de Jupiter - converse com ele primeiro, se voce quiser.</text>
+	</string>
+	<string id="pri_a17_got_gauss_5">
+		<text>Eu ainda estou trabalhando nisso.</text>
+	</string>
+	<string id="pri_a17_got_gauss_51">
+		<text>Entendo. Major, nos precisamos daquela arma. Eu tenho certeza de que voce entende o quao importante isso e.</text>
+	</string>
+	<string id="pri_a17_got_gauss_511">
+		<text>Uhum.</text>
+	</string>
+	<string id="pri_a15_sokolov_evacuation_note_0">
+		<text>Eu encontrei sua anotacao no complexo antiaereo de Volkhov. Pegue.</text>
+	</string>
+	<string id="pri_a15_sokolov_evacuation_note_1">
+		<text>Escute... Ah, deixa pra la. Eu nao acho que nenhuma das nossas pessoas va aparecer no local de qualquer forma. Se voce avistar algum militar por aqui, me avise, OK? Obrigado de antemao...</text>
+	</string>
+	<string id="pri_a25_army_medic_freezer_0">
+		<text>Major... Gracas a Deus! Eu estou salvo!</text>
+	</string>
+	<string id="pri_a25_army_medic_freezer_1">
+		<text>Como voce veio parar aqui?</text>
+	</string>
+	<string id="pri_a25_army_medic_freezer_11">
+		<text>Err... Eu nao me lembro muito... Eu estava com tanto medo que mal conseguia pensar e eu nem sei o que me assustou. Eu apenas tive a sensacao de que tinha que me esconder, entao eu corri... Eu me lembro de ruas, curvas em algum lugar... Eu acordei neste buraco. A porta estava trancada por fora... Eu pensei que ia morrer aqui dentro. Como voce me encontrou? Na verdade, vamos dar o fora daqui e chegar mais perto da base. Este lugar esta me dando arrepios...</text>
+	</string>
+	<string id="pri_a25_army_medic_freezer_111">
+		<text>Vamos.</text>
+	</string>
+	<string id="pri_a25_army_medic_start_dialog_11">
+		<text>Oi. Voce precisa de assistencia medica? Eu nao sou um medico, mas eu posso remover balas e costurar feridas se for preciso.</text>
+	</string>
+	<string id="pri_a17_military_base_commander_actor_questions_dialog_0">
+		<text>Eu preciso de informacoes.</text>
+	</string>
+	<string id="pri_a17_military_base_commander_actor_questions_dialog_1">
+		<text>Pode perguntar.</text>
+	</string>
+	<string id="pri_a17_military_base_commander_actor_questions_dialog_11">
+		<text>Sobre a Operacao Fairway...</text>
+	</string>
+	<string id="pri_a17_military_base_commander_actor_questions_dialog_111">
+		<text>O que sobre isso?</text>
+	</string>
+	<string id="pri_a17_military_base_commander_actor_questions_dialog_1111">
+		<text>Aconteceu algo incomum enquanto os helicopteros estavam no ar?</text>
+	</string>
+	<string id="pri_a17_military_base_commander_actor_questions_dialog_11111">
+		<text>Nao ate os helicopteros comecarem a cair. Nos seguimos o plano da operacao: decolamos 90 segundos antes da emissao, ativamos nosso sistema de protecao e colocamos as aves no piloto automatico. Nos estavamos seguindo a rota segura mais curta, calculada usando o mapa de anomalias. O fato de que tinhamos visibilidade zero nao deveria ter afetado a missao porque o corredor era largo o suficiente. De acordo com o plano, nos deveriamos ter chegado a usina em doze minutos e meio. Depois de nove minutos nos perdemos a comunicacao com o Stingray 4, e entao os outros comecaram a cair como moscas.</text>
+	</string>
+	<string id="pri_a17_military_base_commander_actor_questions_dialog_111111">
+		<text>Eu tenho mais algumas perguntas sobre a operacao...</text>
+	</string>
+	<string id="pri_a17_military_base_commander_actor_questions_dialog_1112">
+		<text>O que aconteceu com os helicopteros?</text>
+	</string>
+	<string id="pri_a17_military_base_commander_actor_questions_dialog_11121">
+		<text>Nao muito. O Stingray 2 e 4 sao um misterio completo. Eu nao sei onde eles cairam ou o que aconteceu com os homens a bordo. As informacoes sobre os outros helicopteros vem dos homens que sairam, entao nao espere um quadro preciso. Nos tinhamos outras coisas para nos preocupar.</text>
+	</string>
+	<string id="pri_a17_military_base_commander_actor_questions_dialog_111211">
+		<text>Fale-me sobre o Stingray 1.</text>
+	</string>
+	<string id="pri_a17_military_base_commander_actor_questions_dialog_11121111">
+		<text>Como voce chegou aqui?</text>
+	</string>
+	<string id="pri_a17_military_base_commander_actor_questions_dialog_111211111">
+		<text>Nos encontramos um stalker nao muito longe do campo minado. Eu acho que ele deve ter ouvido a mina explodindo. Um cara estranho... se chamava Guia. Ele nao fez nenhuma pergunta e apenas se ofereceu para nos levar a Pripyat. Isso se encaixou em nosso plano, entao eu concordei. Nos o mantivemos em nossa mira apenas por precaucao, mas tudo correu bem... Ele nao disse uma palavra ate chegarmos a cidade, e quando chegamos ele simplesmente desapareceu sem avisar. Eu ordenei que meus homens o deixassem em paz.</text>
+	</string>
+	<string id="pri_a17_military_base_commander_actor_questions_dialog_111212">
+		<text>Fale-me sobre o Stingray 3.</text>
+	</string>
+	<string id="pri_a17_military_base_commander_actor_questions_dialog_1112121">
+		<text>O Capitao Tarasov diz que ambos os motores falharam. Eles tiveram que pousar na colina perto da posicao B2. Eles tiveram sorte de ter um pouso suave, mas o tecnico nao teve tempo de identificar a causa da falha porque eles foram atacados por snorks e perderam tres homens. Os outros decidiram nao ficar por perto - eles contataram o Stingray 5 e foram encontra-los. Eles entraram em uma luta com um esquadrao inimigo bem armado no caminho, mas conseguiram sair de la sem ter perdas.</text>
+	</string>
+	<string id="pri_a17_military_base_commander_actor_questions_dialog_11121211">
+		<text>Como eles chegaram a Pripyat?</text>
+	</string>
+	<string id="pri_a17_military_base_commander_actor_questions_dialog_111212111">
+		<text>As tripulacoes dos Stingrays 3 e 5 conseguiram se unir nao muito longe dos locais de queda perto de algum tipo de barcaca. Foi relatado para mim que o homem que morava la era louco como um pica-pau: quando meus homens tentaram dete-lo, ele tentou dete-los! Quero dizer, o pobre coitado estava em desvantagem de onze para um. De qualquer forma, encontrar este stalker acabou sendo um desenvolvimento afortunado, pois as partes conseguiram chegar a um acordo, e ele levou o esquadrao inteiro para Pripyat quase ileso. A unica baixa foi o Tenente Stetsenko, que perdeu alguns dedos do pe em uma anomalia gravitacional no caminho para ca.</text>
+	</string>
+	<string id="pri_a17_military_base_commander_actor_questions_dialog_111213">
+		<text>Fale-me sobre o Stingray 5.</text>
+	</string>
+	<string id="pri_a17_military_base_commander_actor_questions_dialog_1112131">
+		<text>Os eletronicos falharam e o Stingray 5 caiu direto em um pantano. Cinco homens sobreviveram a queda. Eles foram contatados pelo Stingray 3 enquanto estavam tirando seus equipamentos do helicoptero. O comandante do esquadrao, Major Neborsky, morreu no caminho para o ponto de encontro. O pobre coitado foi morto por um sugador de sangue perto da estacao de escaneamento... Os outros conseguiram chegar sem problemas. Eles perderam outro homem, o Sargento Senior Batyai, um dos atiradores, quando chegaram a Pripyat e entraram em uma luta com as forcas do Monolito.</text>
+	</string>
+	<string id="pri_a17_military_base_commander_actor_questions_dialog_11121311">
+		<text>Como eles chegaram a Pripyat?</text>
+	</string>
+	<string id="pri_a17_military_base_commander_actor_questions_dialog_111213111">
+		<text>As tripulacoes dos Stingrays 3 e 5 conseguiram se unir nao muito longe dos locais de queda perto de algum tipo de barcaca. Foi relatado para mim que o homem que morava la era louco como um pica-pau: quando meus homens tentaram dete-lo, ele tentou dete-los! Quero dizer, o pobre coitado estava em desvantagem de onze para um. De qualquer forma, encontrar este stalker acabou sendo um desenvolvimento afortunado, pois as partes conseguiram chegar a um acordo, e ele levou o esquadrao inteiro para Pripyat quase ileso. A unica baixa foi o Tenente Stetsenko, que perdeu alguns dedos do pe em uma anomalia gravitacional no caminho para ca.</text>
+	</string>
+	<string id="pri_a17_military_base_commander_actor_questions_dialog_11122">
+		<text>Nao muito. O Stingray 2 e um misterio completo. Eu nao sei onde ele caiu ou o que aconteceu com os homens a bordo. Voce deve saber mais sobre o Stingray 4 do que eu. O Tenente Sokolov, aquele que veio aqui com voce, e o unico sobrevivente daquele helicoptero. As informacoes sobre os outros helicopteros vem dos homens que sairam, entao nao espere um quadro preciso. Nos tinhamos outras coisas para nos preocupar.</text>
+	</string>
+	<string id="pri_a17_military_base_commander_actor_questions_dialog_11123">
+		<text>Nao muito. O Stingray 2 e um misterio completo. Eu nao sei onde ele caiu ou o que aconteceu com os homens a bordo. Voce pode perguntar ao Tenente Sokolov sobre o Stingray 4 voce mesmo. Ele e o unico da tripulacao daquele helicoptero que chegou a Pripyat. As informacoes sobre os outros helicopteros vem dos homens que sairam, entao nao espere um quadro preciso. Nos tinhamos outras coisas para nos preocupar.</text>
+	</string>
+	<string id="pri_a17_military_base_commander_actor_questions_dialog_1113">
+		<text>Eu preciso de outras informacoes.</text>
+	</string>
+	<string id="pri_a17_military_base_commander_actor_questions_dialog_1114">
+		<text>Eu nao tenho mais perguntas.</text>
+	</string>
+	<string id="pri_a17_military_base_commander_actor_questions_dialog_12">
+		<text>Qual e a situacao em Pripyat?</text>
+	</string>
+	<string id="pri_a17_military_base_commander_actor_questions_dialog_121">
+		<text>Tao ruim quanto possivel. Pripyat esta rastejando com uma mistura de fanaticos do Monolito e zumbis. Emissoes atingem uma apos a outra, e sempre ha mutantes e anomalias para se ter cuidado... Bem-vindo ao Inferno.</text>
+	</string>
+	<string id="pri_a17_military_base_commander_actor_questions_dialog_1211">
+		<text>Como voces estao de equipamento e suprimentos?</text>
+	</string>
+	<string id="pri_a17_military_base_commander_actor_questions_dialog_13">
+		<text>Fale-me sobre o Monolito.</text>
+	</string>
+	<string id="pri_a17_military_base_commander_actor_questions_dialog_131">
+		<text>Eles sao fanaticos, pura e simplesmente. Eu nao sei o que os esta impulsionando, mas eles estao constantemente procurando por uma luta. Eles nao recuam mesmo se estiverem em desvantagem numerica e de armas... E isso e bem raro para este lugar. Parece que eles estao recebendo reforcos regulares da Usina Nuclear de Chernobyl. Que se danem, nos ja perdemos alguns homens excelentes para os ataques deles...</text>
+	</string>
+	<string id="pri_a17_military_base_commander_actor_questions_dialog_1311">
+		<text>Voce tentou interrogar um deles?</text>
+	</string>
+	<string id="pri_a17_military_base_commander_actor_questions_dialog_13111">
+		<text>E inutil. Primeiro de tudo, eles lutam ate a morte. Entao nossos rapazes conseguiram pegar um vivo quando ele foi atordoado por uma granada, mas isso nao ajudou muito. Nos tiramos os olhos dele por um segundo e ele bateu a cabeca contra a parede com tanta forca que seu cranio rachou como um ovo.</text>
+	</string>
+	<string id="pri_a17_military_base_commander_actor_questions_dialog_14">
+		<text>O que voce vai fazer agora?</text>
+	</string>
+	<string id="pri_a17_military_base_commander_actor_questions_dialog_141">
+		<text>Eu nao acredito que seja possivel seguir em frente com a Operacao Fairway. Sua presenca aqui confirma isso. Meu plano e manter a base ate que os helicopteros aparecam. Eu tenho varias datas de evacuacao possiveis.</text>
+	</string>
+	<string id="pri_a17_military_base_commander_actor_questions_dialog_1411">
+		<text>Nao havera helicopteros ate que saibamos o que causou a queda dos Stingrays.</text>
+	</string>
+	<string id="pri_a17_military_base_commander_actor_questions_dialog_14111">
+		<text>Entao e assim... Bem, nos nao podemos sair daqui a pe! Deus sabe quantos quilometros dessa merda, e entao a Zona esta cheia de stalkers que nao sao exatamente nossos melhores amigos. Isso significa que nossa unica escolha e conduzir nossa propria investigacao, e nao morrer no processo. Major, nos estamos trabalhando para o mesmo objetivo aqui.</text>
+	</string>
+	<string id="pri_a17_military_base_commander_actor_questions_dialog_15">
+		<text>Agora nao.</text>
+	</string>
+	<string id="pri_a17_military_base_commander_start_0">
+		<text>Estou ouvindo, Major.</text>
+	</string>
+	<string id="pri_a17_military_base_commander_actor_questions_dialog_12111">
+		<text>O unico equipamento que temos e o que trouxemos para ca nos mesmos. Ah, nos tambem conseguimos apreender algumas coisas do Monolito, principalmente municao. Isso significa que somos muito cuidadosos ao emitir o que temos. O mesmo com a comida - tudo o que temos sao racoes e alguma comida do armazem do Monolito.</text>
+	</string>
+	<string id="pri_a17_military_base_commander_actor_questions_dialog_12112">
+		<text>O unico equipamento que temos e o que trouxemos para ca nos mesmos. Ah, nos tambem conseguimos apreender algumas coisas do Monolito, principalmente municao. Isso significa que somos muito cuidadosos ao emitir o que temos. Quanto aos suprimentos, e praticamente a mesma coisa, exceto que eu fiz um acordo com o Garry. Ele nos traz comida enlatada e nos o deixamos ficar na base e olhamos para o outro lado quando ele esta procurando por artefatos... Nao e como se tivessemos qualquer outra escolha de qualquer maneira.</text>
+	</string>
+	<string id="pri_a18_altar_destroyed_soldiers_start_11">
+		<text>Nos vingamos nossos rapazes... Faca o que voce precisa e vamos voltar. Eu nao sinto vontade de ficar por aqui.</text>
+	</string>
+	<string id="pri_a18_altar_destroyed_soldiers_start_12">
+		<text>Nao vamos perder tempo aqui, OK? Eu quero voltar para a base, o mais rapido possivel...</text>
+	</string>
+	<string id="pri_a18_altar_destroyed_soldiers_start_111">
+		<text>OK.</text>
+	</string>
+	<string id="pri_a18_altar_destroyed_vano_start_11">
+		<text>Ha aquela coisa estranha ali! O que voce acha que eles precisam disso? Ah, deixa pra la. Vamos, amigo, faca sua coisa e vamos voltar para a base.</text>
+	</string>
+	<string id="pri_a18_altar_destroyed_vano_start_12">
+		<text>Voce terminou aqui? Eu voto por voltar para a base e comer alguma coisa...</text>
+	</string>
+	<string id="pri_a18_altar_destroyed_vano_start_111">
+		<text>OK.</text>
+	</string>
+	<string id="pri_a15_sokolov_pripyat_how_are_you_0">
+		<text>Como voce esta?</text>
+	</string>
+	<string id="pri_a15_sokolov_pripyat_how_are_you_1">
+		<text>Merda. E bom estar com os seus, mas eu nao me sinto muito animado por estar junto com outras pessoas em uma grande merda.</text>
+	</string>
+	<string id="pri_a15_sokolov_acquaintance_after_jorney_0">
+		<text>Eu nao te vi aqui antes. Voce chegou recentemente?</text>
+	</string>
+	<string id="pri_a15_sokolov_acquaintance_after_jorney_1">
+		<text>Sim. Eu sou o Tenente Sokolov, copiloto do Stingray 4.</text>
+	</string>
+	<string id="pri_a15_sokolov_about_journey_0">
+		<text>Como voce chegou aqui?</text>
+	</string>
+	<string id="pri_a15_sokolov_about_journey_1">
+		<text>Eu vim com um stalker chamado Garry. Eu pedi a ele para me levar com ele quando ele estava procurando por um caminho para Pripyat. Foi uma viagem e tanto, acredite em mim! E uma coisa boa que nos corremos direto para nossa equipe de reconhecimento assim que chegamos a Pripyat.</text>
+	</string>
+	<string id="pri_a15_sokolov_helicopter_0">
+		<text>O que aconteceu com o Stingray 4?</text>
+	</string>
+	<string id="pri_a15_sokolov_helicopter_1">
+		<text>Quem diabos sabe? Eu tive uma ma sensacao sobre a coisa toda... Nos estavamos voando no piloto automatico, o equipamento estava bem, e entao de repente nos estavamos voando em um pedaco de sucata com todos os eletronicos desativados. Eu e o piloto tentamos alcancar o solo plano, mas nao funcionou. Nos caimos direto na oficina principal da planta de Jupiter, direto pelo telhado... Eu fui o unico que sobreviveu.</text>
+	</string>
+	<string id="pri_a22_army_signaller_supply_outfit_0">
+		<text>Eu preciso de colete a prova de balas.</text>
+	</string>
+	<string id="pri_a22_army_signaller_supply_outfit_1">
+		<text>OK. Aqui esta o capacete, para comecar... Agora a armadura - eu espero que seja do seu tamanho porque nos nao temos nenhum outro tamanho de qualquer forma. Eu a remendei, entao deve aguentar.</text>
+	</string>
+	<string id="pri_a17_military_base_commander_task_dialog_111111">
+		<text>Claro, Major... Dadas as circunstancias, eu nao tenho muita escolha... A proposito, va ver o Tenente Kirillov. Ele vai te dar algum equipamento.</text>
+	</string>
+	<string id="pri_a17_military_base_commander_actor_questions_dialog_9">
+		<text>Sobre os helicopteros...</text>
+	</string>
+	<string id="pri_a17_military_base_commander_actor_questions_dialog_91">
+		<text>Estou ouvindo.</text>
+	</string>
+	<string id="pri_a25_army_medic_start_dialog_14">
+		<text>Cara, isso e loucura... Eu posso ver o Kirillov me implorando por aspirina mais tarde.</text>
+	</string>
+	<string id="pri_a17_military_colonel_kovalski_evacuation_start_21">
+		<text>Esperar e a pior parte. Isso te esmaga como nada mais...</text>
+	</string>
+	<string id="pri_a17_military_colonel_kovalski_evacuation_start_1111">
+		<text>OK, Major, os rapazes estao prontos para ir. Estocam visitando Rogovets e Kirillov se voce precisar. Me avise quando voce estiver pronto. </text>
+	</string>
+	<string id="pri_a17_military_colonel_kovalski_evacuation_start_11111">
+		<text>OK.</text>
+	</string>
+	<string id="pri_a17_military_colonel_kovalski_evacuation_ready_11">
+		<text>Partir.</text>
+	</string>
+	<string id="pri_a15_sokolov_need_outfit_1">
+		<text>Bem, nesse caso, nos precisamos que seja solido como uma rocha, como os que os cientistas tem. Mas, por outro lado, convencer Hermann a me dar um traje nao vai ser facil. Eu tenho a sensacao de que ele preferiria que eu andasse de bunda pelada ate a borda da Zona do que ocupar um espaco precioso em seu bunker... Voce poderia perguntar a Ozersky, eu acho. Ele e um pouco mais legal e pode concordar em me dar um traje.</text>
+	</string>
+	<string id="pri_a17_military_recon_squad_ambush_dialog_second_0">
+		<text>Entao, Major?</text>
+	</string>
+	<string id="pri_a17_military_colonel_kovalski_evacuation_start_111">
+		<text>[continuar...]</text>
+	</string>
+	<string id="pri_a25_army_medic_need_health_care_11">
+		<text>[continuar...]</text>
+	</string>
+	<string id="pri_a17_military_base_commander_actor_questions_dialog_1112111">
+		<text>Eu estava nele. Assim que a comunicacao com o Stingray 4 caiu, eu informei os outros sobre o ponto de evacuacao designado em Pripyat - eu pensei que poderiamos caminhar ate a usina. Quase imediatamente depois disso, o helicoptero levou um tiro e eu pude sentir cheiro de algo queimando - o motor pegou fogo. Os pilotos conseguiram nos levar aos heliportos perto da planta de Jupiter, mas ambos foram mortos no impacto. Entao nos perdemos o Sargento Shlyachin quando descobrimos que a abordagem aos heliportos estava cheia de minas... Nos perdemos outro homem, um Tenente Senior, em Pripyat enquanto lutavamos contra as forcas do Monolito por este predio.</text>
+	</string>
+</string_table>

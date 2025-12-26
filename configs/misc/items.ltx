@@ -61,6 +61,8 @@ class				= S_BOTTL
 visual				= dynamics\devices\dev_vodka\dev_vodka_russian.ogf
 description			= st_vodka_descr
 
+is_booster			= true
+
 inv_name			= st_vodka
 inv_name_short		= st_vodka
 inv_weight			= 0.6	;0.2
@@ -76,9 +78,10 @@ attach_position_offset	= 0.087266, -0.078540, 0.052360
 attach_bone_name		= bip01_r_hand
 auto_attach				= false
 
-bone_name				= bip01_r_hand
-position_offset			 = 0.0,0.0,0.0
-angle_offset			 = 1.570790,1.570790,3.92699
+animation_slot	= 4
+position = 0.049, 0.102, 0.036
+orientation	= -58.58, -162.927, 13.983 ;value is set in angles
+slot_attach_bone_name = bip01_l_hand
 
 break_particles		= destroy_fx\destroy_bottle
 break_sound			= material\bottle\collide\bottle_break_1
@@ -90,7 +93,12 @@ eat_alcohol				= 0.121
 eat_satiety				= 0.022
 eat_sleepiness				= 0.019
 
-use_hud_anim 			= 1
+use_attached_visual = false
+use_world_anim = true
+
+use_hud_anim = 1
+
+wanm_use = use
 
 hud 				= vodka_russian_hud
 
@@ -417,11 +425,18 @@ visual				= dynamics\devices\dev_drink_stalker\dev_drink_stalker
 description			= st_energy_drink_descr
 cost				= 50
 
+is_booster			= true
+
 inv_grid_width		= 1
 inv_grid_height		= 1
 inv_grid_x			= 11 ;19 ;11
 inv_grid_y			= 0 ;7  ;0
 inv_weight			= 0.2
+
+animation_slot		= 4
+position = 0.049, 0.102, 0.036
+orientation	= -58.58, -162.927, 13.983 ;value is set in angles
+slot_attach_bone_name = bip01_l_hand
 
 attach_angle_offset		= 0.000000, 0.000000, 0.000000
 attach_position_offset	= 0.087266, -0.078540, 0.052360
@@ -438,7 +453,12 @@ eat_alcohol 			= -0.226
 eat_satiety 			= 0.113
 eat_sleepiness				= -0.052
 
-use_hud_anim 			= 1
+use_attached_visual = false
+use_world_anim = true
+
+use_hud_anim = 1
+
+wanm_use = use
 
 hud 				= energy_drink_hud
 
@@ -540,6 +560,7 @@ anm_show			= bandage
 $spawn 				= "food and drugs\antirad"
 class 				= S_MEDKI
 visual				= dynamics\devices\dev_antirad\dev_antirad.ogf
+visual_attached		= dynamics\devices\dev_antirad\dev_antirad_attached.ogf
 inv_name			= st_antirad
 inv_name_short		= st_antirad_short
 description			= st_antirad_descr
@@ -550,6 +571,11 @@ inv_grid_x			= 18
 inv_grid_y			= 12
 cost				= 1360
 
+animation_slot 		= 3
+slot_attach_bone_name = bip01_r_hand ;when item is in active slot
+position = 0.095, 0.003, 0.018
+orientation	= -91.148, -6.764, 3,205 ;value is set in angles
+
 ;eatable item
 ;eat_radiation = -0.5
 
@@ -558,6 +584,11 @@ eat_sleepiness				= 0.071
 
 boost_time			= 9.6
 boost_radiation_restore	= 0.0042
+
+use_attached_visual = true ;needs visual_attached to be set
+use_world_anim = true
+
+wanm_use = use
 
 use_hud_anim		= 1
 
@@ -622,6 +653,9 @@ inv_name_short		= st_medkit
 description			= st_medkit_descr
 inv_weight			= 0.1
 animation_slot 		= 1
+slot_attach_bone_name = bip01_l_hand ;when item is in active slot
+position = 0.1, -0.02, 0.01
+orientation	= -112, -66, -89 ;value is set in angles
 
 inv_grid_width		= 1
 inv_grid_height		= 1
@@ -671,6 +705,9 @@ inv_name_short		= st_medkit_army
 description			= st_medkit_army_descr
 inv_weight			= 0.1
 animation_slot 		= 1
+slot_attach_bone_name = bip01_l_hand ;when item is in active slot
+position = 0.1, -0.02, 0.01
+orientation	= -112, -66, -89 ;value is set in angles
 
 inv_grid_width		= 1
 inv_grid_height		= 1
@@ -701,12 +738,16 @@ inv_name_short		= st_medkit_science
 description			= st_medkit_science_descr
 inv_weight			= 0.1
 animation_slot 		= 1
+slot_attach_bone_name = bip01_l_hand ;when item is in active slot
+position = 0.1, -0.02, 0.01
+orientation	= -112, -66, -89 ;value is set in angles
 
 inv_grid_width		= 1
 inv_grid_height		= 1
 inv_grid_x			= 12
 inv_grid_y			= 9
 cost				= 800
+
 
 boost_time				= 21.3
 boost_health_restore	= 0.040
@@ -729,6 +770,8 @@ inv_name			= st_drug_booster
 inv_name_short		= st_drug_booster
 description			= st_drug_booster_descr
 
+is_booster			= true
+
 inv_grid_width		= 1
 inv_grid_height		= 1
 inv_grid_x			= 18
@@ -743,6 +786,12 @@ boost_power_restore		= 0.0034
 eat_alcohol 			= -0.330
 eat_satiety 			= 0.239
 eat_sleepiness				= -0.144
+
+animation_slot	= 4
+position = 0.079, 0.012, 0.026
+orientation	= -58.58, -162.927, 13.983 ;value is set in angles
+slot_attach_bone_name = bip01_l_hand
+
 
 use_hud_anim		= 1
 
@@ -787,6 +836,8 @@ inv_name			= st_drug_coagulant
 inv_name_short		= st_drug_coagulant
 description			= st_drug_coagulant_descr
 
+is_booster			= true
+
 inv_grid_width		= 1
 inv_grid_height		= 1
 inv_grid_x			= 13
@@ -804,6 +855,12 @@ boost_strike_immunity		= 0.073
 eat_sleepiness				= 0.0046
 
 eat_satiety 			= -0.152
+
+
+animation_slot	= 4
+position = 0.079, 0.012, 0.026
+orientation	= -58.58, -162.927, 13.983 ;value is set in angles
+slot_attach_bone_name = bip01_l_hand
 
 use_hud_anim		= 1
 
@@ -848,6 +905,8 @@ inv_name			= st_drug_psy_blockade
 inv_name_short		= st_drug_psy_blockade
 description			= st_drug_psy_blockade_descr
 
+is_booster			= true
+
 inv_grid_width		= 1
 inv_grid_height		= 1
 inv_grid_x			= 8
@@ -860,6 +919,11 @@ boost_telepat_protection 	= 0.0118
 eat_satiety 			= -0.113
 eat_alcohol				= 0.695
 eat_sleepiness				= 0.027
+
+animation_slot	= 4
+position = 0.079, 0.012, 0.026
+orientation	= -58.58, -162.927, 13.983 ;value is set in angles
+slot_attach_bone_name = bip01_l_hand
 
 use_hud_anim		= 1
 
@@ -879,6 +943,8 @@ inv_name_short		= st_drug_antidot
 description			= st_drug_antidot_descr
 inv_weight			= 0.01
 
+is_booster			= true
+
 inv_grid_width		= 1
 inv_grid_height		= 1
 inv_grid_x			= 9
@@ -890,6 +956,11 @@ boost_chemburn_protection 	= 0.00268
 
 eat_satiety 			= -0.04
 eat_sleepiness				= 0.026
+
+animation_slot	= 4
+position = 0.079, 0.012, 0.026
+orientation	= -58.58, -162.927, 13.983 ;value is set in angles
+slot_attach_bone_name = bip01_l_hand
 
 use_hud_anim		= 1
 
@@ -908,6 +979,8 @@ inv_name			= st_drug_radioprotector
 inv_name_short		= st_drug_radioprotector
 description			= st_drug_radioprotector_descr
 
+is_booster			= true
+
 inv_grid_width		= 1
 inv_grid_height		= 1
 inv_grid_x			= 30
@@ -919,6 +992,11 @@ boost_radiation_protection	= 0.018
 
 eat_satiety 			= -0.08
 eat_sleepiness				= 0.029
+
+animation_slot	= 4
+position = 0.079, 0.012, 0.026
+orientation	= -58.58, -162.927, 13.983 ;value is set in angles
+slot_attach_bone_name = bip01_l_hand
 
 use_hud_anim		= 1
 
@@ -937,6 +1015,8 @@ inv_name			= st_drug_anabiotic
 inv_name_short		= st_drug_anabiotic
 description			= st_drug_anabiotic_descr
 inv_weight			= 0.012
+
+is_booster			= true
 
 inv_grid_width		= 1
 inv_grid_height		= 1
@@ -1050,6 +1130,8 @@ class				= S_BOTTL
 visual				= dynamics\devices\dev_champagne\dev_champagne_semidry.ogf
 description			= st_champagne_semidry_descr
 
+is_booster			= true
+
 inv_name			= st_champagne_semidry_name
 inv_name_short		= st_champagne_semidry_name
 inv_weight			= 0.75
@@ -1065,9 +1147,6 @@ attach_position_offset	= 0.087266, -0.078540, 0.052360
 attach_bone_name		= bip01_r_hand
 auto_attach				= false
 
-bone_name				= bip01_r_hand
-position_offset			 = 0.0,0.0,0.0
-angle_offset			 = 1.570790,1.570790,3.92699
 
 break_particles		= destroy_fx\destroy_bottle
 break_sound			= material\bottle\collide\bottle_break_1
@@ -1086,6 +1165,8 @@ class				= S_BOTTL
 visual				= dynamics\devices\dev_champagne\dev_champagne_sweet.ogf
 description			= st_champagne_sweet_descr
 
+is_booster			= true
+
 inv_name			= st_champagne_sweet_name
 inv_name_short		= st_champagne_sweet_name
 inv_weight			= 0.75
@@ -1100,10 +1181,6 @@ attach_angle_offset		= 0.000000, 0.000000, 0.000000
 attach_position_offset	= 0.087266, -0.078540, 0.052360
 attach_bone_name		= bip01_r_hand
 auto_attach				= false
-
-bone_name				= bip01_r_hand
-position_offset			 = 0.0,0.0,0.0
-angle_offset			 = 1.570790,1.570790,3.92699
 
 break_particles		= destroy_fx\destroy_bottle
 break_sound			= material\bottle\collide\bottle_break_1
