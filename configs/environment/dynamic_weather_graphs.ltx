@@ -1,103 +1,350 @@
-;dynamic weather graphs
+;not-dynamic weather graphs
 ;AtmosFear by Cromm Cruac
 ;v1.3
 
-;DEFAULT
-[dynamic_default_good]
-clear = 0.45
-partly = 0.45
-foggy = 0
-veryfoggy = 0
-cloudy = 0
-rain = 0
-thunder = 0.1
+[zaton]
+; ===== CLEAR (0.2) =====
+bright_clear_0 = 0.00625
+bright_clear_1 = 0.00625
+bright_clear_2 = 0.00625
+bright_clear_3 = 0.00625
+bright_clear_4 = 0.00625
+bright_clear_5 = 0.00625
+bright_clear_6 = 0.00625
+bright_clear_7 = 0.00625
+dark_clear_0 = 0.00625
+dark_clear_1 = 0.00625
+dark_clear_2 = 0.00625
+dark_clear_3 = 0.00625
+dark_clear_4 = 0.00625
+dark_clear_5 = 0.00625
+dark_clear_6 = 0.00625
+dark_clear_7 = 0.00625
+medium_clear_0 = 0.00625
+medium_clear_1 = 0.00625
+medium_clear_2 = 0.00625
+medium_clear_3 = 0.00625
+medium_clear_4 = 0.00625
+medium_clear_5 = 0.00625
+medium_clear_6 = 0.00625
+medium_clear_7 = 0.00625
+slight_clear_0 = 0.00625
+slight_clear_1 = 0.00625
+slight_clear_2 = 0.00625
+slight_clear_3 = 0.00625
+slight_clear_4 = 0.00625
+slight_clear_5 = 0.00625
+slight_clear_6 = 0.00625
+slight_clear_7 = 0.00625
 
-[dynamic_default_bad]
-clear = 0
-partly = 0
-foggy = 0.2
-veryfoggy = 0.05
-cloudy = 0.35
-rain = 0.2
-thunder = 0.2
+; ===== PARTLY (0.2) =====
+bright_partly_0 = 0.00625
+bright_partly_1 = 0.00625
+bright_partly_2 = 0.00625
+bright_partly_3 = 0.00625
+bright_partly_4 = 0.00625
+bright_partly_5 = 0.00625
+bright_partly_6 = 0.00625
+bright_partly_7 = 0.00625
+dark_partly_0 = 0.00625
+dark_partly_1 = 0.00625
+dark_partly_2 = 0.00625
+dark_partly_3 = 0.00625
+dark_partly_4 = 0.00625
+dark_partly_5 = 0.00625
+dark_partly_6 = 0.00625
+dark_partly_7 = 0.00625
+medium_partly_0 = 0.00625
+medium_partly_1 = 0.00625
+medium_partly_2 = 0.00625
+medium_partly_3 = 0.00625
+medium_partly_4 = 0.00625
+medium_partly_5 = 0.00625
+medium_partly_6 = 0.00625
+medium_partly_7 = 0.00625
+slight_partly_0 = 0.00625
+slight_partly_1 = 0.00625
+slight_partly_2 = 0.00625
+slight_partly_3 = 0.00625
+slight_partly_4 = 0.00625
+slight_partly_5 = 0.00625
+slight_partly_6 = 0.00625
+slight_partly_7 = 0.00625
 
-[dynamic_default_periods]
-min_good=3
-max_good=6
-min_bad=3
-max_bad=6
+; ===== CLOUDY (0.2) =====
+bright_cloudy = 0.025
+bright_cloudy_no_sun = 0.025
+dark_cloudy = 0.025
+dark_cloudy_no_sun = 0.025
+medium_cloudy = 0.025
+medium_cloudy_no_sun = 0.025
+slight_cloudy = 0.025
+slight_cloudy_no_sun = 0.025
 
-;ZATON
-[dynamic_zaton_good]
-clear = 0.5
-partly = 0.45
-foggy = 0
-veryfoggy = 0
-cloudy = 0
-rain = 0
-thunder = 0.05
+; ===== FOGGY (0.1) =====
+bright_foggy = 0.0125
+bright_foggy_no_sun = 0.0125
+dark_foggy = 0.0125
+dark_foggy_no_sun = 0.0125
+medium_foggy = 0.0125
+medium_foggy_no_sun = 0.0125
+slight_foggy = 0.0125
+slight_foggy_no_sun = 0.0125
 
-[dynamic_zaton_bad]
-clear = 0
-partly = 0
-foggy = 0.4
-veryfoggy = 0.1
-cloudy = 0.3
-rain = 0.1
-thunder = 0.1
+; ===== VERY FOGGY (0.1) =====
+bright_veryfoggy = 0.0125
+bright_veryfoggy_no_sun = 0.0125
+dark_veryfoggy = 0.0125
+dark_veryfoggy_no_sun = 0.0125
+medium_veryfoggy = 0.0125
+medium_veryfoggy_no_sun = 0.0125
+slight_veryfoggy = 0.0125
+slight_veryfoggy_no_sun = 0.0125
 
-[dynamic_zaton_periods]
-min_good=3
-max_good=6
-min_bad=3
-max_bad=6
+; ===== RAIN (0.1) =====
+bright_rain = 0.025
+dark_rain = 0.025
+medium_rain = 0.025
+slight_rain = 0.025
 
-;JUPITER
-[dynamic_jupiter_good]
-clear = 0.5
-partly = 0.45
-foggy = 0
-veryfoggy = 0
-cloudy = 0
-rain = 0
-thunder = 0.05
+; ===== THUNDER / STORM (0.1) =====
+bright_thunder = 0.0125
+bright_storm = 0.0125
+dark_thunder = 0.0125
+dark_storm = 0.0125
+medium_thunder = 0.0125
+medium_storm = 0.0125
+slight_thunder = 0.0125
+slight_storm = 0.0125
 
-[dynamic_jupiter_bad]
-clear = 0
-partly = 0
-foggy = 0.1
-veryfoggy = 0.05
-cloudy = 0.3
-rain = 0.2
-thunder = 0.35
 
-[dynamic_jupiter_periods]
-min_good=4
-max_good=6
-min_bad=2
-max_bad=4
+[jupiter]
+; ===== CLEAR (0.2) =====
+bright_clear_0 = 0.00625
+bright_clear_1 = 0.00625
+bright_clear_2 = 0.00625
+bright_clear_3 = 0.00625
+bright_clear_4 = 0.00625
+bright_clear_5 = 0.00625
+bright_clear_6 = 0.00625
+bright_clear_7 = 0.00625
+dark_clear_0 = 0.00625
+dark_clear_1 = 0.00625
+dark_clear_2 = 0.00625
+dark_clear_3 = 0.00625
+dark_clear_4 = 0.00625
+dark_clear_5 = 0.00625
+dark_clear_6 = 0.00625
+dark_clear_7 = 0.00625
+medium_clear_0 = 0.00625
+medium_clear_1 = 0.00625
+medium_clear_2 = 0.00625
+medium_clear_3 = 0.00625
+medium_clear_4 = 0.00625
+medium_clear_5 = 0.00625
+medium_clear_6 = 0.00625
+medium_clear_7 = 0.00625
+slight_clear_0 = 0.00625
+slight_clear_1 = 0.00625
+slight_clear_2 = 0.00625
+slight_clear_3 = 0.00625
+slight_clear_4 = 0.00625
+slight_clear_5 = 0.00625
+slight_clear_6 = 0.00625
+slight_clear_7 = 0.00625
 
-;PRIPYAT
-[dynamic_pripyat_good]
-clear = 0.25
-partly = 0.7
-foggy = 0
-veryfoggy = 0
-cloudy = 0
-rain = 0
-thunder = 0.05
+; ===== PARTLY (0.2) =====
+bright_partly_0 = 0.005
+bright_partly_1 = 0.005
+bright_partly_2 = 0.005
+bright_partly_3 = 0.005
+bright_partly_4 = 0.005
+bright_partly_5 = 0.005
+bright_partly_6 = 0.005
+bright_partly_7 = 0.005
+dark_partly_0 = 0.0075
+dark_partly_1 = 0.0075
+dark_partly_2 = 0.0075
+dark_partly_3 = 0.0075
+dark_partly_4 = 0.0075
+dark_partly_5 = 0.0075
+dark_partly_6 = 0.0075
+dark_partly_7 = 0.0075
+medium_partly_0 = 0.00625
+medium_partly_1 = 0.00625
+medium_partly_2 = 0.00625
+medium_partly_3 = 0.00625
+medium_partly_4 = 0.00625
+medium_partly_5 = 0.00625
+medium_partly_6 = 0.00625
+medium_partly_7 = 0.00625
+slight_partly_0 = 0.00625
+slight_partly_1 = 0.00625
+slight_partly_2 = 0.00625
+slight_partly_3 = 0.00625
+slight_partly_4 = 0.00625
+slight_partly_5 = 0.00625
+slight_partly_6 = 0.00625
+slight_partly_7 = 0.00625
 
-[dynamic_pripyat_bad]
-clear = 0
-partly = 0
-foggy = 0.2
-veryfoggy = 0.1
-cloudy = 0.2
-rain = 0.2
-thunder = 0.3
+; ===== CLOUDY (0.2) =====
+bright_cloudy = 0.015
+bright_cloudy_no_sun = 0.015
+dark_cloudy = 0.035
+dark_cloudy_no_sun = 0.035
+medium_cloudy = 0.025
+medium_cloudy_no_sun = 0.025
+slight_cloudy = 0.025
+slight_cloudy_no_sun = 0.025
 
-[dynamic_pripyat_periods]
-min_good=2
-max_good=3
-min_bad=4
-max_bad=8
+; ===== FOGGY (0.1) =====
+bright_foggy = 0.0125
+bright_foggy_no_sun = 0.0125
+dark_foggy = 0.0125
+dark_foggy_no_sun = 0.0125
+medium_foggy = 0.0125
+medium_foggy_no_sun = 0.0125
+slight_foggy = 0.0125
+slight_foggy_no_sun = 0.0125
+
+; ===== VERY FOGGY (0.1) =====
+bright_veryfoggy = 0.0125
+bright_veryfoggy_no_sun = 0.0125
+dark_veryfoggy = 0.0125
+dark_veryfoggy_no_sun = 0.0125
+medium_veryfoggy = 0.0125
+medium_veryfoggy_no_sun = 0.0125
+slight_veryfoggy = 0.0125
+slight_veryfoggy_no_sun = 0.0125
+
+; ===== RAIN (0.1) =====
+bright_rain = 0.025
+dark_rain = 0.025
+medium_rain = 0.025
+slight_rain = 0.025
+
+; ===== THUNDER / STORM (0.1) =====
+bright_thunder = 0.0125
+bright_storm = 0.0125
+dark_thunder = 0.0125
+dark_storm = 0.0125
+medium_thunder = 0.0125
+medium_storm = 0.0125
+slight_thunder = 0.0125
+slight_storm = 0.0125
+
+[pripyat]
+; ===== CLEAR (0.2) =====
+bright_clear_0 = 0.00625
+bright_clear_1 = 0.00625
+bright_clear_2 = 0.00625
+bright_clear_3 = 0.00625
+bright_clear_4 = 0.00625
+bright_clear_5 = 0.00625
+bright_clear_6 = 0.00625
+bright_clear_7 = 0.00625
+dark_clear_0 = 0.00625
+dark_clear_1 = 0.00625
+dark_clear_2 = 0.00625
+dark_clear_3 = 0.00625
+dark_clear_4 = 0.00625
+dark_clear_5 = 0.00625
+dark_clear_6 = 0.00625
+dark_clear_7 = 0.00625
+medium_clear_0 = 0.00625
+medium_clear_1 = 0.00625
+medium_clear_2 = 0.00625
+medium_clear_3 = 0.00625
+medium_clear_4 = 0.00625
+medium_clear_5 = 0.00625
+medium_clear_6 = 0.00625
+medium_clear_7 = 0.00625
+slight_clear_0 = 0.00625
+slight_clear_1 = 0.00625
+slight_clear_2 = 0.00625
+slight_clear_3 = 0.00625
+slight_clear_4 = 0.00625
+slight_clear_5 = 0.00625
+slight_clear_6 = 0.00625
+slight_clear_7 = 0.00625
+
+; ===== PARTLY (0.2) =====
+bright_partly_0 = 0.00625
+bright_partly_1 = 0.00625
+bright_partly_2 = 0.00625
+bright_partly_3 = 0.00625
+bright_partly_4 = 0.00625
+bright_partly_5 = 0.00625
+bright_partly_6 = 0.00625
+bright_partly_7 = 0.00625
+dark_partly_0 = 0.00625
+dark_partly_1 = 0.00625
+dark_partly_2 = 0.00625
+dark_partly_3 = 0.00625
+dark_partly_4 = 0.00625
+dark_partly_5 = 0.00625
+dark_partly_6 = 0.00625
+dark_partly_7 = 0.00625
+medium_partly_0 = 0.00625
+medium_partly_1 = 0.00625
+medium_partly_2 = 0.00625
+medium_partly_3 = 0.00625
+medium_partly_4 = 0.00625
+medium_partly_5 = 0.00625
+medium_partly_6 = 0.00625
+medium_partly_7 = 0.00625
+slight_partly_0 = 0.00625
+slight_partly_1 = 0.00625
+slight_partly_2 = 0.00625
+slight_partly_3 = 0.00625
+slight_partly_4 = 0.00625
+slight_partly_5 = 0.00625
+slight_partly_6 = 0.00625
+slight_partly_7 = 0.00625
+
+; ===== CLOUDY (0.2) =====
+bright_cloudy = 0.025
+bright_cloudy_no_sun = 0.025
+dark_cloudy = 0.025
+dark_cloudy_no_sun = 0.025
+medium_cloudy = 0.025
+medium_cloudy_no_sun = 0.025
+slight_cloudy = 0.025
+slight_cloudy_no_sun = 0.025
+
+; ===== FOGGY (0.1) =====
+bright_foggy = 0.0125
+bright_foggy_no_sun = 0.0125
+dark_foggy = 0.0125
+dark_foggy_no_sun = 0.0125
+medium_foggy = 0.0125
+medium_foggy_no_sun = 0.0125
+slight_foggy = 0.0125
+slight_foggy_no_sun = 0.0125
+
+; ===== VERY FOGGY (0.1) =====
+bright_veryfoggy = 0.0125
+bright_veryfoggy_no_sun = 0.0125
+dark_veryfoggy = 0.0125
+dark_veryfoggy_no_sun = 0.0125
+medium_veryfoggy = 0.0125
+medium_veryfoggy_no_sun = 0.0125
+slight_veryfoggy = 0.0125
+slight_veryfoggy_no_sun = 0.0125
+
+; ===== RAIN (0.1) =====
+bright_rain = 0.025
+dark_rain = 0.025
+medium_rain = 0.025
+slight_rain = 0.025
+
+; ===== THUNDER / STORM (0.1) =====
+bright_thunder = 0.0125
+bright_storm = 0.0125
+dark_thunder = 0.0125
+dark_storm = 0.0125
+medium_thunder = 0.0125
+medium_storm = 0.0125
+slight_thunder = 0.0125
+slight_storm = 0.0125
+
