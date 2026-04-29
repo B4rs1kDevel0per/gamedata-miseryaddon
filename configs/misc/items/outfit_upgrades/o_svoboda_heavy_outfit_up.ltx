@@ -1,89 +1,136 @@
 [up_sect_firsta_svoboda_heavy_outfit]
-cost 		= 600
-value		= +10
+cost 		= 5440
+inv_weight	= +0.39
+value		= +5
 
-fire_wound_protection  				= 0.05
-bones_koeff_protection_add  		= actor_armor_medium_add_1
+hit_fraction_actor				= -0.025
+explosion_protection 			= 0.025
+wound_protection				= 0.022
+fire_wound_protection  			= 0.022
+
+bones_koeff_protection_add		= actor_armor_medium_add_2
+
+immunities_sect_add 			= sect_light_outfit_immunities_physical_add_small
 
 [up_sect_firstc_svoboda_heavy_outfit]
-cost 		= 1200
-value		= +15
+cost 		= 5590
+inv_weight	= +0.39
+value		= +5
 
-immunities_sect_add 				= sect_svoboda_heavy_outfit_immunities_add
+hit_fraction_actor				= -0.025
+explosion_protection 			= 0.025
+wound_protection				= 0.022
+fire_wound_protection  			= 0.022
+
+bones_koeff_protection_add		= actor_armor_medium_add_2
+
+immunities_sect_add 			= sect_light_outfit_immunities_physical_add_small
 
 [up_sect_firste_svoboda_heavy_outfit]
-cost 		= 1800
-value		= +30
+cost 		= 5880
+inv_weight	= +0.39
+value		= +5
 
-fire_wound_protection  				= 0.1
-bones_koeff_protection_add 			= actor_armor_medium_add_2
+hit_fraction_actor				= -0.025
+explosion_protection 			= 0.025
+wound_protection				= 0.022
+fire_wound_protection  			= 0.022
+
+bones_koeff_protection_add		= actor_armor_medium_add_2
+
+immunities_sect_add 			= sect_light_outfit_immunities_physical_add_small
 
 [up_sect_firstf_svoboda_heavy_outfit]
-cost 		= 1800
-value		= -30
+cost 		= 5940
+inv_weight	= +0.39
+value		= +5
 
-hit_fraction_actor					= -0.15 ;0.55
-strike_protection 					= 0.08 ;0.35
-explosion_protection 				= 0.08 ;0.35
-wound_protection					= 0.08 ;0.35
+hit_fraction_actor				= -0.025
+explosion_protection 			= 0.025
+wound_protection				= 0.022
+fire_wound_protection  			= 0.022
+
+bones_koeff_protection_add		= actor_armor_medium_add_2
+
+immunities_sect_add 			= sect_light_outfit_immunities_physical_add_small
 
 [up_sect_secona_svoboda_heavy_outfit]
-cost 		= 600
+cost 		= 8240
+inv_weight	= +0.46
 value		= +10
 
-chemical_burn_protection 			= 0.0030 ;0.0375
-radiation_protection 				= 0.0004 ;0.0035
-shock_protection            		= 0.030 ;0.350
+shock_protection            	= 0.020  ;0.500
+chemical_burn_protection 		= 0.005 ;0.040
+radiation_protection 			= 0.0004 ;0.0045
+
+immunities_sect_add 			= sect_medium_outfit_immunities_chemical_burn_add
+immunities_sect_add2			= sect_medium_outfit_immunities_shock_add
 
 [up_sect_seconc_svoboda_heavy_outfit]
-cost 		= 1200
-value		= +20
+cost 		= 2590
+inv_weight	= +0.27
+value		= +10
 
-radiation_protection 				= 0.0006 ;0.0035
+radiation_protection 			= 0.0004 ;0.0045
 
 [up_sect_second_svoboda_heavy_outfit]
-cost 		= 1200
-value		= +20
+cost 		= 5590
+inv_weight	= +0.34
+value		= +10
 
-chemical_burn_protection 			= 0.0070 ;0.0375
+chemical_burn_protection 		= 0.005 ;0.040
+
+immunities_sect_add 			= sect_medium_outfit_immunities_chemical_burn_add
 
 [up_sect_secone_svoboda_heavy_outfit]
-cost 		= 1800
-value		= +30
+cost 		= 5440
+inv_weight	= +0.39
+value		= +10
 
-burn_protection 					= 0.0125 ;0.080
+burn_protection 				= 0.005 ;0.040
+
+immunities_sect_add 			= sect_medium_outfit_immunities_burn_add
 
 [up_sect_seconf_svoboda_heavy_outfit]
-cost 		= 1800
-value		= +30
+cost 		= 5220
+inv_weight	= +0.31
+value		= +10
 
-shock_protection            		= 0.070 ;0.350
+shock_protection            	= 0.020  ;0.500
+
+immunities_sect_add 			= sect_medium_outfit_immunities_shock_add
 
 [up_sect_thirda_svoboda_heavy_outfit]
-cost 		= 850
+cost 		= 6180
+inv_weight	= +0.37
 value		= +1
 
 power_restore_speed					= 0.001
 
 [up_sect_thirdc_svoboda_heavy_outfit]
-cost 		= 1200
-value		= +20
+cost 		= 5430
+inv_weight	= +0.31
+value		= +10
 
-shock_protection            		= 0.050 ;0.350
+shock_protection            	= 0.020  ;0.500
+
+immunities_sect_add 			= sect_medium_outfit_immunities_shock_add
 
 [up_sect_thirdd_svoboda_heavy_outfit]
-cost 		= 2000
+cost 		= 8120
+inv_weight	= +0.14
+value		= +10
+
+additional_inventory_weight			= 3		; +max_walk_weight
+additional_inventory_weight2		= 3
+power_loss							= -0.08
+
+[up_sect_thirde_svoboda_heavy_outfit]
+cost 		= 4850
+inv_weight	= +0.15
 value       = +1
 
 artefact_count						= 1
-
-
-[up_sect_thirde_svoboda_heavy_outfit]
-cost 		= 3500
-value       = +2
-
-artefact_count						= 2
-
 
 [up_firsta_svoboda_heavy_outfit]
 scheme_index            = 0, 0
@@ -321,9 +368,9 @@ effect_parameter        = something_here
 prereq_functor          = inventory_upgrades.prereq_functor_a
 prereq_tooltip_functor  = inventory_upgrades.prereq_tooltip_functor_a
 prereq_params           =
-name                    = st_up_uti_b1_name
-description             = st_up_uti_b1_descr
-icon                    = ui_inGame2_upgrade_svoboda_heavy_outfit_12
+name                    = st_up_uti_b3_name
+description             = st_up_uti_b3_descr
+icon                    = ui_inGame2_upgrade_dolg_heavy_outfit_13
 
 [up_thirde_svoboda_heavy_outfit]
 scheme_index            = 2, 4

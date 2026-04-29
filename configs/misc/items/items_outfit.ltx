@@ -2602,4 +2602,67 @@ chemical_burn_immunity		= 0.018
 explosion_immunity			= 0.066
 fire_wound_immunity			= 0.048
 
-#include "outfit_addon.ltx"
+;---------------------------------------------------------------------------------------------
+;		ECOLOGICAL OUTFIT (xRMPe section) - MISERY-style balance, xRMPe visual
+;---------------------------------------------------------------------------------------------
+[ecolog_outfit]:outfit_base
+GroupControlSection	= spawn_group
+discovery_dependency = 
+$spawn 			= "outfit\ecolog_outfit"
+$prefetch 		= 32
+class			= E_STLK
+cform           = skeleton
+visual          = dynamics\outfit\scientific_outfit
+actor_visual	= actors\stalker_mp\stalker_ecolog.ogf
+player_hud_section	= actor_hud_17
+ef_equipment_type	= 2
+inv_name			= ecolog_outfit_name
+inv_name_short		= ecolog_outfit_name
+description			= ecolog_outfit_description
+inv_weight			= 4.0
+slot				= 6
+inv_grid_width		= 2
+inv_grid_height		= 3
+inv_grid_x			= 18
+inv_grid_y			= 13
+nightvision_sect	= effector_nightvision_3
+cost				= 15000
+full_scale_icon		= 14,6			;
+immunities_sect			= sect_ecolog_outfit_immunities
+helmet_avaliable	 	= false
+; HIGH RESISTANCE (anomaly/emission) - weak vs bullets, MISERY style
+burn_protection 				= 0.0975
+shock_protection 				= 0.600
+radiation_protection 			= 0.015
+chemical_burn_protection 		= 0.15
+telepatic_protection 			= 0.04
+strike_protection 				= 0.05
+explosion_protection 			= 0.05
+wound_protection				= 0.04
+hit_fraction_actor				= 0.75
+bones_koeff_protection = actor_armor_sci
+artefact_count          = 2
+control_inertion_factor = 1.5
+power_loss				= 0.5
+
+[sect_ecolog_outfit_immunities]
+burn_immunity				= 0.005
+strike_immunity				= 0.01
+shock_immunity				= 0.005
+wound_immunity				= 0.025
+radiation_immunity			= 0.00
+telepatic_immunity			= 0.00
+chemical_burn_immunity		= 0.005
+explosion_immunity			= 0.045
+fire_wound_immunity			= 0.025
+
+[sect_ecolog_outfit_immunities_add]
+burn_immunity				= -0.01
+strike_immunity				= 0.0
+shock_immunity				= 0.0
+wound_immunity				= -0.01
+radiation_immunity			= 0.0
+telepatic_immunity			= 0.0
+chemical_burn_immunity		= 0.0
+explosion_immunity			= -0.01
+fire_wound_immunity			= -0.0025
