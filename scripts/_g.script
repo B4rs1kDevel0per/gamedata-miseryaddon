@@ -58,7 +58,8 @@ GM_SCRIPT_ADDON_EVENTS = 100
 -- Add your own events after this
 -- Example:
 -- GM_SCRIPT_USE_ITEM = GM_SCRIPT_ADDON_EVENTS + 1
-GM_SCRIPT_MUTANT_LOOT = GM_SCRIPT_ADDON_EVENTS + 1
+GM_SCRIPT_MUTANT_LOOT  = GM_SCRIPT_ADDON_EVENTS + 1
+GM_SCRIPT_WEATHER = GM_SCRIPT_ADDON_EVENTS + 1
 ----------------------------------------------------------------------
 
 ----------------------------------------------------------------------
@@ -133,7 +134,12 @@ end
 
 ---@param fmt string
 function printf_msg(fmt, ...)
-	print_msg(string.format(fmt, ...))
+    local ok, result = pcall(string.format, fmt, ...)
+    if ok then
+        print_msg(result)
+    else
+        print_msg("!! printf_msg error: " .. tostring(fmt))
+    end
 end
 
 ----------------------------------------------------------------------

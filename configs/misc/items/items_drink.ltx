@@ -1,6 +1,84 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;;;;; IMPORTED DRINK ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+[vodka]:booster
+$spawn 				= "food and drugs\vodka"
+class				= S_BOTTL
+visual				= dynamics\devices\dev_vodka\dev_vodka_russian.ogf
+description			= st_vodka_descr
+
+is_booster			= true
+
+inv_name			= st_vodka
+inv_name_short		= st_vodka
+inv_weight			= 1.454
+
+inv_grid_width		= 1
+inv_grid_height		= 1
+inv_grid_x			= 34
+inv_grid_y			= 17
+cost				= 1646
+
+attach_angle_offset		= 0.000000, 0.000000, 0.000000
+attach_position_offset	= 0.087266, -0.078540, 0.052360
+attach_bone_name		= bip01_r_hand
+auto_attach				= false
+
+animation_slot	= 4
+position = 0.049, 0.102, 0.036
+orientation	= -58.58, -162.927, 13.983 ;value is set in angles
+slot_attach_bone_name = bip01_l_hand
+
+break_particles		= destroy_fx\destroy_bottle
+break_sound			= material\bottle\collide\bottle_break_1
+
+boost_time				= 35
+boost_radiation_restore	= 0.00038
+
+eat_alcohol				= 0.121
+eat_satiety				= 0.022
+eat_sleepiness				= 0.019
+
+use_attached_visual = false
+use_world_anim = true
+
+use_hud_anim = 1
+
+wanm_use = use
+
+hud 				= vodka_russian_hud
+
+use_sound			= items\booster\drink_vodka
+
+[vodka_russian_hud]:vodka_hud
+item_visual             	= dynamics\devices\dev_vodka\dev_vodka_russian_hud.ogf
+
+[vodka_script]:vodka ; не использовать
+$spawn 				= "food and drugs\vodka_script"
+inv_weight			= 0
+
+[vodka2]:vodka
+$spawn 				= "food and drugs\vodka_russian"
+visual				= dynamics\devices\dev_vodka\dev_vodka.ogf
+description			= st_vodka2_descr
+
+inv_name			= st_vodka2
+inv_name_short			= st_vodka2
+inv_weight			= 1.454
+
+inv_grid_x			= 35
+inv_grid_y			= 17
+cost				= 3516
+
+boost_time				= 40
+boost_radiation_restore	= 0.00044
+
+eat_alcohol				= 0.172
+eat_satiety				= 0.042
+eat_sleepiness				= 0.045
+
+hud 				= vodka_hud
+
 [vodka_2]:vodka
 description			= st_vodka_descr
 
@@ -55,6 +133,10 @@ description			= st_vodka2_descr
 inv_name			= st_vodka2_2
 inv_name_short			= st_vodka2_2
 inv_weight			= 1.126
+
+inv_grid_x			= 35
+inv_grid_y			= 18
+
 cost				= 2444
 
 boost_time				= 40
@@ -70,7 +152,12 @@ description			= st_vodka2_descr
 inv_name			= st_vodka2_3
 inv_name_short			= st_vodka2_3
 inv_weight			= 0.798
+
+inv_grid_x			= 35
+inv_grid_y			= 17
+
 cost				= 1372
+
 boost_time				= 40
 boost_radiation_restore	= 0.00044
 
@@ -154,6 +241,151 @@ inv_grid_x			= 36
 inv_grid_y			= 19
 cost				= 1021
 
+[energy_drink]:booster
+$spawn 				= "food and drugs\energy_drink"
+class				= S_BOTTL
+inv_name			= st_energy_drink
+inv_name_short		= st_energy_drink_short
+visual				= dynamics\devices\dev_drink_stalker\dev_drink_stalker
+description			= st_energy_drink_descr
+cost				= 50
+
+is_booster			= true
+
+inv_grid_width		= 1
+inv_grid_height		= 1
+inv_grid_x			= 11 ;19 ;11
+inv_grid_y			= 0 ;7  ;0
+inv_weight			= 0.2
+
+animation_slot		= 4
+position = 0.049, 0.102, 0.036
+orientation	= -58.58, -162.927, 13.983 ;value is set in angles
+slot_attach_bone_name = bip01_l_hand
+
+attach_angle_offset		= 0.000000, 0.000000, 0.000000
+attach_position_offset	= 0.087266, -0.078540, 0.052360
+attach_bone_name		= bip01_r_hand
+auto_attach				= false
+
+boost_time			= 320
+boost_max_weight	= 1.952
+boost_radiation_restore		= 0.000025
+
+boost_power_restore		= 0.0016
+
+eat_alcohol 			= -0.226
+eat_satiety 			= 0.113
+eat_sleepiness				= -0.052
+
+use_attached_visual = false
+use_world_anim = true
+
+use_hud_anim = 1
+
+wanm_use = use
+
+hud 				= energy_drink_hud
+
+use_sound			= items\booster\drink_energy
+
+[energy_drink_hud]:hud_base
+attach_place_idx 			= 0
+zoom_hide_crosshair			= true
+hud_fov = 0.90
+hud_fov_zoom = 0.90
+
+inertion_pitch_offset_r = -0.005
+inertion_pitch_offset_n = -0.005
+inertion_pitch_offset_d = -0.001
+inertion_speed = 20
+inertion_origin_offset = 0.05
+
+hands_position				= 0.0,-0.02,0.14
+hands_orientation			= 0.0,0.0,0.0
+hands_position_16x9			= 0.0,-0.02,0.14
+hands_orientation_16x9			= 0.0,0.0,0.0
+
+item_position = 0.0,0.0,0.0
+item_orientation = 0.0,0.0,0.0
+
+aim_hud_offset_pos = -0.171504,0.060500,-0.089010
+aim_hud_offset_rot = 0.048900,0.082240,-0.009000
+aim_hud_offset_pos_16x9 = -0.193470,0.061100,-0.037740
+aim_hud_offset_rot_16x9 = 0.057800,0.111900,-0.011000
+
+item_visual             	= dynamics\devices\dev_drink_stalker\dev_drink_stalker_hud.ogf
+
+anm_show			= energy_drink
+
+[energy_drink_nonstop]:energy_drink
+$spawn 					= "food and drugs\energy_drink_nonstop"
+visual					= dynamics\devices\dev_drink_stalker\dev_drink_stalker_nonstop
+description				= st_energy_drink_nonstop_descr
+
+inv_name				= st_energy_drink_nonstop
+inv_name_short			= st_energy_drink_nonstop_short
+inv_weight				= 0.3
+
+inv_grid_x				= 22
+inv_grid_y				= 0
+cost					= 75
+
+boost_time			= 320
+boost_max_weight	= 1.952
+boost_radiation_restore		= 0.000025
+
+boost_power_restore		= 0.0016
+
+eat_alcohol 			= -0.226
+eat_satiety 			= 0.113
+eat_sleepiness				= -0.052
+
+hud 				= energy_drink_nonstop_hud
+
+[energy_drink_nonstop_hud]:energy_drink_hud
+item_visual             	= dynamics\devices\dev_drink_stalker\dev_drink_stalker_nonstop_hud.ogf
+
+[TESTHUD]:energy_drink
+
+inv_name			= st_champagne_sweet_name
+inv_name_short		= st_champagne_sweet_name
+
+boost_time				= 600.0
+boost_max_weight		= 1000.0
+boost_health_restore	= 1.0
+boost_power_restore		= 1.0
+boost_radiation_restore	= 1.0
+boost_bleeding_restore	= 1.0
+
+boost_radiation_protection	= 1.0
+boost_telepat_protection 	= 1.0
+boost_chemburn_protection 	= 1.0
+
+eat_health			= 0.1
+eat_satiety			= 0.1
+eat_power			= 0.1
+eat_max_power		= 0.1
+eat_radiation		= 0.1
+eat_alcohol			= -0.1
+
+
+boost_radiation_protection	= 1.0
+boost_telepat_protection 	= 1.0
+boost_chemburn_protection 	= 1.0
+
+boost_burn_immunity			= 1.0
+boost_shock_immunity		= 1.0
+boost_radiation_immunity	= 1.0
+boost_telepat_immunity		= 1.0
+boost_chemburn_immunity 	= 1.0
+boost_strike_immunity		= 1.0
+boost_wound_immunity		= 1.0
+boost_explosion_immunity	= 1.0
+boost_fire_wound_immunity	= 1.0
+
+;TEMP
+
 [beer]:booster ;500ml
 $spawn				= "food and drugs\vodka"
 cform				= skeleton
@@ -205,9 +437,74 @@ thirst_factor = 0.15
 
 lsd_factor_sqprop 	= 1.2
 
+[champagne_semidry]:booster
+$spawn 				= "food and drugs\champagne_semidry"
+class				= S_BOTTL
+visual				= dynamics\devices\dev_champagne\dev_champagne_semidry.ogf
+description			= st_champagne_semidry_descr
+
+is_booster			= true
+
+inv_name			= st_champagne_semidry_name
+inv_name_short		= st_champagne_semidry_name
+inv_weight			= 0.75
+
+inv_grid_width		= 1
+inv_grid_height		= 2
+inv_grid_x			= 21
+inv_grid_y			= 29
+cost				= 700
+
+attach_angle_offset		= 0.000000, 0.000000, 0.000000
+attach_position_offset	= 0.087266, -0.078540, 0.052360
+attach_bone_name		= bip01_r_hand
+auto_attach				= false
 
 
+break_particles		= destroy_fx\destroy_bottle
+break_sound			= material\bottle\collide\bottle_break_1
 
+boost_time				= 5.0
+boost_radiation_restore	= 0.04
+boost_power_restore		= 0.009
+eat_alcohol				= 0.05
+eat_satiety				= -0.1
+
+use_sound			= items\booster\drink_champagne
+
+[champagne_sweet]:booster
+$spawn 				= "food and drugs\champagne_sweet"
+class				= S_BOTTL
+visual				= dynamics\devices\dev_champagne\dev_champagne_sweet.ogf
+description			= st_champagne_sweet_descr
+
+is_booster			= true
+
+inv_name			= st_champagne_sweet_name
+inv_name_short		= st_champagne_sweet_name
+inv_weight			= 0.75
+
+inv_grid_width		= 1
+inv_grid_height		= 2
+inv_grid_x			= 20
+inv_grid_y			= 29
+cost				= 750
+
+attach_angle_offset		= 0.000000, 0.000000, 0.000000
+attach_position_offset	= 0.087266, -0.078540, 0.052360
+attach_bone_name		= bip01_r_hand
+auto_attach				= false
+
+break_particles		= destroy_fx\destroy_bottle
+break_sound			= material\bottle\collide\bottle_break_1
+
+boost_time				= 5.0
+boost_radiation_restore	= 0.03
+boost_power_restore		= 0.008
+eat_alcohol				= 0.4
+eat_satiety				= -0.1
+
+use_sound			= items\booster\drink_champagne
 
 [water_drink]:booster ;350ml
 $spawn				= "food and drugs\energy_drink"
@@ -1225,4 +1522,7 @@ cost				= 296
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;temporary NADO VIREZAT vodka_russian
+[vodka_russian]:vodka2
+;temporary NADO VIREZAT vodka_russian
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;

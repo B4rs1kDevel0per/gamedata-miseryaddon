@@ -1,75 +1,56 @@
 [up_sect_firsta_helm_tactic]
-cost 		= 3540
-inv_weight 				= +0.19
+cost 		= 600
 value		= +10
 
-radiation_protection            = 0.0018
-chemical_burn_protection        = 0.0054
-
-immunities_sect_add = sect_helm_tactic_immunities_chemical_burn_add
-immunities_sect_add2 = sect_helm_tactic_immunities_radiation_add
+chemical_burn_protection        = 0.01
+radiation_protection            = 0.0002
 
 [up_sect_firstc_helm_tactic]
-cost 		= 5740
-inv_weight 				= +0.24
-value 		= +50
+cost 		= 1200
+value 		= +20
 
-telepatic_protection  			= 0.0240
+telepatic_protection  			= 0.008
 
 [up_sect_firstd_helm_tactic]
-cost 		= 2520
-inv_weight 				= +0.12
-value		= +10
+cost 		= 1200
+value		= +20
 
-radiation_protection            = 0.0009
-
-immunities_sect_add = sect_helm_tactic_immunities_radiation_add
+radiation_protection            = 0.00035
 
 [up_sect_firste_helm_tactic]
-cost 		= 5980
-inv_weight 				= +0.26
-value 		= +50
+cost 		= 1800
+value 		= +30
 
-telepatic_protection  			= 0.0240
+telepatic_protection  =			 0.012
 
 [up_sect_firstf_helm_tactic]
-cost 		= 3960
-inv_weight 				= +0.24
-value		= +10
+cost 		= 1800
+value		= +30
 
-radiation_protection            = 0.0018
-chemical_burn_protection        = 0.0054
-
-immunities_sect_add = sect_helm_tactic_immunities_chemical_burn_add
-immunities_sect_add2 = sect_helm_tactic_immunities_radiation_add
+chemical_burn_protection        = 0.02
+radiation_protection            = 0.00045
 
 [up_sect_secona_helm_tactic]
-cost 		= 6850
-inv_weight 				= +0.16
-value		= +25
+cost 		= 1500
+value		= +1
 
-power_restore_speed				= 0.0007
-
-inv_weight 				= 0.1
+power_restore_speed				= 0.001
 
 [up_sect_seconc_helm_tactic]
-cost 		= 8280
-inv_weight 				= -0.041
+cost 		= 2500
 value		= +2
 
 nightvision_sect 				= effector_nightvision_2
 
 [up_sect_secone_helm_tactic]
-cost 		= 4840
-inv_weight 				= 0.01
-value		= +3
+cost 		= 5000
 
-nightvision_sect 				= effector_nightvision_3
+nearest_enemies_show_dist		= 35
 
 [up_firsta_helm_tactic]
 scheme_index            = 0, 0
 known                   = 1
-effects                 = ;  up_gr_firstcd_helm_tactic
+effects                 = up_gr_firstcd_helm_tactic
 section                 = up_sect_firsta_helm_tactic
 property                = prop_radio, prop_chem
 
@@ -90,7 +71,7 @@ icon                    = ui_inGame2_upgrade_helm_tactic_1
 [up_firstc_helm_tactic]
 scheme_index            = 1, 0
 known                   = 1
-effects                 = ;  up_gr_firstef_helm_tactic
+effects                 = up_gr_firstef_helm_tactic
 section                 = up_sect_firstc_helm_tactic
 property                = prop_psy
 
@@ -110,7 +91,7 @@ icon                    = ui_inGame2_upgrade_helm_tactic_2
 [up_firstd_helm_tactic]
 scheme_index            = 1, 1
 known                   = 1
-effects                 = ;  up_gr_firstef_helm_tactic
+effects                 = up_gr_firstef_helm_tactic
 section                 = up_sect_firstd_helm_tactic
 property                = prop_radio
 
@@ -131,7 +112,7 @@ icon                    = ui_inGame2_upgrade_helm_tactic_4
 [up_firste_helm_tactic]
 scheme_index            = 2, 0
 known                   = 1
-effects                 = ; 
+effects                 =
 section                 = up_sect_firste_helm_tactic
 property                = prop_psy
 
@@ -151,7 +132,7 @@ icon                    = ui_inGame2_upgrade_helm_tactic_3
 [up_firstf_helm_tactic]
 scheme_index            = 2, 1
 known                   = 1
-effects                 = ; 
+effects                 =
 section                 = up_sect_firstf_helm_tactic
 property                = prop_radio, prop_chem
 
@@ -171,7 +152,7 @@ icon                    = ui_inGame2_upgrade_helm_tactic_5
 [up_secona_helm_tactic]
 scheme_index            = 0, 1
 known                   = 1
-effects                 = ;  up_gr_seconcd_helm_tactic
+effects                 = up_gr_seconcd_helm_tactic
 section                 = up_sect_secona_helm_tactic
 property                = prop_power
 
@@ -188,12 +169,13 @@ name                    = st_up_resp_a3_name
 description             = st_up_res_a3_descr
 icon                    = ui_inGame2_upgrade_helm_tactic_6
 
+
 [up_seconc_helm_tactic]
 scheme_index            = 1, 2
 known                   = 1
 effects                 = up_gr_seconef_helm_tactic
 section                 = up_sect_seconc_helm_tactic
-property                = prop_night_vision
+property                = prop_nightvision
 
 precondition_functor    = inventory_upgrades.precondition_functor_a
 precondition_parameter  = a & b
@@ -211,9 +193,9 @@ icon                    = ui_inGame2_upgrade_helm_tactic_7
 [up_secone_helm_tactic]
 scheme_index            = 2, 2
 known                   = 1
-effects                 = ; 
+effects                 =
 section                 = up_sect_secone_helm_tactic
-property                = prop_night_vision
+property                = prop_scanner
 
 precondition_functor    = inventory_upgrades.precondition_functor_a
 precondition_parameter  = a & b
@@ -224,9 +206,9 @@ effect_parameter        = something_here
 prereq_functor          = inventory_upgrades.prereq_functor_a
 prereq_tooltip_functor  = inventory_upgrades.prereq_tooltip_functor_a
 prereq_params           =
-name                    = st_up_resp_c1_name
-description             = st_up_resp_c1_descr
-icon                    = ui_inGame2_upgrade_helm_battle_9
+name                    = st_up_resp_c3_name
+description             = st_up_resp_c3_descr
+icon                    = ui_inGame2_upgrade_helm_tactic_8
 
 [up_gr_firstab_helm_tactic]
 elements                = up_firsta_helm_tactic

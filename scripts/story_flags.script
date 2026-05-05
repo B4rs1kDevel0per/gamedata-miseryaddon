@@ -1,0 +1,114 @@
+story_flags = {}
+
+function has_flag(name)
+	if story_flags[name] ~= nil then
+		return story_flags[name]
+	end
+	
+	return false
+end
+
+function set_flag(name, value)
+	story_flags[name] = value
+end
+
+function give_flag(name)
+    if name == nil then
+        printf("!! give_flag called with nil name")
+        callstack()
+        return
+    end
+    name = string.upper(name)
+    
+    if has_flag(name) then
+        return
+    end
+    
+    set_flag(name, true)
+    
+    local packet = game_cl.GenerateGameMessage(GM_SCRIPT_MANAGE_FLAG)
+    
+    if story_flags_table.flags_to_id[name] ~= nil then
+        packet:w_u16(story_flags_table.flags_to_id[name])
+    else
+        packet:w_u16(65535)
+        packet:w_stringZ(name)
+    end
+    
+    packet:w_u8(1)
+    u_EventSendReliable(packet)
+end
+
+function disable_flag(name)
+    if name == nil then
+        printf("!! disable_flag called with nil name")
+        callstack()
+        return
+    end
+    name = string.upper(name)
+
+    if story_flags[name] == nil or story_flags[name] == false then
+        return
+    end
+    
+    set_flag(name, false)
+    
+    local packet = game_cl.GenerateGameMessage(GM_SCRIPT_MANAGE_FLAG)
+    
+    if story_flags_table.flags_to_id[name] ~= nil then
+        packet:w_u16(story_flags_table.flags_to_id[name])
+    else
+        packet:w_u16(65535)
+        packet:w_stringZ(name)
+    end
+    
+    packet:w_u8(0)
+    u_EventSendReliable(packet)
+end
+
+function save_flags(packet)
+	local num = 0
+	for k,v in pairs(story_flags) do
+		if v == true then
+			num = num + 1
+		end
+	end
+	
+	packet:w_u16(num)
+	for k,v in pairs(story_flags) do
+		if v == true then
+			if story_flags_table.flags_to_id[k] ~= nil then
+				packet:w_u16(story_flags_table.flags_to_id[k])
+			else
+				packet:w_u16(65535)
+				packet:w_stringZ(k)
+			end
+		end
+	end
+end
+
+function load_flags(packet)
+	reset_flags()
+	
+	local num = packet:r_u16()
+	if num > 0 then
+		for i = 1,num do
+			local id = packet:r_u16()
+			local name
+			if id ~= 65535 then
+				name = story_flags_table.id_to_flags[id]
+			else
+				name = packet:r_stringZ()
+			end
+			set_flag(name, true)
+		end
+	end
+end
+
+function reset_flags()
+	for k, v in pairs(story_flags) do 
+		story_flags[k] = nil 
+	end
+	
+	story_flags = { }
+end

@@ -1,0 +1,377 @@
+; нумерация слотов animation_slot предметов не пересекается с оружием. 1 - аптечка, 2 - бинт
+[booster]:identity_immunities
+GroupControlSection	= spawn_group
+discovery_dependency =
+;$spawn 				= "food and drugs\booster"
+$prefetch 			= 8
+class				= S_FOOD
+cform				= skeleton
+visual				= dynamics\devices\dev_aptechka\dev_aptechka_low.ogf
+description			= default
+inv_name			= default
+inv_name_short		= default
+inv_weight			= 0.01
+animation_slot 		= 2
+hud 				= antirad_hud
+slot 				= 12
+default_to_ruck		= true
+
+inv_grid_width		= 1
+inv_grid_height		= 1
+inv_grid_x			= 3
+inv_grid_y			= 18
+cost				= 1
+
+; eatable item
+eat_health			= 0
+eat_satiety			= 0
+eat_power			= 0
+eat_max_power		= 0
+eat_radiation		= 0
+eat_alcohol			= 0
+wounds_heal_perc	= 0
+eat_portions_num	= 1
+
+boost_time				= 0.0
+boost_max_weight		= 0.0
+boost_health_restore	= 0.0
+boost_power_restore		= 0.0
+boost_radiation_restore	= 0.0
+boost_bleeding_restore	= 0.0
+
+boost_radiation_protection	= 0.0
+boost_telepat_protection 	= 0.0
+boost_chemburn_protection 	= 0.0
+
+boost_burn_immunity			= 0.0
+boost_shock_immunity		= 0.0
+boost_radiation_immunity	= 0.0
+boost_telepat_immunity		= 0.0
+boost_chemburn_immunity 	= 0.0
+boost_strike_immunity		= 0.0
+boost_wound_immunity		= 0.0
+boost_explosion_immunity	= 0.0
+boost_fire_wound_immunity	= 0.0
+;use_sound			= characters_voice\multiplayer\team_1\voice_roger_3
+
+[vodka_hud]:hud_base
+attach_place_idx 			= 0
+zoom_hide_crosshair			= true
+hud_fov = 0.85
+hud_fov_zoom = 0.85
+
+inertion_pitch_offset_r = -0.005
+inertion_pitch_offset_n = -0.005
+inertion_pitch_offset_d = -0.001
+inertion_speed = 20
+inertion_origin_offset = 0.05
+
+hands_position				= 0.0,-0.02,0.14
+hands_orientation			= 0.0,0.0,0.0
+hands_position_16x9			= 0.0,-0.02,0.14
+hands_orientation_16x9			= 0.0,0.0,0.0
+
+item_position = 0.0,0.0,0.0
+item_orientation = 0.0,0.0,0.0
+
+aim_hud_offset_pos = -0.171504,0.060500,-0.089010
+aim_hud_offset_rot = 0.048900,0.082240,-0.009000
+aim_hud_offset_pos_16x9 = -0.193470,0.061100,-0.037740
+aim_hud_offset_rot_16x9 = 0.057800,0.111900,-0.011000
+
+item_visual             	= dynamics\devices\dev_vodka\dev_vodka_hud.ogf
+
+anm_show			= vodka
+
+[item_use_fast_hud]:vodka_hud
+hud_fov = 0.1
+hud_fov_zoom = 0.1
+
+hands_position				= 10.0,-0.02,0.14
+hands_orientation			= 10.0,0.0,0.0
+hands_position_16x9			= 10.0,-0.02,0.14
+hands_orientation_16x9			= 10.0,0.0,0.0
+
+item_position = 0.0,0.0,0.0
+item_orientation = 0.0,0.0,0.0
+
+aim_hud_offset_pos = -10.171504,0.060500,-0.089010
+aim_hud_offset_rot = 10.048900,0.082240,-0.009000
+aim_hud_offset_pos_16x9 = -10.193470,0.061100,-0.037740
+aim_hud_offset_rot_16x9 = 10.057800,0.111900,-0.011000
+
+item_visual             	= dynamics\devices\dev_beer\dev_pedobeer_high_hud.ogf
+anm_show			= item_use_fast
+
+[item_long_use_hud]:item_use_fast_hud
+item_visual             	= dynamics\devices\dev_item_long_use\item_use.ogf
+anm_show			= item_long_use
+
+[item_use_hud]:item_use_fast_hud
+item_visual             	= dynamics\devices\dev_item_use\dev_item_use.ogf
+anm_show			= item_use
+
+[item_use_slow_hud]:item_use_fast_hud
+item_visual             	= dynamics\devices\dev_item_use_slow\dev_item_slow_use.ogf
+anm_show			= item_use_slow
+
+[item_use_notryaska_hud]:item_use_fast_hud
+item_visual             	= dynamics\devices\dev_notryaska\dev_notryaska.ogf
+anm_show			= notryaska
+
+[guitar_a]:identity_immunities
+GroupControlSection		= spawn_group
+discovery_dependency	=
+$spawn					= "food and drugs\guitar_a"
+cform                   = skeleton
+class					= S_GUITAR
+script_binding        	= bind_guitar.bind
+visual                  = dynamics\devices\dev_guitar\dev_guitar.ogf
+default_to_ruck			= true
+sprint_allowed		= false
+animation_slot		= 7 ; заглушка, не используется для ПДА
+
+cost					= 35
+inv_name				= st_guitar_name
+inv_name_short			= st_guitar_name
+description				= st_guitar_descr
+inv_weight				= 1.5
+inv_grid_width			= 4
+inv_grid_height			= 2
+inv_grid_x				= 10
+inv_grid_y				= 19
+
+attach_angle_offset		= -0.415, -1.262, 0.808
+;-1.512, -1.392, -0.242
+attach_position_offset	= -0.014, 0.010, 0.020
+;0.010, -0.090, 0.000
+attach_bone_name		= bip01_l_hand
+auto_attach				= false
+
+animation_slot 		= 2
+hud 				= guitar_hud
+slot 				= 12
+target_pitch		= 0.04
+
+snd_draw  = device\bolt\bolt_draw
+snd_holster = device\bolt\bolt_hide
+snd_strum_down_1 = device\guitarplayable\strum\strum_am\strum_am_down_01
+
+; anm state
+;StrumUp = 0
+;StrumDown = 1
+;StringTop = 2
+;StringMiddle = 3
+;StringBottom = 4
+
+world_play_string_1_anm_state = 4
+world_play_string_2_anm_state = 3
+world_play_string_3_anm_state = 4
+world_play_string_4_anm_state = 3
+world_play_string_5_anm_state = 2
+world_play_string_6_anm_state = 2
+
+chords_page_0 = chord_g, chord_dm, chord_am, chord_em, chord_f, chord_c
+;chords_page_0 = chord_c, chord_f, chord_em, chord_am, chord_dm, chord_g
+;chords_page_1 = chord_g, chord_dm, chord_am, chord_em, chord_f, chord_c
+;chords_page_2 = chord_c, chord_f, chord_em, chord_am, chord_dm, chord_g
+
+[chord_g]
+name = G
+world_anim_state = 0
+left_hand_hud_anim = anm_chord_g
+
+snd_strum_down = device\guitarplayable\strum\strum_g\strum_g_down_01
+snd_strum_up = device\guitarplayable\strum\strum_g\strum_g_up_01
+snd_1_string = device\guitarplayable\strings\string_1\string_1_3_01
+snd_2_string = device\guitarplayable\strings\string_2\string_2_0_01
+snd_3_string = device\guitarplayable\strings\string_3\string_3_0_01
+snd_4_string = device\guitarplayable\strings\string_4\string_4_0_01
+snd_5_string = device\guitarplayable\strings\string_5\string_5_2_01
+snd_6_string = device\guitarplayable\strings\string_6\string_6_3_01
+
+[chord_dm]
+name = Dm
+world_anim_state = 1
+left_hand_hud_anim = anm_chord_dm
+
+snd_strum_down = device\guitarplayable\strum\strum_dm\strum_dm_down_01
+snd_strum_up = device\guitarplayable\strum\strum_dm\strum_dm_up_01
+snd_1_string = device\guitarplayable\strings\string_1\string_1_5_01
+snd_2_string = device\guitarplayable\strings\string_2\string_2_6_01
+snd_3_string = device\guitarplayable\strings\string_3\string_3_7_01
+snd_4_string = device\guitarplayable\strings\string_4\string_4_7_01
+snd_5_string = device\guitarplayable\strings\string_5\string_5_5_01
+snd_6_string = device\guitarplayable\strings\string_6\string_6_0_01
+
+[chord_am]
+name = Am
+world_anim_state = 2
+left_hand_hud_anim = anm_chord_am
+
+snd_strum_down = device\guitarplayable\strum\strum_am\strum_am_down_01
+snd_strum_down1 = device\guitarplayable\strum\strum_am\strum_am_down_01
+snd_strum_up = device\guitarplayable\strum\strum_am\strum_am_up_01
+snd_strum_up1 = device\guitarplayable\strum\strum_am\strum_am_up_01
+snd_strum_up2 = device\guitarplayable\strum\strum_am\strum_am_up_01
+snd_1_string = device\guitarplayable\strings\string_1\string_1_0_01
+snd_2_string = device\guitarplayable\strings\string_2\string_2_1_01
+snd_3_string = device\guitarplayable\strings\string_3\string_3_2_01
+snd_4_string = device\guitarplayable\strings\string_4\string_4_2_01
+snd_5_string = device\guitarplayable\strings\string_5\string_5_0_01
+snd_6_string = device\guitarplayable\strings\string_6\string_6_0_01
+
+[chord_em]
+name = Em
+world_anim_state = 3
+left_hand_hud_anim = anm_chord_em
+
+snd_strum_down = device\guitarplayable\strum\strum_em\strum_em_down_01
+snd_strum_up = device\guitarplayable\strum\strum_em\strum_em_up_01
+snd_1_string = device\guitarplayable\strings\string_1\string_1_0_01
+snd_2_string = device\guitarplayable\strings\string_2\string_2_0_01
+snd_3_string = device\guitarplayable\strings\string_3\string_3_0_01
+snd_4_string = device\guitarplayable\strings\string_4\string_4_2_01
+snd_5_string = device\guitarplayable\strings\string_5\string_5_2_01
+snd_6_string = device\guitarplayable\strings\string_6\string_6_0_01
+
+[chord_f]
+name = F
+world_anim_state = 4
+left_hand_hud_anim = anm_chord_f
+
+snd_strum_down = device\guitarplayable\strum\strum_f\strum_f_down_01
+snd_strum_up = device\guitarplayable\strum\strum_f\strum_f_up_01
+snd_1_string = device\guitarplayable\strings\string_1\string_1_1_01
+snd_2_string = device\guitarplayable\strings\string_2\string_2_1_01
+snd_3_string = device\guitarplayable\strings\string_3\string_3_2_01
+snd_4_string = device\guitarplayable\strings\string_4\string_4_3_01
+snd_5_string = device\guitarplayable\strings\string_5\string_5_3_01
+snd_6_string = device\guitarplayable\strings\string_6\string_6_1_01
+
+[chord_c]
+name = C
+world_anim_state = 5
+left_hand_hud_anim = anm_chord_c
+
+snd_strum_down = device\guitarplayable\strum\strum_c\strum_c_down_01
+snd_strum_up = device\guitarplayable\strum\strum_c\strum_c_up_01
+snd_1_string = device\guitarplayable\strings\string_1\string_1_0_01
+snd_2_string = device\guitarplayable\strings\string_2\string_2_1_01
+snd_3_string = device\guitarplayable\strings\string_3\string_3_0_01
+snd_4_string = device\guitarplayable\strings\string_4\string_4_2_01
+snd_5_string = device\guitarplayable\strings\string_5\string_5_3_01
+snd_6_string = device\guitarplayable\strings\string_6\string_6_0_01
+
+[guitar_hud]:hud_base
+attach_place_idx = 2
+hud_fov = 0.75
+hud_fov_zoom = 0.75
+
+hands_position				= 0.0, 0.0, 0.0
+hands_orientation			= 0.0, 0.0, 0.0
+hands_position_16x9			= 0.0, 0.0, 0.0
+hands_orientation_16x9		= 0.0,0.0,0.0
+
+item_position = 0.0,0.0,0.0
+item_orientation = 0.0,0.0,0.0
+
+aim_hud_offset_pos = -0.171504,0.060500,-0.089010
+aim_hud_offset_rot = 0.048900,0.082240,-0.009000
+aim_hud_offset_pos_16x9 = -0.193470,0.061100,-0.037740
+aim_hud_offset_rot_16x9 = 0.057800,0.111900,-0.011000
+
+item_visual             	= dynamics\devices\dev_guitar\dev_guitar_hud.ogf
+
+anm_show			= dev_guitar_draw
+anm_hide			= dev_guitar_hide
+anm_idle			= dev_guitar_idle
+anm_idle_moving		= dev_guitar_idle
+anm_idle_moving_slow 	= dev_guitar_idle
+anm_idle_moving_crouch  = dev_guitar_idle
+anm_idle_moving_crouch_slow = dev_guitar_idle
+anm_idle_sprint = dev_guitar_idle
+anm_strum_down = dev_guitar_strum_down
+anm_strum_up = dev_guitar_strum_up
+anm_play_string_1 = dev_guitar_string_bottom
+anm_play_string_2 = dev_guitar_string_middle
+anm_play_string_3 = dev_guitar_string_bottom
+anm_play_string_4 = dev_guitar_string_middle
+anm_play_string_5 = dev_guitar_string_top
+anm_play_string_6 = dev_guitar_string_top
+anm_chord_g =  dev_guitar_chord_g
+anm_chord_dm =  dev_guitar_chord_dm
+anm_chord_am =  dev_guitar_chord_am
+anm_chord_em =  dev_guitar_chord_em
+anm_chord_f =  dev_guitar_chord_f
+anm_chord_c =  dev_guitar_chord_c
+
+[harmonica_a]:identity_immunities
+GroupControlSection		= spawn_group
+discovery_dependency	=
+$spawn					= "food and drugs\harmonica_a"
+cform                   = skeleton
+class					= II_ATTCH
+visual                  = dynamics\devices\dev_harmonica\dev_harmonica.ogf
+cost					= 35
+inv_name				= st_harmonica_name
+inv_name_short			= st_harmonica_name
+description				= st_harmonica_descr 
+inv_weight				= 0.35
+inv_grid_width			= 1
+inv_grid_height			= 1
+inv_grid_x				= 11
+inv_grid_y				= 2
+attach_angle_offset		= 0.000000, -1.204452, -1.262921
+attach_position_offset	= 0.081856, -0.035081, 0.011694
+attach_bone_name		= bip01_l_hand
+auto_attach				= false
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;	Scaner B6
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+[anomaly_scaner]:identity_immunities
+GroupControlSection   	= spawn_group
+discovery_dependency  	=
+$spawn          		= "equipment\anomaly_scaner"
+cform                   = skeleton
+class         			= II_ATTCH
+visual                  = dynamics\devices\dev_datchik_2\dev_datchik_2.ogf
+cost          			= 0
+inv_name        		= "hand_radio"
+inv_name_short      	= "hand_radio"
+inv_weight        		= 0.5
+inv_grid_width      	= 2
+inv_grid_height     	= 1
+inv_grid_x        		= 16
+inv_grid_y        		= 12
+attach_angle_offset   	= -1.571,-1.308,-1.458    ;устанавливаетсљ в радианах Angle*PI/180
+attach_position_offset  = 0.105, -0.004, 0.003
+attach_bone_name    	= bip01_l_hand
+auto_attach       		= false
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;						INCLUDES
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+#include "detectors\includes.ltx"
+#include "items_armour_attachments.ltx"
+#include "items_artefacts.ltx"
+#include "items_arty_containers.ltx"
+#include "items_batteries.ltx"
+#include "items_cooking.ltx"
+#include "items_devices.ltx"
+#include "items_drink.ltx"
+#include "items_explosives.ltx"
+#include "items_faction_badges.ltx"
+#include "items_food.ltx"
+#include "items_letters.ltx"
+#include "items_medical.ltx"
+#include "items_monster.ltx"
+#include "items_outfit.ltx"
+#include "items_personal.ltx"
+#include "items_quest.ltx"
+#include "items_repair.ltx"
+#include "items_trade.ltx"
+#include "items_utility.ltx"
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;

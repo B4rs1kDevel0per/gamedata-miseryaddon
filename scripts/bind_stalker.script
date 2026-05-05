@@ -1,5 +1,10 @@
+-- bind_stalker.lua for X-Ray Multiplayer Extension + AtmosFear 3
+
 dbg = debug_utils
 MODULE = "bind_stalker"
+
+-- AtmosFear integration: GM message ID for weather state synchronization (must not conflict)
+GM_SCRIPT_WEATHER = 115
 
 function init    (obj)
 				if (OnClient()) then
@@ -322,6 +327,11 @@ function mp_actor_binder:update(delta)
 			self.f_surge_manager_loaded = true
 		end
 		self.surge_manager:update()
+	end
+	
+	-- AtmosFear integration: client-side weather update (DOF, meteorites, distant storms)
+	if not IsDedicatedServer() then
+		self.weather_manager:update()
 	end
 	
 	if not self.loaded_slot_applied then
@@ -930,4 +940,11 @@ function set_level_spot(npc_id, map_spot)
 			npc:set_profession(profession)
 		end
 	end
+end
+
+---------------------------------------------------------------------
+-- Called from the GM message dispatcher when GM_SCRIPT_WEATHER is received
+---------------------------------------------------------------------
+function OnWeatherMessage(packet)
+	level_weathers.apply_weather_state(packet)
 end
