@@ -3,9 +3,6 @@
 dbg = debug_utils
 MODULE = "bind_stalker"
 
--- AtmosFear integration: GM message ID for weather state synchronization (must not conflict)
-GM_SCRIPT_WEATHER = 115
-
 function init    (obj)
 				if (OnClient()) then
 					obj:bind_object(bind_stalker_cl(obj))
@@ -271,11 +268,14 @@ function mp_actor_binder:update(delta)
 		if not IsServerClient() then
 			return
 		end
-	end
 		
-	object_binder.update(self, delta)
+		-- AtmosFear 3: клиентский апдейт визуальных эффектов погоды (DOF, грозы)
+		if self.weather_manager then
+			self.weather_manager:update_client()
+		end
+	end
 	
-	--ui_dbg_info.print_debug()
+	object_binder.update(self, delta)
 	
 	local time = time_global()
 	game_stats.update (delta, self.object)
@@ -328,12 +328,6 @@ function mp_actor_binder:update(delta)
 		end
 		self.surge_manager:update()
 	end
-	
-	-- AtmosFear integration: client-side weather update (DOF, meteorites, distant storms)
-	if not IsDedicatedServer() then
-		self.weather_manager:update()
-	end
-	
 	if not self.loaded_slot_applied then
 		self.object:activate_slot(self.loaded_active_slot)
 		self.loaded_slot_applied = true

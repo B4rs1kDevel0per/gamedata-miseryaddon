@@ -314,9 +314,14 @@ function CSurgeManager:update_sv()
 		if diff_sec >= self.surge_time then
 			self:end_surge()
 		else
-			if self.loaded then
+			if(self.loaded) then
 				self.loaded = false
-			end
+				if self.started then
+					local hour = level.get_time_hours()
+					local fx = (hour >= 5 and hour <= 20) and "fx_blowout_day" or "fx_blowout_night"
+					level.set_weather_fx(fx)
+					end
+				end
 			-- Damage players outside cover
 			if diff_sec >= 140 then
 				for k, v in pairs(db.mp_actors) do
@@ -352,10 +357,15 @@ function CSurgeManager:update_sv()
 				self.blowout_sound = true
 			elseif diff_sec >= 0 and not self.first_message_given then
 				self.first_message_given = true
-				if not self.task_given then
-					level.set_weather_fx("fx_surge_day_3")
-					self.task_given = true
-				end
+                if not self.task_given then
+                    local hour = level.get_time_hours()
+                    if hour >= 5 and hour <= 20 then
+                        level.set_weather_fx("fx_blowout_day")
+                    else
+                        level.set_weather_fx("fx_blowout_night")
+                    end
+                    self.task_given = true
+                end
 			end
 		end
 	end
