@@ -1,73 +1,6 @@
-<?xml version="1.0" encoding="windows-1251" ?>
+<?xml version="1.0" encoding="utf-8" ?>
 <string_table>
-	<!-- Partes de corpos de mutantes -->
-	<string id="mutant_flesh_eye_description">
-		<text>O olho mutado e inchado da Carne adquiriu varias caracteristicas estranhas, sendo a mais util delas a capacidade de regenerar a lente. Os detalhes do processo sao ate agora desconhecidos, embora tal descoberta certamente revolucionaria a medicina moderna. Voce pode fazer sua parte no desenvolvimento cientifico vendendo olhos de Carne para cientistas em seus experimentos.</text>
-	</string>
-	<string id="mutant_flesh_eye">
-		<text>Olho de Carne</text>
-	</string>
-	<string id="mutant_boar_leg_description">
-		<text>Cascos de Javalis podem ser usados para produzir varias drogas, por exemplo, soros antiradiacao.</text>
-	</string>
-	<string id="mutant_boar_leg">
-		<text>Perna de Javali</text>
-	</string>
-	<string id="mutant_dog_tail_description">
-		<text>A resistencia da pele de caes mutantes a eletricidade e agentes quimicos ha muito tempo e objeto de atencao cientifica. Como a cauda do animal esta quase completamente livre de tecido adiposo, e especialmente adequada para exames laboratoriais.</text>
-	</string>
-	<string id="mutant_dog_tail">
-		<text>Cauda de Cao</text>
-	</string>
-	<string id="mutant_psevdodog_tail_description">
-		<text>A resistencia da pele de caes mutantes a eletricidade e agentes quimicos ha muito tempo e objeto de atencao cientifica. Como a cauda do animal esta quase completamente livre de tecido adiposo, e especialmente adequada para exames laboratoriais.</text>
-	</string>
-	<string id="mutant_psevdodog_tail">
-		<text>Cauda de Pseudocao</text>
-	</string>
-	<string id="mutant_krovosos_jaw_description">
-		<text>Os tentaculos do Chupador de Sangue contem uma glandula especial que produz uma enzima capaz de dissolver a pele e simultaneamente impedir a coagulacao do sangue. Descobrir a composicao da enzima poderia ser a pedra angular de toda uma serie de grandes avancos medicos.</text>
-	</string>
-	<string id="mutant_krovosos_jaw">
-		<text>Mandibula de Chupador de Sangue</text>
-	</string>
-	<string id="mutant_snork_leg_description">
-		<text>Os pes e pernas do Snork contem um grande numero de tendoes altamente elasticos. Isso explica a capacidade da besta de fazer aqueles saltos incrivelmente longos. Os cientistas ainda procuram possibilidades uteis para usa-los e ficariam gratos por toda ajuda que receberem.</text>
-	</string>
-	<string id="mutant_snork_leg">
-		<text>Perna de Snork</text>
-	</string>
-	<string id="mutant_chimera_cogot_description">
-		<text>A garra de uma Quimera. Sua composicao molecular exata e desconhecida, mas sabe-se que e tao forte quanto diamantes, explicando a capacidade da besta de rasgar um homem mesmo dentro de um traje blindado.</text>
-	</string>
-	<string id="mutant_chimera_cogot">
-		<text>Garra de Quimera</text>
-	</string>
-	<string id="mutant_tushkano_head_description">
-		<text>A cabeca de um mutante Tushkano. Os cientistas desejam estuda-las para ajuda-los a identificar de qual criatura o Tushkano se originou.</text>
-	</string>
-	<string id="mutant_tushkano_head">
-		<text>Cabeca de Tushkano</text>
-	</string>
-	<string id="mutant_controller_hand">
-		<text>Mao do Controlador</text>
-	</string>
-	<string id="mutant_controller_hand_description">
-		<text>Esta mao interessa aos cientistas que desejam determinar como as ondas psi emanam dela.</text>
-	</string>
-	<string id="mutant_burer_hand">
-		<text>Mao do Burer</text>
-	</string>
-	<string id="mutant_burer_hand_description">
-		<text>Acredita-se que a mao do Burer possa conter a chave para realmente controlar campos anti-gravitacionais.</text>
-	</string>
-	<string id="mutant_giant_eye">
-		<text>Olho de Pseudogigante</text>
-	</string>
-	<string id="mutant_giant_eye_description">
-		<text>Este olho e de grande interesse devido as suas propriedades de aprimoramento visual. A esperanca e que um dia possa fornecer a cura para a cegueira.</text>
-	</string>
-	<!-- Mensagens de saque de mutantes -->
+	<!-- Mutant harvesting messages (ported from Misery) -->
 	<string id="st_mutant_loot_found">
 		<text>Partes de mutantes extraidas.</text>
 	</string>
@@ -79,5 +12,8 @@
 	</string>
 	<string id="st_mutant_loot_tip">
 		<text>[$$ACTION_USE$$] EXTRAIR PARTES.</text>
+	</string>
+	<string id="st_mutant_loot_need_knife">
+		<text>Saque a faca para extrair partes do mutante.</text>
 	</string>
 </string_table>

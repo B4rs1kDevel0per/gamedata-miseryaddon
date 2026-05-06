@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<string_table>
+	<!-- Mutant harvesting messages (ported from Misery) -->
+	<string id="st_mutant_loot_found">
+		<text>Mutant parts harvested.</text>
+	</string>
+	<string id="st_mutant_loot_not_found">
+		<text>Body is too damaged to gather parts.</text>
+	</string>
+	<string id="st_mutant_loot_already_found">
+		<text>Body has already been harvested.</text>
+	</string>
+	<string id="st_mutant_loot_tip">
+		<text>[$$ACTION_USE$$] HARVEST PARTS.</text>
+	</string>
+	<string id="st_mutant_loot_need_knife">
+		<text>Draw your knife to harvest mutant parts.</text>
+	</string>
+</string_table>

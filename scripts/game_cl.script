@@ -10,13 +10,11 @@ dialogs_filled = false
 
 pstor = { }
 
-local dbg = debug_utils
-local MODULE = "game_cl"
-
 function ReadStartGameInfo(packet)
 	if GameType() ~= game_cl.game_id_coop then
 		return
 	end
+
 	xr_logic.pstor_load_all("game_cl", packet)
 	xr_voicedialogs.load_dialogs(packet)
 	sim_squad_scripted_cl_manager.get_squad_manager():read_squads_info(packet)
@@ -141,10 +139,6 @@ function TranslateGameMessage(packet)
 		if obj and obj.active_scheme then
 			obj[obj.active_scheme].signals["cam_effector_stop"] = true
 		end
-	elseif _type == GM_SCRIPT_WEATHER then
-		if OnClient() then
-			level_weathers.apply_weather_state(packet)
-		end
 	elseif _type == GM_SCRIPT_SURGE then
 		if OnClient() then
 			printf_msg("GM_SCRIPT_SURGE")
@@ -152,10 +146,7 @@ function TranslateGameMessage(packet)
 			if start == 0 then
 				surge_manager.stop_surge()
 			elseif start == 1 then
-				local m = surge_manager.get_surge_manager()
-				if not m.started then
-					surge_manager.start_surge()
-				end
+				surge_manager.start_surge()
 			elseif start == 2 then
 				local skip_message = packet:r_bool()
 				surge_manager.skip_surge(skip_message)
@@ -235,15 +226,12 @@ function TranslateGameMessage(packet)
 			xr_voicedialogs.add_to_save_table(name)
 		end
 		printf_msg("GM_SCRIPT_SAVE_VOICE_DIALOG: %s", name)
-		elseif _type == GM_SCRIPT_MUTANT_LOOT then
-		debug_utils.INFO(MODULE, "[GM_SCRIPT_MUTANT_LOOT] RUNNING")
+	elseif _type == GM_SCRIPT_MUTANT_LOOT then
 		if OnClient() then
-			debug_utils.INFO(MODULE, "[GM_SCRIPT_MUTANT_LOOT] EXTRACTING PARAMS")
 			local actor_id = packet:r_u16()
 			local news_id = packet:r_stringZ()
 			local sender_tag = packet:r_stringZ()
 			if actor_id and getLocalActor() and getLocalActor():id() == actor_id then
-				debug_utils.INFO(MODULE, "[GM_SCRIPT_MUTANT_LOOT] ACTOR CONFIRMED, SENDING TIP")
 				news_manager.send_tip(getLocalActor(), news_id, nil, sender_tag, nil, nil)
 			end
 		end

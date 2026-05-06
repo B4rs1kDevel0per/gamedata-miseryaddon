@@ -2,13 +2,10 @@
 -- Monster binding
 -----------------------------------------------------------------------------------
 
-local dbg = debug_utils
-local MODULE = "bind_monster"
-
 function bind(obj)
 	printf("_bp: monster.bind: name='%s', id='%d'", obj:name(), obj:id())
 
-	-- Для спауна
+	-- пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 	--xr_spawner.spawn_client(obj)
 	if OnClient() then
 		obj:bind_object(bind_monster_cl(obj))
@@ -25,6 +22,7 @@ class "generic_object_binder" (object_binder)
 
 function generic_object_binder:__init(obj) super(obj)
 	self.loaded = false
+	self.tip_state = nil  -- cache: last tip shown ("knife"/"no_knife"/nil)
 end
 
 function generic_object_binder:reload(section)
@@ -44,18 +42,6 @@ function generic_object_binder:reinit()
 	self.object:set_callback(callback.sound, 				self.hear_callback, 	self)
 end
 
-function generic_object_binder:use_kick(obj, who)
-	local pos = who:position()
-	local h = hit()
-	h.power = 2
-	h.direction = obj:position():sub(vector():set(pos.x,pos.y+0.3,pos.z))
-	h.bone = "bip01_spine"
-	h.draftsman = who
-	h.impulse = 271
-	h.type = hit.wound
-	obj:hit(h)
-end
-
 function generic_object_binder:update(delta)
 	object_binder.update(self, delta)
 
@@ -67,27 +53,50 @@ function generic_object_binder:update(delta)
 	local object_alive = self.object:alive()
 	--' printf("_bp: generic_object_binder: UPDATE [name='%s' time=%d]",
 	--'	self.object:name(), time_global())
-	-- fluffy22
+	
 	if not object_alive then
 		local se_obj = alife():object(self.object:id())
 		if se_obj then
-			-- removed looted check to allow for feedback when looted
-			-- credits to ARS and TGZ teams for this - mutant looting
-			self.object:set_callback(callback.use_object, self.use_callback, self)
-			self.object:set_tip_text("st_mutant_loot_tip")
+			-- mutant harvesting: always allow F, but show different tip based on knife
+			local actor = db.actor
+			local has_knife = false
+			if actor then
+				local active = actor:active_item()
+				if active and (active:clsid() == clsid.wpn_knife_s or active:clsid() == clsid.wpn_knife) then
+					has_knife = true
+				end
+			end
+			local new_state = has_knife and "knife" or "no_knife"
+			if new_state ~= self.tip_state then
+				self.tip_state = new_state
+				self.object:set_callback(callback.use_object, self.use_callback, self)
+				if has_knife then
+					self.object:set_tip_text("st_mutant_loot_tip")
+				else
+					self.object:set_tip_text("st_mutant_loot_need_knife")
+				end
+			end
 		else
-			self.object:set_callback(callback.use_object, nil)
-			self.object:set_tip_text("st_mutant_loot_tip")
+			if self.tip_state ~= nil then
+				self.tip_state = nil
+				self.object:set_callback(callback.use_object, nil)
+				self.object:set_tip_text("")
+			end
 		end
 		return
 	end
-	-- fluffy22
+	if self.tip_state ~= nil then
+		self.tip_state = nil
+		self.object:set_callback(callback.use_object, nil)
+	end
 	
+	
+	self.object:set_tip_text("")
 	local st = db.storage[self.object:id()]
 	if st ~= nil and st.active_scheme ~= nil then
 		xr_logic.try_switch_to_another_section(self.object, st[st.active_scheme], db.actor)
 	end
-	-- Апдейт отряда
+	-- пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 	if squad ~= nil then
 		if squad:commander_id() == self.object:id() then
 			squad:update()
@@ -120,7 +129,7 @@ function generic_object_binder:update(delta)
 	end
 	
 	
--- Если есть враг , то идем в комбат !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+-- пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ , пїЅпїЅ пїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅ !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 	if self.object:get_enemy() then
 		if xr_logic.mob_captured(self.object) then
 			xr_logic.mob_release(self.object)
@@ -128,10 +137,7 @@ function generic_object_binder:update(delta)
 		return
 	end
 	
-	local clstush = self.object:clsid()
-	if (clstush == clsid.tushkano_s) then
-		self.object:set_callback(callback.use_object, self.use_kick, self)
-	end
+	
 	
 	if squad and squad.current_action and squad.current_action.name == "reach_target" then
 		local squad_target = simulation_objects.get_sim_obj_registry().objects[squad.assigned_target_id]
@@ -164,7 +170,7 @@ function generic_object_binder:update(delta)
 end
 
 function generic_object_binder:extrapolate_callback()
-	-- Проверяем, что объект еще в онлайне
+	-- пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 	if db.storage[self.object:id()] == nil or
 		 db.storage[self.object:id()].object == nil
 	then
@@ -214,7 +220,7 @@ function generic_object_binder:death_callback(victim, who)
 	if self.st.active_section then
 		xr_logic.issue_event(self.object, self.st[self.st.active_scheme], "death_callback", victim, who)
 	end
-	--' Наносим небольшой импульс вперед.
+	--' пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ.
 	local h = hit()
 	h.draftsman = self.object
 	h.type = hit.fire_wound
@@ -262,31 +268,39 @@ function generic_object_binder:hear_callback(self, who_id, sound_type, sound_pos
 	xr_hear.hear_callback(self, who_id, sound_type, sound_position, sound_power)
 end
 
--- fluffy22 
+-- mutant harvesting (Misery port)
+function generic_object_binder:use_kick(obj, who)
+end
+
 function generic_object_binder:use_callback(obj, who)
-	debug_utils.INFO(MODULE, "Mutant [%s] Used by [%s]", obj:id(), who:id())
-	local actor = getLocalActor() or who
-	debug_utils.ASSERT(MODULE, actor ~= nil, "LocalActor is Nil!")
-	if actor == nil then
+	local actor = db.actor or who
+	if actor == nil then return end
+	-- check knife in hand
+	local active = actor:active_item()
+	local has_knife = active and (active:clsid() == clsid.wpn_knife_s or active:clsid() == clsid.wpn_knife)
+	if not has_knife then
+		-- send "need knife" message to client
+		local packet = game_cl.GenerateGameMessage(GM_SCRIPT_MUTANT_LOOT)
+		packet:w_u16(actor:id())
+		packet:w_stringZ("st_mutant_loot_need_knife")
+		packet:w_stringZ("mutant_hunter")
+		u_EventSendReliable(packet)
 		return
 	end
 	local obj_id = self.object:id()
 	local se_obj = alife():object(obj_id)
 	if se_obj and not se_obj.looted then
-		debug_utils.INFO(MODULE, "Looting mutant [%s]", obj_id)
 		se_obj.looted = true
+		self.tip_state = nil  -- force tip reset after looting
 		nz_loot.loot_mutant(self.object, actor)
-		--alife():create("vodka", actor:position(), 0, 0, actor:id())
 	elseif se_obj and se_obj.looted then
-		debug_utils.INFO(MODULE, "Already looted mutant [%s]!", obj_id)
 		local packet = game_cl.GenerateGameMessage(GM_SCRIPT_MUTANT_LOOT)
-		packet:w_u16(actor:id())  -- Send actor's ID so client knows who it's for
-		packet:w_stringZ("st_mutant_loot_already_found")  -- News ID
-		packet:w_stringZ("mutant_hunter")         -- Icon/tag for the sender
+		packet:w_u16(actor:id())
+		packet:w_stringZ("st_mutant_loot_already_found")
+		packet:w_stringZ("mutant_hunter")
 		u_EventSendReliable(packet)
 	end
 end
--- fluffy22 
 
 function generic_object_binder:net_spawn(sobject)
 	if not object_binder.net_spawn(self, sobject) then
@@ -310,7 +324,7 @@ function generic_object_binder:net_spawn(sobject)
 
 	db.add_obj(self.object)
 
---******************************* Телепорт на первую точку пути работы смарттеррейна...*****************************
+--******************************* пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ...*****************************
 	local se_obj = alife():object(self.object:id())
 	if se_obj then
 		if db.spawned_vertex_by_id[se_obj.id] ~= nil then
@@ -349,12 +363,12 @@ function generic_object_binder:net_destroy()
 		xr_logic.issue_event(self.object, st[st.active_scheme], "net_destroy")
 	end
 
-	-- для того, чтобы мутанты запоминали последние позиции/активные секции на смарт террейнах --------
+	-- пїЅпїЅпїЅ пїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ/пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ --------
 	local se_obj = alife():object(self.object:id())
 	if se_obj and se_obj.m_smart_terrain_id ~= 65535 then
 		local smart_terrain = alife():object(se_obj.m_smart_terrain_id)
 		if smart_terrain.arriving_npc[se_obj.id] == nil then
-			-- Запоминаем позицию и активную секцию --------
+			-- пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ --------
 			if db.offline_objects[self.object:id()] then
 				db.offline_objects[self.object:id()].level_vertex_id = self.object:level_vertex_id()
 				db.offline_objects[self.object:id()].active_section = db.storage[self.object:id()].active_section
@@ -396,6 +410,7 @@ end
 
 class "bind_monster_cl" (object_binder)
 function bind_monster_cl:__init (obj) super(obj)
+	self.tip_state = nil
 end
 
 function bind_monster_cl:net_spawn(data)
@@ -420,20 +435,53 @@ end
 function bind_monster_cl:update(delta)
 	object_binder.update(self, delta)
 
-	-- fluffy22
-	local object_alive = self.object:alive()
-	--printf_msg("alive: %s (%s)", tostring(self.object:alive()), self.object:name())
-	if not object_alive then
-		self.object:set_callback(callback.use_object, self.use_callback, self)
-		self.object:set_tip_text("st_mutant_loot_tip")
-		--printf_msg("callback for dead %s set", self.object:name())
+	if not self.object:alive() then
+		local actor = getLocalActor()
+		local has_knife = false
+		if actor then
+			local active = actor:active_item()
+			if active and (active:clsid() == clsid.wpn_knife_s or active:clsid() == clsid.wpn_knife) then
+				has_knife = true
+			end
+		end
+		local new_state = has_knife and "knife" or "no_knife"
+		if new_state ~= self.tip_state then
+			self.tip_state = new_state
+			self.object:set_callback(callback.use_object, self.use_callback, self)
+			if has_knife then
+				self.object:set_tip_text("st_mutant_loot_tip")
+			else
+				self.object:set_tip_text("st_mutant_loot_need_knife")
+			end
+		end
 	else
-		self.object:set_callback(callback.use_object, nil)
-		self.object:set_tip_text("")
-		--printf_msg("callback for alive %s set", self.object:name())
+		if self.tip_state ~= nil then
+			self.tip_state = nil
+			self.object:set_callback(callback.use_object, nil)
+			self.object:set_tip_text("")
+		end
 	end
-	return
-	-- fluffy22
+end
+
+function bind_monster_cl:use_callback(obj, who)
+	local actor = getLocalActor() or who
+	if actor == nil then return end
+	-- check knife in hand
+	local active = actor:active_item()
+	local has_knife = active and (active:clsid() == clsid.wpn_knife_s or active:clsid() == clsid.wpn_knife)
+	if not has_knife then
+		news_manager.send_tip(actor, "st_mutant_loot_need_knife", nil, "mutant_hunter", nil, nil)
+		return
+	end
+	local obj_id = self.object:id()
+	local se_obj = alife():object(obj_id)
+	if se_obj and not se_obj.looted then
+		se_obj.looted = true
+		self.tip_state = nil
+		nz_loot.loot_mutant(self.object, actor)
+	elseif se_obj and se_obj.looted then
+		news_manager.send_tip(actor, "st_mutant_loot_already_found", nil, "mutant_hunter", nil, nil)
+	end
 end
 
 function bind_monster_cl:net_destroy()
@@ -452,6 +500,5 @@ end
 function bind_monster_cl:hit_callback(obj, amount, local_direction, who, bone_index)
 	if who and getLocalActor() and getLocalActor():id() == who:id() then
 		xr_statistic.set_best_weapon(amount, who)
-		debug_utils.INFO(MODULE, "%s hits %s for %s!", who:name(), obj:name(), tonumber(amount))
 	end
 end
