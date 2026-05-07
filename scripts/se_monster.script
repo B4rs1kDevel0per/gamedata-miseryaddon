@@ -1,7 +1,7 @@
 --[[
-РР·РјРµРЅРµРЅРёСЏ script_version:
-	4 - СЃРѕС…СЂР°РЅРµРЅРёРµ РїРѕР»СЏ job_online
-	5 - СЃРѕС…СЂР°РЅРµРЅРёРµ РїРѕР»СЏ was_in_smart_terrain
+Изменения script_version:
+	4 - сохранение поля job_online
+	5 - сохранение поля was_in_smart_terrain
 ]]
 
 class "se_monster" (cse_alife_monster_base)
@@ -15,16 +15,18 @@ function se_monster:__init (section) super (section)
 	self.check_distance = false
 	self.min_distance   = 150
 
-	-- СЌС‚РѕС‚ С„Р»Р°Рі Р±РµСЂС‘С‚СЃСЏ РёР· СЂР°Р±РѕС‚С‹ СЃРјР°СЂС‚Р°
-	-- true     = РІСЃРµРіРґР° РІ РѕРЅР»Р°Р№РЅРµ
-	-- false    = РІСЃРµРіРґР° РІ РѕС„Р»Р°Р№РЅРµ
-	-- condlist = СѓСЃР»РѕРІРёРµ, РєРѕС‚РѕСЂРѕРµ РѕС‚РїСЂРµРґРµР»СЏРµС‚ true РёР»Рё false
-	-- nil      = СЃРјР°СЂС‚Сѓ РІСЃС‘ СЂР°РІРЅРѕ
+	-- этот флаг берётся из работы смарта
+	-- true     = всегда в онлайне
+	-- false    = всегда в офлайне
+	-- condlist = условие, которое отпределяет true или false
+	-- nil      = смарту всё равно
 	self.job_online          = nil
 	self.job_online_condlist = nil
 	self.m_registred = false
-	self.looted = false  -- mutant harvesting flag
 	db.offline_objects[self.id] = {}
+	
+	--fluffy22
+	self.looted = false
 end
 --------------------
 function se_monster:get_ini()
@@ -66,7 +68,9 @@ function se_monster:STATE_Write(packet)
 		packet:w_stringZ(tostring(db.offline_objects[self.id] and db.offline_objects[self.id].level_vertex_id))
 	end
 	packet:w_stringZ(tostring(db.offline_objects[self.id] and db.offline_objects[self.id].active_section))
-	packet:w_bool(self.looted)  -- mutant harvesting
+	-- fluffy22
+	--printf_msg("WRITING MUTANT STATE")
+	packet:w_bool(self.looted)
 end
 --------------------
 function se_monster:STATE_Read(packet, size)
@@ -84,9 +88,11 @@ function se_monster:STATE_Read(packet, size)
 			db.offline_objects[self.id].level_vertex_id = tonumber(old_lvid)
 		end
 	end
-	if packet:r_elapsed() > 0 then
-		self.looted = packet:r_bool()
-	end
+	-- fluffy22
+	--if packet:r_elapsed() ~= 0 then
+	--printf_msg("READ MONSTER")
+	self.looted = packet:r_bool()
+	--end
 end
 --------------------
 function se_monster:on_before_register()
@@ -98,17 +104,17 @@ function se_monster:on_register()
 	printf("registering monster %s ", self:name())
 	self.m_registred = true
 	self.board 	= sim_board.get_sim_board()
-	-- РџСЂРѕРІРµСЂСЏРµРј РєР°СЃС‚РѕРјРґР°С‚Сѓ РѕР±СЊРµРєС‚Р° РЅР° РЅР°Р»РёС‡РёРµ СЃС‚РѕСЂРё Р°Р№РґРё.
+	-- Проверяем кастомдату обьекта на наличие стори айди.
 	story_objects.check_spawn_ini_for_story_id(self)
 	if db.offline_objects[self.id] == nil then
 		db.offline_objects[self.id] = {}
 	end
 --	db.offline_objects[self.id].level_vertex_id = self.m_level_vertex_id
 
-	--' РћС‚РєР»СЋС‡Р°РµРј СЃС‚Р°СЂС‹Р№ РјРµС‚РѕРґ РІС‹Р±РѕСЂР° СЃРјР°СЂС‚С‚РµСЂСЂРµР№РЅРѕРІ.
+	--' Отключаем старый метод выбора смарттеррейнов.
 	self:brain():can_choose_alife_tasks(false)
 
-	--' Р’С‹Р±РѕСЂ СЃРјР°СЂС‚Р°
+	--' Выбор смарта
 	local obj_ini = self:spawn_ini()
 	local smart = utils.cfg_get_string(obj_ini, "logic", "smart_terrain", self, false, "", "")
 	local smart_obj = self.board:get_smart_by_name(smart)
@@ -150,8 +156,8 @@ function se_monster:update()
 end
 
 ------------------------------------------------------------
---!!! РљРћРџРРџРђРЎРўРђ !!! РџСЂРё РёР·РјРµРЅРµРЅРёРё РїСЂР°РІРѕРє РІ se_monster - РІРЅРѕСЃРёС‚Рµ РёС… Рё СЃСЋРґР°.
--- РєР»Р°СЃСЃ С‚Р°РєРѕР№ Р¶Рµ РєР°Рє se_monster, Р·Р° РёСЃРєР»СЋС‡РµРЅРёРµРј РёСЃРїРѕР»СЊР·РѕРІР°РЅРёСЏ cse_alife_bloodsucker.
+--!!! КОПИПАСТА !!! При изменении правок в se_monster - вносите их и сюда.
+-- класс такой же как se_monster, за исключением использования cse_alife_bloodsucker.
 ------------------------------------------------------------
 class "se_bloodsucker" (cse_alife_bloodsucker)
 --------------------
@@ -164,16 +170,17 @@ function se_bloodsucker:__init (section) super (section)
 	self.check_distance = false
 	self.min_distance   = 150
 
-	-- СЌС‚РѕС‚ С„Р»Р°Рі Р±РµСЂС‘С‚СЃСЏ РёР· СЂР°Р±РѕС‚С‹ СЃРјР°СЂС‚Р°
-	-- true     = РІСЃРµРіРґР° РІ РѕРЅР»Р°Р№РЅРµ
-	-- false    = РІСЃРµРіРґР° РІ РѕС„Р»Р°Р№РЅРµ
-	-- condlist = СѓСЃР»РѕРІРёРµ, РєРѕС‚РѕСЂРѕРµ РѕС‚РїСЂРµРґРµР»СЏРµС‚ true РёР»Рё false
-	-- nil      = СЃРјР°СЂС‚Сѓ РІСЃС‘ СЂР°РІРЅРѕ
+	-- этот флаг берётся из работы смарта
+	-- true     = всегда в онлайне
+	-- false    = всегда в офлайне
+	-- condlist = условие, которое отпределяет true или false
+	-- nil      = смарту всё равно
 	self.job_online          = nil
 	self.job_online_condlist = nil
 	self.m_registred = false
-	self.looted = false  -- mutant harvesting flag
 	db.offline_objects[self.id] = {}
+	--fluffy22
+	self.looted = false
 end
 --------------------
 function se_bloodsucker:get_ini()
@@ -215,7 +222,9 @@ function se_bloodsucker:STATE_Write(packet)
 		packet:w_stringZ(tostring(db.offline_objects[self.id] and db.offline_objects[self.id].level_vertex_id))
 	end
 	packet:w_stringZ(tostring(db.offline_objects[self.id] and db.offline_objects[self.id].active_section))
-	packet:w_bool(self.looted)  -- mutant harvesting
+	-- fluffy22
+	--printf_msg("WRITING MUTANT STATE")
+	packet:w_bool(self.looted)
 end
 --------------------
 function se_bloodsucker:STATE_Read(packet, size)
@@ -233,9 +242,11 @@ function se_bloodsucker:STATE_Read(packet, size)
 			db.offline_objects[self.id].level_vertex_id = tonumber(old_lvid)
 		end
 	end
-	if packet:r_elapsed() > 0 then
-		self.looted = packet:r_bool()
-	end
+	-- fluffy22
+	--if packet:r_elapsed() ~= 0 then
+	--printf_msg("READ BLOODSUCKER")
+	self.looted = packet:r_bool()
+	--end
 end
 --------------------
 function se_bloodsucker:on_before_register()
@@ -247,17 +258,17 @@ function se_bloodsucker:on_register()
 	printf("registering monster %s ", self:name())
 	self.m_registred = true
 	self.board 	= sim_board.get_sim_board()
-	-- РџСЂРѕРІРµСЂСЏРµРј РєР°СЃС‚РѕРјРґР°С‚Сѓ РѕР±СЊРµРєС‚Р° РЅР° РЅР°Р»РёС‡РёРµ СЃС‚РѕСЂРё Р°Р№РґРё.
+	-- Проверяем кастомдату обьекта на наличие стори айди.
 	story_objects.check_spawn_ini_for_story_id(self)
 	if db.offline_objects[self.id] == nil then
 		db.offline_objects[self.id] = {}
 	end
 --	db.offline_objects[self.id].level_vertex_id = self.m_level_vertex_id
 
-	--' РћС‚РєР»СЋС‡Р°РµРј СЃС‚Р°СЂС‹Р№ РјРµС‚РѕРґ РІС‹Р±РѕСЂР° СЃРјР°СЂС‚С‚РµСЂСЂРµР№РЅРѕРІ.
+	--' Отключаем старый метод выбора смарттеррейнов.
 	self:brain():can_choose_alife_tasks(false)
 
-	--' Р’С‹Р±РѕСЂ СЃРјР°СЂС‚Р°
+	--' Выбор смарта
 	local obj_ini = self:spawn_ini()
 	local smart = utils.cfg_get_string(obj_ini, "logic", "smart_terrain", self, false, "", "")
 	local smart_obj = self.board:get_smart_by_name(smart)

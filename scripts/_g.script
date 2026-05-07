@@ -58,7 +58,8 @@ GM_SCRIPT_ADDON_EVENTS = 100
 -- Add your own events after this
 -- Example:
 -- GM_SCRIPT_USE_ITEM = GM_SCRIPT_ADDON_EVENTS + 1
-GM_SCRIPT_MUTANT_LOOT  = GM_SCRIPT_ADDON_EVENTS + 2  -- mutant harvesting (Misery port)
+GM_SCRIPT_MUTANT_LOOT  = GM_SCRIPT_ADDON_EVENTS + 1
+GM_SCRIPT_WEATHER = GM_SCRIPT_ADDON_EVENTS + 1
 ----------------------------------------------------------------------
 
 ----------------------------------------------------------------------
@@ -133,7 +134,12 @@ end
 
 ---@param fmt string
 function printf_msg(fmt, ...)
-	print_msg(string.format(fmt, ...))
+    local ok, result = pcall(string.format, fmt, ...)
+    if ok then
+        print_msg(result)
+    else
+        print_msg("!! printf_msg error: " .. tostring(fmt))
+    end
 end
 
 ----------------------------------------------------------------------
@@ -611,10 +617,22 @@ function fill_tables()
 		["monster_predatory_day"]			= "monster",
 		["monster_predatory_night"]			= "monster",
 		["monster_vegetarian"]				= "monster",
-		["monster_zombied_day"]				= "monster",
-		["monster_zombied_night"]			= "monster",
+		["monster_zombied_day"]				= "zombied",
+		["monster_zombied_night"]			= "zombied",
 		["monster_special"]					= "monster",
 		["csky"]							= "csky",
+		["stalker_sci"] 					= "stalker",
+		["stalker_hunter_day"] 				= "stalker",
+		["stalker_hunter_night"] 			= "stalker",
+		["stalker_elite"] 					= "stalker",
+		["stalker_guide"]					= "stalker",
+		["freedom_sci"] 					= "freedom",
+		["freedom_elite"] 					= "freedom",
+		["dolg_hunter_day"] 				= "dolg",
+		["dolg_hunter_night"] 				= "dolg",
+		["dolg_elite"] 						= "dolg",
+		["bandit_elite"] 					= "bandit",
+		["monolith_sci"]					= "monolith"
 	}
 
 	monster_classes = {
