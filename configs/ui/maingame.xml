@@ -1,0 +1,225 @@
+<w>
+	<main anchor="fullscreen">
+		<_auto_static x="512" y="384" width="115" height="115" alignment="c" stretch="1" heading="1" xform_anim="xfrom_rotate_3sec" xform_anim_cyclic="1">
+		<texture>ui_icons_newPDA_Crclbig_h</texture>
+		</_auto_static>
+		<!-- добавлено из второго файла -->
+		<negative_color color="dark_red_mpe"/>
+		<neutral_color color="yellow_mpe"/>
+	</main>
+
+	<quick_info x="0" y="184" width="256" height="50" complex_mode="1" light_anim="ui_btn_hint_fast" la_cyclic="0" la_texture="0" la_text="1" la_alpha="1">
+		 <text font="din_next17_bold" align="c" vert_align="b" outline="1"/>
+	</quick_info>
+
+	<icons_scroll_view anchor="bot-left" x="310" y="67" width="55" height="270" right_ident="2" always_show_scroll="0" vert_interval="16" inverse_dir="1" flip_vert="0"/>
+
+	<weapon_jammed_static x="0" y="0" width="64" height="64" stretch="1">
+		<texture>ui_hud_icon_weapon</texture>
+	</weapon_jammed_static>
+
+    <indicator_starvation anchor="bot-right" x="27" y="504" width="26" height="26" stretch="1"/>
+    <indicator_outfit_broken anchor="bot-right" x="27" y="554" width="26" height="26" stretch="1"/>
+    <indicator_weapon_broken anchor="bot-right" x="27" y="454" width="26" height="26" stretch="1"/>
+    <indicator_overweight anchor="bot-right" x="27" y="404" width="26" height="26" stretch="1"/>
+    <indicator_radiation anchor="bot-right" x="27" y="604" width="26" height="26" stretch="1"/>
+    <indicator_bleeding anchor="bot-right" x="27" y="354" width="26" height="26" stretch="1"/>
+
+    <!-- добавлено из второго файла -->
+    <indicator_helmet_broken x="980" y="926" width="28" height="28" stretch="1"/>
+
+    <indicator_booster_psy anchor="bot-right" x="27" y="192" width="42" height="42" stretch="1">
+		<texture>ui_inGame2_shield_Psy</texture>
+	</indicator_booster_psy>
+    <indicator_booster_chem anchor="bot-right" x="87" y="192" width="42" height="42" stretch="1">
+		<texture>ui_inGame2_shield_biological</texture>
+	</indicator_booster_chem>	
+    <indicator_booster_radia anchor="bot-right" x="57" y="192" width="42" height="42" stretch="1">
+		<texture>ui_inGame2_shield_Radiation</texture>
+	</indicator_booster_radia>
+    <indicator_booster_wound anchor="bot-right" x="237" y="192" width="42" height="42" stretch="1">
+		<texture>ui_inGame2_shield_blood</texture>
+	</indicator_booster_wound>
+    <indicator_booster_weight anchor="bot-right" x="117" y="192" width="42" height="42" stretch="1">
+		<texture>ui_inGame2_shield_force</texture>
+	</indicator_booster_weight>
+    <indicator_booster_health anchor="bot-right" x="207" y="192" width="42" height="42" stretch="1">
+		<texture>ui_inGame2_shield_health</texture>
+	</indicator_booster_health>
+    <indicator_booster_power anchor="bot-right" x="147" y="192" width="42" height="42" stretch="1">
+		<texture>ui_inGame2_shield_stamina</texture>
+	</indicator_booster_power>
+    <indicator_booster_rad anchor="bot-right" x="177" y="192" width="42" height="42" stretch="1">
+		<texture>ui_inGame2_shield_radiation_cleanup</texture>
+	</indicator_booster_rad>
+<!--
+	<can_sleep_static x="0" y="0" width="53" height="64" stretch="1">
+		<texture>ui_hud_icon_sleep</texture>
+	</can_sleep_static>
+
+-->
+	<invincible_static x="0" y="0" width="99" height="90" stretch="1">
+		<texture>ui_hud_icon_goodmode</texture>
+	</invincible_static>
+
+	<artefact_static x="0" y="0" width="99" height="90" stretch="1">
+		<texture>ui_hud_icon_artefact</texture>
+	</artefact_static>
+
+	<disk_io anchor="bot-right" x="60" y="320" width="26" height="26" stretch="1">
+<!--		<texture>ui\ui_disk_io</texture> -->
+	</disk_io>
+
+	<flashing_icons>
+		<flashing_icon x="25" y="295" width="90" height="41" type="pda" light_anim="ui_slow_blinking_alpha">
+			<texture>ui_hud_icon_PDA</texture>
+		</flashing_icon>
+	</flashing_icons>
+
+	<pick_up_item x="853" y="563" width="225" height="141"/>
+
+	<new_contact_snd></new_contact_snd>
+
+    <quick_slot_0 anchor="bot-right" x="1900" y="1900" width="0" height="0" stretch="1">
+		<texture>ui_ingame_hud_quick_slot</texture>
+		<icon anchor="mid-center" x="0" y="0" width="40" height="40" stretch="1"/>
+	    <counter anchor="bot-right" x="6" y="3" width="40" height="16">
+	        <text font="din_next14_bold" align="r" vert_align="c" outline="1"/>
+	    </counter>
+    </quick_slot_0>
+	
+    <quick_slot_1 anchor="bot-right" x="1900" y="1900" width="0" height="0" stretch="1">
+		<texture>ui_ingame_hud_quick_slot</texture>
+		<icon anchor="mid-center" x="0" y="0" width="40" height="40" stretch="1"/>
+	    <counter anchor="bot-right" x="6" y="3" width="40" height="16">
+	        <text font="din_next14_bold" align="r" vert_align="c" outline="1"/>
+	    </counter>
+    </quick_slot_1>
+	
+    <quick_slot_2 anchor="bot-right" x="1900" y="1900" width="0" height="0" stretch="1">
+		<texture>ui_ingame_hud_quick_slot</texture>
+		<icon anchor="mid-center" x="0" y="0" width="40" height="40" stretch="1"/>
+		<counter anchor="bot-right" x="6" y="3" width="40" height="16">
+			<window_name>counter</window_name>
+			<text font="din_next14_bold" align="r" vert_align="c" outline="1"/>
+		</counter>
+	</quick_slot_2>
+	
+	<quick_slot_3 anchor="bot-right" x="1900" y="1900" width="0" height="0" stretch="1">
+		<texture>ui_ingame_hud_quick_slot</texture>
+		<icon anchor="mid-center" x="0" y="0" width="40" height="40" stretch="1"/>
+		<counter anchor="bot-right" x="6" y="3" width="40" height="16">
+			<text font="din_next14_bold" align="r" vert_align="c" outline="1"/>
+		</counter>
+	</quick_slot_3>
+
+	<indik_rad anchor="bot-right" x="24" y="230" width="24" height="24" stretch="1"/>
+	<indik_fire anchor="bot-right" x="24" y="230" width="24" height="24" stretch="1"/>
+	<indik_psi anchor="bot-right" x="24" y="230" width="24" height="24" stretch="1"/>
+	<indik_acid anchor="bot-right" x="24" y="230" width="24" height="24" stretch="1"/>
+
+	<hud_states anchor="fullscreen">
+		<back anchor="bot-right" x="60" y="118" width="226" height="56" stretch="1">
+			<texture>ui_inGame2_Patroni_HUD_main_window</texture>
+			
+		<no_ammo_highlight width="0" height="0" stretch="1">
+				<texture>ui_ingame_hud_main_no_ammo_highlight</texture>
+		</no_ammo_highlight>
+
+		<safemode_highlight x="12" width="56" height="56" stretch="1">
+				<texture>ui_ingame_hud_safemode_highlight</texture>
+		</safemode_highlight>
+		
+		<static_item_name x="1900" y="1900" width="0" height="0">
+				<text font="din_next14_bold" align="l" vert_align="c" outline="1"/>
+		</static_item_name>
+			
+		<ammo_separator x="79" anchor="mid-right" width="0" height="0" stretch="1">
+				<texture>ui_ingame_hud_ammo_separator</texture>
+		</ammo_separator>
+
+		<no_item_icon anchor="mid-center" width="0" height="0" stretch="1">
+				<texture>ui_ingame_hud_no_item_icon</texture>
+		</no_item_icon>
+			
+		<static_wpn_icon anchor="bot-right" x="-10" y="-10" width="100" height="100" stretch="1">
+		</static_wpn_icon>
+
+		
+		
+		<static_cur_ammo anchor="bot-right" x="35" y="35" width="0" height="0">
+				<text font="letterica16" color="ui_7" align="с" vert_align="c" outline="1"/>
+		</static_cur_ammo>
+		
+		<static_grenade x="70" y="2" width="14" height="19">
+	        <text align="c" complex_mode="0" font="letterica16" color="ui_7" vert_align="c"></text>
+	    </static_grenade>
+
+		<static_cur_ammo_ruck anchor="bot-right" x="35" y="-22" width="0" height="0">
+			<text font="letterica16" color="ui_7" align="с" vert_align="c" outline="1"/>
+		</static_cur_ammo_ruck>
+
+		<static_fire_mode anchor="bot-right" x="70" y="10" width="0" height="0">
+				<text font="letterica16" color="ui_7" align="с" vert_align="c" outline="1"/>
+		</static_fire_mode>
+			
+		<static_ammo_name anchor="bot-right" x="1900" y="1900" width="0" height="0">
+				<text font="din_next14_bold" color="orange" align="r" vert_align="c" outline="1"/>
+			</static_ammo_name>
+		
+
+
+
+		
+		<progress_bar_health x="-1612" y="112" width="220" height="18" horz="1" min="0" max="100" pos="0">
+			<progress anchor="top-left" stretch="1"><!-- light_anim="ui_blinking_1" la_cyclic="0" la_texture="1" la_text="0" la_alpha="1" stretch="1"-->
+				<texture>ui_inGame2_Patroni_HUD_red_bar</texture>
+			</progress>
+		</progress_bar_health>
+	
+		<progress_bar_stamina x="-1612" y="130" width="220" height="18" horz="1" min="0" max="100" pos="0">
+			<progress anchor="top-left" stretch="1"><!-- light_anim="ui_blinking_1" la_cyclic="0" la_texture="1" la_text="0" la_alpha="1" stretch="1"-->
+				<texture>ui_inGame2_Patroni_HUD_blue_bar</texture>
+			</progress>
+		</progress_bar_stamina>
+
+		<progress_bar_health_full x="-1900" y="24" width="0" height="0" horz="1" min="0" max="100" pos="0">
+			<background anchor="mid-center" width="0" height="0" stretch="1">
+					<texture>ui_inGame2_Patroni_HUD_main_window</texture>
+				</background>
+			<progress anchor="top-left" stretch="1">
+					<texture>ui_inGame2_Patroni_HUD_main_window</texture>
+				</progress>
+		</progress_bar_health_full>	
+			
+						
+		</back>	
+		
+	</hud_states>
+	
+	<progress_bar_action anchor="bot-center" x="0" y="149" width="156" height="2" horz="1" min="0" max="100" pos="0">
+		<background anchor="mid-center" width="164" height="10" stretch="1">
+			<texture>ui_ingame_hud_yellow_bar_bcg</texture>
+		</background>
+		<progress anchor="mid-center" stretch="1">
+			<texture>ui_ingame_hud_yellow_bar</texture>
+		</progress>			
+	</progress_bar_action>
+
+	<!-- добавлено из второго файла -->
+	<overheat_progress_bar anchor="bot-center" x="0" y="220" width="256" height="6" horz="1" min="0" max="100" pos="0">
+		<background anchor="mid-center" width="262" height="12" stretch="1">
+			<texture>ui_ingame_medium_health_bar_bcg</texture>
+		</background>
+		<progress anchor="mid-center" stretch="1">
+			<texture>ui_ingame_medium_health_bar</texture>
+		</progress>
+		<min_color color="yellow_mpe"/>
+		<middle_color color="yellow_mpe"/>
+		<max_color color="orange_mpe"/>
+	</overheat_progress_bar>
+	
+	<overheat_icon anchor="bot-center" x="119" y="237" width="24" height="24" stretch="1" light_anim="ui_slow_blinking_alpha" la_cyclic="1" la_text="0" la_alpha="1">
+		<texture>ui_ingame_dang_zone_fire_red</texture>
+	</overheat_icon>
+</w>

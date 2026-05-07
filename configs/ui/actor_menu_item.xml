@@ -12,7 +12,7 @@
 		<text align="l" font="letterica18" r="210" g="210" b="210"/>
 	</static_weight>
 
-	<static_cost x="320" y="40" width="405" height="23">
+	<static_cost x="320" y="56" width="405" height="23">
 		<text font="letterica18" align="r" r="210" g="210" b="210"/>
 	</static_cost>
 

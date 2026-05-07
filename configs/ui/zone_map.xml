@@ -1,0 +1,33 @@
+<window>
+	<minimap anchor="bot-left" x="0" y="0" width="0" height="0">
+		<level_frame anchor="bot-left" x="0" y="0" width="0" height="246"/>
+		
+		<background anchor="bot-left" x="0" y="0" width="0" height="0" stretch="1"> 
+			<texture>ui_ingame_radar_main_window</texture>
+		</background>
+		<!--
+	    <clock_wnd x="2" y="0" width="60" height="32">
+	        <text x="10" y="0" font="din_next16" align="l" vert_align="c"/>
+	    </clock_wnd>-->		
+		
+		<compass x="0" y="0" width="0" height="0">
+			<bar anchor="mid-left" x="0" y="0" width="0" height="0" angle_offset="1.069887" coordinate_0="0" coordinate_2pi="720" stretch="1">
+				<texture use_locale="1">ui_ingame_compass_bar</texture>
+			</bar>
+			<angle x="0" y="0" width="0" height="0" stretch="1">
+				<text align="c" vert_align="c" font="din_next17_bold"/>
+				<texture>ui_ingame_compass_bar_header_mask</texture>
+			</angle>				
+		</compass>	
+		
+		<center anchor="bot-left" x="0" y="0" width="0" height="0" stretch="1"> 
+			<texture>ui_ingame_minimap_player_pointer</texture>
+		</center>
+		
+		<bottom_highlight anchor="bot-center" width="0" height="0" stretch="1" light_anim_in="ui_btn_hint" light_anim_out="ui_main_msgs_short"> 
+			<texture>ui_ingame_minimap_fade_danger</texture>
+		</bottom_highlight>
+
+		<danger_zones anchor="bot-center" y="0" width="0" height="0" items_indent="10" />
+	</minimap>
+</window>

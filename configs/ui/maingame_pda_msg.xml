@@ -1,0 +1,17 @@
+<w>
+	<background_static x="0" y="0" width="940" height="50" stretch="1"/>
+
+	<icon_static x="0" y="0" width="77" height="41" stretch="1"/>
+
+	<time_static x="86" y="0" width="79" height="20">
+		<text font="letterica16" color="ui_1"/>
+	</time_static>
+	
+	<caption_static x="141" y="0" width="765" height="20">
+		<text font="letterica16" color="ui_5"/>
+	</caption_static>
+
+	<msg_static x="86" y="28" width="851" height="20" complex_mode="1">
+		<text font="letterica16" color="ui_1"/>
+	</msg_static>
+</w>
