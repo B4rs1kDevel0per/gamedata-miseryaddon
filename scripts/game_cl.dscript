@@ -35,10 +35,6 @@ function on_connect_started()
     get_console():execute("r2_tonemap_amount 1.")
     get_console():execute("r2_tonemap_lowlum 0.4")
     get_console():execute("r2_tonemap_middlegray 1.1")
-    get_console():execute("rs_c_brightness 1.")
-    get_console():execute("rs_c_contrast 1.")
-    get_console():execute("rs_c_gamma 1.")
-	get_console():execute("r2_dof_far 777")
 	
 	if not dialogs_filled then
 		dialog_manager.fill_phrase_table()

@@ -326,7 +326,7 @@ function mp_actor_binder:update(delta)
 			self.surge_manager:initialize()
 			self.f_surge_manager_loaded = true
 		end
-		self.surge_manager:update()
+		self.surge_manager:update_cl()
 	end
 	if not self.loaded_slot_applied then
 		self.object:activate_slot(self.loaded_active_slot)
@@ -673,7 +673,7 @@ function actor_binder:update(delta)
 			if(self.surge_manager.levels_respawn[level.name()]) then
 				self.surge_manager:respawn_artefacts_and_replace_anomaly_zone()
 			end
-			self.surge_manager:update()
+			self.surge_manager:update_sv()
 		end
 		-- јпдейт доступности дл€ симул€ции.
 		simulation_objects.get_sim_obj_registry():update_avaliability(alife():actor())

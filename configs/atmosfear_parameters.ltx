@@ -25,7 +25,7 @@ opt_pripyat_period_bad_length	= 12
 opt_enable_blowout				= 1				; 1 enables blowouts, 0 prevents blowouts from happening.
 opt_blowout_freq				= 84 				; blowout frequency. Blowout happens every x/2 to x hours. Don't use value lower then 6h (every 3 to 6h).
 opt_blowout_fate				= explode
-opt_blowout_warning				= siren			; type of blowout warning. Possible settings: radio_siren, radio, siren, nowarning.
+opt_blowout_warning				= radio_siren			; type of blowout warning. Possible settings: radio_siren, radio, siren, nowarning.
 opt_blowout_task				= dontgive			; task to hide/stay in cover during blowouts. Possible settings: give, dontgive.
 opt_enable_fallout				= 0			; 1 enables fallouts, 0 prevents fallouts from happening
 opt_fallout_freq				= 168				; fallout frequency. Fallout happens every x/2 to x hours. Don't use value lower then 6h (every 3 to 6h) and odd numbers (e.g. 11)
@@ -35,11 +35,11 @@ opt_fallout_task				= dontgive			; task to hide/stay in cover during fallouts. P
 opt_enable_psi_storm				= 0				; 1 enables fallouts, 0 prevents fallouts from happening
 opt_psi_storm_freq				= 336			; psi storm frequency. Psi storm happens every x/2 to x hours. Don't use value lower then 6h (every 3 to 6h)
 opt_psi_storm_fate				= unhurt				; fate of NPCs during psi storms. Possible settings: kill, turntozombie, unhurt.
-opt_psi_storm_warning				= siren				; type of psi storm warning. Possible settings: siren, nowarning.
+opt_psi_storm_warning				= radio_siren				; type of psi storm warning. Possible settings: siren, nowarning.
 opt_psi_storm_task				= dontgive				; task to hide/stay in cover during psi storms. Possible settings: give, dontgive.
 
-opt_moon_phase					= 8days				; lenght of the moon month. Possible settings: 28days, 8days.
-opt_night_brightness				= slight			; brightness of the nights. Possible settings: dark, slight, medium, bright.
+opt_moon_phase					= 28days				; lenght of the moon month. Possible settings: 28days, 8days.
+opt_night_brightness				= dark			; brightness of the nights. Possible settings: dark, slight, medium, bright.
 
 opt_god_mode					= false				; god mode for all the events. If set to true actor can walk unhurt during blowouts, fallouts and psi storms. Use only for testing.
 
