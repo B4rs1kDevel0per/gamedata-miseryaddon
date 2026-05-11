@@ -32,25 +32,39 @@ function WeatherManager:__init()
 	self.inited_time = 0
 	self.dof_enable = false
 	self.meteorites_particle = nil
-	self.boundaries = {
-		zaton   = {{0,-600},{400,-590},{580,-460},{800,-390},{800,830},{-445,820},{-490,715},{-567,607},{-620,423},{-622,-231},{-615,-470},{-568,-568},{-400,-590}},
-		jupiter = {{-660,640},{-660,-680},{660,-680},{660,640}},
-		pripyat = {{700,700},{-700,700},{-700,-700},{700,-700}}
-	}
+	self.boundaries = 
+		{
+		zaton = 	{{0,-600},{400,-590},{580,-460},{800,-390},{800,830},{-445,820},{-490,715},{-567,607},{-620,423},{-622,-231},{-615,-470},{-568,-568},{-400,-590}},
+		jupiter = 	{{-660,640},{-660,-680},{660,-680},{660,640}},
+		pripyat = 	{{700,700},{-700,700},{-700,-700},{700,-700}}
+		}
 	self.storm_directions = {
-		{-50,10}, {30,90}, {40,130}, {-110,-70},
-		{10,60}, {-140,-70}, {-40,20}, {90,160},
-		{-190,-140}, {10,90}, {120,170}, {-90,-20},
-		{30,130}, {130,170}, {-130,-70}, {-10,50},
-		{-170,-110}, {-80,-20}, {-190,-150}, {-60,-20},
-		{-60,-30}, {-190,-150}, {-80,-20}, {50,110}
-	}
-	self.distant_sounds = {
-		"nature\\new_thunder1_hec", "nature\\new_thunder2_hec", "nature\\new_thunder3_hec",
-		"nature\\storm_1", "nature\\storm_2", "nature\\storm_3", "nature\\storm_4", "nature\\storm_5",
-		"nature\\pre_storm_1", "nature\\pre_storm_2", "nature\\pre_storm_3", "nature\\pre_storm_4", "nature\\pre_storm_5",
-		"nature\\thunder-3-hec", "nature\\thunder-4", "nature\\thundernew1", "nature\\thundernew2", "nature\\thunder-3-hec"
-	}
+								{-50,10},		{30,90},		{40,130},		{-110,-70},
+								{10,60},		{-140,-70},	{-40,20},		{90,160},
+								{-190,-140},	{10,90},		{120,170},		{-90,-20},
+								{30,130},		{130,170},		{-130,-70},	{-10,50},
+								{-170,-110},	{-80,-20},		{-190,-150},	{-60,-20},
+								{-60,-30},		{-190,-150},	{-80,-20},		{50,110}
+							}
+	self.distant_sounds={	"nature\\new_thunder1_hec",
+							"nature\\new_thunder2_hec",
+							"nature\\new_thunder3_hec",
+							"nature\\storm_1",
+							"nature\\storm_2",
+							"nature\\storm_3",
+							"nature\\storm_4",
+							"nature\\storm_5",
+							"nature\\pre_storm_1",
+							"nature\\pre_storm_2",
+							"nature\\pre_storm_3",
+							"nature\\pre_storm_4",
+							"nature\\pre_storm_5",
+							"nature\\thunder-3-hec",
+							"nature\\thunder-4",
+							"nature\\thundernew1",
+							"nature\\thundernew2",
+							"nature\\thunder-3-hec"
+						}
 	self.thunders = {}
 	self.thunder_index = 1
 	self.distant_storm_prob = 0.5
@@ -80,44 +94,47 @@ function WeatherManager:reset()
 		end
 	end
 
-	local ini = ini_file("game.ltx")
-	local weather = utils.cfg_get_string(ini, level.name(), "weathers", db.actor, false, "", "[default]")
-	local postprocess = utils.cfg_get_string(ini, level.name(), "postprocess", db.actor, false, "")
-	if postprocess ~= nil then
-		level.add_pp_effector(postprocess, 999, true)
-	else
-		level.remove_pp_effector(999)
-	end
+    local ini = ini_file("game.ltx")
+    local weather = utils.cfg_get_string(ini, level.name(), "weathers", db.actor, false, "", "[default]")
+    self.levelWeather = weather
 
-	if weather == "[default]" then
-		self.weather_list = xr_logic.parse_condlist(db.actor, level.name(), "weather", "[default]")
-	else
-		self.weather_list = xr_logic.parse_condlist(db.actor, level.name(), "weather", weather)
-	end
+    local postprocess = utils.cfg_get_string(ini, level.name(), "postprocess", db.actor, false, "")
+    if postprocess ~= nil then
+        level.add_pp_effector(postprocess, 999, true)
+    else
+        level.remove_pp_effector(999)
+    end
 
-	if self.graphs_ini then
-		self.dof_kernels = xr_s.parse_ini_section_to_array(self.graphs_ini, "dof_kernels")
-		for cycle, dof in pairs(self.dof_kernels) do
-			self.far_distances[cycle] = {}
-			local phase = (cycle == "clear" or cycle == "partly") and "_0" or ""
-			local cycle_ltx = ini_file(("environment\\weathers\\af3_dark_" .. cycle .. phase .. ".ltx"))
-			for h = 0, 23 do
-				local hour = self:get_hour_as_string(h)
-				self.far_distances[cycle][hour] = cycle_ltx:r_float(hour, "fog_distance")
-			end
-		end
-	end
+    if weather == "[default]" then
+        self.weather_list = xr_logic.parse_condlist(db.actor, level.name(), "weather", "[default]")
+    else
+        self.weather_list = xr_logic.parse_condlist(db.actor, level.name(), "weather", weather)
+    end
 
-	self.dof_factor = 1
-	self.period = "good"
-	self.last_period_change_hour = level.get_time_hours()
-	self.next_period_change_hour = self:get_next_period_change_hour(self.period)
-	self.inited_time = game.get_game_time()
-	self.last_hour = level.get_time_hours()
-	self.next_hour = self.last_hour + 1
-	if self.next_hour > 23 then self.next_hour = self.next_hour - 24 end
-	self.distant_storm_on = math.random() <= self.distant_storm_prob
-	self:select_weather(true)
+    if self.graphs_ini then
+        self.dof_kernels = xr_s.parse_ini_section_to_array(self.graphs_ini, "dof_kernels")
+        for cycle, dof in pairs(self.dof_kernels) do
+            self.far_distances[cycle] = {}
+            local phase = (cycle == "clear" or cycle == "partly") and "_0" or ""
+            local cycle_ltx = ini_file(("environment\\weathers\\af3_dark_" .. cycle .. phase .. ".ltx"))
+            for h = 0, 23 do
+                local hour = self:get_hour_as_string(h)
+                self.far_distances[cycle][hour] = cycle_ltx:r_float(hour, "fog_distance")
+            end
+        end
+    end
+
+    self.dof_factor = 1
+    self.period = "good"
+    self.last_period_change_hour = level.get_time_hours()
+    self.next_period_change_hour = self:get_next_period_change_hour(self.period)
+    self.inited_time = game.get_game_time()
+    self.last_hour = level.get_time_hours()
+    self.next_hour = self.last_hour + 1
+    if self.next_hour > 23 then self.next_hour = self.next_hour - 24 end
+    local rnd = math.random()
+    self.distant_storm_on = (rnd <= self.distant_storm_prob)
+    self:select_weather(true)
 end
 
 function WeatherManager:get_hour_as_string(h)

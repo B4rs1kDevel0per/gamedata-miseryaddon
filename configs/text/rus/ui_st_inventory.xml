@@ -217,7 +217,7 @@
 		<text>Переносимый вес</text>
 	</string>
 	<string id="ui_inv_outfit_burn_protection">
-		<text>Огнеупорность</text>
+		<text>Термозащита</text>
 	</string>
 	<string id="ui_inv_outfit_chemical_burn_protection">
 		<text>Химзащита</text>

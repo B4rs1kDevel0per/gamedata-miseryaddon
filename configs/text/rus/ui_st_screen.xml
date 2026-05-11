@@ -15,12 +15,18 @@
 	<string id="character_use">
 		<text>Говорить ($$ACTION_USE$$)</text>
 	</string>
+	<string id="character_revive">
+		<text>[$$ACTION_USE$$] Помочь</text>
+	</string>	
 	<string id="dead_character_use">
 		<text>Обыскать труп ($$ACTION_USE$$)</text>
 	</string>
 	<string id="dead_character_use_or_drag">
 		<text>Обыскать труп ($$ACTION_USE$$)\nТащить труп (SHIFT+$$ACTION_USE$$)</text>
 	</string>
+	<string id="character_busy">
+		<text>Персонаж занят</text>
+	</string>	
 	<string id="general_complete_task">
 		<text>Задание выполнено:</text>
 	</string>
@@ -47,6 +53,18 @@
 	</string>
 	<string id="general_update_task">
 		<text>Задание обновлено:</text>
+	</string>
+	<string id="general_given_item">
+		<text>Передан предмет</text>
+	</string>
+	<string id="general_given_item_to">
+		<text>%s передан %s</text>
+	</string>
+	<string id="general_gave_item_from">
+		<text>%s отдал %s</text>
+	</string>
+	<string id="general_got_item">
+		<text>Получен предмет</text>
 	</string>
 	<string id="gun_jammed">
 		<text>Оружие заклинило. Нужно перезарядить.</text>
@@ -344,5 +362,62 @@
 	</string>
 	<string id="st_press_any_key">
 		<text>%c[255,238,153,26]Зона ждёт тебя...</text>
+	</string>
+	<string id="st_ally_wounded">
+		<text>Союзник ранен</text>
+	</string>
+	<string id="st_help_wounded_ally">
+		<text>Помогите раненому союзнику</text>
+	</string>
+	<string id="st_gesture_rps">
+		<text>КАМЕНЬ-НОЖНИЦЫ-БУМАГА</text>
+	</string>
+	<string id="st_gesture_facepalm">
+		<text>РУКА-ЛИЦО</text>
+	</string>
+	<string id="st_gesture_greeting">
+		<text>ПОПРИВЕТСТВОВАТЬ</text>
+	</string>
+	<string id="st_gesture_threaten">
+		<text>ПРИГРОЗИТЬ КУЛАКОМ</text>
+	</string>
+	<string id="st_gesture_clap">
+		<text>ПОХЛОПАТЬ</text>
+	</string>
+	<string id="st_gesture_pay_respect">
+		<text>ОТДАТЬ ЧЕСТЬ</text>
+	</string>
+	<string id="st_gesture_thumb_down">
+		<text>ПАЛЕЦ ВНИЗ</text>
+	</string>
+	<string id="st_gesture_thumb_up">
+		<text>ПАЛЕЦ ВВЕРХ</text>
+	</string>
+	<string id="st_gtr_dlg_guide_strings">
+		<text>ИГРА НА СТРУНАХ</text>
+	</string>
+	<string id="st_gtr_dlg_guide_strumming">
+		<text>ИГРА БОЕМ</text>
+	</string>
+	<string id="st_gtr_dlg_guide_show">
+		<text>СКРЫТЬ/ПОКАЗАТЬ ПОДСКАЗКИ</text>
+	</string>
+	<string id="st_gtr_dlg_guide_stop">
+		<text>ВЫЙТИ</text>
+	</string>
+	<string id="st_gtr_dlg_guide_select_page">
+		<text>ВЫБРАТЬ НАБОР</text>
+	</string>
+	<string id="st_stealth_indicator_seen">
+		<text>ВАС ЗАМЕТИЛИ</text>
+	</string>
+	<string id="st_stealth_indicator_unseen">
+		<text>ВАС НЕ ВИДЯТ</text>
+	</string>
+	<string id="object_character_use">
+		<text>[$$ACTION_USE$$] ИСПОЛЬЗОВАТЬ</text>
+	</string>
+	<string id="st_object_busy">
+		<text>Занято</text>
 	</string>
 </string_table>
