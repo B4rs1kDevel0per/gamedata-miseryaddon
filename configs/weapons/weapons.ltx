@@ -130,27 +130,27 @@ tracer_shader					= effects\bullet_tracer ;hud\default
 tracer_texture					= fx\fx_tracer_weapons
 fire_circle_k					= 2.0f ; means tracer_width*2
 
-tracer_width					= 0.08
-tracer_length_max				= 225 ;10.0	;24.0 ;14.0
-tracer_length_min				= 0 ;1 ;2		;0.2
+tracer_width					= 0.02
+tracer_length_max				= 1.23	;24.0 ;14.0	
+tracer_length_min				= 1.66		;0.2
 
 ;расстояние после которого учитывается hit_probabilty полностью
 hit_probability_max_dist		= 3;
 
 gravity_const					= 9.81
 ;сопротивление воздуха, процент, который отнимается от скорости полета пули
-air_resistance_k				= 1 ;0.4;0.3
+air_resistance_k				= 1.5 ;1 ;0.4;0.3
 
 ;размер шага времени (в милисекундах), по которому проигрываются
 time_step						= 33
 ;минимальная скорость (м/с), на которой пуля еще считается и показывается
 min_bullet_speed				= 3.0
 ;cколько процентов энергии потеряет пуля при столкновении с материалом (при падении под прямым углом)
-collision_energy_min			= 0.80 ;0.75; 0.90
+collision_energy_min			= 0.65 ;0.75; 0.90
 ;сколько процентов энергии останется у пули при любом столкновении
 collision_energy_max			= 0.5 ;0.7;0.50
 
-whine_sounds					= material\bullet\collide\whistle\whistle_1, material\bullet\collide\whistle\whistle_2, material\bullet\collide\whistle\whistle_3, material\bullet\collide\whistle\whistle_4, material\bullet\collide\whistle\whistle_5, material\bullet\collide\whistle\whistle_6, material\bullet\collide\whistle\whistle_7, material\bullet\collide\whistle\whistle_8, material\bullet\collide\whistle\whistle_9, material\bullet\collide\whistle\whistle_10, material\bullet\collide\whistle\whistle_11, material\bullet\collide\ricochet\ricochet_1, material\bullet\collide\ricochet\ricochet_2, material\bullet\collide\ricochet\ricochet_3, material\bullet\collide\ricochet\ricochet_4, material\bullet\collide\ricochet\ricochet_5, material\bullet\collide\ricochet\ricochet_6, material\bullet\collide\ricochet\ricochet_7, material\bullet\collide\ricochet\ricochet_8, material\bullet\collide\ricochet\ricochet_9, material\bullet\collide\ricochet\ricochet_10, material\bullet\collide\ricochet\ricochet_11, material\bullet\collide\ricochet\ricochet_12, material\bullet\collide\ricochet\ricochet_13, material\bullet\collide\ricochet\ricochet_14, material\bullet\collide\ricochet\ricochet_15, material\bullet\collide\ricochet\ricochet_16, material\bullet\collide\ricochet\ricochet_17, material\bullet\collide\ricochet\ricochet_18, material\bullet\collide\ricochet\ricochet_19, material\bullet\collide\ricochet\ricochet_20, material\bullet\collide\ricochet\ricochet_21, material\bullet\collide\ricochet\ricochet_22, material\bullet\collide\ricochet\ricochet_23, material\bullet\collide\ricochet\ricochet_24, material\bullet\collide\ricochet\ricochet_25, material\bullet\collide\ricochet\ricochet_26, material\bullet\collide\ricochet\ricochet_27, material\bullet\collide\ricochet\ricochet_28, material\bullet\collide\ricochet\ricochet_29, material\bullet\collide\ricochet\ricochet_30, material\bullet\collide\ricochet\ricochet_31, material\bullet\collide\ricochet\ricochet_32, material\bullet\collide\ricochet\ricochet_33, material\bullet\collide\ricochet\ricochet_34, material\bullet\collide\ricochet\ricochet_35, material\bullet\collide\ricochet\ricochet_36, material\bullet\collide\ricochet\ricochet_37, material\bullet\collide\ricochet\ricochet_38, material\bullet\collide\ricochet\ricochet_39, material\bullet\collide\ricochet\ricochet_40, material\bullet\collide\ricochet\ricochet_41, material\bullet\collide\ricochet\ricochet_42, material\bullet\collide\ricochet\ricochet_43, material\bullet\collide\ricochet\ricochet_44, material\bullet\collide\ricochet\ricochet_45, material\bullet\collide\ricochet\ricochet_46, material\bullet\collide\ricochet\ricochet_47, material\bullet\collide\ricochet\ricochet_48
+whine_sounds					= weapons\whine_1, weapons\whine_2, weapons\whine_3, weapons\whine_4, weapons\whine01, weapons\whine02
 explode_particles				= explosions\expl_bullet,explosions\expl_bullet_00,explosions\expl_bullet_01
 
 
@@ -197,23 +197,29 @@ k_air_resistance 	 = 1 ;сопротивление воздуху (влияет 
 $spawn			= "weapons\ammo\ammo_9x18_fmj" ; option for Level Editor
 visual          = dynamics\weapons\wpn_ammo\ammo_9x18_fmj.ogf
 description		= st_ammo_9x18_fmj_descr
-cost			= 200
-box_size		= 50
+cost			= 544
+box_size		= 15
 
 inv_name		= st_ammo_9x18_fmj
 inv_name_short	= st_ammo_9x18_fmj_short
-inv_weight		= .2
+inv_weight		= .15
 
 inv_grid_width		= 1
 inv_grid_height		= 1
 inv_grid_x			= 11
 inv_grid_y			= 12
 
-k_hit 			= 0.62
-k_ap			= 0.15
-k_air_resistance = 1.5
-
-tracer			= on
+k_dist			= 1
+k_disp			= 0.66; 3
+k_hit			= 1.51
+k_impulse		= 0.6
+k_pierce		= 0.27
+k_ap			= 0.035
+impair			= 1.05 ; 1.0
+buck_shot		= 1
+tracer			= off        ;  off
+wm_size			= 0.042
+k_air_resistance = 1.8
 
 [ammo_9x18_pmm]:ammo_base
 $spawn			= "weapons\ammo\ammo_9x18_pmm" ; option for Level Editor
@@ -221,104 +227,128 @@ class			= AMMO_S
 visual          = dynamics\weapons\wpn_ammo\ammo_9x18_pmm.ogf
 description		= st_ammo_9x18_pmm_descr
 
-cost			= 300
+cost			= 1110
 
-box_size		= 50
+box_size		= 15
 
 inv_name		= st_ammo_9x18_pmm
 inv_name_short	= st_ammo_9x18_pmm_short
-inv_weight		= .2
+inv_weight		= .147
 
 inv_grid_width		= 1
 inv_grid_height		= 1
 inv_grid_x			= 12
 inv_grid_y			= 12
+k_dist			= 1.5
+k_disp			= 0.66; 3
+k_hit			= 1.696
+k_impulse		= 0.45
+k_pierce		= 0.40
+k_ap			= 0.008
+impair			= 1.05 ; 1.2
+buck_shot		= 1
+tracer			= off        ;  on
+wm_size         = 0.062
+k_air_resistance = 1.6
 
-k_hit 			= 0.65
-k_ap			= 0.25
-k_air_resistance = 1.4
-impair			 = 1.8
-
-tracer			= on
 
 [ammo_9x18_pbp]:ammo_base
 $spawn			= "weapons\ammo\ammo_9x18_pbp" ; option for Level Editor
 visual          = dynamics\weapons\wpn_ammo\ammo_9x18_pbp.ogf
 description		= st_ammo_9x18_pbp_descr
-cost    		= 400
-box_size		= 50
+cost			= 1104
+box_size		= 15
 
 inv_name		= st_ammo_9x18_pbp
 inv_name_short	= st_ammo_9x18_pbp_short
-inv_weight		= .2
+inv_weight		= .15
 
 inv_grid_width	= 1
 inv_grid_height	= 1
 inv_grid_x		= 19
 inv_grid_y		= 12
 
-k_hit 			= 0.66
-k_ap			= 0.35
-k_air_resistance = 1.5
-impair			 = 1.4
-
-tracer			= on
+k_dist			= 1
+k_disp			= 0.45 ; 3
+k_hit			= 1.33
+k_impulse		= 0.48
+k_pierce		= 1.26
+k_ap			= 0.98
+impair			= 1.05 ; 1.0
+buck_shot		= 1
+tracer			= off        ;  off
+wm_size			= 0.028
+k_air_resistance = 1.8
 
 ;***********************9x19***********************
 [ammo_9x19_fmj]:ammo_base
 $spawn			= "weapons\ammo\ammo_9x19_fmj" ; option for Level Editor
 visual          = dynamics\weapons\wpn_ammo\ammo_9x19_fmj.ogf
 description		= st_ammo_9x19_fmj_descr
-cost			= 250
+cost			= 632
 
-box_size		= 50
+box_size		= 15
 
 inv_name		= st_ammo_9x19_fmj
 inv_name_short	= st_ammo_9x19_fmj_short
-inv_weight		= .24
+inv_weight		= .18
 
 inv_grid_width		= 1
 inv_grid_height		= 1
 inv_grid_x			= 15
 inv_grid_y			= 12
 
-k_hit 			= 0.65
-k_ap			= 0.2
-k_air_resistance = 1.45
+k_dist			= 1
+k_disp			= 0.66; 2.9
+k_hit			= 1.54
+k_impulse		= 0.44
+k_pierce		= 0.38
+k_ap			= 0.032
+impair			= 1.05 ; 1.0
+buck_shot		= 1
+tracer			= off        ;  off
+wm_size         = 0.048
+k_air_resistance = 1.7
 
-tracer			= on
 
 [ammo_9x19_pbp]:ammo_base
 $spawn			= "weapons\ammo\ammo_9x19_pbp" ; option for Level Editor
 visual          = dynamics\weapons\wpn_ammo\ammo_9x19_pbp.ogf
 description		= st_ammo_9x19_pbp_descr
-cost			= 350
+cost			= 1160
 
-box_size		= 50
+box_size		= 15
 
 inv_name		= st_ammo_9x19_pbp
 inv_name_short	= st_ammo_9x19_pbp_short
-inv_weight		= .24
+inv_weight		= .17
 
 inv_grid_width	= 1
 inv_grid_height	= 1
 inv_grid_x		= 14
 inv_grid_y		= 12
 
-k_hit			= 0.58
-k_ap			= 0.35
-k_air_resistance = 1.35
+k_dist			= 1
+k_disp			= 0.66
+k_hit			= 1.76
+k_impulse		= 1
+k_pierce		= 0.42
+k_ap			= 0.013
+impair			= 1.05 ; 1
+buck_shot		= 1
+tracer			= off        ;  on
+wm_size         = 0.068
+k_air_resistance = 1.5
 
-tracer			= on
 
 ;***********************9x21***********************
 [ammo_9x21_sp10]:ammo_base
 $spawn			= "weapons\ammo\ammo_9x21_sp10" ; option for Level Editor
 visual          = dynamics\weapons\wpn_ammo\ammo_9x21_sp10.ogf
 description		= st_ammo_9x21_sp10_descr
-cost			= 400
+cost			= 930
 
-box_size		= 50
+box_size		= 15
 
 inv_name		= st_ammo_9x21_sp10
 inv_name_short	= st_ammo_9x21_sp10_short
@@ -329,11 +359,17 @@ inv_grid_height	= 1
 inv_grid_x		= 18
 inv_grid_y		= 22
 
-k_hit			= 0.66
-k_ap			= 0.35
-k_air_resistance = 1.3
-
-tracer			= on
+k_dist			= 1
+k_disp          = 0.45; 3
+k_hit           = 1.62
+k_impulse       = 0.46
+k_pierce        = 1.45
+k_ap            = 1.12
+impair			= 1.05 ; 0.8
+buck_shot		= 1
+tracer			= off        ;  off
+wm_size         = 0.072
+k_air_resistance = 1.5
 
 ;***********************11.43x23***********************
 [ammo_11.43x23_fmj]:ammo_base
@@ -341,47 +377,95 @@ $spawn			= "weapons\ammo\ammo_11.43x23_fmj" ; option for Level Editor
 visual          = dynamics\weapons\wpn_ammo\ammo_1143x23_fmj.ogf
 description		= st_ammo_11.43x23_fmj_descr
 
-cost			= 600
+cost			= 930
 
-box_size		= 50
+box_size		= 13
 
 inv_name		= st_ammo_11.43x23_fmj
 inv_name_short	= st_ammo_11.43x23_fmj_short
-inv_weight		= .3
+inv_weight		= .29
 
 inv_grid_width	= 2;1
 inv_grid_height	= 1
 inv_grid_x		= 9
 inv_grid_y		= 12
 
-k_hit			= 0.75
-k_ap			= 0.15
-tracer			= on
-k_air_resistance = 1.6
+k_dist			= 1
+k_disp			= 0.66; 3
+k_hit			= 1.83
+k_impulse		= 0.55
+k_pierce		= 0.33
+k_ap			= 0.031
+impair			= 1.05 ; 0.8
+buck_shot		= 1
+tracer			= off        ;  off
+wm_size         = 0.072
+k_air_resistance = 1.7
 
 [ammo_11.43x23_hydro]:ammo_base
 $spawn			= "weapons\ammo\ammo_11.43x23_hydro" ; option for Level Editor
 visual          = dynamics\weapons\wpn_ammo\ammo_1143x23_Hydro.ogf
 description		= st_ammo_11.43x23_hydro_descr
 
-cost			= 1000
+cost			= 1740
 
-box_size		= 50
+box_size		= 13
 
 inv_name		= st_ammo_11.43x23_hydro
 inv_name_short	= st_ammo_11.43x23_hydro_short
-inv_weight		= .3
+inv_weight		= .32
 
 inv_grid_width		= 2
 inv_grid_height		= 1
 inv_grid_x			= 7
 inv_grid_y			= 12
 
-k_hit			= 0.55
-k_ap			= 0.45
-k_air_resistance = 1.6
+k_dist			= 1
+k_disp			= 0.66 ; 4; 3
+k_hit			= 2.12
+k_impulse		= 0.7
+k_pierce		= 0.36
+k_ap			= 0.005
+impair			= 1.05 ; 1.2
+buck_shot		= 1
+tracer			= off        ;  on
+wm_size         = 0.088
+k_air_resistance = 2.2
 
-tracer			= on
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+[ammo_11.43x23_ap]:ammo_11.43x23_hydro
+
+visual          = dynamics\weapons\wpn_ammo\ammo_1143x23_fmj.ogf
+description		= ammo-11.43x23-ap_descr
+$prefetch 		= 64
+
+cost			= 2088
+
+box_size		= 13
+
+inv_name		= ammo-11.43x23-ap
+inv_name_short	= ammo-11.43x23-ap_s
+inv_weight		= .35
+
+inv_grid_width     = 2
+inv_grid_height    = 1
+inv_grid_x         = 14
+inv_grid_y         = 40
+
+k_dist			= 1
+k_disp			= 0.45 ; 3
+k_hit			= 1.63
+k_impulse		= 0.55
+k_pierce		= 1.34
+k_ap			= 0.97
+impair			= 1.05 ; 0.8
+buck_shot		= 1
+tracer			= off        ;  off
+wm_size         = 0.048
+k_air_resistance = 1.7
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;***********************50ae***********************
 [ammo_50ae]:ammo_base
@@ -389,9 +473,9 @@ $spawn			= "weapons\ammo\ammo_50ae" ; option for Level Editor
 visual          = dynamics\weapons\wpn_ammo\ammo_50ae.ogf
 description		= st_ammo_50ae_descr
 
-cost			= 700
+cost			= 2400
 
-box_size		= 50
+box_size		= 8
 
 inv_name		= st_ammo_50ae
 inv_name_short	= st_ammo_50ae_short
@@ -402,11 +486,17 @@ inv_grid_height	= 1
 inv_grid_x		= 14
 inv_grid_y		= 28
 
-k_hit			= 1.2
-k_ap			= 0.65
-k_air_resistance = 1.9
-
-tracer			= on
+k_dist			= 0.9
+k_disp          = 0.6 ; 3
+k_hit           = 2.85
+k_impulse       = 1.2
+k_pierce        = 1.1
+k_ap            = 0.55
+impair			= 1.05 ; 0.8
+buck_shot		= 1
+tracer			= off        ;  off
+wm_size         = 0.048
+k_air_resistance 	= 2.5
 
 ;***********************5.45x39***********************
 [ammo_5.45x39_fmj]:ammo_base
@@ -414,48 +504,62 @@ $spawn			= "weapons\ammo\ammo_5.45x39_fmj" ; option for Level Editor
 visual          = dynamics\weapons\wpn_ammo\ammo_545x39_fmj.ogf
 description		= st_ammo_5.45x39_fmj_descr
 
-cost			= 650
+cost			= 1340
 
-box_size		= 60
+box_size		= 15
 
 inv_name		= st_ammo_5.45x39_fmj
 inv_name_short	= st_ammo_5.45x39_fmj_short
-inv_weight		= .62
+inv_weight		= .16
 
 inv_grid_width		= 2
 inv_grid_height		= 1
 inv_grid_x			= 16
 inv_grid_y			= 11
 
-k_hit			= 0.33
-k_ap			= 0.45
-k_air_resistance = 1.4
+;;inv_icon = ui_hud2_res_back
 
-tracer			= on
+k_dist			= 1
+k_disp			= 0.66; 2.4
+k_hit			= 1.41
+k_impulse		= 0.6
+k_pierce		= 0.85
+k_ap			= 0.34
+impair			= 1.05 ; 1
+buck_shot		= 1
+tracer			= off        ;  off
+wm_size         = 0.034
+k_air_resistance = 1.25
 
 [ammo_5.45x39_ap]:ammo_base
 $spawn			= "weapons\ammo\ammo_5.45x39_ap" ; option for Level Editor
 visual          = dynamics\weapons\wpn_ammo\ammo_545x39_ap.ogf
 description		= st_ammo_5.45x39_ap_descr
 
-cost			= 1100
+cost			= 3590
 
-box_size		= 60
+box_size		= 15
 
 inv_name		= st_ammo_5.45x39_ap
 inv_name_short	= st_ammo_5.45x39_ap_short
-inv_weight		= .63
+inv_weight		= .16
 
 inv_grid_width		= 2
 inv_grid_height		= 1
 inv_grid_x			= 12
 inv_grid_y			= 11
+k_dist			= 1
+k_disp			= 0.45 ; 2
+k_hit			= 1.34
+k_impulse		= 0.55
+k_pierce		= 1.78
+k_ap			= 0.96
+impair			= 1.05 ; 1.4
+buck_shot		= 1
+tracer			= off        ;  on
+wm_size         = 0.031
+k_air_resistance = 1.15
 
-k_hit			= 0.28
-k_ap			= 0.65
-k_air_resistance = 1.2
-
-tracer			= on
 
 ;***********************5.56x45***********************
 [ammo_5.56x45_ss190]:ammo_base
@@ -463,48 +567,60 @@ $spawn			= "weapons\ammo\ammo_5.56x45_ss190" ; option for Level Editor
 visual          = dynamics\weapons\wpn_ammo\ammo_556x45_ss190.ogf
 description		= st_ammo_5.56x45_fmj_descr
 
-cost			= 700
+cost			= 1490
 
-box_size		= 60
+box_size		= 15
 
 inv_name		= st_ammo_5.56x45_fmj
 inv_name_short	= st_ammo_5.56x45_fmj_short
-inv_weight		= .74
+inv_weight		= .168
 
 inv_grid_width		= 2
 inv_grid_height		= 1
 inv_grid_x			= 14
 inv_grid_y			= 11
 
-k_hit = 0.35
-k_ap			= 0.5
-k_air_resistance = 1.5
-
-tracer			= on
+k_dist			= 1
+k_disp			= 0.66; 2.5
+k_hit			= 1.52
+k_impulse		= 0.58
+k_pierce		= 0.68
+k_ap			= 0.22
+impair			= 1.05 ; 1
+buck_shot		= 1
+tracer			= off        ;  off
+wm_size         = 0.058
+k_air_resistance = 1.35
 
 [ammo_5.56x45_ap]:ammo_base
 $spawn			= "weapons\ammo\ammo_5.56x45_ap" ; option for Level Editor
 visual          = dynamics\weapons\wpn_ammo\ammo_556x45_ap.ogf
 description		= st_ammo_5.56x45_ap_descr
 
-cost			= 1150
+cost			= 3660
 
-box_size		= 60
+box_size		= 15
 
 inv_name		= st_ammo_5.56x45_ap
 inv_name_short	= st_ammo_5.56x45_ap_short
-inv_weight		= .744
+inv_weight		= .17
 
 inv_grid_width		= 2
 inv_grid_height		= 1
 inv_grid_x			= 10
 inv_grid_y			= 11
 
-k_hit = 0.3
-k_ap			= 0.65
+k_dist			= 1
+k_disp			= 0.45 ; 2.1
+k_hit			= 1.41
+k_impulse		= 0.54
+k_pierce		= 1.65
+k_ap			= 1.03
+impair			= 1.05 ; 1.2
+buck_shot		= 1
+tracer			= off        ;  on
+wm_size         = 0.034
 k_air_resistance = 1.25
-
-tracer			= on
 
 ;***********************5.7x28***********************
 [ammo_5.7x28]:ammo_base
@@ -512,48 +628,52 @@ $spawn			= "weapons\ammo\ammo_5.7x28" ; option for Level Editor
 visual          = dynamics\weapons\wpn_ammo\ammo_57x28.ogf
 description		= st_ammo_5.7x28_descr
 
-cost			= 600
+cost			= 1650
 
-box_size		= 50
+box_size		= 20
 
 inv_name		= st_ammo_5.7x28
 inv_name_short	= st_ammo_5.7x28_short
-inv_weight		= .3
+inv_weight		= .12
 
 inv_grid_width	= 2
 inv_grid_height	= 1
 inv_grid_x		= 12
 inv_grid_y		= 8
-
-k_hit			= 0.4
-k_ap			= 0.55
-k_air_resistance = 1.3
-
-tracer			= on
+      
+k_disp                = 0.35
+k_hit                 = 1.25
+k_impulse             = 0.25
+k_pierce              = 1.55
+k_ap                  = 1.20
+k_air_resistance      = 1.1
 
 ;***********************7.62x25mm TT***********************
 [ammo_762x25mm_tt]:ammo_base
 $spawn			= "weapons\ammo\ammo_762x25mm_tt" ; option for Level Editor
 visual          = dynamics\weapons\wpn_ammo\ammo_tt33.ogf
 description		= st_ammo_7.62x25_descr
-cost			= 300
+cost			= 850
 
-box_size		= 50
+box_size		= 16
 
 inv_name		= st_ammo_7.62x25
 inv_name_short	= st_ammo_7.62x25_short
-inv_weight		= .3
+inv_weight		= .16
 
 inv_grid_width	= 2
 inv_grid_height	= 1
 inv_grid_x		= 14
 inv_grid_y		= 8
 
-k_hit			= 0.63
-k_ap			= 0.38
-k_air_resistance = 1.55
+k_dist                = 1.15
+k_disp                = 0.42
+k_hit                 = 1.48
+k_impulse             = 0.32
+k_pierce              = 1.35
+k_ap                  = 0.45
+k_air_resistance      = 1.3
 
-tracer			= on
 
 ;***********************7.62x39***********************
 [ammo_7.62x39_fmj]:ammo_base
@@ -561,26 +681,32 @@ $spawn			= "weapons\ammo\ammo_7.62x39_fmj" ; option for Level Editor
 visual          = dynamics\weapons\wpn_ammo\ammo_762x54_7h14.ogf
 description		= st_ammo_7.62x39_fmj_descr
 
-cost			= 600
+cost			= 1480
 
-box_size		= 60
+box_size		= 15
 
 inv_name		= st_ammo_7.62x39_fmj
 inv_name_short	= st_ammo_7.62x39_fmj_short
-inv_weight		= .97
+inv_weight		= .23
 
 inv_grid_width     = 2
 inv_grid_height    = 1
 inv_grid_x         = 38
 inv_grid_y         = 9
 
-k_dist			= 1.2
-k_disp          = 0.8
-k_hit			= 0.34
-k_ap			= 0.54
-k_air_resistance = 1.3
-
-tracer			= on
+k_hit_critical   = 1.
+k_dist			= 0.75
+k_disp			= 0.85 ; 2
+k_hit			= 1.52
+k_impulse		= 0
+k_pierce		= 0.96
+k_ap		    = 0.20
+impair			= 1.05 ; 1.1
+buck_shot		= 1
+tracer			= off        ;  off
+wm_size         = 0.062
+k_air_resistance = 2.3
+explosive		= off
 
 ;***********************7.62x54***********************
 [ammo_pkm_100]:ammo_base
@@ -588,13 +714,13 @@ $spawn			= "weapons\ammo\ammo_pkm_100" ; option for Level Editor
 visual          = dynamics\weapons\wpn_ammo\ammo_pkm.ogf
 description		= st_ammo_pkm_descr
 
-cost			= 2000
+cost			= 8580
 
-box_size		= 100
+box_size		= 50
 
 inv_name		= st_ammo_pkm
 inv_name_short	= st_ammo_pkm_short
-inv_weight		= 1.3
+inv_weight		= 1.95
 
 inv_grid_width		= 2
 inv_grid_height		= 1
@@ -603,113 +729,140 @@ inv_grid_y			= 13
 
 hud_icon = ui_hud2_res_back
 
-k_hit 			= 0.5
-k_ap			= 0.75
-wm_size         = 0.07
-k_air_resistance = 2
-
-tracer			= on
+k_dist			= 1
+k_disp			= 0.66; 3.5
+k_hit			= 1.26
+k_impulse		= 0.6
+k_pierce		= 1.3
+k_ap			= 0.76
+impair			= 1.05 ; 1
+buck_shot		= 1
+tracer			= off        ;  on
+wm_size         = 0.058
+k_air_resistance = 1.8
 
 [ammo_7.62x54_7h1]:ammo_base
 $spawn			= "weapons\ammo\ammo_7.62x54_7h1" ; option for Level Editor
 visual          = dynamics\weapons\wpn_ammo\ammo_762x54_7h1.ogf
 description		= st_ammo_7.62x54_7h1_descr
 
-cost			= 400
+cost			= 4420
 
-box_size		= 30
+box_size		= 10
 
 inv_name		= st_ammo_7.62x54_7h1
 inv_name_short	= st_ammo_7.62x54_7h1_short
-inv_weight		= .23
+inv_weight		= .22
 
 inv_grid_width		= 2
 inv_grid_height		= 1
 inv_grid_x			= 15
 inv_grid_y			= 9
 
-k_hit 			= 1
-k_ap			= 0.8
-wm_size         = 0.07
-k_air_resistance = 0.7
-
-tracer			= on
+k_dist			= 1
+k_disp			= 0.66	; 3.2
+k_hit			= 1.98
+k_impulse		= 0.8
+k_pierce		= 1.5
+k_ap			= 0.74
+impair			= 1.05 ; 0.9
+buck_shot		= 1
+tracer			= off        ;  off
+wm_size         = 0.064
+explosive		= off
 
 [ammo_7.62x54_ap]:ammo_base
 $spawn			= "weapons\ammo\ammo_7.62x54_ap" ; option for Level Editor
 visual          = dynamics\weapons\wpn_ammo\ammo_762x54_ap.ogf
 description		= st_ammo_7.62x54_ap_descr
 
-cost			= 600
+cost			= 2860
 
-box_size		= 30
+box_size		= 15
 
 inv_name		= st_ammo_7.62x54_ap
 inv_name_short	= st_ammo_7.62x54_ap_short
-inv_weight		= .23
+inv_weight		= .33
 
 inv_grid_width		= 2
 inv_grid_height		= 1
 inv_grid_x			= 15
 inv_grid_y			= 10
 
-k_hit 			= 0.5
-k_ap			= 0.75
-wm_size         = 0.07
-k_air_resistance = 2
-
-tracer			= on
+k_hit_critical   = 1.
+k_dist			= 0.8
+k_disp			= 0.92 ; 2
+k_hit			= 1.31
+k_impulse		= 0
+k_pierce		= 0.78
+k_ap		    = 0.32
+impair			= 1.05 ; 1.1
+buck_shot		= 1
+tracer			= off        ;  off
+wm_size         = 0.051
+k_air_resistance = 2.3
+explosive		= off
 
 [ammo_7.62x54_7h14]:ammo_base
 $spawn			= "weapons\ammo\ammo_7.62x54_7h14" ; option for Level Editor
 visual          = dynamics\weapons\wpn_ammo\ammo_762x54_7h14.ogf
 description		= st_ammo_7.62x54_7h14_descr
 
-cost			= 600
+cost			= 6980
 
-box_size		= 30
+box_size		= 10
 
 inv_name		= st_ammo_7.62x54_7h14
 inv_name_short	= st_ammo_7.62x54_7h14_short
-inv_weight		= .23
+inv_weight		= .46
 
 inv_grid_width		= 2
 inv_grid_height		= 1
 inv_grid_x			= 17
 inv_grid_y			= 9
 
-k_hit 			= 1.5
-k_ap			= 0.83
-wm_size         = 0.07
-k_air_resistance = 0.7
-
-tracer			= on
-
+k_dist			= 1
+k_disp			= 0.66
+k_hit			= 2.14
+k_impulse		= 0.78
+k_pierce		= 2.24
+k_ap			= 1.18
+impair			= 1.05 ; 1.01
+buck_shot		= 1
+tracer			= off       ;  on
+wm_size         = 0.062
+explosive		= off
 ;***********************gauss***********************
 [ammo_gauss]:ammo_base
 $spawn			= "weapons\ammo\ammo_gauss" ; option for Level Editor
 visual          = dynamics\weapons\wpn_ammo\ammo_gauss.ogf
 description		= st_ammo_gauss_descr
 
-cost			= 2000
+cost			= 11990
 
-box_size		= 10
+box_size		= 8
 
 inv_name		= st_ammo_gauss
 inv_name_short	= st_ammo_gauss_short
-inv_weight		= .5
+inv_weight		= 0.6
 
 inv_grid_width		= 1
 inv_grid_height		= 1
 inv_grid_x			= 4
 inv_grid_y			= 14
 
-k_hit 			= 2.0
-k_ap			= 150
-wm_size         = 0.1
+k_dist			= 1
+k_disp			= 0.66
+k_hit			= 1.1
+k_impulse		= 1
+k_pierce		= 4.95
+k_ap			= 3.85
+impair			= 1.05 ; 1
+buck_shot		= 1
+tracer			= off        ;  off
+wm_size         = 0.01
 
 explosive		= on
-k_air_resistance = 0.1
 
 [ammo_gauss_cardan]:ammo_gauss
 $spawn			= "weapons\ammo\ammo_gauss_cardan" ; option for Level Editor
@@ -726,9 +879,6 @@ inv_grid_height		= 1
 inv_grid_x			= 4
 inv_grid_y			= 9
 
-impair			= 1.5
-k_air_resistance = 1.0
-
 
 ;***********************9x39***********************
 [ammo_9x39_pab9]:ammo_base
@@ -736,48 +886,60 @@ $spawn			= "weapons\ammo\ammo_9x39_pab9" ; option for Level Editor
 visual          = dynamics\weapons\wpn_ammo\ammo_9x39_pab9.ogf
 description		= st_ammo_9x39_pab9_descr
 
-cost			= 550
+cost			= 1920
 
-box_size		= 30
+box_size		= 15
 
 inv_name		= st_ammo_9x39_pab9
 inv_name_short	= st_ammo_9x39_pab9_short
-inv_weight		= .7
+inv_weight		= .35
 
 inv_grid_width		= 2
 inv_grid_height		= 1
 inv_grid_x			= 17
 inv_grid_y			= 10
 
-k_hit			= 0.65
-k_ap			= 0.45
-k_air_resistance = 1.1
-
-tracer			= on
+k_dist			= 1
+k_disp			= 0.66; 1.8
+k_hit			= 1.54
+k_impulse		= 0.55
+k_pierce		= 1.16
+k_ap			= 0.52
+impair			= 1.05 ; 1.0
+buck_shot		= 1
+tracer			= off        ;  off
+wm_size         = 0.048
+k_air_resistance = 1.8
 
 [ammo_9x39_ap]:ammo_base
 $spawn			= "weapons\ammo\ammo_9x39_ap" ; option for Level Editor
 visual          = dynamics\weapons\wpn_ammo\ammo_9x39_ap.ogf
 description		= st_ammo_9x39_ap_descr
 
-cost			= 700
+cost			= 4180
 
-box_size		= 30
+box_size		= 15
 
 inv_name		= st_ammo_9x39_ap
 inv_name_short	= st_ammo_9x39_ap_short
-inv_weight		= .7
+inv_weight		= .34
 
 inv_grid_width		= 2
 inv_grid_height		= 1
 inv_grid_x			= 5
 inv_grid_y			= 12
 
-k_hit			= 0.5
-k_ap			= 0.85
-k_air_resistance = 1.4
-
-tracer			= on
+k_dist			= 1
+k_disp			= 0.45 ; 1.6
+k_hit			= 1.48
+k_impulse		= 0.5
+k_pierce		= 2.28
+k_ap			= 1.26
+impair			= 1.05 ; 1.3
+buck_shot		= 1
+tracer			= off        ;  on
+wm_size         = 0.042
+k_air_resistance = 1.6
 
 [ammo_9x39_sp5]:ammo_base
 GroupControlSection	= spawn_group
@@ -788,25 +950,30 @@ cform           = skeleton
 visual          = dynamics\weapons\wpn_ammo\ammo_9x39_sp5.ogf
 description		= st_ammo_9x39_sp5_descr
 
-cost			= 500
+cost			= 2850
 
-box_size		= 30
+box_size		= 15
 
 inv_name		= st_ammo_9x39_sp5
 inv_name_short	= st_ammo_9x39_sp5_short
-inv_weight		= .7
+inv_weight		= .32
 
 inv_grid_width		= 2
 inv_grid_height		= 1
 inv_grid_x			= 18
 inv_grid_y			= 11
 
-k_disp			= 0.5
-k_hit			= 1.5
-k_ap			= 0.8
-tracer			= on
-
-tracer			= on
+k_dist			= 1.1
+k_disp			= 0.35
+k_hit			= 1.58
+k_impulse		= 0.58
+k_pierce		= 1.45
+k_ap			= 0.72
+impair			= 1.05
+buck_shot		= 1
+tracer			= off
+wm_size         = 0.045
+k_air_resistance = 1.4
 
 ;***********************12x70***********************
 [ammo_12x70_buck]:ammo_base
@@ -814,80 +981,91 @@ $spawn			= "weapons\ammo\ammo_12x70_buck" ; option for Level Editor
 visual          = dynamics\weapons\wpn_ammo\ammo_12x70_buck.ogf
 description		= st_ammo_12x70_buck_descr
 
-cost			= 120
+cost			= 960
 
 box_size		= 10
 
 inv_name		= st_ammo_12x70_buck
 inv_name_short	= st_ammo_12x70_buck_short
-inv_weight		= .6
+inv_weight		= .52
 
 inv_grid_width	= 2
 inv_grid_height	= 1
 inv_grid_x		= 13
 inv_grid_y		= 9
 
-k_dist			= 0.4
-k_disp			= 17
-k_hit			= 0.36
-k_impulse		= 0.5
-k_ap			= 0.05
-impair			= 1
-buck_shot		= 13
-wm_size         = 0.05
-k_air_resistance = 3
+k_dist			= 0.65
+k_disp			= 12.6 ;7
+k_hit			= 0.26
+k_impulse		= 0.7
+k_pierce		= 0.2
+k_ap			= 0.0001
+impair			= 1.05 ; 1.1
+buck_shot		= 18
+tracer			= off        ;  off
+wm_size         = 0.022
+k_air_resistance = 14
 
 [ammo_12x76_zhekan]:ammo_base
 $spawn			= "weapons\ammo\ammo_12x76_zhekan" ; option for Level Editor
 visual          = dynamics\weapons\wpn_ammo\ammo_12x76_zhekan.ogf
 description		= st_ammo_12x70_zhekan_descr
 
-cost			= 250
+cost			= 3080
 
 box_size		= 10
 
 inv_name		= st_ammo_12x70_zhekan
 inv_name_short	= st_ammo_12x70_zhekan_short
-inv_weight		= .50
+inv_weight		= .41
 
 inv_grid_width		= 2
 inv_grid_height		= 1
 inv_grid_x			= 11
 inv_grid_y			= 10
 
-k_disp			= 1.07
-k_hit = 1.35
-k_ap			= 0.3
-k_air_resistance = 1.1
-
-tracer			= on
+k_dist			= 0.9
+k_disp			= 0.33 ; 6 ; 2.8
+k_hit			= 1.74
+k_impulse		= 0.45
+k_pierce		= 1.33
+k_ap			= 0.68
+impair			= 1.05 ; 1.2
+buck_shot		= 1
+tracer			= off        ;  on
+wm_size         = 0.052
+explosive		= off
+k_air_resistance = 4
 
 [ammo_12x76_dart]:ammo_base
 $spawn			= "weapons\ammo\ammo_12x76_dart" ; option for Level Editor
 visual          = dynamics\weapons\wpn_ammo\ammo_12x76_dart.ogf
 description		= st_ammo_12x76_dart_descr
 
-cost			= 220
+cost			= 4250
 
 box_size		= 10
 
 inv_name		= st_ammo_12x76_dart
 inv_name_short	= st_ammo_12x76_dart_short
-inv_weight		= .5
+inv_weight		= .38
 
 inv_grid_width	= 2
 inv_grid_height	= 1
 inv_grid_x		= 13
 inv_grid_y		= 10
 
-k_dist			= 1.5
-k_disp			= 1.08
-k_hit			= 1.35
-
-k_ap			= 0.5
-k_air_resistance = 1.5
-
-tracer			= on
+k_dist			= 1.35
+k_disp			= 0.18
+k_hit			= 1.52
+k_impulse		= 0.35
+k_pierce		= 1.95
+k_ap			= 1.15
+impair			= 1.05
+buck_shot		= 1
+tracer			= off
+wm_size         = 0.038
+k_air_resistance = 1.8
 
 ;***********************heli ammo***********************
 
@@ -905,13 +1083,13 @@ class			= S_VOG25
 visual          = dynamics\weapons\wpn_ammo\ammo_vog_25.ogf
 description		= st_ammo_vog25_descr
 
-cost			= 300
+cost			= 1280
 
 box_size		= 1
 
 inv_name		= st_ammo_vog25
 inv_name_short	= st_ammo_vog25_short
-inv_weight		= .250
+inv_weight		= .26
 
 inv_grid_width		= 1
 inv_grid_height		= 1
@@ -923,9 +1101,16 @@ kill_msg_y		= 180
 kill_msg_width		= 21
 kill_msg_height		= 30
 
-k_hit			= 3.0
-k_ap			= 0.25
+k_dist			= 1
+k_disp			= 0.66
+k_hit			= 2
+k_impulse		= 1.3
+k_pierce		= 0.25
+k_ap			= 0.35
+impair			= 1.05 ; 1
 buck_shot		= 0
+tracer			= off        ;  off
+wm_size         = 0.05
 
 fake_grenade_name = wpn_fake_missile
 
@@ -943,22 +1128,21 @@ inv_weight			= 0
 cost				= 150
 can_take			= false
 
-blast				= 4.3
-blast_r				= 4
-blast_impulse		= 100
+blast				= 4.8 ;3.0
+blast_r				= 4.3 ;4
+blast_impulse		= 150 ;100
 ;delete
 blast_impulse_factor = 1
 
-
-frags				= 10
-frags_r				= 10
-frag_hit			= 0.70
-frag_hit_impulse	= 50
+frags				= 85 ;10
+frags_r				= 20 ;10
+frag_hit			= 0.07 ;0.50
+frag_hit_impulse	=  34 ;50
 
 hit_type_blast		= explosion
 hit_type_frag		= fire_wound
 
-up_throw_factor		= 0.7
+up_throw_factor		= 0.41
 
 
 ;trail				= weapons\rpg_trail_01, weapons\rpg_trail_02
@@ -967,25 +1151,25 @@ explode_particles	        = explosions\explosion_01
 
 
 light_color		         = 1.9,1.2,0.5
-light_range		         = 0.01
-light_time 		         = 0.01
+light_range		         = 25.0
+light_time 		         = 0.5
 
 
 ph_mass			 = 5
 ;engine_f			= 530
 ;engine_u			= 90
 
-jump_height = 0
+jump_height = 0.1 ;0
 
 wm_size         = 0.05
 
 ;трассы от осколков
-fragment_speed				= 100
+fragment_speed				= 184
 
 explode_duration		 = 5		;подолжительность взрыва (с)
 
 ;звуки
-snd_explode = weapons\ammo\vog25\layers\vog25_explosion_a_1
+snd_explode = weapons\f1_explode
 ;wallmarks
 wallmark_section		= explosion_marks
 
@@ -1063,15 +1247,21 @@ blast_impulse		= 350
 blast_impulse_factor = 1
 
 
-frags				= 20
-frags_r				= 15
-frag_hit			= 0.50
-frag_hit_impulse	= 50
+blast				= 5.8 ;3.0
+blast_r				= 5.3 ;4
+blast_impulse		= 187 ;100
+;delete
+blast_impulse_factor = 1
+
+frags				= 140 ;10
+frags_r				= 34 ;10
+frag_hit			= 0.066 ;0.50
+frag_hit_impulse	=  35 ;50
 
 hit_type_blast		= explosion
 hit_type_frag		= fire_wound
 
-up_throw_factor		= 0.7
+up_throw_factor		= 0.42
 
 ;trail				= weapons\rpg_trail_01, weapons\rpg_trail_02
 
@@ -1079,18 +1269,18 @@ explode_particles	        = explosions\explosion_01
 
 
 light_color		    = 1.9,1.4,0.5
-light_range		    = 0.01 ;14.0
-light_time 		    = 0.01 ;0.85
+light_range		    = 14.0
+light_time 		    = 0.85
 
 
 ph_mass			 = 5
 ;engine_f			= 530
 ;engine_u			= 90
 
-jump_height = 1.5
+jump_height = 1
 
 ;трассы от осколков
-fragment_speed		= 100
+fragment_speed		= 240
 
 wm_size         	= 0.05
 ;wallmarks
@@ -1098,7 +1288,7 @@ wallmark_section		 = explosion_marks
 explode_duration		 = 5		;подолжительность взрыва (с)
 
 ;звуки
-snd_explode = weapons\ammo\vog25\layers\vog25_explosion_a_1
+snd_explode = weapons\f1_explode
 
 ;свойства которые читаются, но не используются
 inv_name		= st_ammo_vog25
@@ -1172,22 +1362,22 @@ inv_weight			= 0
 cost				= 150
 can_take			= false
 
-blast				= 3.5;150
-blast_r				= 4
-blast_impulse		= 100
+blast				= 5.2 ;3.0
+blast_r				= 4.7 ;4
+blast_impulse		= 174 ;100
 ;delete
 blast_impulse_factor = 1
 
 
-frags				= 12
-frags_r				= 7
-frag_hit			= 0.50
-frag_hit_impulse	= 50
+frags				= 94 ;10
+frags_r				= 28 ;10
+frag_hit			= 0.074 ;0.50
+frag_hit_impulse	=  44 ;50
 
 hit_type_blast		= explosion
 hit_type_frag		= fire_wound
 
-up_throw_factor		= 0.7
+up_throw_factor		= 0.36
 
 ;trail				= weapons\rpg_trail_01, weapons\rpg_trail_02
 
@@ -1195,18 +1385,18 @@ explode_particles	= explosions\explosion_01
 
 
 light_color		         = 1.9,1.4,0.5
-light_range		         = 0.01 ;14.0
-light_time 		         = 0.01 ;0.85
+light_range		         = 14.0
+light_time 		         = 0.85
 
 
 ph_mass			 = 5
 ;engine_f			= 530
 ;engine_u			= 90
 
-jump_height = 0
+jump_height = 1
 
 ;трассы от осколков
-fragment_speed				= 100
+fragment_speed				= 190
 ;wallmarks
 wallmark_section			= explosion_marks
 wm_size						= 0.1 ;0.05
@@ -1214,7 +1404,7 @@ wm_size						= 0.1 ;0.05
 explode_duration			 = 5		;подолжительность взрыва (с)
 
 ;звуки
-snd_explode = weapons\ammo\m209\layers\m209_explosion_a_1
+snd_explode = weapons\f1_explode
 
 ;свойства которые читаются, но не используются
 inv_name		= ammo-m209
@@ -1288,30 +1478,30 @@ kill_msg_height				= 30
 cost					= 200
 can_take			= false
 ;---------------------------------------------------------------
-blast					= 5.00
-blast_r					= 10;15
-blast_impulse				= 350
-blast_impulse_factor 			= 1
+blast                   = 8.5
+blast_r                 = 7.0
+blast_impulse           = 450
+blast_impulse_factor    = 1
 
-frags					= 8
-frags_r					= 25
-frag_hit				= 1.50
-frag_hit_impulse			= 275
+frags                   = 25
+frags_r                 = 35
+frag_hit                = 1.20
+frag_hit_impulse        = 200
 
 hit_type_blast				= explosion
 hit_type_frag				= fire_wound
 
-up_throw_factor				= 0.25
+up_throw_factor				= 0.5
 ;---------------------------------------------------------------
 
 wm_size                  		= 0.1
 wallmark_section			= explosion_marks
 
-light_color		         	= 1.9,1.4,0.5
-light_range		         	= 24.0
-light_time 		         	= 1.28
+light_color             = 1.9,1.4,0.5
+light_range             = 30.0
+light_time              = 1.5
 
-ph_mass			 			= 5
+ph_mass			 			= 7
 
 jump_height 				= 0
 
@@ -1319,7 +1509,7 @@ explode_particles			= explosions\explosion_04
 
 
 ;трассы от осколков
-fragment_speed	     		= 100
+fragment_speed	     		= 180
 
 explode_duration		 	= 5		;подолжительность взрыва (с)
 
