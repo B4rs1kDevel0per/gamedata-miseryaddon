@@ -15,9 +15,9 @@ default_to_ruck         = false
 sprint_allowed          = true
 
 ;-------------------------------------------------------------------------------
-cost              	 = 3300            ; the price of the item
+cost              	 = 19940            ; the price of the item
 weapon_class         = assault_rifle      ; the type of the box that will be used in buy-menu in multiplayer mode
-inv_weight        = 3.6                      ; weight in inventory
+inv_weight        = 3.2                      ; weight in inventory
 
 upgrades = vartree_ak74_barrel, vartree_ak74_tsevie_down, vartree_ak74_mag45, vartree_ak74_priklad, vartree_ak74_sights, vartree_ak74_handle;, vartree_ak74_bayonet
 installed_upgrades = 
@@ -27,13 +27,13 @@ def_show_bones = mag30, handler, foregrip
 def_hide_bones = mag45, mag45_black, mag60, handler2, scope_cobra, scope_rakurs, scope_pso_sniper, scope_kashtan, scope_pka, scope_pso_assault, scope_nv_sniper, scope_nv_assault, flash, light, laser, line, line2, sight, sight2, foregrip_rail, knife, tilnik
 
 ;-““’---------------------------------------------------------------------------
-hit_power            = 1.3, 1.3, 1.3, 1.3
-hit_impulse          = 100    ; size of physic impulse by bullet
+hit_power            = 0.5, 0.5, 0.5, 0.5
+hit_impulse          = 25    ; size of physic impulse by bullet
 hit_type             = fire_wound            ; [] type of the wound
-fire_distance           = 200 ;1000                  ; maximum fire distance that bullet can fly
-bullet_speed            = 550                ; starting bullet speed
-rpm                     = 680    ; max round per minute
-rpm_empty_click         = 10
+fire_distance           = 1000              ; maximum fire distance that bullet can fly
+bullet_speed            = 880               ; starting bullet speed
+rpm                     = 650   ; max round per minute
+rpm_empty_click         = 200
 
 ;настройки дл¤ глушител¤
 silencer_hit_power      = 0.9, 0.9, 0.9, 0.9
@@ -46,19 +46,13 @@ time_to_aim             = 3.0
 
 hud                     = wpn_ak74_hud
 
-misfire_probability        = 0.005 ;веро¤тность осечки при максимальном износе  !!!old - now not working
-;изношенность, при которой по¤вл¤етс¤ шанс осечки
-misfire_start_condition		= 0.5
-;изношеность при которой шанс осечки становитс¤ константным
+misfire_probability        	= 0.002 ;		=0.005
+misfire_start_condition		= 0.75
 misfire_end_condition		= 0.1
-;шанс осечки при изношености больше чем misfireStartCondition
-misfire_start_prob	     	= 0.003
-;шанс осечки при изношености больше чем misfireEndCondition
-misfire_end_prob	     	= 0.033
-;увеличение изношености при одиночном выстреле
-condition_shot_dec      	= 0.0002
-;увеличение изношености при выстреле очередью
-condition_queue_shot_dec	= 0.0005
+misfire_start_prob = 0.007 ;	     	= 0.0045
+misfire_end_prob = 0.11 ;	     	= 0.045
+condition_shot_dec      	= 0.0007
+condition_queue_shot_dec	= 0.0007
 
 ammo_elapsed         = 30           ; obsolete
 ammo_mag_size        = 30           ; clip (magazine) size
@@ -76,70 +70,51 @@ single_handed           = 0
 zoom_dof             = 0.5, 1.0, 180
 reload_dof           = 0.0, 0.5, 5, 2;1.7
 
-;-ƒисперси¤----------------------------------------------------------------------
+;-Дисперсия----------------------------------------------------------------------
 ;params of weapon recoil
-fire_dispersion_base       	= 0.19    ;угол (в градусах) базовой дисперсии оружи¤ (оружи¤ зажатого в тисках)
-control_inertion_factor    	= 1.2f
-crosshair_inertion			= 6
+fire_dispersion_base       	= 0.35    ;угол (в градусах) базовой дисперсии оружия (оружия зажатого в тисках)
+control_inertion_factor    	= 1.33f
+crosshair_inertion			= 6.3
 
 ;отдача
-;cam_return					= 0
-;cam_relax_speed             = 10		;скорость возврата в исходное положение
-;cam_relax_speed_ai      	= 360
-;cam_dispersion              = 0.8		;увеличени¤ угла (в градусах) с первым выстрелом
-;cam_dispersion_inc         	= 0.5		;увеличениe cam_dispersion с каждым выстрелом
-;cam_dispersion_frac        	= 1.0	    ;ствол будет подыматьс¤ на cam_dispersion*cam_dispersion_frac +- cam_dispersion*(1-cam_dispersion_frac)
-;cam_max_angle				= 50.0      ;максимальный угол отдачи
-;cam_max_angle_horz         	= 5.0      ;(degree) maximum shot horizontal degree
-;cam_step_angle_horz        	= 0.35		;(degree) size of step camera moved in horizontal position while shooting
+cam_return = 0 ;				= 0
+cam_relax_speed             = 10		;скорость возврата в исходное положение
+cam_relax_speed_ai      	= 360
+cam_dispersion	         	= 0.90
+cam_dispersion_inc         	= 0.85
+cam_dispersion_frac        	= 1.1	    ;ствол будет подыматься на cam_dispersion*cam_dispersion_frac +- cam_dispersion*(1-cam_dispersion_frac)
+cam_max_angle				= 50.0      ;максимальный угол отдачи
+cam_max_angle_horz         	= 50.0      ;(degree) maximum shot horizontal degree
+cam_step_angle_horz        	= 1.25		;(degree) size of step camera moved in horizontal position while shooting
 
-cam_return				= 0
-cam_relax_speed         = 5		; скорость возврата в исходное положение
-cam_relax_speed_ai      = 360	; скорость возврата в исходное положение для AI
-cam_dispersion          = 0.55       ; увеличения угла (в градусах) при первом выстреле
-cam_dispersion_inc      = 0.3       ; увеличениe cam_dispersion с каждым выстрелом
-cam_dispersion_frac     = 1.0       ; frac * angle + rand(-1,1)*(1-frac) * angle
-cam_max_angle           = 50.0       ; максимальный угол отдачи
-cam_max_angle_horz      = 50.0       ; (degree) maximum shot horizontal degree
-cam_step_angle_horz     = 1.5       ; (degree) size of step camera moved in horizontal position while shooting
-
-;zoom_cam_relax_speed         = 10	    ; scope & ironsight
-;zoom_cam_relax_speed_ai      = 360
-;zoom_cam_dispersion          = 0.45
-;zoom_cam_dispersion_inc      = 0.45
-;zoom_cam_dispersion_frac     = 0.7
-;zoom_cam_max_angle           = 50.0
-;zoom_cam_max_angle_horz      = 5.0
-;zoom_cam_step_angle_horz     = 0.3
-
-zoom_cam_relax_speed         = 5     ; scope & ironsight
+zoom_cam_relax_speed         = 10	    ; scope & ironsight
 zoom_cam_relax_speed_ai      = 360
-zoom_cam_dispersion          = 0.45
-zoom_cam_dispersion_inc      = 0.45
+zoom_cam_dispersion          = 0.72
+zoom_cam_dispersion_inc      = 0.67
 zoom_cam_dispersion_frac     = 0.7
 zoom_cam_max_angle           = 50.0
-zoom_cam_max_angle_horz      = 5.0
-zoom_cam_step_angle_horz     = 0.3
+zoom_cam_max_angle_horz      = 50.0
+zoom_cam_step_angle_horz     = 1.15
 
-PDM_disp_base 				= 1.3
-PDM_disp_vel_factor 		= 1.8
-PDM_disp_accel_factor 		= 1.8
-PDM_disp_crouch	 			= 1.0
-PDM_disp_crouch_no_acc 		= 1.0
+PDM_disp_base 				= 1.0
+PDM_disp_vel_factor 		= 2.105
+PDM_disp_accel_factor 		= 2.105
+PDM_disp_crouch = 1.0 ; 			= 2.235
+PDM_disp_crouch_no_acc = 1.0 ; 		= 2.745
 
-fire_dispersion_condition_factor    = 15         ;увеличение дисперсии в процентах при максимальном износе
+fire_dispersion_condition_factor = 0.001 ;    = 0.01 ; 15         
 
 ;-------------------------------------------------------------------------------
 holder_range_modifier   = 1.0                       ; во сколько раз увеличиваетс¤ eye_range
 holder_fov_modifier     = 1.0              ; во сколько раз увеличиваетс¤ eye_fov
 
-min_radius           = 3           ; [] for AI
-max_radius           = 100          ; [] for AI
+min_radius = 0 ;           = 30           ; [] for AI
+max_radius = 500 ; = 250 ;           = 100          ; [] for AI
 
-hit_probability_gd_novice  = 0.80
-hit_probability_gd_stalker = 0.80
-hit_probability_gd_veteran = 0.80
-hit_probability_gd_master  = 0.80
+hit_probability_gd_novice = 1.00 ;  = 0.80
+hit_probability_gd_stalker = 1.00 ; = 0.80
+hit_probability_gd_veteran = 1.00 ; = 0.80
+hit_probability_gd_master = 1.00 ;  = 0.80
 
 ;-------------------------------------------------------------------------------
 slot                    = 2                ; // secondary
@@ -283,10 +258,10 @@ zoom_hide_crosshair        = true
 attach_place_idx        = 0
 item_visual                = dynamics\weapons\wpn_ak74\wpn_ak74_hud.ogf
 
-hud_fov = 0.75
+hud_fov = 0.78
 hud_fov_zoom = 0.75
 
-zoom_dof_near = 0.25
+zoom_dof_near = 0.2
 zoom_dof_focus = 0.5
 
 gl_dof_near = 0.25
@@ -294,39 +269,47 @@ gl_dof_focus = 1.0
 
 hud_recalc_koef = 1.5
 
-inertion_pitch_offset_r = -0.008
-inertion_pitch_offset_n = -0.006
-inertion_pitch_offset_d = -0.001
-inertion_origin_offset = 0.06
+hud_move_forward_offset_pos = 0.005,-0.032,-0.05
+hud_move_forward_offset_rot = 0,0,1.5
+
+hud_move_forward_offset_pos_16x9 = 0.005,-0.032,-0.05
+hud_move_forward_offset_rot_16x9 = 0,0,1.5
+
+hud_move_back_offset_pos = 0,0,0
+hud_move_back_offset_rot = 0,0,0
+
+hud_move_back_offset_pos_16x9 = 0,0.0
+hud_move_back_offset_rot_16x9 = 0,0,0
+
+inertion_pitch_offset_r = 0.01
+inertion_pitch_offset_n = 0.007
+inertion_pitch_offset_d = 0.01
+inertion_origin_offset = 0.03
 
 inertion_aim_origin_offset = 0.015
 inertion_aim_speed = 10
 
 
-gl_ammo_params_section_0 = wpn_ak74_ammo_bones_vog25
-gl_ammo_params_section_1 = wpn_ak74_ammo_bones_vog25p
-
-
-hands_position				= 0.02,-0.02,0.005
+hands_position			= -0.000,-0.015,-0.05
 hands_orientation			= 0.0,0.0,0.0
 
-hands_position_16x9			= 0.02,-0.02,0.005
+hands_position_16x9			= -0.000,-0.015,-0.05
 hands_orientation_16x9			= 0.0,0.0,0.0
 
 item_position				= 0.0,0.0,0.0
 item_orientation			= 0.0,0.0,0.0
 
-aim_hud_offset_pos         = 0.00030,0.025000,0.000
-aim_hud_offset_rot         = 0.000000,0.000000,0.0000
+aim_hud_offset_pos = 0.02080,0.01550,0.1000
+aim_hud_offset_rot = 0.000000,0.000000,-0.000000
 
-aim_hud_offset_pos_16x9    = 0.00030,0.025000,0.000
-aim_hud_offset_rot_16x9    = 0.000000,0.000000,0.0000
+aim_hud_offset_pos_16x9 = 0.02080,0.01550,0.1000
+aim_hud_offset_rot_16x9 = 0.000000,0.000000,-0.000000
 
-gl_hud_offset_pos          = -0.0200,0.02000,-0.20000
-gl_hud_offset_rot          = 0.000000,0.000000,0.0000
+gl_hud_offset_pos               = 0,0,0;-0.053000,-0.059000,0.000000
+gl_hud_offset_rot               = 0,0,0;-0.145000,0.000000,0.000000
 
-gl_hud_offset_pos_16x9     = -0.0200,0.02000,-0.20000
-gl_hud_offset_rot_16x9     = 0.000000,0.000000,0.0000
+gl_hud_offset_pos_16x9            = 0,0,0;-0.130000,0.003500,0.000500
+gl_hud_offset_rot_16x9            = 0,0,0;0.052500,0.045000,-0.010000
 
 lean_hud_offset_pos        = 0,0,0
 lean_hud_offset_rot        = 0,0,0
