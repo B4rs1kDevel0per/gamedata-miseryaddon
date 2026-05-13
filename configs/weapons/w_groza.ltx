@@ -27,7 +27,7 @@ no_scope_overriding_show_bones = launcher_scope
 banned_upgrades = up_val_
 
 ;-------------------------------------------------------------------------------
-cost                    = 10000
+cost                    = 27260
 weapon_class            = assault_rifle        ; Type of the weapon
 inv_weight              = 2.7
 
@@ -37,12 +37,12 @@ upgrade_scheme = upgrade_scheme_groza
 
 
 ;--TTX----------------------------------------------------------------------------
-hit_power				= 0.95, 0.95, 0.95, 0.95
-hit_impulse				= 100
+hit_power				= 0.496, 0.496, 0.496, 0.496
+hit_impulse				= 35
 hit_type				= fire_wound
-fire_distance           = 100
-bullet_speed            = 300
-rpm                     = 660
+fire_distance           = 450
+bullet_speed            = 310
+rpm                     = 700
 rpm_empty_click         = 200
 
 use_aim_bullet          = false                ;Поддерживается ли первая суппер пуля
@@ -54,19 +54,13 @@ hud                     = wpn_groza_hud
 hud_when_silencer_is_attached = true
 hud_silencer = wpn_groza_silencer_hud
 
-misfire_probability        = 0.005 ;вероятность осечки при максимальном износе  !!!old - now not working
-;изношенность, при которой появляется шанс осечки
-misfire_start_condition		= 0.7
-;изношеность при которой шанс осечки становится константным
-misfire_end_condition		= 0.2
-;шанс осечки при изношености больше чем misfireStartCondition
-misfire_start_prob	     	= 0.005
-;шанс осечки при изношености больше чем misfireEndCondition
-misfire_end_prob	     	= 0.044
-;увеличение изношености при одиночном выстреле
-condition_shot_dec      	= 0.0007
-;увеличение изношености при выстреле очередью
-condition_queue_shot_dec	= 0.0008
+misfire_probability        = 0.002 ;		=0.005
+misfire_start_condition		= 0.75
+misfire_end_condition		= 0.1
+misfire_start_prob = 0.007 ;	     	= 0.003
+misfire_end_prob = 0.11 ;	     	= 0.03
+condition_shot_dec      	= 0.0009
+condition_queue_shot_dec	= 0.0009
 
 
 ammo_elapsed            = 20
@@ -88,49 +82,49 @@ reload_dof				= 0.0, 0.5, 5, 2
 
 ;-дисперсия-----------------------------------------------------------------------------
 ;базовая дисперсия
-fire_dispersion_base    = 0.23        ;угол (в градусах) базовой дисперсии оружия (оружия зажатого в тисках)
-control_inertion_factor = 1.2f
-crosshair_inertion		= 6.80
+fire_dispersion_base    = 0.37     ;угол (в градусах) базовой дисперсии оружия (оружия зажатого в тисках)
+control_inertion_factor = 1.33f
+crosshair_inertion		= 6.3
 
 ;отдача
-cam_return              = 0
-cam_relax_speed         = 5        ;скорость возврата в исходное положение
+cam_return = 0 ;				= 0
+cam_relax_speed         = 8        ;скорость возврата в исходное положение
 cam_relax_speed_ai      = 360     ;скорость возврата в исходное положение
-cam_dispersion          = 0.4        ;увеличения угла (в градусах) с каждым выстрелом
-cam_dispersion_inc      = 0.2       ;увеличениe cam_dispersion с каждым выстрелом
-cam_dispersion_frac     = 0.7       ;ствол будет подыматься на cam_dispersion*cam_dispersion_frac +- cam_dispersion*(1-cam_dispersion_frac)
+cam_dispersion	        = 0.64
+cam_dispersion_inc      = 0.63
+cam_dispersion_frac     = 1.0       ;ствол будет подыматься на cam_dispersion*cam_dispersion_frac +- cam_dispersion*(1-cam_dispersion_frac)
 cam_max_angle           = 50.0        ;максимальный угол отдачи
 cam_max_angle_horz      = 50.0        ;(degree) maximum shot horizontal degree
-cam_step_angle_horz     = 1.35        ;(degree) size of step camera moved in horizontal position while shooting
+cam_step_angle_horz     = 2.15        ;(degree) size of step camera moved in horizontal position while shooting
 
-PDM_disp_base 				= 1.2
-PDM_disp_vel_factor 		= 1.5
-PDM_disp_accel_factor 		= 1.5
-PDM_disp_crouch	 			= 1.0
-PDM_disp_crouch_no_acc 		= 1.0
+PDM_disp_base 				= 0.75
+PDM_disp_vel_factor 		= 1.71
+PDM_disp_accel_factor 		= 1.71
+PDM_disp_crouch = 1.0 ; 			= 2.235
+PDM_disp_crouch_no_acc = 1.0 ; 		= 2.745
 
-zoom_cam_relax_speed         = 5	    ; scope & ironsight
+zoom_cam_relax_speed         = 8	    ; scope & ironsight
 zoom_cam_relax_speed_ai      = 360
-zoom_cam_dispersion          = 0.2
-zoom_cam_dispersion_inc      = 0.15
+zoom_cam_dispersion          = 0.54
+zoom_cam_dispersion_inc      = 0.53
 zoom_cam_dispersion_frac     = 1.0
 zoom_cam_max_angle           = 50.0
 zoom_cam_max_angle_horz      = 50.0
-zoom_cam_step_angle_horz     = 1.25
+zoom_cam_step_angle_horz     = 2.05
 
-fire_dispersion_condition_factor = 11        ;увеличение дисперсии в процентах при максимальном износе
+fire_dispersion_condition_factor = 0.001 ; = 0.01 ; 11        
 
 ;-------------------------------------------------------------------------------
 holder_range_modifier   = 1.0                       ; во сколько раз увеличивается eye_range
 holder_fov_modifier     = 1.0              ; во сколько раз увеличивается eye_fov
 
-min_radius              = 3
-max_radius              = 100
+min_radius = 0 ;              = 30
+max_radius = 500 ; = 250 ;              = 100
 
-hit_probability_gd_novice  = 0.80
-hit_probability_gd_stalker = 0.80
-hit_probability_gd_veteran = 0.80
-hit_probability_gd_master  = 0.80
+hit_probability_gd_novice = 1.00 ;  = 0.80
+hit_probability_gd_stalker = 1.00 ; = 0.80
+hit_probability_gd_veteran = 1.00 ; = 0.80
+hit_probability_gd_master = 1.00 ;  = 0.80
 
 ;-------------------------------------------------------------------------------
 slot                    = 2                ; // secondary
@@ -278,32 +272,52 @@ zoom_hide_crosshair	= true
 attach_place_idx	= 0
 item_visual					= dynamics\weapons\wpn_groza\wpn_groza_hud.ogf
 
-hud_fov = 0.75
-hud_fov_zoom = 0.75
+hud_fov = 0.80
+hud_fov_zoom = 0.77
 
-zoom_dof_near = 0.19
+zoom_dof_near = 0.2
 zoom_dof_focus = 0.22
 
-hands_position				= 0.0,0.0,-0.04
+hud_move_forward_offset_pos = 0.00294,-0.01471,-0.02941
+hud_move_forward_offset_rot = 0,0,0.88235
+
+hud_move_forward_offset_pos_16x9 = 0.00294,-0.01471,-0.02941
+hud_move_forward_offset_rot_16x9 = 0,0,0.88235
+
+hud_move_back_offset_pos = 0,0,0
+hud_move_back_offset_rot = 0,0,0
+
+hud_move_back_offset_pos_16x9 = 0,0.0
+hud_move_back_offset_rot_16x9 = 0,0,0
+
+inertion_pitch_offset_r = 0.01
+inertion_pitch_offset_n = 0.007
+inertion_pitch_offset_d = 0.01
+inertion_origin_offset = 0.03
+
+inertion_aim_origin_offset = 0.015
+inertion_aim_speed = 10
+
+hands_position			= -0.0280,0.011,-0.22
 hands_orientation			= 0.0,0.0,0.0
 
-hands_position_16x9			= 0.0,0.0,-0.09
+hands_position_16x9			= -0.0280,0.011,-0.22
 hands_orientation_16x9			= 0.0,0.0,0.0
 
 item_position				= 0.0,0.0,0.0
 item_orientation			= 0.0,0.0,0.0
 
-aim_hud_offset_pos         = 0.000220,0.000800,0.0
-aim_hud_offset_rot         = 0.0,0.0,0.0
+aim_hud_offset_pos    = 0.02825,-0.011400,0.18
+aim_hud_offset_rot    = -0.002,0.0,-0.00
 
-aim_hud_offset_pos_16x9    = 0.000220,0.000800,0.0
-aim_hud_offset_rot_16x9    = 0.0,0.0,0.0
+aim_hud_offset_pos_16x9    = 0.02825,-0.011400,0.18
+aim_hud_offset_rot_16x9    = -0.002,0.0,-0.00
 
-gl_hud_offset_pos          = 0.000240,0.000160,0.0
-gl_hud_offset_rot          = 0.0,0.0,0.0
+gl_hud_offset_pos     = 0.0285,-0.0110,0.11
+gl_hud_offset_rot     = 0.0,0.0,-0.0
 
-gl_hud_offset_pos_16x9     = 0.000240,0.000160,0.0
-gl_hud_offset_rot_16x9     = 0.0,0.0,0.0
+gl_hud_offset_pos_16x9     = 0.0285,-0.0110,0.11
+gl_hud_offset_rot_16x9     = 0.0,0.0,-0.0
 
 lean_hud_offset_pos        = 0,0,0
 lean_hud_offset_rot        = 0,0,0
@@ -1413,11 +1427,10 @@ bone = scope5
 overriding_hide_bones = launcher_scope
 overriding_show_bones = launcher_scope_static
 
-aim_hud_offset_pos = 0.000276,-0.032090,-0.12
-aim_hud_offset_rot = 0.007000,0.000000,0.000000
-
-aim_hud_offset_pos_16x9 = 0.000276,-0.032090,-0.12
-aim_hud_offset_rot_16x9 = 0.000000,0.000000,0.000000
+aim_hud_offset_pos = 0.0285,-0.0433, 0.02
+aim_hud_offset_rot = 0.000000,0.000000,-0.000000
+aim_hud_offset_pos_16x9 = 0.0285,-0.0433, 0.02
+aim_hud_offset_rot_16x9 = 0.000000,0.000000,-0.000000
 
 inertion_aim_origin_offset = 0.01
 inertion_aim_speed = 10 
@@ -1437,17 +1450,17 @@ overriding_show_bones = launcher_scope_static
 
 use_scope_anims = true ;говорит, что надо использовать анимации с суффиксом _scope в прицеливании с данным прицелом
 
-aim_hud_offset_pos = 0.000266,0.004670,0.0
-aim_hud_offset_rot = 0.0,0.0,0.0
+aim_hud_offset_pos = 0.0281,-0.00590,0.13
+aim_hud_offset_rot = 0.000000,0.000000,-0.000000
 
-aim_hud_offset_pos_16x9 = 0.000266,0.004670,0.0
-aim_hud_offset_rot_16x9 = 0.000000,0.000000,0.000000
+aim_hud_offset_pos_16x9 = 0.0281,-0.00590,0.13
+aim_hud_offset_rot_16x9 = 0.000000,0.000000,-0.000000
 
-gl_hud_offset_pos = 0.0,-0.001,-0.1
-gl_hud_offset_rot = 0.0,0.0,0.0
+gl_hud_offset_pos     = 0.0285,-0.0110,0.11
+gl_hud_offset_rot     = 0.0,0.0,-0.0
 
-gl_hud_offset_pos_16x9 = 0.0,-0.001,-0.05
-gl_hud_offset_rot_16x9 = 0.0,0.0,0.0
+gl_hud_offset_pos_16x9     = 0.0285,-0.0110,0.11
+gl_hud_offset_rot_16x9     = 0.0,0.0,-0.0
 
 
 inertion_aim_origin_offset = 0.015
@@ -1468,17 +1481,17 @@ overriding_show_bones = launcher_scope_static
 
 use_scope_anims = true ;говорит, что надо использовать анимации с суффиксом _scope в прицеливании с данным прицелом
 
-aim_hud_offset_pos = 0.000356,0.001420,-0.11
-aim_hud_offset_rot = 0.0,0.0,0.0
+aim_hud_offset_pos = 0.0283,-0.009400,0.05
+aim_hud_offset_rot = 0.000000,0.000000,-0.00000
 
-aim_hud_offset_pos_16x9 = 0.000356,0.001420,-0.11
-aim_hud_offset_rot_16x9 = 0.000000,0.000000,0.000000
+aim_hud_offset_pos_16x9 = 0.0283,-0.009400,0.05
+aim_hud_offset_rot_16x9 = 0.000000,0.000000,-0.000000
 
-gl_hud_offset_pos = 0.0,-0.001,-0.1
-gl_hud_offset_rot = 0.0,0.0,0.0
+gl_hud_offset_pos     = 0.0285,-0.0110,0.11
+gl_hud_offset_rot     = 0.0,0.0,-0.0
 
-gl_hud_offset_pos_16x9 = 0.0,-0.001,-0.05
-gl_hud_offset_rot_16x9 = 0.0,0.0,0.0
+gl_hud_offset_pos_16x9     = 0.0285,-0.0110,0.11
+gl_hud_offset_rot_16x9     = 0.0,0.0,-0.0
 
 
 inertion_aim_origin_offset = 0.015
@@ -1500,27 +1513,27 @@ bone = scope3
 overriding_hide_bones = planka, launcher_scope
 overriding_show_bones = launcher_scope_static
 
-aim_hud_offset_pos = -0.000044,-0.000580,-0.11
-aim_hud_offset_rot = 0.0,0.0,0.0
+aim_hud_offset_pos = 0.0281,-0.0116,0.015
+aim_hud_offset_rot = 0.000000,0.000000,-0.00000
 
-aim_hud_offset_pos_16x9 = -0.000044,-0.000580,-0.11
-aim_hud_offset_rot_16x9 = 0.000000,0.000000,0.000000
+aim_hud_offset_pos_16x9 = 0.0281,-0.0116,0.015
+aim_hud_offset_rot_16x9 = 0.000000,0.000000,-0.000000
 
-gl_hud_offset_pos = 0.0,-0.001,-0.1
-gl_hud_offset_rot = 0.0,0.0,0.0
+gl_hud_offset_pos     = 0.0285,-0.0110,0.11
+gl_hud_offset_rot     = 0.0,0.0,-0.0
 
-gl_hud_offset_pos_16x9 = 0.0,-0.001,-0.05
-gl_hud_offset_rot_16x9 = 0.0,0.0,0.0
+gl_hud_offset_pos_16x9     = 0.0285,-0.0110,0.11
+gl_hud_offset_rot_16x9     = 0.0,0.0,-0.0
 
 inertion_aim_origin_offset = 0.015
 inertion_aim_speed = 10
 
 alter_zoom_allowed = true
 hud_fov_alter_zoom_factor = 0.6
-alter_aim_hud_offset_pos = 0.000220,-0.038200,0.000000
-alter_aim_hud_offset_rot = 0.000500,-0.000100,0.000000
-alter_aim_hud_offset_pos_16x9 = 0.000220,-0.037200,0.000000
-alter_aim_hud_offset_rot_16x9 = 0.002100,0.000000,0.000000
+alter_aim_hud_offset_pos = 0.0280,-0.048600,0.0900
+alter_aim_hud_offset_rot = 0.002100,0.000000,-0.00000
+alter_aim_hud_offset_pos_16x9 = 0.0280,-0.048600,0.0900
+alter_aim_hud_offset_rot_16x9 = 0.002100,0.000000,-0.000000
 
 prohibit_aim_for_gl = true
 
@@ -1538,17 +1551,17 @@ bone = scope4
 overriding_hide_bones = planka, launcher_scope
 overriding_show_bones = launcher_scope_static
 
-aim_hud_offset_pos =  -0.000094,-0.023240,0.1
-aim_hud_offset_rot = 0.0,0.0,0.0
+aim_hud_offset_pos = 0.0278,-0.0340,0.225
+aim_hud_offset_rot = 0.000000,0.000000,-0.000000
 
-aim_hud_offset_pos_16x9 = -0.000094,-0.023240,0.1
-aim_hud_offset_rot_16x9 = 0.000000,0.000000,0.000000
+aim_hud_offset_pos_16x9 = 0.0278,-0.0340,0.225
+aim_hud_offset_rot_16x9 = 0.000000,0.000000,-0.000000
 
-gl_hud_offset_pos = 0.0,-0.001,-0.1
-gl_hud_offset_rot = 0.0,0.0,0.0
+gl_hud_offset_pos     = 0.0285,-0.0110,0.11
+gl_hud_offset_rot     = 0.0,0.0,-0.0
 
-gl_hud_offset_pos_16x9 = 0.0,-0.001,-0.05
-gl_hud_offset_rot_16x9 = 0.0,0.0,0.0
+gl_hud_offset_pos_16x9     = 0.0285,-0.0110,0.11
+gl_hud_offset_rot_16x9     = 0.0,0.0,-0.0
 
 
 inertion_aim_origin_offset = 0.015

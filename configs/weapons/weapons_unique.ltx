@@ -198,13 +198,26 @@ $spawn                  = "weapons\wpn_sig550_luckygun"
 description             = st_wpn_sig550_strelok_descr
 inv_name                = st_wpn_sig550_strelok
 
-hit_power				= 0.4, 0.4, 0.4, 0.4
-hit_impulse				= 125
+hit_power				= 0.625, 0.625, 0.625, 0.625
+hit_impulse				= 25
+hit_type				= fire_wound
+fire_distance           = 1000
+bullet_speed            = 995        ;начальна¤ скорость пули
+rpm                     = 700
+rpm_empty_click         = 200
+
+misfire_start_condition		= 0.79
+misfire_end_condition		= 0.09
+misfire_start_prob = 0.007 ;	     	= 0.0046
+misfire_end_prob = 0.11 ;	     	= 0.028
+condition_shot_dec      	= 0.0007
+condition_queue_shot_dec	= 0.0007
 
 scope_status            = 2
 silencer_status			= 2
 
-cost 					= 10000
+inv_weight              = 3.926
+cost 				= 40140
 
 [wpn_usp_nimble]:wpn_usp
 $spawn               = "weapons\wpn_usp_nimble"   ; name and section in level editor
