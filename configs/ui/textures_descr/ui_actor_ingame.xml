@@ -281,7 +281,27 @@
 		<texture id="ui_ingame_mark_monster_icon" x="1138" y="394" width="24" height="27" />
 		<texture id="ui_ingame_mark_enemy_npc_icon" x="979" y="488" width="26" height="24" />
 		<texture id="ui_ingame_mark_friend_npc_icon" x="1163" y="394" width="26" height="24" />
+		<texture id="ui_ingame_mark_neutral_npc_icon" x="1022" y="540" width="26" height="24" />
+		<texture id="ui_ingame_mark_enemy_zombie_icon" x="1021" y="514" width="26" height="24" />
+		<texture id="ui_ingame_mark_neutral_zombie_icon" x="1124" y="486" width="26" height="24" />
+		<texture id="ui_ingame_mark_friend_zombie_icon" x="1124" y="512" width="26" height="24" />
 		<texture id="ui_ingame_mark_alert_icon" x="1190" y="394" width="26" height="28" />
+
+		<texture id="ui_ingame_mark_enemy_trader_icon" x="774" y="490" width="22" height="20" />
+		<texture id="ui_ingame_mark_neutral_trader_icon" x="750" y="490" width="22" height="20" />
+		<texture id="ui_ingame_mark_friend_trader_icon" x="726" y="490" width="22" height="20" />
+
+		<texture id="ui_ingame_mark_enemy_medic_icon" x="702" y="500" width="22" height="20" />
+		<texture id="ui_ingame_mark_neutral_medic_icon" x="702" y="478" width="22" height="20" />
+		<texture id="ui_ingame_mark_friend_medic_icon" x="1052" y="482" width="22" height="20" />
+
+		<texture id="ui_ingame_mark_enemy_mechanic_icon" x="1052" y="504" width="22" height="22" />
+		<texture id="ui_ingame_mark_neutral_mechanic_icon" x="1076" y="482" width="22" height="22" />
+		<texture id="ui_ingame_mark_friend_mechanic_icon" x="1076" y="506" width="22" height="22" />
+
+		<texture id="ui_ingame_mark_enemy_guider_icon" x="1100" y="482" width="22" height="30" />
+		<texture id="ui_ingame_mark_neutral_guider_icon" x="1100" y="514" width="22" height="30" />
+		<texture id="ui_ingame_mark_friend_guider_icon" x="1052" y="528" width="22" height="30" />
 		
 		<texture id="ui_ingame_action_wheel_grid_6" x="1499" y="306" width="356" height="356"/>
 		<texture id="ui_ingame_action_wheel_grid_6_select" x="1855" y="306" width="172" height="142"/>
