@@ -77,8 +77,11 @@ function loot_mutant(obj, actor)
 		packet:w_stringZ("mutant_hunter")         -- Icon/tag for the sender
 		u_EventSendReliable(packet)
 		debug_utils.INFO(MODULE, "[loot_mutant] spawning items") 
+		local actor_pos = actor:position()
+		local actor_lvid = actor:level_vertex_id()
+		local actor_gvid = actor:game_vertex_id()
 		for k,v in pairs(items_to_spawn) do
-			alife():create(v, actor:position(), 0, 0, actor:id())
+			alife():create(v, actor_pos, actor_lvid, actor_gvid, actor:id())
 		end
 	else
 		debug_utils.INFO(MODULE, "[loot_mutant] SENDING PACKET: NO LOOT") -- SENDING PACKET
