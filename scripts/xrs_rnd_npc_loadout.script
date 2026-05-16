@@ -120,36 +120,41 @@ end
 
 -- start SALAAM
 function simple_create_weapon_on_npc(se_npc, t, ammo_count)
-	local info = select_random_index(t)
-	if not info or info == "" or info == "none" then
-		return
-	end
+    local info = select_random_index(t)
+    if not info or info == "" or info == "none" then
+        return
+    end
 
-	local weapon = alun_utils.str_explode(info, ":")
+    local weapon = alun_utils.str_explode(info, ":")
 
-	if system_ini():section_exist(weapon[1]) then
-		local se_wpn = alife():create(weapon[1], se_npc.position, 0, 0, se_npc.id)
+    if system_ini():section_exist(weapon[1]) then
+        local se_wpn = alife():create(weapon[1], se_npc.position, 0, 0, se_npc.id)
 
-		if se_wpn then
-			-- Skip addon_flags and ammo_type logic entirely
+        if se_wpn then
+            -- 1. Установка аддонов (addon_flag)
+            local addon_flag = tonumber(weapon[2]) or 0
+            if addon_flag and addon_flag > 0 then
+                se_wpn.addon_flags = addon_flag  -- или метод установки аддонов твоего движка
+            end
 
-			local ammos = u.parse_list(system_ini(), se_wpn:section_name(), "ammo_class")
-			local ammo_section = ammos[1] -- always default to first ammo type
+            -- 2. Выбор типа патронов (ammo_type)
+            local ammos = u.parse_list(system_ini(), se_wpn:section_name(), "ammo_class")
+            local ammo_type = tonumber(weapon[3]) or 0
+            local ammo_section = ammos[ammo_type + 1] or ammos[1]
 
-			-- Parse optional ammo count range, fallback to loadout default
-			local min = tonumber(weapon[4]) or tonumber(ammo_count[1]) or 1
-			local max = tonumber(weapon[5]) or tonumber(ammo_count[2]) or 1
-			local amount = math.random(min, max)
+            -- 3. Количество патронов
+            local min = tonumber(weapon[4]) or tonumber(ammo_count[1]) or 1
+            local max = tonumber(weapon[5]) or tonumber(ammo_count[2]) or 1
+            local amount = math.random(min, max)
 
-			local se_ammo = create_ammo(ammo_section, se_npc.position, 0, 0, se_npc.id, amount)
-			-- start SALAAM
-			debug_utils.INFO(MODULE, "[simple_create_weapon_on_npc] created %s and %s for %s", weapon[1], ammos[1], se_npc.id)
-			--if (DBG) then printf_msg("[simple_create_weapon_on_npc] created %s and %s for %s", weapon[1], ammos[1], se_npc.id) end
-			-- end SALAAM
+            local se_ammo = create_ammo(ammo_section, se_npc.position, 0, 0, se_npc.id, amount)
+            
+            debug_utils.INFO(MODULE, "[simple_create_weapon_on_npc] created %s (addon=%s, ammo_type=%s) and %sx%s for %s", 
+                weapon[1], tostring(addon_flag), tostring(ammo_type), tostring(amount), ammo_section, se_npc.id)
 
-			return se_wpn, se_ammo
-		end
-	end
+            return se_wpn, se_ammo
+        end
+    end
 end
 -- end SALAAM
 

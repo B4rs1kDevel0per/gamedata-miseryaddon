@@ -5,6 +5,9 @@
 local dbg = debug_utils
 local MODULE = "bind_monster"
 
+-- ������� ���������� �������� (�������: alife() ���������� �� �������)
+local looted_mutants = {}
+
 -- Sections of items that can substitute a knife for harvesting.
 -- Add/remove sections as needed.
 local loot_bypass_items = {
@@ -30,7 +33,7 @@ end
 function bind(obj)
 	printf("_bp: monster.bind: name='%s', id='%d'", obj:name(), obj:id())
 
-	-- РїС—Р…РїС—Р…РїС—Р… РїС—Р…РїС—Р…РїС—Р…РїС—Р…РїС—Р…РїС—Р…
+	-- пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 	--xr_spawner.spawn_client(obj)
 	if OnClient() then
 		obj:bind_object(bind_monster_cl(obj))
@@ -94,18 +97,27 @@ function generic_object_binder:update(delta)
 	if not object_alive then
 		local se_obj = alife():object(self.object:id())
 		if se_obj then
-			if se_obj.looted then
-				-- СѓР¶Рµ РѕР±Р»СѓС‚Р°РЅ: С‚РѕР»СЊРєРѕ РїРѕРґСЃРєР°Р·РєР°, F РЅРµ СЂР°Р±РѕС‚Р°РµС‚
-				self.object:set_callback(callback.use_object, nil)
-				self.object:set_tip_text("")
-			else
-				local can_loot = actor_can_loot(db.actor or getLocalActor() or {active_item=function() end, object=function() end})
-				self.object:set_callback(callback.use_object, self.use_callback, self)
-				self.object:set_tip_text(can_loot and "st_mutant_loot_tip" or "st_mutant_loot_need_knife")
+			local is_looted = se_obj.looted
+			local actor = db.actor or getLocalActor()
+			local can_loot = actor and actor_can_loot(actor) or false
+			local new_state = is_looted and "looted" or (can_loot and "knife" or "no_knife")
+			if new_state ~= self.tip_state then
+				self.tip_state = new_state
+				if is_looted then
+					-- ��� �������: ������� F, ���������� "��� �������"
+					self.object:set_callback(callback.use_object, nil)
+					self.object:set_tip_text("st_mutant_loot_already_found")
+				else
+					self.object:set_callback(callback.use_object, self.use_callback, self)
+					self.object:set_tip_text(can_loot and "st_mutant_loot_tip" or "st_mutant_loot_need_knife")
+				end
 			end
 		else
-			self.object:set_callback(callback.use_object, nil)
-			self.object:set_tip_text("")
+			if self.tip_state ~= "no_se" then
+				self.tip_state = "no_se"
+				self.object:set_callback(callback.use_object, nil)
+				-- �� �������� set_tip_text ��� se_obj
+			end
 		end
 		return
 	end
@@ -115,7 +127,7 @@ function generic_object_binder:update(delta)
 	if st ~= nil and st.active_scheme ~= nil then
 		xr_logic.try_switch_to_another_section(self.object, st[st.active_scheme], db.actor)
 	end
-	-- РїС—Р…РїС—Р…РїС—Р…РїС—Р…РїС—Р…РїС—Р… РїС—Р…РїС—Р…РїС—Р…РїС—Р…РїС—Р…РїС—Р…
+	-- пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 	if squad ~= nil then
 		if squad:commander_id() == self.object:id() then
 			squad:update()
@@ -148,7 +160,7 @@ function generic_object_binder:update(delta)
 	end
 	
 	
--- РїС—Р…РїС—Р…РїС—Р…РїС—Р… РїС—Р…РїС—Р…РїС—Р…РїС—Р… РїС—Р…РїС—Р…РїС—Р…РїС—Р… , РїС—Р…РїС—Р… РїС—Р…РїС—Р…РїС—Р…РїС—Р… РїС—Р… РїС—Р…РїС—Р…РїС—Р…РїС—Р…РїС—Р…РїС—Р… !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+-- пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ , пїЅпїЅ пїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅ !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 	if self.object:get_enemy() then
 		if xr_logic.mob_captured(self.object) then
 			xr_logic.mob_release(self.object)
@@ -192,7 +204,7 @@ function generic_object_binder:update(delta)
 end
 
 function generic_object_binder:extrapolate_callback()
-	-- РїС—Р…РїС—Р…РїС—Р…РїС—Р…РїС—Р…РїС—Р…РїС—Р…РїС—Р…РїС—Р…, РїС—Р…РїС—Р…РїС—Р… РїС—Р…РїС—Р…РїС—Р…РїС—Р…РїС—Р…РїС—Р… РїС—Р…РїС—Р…РїС—Р… РїС—Р… РїС—Р…РїС—Р…РїС—Р…РїС—Р…РїС—Р…РїС—Р…РїС—Р…
+	-- пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 	if db.storage[self.object:id()] == nil or
 		 db.storage[self.object:id()].object == nil
 	then
@@ -242,7 +254,7 @@ function generic_object_binder:death_callback(victim, who)
 	if self.st.active_section then
 		xr_logic.issue_event(self.object, self.st[self.st.active_scheme], "death_callback", victim, who)
 	end
-	--' РїС—Р…РїС—Р…РїС—Р…РїС—Р…РїС—Р…РїС—Р…РїС—Р… РїС—Р…РїС—Р…РїС—Р…РїС—Р…РїС—Р…РїС—Р…РїС—Р…РїС—Р…РїС—Р… РїС—Р…РїС—Р…РїС—Р…РїС—Р…РїС—Р…РїС—Р…РїС—Р… РїС—Р…РїС—Р…РїС—Р…РїС—Р…РїС—Р…РїС—Р….
+	--' пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ.
 	local h = hit()
 	h.draftsman = self.object
 	h.type = hit.fire_wound
@@ -303,14 +315,16 @@ function generic_object_binder:use_callback(obj, who)
 			debug_utils.INFO(MODULE, "Looting mutant [%s]", obj_id)
 			se_obj.looted = true
 			self.looted = true
+			self.tip_state = nil
+			looted_mutants[self.object:id()] = true  -- сброс кэша: update() сразу обновит подсказку на "уже облутан"
 			nz_loot.loot_mutant(self.object, actor)
-			-- update() СЃР°Рј РїРѕСЃС‚Р°РІРёС‚ РЅСѓР¶РЅСѓСЋ РїРѕРґСЃРєР°Р·РєСѓ РЅР° СЃР»РµРґСѓСЋС‰РµРј С„СЂРµР№РјРµ
 		end
 	else
-		-- РєР»РёРµРЅС‚ MP: alife() РЅРµРґРѕСЃС‚СѓРїРµРЅ
+		-- клиент MP: alife() недоступен
 		if not self.looted then
 			debug_utils.INFO(MODULE, "Looting mutant [%s] (client)", obj_id)
 			self.looted = true
+			self.tip_state = nil  -- сброс кэша
 			nz_loot.loot_mutant(self.object, actor)
 		end
 	end
@@ -339,7 +353,7 @@ function generic_object_binder:net_spawn(sobject)
 
 	db.add_obj(self.object)
 
---******************************* РїС—Р…РїС—Р…РїС—Р…РїС—Р…РїС—Р…РїС—Р…РїС—Р…РїС—Р… РїС—Р…РїС—Р… РїС—Р…РїС—Р…РїС—Р…РїС—Р…РїС—Р…РїС—Р… РїС—Р…РїС—Р…РїС—Р…РїС—Р…РїС—Р… РїС—Р…РїС—Р…РїС—Р…РїС—Р… РїС—Р…РїС—Р…РїС—Р…РїС—Р…РїС—Р…РїС—Р… РїС—Р…РїС—Р…РїС—Р…РїС—Р…РїС—Р…РїС—Р…РїС—Р…РїС—Р…РїС—Р…РїС—Р…РїС—Р…РїС—Р…РїС—Р…...*****************************
+--******************************* пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ...*****************************
 	local se_obj = alife():object(self.object:id())
 	if se_obj then
 		if db.spawned_vertex_by_id[se_obj.id] ~= nil then
@@ -378,12 +392,12 @@ function generic_object_binder:net_destroy()
 		xr_logic.issue_event(self.object, st[st.active_scheme], "net_destroy")
 	end
 
-	-- РїС—Р…РїС—Р…РїС—Р… РїС—Р…РїС—Р…РїС—Р…РїС—Р…, РїС—Р…РїС—Р…РїС—Р…РїС—Р…РїС—Р… РїС—Р…РїС—Р…РїС—Р…РїС—Р…РїС—Р…РїС—Р…РїС—Р… РїС—Р…РїС—Р…РїС—Р…РїС—Р…РїС—Р…РїС—Р…РїС—Р…РїС—Р…РїС—Р…РїС—Р… РїС—Р…РїС—Р…РїС—Р…РїС—Р…РїС—Р…РїС—Р…РїС—Р…РїС—Р…РїС—Р… РїС—Р…РїС—Р…РїС—Р…РїС—Р…РїС—Р…РїС—Р…РїС—Р…/РїС—Р…РїС—Р…РїС—Р…РїС—Р…РїС—Р…РїС—Р…РїС—Р…РїС—Р… РїС—Р…РїС—Р…РїС—Р…РїС—Р…РїС—Р…РїС—Р… РїС—Р…РїС—Р… РїС—Р…РїС—Р…РїС—Р…РїС—Р…РїС—Р… РїС—Р…РїС—Р…РїС—Р…РїС—Р…РїС—Р…РїС—Р…РїС—Р…РїС—Р…РїС—Р… --------
+	-- пїЅпїЅпїЅ пїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ/пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ --------
 	local se_obj = alife():object(self.object:id())
 	if se_obj and se_obj.m_smart_terrain_id ~= 65535 then
 		local smart_terrain = alife():object(se_obj.m_smart_terrain_id)
 		if smart_terrain.arriving_npc[se_obj.id] == nil then
-			-- РїС—Р…РїС—Р…РїС—Р…РїС—Р…РїС—Р…РїС—Р…РїС—Р…РїС—Р…РїС—Р…РїС—Р… РїС—Р…РїС—Р…РїС—Р…РїС—Р…РїС—Р…РїС—Р…РїС—Р… РїС—Р… РїС—Р…РїС—Р…РїС—Р…РїС—Р…РїС—Р…РїС—Р…РїС—Р…РїС—Р… РїС—Р…РїС—Р…РїС—Р…РїС—Р…РїС—Р…РїС—Р… --------
+			-- пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ --------
 			if db.offline_objects[self.object:id()] then
 				db.offline_objects[self.object:id()].level_vertex_id = self.object:level_vertex_id()
 				db.offline_objects[self.object:id()].active_section = db.storage[self.object:id()].active_section
@@ -452,30 +466,41 @@ function bind_monster_cl:update(delta)
 	object_binder.update(self, delta)
 
 	-- fluffy22
+	-- guard: �� ������� ������ ���� �� ��� �� � storage (net_destroy �������)
+	if db.storage[self.object:id()] == nil then return end
+
 	local object_alive = self.object:alive()
 	if not object_alive then
-		-- self.looted вЂ” fallback РєРѕРіРґР° alife() РЅРµРґРѕСЃС‚СѓРїРµРЅ (РєР»РёРµРЅС‚ MP)
-		local se_obj = alife() and alife():object(self.object:id())
-		local is_looted = self.looted or (se_obj and se_obj.looted)
-		if is_looted then
-			-- СѓР¶Рµ РѕР±Р»СѓС‚Р°РЅ: С‚РѕР»СЊРєРѕ РїРѕРґСЃРєР°Р·РєР°, F РЅРµ СЂР°Р±РѕС‚Р°РµС‚
-			self.object:set_callback(callback.use_object, nil)
-			self.object:set_tip_text("")
-		else
-			local actor = getLocalActor()
-			local can_loot = actor and actor_can_loot(actor) or false
-			self.object:set_callback(callback.use_object, generic_object_binder.use_callback, self)
-			self.object:set_tip_text(can_loot and "st_mutant_loot_tip" or "st_mutant_loot_need_knife")
+		-- �������������� �������� ��� ������ ��� �������
+		if not self.object:position() then return end
+
+		local is_looted = self.looted or looted_mutants[self.object:id()]
+		local actor = getLocalActor()
+		local can_loot = actor and actor_can_loot(actor) or false
+		local new_state = is_looted and "looted" or (can_loot and "knife" or "no_knife")
+		if new_state ~= self.tip_state then
+			self.tip_state = new_state
+			if is_looted then
+				self.object:set_callback(callback.use_object, nil)
+				self.object:set_tip_text("st_mutant_loot_already_found")
+			else
+				self.object:set_callback(callback.use_object, generic_object_binder.use_callback, self)
+				self.object:set_tip_text(can_loot and "st_mutant_loot_tip" or "st_mutant_loot_need_knife")
+			end
 		end
 	else
-		self.object:set_callback(callback.use_object, nil)
-		self.object:set_tip_text("")
+		if self.tip_state ~= nil then
+			self.tip_state = nil
+			self.object:set_callback(callback.use_object, nil)
+			-- �� �������� set_tip_text �� ����� ������� - ��� � �������
+		end
 	end
 	return
 	-- fluffy22
 end
 
 function bind_monster_cl:net_destroy()
+	looted_mutants[self.object:id()] = nil
 	db.del_obj(self.object)
 	db.storage[self.object:id()] = nil
 	object_binder.net_destroy(self)
