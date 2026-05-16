@@ -95,9 +95,9 @@ function generic_object_binder:update(delta)
 	--'	self.object:name(), time_global())
 	-- fluffy22
 	if not object_alive then
-		local se_obj = alife():object(self.object:id())
+		local se_obj = alife() and alife():object(self.object:id())
 		if se_obj then
-			local is_looted = se_obj.looted
+			local is_looted = se_obj.looted or looted_mutants[self.object:id()]
 			local actor = db.actor or getLocalActor()
 			local can_loot = actor and actor_can_loot(actor) or false
 			local new_state = is_looted and "looted" or (can_loot and "knife" or "no_knife")
@@ -290,7 +290,7 @@ function generic_object_binder:hit_callback(obj, amount, local_direction, who, b
 		xr_logic.issue_event(self.object, self.st.hit, "hit_callback", obj, amount, local_direction, who, bone_index)
 	end
 
-	if amount > 0 and who then
+	if amount > 0 and who and db.actor then
 		printf("HIT_CALLBACK: %s amount=%s bone=%s who:id() = [%s] actor:id() = [%s]", obj:name(), amount, tostring(bone_index), who:id(), db.actor:id())
 	end
 end
@@ -317,6 +317,9 @@ function generic_object_binder:use_callback(obj, who)
 			self.looted = true
 			self.tip_state = nil
 			looted_mutants[self.object:id()] = true  -- СЃР±СЂРѕСЃ РєСЌС€Р°: update() СЃСЂР°Р·Сѓ РѕР±РЅРѕРІРёС‚ РїРѕРґСЃРєР°Р·РєСѓ РЅР° "СѓР¶Рµ РѕР±Р»СѓС‚Р°РЅ"
+			-- костыль: меняем подсказку прямо сейчас не ждём update()
+			self.object:set_callback(callback.use_object, nil)
+			self.object:set_tip_text("st_mutant_loot_already_found")
 			nz_loot.loot_mutant(self.object, actor)
 		end
 	else
@@ -484,7 +487,7 @@ function bind_monster_cl:update(delta)
 				self.object:set_callback(callback.use_object, nil)
 				self.object:set_tip_text("st_mutant_loot_already_found")
 			else
-				self.object:set_callback(callback.use_object, generic_object_binder.use_callback, self)
+				self.object:set_callback(callback.use_object, self.use_callback, self)
 				self.object:set_tip_text(can_loot and "st_mutant_loot_tip" or "st_mutant_loot_need_knife")
 			end
 		end
@@ -497,6 +500,23 @@ function bind_monster_cl:update(delta)
 	end
 	return
 	-- fluffy22
+end
+
+function bind_monster_cl:use_callback(obj, who)
+	-- клиентский костыль: сразу меняем подсказку не ждём следующего update()
+	local actor = getLocalActor()
+	if actor == nil then return end
+	if not actor_can_loot(actor) then
+		-- нет ножа - подсказку не меняем, серверный use_callback не вызовется
+		return
+	end
+	-- помечаем как облутанный локально
+	looted_mutants[self.object:id()] = true
+	self.looted = true
+	self.tip_state = "looted"
+	-- сразу убираем подсказку
+	self.object:set_callback(callback.use_object, nil)
+	self.object:set_tip_text("st_mutant_loot_already_found")
 end
 
 function bind_monster_cl:net_destroy()
