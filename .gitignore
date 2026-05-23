@@ -1,8 +1,4 @@
-
-
 levels/*.ogf
-levels/*.dds
-
 levels/labx8/lmap\#1_1.dds
 levels/labx8/lmap\#1_2.dds
 levels/labx8/lmap\#2_1.dds
@@ -248,12 +244,3 @@ levels/jupiter_underground/meshes/brkbl\#17.ogf
 levels/jupiter_underground/meshes/brkbl\#18.ogf
 levels/jupiter_underground/meshes/brkbl\#19.ogf
 *.geom
-*.geomx
-*.cform
-*.ai
-*.details
-*.ps_static
-*.snd_static
-*.~snd_static
-*.~ps_static
-scriptsADDON-BEFORE-CLAUDE.zip
