@@ -21,12 +21,12 @@ function empty	(container)
 end
 
 
-schemes = {} -- СЃРѕРѕС‚РІРµС‚СЃС‚РІРёРµ СЃС…РµРј РјРѕРґСѓР»СЏРј
-stypes = {} -- С‚РёРїС‹ СЃС…РµРј
+schemes = {} -- соответствие схем модулям
+stypes = {} -- типы схем
 
---- Р—Р°РіСЂСѓР¶Р°РµС‚ СЃС…РµРјСѓ РёР· С„Р°Р№Р»Р° РЅР° РґРёСЃРєРµ Рё Р°РєС‚РёРІРёСЂСѓРµС‚ РІ РјРѕС‚РёРІР°С‚РѕСЂРµ.
----@param filename string РРјСЏ С„Р°Р№Р»Р°, РІ РєРѕС‚РѕСЂРѕРј СЂРµР°Р»РёР·РѕРІР°РЅР° СЃС…РµРјР°, Р±РµР· СЂР°СЃС€РёСЂРµРЅРёСЏ
----@param scheme string РРјСЏ СЃС…РµРј
+--- Загружает схему из файла на диске и активирует в мотиваторе.
+---@param filename string �?мя файла, в котором реализована схема, без расширения
+---@param scheme string �?мя схем
 function load_scheme(filename, scheme, stype)
 	schemes[scheme] = filename
 	stypes[scheme] = stype
@@ -55,11 +55,13 @@ GM_SCRIPT_REMOVE_TASK_MAP_LOCATIONS = 16
 GM_SCRIPT_SAVE_VOICE_DIALOG = 17
 
 GM_SCRIPT_ADDON_EVENTS = 100
+
+-- xr_combat_ignore: ���������� �������
+fighting_with_actor_npcs = {}
+safe_zone_npcs           = {}
 -- Add your own events after this
 -- Example:
 -- GM_SCRIPT_USE_ITEM = GM_SCRIPT_ADDON_EVENTS + 1
-GM_SCRIPT_MUTANT_LOOT  = 18                          -- движковая константа, фиксированный номер
-GM_SCRIPT_WEATHER      = GM_SCRIPT_ADDON_EVENTS + 1  -- 101
 ----------------------------------------------------------------------
 
 ----------------------------------------------------------------------
@@ -134,12 +136,7 @@ end
 
 ---@param fmt string
 function printf_msg(fmt, ...)
-    local ok, result = pcall(string.format, fmt, ...)
-    if ok then
-        print_msg(result)
-    else
-        print_msg("!! printf_msg error: " .. tostring(fmt))
-    end
+	print_msg(string.format(fmt, ...))
 end
 
 ----------------------------------------------------------------------
@@ -228,13 +225,13 @@ function distance_between(obj1, obj2)
 	return obj1:position():distance_to(obj2:position())
 end
 
----Р•СЃР»Рё РѕРґРёРЅ РѕР±СЉРµРєС‚ nil, РЅР°РїСЂРёРјРµСЂ РЅРµС‚ Р°РєС‚РµСЂР°, С‚Рѕ СЃС‡РёС‚Р°РµРј, С‡С‚Рѕ РѕРЅ РґР°Р»РµРєРѕ
+---Если один объект nil, например нет актера, то считаем, что он далеко
 function distance_between_safe(obj1, obj2)
 	if(obj1 == nil or obj2 == nil) then return 100000 end
 	return obj1:position():distance_to(obj2:position())
 end
 
----РџСЂРѕРІРµСЂРєР° РЅР° РёРЅС„РѕРїРѕСЂС€РЅРё, РґР°Р¶Рµ РµСЃР»Рё РёРіСЂРѕРєР° РЅРµ СЃСѓС‰РµСЃС‚РІСѓРµС‚
+---Проверка на инфопоршни, даже если игрока не существует
 function has_alife_info(info_id)
 
 	local actor = nil
@@ -265,10 +262,10 @@ end
 -- Functions and variables added by Zmey
 --------------------------------------------------
 
--- РљРѕРЅСЃС‚Р°РЅС‚Р°, РєРѕС‚РѕСЂСѓСЋ РёСЃРїРѕР»СЊР·РѕРІР°С‚СЊ РІ РјРµСЃС‚Р°С…, РіРґРµ РЅСѓР¶РЅРѕ Р·Р°РґР°С‚СЊ РЅРµРѕРіСЂР°РЅРёС‡РµРЅРЅРѕРµ РІСЂРµРјСЏ РґРµР№СЃС‚РІРёСЏ
+-- Константа, которую использовать в местах, где нужно задать неограниченное время действия
 time_infinite = 100000000
 
--- Р•СЃР»Рё РІ РґР°РЅРЅС‹Р№ РјРѕРјРµРЅС‚ РІС‹РїРѕР»РЅСЏРµС‚СЃСЏ РєР°РєРѕРµ-С‚Рѕ РґРµР№СЃС‚РІРёРµ, РїСЂРµСЂС‹РІР°РµС‚ РµРіРѕ Рё РѕС‚РєР»СЋС‡Р°РµС‚ СЃРєСЂРёРїС‚РѕРІС‹Р№ СЂРµР¶РёРј
+-- Если в данный момент выполняется какое-то действие, прерывает его и отключает скриптовый режим
 function interrupt_action(who, script_name)
 	if who:get_script() then
 		who:script(false, script_name)
@@ -352,7 +349,7 @@ function parse_nums( s )
 	return t
 end
 
----РќР°С…РѕРґРёС‚СЃСЏ Р»Рё РѕР±СЉРµРєС‚ РІ РѕРЅР»Р°Р№РЅРµ.
+---Находится ли объект в онлайне.
 ---@param obj_id number
 function is_object_online(obj_id)
 	return level.object_by_id(obj_id) ~= nil
@@ -364,7 +361,7 @@ function get_clsid(npc)
 	return npc:clsid()
 end
 
----Р’С‹С‡РёСЃР»СЏРµС‚ yaw РІ СЂР°РґРёР°РЅР°С….
+---Вычисляет yaw в радианах.
 function yaw( v1, v2 )
 	return  math.acos( ( (v1.x*v2.x) + (v1.z*v2.z ) ) / ( math.sqrt(v1.x*v1.x + v1.z*v1.z ) * math.sqrt(v2.x*v2.x + v2.z*v2.z ) ) )
 end
@@ -378,7 +375,7 @@ function vector_cross(v1, v2)
 	return vector():set(v1.y  * v2.z  - v1.z  * v2.y, v1.z  * v2.x  - v1.x  * v2.z, v1.x  * v2.y  - v1.y  * v2.x)
 end
 
----РџРѕРІРѕСЂР°С‡РёРІР°РµС‚ РІРµРєС‚РѕСЂ РІРѕРєСЂСѓРі РѕСЃРё y РїСЂРѕС‚РёРІ С‡Р°СЃРѕРІРѕР№ СЃС‚СЂРµР»РєРё.
+---Поворачивает вектор вокруг оси y против часовой стрелки.
 ---@param angle number
 function vector_rotate_y(v, angle)
 	angle = angle * 0.017453292519943295769236907684886
@@ -387,7 +384,7 @@ function vector_rotate_y(v, angle)
 	return vector():set(v.x * c - v.z * s, v.y, v.x * s + v.z * c)
 end
 
----РћС‡РёСЃС‚РєР° С‚Р°Р±Р»РёС†С‹.
+---Очистка таблицы.
 ---@param t table
 function clear_table(t)
 	while #t > 0 do
@@ -402,7 +399,7 @@ function stop_play_sound(obj)
 	end
 end
 
----РџРµС‡Р°С‚Р°РµС‚ С‚Р°Р±Р»РёС†Сѓ РєР°Рє РґРµСЂРµРІРѕ.
+---Печатает таблицу как дерево.
 ---@param table table
 ---@param subs string
 function print_table(table, subs)
@@ -537,7 +534,7 @@ function alife_character_community(obj)
 	return "monster"
 end
 
----РџРѕР»СѓС‡РёС‚СЊ РіРµР№РјРѕР±Р¶РµРєС‚ РїРѕ СЃС‚РѕСЂРё_Р°Р№РґРё.
+---Получить геймобжект по стори_айди.
 ---@param sid number
 function level_object_by_sid(sid)
 	local sim = alife()
@@ -549,7 +546,7 @@ function level_object_by_sid(sid)
 	end
 	return nil
 end
--- РџРѕР»СѓС‡РёС‚СЊ Р°Р№РґРёС€РЅРёРє РѕР±СЊРµРєС‚Р° РїРѕ СЃС‚РѕСЂРё Р°Р№РґРё.
+-- Получить айдишник обьекта по стори айди.
 function id_by_sid( sid )
 	local sim = alife()
 	if sim then
@@ -561,7 +558,7 @@ function id_by_sid( sid )
 	return nil
 end
 
----РљСЂРµС€РЅСѓС‚СЊ РёРіСЂСѓ (РїРѕСЃР»Рµ РІС‹РІРѕРґР° СЃРѕРѕР±С‰РµРЅРёСЏ РѕР± РѕС€РёР±РєРµ РІ Р»РѕРі).
+---Крешнуть игру (после вывода сообщения об ошибке в лог).
 ---@param fmt string
 function abort(fmt, ...)
 	local reason = string.format(fmt, ...)
@@ -574,7 +571,7 @@ function set_inactivate_input_time(delta)
 	--level.disable_input()
 end
 
----РџСЂРёРЅРёРјР°РµС‚: РїРѕР·РёС†РёСЋ РїРѕР»РѕР¶РµРЅРёСЏ, РїРѕР·РёС†РёСЋ РєСѓРґР° СЃРјРѕС‚СЂРµС‚СЊ, РІСЂРµРјСЏ СЃРЅР° РІ РјРёРЅСѓС‚Р°С….
+---Принимает: позицию положения, позицию куда смотреть, время сна в минутах.
 --[[
 function set_sleep_relocate(point, look, timeout)
 	db.storage[db.actor:id()].sleep_relocate_time = game.get_game_time()
@@ -584,13 +581,13 @@ function set_sleep_relocate(point, look, timeout)
 end
 ]]--
 
---РџСЂРѕРІРµСЂСЏРµС‚ С†РµР»СѓСЋ С‡Р°СЃС‚СЊ С‡РёСЃР»Р° РЅР° РЅРµС‡РµС‚РЅРѕСЃС‚СЊ
+--Проверяет целую часть числа на нечетность
 ---@param x number
 function odd(x)
 	return math.floor(x * 0.5) * 2 == math.floor(x)
 end
 
----РќР°С…РѕРґРёС‚СЃСЏ Р»Рё NPC РІРѕ С„СЂСѓСЃС‚СЂСѓРјРµ РёРіСЂРѕРєР°
+---Находится ли NPC во фруструме игрока
 ---@return boolean
 function npc_in_actor_frustrum(npc)
 	local actor_dir = device().cam_dir
@@ -617,22 +614,10 @@ function fill_tables()
 		["monster_predatory_day"]			= "monster",
 		["monster_predatory_night"]			= "monster",
 		["monster_vegetarian"]				= "monster",
-		["monster_zombied_day"]				= "zombied",
-		["monster_zombied_night"]			= "zombied",
+		["monster_zombied_day"]				= "monster",
+		["monster_zombied_night"]			= "monster",
 		["monster_special"]					= "monster",
 		["csky"]							= "csky",
-		["stalker_sci"] 					= "stalker",
-		["stalker_hunter_day"] 				= "stalker",
-		["stalker_hunter_night"] 			= "stalker",
-		["stalker_elite"] 					= "stalker",
-		["stalker_guide"]					= "stalker",
-		["freedom_sci"] 					= "freedom",
-		["freedom_elite"] 					= "freedom",
-		["dolg_hunter_day"] 				= "dolg",
-		["dolg_hunter_night"] 				= "dolg",
-		["dolg_elite"] 						= "dolg",
-		["bandit_elite"] 					= "bandit",
-		["monolith_sci"]					= "monolith"
 	}
 
 	monster_classes = {
@@ -737,12 +722,12 @@ function start_game_callback()
 	sr_light.clean_up ()
 	pda.add_quick_slot_items_on_game_start()
 	story_flags.reset_flags()
-	-- TРµСЃС‚РёСЂРѕРІР°РЅРёРµ РѕРїС‚РёРјРёР·Р°С†РёРё
+	-- Tестирование оптимизации
 	--local test_object = test_object.test_object_class()
 	--test_object:test()
 end
 
----РЈСЃС‚Р°Р»РѕСЃС‚СЊ.
+---Усталость.
 function on_actor_critical_power()
 
 end
@@ -750,7 +735,7 @@ end
 function on_actor_critical_max_power()
 end
 
----РљСЂРѕРІРѕС‚РµС‡РµРЅРёРµ.
+---Кровотечение.
 function on_actor_bleeding()
 
 end
@@ -758,22 +743,22 @@ end
 function on_actor_satiety()
 end
 
----Р Р°РґРёР°С†РёСЏ.
+---Радиация.
 function on_actor_radiation()
 
 end
 
----Р—Р°РєР»РёРЅРёР»Рѕ РѕСЂСѓР¶РёРµ.
+---Заклинило оружие.
 function on_actor_weapon_jammed()
 
 end
 
----РќРµ РјРѕР¶РµС‚ С…РѕРґРёС‚СЊ РёР·-Р·Р° РІРµСЃР°.
+---Не может ходить из-за веса.
 function on_actor_cant_walk_weight()
 
 end
 
----РџСЃРё РІРѕР·РґРµР№СЃС‚РІРёРµ.
+---Пси воздействие.
 function on_actor_psy()
 end
 
@@ -895,7 +880,7 @@ ammo_section["ammo_pkm_100"]		= true
 
 
 quest_section = {}
----РџСЂРµРѕР±СЂР°Р·СѓРµС‚ СЃС‚СЂРѕРєСѓ РІ СЃРѕРѕС‚РІРµС‚СЃС‚РІРёРё СЃРѕ Р·РЅР°С‡РµРЅРёРµРј.
+---Преобразует строку в соответствии со значением.
 ---@param src_string string
 function get_param_string(src_string, obj)
 	--printf("src_string is [%s] obj name is [%s]", tostring(src_string), obj:name())
@@ -911,13 +896,13 @@ end
 ---@type table<string, number>
 local save_markers = {}
 
---Р¤СѓРЅРєС†РёРё РґР»СЏ РїСЂРѕРІРµСЂРєРё РєРѕСЂСЂРµРєС‚РЅРѕСЃС‚Рё СЃРµР№РІ Р»РѕР°Рґ
+--Функции для проверки корректности сейв лоад
 ---@param check boolean
 ---@param prefix string
 ---@return void
 function set_save_marker(p, mode, check, prefix)
 
-	-- РѕРїСЂРµРґРµР»СЏРµРј РєР»СЋС‡ РјР°СЂРєРµСЂР°.
+	-- определяем ключ маркера.
 	local result = ""
 --	if debug ~= nil then
 --		local info_table = debug.getinfo(2)
@@ -969,13 +954,13 @@ function set_save_marker(p, mode, check, prefix)
 	end
 
 end
----РџРµСЂРµРІРѕРґРёС‚ РІРµРєС‚РѕСЂ РІ СЃС‚СЂРѕРєСѓ.
+---Переводит вектор в строку.
 function vec_to_str(vector)
 	if vector == nil then return "nil" end
 	return string.format("[%s:%s:%s]", vector.x, vector.y, vector.z)
 end
 
----Р’С‹РІРѕРґРёС‚ РІ Р»РѕРі СЃС‚СЌРє РІС‹Р·РѕРІР° С„СѓРЅРєС†РёР№.
+---Выводит в лог стэк вызова функций.
 function callstack()
 	if debug ~= nil then
 		printf_msg("%s", tostring(debug.traceback(100)))
@@ -983,7 +968,7 @@ function callstack()
 	end
 end
 
----РњРµРЅСЏРµС‚ team:squad:group РѕР±СЊРµРєС‚Р°.
+---Меняет team:squad:group обьекта.
 function change_team_squad_group(se_obj, team, squad, group)
 	local cl_obj = db.storage[se_obj.id] and db.storage[se_obj.id].object
 	if cl_obj ~= nil then
@@ -1023,7 +1008,7 @@ function unregister_story_id(story_id)
 end
 
 -----------------------------------------------------------------------------------------------
----РџРѕР»СѓС‡РёС‚СЊ СЃРєРІР°Рґ РѕР±СЊРµРєС‚Р°!!!!!
+---Получить сквад обьекта!!!!!
 function get_object_squad(object)
 	if object == nil then abort("You are trying to get squad_object from NIL object!!!") end
 	local obj_id = nil
@@ -1046,7 +1031,7 @@ function get_story_squad(story_id)
 	return squad_id and alife():object(squad_id)
 end
 
----РџСЂРѕРІРµСЂРєР° РїРѕ РІСЂРµРјРµРЅРЅРѕРјСѓ РёРЅС‚РµСЂРІР°Р»Сѓ.
+---Проверка по временному интервалу.
 ---@param val1 number
 ---@param val2 number
 function in_time_interval(val1, val2)

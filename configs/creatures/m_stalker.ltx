@@ -1,6 +1,7 @@
 [stalker_foot_bones]
-front_left	= bip01_l_foot
-front_right	= bip01_r_foot
+
+front_left		= bip01_l_foot
+front_right		= bip01_r_foot
 
 [stalker_step_manager]
 ; order: left, right
@@ -68,26 +69,27 @@ cl_run_fwd_0				=	1,	  0.2,	    1,   0.4,     1
 ; ЗНАЧЕНИЯ visibility_threshold ДОЛЖНЫ БЫТЬ РАВНЫ для денжера и фри,
 ; иначе возникают артефакты с потерей видимости при переходе от денжера во фри.
 [stalker_vision_free]
-min_view_distance   		= 0.3				; коэффициент, который множится на eye_range, в зависимости от угла
-max_view_distance	 		= 1.25				; коэффициент, который множится на eye_range, в зависимости от угла
-visibility_threshold	 	= 230.0				;Threshold in which object becames visible based on factors
-always_visible_distance 	= 0
-time_quant					= 0.0012			;step increment to for sight calculations (low values seem to make stalkers take shots faster)
-decrease_value				= 0.0010 			;Decrease over time to overall threshold
-velocity_factor		     	= 0.65				;Higher value = greater bonus to detection speed when target is moving (depended on movement speed)
-luminocity_factor			= 0.70				;Low value = easier to see at night
-transparency_threshold	 	= 0.90 				;Low value = easier to see through semi-transparent objects
+min_view_distance   		= 0.35				; коэффициент, который множится на eye_range, в зависимости от угла
+max_view_distance	 		= 1.75				; коэффициент, который множится на eye_range, в зависимости от угла
+visibility_threshold	 	= 170.0				;Threshold in which object becames visible based on factors
+always_visible_distance 	= 0.02
+time_quant					= 0.0013			;step increment to for sight calculations (low values seem to make stalkers take shots faster)
+decrease_value				= 0.0014 			;Decrease over time to overall threshold
+velocity_factor		     	= 2.12				;Higher value = greater bonus to detection speed when target is moving (depended on movement speed)
+luminocity_factor			= 0.37				;Low value = easier to see at night
+transparency_threshold	 	= 0.82 				;Low value = easier to see through semi-transparent objects
 
 [stalker_vision_danger]
-min_view_distance   		= 0.60				; коэффициент, который множится на eye_range, в зависимости от угла
-max_view_distance	 		= 1.50				; коэффициент, который множится на eye_range, в зависимости от угла
-visibility_threshold	 	= 230.0				; значение, при достижении суммой которого объект считается видимым
-always_visible_distance 	= 0.1
-time_quant					= 0.0009
-decrease_value				= 0.0010			; значение, на которое уменьшается вес, если объект попал в фрустум, но отсёкся по каким-то причинам
-velocity_factor		     	= 2.0				
-luminocity_factor			= 0.30				; фактор освещения (только для Актёра)
-transparency_threshold	 	= 0.62
+min_view_distance   		= 0.45				; коэффициент, который множится на eye_range, в зависимости от угла
+max_view_distance	 		= 2.00				; коэффициент, который множится на eye_range, в зависимости от угла
+visibility_threshold	 	= 170.0				; значение, при достижении суммой которого объект считается видимым
+always_visible_distance 	= 0.02
+time_quant					= 0.0010
+decrease_value				= 0.0011 ;0.004		; значение, на которое уменьшается вес, если объект попал в фрустум, но отсёкся по каким-то причинам
+velocity_factor		     	= 2.12				
+luminocity_factor			= 0.37				; фактор освещения (только для Актёра)
+transparency_threshold	 	= 0.82
+
 [stalker_sound_perceive]
 	weapon					= 2; 0.75; 10 коэффициент усиления приоритета\силы звука
 	item					= 0.5; коэффициент усиления приоритета\силы звука

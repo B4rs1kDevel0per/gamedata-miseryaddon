@@ -983,3 +983,155 @@ inertion_aim_speed = 10
 ;-----------------------------------------------------------------------------
 ; Уникальнvе
 ;-----------------------------------------------------------------------------
+[wpn_abakan_custom]:wpn_abakan
+
+cost				 = 27680
+inv_weight           = 3.7
+inv_name             = st_wpn_abakan_custom
+inv_name_short       = st_wpn_abakan_custom
+
+;upgrades                = up_gr_firstab_abakan_custom, up_gr_seconab_abakan_custom, up_gr_thirdab_abakan_custom, up_gr_fourtab_abakan_custom, up_gr_fifthab_abakan_custom
+;installed_upgrades      = up_secona_abakan_custom, up_second_abakan_custom, up_fiftha_abakan_custom
+
+hit_power            	= 0.562, 0.562, 0.562, 0.562
+hit_impulse          	= 25 
+fire_distance           = 1000
+bullet_speed            = 920
+rpm                     = 600 
+
+hud                     = wpn_abakan_custom_hud
+
+misfire_start_condition		= 0.79
+misfire_end_condition		= 0.05
+misfire_start_prob = 0.007 ;	     	= 0.0045
+misfire_end_prob = 0.11 ;	     	= 0.035
+condition_shot_dec      	= 0.0006
+condition_queue_shot_dec	= 0.0006
+
+fire_dispersion_base    = 0.245
+
+
+[wpn_abakan_custom_hud]:wpn_abakan_hud
+
+[wpn_abakan_alt]:wpn_abakan
+
+cost				 = 23420
+inv_weight           = 3.82
+inv_name             = st_wpn_abakan_alt
+inv_name_short       = st_wpn_abakan_alt
+
+;upgrades                = up_gr_firstab_abakan_alt, up_gr_seconab_abakan_alt, up_gr_thirdab_abakan_alt, up_gr_fourtab_abakan_alt, up_gr_fifthab_abakan_alt
+;installed_upgrades      = up_fiftha_abakan_alt
+
+hit_power            	= 0.54, 0.54, 0.54, 0.54
+hit_impulse          	= 25
+fire_distance           = 1000
+bullet_speed            = 900
+rpm                     = 600
+
+hud                     = wpn_abakan_alt_hud
+
+misfire_start_condition		= 0.82
+misfire_end_condition		= 0.05
+misfire_start_prob = 0.007 ;	     	= 0.005
+misfire_end_prob = 0.11 ;	     	= 0.04
+condition_shot_dec      	= 0.0008
+condition_queue_shot_dec	= 0.0008
+
+fire_dispersion_base    = 0.265
+
+[wpn_abakan_alt_hud]:wpn_abakan_hud
+
+[wpn_abakan_camo]:wpn_abakan
+
+cost				 = 28920
+inv_weight           = 3.75
+inv_name             = st_wpn_abakan_camo
+inv_name_short       = st_wpn_abakan_camo
+
+;upgrades                = up_gr_firstab_abakan_camo, up_gr_seconab_abakan_camo, up_gr_thirdab_abakan_camo, up_gr_fourtab_abakan_camo, up_gr_fifthab_abakan_camo
+;installed_upgrades      = up_firsta_abakan_camo, up_fiftha_abakan_camo, up_firstc_abakan_camo, up_thirda_abakan_camo
+
+hit_power            	= 0.58, 0.58, 0.58, 0.58
+hit_impulse          	= 25
+fire_distance           = 1000
+bullet_speed            = 950
+rpm                     = 600
+
+hud                     = wpn_abakan_camo_hud
+
+misfire_start_condition		= 0.77
+misfire_end_condition		= 0.05
+misfire_start_prob = 0.007 ;	     	= 0.0042
+misfire_end_prob = 0.11 ;	     	= 0.037
+condition_shot_dec      	= 0.0005
+condition_queue_shot_dec	= 0.0005
+
+fire_dispersion_base    = 0.245
+
+[wpn_abakan_camo_hud]:wpn_abakan_hud
+
+[wpn_abakan_worn]:wpn_abakan
+
+cost				 = 12360
+inv_weight           = 3.85
+inv_name             = st_wpn_abakan_worn
+inv_name_short       = st_wpn_abakan_worn
+description          = st_wpn_abakan_worn_descr
+
+;upgrades                = up_gr_firstab_abakan_worn, up_gr_seconab_abakan_worn, up_gr_thirdab_abakan_worn, up_gr_fourtab_abakan_worn, up_gr_fifthab_abakan_worn
+
+hit_power            	= 0.501, 0.501, 0.501, 0.501
+hit_impulse          	= 25
+fire_distance           = 900
+bullet_speed            = 850
+rpm                     = 592
+
+hud                     = wpn_abakan_worn_hud
+
+misfire_start_condition		= 0.86
+misfire_end_condition		= 0.05
+misfire_start_prob = 0.007 ;	     	= 0.0088
+misfire_end_prob = 0.11 ;	     	= 0.057
+condition_shot_dec      	= 0.0014
+condition_queue_shot_dec	= 0.0014
+
+silencer_status            = 0
+
+fire_dispersion_base    = 0.395
+
+[wpn_abakan_worn_hud]:wpn_abakan_hud
+
+[wpn_abakan_rusty]:wpn_abakan
+
+;upgrades                = up_gr_firstab_abakan_rusty, up_gr_seconab_abakan_rusty, up_gr_thirdab_abakan_rusty, up_gr_fourtab_abakan_rusty, up_gr_fifthab_abakan_rusty
+
+cost				 = 10360
+inv_weight           = 3.94
+inv_name             = st_wpn_abakan_rusty
+inv_name_short       = st_wpn_abakan_rusty
+description          = st_wpn_abakan_worn_descr
+
+hit_power            	= 0.475, 0.475, 0.475, 0.475
+hit_impulse          	= 25
+fire_distance           = 800
+bullet_speed            = 790
+rpm                     = 570
+
+fire_modes           = 1, 2
+
+hud                     = wpn_abakan_rusty_hud
+
+misfire_start_condition		= 0.93
+misfire_end_condition		= 0.1
+misfire_start_prob = 0.007 ;	     	= 0.0092
+misfire_end_prob = 0.11 ;	     	= 0.063
+condition_shot_dec      	= 0.0019
+condition_queue_shot_dec	= 0.0019
+
+silencer_status            = 0
+
+fire_dispersion_base    = 0.55
+
+[wpn_abakan_rusty_hud]:wpn_abakan_hud
+

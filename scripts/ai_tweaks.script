@@ -27,7 +27,7 @@ local sound_threshold = {		["WPN"] 			= {0,0,0},
 -- npc_hear_callback(npc,who,s_type,sound_power)
 -------------------
 function npc_hear_callback(npc,who_id,s_type,dist,sound_power)
-	if not (xr_combat_ignore.npc_in_safe_zone(npc)) then
+	if not (xr_combat_ignore and xr_combat_ignore.npc_in_safe_zone(npc)) then
 		local who = who_id and level.object_by_id(who)
 		if (who) then
 			if not (xr_wounded.is_wounded(npc)) then
@@ -85,7 +85,7 @@ end
 -- npc_on_update(npc,st)
 -------------------
 function npc_on_update(npc,st)
-	if (xr_combat_ignore.npc_on_update) then xr_combat_ignore.npc_on_update(npc,st) end
+	if (xr_combat_ignore and xr_combat_ignore.npc_on_update) then xr_combat_ignore.npc_on_update(npc,st) end
 	if (rx_gl) then	rx_gl.npc_update(npc,st) end
 	if (xr_eat_medkit) then xr_eat_medkit.npc_update(npc,st) end
 	if (xr_visual) then xr_visual.npc_on_update(npc,st) end
@@ -140,7 +140,7 @@ end
 function npc_on_death_callback(npc,who)
 	local id = npc:id()
 	db.storage[id].victim_surrender = nil
-	xr_combat_ignore.safe_zone_npcs[id] = nil
+	safe_zone_npcs[id] = nil
 	if (rx_gl) then
 		rx_gl.death(npc)
 	end

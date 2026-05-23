@@ -3,12 +3,12 @@ class "evaluator_combat_enemy" (property_evaluator)
 function evaluator_combat_enemy:__init(storage, name) super(nil, name)
 	self.st = storage
 
-	--' Таймер ожидания выхода из боя
+	--' РўР°Р№РјРµСЂ РѕР¶РёРґР°РЅРёСЏ РІС‹С…РѕРґР° РёР· Р±РѕСЏ
 	self.st.timer = time_global()
 end
 function evaluator_combat_enemy:evaluate()
 	local best_enemy = self.object:best_enemy()
-	if best_enemy ~= nil and not xr_combat_ignore.is_enemy(self.object, best_enemy, db.storage[self.object:id()].combat_ignore, true) then
+	if best_enemy ~= nil and not (xr_combat_ignore and xr_combat_ignore.is_enemy(self.object, best_enemy, db.storage[self.object:id()].combat_ignore, true)) then
 		self.st.last_best_enemy_id = nil
 		self.st.last_best_enemy_name = nil
 		return false

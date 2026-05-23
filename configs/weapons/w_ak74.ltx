@@ -324,7 +324,11 @@ fire_bone                       = wpn_body
 fire_point2                     = 0.0,-0.078,0.327                       ; глушитель 0.0,-0.009,0.728
 fire_bone2                      = wpn_body
 
-disable_bore = true                                            ;отключение анимации скуки
+;disable_bore = true                                            ;отключение анимации скуки
+
+anm_bore                   = ak74_look, idle
+anm_bore_empty             = ak74_look, idle
+anm_bore_jammed            = ak74_look, idle_jammed
 
 ;Доставание///////////////////////////////////////////////////
 anm_show                   = ak74_draw
@@ -949,4 +953,216 @@ inertion_aim_speed = 10
 ;-----------------------------------------------------------------------------
 ; ”никальные
 ;-----------------------------------------------------------------------------
+[wpn_ak74_ap]:wpn_ak74
+
+ammo_class           = ammo_5.45x39_ap, ammo_5.45x39_fmj   ; name of the ltx-section of used ammo
+
+;---------------------------
+;End of AP section
+;---------------------------
+
+;=====================================================================================================================================================
+[wpn_ak74_custom1]:wpn_ak74
+
+cost              	 = 27760
+inv_weight        = 3.1
+inv_name          = st_wpn_ak74_modern
+inv_name_short    = st_wpn_ak74_modern
+
+;upgrades                = up_gr_firstab_ak74_custom1, up_gr_seconab_ak74_custom1, up_gr_thirdab_ak74_custom1, up_gr_fourtab_ak74_custom1, up_gr_fifthab_ak74_custom1, up_gr_fifthcd_ak74_custom1
+;installed_upgrades      = up_fourta_ak74_custom1, up_fiftha_ak74_custom1, up_fourtc_ak74_custom1
+
+hit_power            	= 0.516, 0.516, 0.516, 0.516
+hit_impulse          	= 25 
+fire_distance           = 1000
+bullet_speed            = 894
+rpm                     = 650
+
+hud                     = wpn_ak74_custom1_hud
+
+misfire_start_condition		= 0.7
+misfire_end_condition		= 0.1
+misfire_start_prob = 0.007 ;	     	= 0.004
+misfire_end_prob = 0.11 ;	     	= 0.035
+condition_shot_dec      	= 0.0007
+condition_queue_shot_dec	= 0.0007
+
+ammo_mag_size        = 30
+fire_modes           = 1, -1
+ammo_class           = ammo_5.45x39_fmj, ammo_5.45x39_ap
+
+fire_dispersion_base       	= 0.32
+
+[wpn_ak74_custom1_hud]:wpn_ak74_hud
+
+[wpn_ak74_custom2]:wpn_ak74
+
+cost              	 = 28440
+inv_weight        = 3.1
+inv_name          = st_wpn_ak74_custom
+inv_name_short    = st_wpn_ak74_custom
+
+;upgrades                = up_gr_firstab_ak74_custom2, up_gr_seconab_ak74_custom2, up_gr_thirdab_ak74_custom2, up_gr_fourtab_ak74_custom2, up_gr_fifthab_ak74_custom2, up_gr_fifthcd_ak74_custom2
+;installed_upgrades      = up_fourta_ak74_custom2, up_fiftha_ak74_custom2, up_secona_ak74_custom2, up_second_ak74_custom2
+
+hit_power            	= 0.53, 0.53, 0.53, 0.53
+hit_impulse          	= 25
+fire_distance           = 1000
+bullet_speed            = 915
+rpm                     = 670
+
+hud                     = wpn_ak74_custom2_hud
+
+misfire_start_condition		= 0.7
+misfire_end_condition		= 0.1
+misfire_start_prob = 0.007 ;	     	= 0.0038
+misfire_end_prob = 0.11 ;	     	= 0.033
+condition_shot_dec      	= 0.0006
+condition_queue_shot_dec	= 0.0006
+
+ammo_mag_size        = 30
+fire_modes           = 1, -1
+ammo_class           = ammo_5.45x39_fmj, ammo_5.45x39_ap
+
+fire_dispersion_base       	= 0.3
+
+[wpn_ak74_custom2_hud]:wpn_ak74_hud
+
+[wpn_ak74_alt]:wpn_ak74
+
+cost              	 = 24550
+inv_weight        = 3.2
+inv_name          = st_wpn_ak74_alt
+inv_name_short    = st_wpn_ak74_alt
+
+;upgrades                = up_gr_firstab_ak74_alt, up_gr_seconab_ak74_alt, up_gr_thirdab_ak74_alt, up_gr_fourtab_ak74_alt, up_gr_fifthab_ak74_alt, up_gr_fifthcd_ak74_alt
+;installed_upgrades      = up_thirda_ak74_alt
+
+hit_power            	= 0.5, 0.5, 0.5, 0.5
+hit_impulse          	= 25
+fire_distance           = 1000
+bullet_speed            = 880
+rpm                     = 680
+
+hud                     = wpn_ak74_alt_hud
+
+misfire_start_condition		= 0.75
+misfire_end_condition		= 0.1
+misfire_start_prob = 0.007 ;	     	= 0.0045
+misfire_end_prob = 0.11 ;	     	= 0.045
+condition_shot_dec      	= 0.0007
+condition_queue_shot_dec	= 0.0007
+
+ammo_mag_size        = 30
+fire_modes           = 1, -1
+ammo_class           = ammo_5.45x39_fmj, ammo_5.45x39_ap
+
+fire_dispersion_base       	= 0.32
+
+[wpn_ak74_alt_hud]:wpn_ak74_hud
+
+[wpn_ak74_camo]:wpn_ak74
+
+cost              	 = 30260
+inv_weight        = 3.24
+inv_name          = st_wpn_ak74_camo
+inv_name_short    = st_wpn_ak74_camo
+description       = st_wpn_ak74_camo_descr
+
+;upgrades                = up_gr_firstab_ak74_camo, up_gr_seconab_ak74_camo, up_gr_thirdab_ak74_camo, up_gr_fourtab_ak74_camo, up_gr_fifthab_ak74_camo, up_gr_fifthcd_ak74_camo
+;installed_upgrades      = up_fourta_ak74_camo, up_fiftha_ak74_camo, up_thirda_ak74_camo, up_thirdc_ak74_camo, up_firsta_ak74_camo
+
+hit_power            	= 0.55, 0.55, 0.55, 0.55
+hit_impulse          	= 25
+fire_distance           = 1000
+bullet_speed            = 930
+rpm                     = 670
+
+hud                     = wpn_ak74_camo_hud
+
+misfire_start_condition		= 0.7
+misfire_end_condition		= 0.1
+misfire_start_prob = 0.007 ;	     	= 0.0033
+misfire_end_prob = 0.11 ;	     	= 0.028
+condition_shot_dec      	= 0.0006
+condition_queue_shot_dec	= 0.0006
+
+ammo_mag_size        = 30
+fire_modes           = 1, -1
+ammo_class           = ammo_5.45x39_fmj, ammo_5.45x39_ap
+
+fire_dispersion_base       	= 0.33
+
+[wpn_ak74_camo_hud]:wpn_ak74_hud
+
+[wpn_ak74_worn]:wpn_ak74
+cost              	 = 19780
+inv_weight        = 3.2
+inv_name          = st_wpn_ak74_worn
+inv_name_short    = st_wpn_ak74_worn
+description       = st_wpn_ak74_worn_descr
+
+;upgrades                = up_gr_firstab_ak74_worn, up_gr_seconab_ak74_worn, up_gr_thirdab_ak74_worn, up_gr_fourtab_ak74_worn, up_gr_fifthab_ak74_worn, up_gr_fifthcd_ak74_worn
+;installed_upgrades      =
+;upgrade_scheme          = upgrade_scheme_ak74
+
+hit_power            	= 0.46, 0.46, 0.46, 0.46
+hit_impulse          	= 25
+fire_distance           = 900
+bullet_speed            = 830
+rpm                     = 632
+
+hud                     = wpn_ak74_worn_hud
+
+misfire_start_condition		= 0.87
+misfire_end_condition		= 0.1
+misfire_start_prob = 0.007 ;	     	= 0.0088
+misfire_end_prob = 0.11 ;	     	= 0.046
+condition_shot_dec      	= 0.0012
+condition_queue_shot_dec	= 0.0012
+
+silencer_status            = 0
+
+ammo_mag_size        = 30
+fire_modes           = 1, -1
+ammo_class           = ammo_5.45x39_fmj, ammo_5.45x39_ap
+
+fire_dispersion_base       	= 0.63
+
+[wpn_ak74_worn_hud]:wpn_ak74_hud
+
+[wpn_ak74_rusty]:wpn_ak74
+
+cost              	 = 14060
+inv_weight        = 3.34
+inv_name          = st_wpn_ak74_rusty
+inv_name_short    = st_wpn_ak74_rusty
+description       = st_wpn_ak74_worn_descr
+
+;upgrades                = up_gr_firstab_ak74_rusty, up_gr_seconab_ak74_rusty, up_gr_thirdab_ak74_rusty, up_gr_fourtab_ak74_rusty, up_gr_fifthab_ak74_rusty, up_gr_fifthcd_ak74_rusty
+
+hit_power            	= 0.43, 0.43, 0.43, 0.43
+hit_impulse          	= 25
+fire_distance           = 800
+bullet_speed            = 794
+rpm                     = 620
+
+hud                     = wpn_ak74_rusty_hud
+
+misfire_start_condition		= 0.92
+misfire_end_condition		= 0.1
+misfire_start_prob = 0.007 ;	     	= 0.0094
+misfire_end_prob = 0.11 ;	     	= 0.071
+condition_shot_dec      	= 0.0015
+condition_queue_shot_dec	= 0.0015
+
+silencer_status            = 0
+
+ammo_mag_size        = 30
+fire_modes           = 1, -1
+ammo_class           = ammo_5.45x39_fmj, ammo_5.45x39_ap
+
+fire_dispersion_base       	= 0.7
+
+[wpn_ak74_rusty_hud]:wpn_ak74_hud
 

@@ -605,6 +605,7 @@ inertion_aim_speed = 8
 
 
 [scope_kashtan_aks74u]
+
 scope_name 					= wpn_addon_scope_kashtan
 scope_x              	= 58                 ; offset in inventory icon
 scope_y                 = 1
@@ -622,3 +623,125 @@ aim_hud_offset_rot_16x9 = 0.000000,0.000000,-0.00000
 inertion_aim_origin_offset = 0.01
 inertion_aim_speed = 10
 
+
+[wpn_ak74u_custom]:wpn_ak74u
+
+cost              		= 20440
+inv_weight				= 2.62
+inv_name          	= st_wpn_ak74u_custom
+inv_name_short      = st_wpn_ak74u_custom
+
+;upgrades                = up_gr_firstab_ak74u_custom, up_gr_seconab_ak74u_custom, up_gr_thirdab_ak74u_custom, up_gr_fourtab_ak74u_custom, up_gr_fifthab_ak74u_custom
+;installed_upgrades      = up_secona_ak74u_custom, up_seconc_ak74u_custom, up_seconf_ak74u_custom
+
+hit_power            	= 0.419, 0.419, 0.419, 0.419
+hit_impulse          	= 20 
+fire_distance           = 600
+bullet_speed            = 745
+rpm                     = 704
+
+hud                        = wpn_ak74u_custom_hud            ; name of the section of the hud
+
+misfire_start_condition		= 0.73
+misfire_end_condition		= 0.08
+misfire_start_prob = 0.007 ;	     	= 0.0057
+misfire_end_prob = 0.11 ;	     	= 0.055
+condition_shot_dec      	= 0.0007
+condition_queue_shot_dec	= 0.0007
+
+fire_dispersion_base       = 0.512
+
+[wpn_ak74u_custom_hud]:wpn_ak74u_hud
+
+[wpn_ak74u_camo]:wpn_ak74u
+
+cost              		= 22480
+inv_weight				= 2.676
+inv_name          	= st_wpn_ak74u_camo
+inv_name_short      = st_wpn_ak74u_camo
+description          = st_wpn_ak74u_camo_descr
+
+;upgrades                = up_gr_firstab_ak74u_camo, up_gr_seconab_ak74u_camo, up_gr_thirdab_ak74u_camo, up_gr_fourtab_ak74u_camo, up_gr_fifthab_ak74u_camo
+;installed_upgrades      = up_secona_ak74u_camo, up_seconc_ak74u_camo, up_seconf_ak74u_camo, up_fourta_ak74u_camo, up_fiftha_ak74u_camo
+
+hit_power            	= 0.446, 0.446, 0.446, 0.446
+hit_impulse          	= 20
+fire_distance           = 650
+bullet_speed            = 755
+rpm                     = 716
+
+hud                        = wpn_ak74u_camo_hud            ; name of the section of the hud
+
+misfire_start_condition		= 0.7
+misfire_end_condition		= 0.05
+misfire_start_prob = 0.007 ;	     	= 0.0052
+misfire_end_prob = 0.11 ;	     	= 0.052
+condition_shot_dec      	= 0.00065
+condition_queue_shot_dec	= 0.00065
+
+fire_dispersion_base       = 0.482
+
+[wpn_ak74u_camo_hud]:wpn_ak74u_hud
+
+[wpn_ak74u_worn]:wpn_ak74u
+
+cost              		= 9100
+inv_weight				= 2.72
+inv_name          	= st_wpn_ak74u_worn
+inv_name_short      = st_wpn_ak74u_worn
+description         = st_wpn_ak74u_worn_descr
+
+;upgrades                = up_gr_firstab_ak74u_worn, up_gr_seconab_ak74u_worn, up_gr_thirdab_ak74u_worn, up_gr_fourtab_ak74u_worn, up_gr_fifthab_ak74u_worn
+
+hit_power            	= 0.375, 0.375, 0.375, 0.375
+hit_impulse          	= 20
+fire_distance           = 550
+bullet_speed            = 700
+rpm                     = 688
+
+hud                        = wpn_ak74u_worn_hud            ; name of the section of the hud
+
+misfire_start_condition		= 0.87
+misfire_end_condition		= 0.1
+misfire_start_prob = 0.007 ;	     	= 0.0084
+misfire_end_prob = 0.11 ;	     	= 0.086
+condition_shot_dec      	= 0.0013
+condition_queue_shot_dec	= 0.0013
+
+silencer_status            = 0
+
+fire_dispersion_base       = 0.72
+
+[wpn_ak74u_worn_hud]:wpn_ak74u_hud
+
+[wpn_ak74u_rusty]:wpn_ak74u
+
+cost              		= 4840
+inv_weight				= 2.8
+inv_name          	= st_wpn_ak74u_rusty
+inv_name_short      = st_wpn_ak74u_rusty
+description       	= st_wpn_ak74u_worn_descr
+
+;upgrades                = up_gr_firstab_ak74u_rusty, up_gr_seconab_ak74u_rusty, up_gr_thirdab_ak74u_rusty, up_gr_fourtab_ak74u_rusty, up_gr_fifthab_ak74u_rusty
+
+hit_power            	= 0.35, 0.35, 0.35, 0.35
+hit_impulse          	= 20
+fire_distance           = 450
+bullet_speed            = 660
+rpm                     = 674
+
+hud                        = wpn_ak74u_rusty_hud            ; name of the section of the hud
+
+misfire_probability        	= 0.005
+misfire_start_condition		= 0.92
+misfire_end_condition		= 0.1
+misfire_start_prob = 0.007 ;	     	= 0.0092
+misfire_end_prob = 0.11 ;	     	= 0.094
+condition_shot_dec      	= 0.0016
+condition_queue_shot_dec	= 0.0016
+
+silencer_status            = 0
+
+fire_dispersion_base       = 0.85
+
+[wpn_ak74u_rusty_hud]:wpn_ak74u_hud

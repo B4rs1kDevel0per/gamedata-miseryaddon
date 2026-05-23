@@ -95,9 +95,9 @@ function mp_actor_binder:net_spawn(data)
 --	printf("actor net spawn")
 	level.show_indicators()
 	self.bCheckStart = true
-	self.weapon_hide = false -- спрятано или нет оружие при разговоре.
+	self.weapon_hide = false -- СЃРїСЂСЏС‚Р°РЅРѕ РёР»Рё РЅРµС‚ РѕСЂСѓР¶РёРµ РїСЂРё СЂР°Р·РіРѕРІРѕСЂРµ.
 	self.weapon_hide_in_dialog = false
-	weapon_hide = {} -- устанавливаем глобальный дефолтовый флаг.
+	weapon_hide = {} -- СѓСЃС‚Р°РЅР°РІР»РёРІР°РµРј РіР»РѕР±Р°Р»СЊРЅС‹Р№ РґРµС„РѕР»С‚РѕРІС‹Р№ С„Р»Р°Рі.
 	self.task_manager = task_manager.get_task_manager()
 	if object_binder.net_spawn(self,data) == false then
 		return false
@@ -112,7 +112,7 @@ function mp_actor_binder:net_spawn(data)
 
 	level.enable_input()
 
-	--'Устанавливаем ссылку на таскменеджер
+	--'РЈСЃС‚Р°РЅР°РІР»РёРІР°РµРј СЃСЃС‹Р»РєСѓ РЅР° С‚Р°СЃРєРјРµРЅРµРґР¶РµСЂ
 	--self.task_manager = task_manager.get_task_manager()
 	self.spawn_frame = device().frame
 	self.already_jumped = false
@@ -195,7 +195,7 @@ function mp_actor_binder:use_gesture(gesture_id)
 end
 
 function actor_have_items()
-	local n=3 -- количество
+	local n=3 -- РєРѕР»РёС‡РµСЃС‚РІРѕ
 	local count=0
 	
 	db.storage[LocalActor()].object:iterate_inventory(function (dummy, item) if item:section()=="kolbasa" then count=count+1 end end, nil)
@@ -250,7 +250,7 @@ function mp_actor_binder:update(delta)
 	
 	if LocalActor() ~= self.object:id() or (IsServerClient() and LocalActor() == self.object:id()) then
 		if OnServer() then
-			-- Апдейт прятание оружия игрока в зоне sr_no_weapon
+			-- РђРїРґРµР№С‚ РїСЂСЏС‚Р°РЅРёРµ РѕСЂСѓР¶РёСЏ РёРіСЂРѕРєР° РІ Р·РѕРЅРµ sr_no_weapon
 			if check_for_weapon_hide_by_zones(self.object:id()) == true then
 				if self.weapon_hide == false then
 					self.object:hide_weapon_except_safe_items()
@@ -269,7 +269,7 @@ function mp_actor_binder:update(delta)
 			return
 		end
 		
-		-- AtmosFear 3: клиентский апдейт визуальных эффектов погоды (DOF, грозы)
+		-- AtmosFear 3: РєР»РёРµРЅС‚СЃРєРёР№ Р°РїРґРµР№С‚ РІРёР·СѓР°Р»СЊРЅС‹С… СЌС„С„РµРєС‚РѕРІ РїРѕРіРѕРґС‹ (DOF, РіСЂРѕР·С‹)
 		if self.weather_manager then
 			self.weather_manager:update_client()
 		end
@@ -280,13 +280,13 @@ function mp_actor_binder:update(delta)
 	local time = time_global()
 	game_stats.update (delta, self.object)
 
-	--' Апдейт саундменеджера
+	--' РђРїРґРµР№С‚ СЃР°СѓРЅРґРјРµРЅРµРґР¶РµСЂР°
 	xr_sound.update(self.object:id())
 	
-	-- Обновление отключения ввода с клавиатуры.
+	-- РћР±РЅРѕРІР»РµРЅРёРµ РѕС‚РєР»СЋС‡РµРЅРёСЏ РІРІРѕРґР° СЃ РєР»Р°РІРёР°С‚СѓСЂС‹.
 	self.st.disable_input_time = nil
 	
-	-- Апдейт прятание оружия игрока во время диалога
+	-- РђРїРґРµР№С‚ РїСЂСЏС‚Р°РЅРёРµ РѕСЂСѓР¶РёСЏ РёРіСЂРѕРєР° РІРѕ РІСЂРµРјСЏ РґРёР°Р»РѕРіР°
 	if self.object:is_talking() then
 		if self.weapon_hide_in_dialog == false then
 			self.object:hide_weapon()
@@ -305,7 +305,7 @@ function mp_actor_binder:update(delta)
 		self:update_gameover_screen()
 	end
 	
-	-- обновление пси-антенны
+	-- РѕР±РЅРѕРІР»РµРЅРёРµ РїСЃРё-Р°РЅС‚РµРЅРЅС‹
 	if sr_psy_antenna.psy_antenna then
 		sr_psy_antenna.psy_antenna:update(delta)
 	end
@@ -407,9 +407,9 @@ function actor_binder:net_spawn(data)
 --	printf("actor net spawn")
 	level.show_indicators()
 	self.bCheckStart = true
-	self.weapon_hide = false -- спрятано или нет оружие при разговоре.
+	self.weapon_hide = false -- СЃРїСЂСЏС‚Р°РЅРѕ РёР»Рё РЅРµС‚ РѕСЂСѓР¶РёРµ РїСЂРё СЂР°Р·РіРѕРІРѕСЂРµ.
 	self.weapon_hide_in_dialog = false
-	weapon_hide = {} -- устанавливаем глобальный дефолтовый флаг.
+	weapon_hide = {} -- СѓСЃС‚Р°РЅР°РІР»РёРІР°РµРј РіР»РѕР±Р°Р»СЊРЅС‹Р№ РґРµС„РѕР»С‚РѕРІС‹Р№ С„Р»Р°Рі.
 	if object_binder.net_spawn(self,data) == false then
 		return false
 	end
@@ -427,9 +427,9 @@ function actor_binder:net_spawn(data)
 	end
 	xr_s.on_game_load()                                    --' Distemper 03.2008 --
 	self.weather_manager:reset()
-	--' Загружаем настройки дропа
+	--' Р—Р°РіСЂСѓР¶Р°РµРј РЅР°СЃС‚СЂРѕР№РєРё РґСЂРѕРїР°
 	death_manager.init_drop_settings()
-	--'Устанавливаем ссылку на таскменеджер
+	--'РЈСЃС‚Р°РЅР°РІР»РёРІР°РµРј СЃСЃС‹Р»РєСѓ РЅР° С‚Р°СЃРєРјРµРЅРµРґР¶РµСЂ
 	self.task_manager = task_manager.get_task_manager()
 	self.spawn_frame = device().frame
 	self.already_jumped = false
@@ -505,8 +505,8 @@ end
 ----------------------------------------------------------------------------------------------------------------------
 function actor_binder:info_callback(npc, info_id)
 	printf("*INFO*: npc='%s' id='%s'", npc:name(), info_id)
-	--' Сюжет
-	-- Отметки на карте
+	--' РЎСЋР¶РµС‚
+	-- РћС‚РјРµС‚РєРё РЅР° РєР°СЂС‚Рµ
 end
 ----------------------------------------------------------------------------------------------------------------------
 function actor_binder:on_trade (item, sell_bye, money)
@@ -639,10 +639,10 @@ function actor_binder:update(delta)
 		self:check_detective_achievement()
 		self:check_mutant_hunter_achievement()
 	
-		-- Апдейт саундменеджера								  
+		-- РђРїРґРµР№С‚ СЃР°СѓРЅРґРјРµРЅРµРґР¶РµСЂР°								  
 		xr_sound.update(self.object:id())
 	
-		-- обновление пси-антенны
+		-- РѕР±РЅРѕРІР»РµРЅРёРµ РїСЃРё-Р°РЅС‚РµРЅРЅС‹
 		if sr_psy_antenna.psy_antenna then
 			sr_psy_antenna.psy_antenna:update(delta)
 		end
@@ -675,7 +675,7 @@ function actor_binder:update(delta)
 			end
 			self.surge_manager:update_sv()
 		end
-		-- Апдейт доступности для симуляции.
+		-- РђРїРґРµР№С‚ РґРѕСЃС‚СѓРїРЅРѕСЃС‚Рё РґР»СЏ СЃРёРјСѓР»СЏС†РёРё.
 		simulation_objects.get_sim_obj_registry():update_avaliability(alife():actor())
 		treasure_manager.get_treasure_manager():update()
 	
@@ -697,7 +697,7 @@ function actor_binder:update(delta)
 		return
 	end
 
-	-- Вызов апдейта переноса игрока проводником
+	-- Р’С‹Р·РѕРІ Р°РїРґРµР№С‚Р° РїРµСЂРµРЅРѕСЃР° РёРіСЂРѕРєР° РїСЂРѕРІРѕРґРЅРёРєРѕРј
 	if travel_func ~= nil then
 		travel_func()
 	end
@@ -728,7 +728,7 @@ function actor_binder:load(reader)
 end
 
 --*************************************************************
---*					Подспаун вещей в ящики					  *
+--*					РџРѕРґСЃРїР°СѓРЅ РІРµС‰РµР№ РІ СЏС‰РёРєРё					  *
 --*************************************************************
 local detective_achievement_items 		= {	"medkit",
 											"antirad",
@@ -883,19 +883,27 @@ end
 
 function bind_stalker_cl:death_callback(victim, who)
 	xrs_dyn_music.npc_table[self.object:id()] = nil
-	
+
+	-- xr_combat_ignore: С‡РёСЃС‚РёРј safe_zone РїСЂРё СЃРјРµСЂС‚Рё
+	if xr_combat_ignore then xr_combat_ignore.npc_on_death_callback(self.object, who) end
+	-- squad_on_npc_death РЅРµ РІС‹Р·С‹РІР°РµРј Р·РґРµСЃСЊ вЂ” alife():object() СѓР¶Рµ nil РїРѕСЃР»Рµ СЃРјРµСЂС‚Рё
+
 	if who and getLocalActor() and getLocalActor():id() == who:id() then
 		xr_statistic.inc_killed_stalkers_counter(who:id())
 	end
 end
 
 function bind_stalker_cl:hit_callback(obj, amount, local_direction, who, bone_index)
+	-- xr_combat_ignore: safe zone hit Р»РѕРіРёРєР°
+	if db.storage[obj:id()] and db.storage[obj:id()].combat_ignore then
+		if xr_combat_ignore then xr_combat_ignore.npc_on_hit_callback(obj, amount, local_direction, who, bone_index) end
+	end
+
 	if who and getLocalActor() and getLocalActor():id() == who:id() then
 		xr_statistic.set_best_weapon(amount, who)
 		debug_utils.INFO(MODULE, "%s hits %s for %s!", who:name(), obj:name(), tonumber(amount)/100)
 	end
 end
-
 function set_level_spot(npc_id, map_spot)
 	if map_spot ~= nil and map_spot ~= 0 then
 		local map_location = ""
