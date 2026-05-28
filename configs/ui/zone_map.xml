@@ -1,8 +1,8 @@
 <window>
 	<minimap anchor="bot-left" x="0" y="0" width="0" height="0">
-		<level_frame anchor="bot-left" x="0" y="0" width="0" height="246"/>
+		<level_frame anchor="bot-left" x="0" y="0" width="0" height="0"/>
 		
-		<background anchor="bot-left" x="0" y="0" width="0" height="0" stretch="1"> 
+		<background anchor="bot-left" x="-10000" y="0" width="0" height="0" stretch="1"> 
 			<texture>ui_ingame_radar_main_window</texture>
 		</background>
 		<!--

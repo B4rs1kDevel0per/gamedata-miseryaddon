@@ -269,6 +269,9 @@
 	<cop_debug x="38" y="352" width="1125" height="141" complex_mode="1">
 		<text font="letterica16" r="240" g="217" b="180" a="255" align="l"/>
 	</cop_debug>
+	
+#include "ui\ui_custom_msgs_addon.xml"
+
 
 	<!-- Добавленные блоки из первого файла, отсутствовавшие во втором -->
 	<cs_debug x="844" y="28" width="563" height="141" complex_mode="1">

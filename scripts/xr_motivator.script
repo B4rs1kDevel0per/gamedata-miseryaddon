@@ -309,12 +309,14 @@ function motivator_binder:death_callback(victim, who)
 	end
 
 	--' Загрузка историй для лагеря.
-	local known_info = utils.cfg_get_string(st.ini,st.section_logic , "known_info", self.object, false, "", nil)
-	printf("xr_info from death loaded!!!")
-	xr_info.loadInfo(self.object, st.ini, known_info)
-	
-	local known_flags = utils.cfg_get_string(st.ini,st.section_logic , "known_flags", self.object, false, "", nil)
-	xr_info.loadFlags(self.object, st.ini, known_flags)
+	if st.ini and st.section_logic then
+		local known_info = utils.cfg_get_string(st.ini, st.section_logic, "known_info", self.object, false, "", nil)
+		printf("xr_info from death loaded!!!")
+		xr_info.loadInfo(self.object, st.ini, known_info)
+
+		local known_flags = utils.cfg_get_string(st.ini, st.section_logic, "known_flags", self.object, false, "", nil)
+		xr_info.loadFlags(self.object, st.ini, known_flags)
+	end
 	
 	--' Принудительно обнуляем анимейшн менеджер чтобы отдетачились приатаченные объекты
 	if self.st.state_mgr ~= nil then
@@ -363,7 +365,7 @@ function motivator_binder:use_callback(obj, who)
 		if xr_info.npc_flags[obj:id()] ~= nil then
 			for k,v in pairs(xr_info.npc_flags[obj:id()]) do
 				story_flags.give_flag(v)
-				printf_msg("Giving known flag %s", v)
+				printf_msg("Giving known flag %s", tostring(v))
 			end
 			xr_info.npc_flags[obj:id()] = nil
 		end

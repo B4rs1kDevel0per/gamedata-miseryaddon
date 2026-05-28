@@ -99,7 +99,9 @@
 		<texture id="ui_ingame_compass_bar_header_mask" 	x="666" y="0" 	width="246" height="26" />
 		<texture id="ui_ingame_compass_bar_rus" 			x="0" 	y="998" width="966" height="12" />
 		<texture id="ui_ingame_compass_bar_eng" 			x="0" 	y="1012" width="966" height="12" />
+		<texture id="ui_ingame_compass_bar_pol" 			x="0" 	y="1012" width="966" height="12" />
 		<texture id="ui_ingame_compass_bar_ukr" 			x="0" 	y="1012" width="966" height="12" />
+		<texture id="ui_ingame_compass_bar_por_br" 			x="0" 	y="1012" width="966" height="12" />
 
 		<texture id="ui_ingame_dang_zone_psy_yellow" 		x="413" y="331" width="24" height="24" />
 	    <texture id="ui_ingame_dang_zone_psy_orange" 		x="438" y="331" width="24" height="24" />
@@ -282,6 +284,14 @@
 		<texture id="ui_ingame_mark_enemy_npc_icon" x="979" y="488" width="26" height="24" />
 		<texture id="ui_ingame_mark_friend_npc_icon" x="1163" y="394" width="26" height="24" />
 		<texture id="ui_ingame_mark_neutral_npc_icon" x="1022" y="540" width="26" height="24" />
+		<texture id="ui_ingame_mark_booster_icon" x="1007" y="488" width="16" height="24" />
+		<texture id="ui_ingame_mark_addon_icon" x="800" y="490" width="24" height="21" />
+		<texture id="ui_ingame_mark_other_icon" x="1026" y="490" width="22" height="21" />
+		<texture id="ui_ingame_mark_deadbody_icon" x="1076" y="530" width="16" height="18" />
+		<texture id="ui_ingame_mark_mine_red_icon" x="1124" y="538" width="26" height="20" />
+		<texture id="ui_ingame_mark_mine_yellow_icon" x="1152" y="538" width="26" height="20" />
+		<texture id="ui_ingame_mark_mine_green_icon" x="1180" y="538" width="26" height="20" />
+		
 		<texture id="ui_ingame_mark_enemy_zombie_icon" x="1021" y="514" width="26" height="24" />
 		<texture id="ui_ingame_mark_neutral_zombie_icon" x="1124" y="486" width="26" height="24" />
 		<texture id="ui_ingame_mark_friend_zombie_icon" x="1124" y="512" width="26" height="24" />
@@ -330,6 +340,9 @@
 		<texture id="ui_ingame_gesture_pay_respect" x="1286" y="412" width="61" height="38"/>
 		<texture id="ui_ingame_gesture_thumb_down" x="1252" y="412" width="33" height="30"/>
 		<texture id="ui_ingame_gesture_thumb_up" x="1218" y="412" width="33" height="28"/>
+		
+		<texture id="ui_ingame_rad_progress_bg" x="1152" y="486" width="42" height="42"/>
+		<texture id="ui_ingame_rad_progress" x="1199" y="485" width="42" height="42"/>
 	</file>
 	<file name="ui\ui_squad_member">
 		<texture id="ui_squad_member_icon" x="8" y="13" width="16" height="22" />	

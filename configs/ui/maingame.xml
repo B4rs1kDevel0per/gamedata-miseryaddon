@@ -197,13 +197,11 @@
 		
 	</hud_states>
 	
-	<progress_bar_action anchor="bot-center" x="0" y="149" width="156" height="2" horz="1" min="0" max="100" pos="0">
-		<background anchor="mid-center" width="164" height="10" stretch="1">
-			<texture>ui_ingame_hud_yellow_bar_bcg</texture>
-		</background>
-		<progress anchor="mid-center" stretch="1">
-			<texture>ui_ingame_hud_yellow_bar</texture>
-		</progress>			
+	<progress_bar_action anchor="mid-center" x="0" y="0" width="42" height="42" sector_count="32" clockwise="0">
+		<texture color="yellow_mpe">ui_ingame_rad_progress</texture>
+		<auto_static anchor="mid-center" width="42" height="42" stretch="1">
+			<texture>ui_ingame_rad_progress_bg</texture>
+		</auto_static>		
 	</progress_bar_action>
 
 	<!-- добавлено из второго файла -->

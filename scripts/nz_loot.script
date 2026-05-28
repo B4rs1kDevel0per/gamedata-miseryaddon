@@ -318,50 +318,86 @@ local mutant_parts = {
 
 
 function loot_mutant(obj, actor)
-	debug_utils.INFO(MODULE, "[loot_mutant] setting variables") 
-	local obj_clsid = obj:clsid()
-	local spawns = mutant_parts[obj_clsid]
-	if not spawns then
-		debug_utils.INFO(MODULE, "[loot_mutant] no loot config for clsid %s", tostring(obj_clsid))
-		return
-	end
-	local amount = nil
-	local chance = nil
-	local item_section = nil
-	local items_to_spawn = {}
-	debug_utils.INFO(MODULE, "[loot_mutant] checking spawns") 
-	for k,v in pairs(spawns) do
-		amount = v.amount
-		chance = v.chance
-		item_section = v.item_section
-		if item_section ~= nil and actor ~= nil then
-			for i=1,amount do
-				if math.random(100) < chance then
-					table.insert(items_to_spawn, item_section)
-				end
-			end
-		end
-	end
-	if #items_to_spawn > 0 then
-		debug_utils.INFO(MODULE, "[loot_mutant] SENDING PACKET: LOOT") -- SENDING PACKET
-		local packet = game_cl.GenerateGameMessage(GM_SCRIPT_MUTANT_LOOT)
-		packet:w_u16(actor:id())  -- Send actor's ID so client knows who it's for
-		packet:w_stringZ("st_mutant_loot_found")  -- News ID
-		packet:w_stringZ("mutant_hunter")         -- Icon/tag for the sender
-		u_EventSendReliable(packet)
-		debug_utils.INFO(MODULE, "[loot_mutant] spawning items") 
-		local actor_pos = actor:position()
-		local actor_lvid = actor:level_vertex_id()
-		local actor_gvid = actor:game_vertex_id()
-		for k,v in pairs(items_to_spawn) do
-			alife():create(v, actor_pos, actor_lvid, actor_gvid, actor:id())
-		end
-	else
-		debug_utils.INFO(MODULE, "[loot_mutant] SENDING PACKET: NO LOOT") -- SENDING PACKET
-		local packet = game_cl.GenerateGameMessage(GM_SCRIPT_MUTANT_LOOT)
-		packet:w_u16(actor:id())  -- Send actor's ID so client knows who it's for
-		packet:w_stringZ("st_mutant_loot_not_found")  -- News ID
-		packet:w_stringZ("mutant_hunter")         -- Icon/tag for the sender
-		u_EventSendReliable(packet)
-	end
+    -- Спаун предметов только на сервере
+    if not OnServer() then return end
+    -- Дополнительный guard на случай переходного состояния
+    if not alife() then
+        debug_utils.INFO(MODULE, "[loot_mutant] alife() is nil, skipping spawn")
+        return
+    end
+
+    debug_utils.INFO(MODULE, "[loot_mutant] setting variables")
+    local obj_clsid = obj:clsid()
+    local spawns = mutant_parts[obj_clsid]
+    if not spawns then
+        debug_utils.INFO(MODULE, "[loot_mutant] no loot config for clsid %s", tostring(obj_clsid))
+        return
+    end
+    local items_to_spawn = {}
+    debug_utils.INFO(MODULE, "[loot_mutant] checking spawns")
+    for k, v in pairs(spawns) do
+        local amount       = v.amount
+        local chance       = v.chance
+        local item_section = v.item_section
+        if item_section ~= nil and actor ~= nil then
+            for i = 1, amount do
+                if math.random(100) < chance then
+                    table.insert(items_to_spawn, item_section)
+                end
+            end
+        end
+    end
+    -- Уведомление клиента через пакет (в обоих случаях — нашли лут или нет)
+    local news_id = #items_to_spawn > 0 and "st_mutant_loot_found" or "st_mutant_loot_not_found"
+    debug_utils.INFO(MODULE, "[loot_mutant] SENDING PACKET: %s", news_id)
+    local packet = game_cl.GenerateGameMessage(GM_SCRIPT_MUTANT_LOOT)
+    packet:w_u8(0)             -- маркер: сервер→клиент (новость)
+    packet:w_u16(actor:id())
+    packet:w_stringZ(news_id)
+    packet:w_stringZ("mutant_hunter")
+    u_EventSendReliable(packet)
+
+    if #items_to_spawn > 0 then
+        debug_utils.INFO(MODULE, "[loot_mutant] spawning %d items", #items_to_spawn)
+        local actor_pos  = actor:position()
+        local actor_lvid = actor:level_vertex_id()
+        local actor_gvid = actor:game_vertex_id()
+        for k, v in pairs(items_to_spawn) do
+            alife():create(v, actor_pos, actor_lvid, actor_gvid, actor:id())
+        end
+    end
+end
+
+-- Список звуков разделки. Положи файлы в sounds\nz_loot\butcher*.ogg
+-- Движок выберет рандомный на каждом клиенте независимо.
+local butcher_sounds = {
+    "nz_loot\\butcher1",
+    "nz_loot\\butcher2",
+    "nz_loot\\butcher3",
+}
+
+-- Вызывается с сервера при нажатии F на трупе мутанта.
+-- Рассылает всем клиентам позицию трупа — каждый играет 3D-звук из этой точки.
+function send_butcher_sound(obj)
+    if not OnServer() then return end
+    local pos = obj:position()
+    local packet = game_cl.GenerateGameMessage(GM_SCRIPT_MUTANT_LOOT)
+    packet:w_u8(2)              -- маркер: сервер→клиент (звук разделки)
+    packet:w_float(pos.x)
+    packet:w_float(pos.y)
+    packet:w_float(pos.z)
+    u_EventSendReliable(packet)
+    debug_utils.INFO(MODULE, "[send_butcher_sound] sent at pos %.1f %.1f %.1f", pos.x, pos.y, pos.z)
+end
+
+-- Вызывается на клиенте из TranslateGameMessage при marker==2.
+function play_butcher_sound_at(x, y, z)
+    local local_actor = getLocalActor()
+    if not local_actor then return end
+    local snd_path = butcher_sounds[math.random(#butcher_sounds)]
+    local snd = sound_object(snd_path)
+    snd.volume = 1.0
+    -- s3d = позиционный звук, затухает с расстоянием, слышен всем кто рядом
+    snd:play_at_pos(local_actor, vector():set(x, y, z), 0, sound_object.s3d)
+    debug_utils.INFO(MODULE, "[play_butcher_sound_at] playing %s", snd_path)
 end

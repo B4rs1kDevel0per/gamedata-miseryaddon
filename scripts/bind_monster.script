@@ -5,7 +5,7 @@
 local dbg = debug_utils
 local MODULE = "bind_monster"
 
--- таблица облутанных мутантов (костыль: alife() недоступен на клиенте)
+-- С‚Р°Р±Р»РёС†Р° РѕР±Р»СѓС‚Р°РЅРЅС‹С… РјСѓС‚Р°РЅС‚РѕРІ (РєРѕСЃС‚С‹Р»СЊ: alife() РЅРµРґРѕСЃС‚СѓРїРµРЅ РЅР° РєР»РёРµРЅС‚Рµ)
 local looted_mutants = {}
 
 -- Sections of items that can substitute a knife for harvesting.
@@ -33,7 +33,7 @@ end
 function bind(obj)
 	printf("_bp: monster.bind: name='%s', id='%d'", obj:name(), obj:id())
 
-	-- РїС—Р…РїС—Р…РїС—Р… РїС—Р…РїС—Р…РїС—Р…РїС—Р…РїС—Р…РїС—Р…
+	-- Р С—РЎвЂ”Р вЂ¦Р С—РЎвЂ”Р вЂ¦Р С—РЎвЂ”Р вЂ¦ Р С—РЎвЂ”Р вЂ¦Р С—РЎвЂ”Р вЂ¦Р С—РЎвЂ”Р вЂ¦Р С—РЎвЂ”Р вЂ¦Р С—РЎвЂ”Р вЂ¦Р С—РЎвЂ”Р вЂ¦
 	--xr_spawner.spawn_client(obj)
 	if OnClient() then
 		obj:bind_object(bind_monster_cl(obj))
@@ -104,7 +104,7 @@ function generic_object_binder:update(delta)
 			if new_state ~= self.tip_state then
 				self.tip_state = new_state
 				if is_looted then
-					-- уже облутан: убираем F, показываем "уже облутан"
+					-- СѓР¶Рµ РѕР±Р»СѓС‚Р°РЅ: СѓР±РёСЂР°РµРј F, РїРѕРєР°Р·С‹РІР°РµРј "СѓР¶Рµ РѕР±Р»СѓС‚Р°РЅ"
 					self.object:set_callback(callback.use_object, nil)
 					self.object:set_tip_text("st_mutant_loot_already_found")
 				else
@@ -116,7 +116,7 @@ function generic_object_binder:update(delta)
 			if self.tip_state ~= "no_se" then
 				self.tip_state = "no_se"
 				self.object:set_callback(callback.use_object, nil)
-				-- не вызываем set_tip_text без se_obj
+				-- РЅРµ РІС‹Р·С‹РІР°РµРј set_tip_text Р±РµР· se_obj
 			end
 		end
 		return
@@ -127,7 +127,7 @@ function generic_object_binder:update(delta)
 	if st ~= nil and st.active_scheme ~= nil then
 		xr_logic.try_switch_to_another_section(self.object, st[st.active_scheme], db.actor)
 	end
-	-- РїС—Р…РїС—Р…РїС—Р…РїС—Р…РїС—Р…РїС—Р… РїС—Р…РїС—Р…РїС—Р…РїС—Р…РїС—Р…РїС—Р…
+	-- Р С—РЎвЂ”Р вЂ¦Р С—РЎвЂ”Р вЂ¦Р С—РЎвЂ”Р вЂ¦Р С—РЎвЂ”Р вЂ¦Р С—РЎвЂ”Р вЂ¦Р С—РЎвЂ”Р вЂ¦ Р С—РЎвЂ”Р вЂ¦Р С—РЎвЂ”Р вЂ¦Р С—РЎвЂ”Р вЂ¦Р С—РЎвЂ”Р вЂ¦Р С—РЎвЂ”Р вЂ¦Р С—РЎвЂ”Р вЂ¦
 	if squad ~= nil then
 		if squad:commander_id() == self.object:id() then
 			squad:update()
@@ -160,7 +160,7 @@ function generic_object_binder:update(delta)
 	end
 	
 	
--- РїС—Р…РїС—Р…РїС—Р…РїС—Р… РїС—Р…РїС—Р…РїС—Р…РїС—Р… РїС—Р…РїС—Р…РїС—Р…РїС—Р… , РїС—Р…РїС—Р… РїС—Р…РїС—Р…РїС—Р…РїС—Р… РїС—Р… РїС—Р…РїС—Р…РїС—Р…РїС—Р…РїС—Р…РїС—Р… !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+-- Р С—РЎвЂ”Р вЂ¦Р С—РЎвЂ”Р вЂ¦Р С—РЎвЂ”Р вЂ¦Р С—РЎвЂ”Р вЂ¦ Р С—РЎвЂ”Р вЂ¦Р С—РЎвЂ”Р вЂ¦Р С—РЎвЂ”Р вЂ¦Р С—РЎвЂ”Р вЂ¦ Р С—РЎвЂ”Р вЂ¦Р С—РЎвЂ”Р вЂ¦Р С—РЎвЂ”Р вЂ¦Р С—РЎвЂ”Р вЂ¦ , Р С—РЎвЂ”Р вЂ¦Р С—РЎвЂ”Р вЂ¦ Р С—РЎвЂ”Р вЂ¦Р С—РЎвЂ”Р вЂ¦Р С—РЎвЂ”Р вЂ¦Р С—РЎвЂ”Р вЂ¦ Р С—РЎвЂ”Р вЂ¦ Р С—РЎвЂ”Р вЂ¦Р С—РЎвЂ”Р вЂ¦Р С—РЎвЂ”Р вЂ¦Р С—РЎвЂ”Р вЂ¦Р С—РЎвЂ”Р вЂ¦Р С—РЎвЂ”Р вЂ¦ !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 	if self.object:get_enemy() then
 		if xr_logic.mob_captured(self.object) then
 			xr_logic.mob_release(self.object)
@@ -204,7 +204,7 @@ function generic_object_binder:update(delta)
 end
 
 function generic_object_binder:extrapolate_callback()
-	-- РїС—Р…РїС—Р…РїС—Р…РїС—Р…РїС—Р…РїС—Р…РїС—Р…РїС—Р…РїС—Р…, РїС—Р…РїС—Р…РїС—Р… РїС—Р…РїС—Р…РїС—Р…РїС—Р…РїС—Р…РїС—Р… РїС—Р…РїС—Р…РїС—Р… РїС—Р… РїС—Р…РїС—Р…РїС—Р…РїС—Р…РїС—Р…РїС—Р…РїС—Р…
+	-- Р С—РЎвЂ”Р вЂ¦Р С—РЎвЂ”Р вЂ¦Р С—РЎвЂ”Р вЂ¦Р С—РЎвЂ”Р вЂ¦Р С—РЎвЂ”Р вЂ¦Р С—РЎвЂ”Р вЂ¦Р С—РЎвЂ”Р вЂ¦Р С—РЎвЂ”Р вЂ¦Р С—РЎвЂ”Р вЂ¦, Р С—РЎвЂ”Р вЂ¦Р С—РЎвЂ”Р вЂ¦Р С—РЎвЂ”Р вЂ¦ Р С—РЎвЂ”Р вЂ¦Р С—РЎвЂ”Р вЂ¦Р С—РЎвЂ”Р вЂ¦Р С—РЎвЂ”Р вЂ¦Р С—РЎвЂ”Р вЂ¦Р С—РЎвЂ”Р вЂ¦ Р С—РЎвЂ”Р вЂ¦Р С—РЎвЂ”Р вЂ¦Р С—РЎвЂ”Р вЂ¦ Р С—РЎвЂ”Р вЂ¦ Р С—РЎвЂ”Р вЂ¦Р С—РЎвЂ”Р вЂ¦Р С—РЎвЂ”Р вЂ¦Р С—РЎвЂ”Р вЂ¦Р С—РЎвЂ”Р вЂ¦Р С—РЎвЂ”Р вЂ¦Р С—РЎвЂ”Р вЂ¦
 	if db.storage[self.object:id()] == nil or
 		 db.storage[self.object:id()].object == nil
 	then
@@ -254,7 +254,7 @@ function generic_object_binder:death_callback(victim, who)
 	if self.st.active_section then
 		xr_logic.issue_event(self.object, self.st[self.st.active_scheme], "death_callback", victim, who)
 	end
-	--' РїС—Р…РїС—Р…РїС—Р…РїС—Р…РїС—Р…РїС—Р…РїС—Р… РїС—Р…РїС—Р…РїС—Р…РїС—Р…РїС—Р…РїС—Р…РїС—Р…РїС—Р…РїС—Р… РїС—Р…РїС—Р…РїС—Р…РїС—Р…РїС—Р…РїС—Р…РїС—Р… РїС—Р…РїС—Р…РїС—Р…РїС—Р…РїС—Р…РїС—Р….
+	--' Р С—РЎвЂ”Р вЂ¦Р С—РЎвЂ”Р вЂ¦Р С—РЎвЂ”Р вЂ¦Р С—РЎвЂ”Р вЂ¦Р С—РЎвЂ”Р вЂ¦Р С—РЎвЂ”Р вЂ¦Р С—РЎвЂ”Р вЂ¦ Р С—РЎвЂ”Р вЂ¦Р С—РЎвЂ”Р вЂ¦Р С—РЎвЂ”Р вЂ¦Р С—РЎвЂ”Р вЂ¦Р С—РЎвЂ”Р вЂ¦Р С—РЎвЂ”Р вЂ¦Р С—РЎвЂ”Р вЂ¦Р С—РЎвЂ”Р вЂ¦Р С—РЎвЂ”Р вЂ¦ Р С—РЎвЂ”Р вЂ¦Р С—РЎвЂ”Р вЂ¦Р С—РЎвЂ”Р вЂ¦Р С—РЎвЂ”Р вЂ¦Р С—РЎвЂ”Р вЂ¦Р С—РЎвЂ”Р вЂ¦Р С—РЎвЂ”Р вЂ¦ Р С—РЎвЂ”Р вЂ¦Р С—РЎвЂ”Р вЂ¦Р С—РЎвЂ”Р вЂ¦Р С—РЎвЂ”Р вЂ¦Р С—РЎвЂ”Р вЂ¦Р С—РЎвЂ”Р вЂ¦.
 	local h = hit()
 	h.draftsman = self.object
 	h.type = hit.fire_wound
@@ -302,37 +302,33 @@ function generic_object_binder:hear_callback(self, who_id, sound_type, sound_pos
 	xr_hear.hear_callback(self, who_id, sound_type, sound_position, sound_power)
 end
 
--- fluffy22 
+-- fluffy22 by b4rs1k 
 function generic_object_binder:use_callback(obj, who)
-	debug_utils.INFO(MODULE, "Mutant [%s] Used by [%s]", obj:id(), who:id())
-	local actor = who
-	if actor == nil then return end
-	if not actor_can_loot(actor) then return end
-	local obj_id = self.object:id()
-	local se_obj = alife() and alife():object(obj_id)
-	if se_obj then
-		if not se_obj.looted then
-			debug_utils.INFO(MODULE, "Looting mutant [%s]", obj_id)
-			se_obj.looted = true
-			self.looted = true
-			self.tip_state = nil
-			looted_mutants[self.object:id()] = true  -- СЃР±СЂРѕСЃ РєСЌС€Р°: update() СЃСЂР°Р·Сѓ РѕР±РЅРѕРІРёС‚ РїРѕРґСЃРєР°Р·РєСѓ РЅР° "СѓР¶Рµ РѕР±Р»СѓС‚Р°РЅ"
-			-- костыль: меняем подсказку прямо сейчас не ждём update()
-			self.object:set_callback(callback.use_object, nil)
-			self.object:set_tip_text("st_mutant_loot_already_found")
-			nz_loot.loot_mutant(self.object, actor)
-		end
-	else
-		-- РєР»РёРµРЅС‚ MP: alife() РЅРµРґРѕСЃС‚СѓРїРµРЅ
-		if not self.looted then
-			debug_utils.INFO(MODULE, "Looting mutant [%s] (client)", obj_id)
-			self.looted = true
-			self.tip_state = nil  -- СЃР±СЂРѕСЃ РєСЌС€Р°
-			nz_loot.loot_mutant(self.object, actor)
-		end
-	end
+    debug_utils.INFO(MODULE, "Mutant [%s] Used by [%s]", obj:id(), who:id())
+    local actor = who
+    if actor == nil then return end
+    if not actor_can_loot(actor) then return end
+    local obj_id = self.object:id()
+    -- generic_object_binder существует только на сервере, alife() всегда доступен
+    local se_obj = alife() and alife():object(obj_id)
+    if not se_obj then
+        -- se_obj пропал (NPC уже выгружен из alife) — ничего не делаем
+        debug_utils.INFO(MODULE, "use_callback: se_obj nil for [%s], skipping loot", obj_id)
+        return
+    end
+    if not se_obj.looted then
+        debug_utils.INFO(MODULE, "Looting mutant [%s]", obj_id)
+        se_obj.looted = true
+        self.looted = true
+        self.tip_state = nil
+        looted_mutants[self.object:id()] = true
+        self.object:set_callback(callback.use_object, nil)
+        self.object:set_tip_text("st_mutant_loot_already_found")
+        -- Рассылаем звук разделки всем клиентам (позиция трупа мутанта)
+        nz_loot.send_butcher_sound(self.object)
+        nz_loot.loot_mutant(self.object, actor)  -- защищён OnServer() внутри
+    end
 end
--- fluffy22 
 
 function generic_object_binder:net_spawn(sobject)
 	if not object_binder.net_spawn(self, sobject) then
@@ -356,7 +352,7 @@ function generic_object_binder:net_spawn(sobject)
 
 	db.add_obj(self.object)
 
---******************************* РїС—Р…РїС—Р…РїС—Р…РїС—Р…РїС—Р…РїС—Р…РїС—Р…РїС—Р… РїС—Р…РїС—Р… РїС—Р…РїС—Р…РїС—Р…РїС—Р…РїС—Р…РїС—Р… РїС—Р…РїС—Р…РїС—Р…РїС—Р…РїС—Р… РїС—Р…РїС—Р…РїС—Р…РїС—Р… РїС—Р…РїС—Р…РїС—Р…РїС—Р…РїС—Р…РїС—Р… РїС—Р…РїС—Р…РїС—Р…РїС—Р…РїС—Р…РїС—Р…РїС—Р…РїС—Р…РїС—Р…РїС—Р…РїС—Р…РїС—Р…РїС—Р…...*****************************
+--******************************* Р С—РЎвЂ”Р вЂ¦Р С—РЎвЂ”Р вЂ¦Р С—РЎвЂ”Р вЂ¦Р С—РЎвЂ”Р вЂ¦Р С—РЎвЂ”Р вЂ¦Р С—РЎвЂ”Р вЂ¦Р С—РЎвЂ”Р вЂ¦Р С—РЎвЂ”Р вЂ¦ Р С—РЎвЂ”Р вЂ¦Р С—РЎвЂ”Р вЂ¦ Р С—РЎвЂ”Р вЂ¦Р С—РЎвЂ”Р вЂ¦Р С—РЎвЂ”Р вЂ¦Р С—РЎвЂ”Р вЂ¦Р С—РЎвЂ”Р вЂ¦Р С—РЎвЂ”Р вЂ¦ Р С—РЎвЂ”Р вЂ¦Р С—РЎвЂ”Р вЂ¦Р С—РЎвЂ”Р вЂ¦Р С—РЎвЂ”Р вЂ¦Р С—РЎвЂ”Р вЂ¦ Р С—РЎвЂ”Р вЂ¦Р С—РЎвЂ”Р вЂ¦Р С—РЎвЂ”Р вЂ¦Р С—РЎвЂ”Р вЂ¦ Р С—РЎвЂ”Р вЂ¦Р С—РЎвЂ”Р вЂ¦Р С—РЎвЂ”Р вЂ¦Р С—РЎвЂ”Р вЂ¦Р С—РЎвЂ”Р вЂ¦Р С—РЎвЂ”Р вЂ¦ Р С—РЎвЂ”Р вЂ¦Р С—РЎвЂ”Р вЂ¦Р С—РЎвЂ”Р вЂ¦Р С—РЎвЂ”Р вЂ¦Р С—РЎвЂ”Р вЂ¦Р С—РЎвЂ”Р вЂ¦Р С—РЎвЂ”Р вЂ¦Р С—РЎвЂ”Р вЂ¦Р С—РЎвЂ”Р вЂ¦Р С—РЎвЂ”Р вЂ¦Р С—РЎвЂ”Р вЂ¦Р С—РЎвЂ”Р вЂ¦Р С—РЎвЂ”Р вЂ¦...*****************************
 	local se_obj = alife():object(self.object:id())
 	if se_obj then
 		if db.spawned_vertex_by_id[se_obj.id] ~= nil then
@@ -382,25 +378,26 @@ function generic_object_binder:net_spawn(sobject)
 end
 
 function generic_object_binder:net_destroy()
-	self.object:set_callback(callback.death,				nil)
-	self.object:set_callback(callback.patrol_path_in_point, nil)
-	self.object:set_callback(callback.hit,					nil)
-	self.object:set_callback(callback.sound, 				nil)
-	xr_sound.stop_sounds_by_id(self.object:id())
+	self.object:set_callback(callback.death,               nil)
+    self.object:set_callback(callback.patrol_path_in_point, nil)
+    self.object:set_callback(callback.hit,                 nil)
+    self.object:set_callback(callback.sound,               nil)
+    xr_sound.stop_sounds_by_id(self.object:id())
 
-	fighting_with_actor_npcs[self.object:id()] = nil
+    fighting_with_actor_npcs[self.object:id()] = nil
+    looted_mutants[self.object:id()] = nil   -- < ДОБАВИТЬ: очистка на сервере/dedicated
 
-	local st = db.storage[self.object:id()]
-	if st and st.active_scheme then
-		xr_logic.issue_event(self.object, st[st.active_scheme], "net_destroy")
-	end
+    local st = db.storage[self.object:id()]
+    if st and st.active_scheme then
+        xr_logic.issue_event(self.object, st[st.active_scheme], "net_destroy")
+    end
 
-	-- РїС—Р…РїС—Р…РїС—Р… РїС—Р…РїС—Р…РїС—Р…РїС—Р…, РїС—Р…РїС—Р…РїС—Р…РїС—Р…РїС—Р… РїС—Р…РїС—Р…РїС—Р…РїС—Р…РїС—Р…РїС—Р…РїС—Р… РїС—Р…РїС—Р…РїС—Р…РїС—Р…РїС—Р…РїС—Р…РїС—Р…РїС—Р…РїС—Р…РїС—Р… РїС—Р…РїС—Р…РїС—Р…РїС—Р…РїС—Р…РїС—Р…РїС—Р…РїС—Р…РїС—Р… РїС—Р…РїС—Р…РїС—Р…РїС—Р…РїС—Р…РїС—Р…РїС—Р…/РїС—Р…РїС—Р…РїС—Р…РїС—Р…РїС—Р…РїС—Р…РїС—Р…РїС—Р… РїС—Р…РїС—Р…РїС—Р…РїС—Р…РїС—Р…РїС—Р… РїС—Р…РїС—Р… РїС—Р…РїС—Р…РїС—Р…РїС—Р…РїС—Р… РїС—Р…РїС—Р…РїС—Р…РїС—Р…РїС—Р…РїС—Р…РїС—Р…РїС—Р…РїС—Р… --------
+	-- Р С—РЎвЂ”Р вЂ¦Р С—РЎвЂ”Р вЂ¦Р С—РЎвЂ”Р вЂ¦ Р С—РЎвЂ”Р вЂ¦Р С—РЎвЂ”Р вЂ¦Р С—РЎвЂ”Р вЂ¦Р С—РЎвЂ”Р вЂ¦, Р С—РЎвЂ”Р вЂ¦Р С—РЎвЂ”Р вЂ¦Р С—РЎвЂ”Р вЂ¦Р С—РЎвЂ”Р вЂ¦Р С—РЎвЂ”Р вЂ¦ Р С—РЎвЂ”Р вЂ¦Р С—РЎвЂ”Р вЂ¦Р С—РЎвЂ”Р вЂ¦Р С—РЎвЂ”Р вЂ¦Р С—РЎвЂ”Р вЂ¦Р С—РЎвЂ”Р вЂ¦Р С—РЎвЂ”Р вЂ¦ Р С—РЎвЂ”Р вЂ¦Р С—РЎвЂ”Р вЂ¦Р С—РЎвЂ”Р вЂ¦Р С—РЎвЂ”Р вЂ¦Р С—РЎвЂ”Р вЂ¦Р С—РЎвЂ”Р вЂ¦Р С—РЎвЂ”Р вЂ¦Р С—РЎвЂ”Р вЂ¦Р С—РЎвЂ”Р вЂ¦Р С—РЎвЂ”Р вЂ¦ Р С—РЎвЂ”Р вЂ¦Р С—РЎвЂ”Р вЂ¦Р С—РЎвЂ”Р вЂ¦Р С—РЎвЂ”Р вЂ¦Р С—РЎвЂ”Р вЂ¦Р С—РЎвЂ”Р вЂ¦Р С—РЎвЂ”Р вЂ¦Р С—РЎвЂ”Р вЂ¦Р С—РЎвЂ”Р вЂ¦ Р С—РЎвЂ”Р вЂ¦Р С—РЎвЂ”Р вЂ¦Р С—РЎвЂ”Р вЂ¦Р С—РЎвЂ”Р вЂ¦Р С—РЎвЂ”Р вЂ¦Р С—РЎвЂ”Р вЂ¦Р С—РЎвЂ”Р вЂ¦/Р С—РЎвЂ”Р вЂ¦Р С—РЎвЂ”Р вЂ¦Р С—РЎвЂ”Р вЂ¦Р С—РЎвЂ”Р вЂ¦Р С—РЎвЂ”Р вЂ¦Р С—РЎвЂ”Р вЂ¦Р С—РЎвЂ”Р вЂ¦Р С—РЎвЂ”Р вЂ¦ Р С—РЎвЂ”Р вЂ¦Р С—РЎвЂ”Р вЂ¦Р С—РЎвЂ”Р вЂ¦Р С—РЎвЂ”Р вЂ¦Р С—РЎвЂ”Р вЂ¦Р С—РЎвЂ”Р вЂ¦ Р С—РЎвЂ”Р вЂ¦Р С—РЎвЂ”Р вЂ¦ Р С—РЎвЂ”Р вЂ¦Р С—РЎвЂ”Р вЂ¦Р С—РЎвЂ”Р вЂ¦Р С—РЎвЂ”Р вЂ¦Р С—РЎвЂ”Р вЂ¦ Р С—РЎвЂ”Р вЂ¦Р С—РЎвЂ”Р вЂ¦Р С—РЎвЂ”Р вЂ¦Р С—РЎвЂ”Р вЂ¦Р С—РЎвЂ”Р вЂ¦Р С—РЎвЂ”Р вЂ¦Р С—РЎвЂ”Р вЂ¦Р С—РЎвЂ”Р вЂ¦Р С—РЎвЂ”Р вЂ¦ --------
 	local se_obj = alife():object(self.object:id())
 	if se_obj and se_obj.m_smart_terrain_id ~= 65535 then
 		local smart_terrain = alife():object(se_obj.m_smart_terrain_id)
 		if smart_terrain.arriving_npc[se_obj.id] == nil then
-			-- РїС—Р…РїС—Р…РїС—Р…РїС—Р…РїС—Р…РїС—Р…РїС—Р…РїС—Р…РїС—Р…РїС—Р… РїС—Р…РїС—Р…РїС—Р…РїС—Р…РїС—Р…РїС—Р…РїС—Р… РїС—Р… РїС—Р…РїС—Р…РїС—Р…РїС—Р…РїС—Р…РїС—Р…РїС—Р…РїС—Р… РїС—Р…РїС—Р…РїС—Р…РїС—Р…РїС—Р…РїС—Р… --------
+			-- Р С—РЎвЂ”Р вЂ¦Р С—РЎвЂ”Р вЂ¦Р С—РЎвЂ”Р вЂ¦Р С—РЎвЂ”Р вЂ¦Р С—РЎвЂ”Р вЂ¦Р С—РЎвЂ”Р вЂ¦Р С—РЎвЂ”Р вЂ¦Р С—РЎвЂ”Р вЂ¦Р С—РЎвЂ”Р вЂ¦Р С—РЎвЂ”Р вЂ¦ Р С—РЎвЂ”Р вЂ¦Р С—РЎвЂ”Р вЂ¦Р С—РЎвЂ”Р вЂ¦Р С—РЎвЂ”Р вЂ¦Р С—РЎвЂ”Р вЂ¦Р С—РЎвЂ”Р вЂ¦Р С—РЎвЂ”Р вЂ¦ Р С—РЎвЂ”Р вЂ¦ Р С—РЎвЂ”Р вЂ¦Р С—РЎвЂ”Р вЂ¦Р С—РЎвЂ”Р вЂ¦Р С—РЎвЂ”Р вЂ¦Р С—РЎвЂ”Р вЂ¦Р С—РЎвЂ”Р вЂ¦Р С—РЎвЂ”Р вЂ¦Р С—РЎвЂ”Р вЂ¦ Р С—РЎвЂ”Р вЂ¦Р С—РЎвЂ”Р вЂ¦Р С—РЎвЂ”Р вЂ¦Р С—РЎвЂ”Р вЂ¦Р С—РЎвЂ”Р вЂ¦Р С—РЎвЂ”Р вЂ¦ --------
 			if db.offline_objects[self.object:id()] then
 				db.offline_objects[self.object:id()].level_vertex_id = self.object:level_vertex_id()
 				db.offline_objects[self.object:id()].active_section = db.storage[self.object:id()].active_section
@@ -469,12 +466,12 @@ function bind_monster_cl:update(delta)
 	object_binder.update(self, delta)
 
 	-- fluffy22
-	-- guard: не трогаем объект если он уже не в storage (net_destroy начался)
+	-- guard: РЅРµ С‚СЂРѕРіР°РµРј РѕР±СЉРµРєС‚ РµСЃР»Рё РѕРЅ СѓР¶Рµ РЅРµ РІ storage (net_destroy РЅР°С‡Р°Р»СЃСЏ)
 	if db.storage[self.object:id()] == nil then return end
 
 	local object_alive = self.object:alive()
 	if not object_alive then
-		-- дополнительная проверка что объект ещё валиден
+		-- РґРѕРїРѕР»РЅРёС‚РµР»СЊРЅР°СЏ РїСЂРѕРІРµСЂРєР° С‡С‚Рѕ РѕР±СЉРµРєС‚ РµС‰С‘ РІР°Р»РёРґРµРЅ
 		if not self.object:position() then return end
 
 		local is_looted = self.looted or looted_mutants[self.object:id()]
@@ -495,7 +492,7 @@ function bind_monster_cl:update(delta)
 		if self.tip_state ~= nil then
 			self.tip_state = nil
 			self.object:set_callback(callback.use_object, nil)
-			-- НЕ вызываем set_tip_text на живом объекте - это и крашило
+			-- РќР• РІС‹Р·С‹РІР°РµРј set_tip_text РЅР° Р¶РёРІРѕРј РѕР±СЉРµРєС‚Рµ - СЌС‚Рѕ Рё РєСЂР°С€РёР»Рѕ
 		end
 	end
 	return
@@ -503,20 +500,23 @@ function bind_monster_cl:update(delta)
 end
 
 function bind_monster_cl:use_callback(obj, who)
-	-- клиентский костыль: сразу меняем подсказку не ждём следующего update()
-	local actor = getLocalActor()
-	if actor == nil then return end
-	if not actor_can_loot(actor) then
-		-- нет ножа - подсказку не меняем, серверный use_callback не вызовется
-		return
-	end
-	-- помечаем как облутанный локально
-	looted_mutants[self.object:id()] = true
-	self.looted = true
-	self.tip_state = "looted"
-	-- сразу убираем подсказку
-	self.object:set_callback(callback.use_object, nil)
-	self.object:set_tip_text("st_mutant_loot_already_found")
+    local actor = getLocalActor()
+    if actor == nil then return end
+    if not actor_can_loot(actor) then return end
+    -- Помечаем локально сразу — убираем F, меняем подсказку, не ждём ответа сервера
+    looted_mutants[self.object:id()] = true
+    self.looted = true
+    self.tip_state = "looted"
+    self.object:set_callback(callback.use_object, nil)
+    self.object:set_tip_text("st_mutant_loot_already_found")
+    -- Отправляем серверу запрос на спаун лута
+    -- Используем GM_SCRIPT_SPAWN_ENTITY type=0 pattern НЕ подходит (он для предметов).
+    -- Используем выделенный GM_SCRIPT_MUTANT_LOOT — сервер сделает loot_mutant.
+    local packet = game_cl.GenerateGameMessage(GM_SCRIPT_MUTANT_LOOT)
+    packet:w_u16(self.object:id())   -- id мутанта
+    packet:w_u16(actor:id())         -- id актора (для спауна у него)
+    u_EventSendReliable(packet)
+    debug_utils.INFO(MODULE, "bind_monster_cl:use_callback: sent loot request for mutant [%s]", self.object:id())
 end
 
 function bind_monster_cl:net_destroy()

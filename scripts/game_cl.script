@@ -47,9 +47,9 @@ function TranslateGameMessage(packet)
 		
 		local add = packet:r_u8()
 		
-		printf_msg("GM_SCRIPT_MANAGE_FLAG: %s %u", name, add)
+		printf_msg("GM_SCRIPT_MANAGE_FLAG: %s %u", tostring(name), add)
 		
-		story_flags.set_flag(name, add == 1)
+		if name then story_flags.set_flag(name, add == 1) end
 	elseif _type == GM_SCRIPT_COLLECT_STORY_FLAGS then
 		story_flags.load_flags(packet)
 	elseif _type == GM_SCRIPT_INIT_NPC_TRADE then
@@ -236,20 +236,54 @@ function TranslateGameMessage(packet)
 		end
 		printf_msg("GM_SCRIPT_SAVE_VOICE_DIALOG: %s", name)
 	elseif _type == GM_SCRIPT_MUTANT_LOOT then
-		printf_msg("NZ_LOOT: GM_SCRIPT_MUTANT_LOOT received, OnClient=%s OnServer=%s", tostring(OnClient()), tostring(OnServer()))
-		if OnClient() then
-			local actor_id = packet:r_u16()
-			local news_id = packet:r_stringZ()
-			local sender_tag = packet:r_stringZ()
-			printf_msg("NZ_LOOT: actor_id=%s local_id=%s news_id=%s", tostring(actor_id), tostring(getLocalActor() and getLocalActor():id()), tostring(news_id))
-			local local_actor = getLocalActor()
-			if local_actor then
-				local news_caption = game.translate_string("st_tip")
-				local news_text = game.translate_string(news_id)
-				printf_msg("NZ_LOOT: caption=[%s] text=[%s]", tostring(news_caption), tostring(news_text))
-				local texture = news_manager.tips_icons[sender_tag] or "ui_iconsTotal_grouping"
-				printf_msg("NZ_LOOT: texture=[%s] calling give_game_news", tostring(texture))
-				local_actor:give_game_news(news_caption, news_text, texture, 0, 5000, 0)
+		-- Маркер определяет направление пакета:
+		-- 0 = сервер → клиент (показать новость о луте)
+		-- 1 = клиент → сервер (запрос на спаун лута)
+		local marker = packet:r_u8()
+		if marker == 0 then
+			-- Новость о луте: только клиент показывает UI
+			if OnClient() then
+				local actor_id   = packet:r_u16()
+				local news_id    = packet:r_stringZ()
+				local sender_tag = packet:r_stringZ()
+				printf_msg("NZ_LOOT: news actor_id=%s local_id=%s news_id=%s",
+					tostring(actor_id),
+					tostring(getLocalActor() and getLocalActor():id()),
+					tostring(news_id))
+				local local_actor = getLocalActor()
+				-- Показываем новость только тому актору, который лутал
+				if local_actor and local_actor:id() == actor_id then
+					local news_caption = game.translate_string("st_tip")
+					local news_text    = game.translate_string(news_id)
+					local texture      = news_manager.tips_icons[sender_tag] or "ui_iconsTotal_grouping"
+					local_actor:give_game_news(news_caption, news_text, texture, 0, 5000, 0)
+				end
+			end
+		elseif marker == 1 then
+			-- Запрос лута от клиента: только сервер спаунит предметы
+			if OnServer() then
+				local mutant_id = packet:r_u16()
+				local actor_id  = packet:r_u16()
+				printf_msg("NZ_LOOT: loot request mutant_id=%s actor_id=%s", tostring(mutant_id), tostring(actor_id))
+				local se_mutant = alife() and alife():object(mutant_id)
+				if se_mutant and not se_mutant.looted then
+					se_mutant.looted = true
+					local mutant_go = db.storage[mutant_id] and db.storage[mutant_id].object
+					local actor_go  = db.storage[actor_id]  and db.storage[actor_id].object
+					if mutant_go and actor_go then
+						nz_loot.loot_mutant(mutant_go, actor_go)
+					else
+						printf_msg("! NZ_LOOT: mutant_go or actor_go is nil (offline?)")
+					end
+				end
+			end
+		elseif marker == 2 then
+			-- Звук разделки: все клиенты играют 3D-звук из позиции трупа
+			if OnClient() then
+				local x = packet:r_float()
+				local y = packet:r_float()
+				local z = packet:r_float()
+				nz_loot.play_butcher_sound_at(x, y, z)
 			end
 		end
 	end

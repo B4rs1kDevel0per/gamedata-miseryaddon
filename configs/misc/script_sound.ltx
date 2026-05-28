@@ -41,6 +41,7 @@ patrol_sneak
 patrol_run
 patrol_walk
 fight_attack
+fight_enemy
 post_combat_wait
 post_combat_wait_long
 post_combat_relax
@@ -85,6 +86,30 @@ wounded_medkit
 
 radio_call
 
+;new
+df_restricted
+
+lever_on
+lever_off
+generator_on
+generator_off
+generator_loop
+
+spotlight_idle_0
+spotlight_idle_1
+spotlight_idle_2
+spotlight_on
+spotlight_off
+
+lamp_idle_0
+lamp_idle_1
+lamp_on
+lamp_off
+
+zhar_blow
+spatial_bubble_rupture
+
+tinnitus
 
 [surge_earthquake_sound_looped]
 type = looped
@@ -206,6 +231,7 @@ type = npc
 actor_stereo = false
 npc_prefix = false
 path = human_01\stalker\alife\patrol\sneak_
+avail_communities = stalker, bandit, dolg, freedom, army, csky, renegade
 shuffle = rnd
 idle = 1,1,100
 
@@ -214,6 +240,7 @@ type = npc
 actor_stereo = false
 npc_prefix = false
 path = human_01\stalker\alife\patrol\run_
+avail_communities = stalker, bandit, dolg, freedom, army, csky, renegade
 shuffle = rnd
 idle = 1,1,100
 
@@ -222,6 +249,7 @@ type = npc
 actor_stereo = false
 npc_prefix = false
 path = human_01\stalker\alife\patrol\walk_
+avail_communities = stalker, bandit, dolg, freedom, army, csky, renegade
 shuffle = rnd
 idle = 1,1,100
 
@@ -234,6 +262,14 @@ shuffle = rnd
 idle = 1,1,100
 is_combat_sound = true
 
+[fight_enemy]
+type = npc
+actor_stereo = false
+npc_prefix = true
+path = fight\enemy\enemy_
+shuffle = rnd
+idle = 1,1,100
+is_combat_sound = true
 
 
 [post_combat_wait]
@@ -375,6 +411,7 @@ type = 3d
 path = device\radio_call
 shuffle = rnd
 idle = 0,0,100
+sync = true
 
 
 ;***************************************************************
@@ -432,21 +469,24 @@ path = vehicles\helicopter\hit_
 shuffle = rnd
 idle = 3,4,40
 
-
-
 ;***************************************************************
 ; Œ—ÕŒ¬Õ€≈ “≈Ã€
 ;***************************************************************
 [alarm]
-type = 3d
+type = looped
 path = ambient\siren1
 shuffle = loop
 idle = 0,0,100
 
+[alarm_2]
+type = looped
+path = ambient\siren2
+shuffle = loop
+idle = 0,0,100
 
 [meet_hello]
 type = npc
-avail_communities = army, stalker, bandit, dolg, freedom
+avail_communities = army, stalker, bandit, dolg, freedom, csky, renegade, ecolog
 npc_prefix = true
 path = states\meet\meet_hello_
 shuffle = rnd
@@ -454,7 +494,7 @@ idle = 2,2,100
 
 [meet_hide_weapon]
 type = npc
-avail_communities = army, stalker, bandit, dolg, freedom
+avail_communities = army, stalker, bandit, dolg, freedom, csky, renegade, ecolog
 npc_prefix = true
 path = states\meet\meet_hide_weapon_
 shuffle = rnd
@@ -462,7 +502,7 @@ idle = 5,7,100
 
 [meet_use_no_default]
 type = npc
-avail_communities = army, stalker, bandit, dolg, freedom
+avail_communities = army, stalker, bandit, dolg, freedom, csky, renegade, ecolog
 npc_prefix = true
 path = states\meet\meet_use_no_default_
 shuffle = rnd
@@ -470,7 +510,7 @@ idle = 1,1,100
 
 [meet_use_no_fight]
 type = npc
-avail_communities = army, stalker, bandit, dolg, freedom
+avail_communities = army, stalker, bandit, dolg, freedom, csky, renegade, ecolog
 npc_prefix = true
 path = states\meet\meet_use_no_fight_
 shuffle = rnd
@@ -478,7 +518,7 @@ idle = 2,2,100
 
 [meet_use_no_weapon]
 type = npc
-avail_communities = army, stalker, bandit, dolg, freedom
+avail_communities = army, stalker, bandit, dolg, freedom, csky, renegade, ecolog
 npc_prefix = true
 path = states\meet\meet_use_no_weapon_
 shuffle = rnd
@@ -486,7 +526,7 @@ idle = 5,7,100
 
 [meet_use_no_talk_leader]
 type = npc
-avail_communities = army, stalker, bandit, dolg, freedom
+avail_communities = army, stalker, bandit, dolg, freedom, csky, renegade, ecolog
 npc_prefix = true
 path = states\meet\meet_use_no_talk_leader_
 shuffle = rnd
@@ -495,7 +535,7 @@ idle = 5,7,100
 
 [corpse_loot_begin]
 type = npc
-avail_communities = army, stalker, bandit, dolg, freedom
+avail_communities = army, stalker, bandit, dolg, freedom, csky, renegade, ecolog
 npc_prefix = true
 path = states\loot\loot_begin_
 shuffle = rnd
@@ -503,7 +543,7 @@ idle = 10,11,100
 
 [corpse_loot_good]
 type = npc
-avail_communities = army, stalker, bandit, dolg, freedom
+avail_communities = army, stalker, bandit, dolg, freedom, csky, renegade, ecolog
 npc_prefix = true
 path = states\loot\loot_good_
 shuffle = rnd
@@ -511,7 +551,7 @@ idle = 10,11,100
 
 [corpse_loot_bad]
 type = npc
-avail_communities = army, stalker, bandit, dolg, freedom
+avail_communities = army, stalker, bandit, dolg, freedom, csky, renegade, ecolog
 npc_prefix = true
 path = states\loot\loot_bad_
 shuffle = rnd
@@ -519,7 +559,7 @@ idle = 10,11,100
 
 [help_heavy]
 type = npc
-avail_communities = army, stalker, bandit, dolg, freedom
+avail_communities = army, stalker, bandit, dolg, freedom, killer, monolith csky, renegade, ecolog
 npc_prefix = true
 path = help\wounded_heavy\help_
 shuffle = rnd
@@ -527,7 +567,7 @@ idle = 4,8,100
 
 [help_thanks]
 type = npc
-avail_communities = army, stalker, bandit, dolg, freedom, killer
+avail_communities = army, stalker, bandit, dolg, freedom, killer, csky, renegade, ecolog
 npc_prefix = true
 path = help\wounded_thanx\thanx_
 shuffle = rnd
@@ -535,7 +575,7 @@ idle = 1,1,100
 
 [wounded_medkit]
 type = npc
-avail_communities = army, stalker, bandit, dolg, freedom, killer, monolith
+avail_communities = army, stalker, bandit, dolg, freedom, killer, monolith, csky, renegade, ecolog
 npc_prefix = true
 path = help\wounded\medkit_
 shuffle = rnd
@@ -567,3 +607,108 @@ type = 3d
 path = anomaly\steam_blowout
 shuffle = rnd
 idle = 0,0,100
+****NEW*****************************************************
+;***************************************************************
+; Defence
+
+;***************************************************************
+[df_restricted]
+type = actor
+npc_prefix = false
+path = interface\df_restrictedarea
+play_always = true
+shuffle = rnd
+idle = 0,0,100
+
+[lever_on]
+type = 3d
+path = ambient\levers\lever_on
+shuffle = rnd
+idle = 1,1,100
+play_always = true
+
+[lever_off]
+type = 3d
+path = ambient\levers\lever_off
+shuffle = rnd
+idle = 1,1,100
+play_always = true
+
+[generator_on]
+type = 3d
+path = ambient\generator\generator_on
+shuffle = rnd
+idle = 1,1,100
+
+[generator_off]
+type = 3d
+path = ambient\generator\generator_off
+shuffle = rnd
+idle = 1,1,100
+
+[generator_loop]
+type = looped
+path = ambient\generator\generator_loop
+
+[spotlight_idle_0]
+type = looped
+path = ambient\spotlights\spotlight_idle_0
+
+[spotlight_idle_1]
+type = looped
+path = ambient\spotlights\spotlight_idle_1
+
+[spotlight_idle_2]
+type = looped
+path = ambient\spotlights\spotlight_idle_2
+
+[spotlight_on]
+type = 3d
+path = ambient\spotlights\spotlight_on
+shuffle = rnd
+idle = 1,1,100
+
+[spotlight_off]
+type = 3d
+path = ambient\spotlights\spotlight_off
+shuffle = rnd
+idle = 1,1,100
+
+[lamp_idle_0]
+type = looped
+path = ambient\lamp\lamp_idle_0
+
+[lamp_idle_1]
+type = looped
+path = ambient\lamp\lamp_idle_1
+
+[lamp_on]
+type = 3d
+path = ambient\lamp\lamp_on
+shuffle = rnd
+idle = 1,1,100
+
+[lamp_off]
+type = 3d
+path = ambient\lamp\lamp_off
+shuffle = rnd
+idle = 1,1,100
+
+[zhar_blow]
+type = 3d
+path = anomaly\zhar_blow
+shuffle = rnd
+idle = 0,0,100
+
+[spatial_bubble_rupture]
+type = 3d
+path = ambient\jupiter\jup_b46_spatial_bubble_rupture
+shuffle = seq
+idle = 0,0,100
+
+[tinnitus]
+type = actor
+npc_prefix = false
+path = affects\tinnitus3a
+shuffle = rnd
+idle = 1,1,100

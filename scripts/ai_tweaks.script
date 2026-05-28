@@ -127,23 +127,29 @@ end
 -------------------
 -- npc_hit_callback(npc,amount,local_direction,who,bone_index)
 -------------------
-function npc_hit_callback(npc,amount,local_direction,who,bone_index)
-	if (npc and amount > 0 and bone_index ~= "from_death_callback") then
-		xr_danger.set_script_danger(npc,2000)
-		if (xrs_facer) then xrs_facer.hit_callback(npc,amount,local_direction,who,bone_index) end
-	end
+function npc_hit_callback(npc, amount, local_direction, who, bone_index)
+    if npc and amount > 0 and bone_index ~= "from_death_callback" then
+        xr_danger.set_script_danger(npc, 2000)
+        if xrs_facer then xrs_facer.hit_callback(npc, amount, local_direction, who, bone_index) end
+        -- ДОБАВИТЬ: safe_zone логика при ударе актором
+        if xr_combat_ignore then
+            xr_combat_ignore.npc_on_hit_callback(npc, amount, local_direction, who, bone_index)
+        end
+    end
 end
 
 -------------------
 -- npc_on_death_callback(npc,who)
 -------------------
-function npc_on_death_callback(npc,who)
-	local id = npc:id()
-	db.storage[id].victim_surrender = nil
-	safe_zone_npcs[id] = nil
-	if (rx_gl) then
-		rx_gl.death(npc)
-	end
-
-	if (xr_visual) then xr_visual.death_callback(npc,who) end
+function npc_on_death_callback(npc, who)
+    local id = npc:id()
+    db.storage[id].victim_surrender = nil
+    safe_zone_npcs[id] = nil
+    -- ДОБАВИТЬ: очистка safe_zone для всего отряда при гибели последнего бойца
+    local squad = get_object_squad(npc)
+    if squad and xr_combat_ignore then
+        xr_combat_ignore.squad_on_npc_death(squad, npc)
+    end
+    if rx_gl then rx_gl.death(npc) end
+    if xr_visual then xr_visual.death_callback(npc, who) end
 end

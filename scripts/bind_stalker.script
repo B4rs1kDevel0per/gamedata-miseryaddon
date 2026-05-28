@@ -30,13 +30,13 @@ local weapon_hide = {}
 
 class "mp_actor_binder" (object_binder)
 function mp_actor_binder:__init (obj) super(obj)
-	self.bCheckStart = false
-	self.last_level_name = nil
-	self.deimos_intensity = nil
-	self.loaded_active_slot = 3
-	self.loaded_slot_applied = false
-	self.weather_manager = level_weathers.get_weather_manager()											
-	self.surge_manager = surge_manager.get_surge_manager()
+    self.bCheckStart = false
+    self.last_level_name = nil
+    self.deimos_intensity = nil
+    self.loaded_active_slot = 3
+    self.loaded_slot_applied = false
+    self.weather_manager = nil  -- �������������� ������ � net_spawn
+    self.surge_manager = surge_manager.get_surge_manager()
 end
 
 delayed_functions = {}
@@ -79,7 +79,7 @@ function mp_actor_binder:update_gameover_screen()
 		self:init_gameover_screen()
 	end
 	
-	local count = math.floor(10 - (time_global() - self.gameover_start_time) / 1000)
+	local count = math.floor(6 - (time_global() - self.gameover_start_time) / 1000)
 	
 	if count >= 0 then
 		self.gameover_wnd:getTimer():SetText(tostring(count))
@@ -92,6 +92,9 @@ function mp_actor_binder:update_gameover_screen()
 end
 
 function mp_actor_binder:net_spawn(data)
+	if level_weathers then
+		self.weather_manager = level_weathers.get_weather_manager()
+	end
 --	printf("actor net spawn")
 	level.show_indicators()
 	self.bCheckStart = true
@@ -104,7 +107,12 @@ function mp_actor_binder:net_spawn(data)
 	end
 	
 	
-	self.weather_manager:reset()			 
+	if self.weather_manager then
+		if atmosfear then
+			self.weather_manager.atmosfear = atmosfear.get_atmosfear()
+		end
+		self.weather_manager:reset()
+	end
 	db.add_obj(self.object)
 	db.add_mp_actor(self.object)
 
@@ -390,20 +398,21 @@ end
 class "actor_binder" (object_binder)
 ----------------------------------------------------------------------------------------------------------------------
 function actor_binder:__init (obj) super(obj)
-	self.bCheckStart = false
-	self.weather_manager = level_weathers.get_weather_manager()
-	self.surge_manager = surge_manager.get_surge_manager()
-	--self.actor_detector = xr_detector.actor_detector()
-	self.last_level_name = nil
-	self.deimos_intensity = nil
---	self.actor_weapon_on_start = true
-	self.loaded_active_slot = 3
-	self.loaded_slot_applied = false
-	self.last_detective_achievement_spawn_time 	= nil
-	self.last_mutant_hunter_achievement_spawn_time	= nil
+    self.bCheckStart = false
+    self.weather_manager = nil  -- �������������� ������ � net_spawn
+    self.surge_manager = surge_manager.get_surge_manager()
+    self.last_level_name = nil
+    self.deimos_intensity = nil
+    self.loaded_active_slot = 3
+    self.loaded_slot_applied = false
+    self.last_detective_achievement_spawn_time    = nil
+    self.last_mutant_hunter_achievement_spawn_time = nil
 end
 ----------------------------------------------------------------------------------------------------------------------
 function actor_binder:net_spawn(data)
+	if level_weathers then
+		self.weather_manager = level_weathers.get_weather_manager()
+	end
 --	printf("actor net spawn")
 	level.show_indicators()
 	self.bCheckStart = true
@@ -426,7 +435,15 @@ function actor_binder:net_spawn(data)
 		level.enable_input()
 	end
 	xr_s.on_game_load()                                    --' Distemper 03.2008 --
-	self.weather_manager:reset()
+	if self.weather_manager then
+		-- Подставляем реальный CAtmosFear объект до reset(),
+		-- чтобы reset() не создавал заглушку-таблицу.
+		-- atmosfear.get_atmosfear() создаёт объект лениво если ещё нет.
+		if atmosfear then
+			self.weather_manager.atmosfear = atmosfear.get_atmosfear()
+		end
+		self.weather_manager:reset()
+	end
 	--' Загружаем настройки дропа
 	death_manager.init_drop_settings()
 	--'Устанавливаем ссылку на таскменеджер
@@ -631,7 +648,7 @@ function actor_binder:update(delta)
 	end
 	
 	if OnServer() then
-		self.weather_manager:update()
+		if self.weather_manager then self.weather_manager:update() end
 
 		local time = time_global()
 		game_stats.update (delta, self.object)
@@ -706,7 +723,7 @@ end
 function actor_binder:save(packet)
 	set_save_marker(packet, "save", false, "actor_binder")
 	object_binder.save(self, packet)
-	self.weather_manager:save(packet)
+	if self.weather_manager then self.weather_manager:save(packet) end
 	release_body_manager.get_release_body_manager():save(packet)
 	self.surge_manager:save(packet)
 	treasure_manager.get_treasure_manager():save(packet)
@@ -718,7 +735,7 @@ end
 function actor_binder:load(reader)
 	set_save_marker(reader, "load", false, "actor_binder")
 	object_binder.load(self, reader)
-	self.weather_manager:load(reader)
+	if self.weather_manager then self.weather_manager:load(reader) end
 	release_body_manager.get_release_body_manager():load(reader)
 	self.surge_manager:load(reader)
 	treasure_manager.get_treasure_manager():load(reader)
@@ -948,5 +965,8 @@ end
 -- Called from the GM message dispatcher when GM_SCRIPT_WEATHER is received
 ---------------------------------------------------------------------
 function OnWeatherMessage(packet)
-	level_weathers.apply_weather_state(packet)
+    if level_weathers then
+        level_weathers.apply_weather_state(packet)
+    end
 end
+
