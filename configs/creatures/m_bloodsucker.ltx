@@ -17,7 +17,7 @@ MaxHealthValue         = 200              ; range [0..200]
 ef_creature_type       = 13             ; option for evaluation functions
 ef_weapon_type         = 2
 ef_detector_type       = 1
-panic_threshold        = 0.1
+panic_threshold        = 0.01
 
 cform                    = skeleton           ; collision class
 class                    = SM_BLOOD           ; AI class
@@ -182,6 +182,8 @@ morale_v          	= 0.01            ;скорость восстановления морали [0...1]
 health_hit_part     = 1.0   ;0.8      ;процент хита, уходящий на отнимание здоровья [0...1]
 power_hit_part      = 1.0   ;0.9      ;процент хита, уходящий на отнимание силы [0...1]
 psy_health_v        = 0.1           ;скорость восстановления psy-здоровья
+health_restore_v              = 0.001
+
 
 immunities_sect     = bloodsucker_immunities
 
@@ -350,23 +352,25 @@ vision_danger_section		= bloodsucker_vision_danger
 min_view_distance       	= 1.5       	; коэффициент, который множитс€ на eye_range, в зависимости от угла
 max_view_distance     		= 1.8       		; коэффициент, который множитс€ на eye_range, в зависимости от угла
 visibility_threshold    	= 190.0       	; значение, при достижении суммой которого объект считаетс€ видимым
-always_visible_distance   	= 0.1
+always_visible_distance   	= 0.05
 time_quant          		= 0.0005
 decrease_value        		= 0.01        	; значение, на которое уменьшаетс€ вес, если объект попал в фрустум, но отсЄкс€ по каким-то причинам
 velocity_factor         	= 0.2
 luminocity_factor     		= 0.6		      	; фактор освещени€ (только дл€ јктЄра)
-transparency_threshold    	= 0.4
+transparency_threshold    	= 0.1
 
 [bloodsucker_vision_danger]
 min_view_distance       	= 1.6       	; коэффициент, который множитс€ на eye_range, в зависимости от угла
 max_view_distance     		= 1.8       		; коэффициент, который множитс€ на eye_range, в зависимости от угла
 visibility_threshold    	= 90.0       	; значение, при достижении суммой которого объект считаетс€ видимым
-always_visible_distance 	= 0.1
+always_visible_distance 	= 0.05
 time_quant          		= 0.0005
 decrease_value        		= 0.01        	; значение, на которое уменьшаетс€ вес, если объект попал в фрустум, но отсЄкс€ по каким-то причинам
 velocity_factor         	= 0.2
 luminocity_factor     		= 0.6         	; фактор освещени€ (только дл€ јктЄра)
-transparency_threshold  	= 0.05
+transparency_threshold  	= 0.1
+
+feel_enemy_who_just_hit_max_distance = 350
 
 
 ;=================================================================================
@@ -384,7 +388,6 @@ bip01_spine2    = 0.7, -1, 0.3
 bip01_spine3    = 0.7, -1, 0.3
 bip01_neck      = 0.95, -1, 2.4
 bip01_head      = 1.85, -1, 1.9
-
 
 [bloodsucker_critical_wound_bones_head]
 bip01_neck
@@ -495,28 +498,25 @@ stand_attack_1 =      0.30,   1.1,       50,        0.0, 2.0, 4.0,     -0.6, 0.6
 ;Right hand Strike
 stand_attack_2 =      0.30,   0.95,       50,       -4.0, 2.5, 0.50,    -0.6, 0.6, -0.6, 0.6,          2.2
 ;Right hand Strike
-vampire_2   =     	  0.60,   17.85,       50,        0.0, 2.5, 4.50,    -1.2, 1.2, -1.2, 1.2,	       4.5
+vampire_2   =     	  0.60,   0.85,       50,        0.0, 2.5, 4.50,    -1.2, 1.2, -1.2, 1.2,	       4.5
 
-stand_run_attack_left_0  = 0.30,   0.4,       50,        3.5, 2.0, 0.5,     -1.0, 1.0, -1.0, 1.0,     2.5
-stand_run_attack_right_0 = 0.30,   0.4,       50,        3.5, 2.0, 0.5,     -1.0, 1.0, -1.0, 1.0,     2.5
+stand_run_attack_left_0  = 0.30,   0.8,       50,        3.5, 2.0, 0.5,     -1.0, 1.0, -1.0, 1.0,     2.5
+stand_run_attack_right_0 = 0.30,   0.8,       50,        3.5, 2.0, 0.5,     -1.0, 1.0, -1.0, 1.0,     2.5
 
 
 ;===========================================================================
 ; Immunities
 ;===========================================================================
 [bloodsucker_immunities]
-burn_immunity = 1.5 ; 3.0 ;     		= 0.1
+burn_immunity = 2.2 ; 3.0 ;     		= 0.1
 strike_immunity     	= 0.1
-shock_immunity = 3.0 ;			= 0.1
+shock_immunity = 2.7 ;			= 0.1
 wound_immunity         	= 0.45
 radiation_immunity     	= 0.0
 telepatic_immunity     	= 0.0
-chemical_burn_immunity = 5.5 ; = 3.0 ; 	= 0.1
+chemical_burn_immunity = 0.65 ; = 3.0 ; 	= 0.1
 explosion_immunity      = 0.65
-fire_wound_immunity     = 0.3
-
-
-
+fire_wound_immunity     = 0.35
 
 ;===========================================================================
 ; SPECIAL EFFECTORS
@@ -572,8 +572,8 @@ ce_power      	= 2.0 ;0.7 ; power
 
 
 [bloodsucker_protections]
-skin_armor = 0.15
-hit_fraction_monster = 0.85
+skin_armor = 0.4
+hit_fraction_monster = 0.75
 
 
 ;*********************************************************************************
@@ -614,7 +614,7 @@ radiation_immunity 			= 0.0
 telepatic_immunity 			= 0.0
 chemical_burn_immunity = 2.5 ; = 3.0 ; 		= 0.8
 explosion_immunity			= 0.75
-fire_wound_immunity			= 0.40
+fire_wound_immunity			= 0.45
 
 [bloodsucker_attack_params_weak]:m_bloodsucker_attack_params
 ;---------------------------------------------------------------------------------------------------------------------------------------------
@@ -672,15 +672,15 @@ invisibility_activate_delay = 3500
 protections_sect = bloodsucker_protections
 
 [bloodsucker_immunities_normal]
-burn_immunity = 1.5 ; 5.0 ; 				= 0.75			;Factors of immunity
+burn_immunity = 2.2 ; 5.0 ; 				= 0.75			;Factors of immunity
 strike_immunity 			= 0.75
-shock_immunity = 3.0 ; 				= 0.7
+shock_immunity = 2.7 ; 				= 0.7
 wound_immunity				= 0.6
 radiation_immunity 			= 0.0
 telepatic_immunity 			= 0.0
-chemical_burn_immunity = 2.5 ; = 3.0 ; 		= 0.75
+chemical_burn_immunity = 0.65 ; = 3.0 ; 		= 0.75
 explosion_immunity		= 0.7
-fire_wound_immunity		= 0.3
+fire_wound_immunity		= 0.35
 
 [bloodsucker_attack_params_normal]
 ;Left hand Strike
@@ -690,7 +690,7 @@ stand_attack_1 =      0.30,   1.2,     65,        0.0, 2.0, 4.0,     	-0.8, 0.8,
 ;Right hand Strike
 stand_attack_2 =      0.30,   1.15,     60,        -4.0, 2.5, 0.50,   	-1.0, 1.0, -1.0, 1.0,          	2.5
 ;Right hand Strike
-vampire_2   =     	  0.60,   17.90,      50,        0.0, 2.5, 4.50,     -1.2, 1.2, -1.2, 1.2,         	2 ;4.5
+vampire_2   =     	  0.60,   0.90,      50,        0.0, 2.5, 4.50,     -1.2, 1.2, -1.2, 1.2,         	2 ;4.5
 ;Right hand Strike
 
 stand_run_attack_left_0  = 0.30,   0.87,       50,        3.5, 2.0, 0.5,     -1.0, 1.0, -1.0, 1.0,     2.5
@@ -734,16 +734,16 @@ attack_params   = bloodsucker_attack_params_strong
 spec_rank     = strong
 community     = bloodsucker
 invisibility_activate_delay = 1500
-protections_sect = bloodsucker_strong_protections
+protections_sect = bloodsucker_immunities_strong
 
 [bloodsucker_immunities_strong]
-burn_immunity = 1.5 ; 5.0 ; 				= 0.75			;Factors of immunity
+burn_immunity = 2.2 ; 5.0 ; 				= 0.75			;Factors of immunity
 strike_immunity 			= 0.75
-shock_immunity = 3.0 ; 				= 0.7
+shock_immunity = 2.7 ; 				= 0.7
 wound_immunity				= 0.50
 radiation_immunity 			= 0.0
 telepatic_immunity 			= 0.0
-chemical_burn_immunity = 2.5 ; = 3.0 ; 		= 0.75
+chemical_burn_immunity = 0.65 ; = 3.0 ; 		= 0.75
 explosion_immunity			= 0.65
 fire_wound_immunity			= 0.25
 
@@ -762,7 +762,7 @@ stand_attack_1 =      0.30,   1.5,    	75,        0.0, 2.0, 4.0,     	-0.8, 0.8,
 ;Right hand Strike
 stand_attack_2 =      0.30,   1.35,      65,       -4.0, 2.5, 0.50,   	-1.0, 1.0, -1.0, 1.0,          	2.5
 ;Right hand Strike
-vampire_2      =      0.60,   17.15,    	75,        0.0, 2.5, 4.50,     -1.2, 1.2, -1.2, 1.2,         	4.5
+vampire_2      =      0.60,   1.15,    	75,        0.0, 2.5, 4.50,     -1.2, 1.2, -1.2, 1.2,         	4.5
 
 
 stand_run_attack_left_0  = 0.30,   1.05,       65,        3.5, 2.0, 0.5,     -1.0, 1.0, -1.0, 1.0,     2.5
