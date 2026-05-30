@@ -39,26 +39,26 @@ single_handed			= 1
 
 slot					= 3
 hud						= grenade_f1_hud
-force_min				= 10	; ~30% от максимума
-force_const				= 25;20
-force_max				= 30
-force_grow_speed		= 20;2 ;30
+force_min			= 15 ;~30%
+force_const			= 25
+force_max			= 35
+force_grow_speed		= 20
 
 destroy_time			= 2500;3500
 
-cost					= 500
+cost					= 1220
 
 ;-------------------------------------------------------------------------------
-blast					= 3.5
-blast_r					= 8
-blast_impulse			= 150
+blast					= 6.5
+blast_r					= 3.5
+blast_impulse			= 180
 ;delete
 blast_impulse_factor	 = 1
 
-frags					= 12
-frags_r					= 20
-frag_hit				= 0.4
-frag_hit_impulse		= 50
+frags					= 380
+frags_r					= 45
+frag_hit				= 0.05
+frag_hit_impulse		= 40
 
 hit_type_blast			= explosion
 hit_type_frag			= fire_wound
@@ -75,11 +75,11 @@ light_range		         = 25.0
 light_time 		         = 0.85
 
 ;трассы от осколков
-fragment_speed				= 50
+fragment_speed				= 200
 explode_duration			= 3		;подолжительность взрыва (с)
 
 ;звуки
-snd_explode = weapons\grenades\f1\layers\f1_explosion_a_1        ; t_f1_explosion ; f1_explode
+snd_explode = weapons\explo\f1_explosion        ; t_f1_explosion ; f1_explode
 snd_checkout = weapons\grenades\f1\mechanics\f1_checkout
 
 snd_draw                = weapons\grenades\f1\mechanics\f1_draw
@@ -94,7 +94,7 @@ throw_point				 =  0.4, 0.3, 0.1           ;0.18, 1.636, -0.788     \\0.118 0.73
 throw_dir				 = 0,0,1
 third_person_throw_point_offset = -0.198,1.8,-0.833 ;-0.05,0.848,0.706
 
-wm_size                  = 0.1
+wm_size                  = 0.02
 
 wallmark_section		 = explosion_marks
 

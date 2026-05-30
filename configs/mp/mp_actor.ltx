@@ -73,49 +73,59 @@ antirad				= 0.3	;временно! вместо антирада
 body_remove_time = 80000        ;время уничтожения трупа (с учетом TimeFactor)
 
 [mp_actor_damage]
-;bone_name		 = <hit_scale>,<fwd_damage_anim_index>,<wound_scale>,<bonepassbullet>
+;bone_name                 	= <hit_scale>,<fwd_damage_anim_index>,<wound_scale>
 ;<hit_scale> - коэфф. изменения хита (уменьшения здоровья)
 ;<wound_scale> - коэфф. изменения величины открытой раны
-;<bone_pass_bullet> - 0 - после попадания пули в эту кость, эта пуля больше не наносит актеру повреждений
-;					1 - пуля наносит актеру повреждения как обычно
 ;-1 - нет анимаций, четный номер - спереди, нечетный номер - сзади, УКАЗЫВАЕТСЯ ТОЛЬКО ПЕРЕДНИЙ!!! ЗАДНИЙ НА АВТОМАТЕ
 default					= 0.5, -1, 0.5
 
-bip01_pelvis 		 = 0.75, 4, 1.6	;от ядра до пояса
-bip01_spine 		 = 0.85, 4, 1.8	;в основном без шейпа
-bip01_spine1 		 = 0.85, 4, 1.9	;торс до шеи
-bip01_spine2		 = 0.9, 4, 2.1
-bip01_neck 			 = 0.6, 0, 3.2	;в основном без шейпа
-bip01_head 			 = 1.55, 0, 3.6	;очень большой шейп
-eye_left 			 = 1.55, 0, 2.65	;глаза
-eye_right 			 = 1.55, 0, 2.65	;глаза
-jaw_1 		 	 = 1.45, 0, 1.6	;рот от шеи до носа
+bip01_pelvis 				= 0.75, 4, 1.6
+bip01_spine 		 		= 0.85, 4, 1.8
+bip01_spine1 		 		= 0.85, 4, 1.9
+bip01_spine2 		 		= 0.9, 4, 2.1
+bip01_neck 			 	= 0.6, 0, 3.2
+bip01_head 			 	= 1.55, 0, 3.6
+eyelid_1 			 	= 1.55, 0, 2.8
+eye_left 			 	= 1.55, 0, 2.65
+eye_right 			 	= 1.55, 0, 2.65
+jaw_1 		 		 	= 1.45, 0, 1.6
 
-bip01_l_clavicle	 = 0.35, 8, 0.65	;плечо + bip01_spine1
-bip01_l_upperarm	 = 0.2, 8, 0.45, 1 ;0.2
-bip01_l_forearm	 	 = 0.1, 8, 0.25, 1 ;
-bip01_l_hand	 	 = 0.05, -1, 0.05, 1 ;было 0.15
-bip01_l_finger0	 	 = 0.01, -1, 0.01, 1
-bip01_l_finger1	 	 = 0.01, -1, 0.01, 1
-bip01_l_finger2	 	 = 0.01, -1, 0.01, 1
+bip01_l_clavicle	 		= 0.35, 8, 0.65
+bip01_l_upperarm	 		= 0.2, 8, 0.45
+bip01_l_forearm	 	 	    = 0.1, 8, 0.25
+bip01_l_hand	 	 	   	= 0.05, -1, 0.05
+bip01_l_finger0	 	 	    = 0.01, -1, 0.01
+bip01_l_finger01	 		= 0.01, -1, 0.01
+bip01_l_finger02	 		= 0.01, -1, 0.01
+bip01_l_finger1	 	 	    = 0.01, -1, 0.01
+bip01_l_finger11	 		= 0.01, -1, 0.01
+bip01_l_finger12	 		= 0.01, -1, 0.01
+bip01_l_finger2	 	 	    = 0.01, -1, 0.01
+bip01_l_finger21	 		= 0.01, -1, 0.01
+bip01_l_finger22	 		= 0.01, -1, 0.01
 
+bip01_r_clavicle	 		= 0.3, 8, 0.65
+bip01_r_upperarm	 		= 0.2, 8, 0.45
+bip01_r_forearm	 	 	   	= 0.1, 8, 0.25
+bip01_r_hand	 	 	   	= 0.01, -1, 0.05
+bip01_r_finger0	 	 		= 0.01, -1, 0.01
+bip01_r_finger01	 		= 0.01, -1, 0.01
+bip01_r_finger02	 		= 0.01, -1, 0.01
+bip01_r_finger1	 	 		= 0.01, -1, 0.01
+bip01_r_finger11	 		= 0.01, -1, 0.01
+bip01_r_finger12	 		= 0.01, -1, 0.01
+bip01_r_finger2	 	 	 	= 0.01, -1, 0.01
+bip01_r_finger21	 		= 0.01, -1, 0.01
+bip01_r_finger22	 		= 0.01, -1, 0.01
 
-bip01_r_clavicle	 = 0.3, 8, 0.65		;плечо + bip01_spine1
-bip01_r_upperarm	 = 0.2, 8, 0.45, 1
-bip01_r_forearm	 	 = 0.1, 8, 0.25, 1
-bip01_r_hand	 	 = 0.01, -1, 0.05, 1
-bip01_r_finger0	 	 = 0.01, -1, 0.01, 1
-bip01_r_finger1	 	 = 0.01, -1, 0.01, 1
-bip01_r_finger2	 	 = 0.01, -1, 0.01, 1
-
-bip01_l_thigh	 	 = 0.3, 4, 1.8		;бедро
-bip01_l_calf	 	 = 0.17, 4, 0.85	;голень
-bip01_l_foot	 	 = 0.05, 4, 0.09	;пятка,1
-bip01_l_toe0	 	 = 0.01, -1, 0.12	;пальцы,1
-bip01_r_thigh	 	 = 0.3, 4, 1.8		;бедро
-bip01_r_calf	 	 = 0.17, 4, 0.85		;голень
-bip01_r_foot	 	 = 0.05, 4, 0.09		;пятка,1
-bip01_r_toe0	 	 = 0.01, -1, 0.12		;пальцы,1
+bip01_l_thigh	 	 		= 0.3, 4, 1.8
+bip01_l_calf	 	 		= 0.17, 4, 0.85
+bip01_l_foot	 	 		= 0.05, 4, 0.09
+bip01_l_toe0	 	 		= 0.01, -1, 0.12
+bip01_r_thigh	 	 		= 0.3, 4, 1.8
+bip01_r_calf	 	 		= 0.17, 4, 0.85
+bip01_r_foot	 	 		= 0.05, 4, 0.09
+bip01_r_toe0	 	 		= 0.01, -1, 0.12
 
 
 [mp_actor_immunities]
@@ -130,53 +140,54 @@ explosion_immunity 			= 0.84
 fire_wound_immunity  			= 0.64
 
 [mp_actor_wounded_immunities]
-burn_immunity 				= 9.6
-strike_immunity 			= 1.29
-shock_immunity 				= 1.80
-wound_immunity				= 1.12
-radiation_immunity 			= 1.32
-telepatic_immunity 			= 3.46
-chemical_burn_immunity 			= 2.27
-explosion_immunity 			= 0.85
-fire_wound_immunity  			= 0.68
+burn_immunity                   = 1.6
+strike_immunity                 = 1.0
+shock_immunity                  = 1.6
+wound_immunity                  = 0.8
+radiation_immunity              = 1.0
+telepatic_immunity              = 1.0
+chemical_burn_immunity          = 1.6
+explosion_immunity              = 0.6
+fire_wound_immunity             = 0.5
 
 [mp_actor_condition]:actor_condition
-satiety_v					= 0.000165	;скорость уменьшения сытости со временем
-radiation_v					= 0.000014	;скорость уменьшения радиации
-satiety_power_v				= 0.00385	;увеличение силы при уменьшении сытости
-satiety_health_v			= 0.0001	;увеличение здоровья при уменьшении сытости
-satiety_critical			= 0.1		;критическое значения сытости (в процентах от 0..1) когда здоровье начианает уменьшаться
-radiation_health_v          = 0.0015    ;уменьшение здоровья при воздействии радиации
-morale_v					= 0.0001	;скорость восстановления морали
-psy_health_v				= 0.0018	;скорость восстановления psy-здоровья
-alcohol_v					= -0.0008
-health_hit_part				= 1.0		;процент хита, уходящий на отнимание здоровья
-power_hit_part				= 0.07		;процент хита, уходящий на отнимание силы
-max_power_leak_speed		= 0.0		;накопление усталости (макс граница, до которой восстанавливается сила) в секунду игрового времени
-max_walk_weight				= 150
+satiety_v				= 0.000165 	;скорость уменьшения сытости со временем
+radiation_v				= 0.00014	;скорость уменьшения радиации
+satiety_power_v			= 0.0385		;увеличение силы при уменьшении сытости
+satiety_health_v		= 0.001    ;увеличение здоровья при уменьшении сытости
+satiety_critical		= 0.1       ;критическое значения сытости (в процентах от 0..1) когда здоровье начианает уменьшаться
+radiation_health_v		= 0.015	;0.002     ;уменьшение здоровья при воздействии радиации
+morale_v				= 0.0001	;скорость восстановления морали
+psy_health_v			= 0.018 ;0.001		;скорость восстановления psy-здоровья
+alcohol_v				= -0.008
+health_hit_part			= 1.0		;процент хита, уходящий на отнимание здоровья
+power_hit_part			= 0.07		;процент хита, уходящий на отнимание силы
+max_power_leak_speed	= 0.00001		;накопление усталости (макс граница, до которой восстанавливается сила) в секунду игрового времени
+max_walk_weight			= 150 ; 950 ; wpn_test ; 150 ; 55 ;50 ;490 ;90
+health_restore_v              = 0
 
 ;---ОТКРЫТЫЕ РАНЫ
-bleeding_v					= 0.0112	;потеря крови при номинальной ране в секунду
-wound_incarnation_v			= 0.0020	;крутизна кривой заживления (какой процент раны заживет в игровую секунду)
-min_wound_size				= 0.0066	;минимальный размер раны, после которого она считается зажившей
+bleeding_v 				= 0.112	 ;0.0005	;потеря крови при номинальной ране в секунду
+wound_incarnation_v			= 0.020	;крутизна кривой заживления (какой процент раны заживет в игровую секунду)
+min_wound_size				= 0.066	;минимальный размер раны, после которого она считается зажившей
 
-sleep_health				= 0.000005	;коэффициенты скоростей изменения параметров во время сна
+sleep_health				= 0.00011	;коэффициенты скоростей изменения параметров во время сна
 sleep_power					= 1.0		
 sleep_satiety				= 1.0		
-sleep_radiation				= 0.0007		
+sleep_radiation				= 0.007		
 sleep_psy_health			= 0.0
 
 ;---actor_condition only
 
-jump_power				= 0.018 		;умешьшение силы с прыжком без учета веса ноши
-jump_weight_power		= 0.2		;умешьшение силы с прыжком с учетом веса ноши, для максимального допустимого веса
-overweight_jump_k		= 1.03		;коэффициент влияние перегрузки прыжок с весом (умножается на jump_weight_power)
+jump_power 				= 0.018 ;умешьшение силы с прыжком без учета веса ноши
+jump_weight_power       = 0.2  ;0.045                                        ;умешьшение силы с прыжком с учетом веса ноши, для максимального допустимого веса
+overweight_jump_k       = 1.03		;10                ;10;коэффициент влияние перегрузки прыжок с весом (умножается на jump_weight_power)
 max_item_mass           = 38
-stand_power				= -0.0069   ;восстановление выносливости
-walk_power				= 0.00001  	;умешьшение силы за секнду во время ходьбы без учета веса ноши
+stand_power				= -0.069   ;восстановление выносливости
+walk_power				= 0.0001  	;умешьшение силы за секнду во время ходьбы без учета веса ноши
 
 
-walk_weight_power		= 0.0037		;умешьшение силы за секнду во время ходьбы с учетом веса ноши, для максимального допустимого веса
+walk_weight_power		= 0.037		;умешьшение силы за секнду во время ходьбы с учетом веса ноши, для максимального допустимого веса
 overweight_walk_k		= 1.07			;коэффициент влияние перегрузки ноши (умножается на walk_weight_power)
 accel_k					= 1.01		;коэффициент на бег (умножается walk_power, walk_weight_power)
 sprint_k				= 3.5		;коэффициент на "sprint" бег (умножается walk_power, walk_weight_power)

@@ -152,77 +152,78 @@ quick_item_3 = mp_antirad
 quick_item_4 = conserva
 
 [actor_immunities_gd_novice]
-burn_immunity           = 0.3 ;0.45                                ;коэффициенты иммунитета
-strike_immunity         = 0.3 ;0.45
-shock_immunity          = 0.3 ;0.45
-wound_immunity          = 0.05 ;0.45
-radiation_immunity      = 0.3 ;0.45
-telepatic_immunity      = 0.3 ;0.45
-chemical_burn_immunity  = 0.3 ;0.45
-explosion_immunity      = 0.05 ;0.45
-fire_wound_immunity 	= 0.15
+burn_immunity 				= 9.6
+strike_immunity 			= 1.29
+shock_immunity 				= 1.80
+wound_immunity				= 1.12
+radiation_immunity 			= 1.32
+telepatic_immunity 			= 3.46
+chemical_burn_immunity 			= 2.27
+explosion_immunity 			= 0.85
+fire_wound_immunity  			= 0.68
 
 [actor_immunities_gd_stalker]
-burn_immunity           = 0.7                               ;коэффициенты иммунитета
-strike_immunity         = 0.5
-shock_immunity          = 0.7
-wound_immunity          = 0.15
-radiation_immunity      = 0.7
-telepatic_immunity      = 0.7
-chemical_burn_immunity  = 0.7
-explosion_immunity      = 0.15
-fire_wound_immunity 	= 0.5 ;0.65
+burn_immunity 				= 9.6
+strike_immunity 			= 1.29
+shock_immunity 				= 1.80
+wound_immunity				= 1.12
+radiation_immunity 			= 1.32
+telepatic_immunity 			= 3.46
+chemical_burn_immunity 			= 2.27
+explosion_immunity 			= 0.85
+fire_wound_immunity  			= 0.68
 
 [actor_immunities_gd_veteran]
-burn_immunity           = 0.85                                ;коэффициенты иммунитета
-strike_immunity         = 0.75
-shock_immunity          = 0.85
-wound_immunity          = 0.5
-radiation_immunity      = 0.85
-telepatic_immunity      = 0.85	
-chemical_burn_immunity  = 0.85
-explosion_immunity      = 0.5
-fire_wound_immunity     = 0.75		
+burn_immunity 				= 9.6
+strike_immunity 			= 1.29
+shock_immunity 				= 1.80
+wound_immunity				= 1.12
+radiation_immunity 			= 1.32
+telepatic_immunity 			= 3.46
+chemical_burn_immunity 			= 2.27
+explosion_immunity 			= 0.85
+fire_wound_immunity  			= 0.68		
 
 [actor_immunities_gd_master]
-burn_immunity           = 1.0                                ;коэффициенты иммунитета
-strike_immunity         = 1.0
-shock_immunity          = 1.0
-wound_immunity          = 0.75
-radiation_immunity		= 1.0
-telepatic_immunity 		= 1.0
-chemical_burn_immunity 	= 1.0
-explosion_immunity 		= 1.0
-fire_wound_immunity 	= 1.0
+burn_immunity 				= 9.6
+strike_immunity 			= 1.29
+shock_immunity 				= 1.80
+wound_immunity				= 1.12
+radiation_immunity 			= 1.32
+telepatic_immunity 			= 3.46
+chemical_burn_immunity 			= 2.27
+explosion_immunity 			= 0.85
+fire_wound_immunity  			= 0.68
 
 [actor_condition]
-satiety_v				= 0.0000162 	;скорость уменьшения сытости со временем
-radiation_v				= 0.0	;скорость уменьшения радиации
-satiety_power_v			= 0.005		;увеличение силы при уменьшении сытости
-satiety_health_v		= 0.0001    ;увеличение здоровья при уменьшении сытости
-satiety_critical		= 0.3       ;критическое значения сытости (в процентах от 0..1) когда здоровье начианает уменьшаться
-radiation_health_v		= 0.002     ;уменьшение здоровья при воздействии радиации
-morale_v				= 0.0001	;скорость восстановления морали
-psy_health_v			= 0.001		;скорость восстановления psy-здоровья
-alcohol_v				= -0.0003
+satiety_v				= 0.000165 	;скорость уменьшения сытости со временем
+radiation_v				= 0.00014	;скорость уменьшения радиации
+satiety_power_v			= 0.0385		;увеличение силы при уменьшении сытости
+satiety_health_v		= 0.001    ;увеличение здоровья при уменьшении сытости
+satiety_critical		= 0.1       ;критическое значения сытости (в процентах от 0..1) когда здоровье начианает уменьшаться
+radiation_health_v		= 0.015	;0.002     ;уменьшение здоровья при воздействии радиации
+morale_v				= 0.001	;скорость восстановления морали
+psy_health_v			= 0.018 ;0.001		;скорость восстановления psy-здоровья
+alcohol_v				= -0.008
 health_hit_part			= 1.0		;процент хита, уходящий на отнимание здоровья
-power_hit_part			= 0.1		;процент хита, уходящий на отнимание силы
-max_power_leak_speed	= 0.0		;накопление усталости (макс граница, до которой восстанавливается сила) в секунду игрового времени
-max_walk_weight			= 60
+power_hit_part			= 0.07		;процент хита, уходящий на отнимание силы
+max_power_leak_speed	= 0.000001		;накопление усталости (макс граница, до которой восстанавливается сила) в секунду игрового времени
+max_walk_weight			= 150 ; 950 ; wpn_test ; 150 ; 55 ;50 ;490 ;90
+health_restore_v              = 0
 
-bleeding_v 				= 0.002	 ;0.0005	;потеря крови при номинальной ране в секунду
+bleeding_v 				= 0.0112	 ;0.0005	;потеря крови при номинальной ране в секунду
 
-wound_incarnation_v		= 0.0003 ;0.003     ;скорость заживления раны
-min_wound_size 			= 0.0256	;минимальный размер раны, после которого она считается зажившей
+wound_incarnation_v		= 0.0020 ; 0.004 ; 0.003 ;0.0003     ;скорость заживления раны
+min_wound_size 			= 0.0066	;минимальный размер раны, после которого она считается зажившей
 
 ;--when actor in sleep
-satiety_v_sleep          = 0.00001
-radiation_v_sleep        = 0.0003
-satiety_power_v_sleep    = 0.0001
-satiety_health_v_sleep   = 0.00001
-radiation_health_v_sleep = 0.001
-morale_v_sleep           = 0.0
-psy_health_v_sleep       = 0.0
+satiety_v_sleep          = 0.0001
+radiation_v_sleep        = 0.003
+satiety_power_v_sleep    = 0.001
+satiety_health_v_sleep   = 0.0001
+radiation_health_v_sleep = 0.01
+morale_v_sleep           = 0.00
+psy_health_v_sleep       = 0.00
 
 alcohol_v_sleep               = -0.0005
 
@@ -234,55 +235,55 @@ health_restore_v              = 0.001
 ;;;;;;;;
 ;actor_condition only
 
-jump_power 				= 0.01 ;умешьшение силы с прыжком без учета веса ноши
-jump_weight_power       = 0.05  ;0.045                                        ;умешьшение силы с прыжком с учетом веса ноши, для максимального допустимого веса
-overweight_jump_k       = 5		;10                ;10                                        ;коэффициент влияние перегрузки прыжок с весом (умножается на jump_weight_power)
+jump_power 				= 0.018 ;умешьшение силы с прыжком без учета веса ноши
+jump_weight_power       = 0.2  ;0.045                                        ;умешьшение силы с прыжком с учетом веса ноши, для максимального допустимого веса
+overweight_jump_k       = 1.03		;10                ;10                                        ;коэффициент влияние перегрузки прыжок с весом (умножается на jump_weight_power)
 
-stand_power             = -0.001.1
-walk_power              = 0.00002  ;0.000012                                ;умешьшение силы за секнду во время ходьбы без учета веса ноши
-walk_weight_power       = 0.0002   ;0.0001;                        ;умешьшение силы за секнду во время ходьбы с учетом веса ноши, для максимального допустимого веса
-overweight_walk_k       = 5			;9        ;10                                ;коэффициент влияние перегрузки ноши (умножается на walk_weight_power)
-accel_k                 = 3			;5                                        ;коэффициент на бег (умножается walk_power, walk_weight_power)
-sprint_k                = 100 ;75        ;коэффициент на "sprint" бег (умножается walk_power, walk_weight_power)
+stand_power             = -0.0069
+walk_power              = 0.00001 ;0.00002  ;0.000012                                ;Reduction of force for a second during walking without taking into account weight of a burden
+walk_weight_power       = 0.0037  ;0.0001;                        ;Reduction of force for a second during walking in view of weight of a burden, for the maximal allowable weight
+overweight_walk_k       = 1.07			;9        ;10                                ;Factor influence of an overload of a burden (it is multiplied on walk_weight_power)
+accel_k                 = 1.01			;5                                        ;Factor on run (it is multiplied walk_power, walk_weight_power)
+sprint_k                = 3.5 ;75        ;коэффициент на "sprint" бег (умножается walk_power, walk_weight_power)
 
 ; хромота
-limping_health_begin =        0.4                ;порог здоровья меньше которого актер начинает хромать
-limping_health_end   =        0.45                ;порог здоровья больше которого актер перестает хромать
-limping_power_begin  =        0.1                ;порог силы меньше которого актер начинает хромать
-limping_power_end         =        0.2                ;порог силы больше которого актер перестает хромать
+limping_health_begin =        0.08                ;порог здоровья меньше которого актер начинает хромать
+limping_health_end   =        0.12                ;порог здоровья больше которого актер перестает хромать
+limping_power_begin  =        0.18               ;порог силы меньше которого актер начинает хромать
+limping_power_end         =        0.29            ;порог силы больше которого актер перестает хромать
 use_limping_state         = on
 
-cant_walk_power_begin =        0.01        ;порог силы меньше которого актер не может двигаться
-cant_walk_power_end   =        0.10        ;порог силы больше которого актер сможет двигаться
+cant_walk_power_begin =        0.0015        ;The threshold of force less which actor cannot move
+cant_walk_power_end   =        0.007        ;The threshold of force more which actor can move
 
-cant_sprint_power_begin =        0.10        ;порог силы меньше которого актер не может бежать в спринте
-cant_sprint_power_end   =        0.30        ;порог силы больше которого актер сможет бежать в спринте
+cant_sprint_power_begin =        0.04       ;порог силы меньше которого актер не может бежать в спринте
+cant_sprint_power_end   =        0.08      ;порог силы больше которого актер сможет бежать в спринте
 
 can_sleep_callback                        = dream.can_sleep_callback
 sleep_video_name_callback        = dream.sleep_video_name_callback
 
-radio_zone_max_power		= 0.03			;пределы зон для датчиков и для инвентаря (% защит броников)
-fire_zone_max_power			= 0.2
-acid_zone_max_power			= 0.2
-psi_zone_max_power			= 0.1
-electra_zone_max_power		= 0.8
+radio_zone_max_power		= 0.055			;пределы зон для датчиков и для инвентаря (% защит броников)
+fire_zone_max_power			= 1.25
+acid_zone_max_power			= 1.25
+psi_zone_max_power			= 1.25
+electra_zone_max_power		= 1.25
 
-max_power_restore_speed		= 0.20
-max_fire_wound_protection	= 1.45
-max_wound_protection		= 0.5
+max_power_restore_speed		= 0.020
+max_fire_wound_protection	= 3.20
+max_wound_protection		= 2.20
 
 hud_health_blink        = 0.05
 
 
 [actor_thd_gd_novice]				; Секция настроек неодноударного убийства для сложности novice
-killing_hit_treshold		= 0.2	; Если наносится потенциально смертельный хит, и у игрока хитов больше, чем killing_hit_treshold,
-last_chance_health			= 0.1	; его хиты уменьшаются до last_chance_health (должно быть меньше, чем killing_hit_treshold) и
-invulnerable_time			= 500	; включается бессмертие на время invulnerable_time (в миллисекундах)
+killing_hit_treshold		= 0.0	; Если наносится потенциально смертельный хит, и у игрока хитов больше, чем killing_hit_treshold,
+last_chance_health			= 0.0	; его хиты уменьшаются до last_chance_health (должно быть меньше, чем killing_hit_treshold) и
+invulnerable_time			= 0.0	; включается бессмертие на время invulnerable_time (в миллисекундах)
 
 [actor_thd_gd_stalker]				; Секция настроек неодноударного убийства для сложности stalker
-killing_hit_treshold		= 0.2
-last_chance_health			= 0.1
-invulnerable_time			= 500
+killing_hit_treshold		= 0.0
+last_chance_health			= 0.0
+invulnerable_time			= 0.0
 
 [actor_thd_gd_veteran]				; Секция настроек неодноударного убийства для сложности veteran
 killing_hit_treshold		= 0.0
@@ -361,18 +362,18 @@ bip01_r_toe0                             = 1.0, 6, 1.0
 
 
 [actor_hit_snds]
-burn                 =weapons\silence
-shock                =actor\damage\electra\electra_1, actor\damage\electra\electra_2, actor\damage\electra\electra_3, actor\damage\electra\electra_4, actor\damage\electra\electra_5, actor\damage\electra\electra_6    ;электра
-strike               =actor\damage\fall\fall_1, actor\damage\fall\fall_2, actor\damage\fall\fall_3
-wound                =actor\damage\fall\fall_1, actor\damage\fall\fall_2, actor\damage\fall\fall_3     ;actor\damage\physical\physical_1, actor\damage\physical\physical_2, actor\damage\physical\physical_3, actor\damage\physical\physical_4, actor\damage\physical\physical_5    ;физ. урон
-radiation            =weapons\silence
+burn                 =actor\pain1,actor\pain2,actor\pain3,actor\pain4,actor\pain5,actor\pain6,actor\pain7,actor\pain8 ;  ,actor\hurt4
+shock                =actor\pain1,actor\pain2,actor\pain3,actor\pain4,actor\pain5,actor\pain6,actor\pain7,actor\pain8 ; ,actor\hurt4
+strike               =actor\drop1,actor\drop2,actor\drop3,actor\drop4 ; ,actor\hurt4
+wound                =actor\hurt1,actor\hurt2,actor\hurt3,actor\hurt4,actor\hurt5,actor\hurt6,actor\hurt7 ; ,actor\hurt4
+radiation            =monsters\biting\def_0 ; actor\hurt1,actor\hurt2,actor\hurt3,actor\hurt4
 telepatic            =actor\damage\fall\fall_1, actor\damage\fall\fall_2, actor\damage\fall\fall_3
-fire_wound           =material\bullet\collide\body\bullethit_body_1, material\bullet\collide\body\bullethit_body_2, material\bullet\collide\body\bullethit_body_3, material\bullet\collide\body\bullethit_body_4, material\bullet\collide\body\bullethit_body_5, material\bullet\collide\body\bullethit_body_6   ;урон от пуль
+fire_wound           =actor\bullet_hit_1,actor\bullet_hit_2,actor\bullet_hit_3,actor\bullet_hit_4
 ; actor\pain_1,actor\pain_3,actor\pain_4,actor\pain_5,actor\pain_6,actor\pain_7,actor\pain_8
 chemical_burn        =actor\damage\chemical\chemical_1, actor\damage\chemical\chemical_2, actor\damage\chemical\chemical_3, actor\damage\chemical\chemical_4, actor\damage\chemical\chemical_5, actor\damage\chemical\chemical_6, actor\damage\chemical\chemical_7    ;урон от киселя
-explosion            =affects\tinnitus_explosion
+explosion            =affects\tinnitus3a
 flash            	 =affects\tinnitus_flash
-wound_2              =weapons\silence
+wound_2              =actor\pain1,actor\pain2,actor\pain3,actor\pain4,actor\pain5,actor\pain6,actor\pain7,actor\pain8
 light_burn           =actor\damage\fire\fire_1; actor\damage\fire\fire_2, actor\damage\fire\fire_3, actor\damage\fire\fire_4, actor\damage\fire\fire_5, actor\damage\fire\fire_6    ;урон от огня
 
 [actor_motion_sounds]
