@@ -5,22 +5,24 @@ respawn_params = respawn@zat_sim_5
 
 [respawn@zat_sim_5]
 spawn_dog
+spawn_pseudodog
 spawn_boar
 spawn_flesh
-spawn_pseudodog
 
 [spawn_dog]
-spawn_squads = simulation_dog
-spawn_num = 2
+spawn_squads = simulation_dog, simulation_dog, simulation_pseudodog
+spawn_num = 1
+
+[spawn_pseudodog]
+spawn_squads = simulation_pseudodog, simulation_dog, simulation_dog, simulation_pseudodog, simulation_dog, simulation_dog, simulation_pseudodog, simulation_dog, simulation_dog, simulation_snork, simulation_snork, simulation_bloodsucker, simulation_bloodsucker, simulation_gigant
+spawn_num = 1
+
+;;; unused
 
 [spawn_boar]
 spawn_squads = simulation_boar, simulation_flesh
-spawn_num = 2
+spawn_num = 0 ; 1
 
 [spawn_flesh]
 spawn_squads = simulation_flesh, simulation_boar
-spawn_num = 2
-
-[spawn_pseudodog]
-spawn_squads = simulation_pseudodog, simulation_dog
-spawn_num = 2
+spawn_num = 0 ; 1

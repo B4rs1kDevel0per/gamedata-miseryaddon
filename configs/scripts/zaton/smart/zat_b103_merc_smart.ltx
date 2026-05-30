@@ -1,4 +1,9 @@
 [smart_terrain];zat_b103_merc_smart
+respawn_idle = 21600
+respawn_only_level = true
+respawn_radius = 200
+death_idle_time = 21600
+
 squad_id = 50
 max_population = 3
 ;safe_restr = zat_b103_sr_safety_zone
@@ -6,16 +11,33 @@ def_restr = zat_b103_sr_def_restr
 respawn_params = respawn@zat_b103_merc_smart
 
 [respawn@zat_b103_merc_smart]
-spawn_bandit@hostile
+spawn_merc@novice
+spawn_merc@veteran
+
+;;; unused
+
+;spawn_bandit@hostile
 ;spawn_killer
 
-[spawn_bandit@hostile]
-spawn_squads = bandit_sim_squad_hostile, bandit_sim_squad_hostile_elite
-spawn_num = {+ZAT_B103_LOST_MERC_LEADER_BUNKER_GUARDS_WORK} 2, {+ZAT_B103_MERC_FIGHT} 2, {+ZAT_B103_MERC_GONE} 2, 0
+; Merc hostile squads
+
+[spawn_merc@novice]
+spawn_squads = merc_sim_squad_novice
+spawn_num = {+JUP_B207_TASK_END} 0, {+JUP_A12_TASK_DONE} 0, {+JUP_B46_TASK_DONE} 0, {+JUP_B8_HELI_4_SEARCHED} 0, {+JUP_B209_TASK_DONE} 0, {+JUP_B218_GATHER_SQUAD_COMPLETE} 0, {-JUP_B207_TASK_END} 2, {-JUP_A12_TASK_DONE} 2, {-JUP_B46_TASK_DONE} 2, {-JUP_B209_TASK_DONE} 2, {-JUP_B8_HELI_4_SEARCHED} 2, {-JUP_B218_GATHER_SQUAD_COMPLETE} 2, 0
+
+[spawn_merc@veteran]
+spawn_squads = merc_sim_squad_advanced, merc_sim_squad_veteran
+spawn_num = {+JUP_B207_TASK_END} 2, {+JUP_A12_TASK_DONE} 2, {+JUP_B46_TASK_DONE} 2, {+JUP_B209_TASK_DONE} 2, {+JUP_B8_HELI_4_SEARCHED} 2, {+JUP_B218_GATHER_SQUAD_COMPLETE} 2, 0
+
+;;; unused
+
+;[spawn_bandit@hostile]
+;spawn_squads = bandit_sim_squad_hostile_elite
+;spawn_num = 0 ;        {} 1, 0
 
 ;[spawn_killer]
-;spawn_squads = simulation_killer
-;spawn_num = {+ZAT_B103_LOST_MERC_LEADER_BUNKER_GUARDS_WORK} 1, {+ZAT_B103_MERC_FIGHT} 1, {+ZAT_B103_MERC_GONE} 1, 0
+;spawn_squads = merc_sim_squad_veteran
+;spawn_num = 0 ;        {} 1, 0
 
 [exclusive]
 lost_merc_leader = zaton\zat_b103_lost_merc_leader.ltx

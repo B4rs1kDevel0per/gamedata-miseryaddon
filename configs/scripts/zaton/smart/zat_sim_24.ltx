@@ -4,28 +4,33 @@ max_population = 1
 respawn_params = respawn@zat_sim_24
 
 [respawn@zat_sim_24]
-spawn_zombied
-spawn_snork
+spawn_zombies
 spawn_flesh
-spawn_dog
-spawn_bloodsucker
+spawn_boar
 
-[spawn_bloodsucker]
-spawn_squads = simulation_pseudodog
+;;; unused
+
+;spawn_dog
+;spawn_bloodsucker
+
+[spawn_zombies]
+spawn_squads = simulation_boar, simulation_flesh, simulation_boar, simulation_flesh, simulation_zombied_1, simulation_snork
 spawn_num = 1
-
-[spawn_zombied]
-spawn_squads = simulation_zombied_1
-spawn_num = 1
-
-[spawn_snork]
-spawn_squads = simulation_snork, simulation_dog, simulation_boar, simulation_boar, simulation_flesh
-spawn_num = 1
-
-[spawn_dog]
-spawn_squads = simulation_dog
-spawn_num = 2
 
 [spawn_flesh]
-spawn_squads = simulation_flesh
+spawn_squads = simulation_snork, simulation_boar, simulation_boar, simulation_flesh, simulation_flesh, simulation_boar, simulation_boar, simulation_flesh, simulation_flesh
 spawn_num = 1
+
+[spawn_boar]
+spawn_squads = simulation_boar, simulation_flesh
+spawn_num = 1
+
+;;; unused
+
+;[spawn_dog]
+;spawn_squads = simulation_dog
+;spawn_num = 0
+
+;[spawn_bloodsucker]
+;spawn_squads = simulation_pseudodog, imulation_pseudodog, imulation_bloodsucker
+;spawn_num = 0

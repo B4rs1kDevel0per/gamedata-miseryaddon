@@ -2,4 +2,20 @@
 squad_id = 21
 spawn_point = zat_sim_15_spawn_point 
 max_population = 1
- 
+
+respawn_params = respawn@zat_sim_15
+
+[respawn@zat_sim_15]
+spawn_boar
+
+;spawn_flesh
+
+[spawn_boar]
+spawn_squads = simulation_flesh, simulation_flesh, simulation_boar, simulation_flesh, simulation_flesh, simulation_boar, simulation_flesh, simulation_flesh, simulation_boar, simulation_pseudodog, simulation_dog, simulation_dog, simulation_cat_strong, simulation_bloodsucker
+spawn_num = {+ZAT_B53_GO_NIL} 1, {+ZAT_B53_ACTOR_ENEMY} 1, {+ZAT_B53_THANKS_DIALOG} 1, 0
+
+;;; unused
+
+;[spawn_flesh]
+;spawn_squads = simulation_flesh
+;spawn_num = 0
