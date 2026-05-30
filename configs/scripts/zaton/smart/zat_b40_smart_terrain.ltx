@@ -1,19 +1,25 @@
 [smart_terrain];zat_b40_smart_terrain
+respawn_idle = 21600
+respawn_only_level = true
+respawn_radius = 200
+death_idle_time = 21600
+
 squad_id = 38
 max_population = 4
 respawn_params = respawn@zat_b40_smart_terrain
+arrive_dist = 150
 
 [respawn@zat_b40_smart_terrain]
-sim_monolith
-sim_monolith@sci
+spawn_bandits
+spawn_monolith
 
-[sim_monolith]
-spawn_squads = monolith_sim_squad_advanced_1, monolith_sim_squad_veteran_2
-spawn_num = {+ZAT_B40_MERC_GONE} 0, {ZAT_B40_ACTOR_HAS_NOTEBOOK} 0, 0
+[spawn_bandits]
+spawn_squads = zat_b40_bandit_squad
+spawn_num = {-PRI_A17_ACTOR_HAS_GAUSS_RIFLE} 3, 0
 
-[sim_monolith@sci]
-spawn_squads = monolith_sci_simulation_squad
-spawn_num = {+ZAT_B40_MERC_GONE} 0, {ZAT_B40_ACTOR_HAS_NOTEBOOK} 0, 0
+[spawn_monolith]
+spawn_squads = zat_b40_monolith_squad
+spawn_num = {+PRI_A17_ACTOR_HAS_GAUSS_RIFLE} 3, 0
 
 [exclusive]
 zat_b40_guard_leader_01 = zaton\zat_b40_mercs.ltx
@@ -27,3 +33,11 @@ zat_b40_guard_05 = zaton\zat_b40_mercs.ltx
 zat_b40_guard_06 = zaton\zat_b40_mercs.ltx
 zat_b40_guard_07 = zaton\zat_b40_mercs.ltx
 zat_b40_guard_08 = zaton\zat_b40_mercs.ltx
+zat_b40_guard_09 = zaton\zat_b40_mercs.ltx
+zat_b40_guard_10 = zaton\zat_b40_mercs.ltx
+zat_b40_guard_11 = zaton\zat_b40_mercs.ltx
+zat_b40_guard_12 = zaton\zat_b40_mercs.ltx
+zat_b40_guard_13 = zaton\zat_b40_mercs.ltx
+zat_b40_guard_14 = zaton\zat_b40_mercs.ltx
+zat_b40_guard_15 = zaton\zat_b40_mercs.ltx
+zat_b40_guard_16 = zaton\zat_b40_mercs.ltx

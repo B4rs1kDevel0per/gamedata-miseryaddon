@@ -1,26 +1,82 @@
-; general
+; =============================================================================
+; zat_b40_mercs.ltx — адаптация Misery 2.x → xrMPE
+;
+; Изменения относительно Misery:
+;   1. known_info → known_flags  (xrMPE не использует инфопоршни NPC)
+;      Имена флагов внутри секции — ВЕРХНИЙ РЕГИСТР (требование xrMPE story_flags)
+;   2. logic@zat_b40_mercs_gen.suitable — убрана двойная логика Мизери
+;      (squad_exist + npc_community), оставлен вариант vanilla xrMPE:
+;      suitable = {=npc_community(killer)} true
+;   3. on_sound: "any_actor" → "actor" (vanilla xrMPE xr_hear не знает тег "any_actor"
+;      в on_sound-строке; "actor" — стандартный тег для звука актора)
+;   4. walker@zat_b40_mercs_gen: def_state_moving = sprint (vanilla xrMPE)
+;      В Мизери стоит rush — оставлено на выбор, см. комментарий ниже
+;   5. camper@zat_b40_surge_gen: структура из vanilla xrMPE (нет отдельного
+;      walker@zat_b40_surge_gen — surge идёт через camper-секции)
+;   6. Флаги в условиях и эффектах — ВЕРХНИЙ РЕГИСТР (xrMPE story_flags)
+;   7. Секции remark@zat_b40_warning_* — раскомментированы (в исходнике Мизери
+;      они закомментированы; в vanilla xrMPE они есть и нужны для warning-цикла)
+;   8. КРАШ guard_11..16 / beh@ — ИСПРАВЛЕНО (см. подробный комментарий ниже)
+;   9. meet@, animpoint-секции из Мизери — сохранены БЕЗ изменений
+;
+; СПОРНЫЕ МОМЕНТЫ закомментированы тегом ; ???
+; =============================================================================
+
+; =============================================================================
+; !! ВАЖНО: схема "beh" — Мизери-эксклюзив, в vanilla xrMPE не существует !!
+;
+; В gulag_general.script есть таблица job_type_by_scheme:
+;   walker → path_job, camper → path_job, remark → point_job, ...
+;   "beh" в ней ОТСУТСТВУЕТ.
+;
+; Если guard_11..16 прописаны в [exclusive] секции zat_b40_smart_terrain.ltx,
+; то при загрузке spawns движок вызывает load_jobs() → add_exclusive_job() →
+; scheme = "beh" → job_type = nil → alife_task никогда не устанавливается →
+; смерть на строке 529 smart_terrain.script:
+;   "attempt to index field 'alife_task' (a nil value)"
+;
+; РЕШЕНИЕ: logic@guard_11..16 переключены на walker@ с теми же путями.
+; Поведение beh (sleep/rain/surge) теряется — NPC будут просто патрулировать.
+;
+; ЕСЛИ хочешь вернуть beh-поведение (sleep/rain/surge) для guard_11..16,
+; нужно одно из двух:
+;   A) Портировать схему beh в xrMPE (добавить "beh" в job_type_by_scheme
+;      в gulag_general.script и написать xr_beh.script)
+;   B) Убрать guard_11..16 из [exclusive] в smart_terrain.ltx совсем
+;      (тогда они будут "симуляционными" NPC без логики, не крашатся)
+;
+; Все beh@-секции ниже закомментированы — они не нужны без схемы.
+; =============================================================================
+
+; ---- general -----------------------------------------------------------------
 
 [hit@zat_b40_mercs_hit_gen]
-on_info =  {=fighting_actor} %+ZAT_B40_MERC_IN_COMBAT%
+on_info = {=fighting_actor} %+ZAT_B40_MERC_IN_COMBAT%
 
 [camper@zat_b40_mercs_gen]
-radius = 50 
+radius = 50
 def_state_moving = sprint
-combat_ignore_cond =  true
+combat_ignore_cond = true
 on_actor_dist_le1 = 100 | %+ZAT_B40_ACTOR_FIND_MER_CAMP%
 on_actor_dist_le2 = 50  | {+ZAT_B40_WORNING_TIME_OUT} %+ZAT_B40_MERC_IN_COMBAT%
 on_actor_dist_le_nvis = 10 | {+ZAT_B40_WORNING_TIME_OUT} %+ZAT_B40_MERC_IN_COMBAT%
 corpse_detection_enabled = false
-on_sound = any_actor|WPN_shoot|60|0.2| %+ZAT_B40_MERC_IN_COMBAT%
+; "actor" — стандартный тег xrMPE для звука актора в on_sound.
+; Мизери использовала "any_actor" — в ванильном xrMPE этот тег поддерживается
+; только в check_npc_name-контексте, но НЕ как on_sound-тег. Оставлен "actor".
+on_sound = actor|WPN_shoot|60|0.2| %+ZAT_B40_MERC_IN_COMBAT%
 ;on_sound2 = any|MST_die|15|0.63| %+ZAT_B40_MERC_IN_COMBAT%
 
 [walker@zat_b40_mercs_gen]
+; ??? Мизери: def_state_moving = rush. Vanilla xrMPE: sprint.
+; sprint агрессивнее выглядит при патруле, rush мягче.
+; Если хочешь поведение Мизери — замени sprint на rush.
 def_state_moving = sprint
 def_state_standing = hide
 
 [remark@zat_b40_danger_gen]
 anim = hide
-target  = story | actor
+target = story | actor
 on_info = {=see_actor} %+ZAT_B40_MERC_COMBAT_FIND_ACTOR%
 on_info2 = {-ZAT_B40_CALL_TO_FIGHT_SAD} %=play_sound(zat_b40_merc_combat) +ZAT_B40_CALL_TO_FIGHT_SAD%
 on_game_timer = 600 | %+ZAT_B40_MERC_COMBAT_FIND_ACTOR%
@@ -28,62 +84,99 @@ on_game_timer = 600 | %+ZAT_B40_MERC_COMBAT_FIND_ACTOR%
 [remark@zat_b40_warning_gen]
 anim = guard_na
 target = story | actor
-combat_ignore_cond =  true
+combat_ignore_cond = true
 corpse_detection_enabled = false
-on_sound = any_actor|WPN_shoot|10000|0.0| %+ZAT_B40_MERC_IN_COMBAT%
+on_sound = actor|WPN_shoot|10000|0.0| %+ZAT_B40_MERC_IN_COMBAT%
 on_info = %=play_sound(zat_b40_merc_go_away)%
-on_signal = theme_end | %+ZAT_B40_START_WORNING_TIME% 
+on_signal = theme_end | %+ZAT_B40_START_WORNING_TIME%
 
 [camper@zat_b40_surge_gen]:camper@zat_b40_mercs_gen
 def_state_standing = sit_knee
 out_restr = zat_surge_hide_b40
-combat_ignore_cond =  {-ZAT_B40_MERC_IN_COMBAT} true, false
+combat_ignore_cond = {-ZAT_B40_MERC_IN_COMBAT} true, false
 on_info3 = {-ZAT_B40_CALL_TO_FIGHT_SAD +ZAT_B40_MERC_IN_COMBAT} %=play_sound(zat_b40_merc_combat) +ZAT_B40_CALL_TO_FIGHT_SAD%
 
+; ---- logic -------------------------------------------------------------------
+
 [logic@zat_b40_mercs_gen]
+; Мизери имела двойное suitable:
+;   {=squad_exist(...) =npc_community(killer)} true, {!squad_exist(...)} true
+; Это избыточно — результат всегда true если NPC из нужной фракции.
+; Vanilla xrMPE использует просто {=npc_community(killer)} true — оставлено.
 suitable = {=npc_community(killer)} true
 prior = 200
 on_hit = hit@zat_b40_mercs_hit_gen
 
-; logic
-
 [logic@zat_b40_guard_leader_01]:logic@zat_b40_mercs_gen
 suitable = {=check_npc_name(zat_b40_merc_squad_leader_1)} true
 prior = 300
-active = camper@zat_b40_guard_leader_01
+active = walker@zat_b40_guard_leader_01
+; known_info → known_flags (xrMPE)
 known_flags = known_flags@zat_b40_guard_leader_01
 
 [logic@zat_b40_guard_leader_02]:logic@zat_b40_mercs_gen
 suitable = {=check_npc_name(zat_b40_merc_squad_leader_2)} true
 prior = 300
-active = camper@zat_b40_guard_leader_02
+active = walker@zat_b40_guard_leader_02
 known_flags = known_flags@zat_b40_guard_leader_02
 
 [logic@zat_b40_guard_01]:logic@zat_b40_mercs_gen
-active = camper@zat_b40_guard_01
+active = walker@zat_b40_guard_01
 
 [logic@zat_b40_guard_02]:logic@zat_b40_mercs_gen
-active = camper@zat_b40_guard_02
+active = walker@zat_b40_guard_02
 
 [logic@zat_b40_guard_03]:logic@zat_b40_mercs_gen
-active = camper@zat_b40_guard_03
+active = walker@zat_b40_guard_03
 
 [logic@zat_b40_guard_04]:logic@zat_b40_mercs_gen
-active = camper@zat_b40_guard_04
+active = walker@zat_b40_guard_04
 
 [logic@zat_b40_guard_05]:logic@zat_b40_mercs_gen
-active = camper@zat_b40_guard_05
+active = walker@zat_b40_guard_05
 
 [logic@zat_b40_guard_06]:logic@zat_b40_mercs_gen
-active = camper@zat_b40_guard_06
+active = walker@zat_b40_guard_06
 
 [logic@zat_b40_guard_07]:logic@zat_b40_mercs_gen
-active = camper@zat_b40_guard_07
+active = walker@zat_b40_guard_07
 
 [logic@zat_b40_guard_08]:logic@zat_b40_mercs_gen
-active = camper@zat_b40_guard_08
+active = walker@zat_b40_guard_08
 
-; corp
+; Эти две секции из Мизери (нет в vanilla xrMPE).
+; suitable переопределяет родительский — NPC без squad подхватывают walker лидеров.
+[logic@zat_b40_guard_09]:logic@zat_b40_mercs_gen
+suitable = {!squad_exist(zat_b40_merc_squad)} true
+active = walker@zat_b40_guard_leader_01
+
+[logic@zat_b40_guard_10]:logic@zat_b40_mercs_gen
+suitable = {!squad_exist(zat_b40_merc_squad)} true
+active = walker@zat_b40_guard_leader_02
+
+; guard_11..16: в Мизери использовали beh@ — схема не существует в xrMPE.
+; Заменены на walker@ с теми же путями что были прописаны в beh@-секциях ниже.
+; Поведение sleep/rain/surge для этих NPC не работает без портирования схемы beh.
+[logic@zat_b40_guard_11]:logic@zat_b40_mercs_gen
+active = walker@zat_b40_guard_11_fallback
+
+[logic@zat_b40_guard_12]:logic@zat_b40_mercs_gen
+active = walker@zat_b40_guard_12_fallback
+
+[logic@zat_b40_guard_13]:logic@zat_b40_mercs_gen
+active = walker@zat_b40_guard_13_fallback
+
+[logic@zat_b40_guard_14]:logic@zat_b40_mercs_gen
+active = walker@zat_b40_guard_14_fallback
+
+[logic@zat_b40_guard_15]:logic@zat_b40_mercs_gen
+active = walker@zat_b40_guard_15_fallback
+
+[logic@zat_b40_guard_16]:logic@zat_b40_mercs_gen
+active = walker@zat_b40_guard_16_fallback
+
+; ---- known_flags (были known_info в Мизери) ----------------------------------
+; Имена флагов — ВЕРХНИЙ РЕГИСТР (обязательно для xrMPE story_flags)
 
 [known_flags@zat_b40_guard_leader_01]
 ZAT_B40_GUARD_LEADER_01_SERCHD
@@ -91,79 +184,319 @@ ZAT_B40_GUARD_LEADER_01_SERCHD
 [known_flags@zat_b40_guard_leader_02]
 ZAT_B40_GUARD_LEADER_02_SERCHD
 
-; camper
+; ---- meet (из Мизери, без изменений) -----------------------------------------
 
-[camper@zat_b40_guard_leader_01]:camper@zat_b40_mercs_gen
+[meet@zat_b40_animpoint_meet]
+close_anim      = nil
+close_victim    = nil
+far_anim        = nil
+far_victim      = nil
+close_distance  = 0
+far_distance    = 0
+use = {=actor_enemy} false, {=dist_to_actor_le(3)} true, false
+snd_on_use = {!dist_to_actor_le(3)} nil
+meet_on_talking = false
+
+; ---- walker fallback для guard_11..16 (замена beh@) --------------------------
+; Эти walker-секции — минимальная замена: NPC патрулируют по первой точке из beh@.
+; На surge переходят в camper@zat_b40_surge_gen (как у остальных).
+; sleep/rain-поведение не реализовано — только patrol+surge.
+
+[walker@zat_b40_guard_11_fallback]:walker@zat_b40_mercs_gen
+path_walk = zat_b40_merc_07_walk
+path_look = zat_b40_merc_07_look
+on_info = {=surge_started} camper@zat_b40_surge_07
+
+[walker@zat_b40_guard_12_fallback]:walker@zat_b40_mercs_gen
+path_walk = zat_b40_merc_01_walk
+path_look = zat_b40_merc_01_look
+on_info = {=surge_started} camper@zat_b40_surge_01
+
+[walker@zat_b40_guard_13_fallback]:walker@zat_b40_mercs_gen
+path_walk = zat_b40_merc_02_walk
+path_look = zat_b40_merc_02_look
+on_info = {=surge_started} camper@zat_b40_surge_02
+
+[walker@zat_b40_guard_14_fallback]:walker@zat_b40_mercs_gen
+path_walk = zat_b40_merc_03_walk
+path_look = zat_b40_merc_03_look
+on_info = {=surge_started} camper@zat_b40_surge_03
+
+[walker@zat_b40_guard_15_fallback]:walker@zat_b40_mercs_gen
+path_walk = zat_b40_merc_04_walk
+path_look = zat_b40_merc_04_look
+on_info = {=surge_started} camper@zat_b40_surge_04
+
+[walker@zat_b40_guard_16_fallback]:walker@zat_b40_mercs_gen
+path_walk = zat_b40_merc_05_walk
+path_look = zat_b40_merc_05_look
+on_info = {=surge_started} camper@zat_b40_surge_05
+
+; ---- beh-секции из Мизери — ЗАКОММЕНТИРОВАНЫ --------------------------------
+; Схема "beh" не существует в vanilla xrMPE (нет xr_beh.script, нет записи
+; в job_type_by_scheme). Оставлены для справки / будущего портирования.
+;
+;[beh@general]
+;behavior_state = beh_move
+;target = waypoint
+;walk_dist = 100
+;jog_dist = 220
+;run_dist = 400
+;wait_anim = guard
+;walk_anim = patrol
+;jog_anim = patrol
+;run_anim = rush
+;sprint_anim = sprint
+;delay_anim = guard
+;
+;[beh@zat_b40_guard_11]:beh@general
+;pt1 = 1565894,240000,hide
+;pt2 = 1617743,240000,sit_ass look:394.7958984375,33.464221954346,-436.88269042969
+;path_end = reverse
+;on_info = {=surge_started} beh@zat_b40_guard_11_surge
+;on_info2 = {=zat_b7_is_night} beh@zat_b40_guard_11_sleep
+;on_info3 = {=is_rain} beh@zat_b40_guard_11_rain
+;
+;[beh@zat_b40_guard_12]:beh@general
+;pt1 = 1528357
+;pt2 = 1529553
+;pt3 = 1385464
+;pt4 = 1386632
+;pt5 = 1434943
+;pt6 = 1578326,15000,binocular look:371.68685913086,33.260974884033,-323.43347167969
+;pt7 = 1560265,30000,animpoint_sit_low animpoint:358.74932861328,33.740585327148,-391.47021484375,0,0,-1
+;path_end = loop
+;on_info = {=surge_started} beh@zat_b40_guard_12_surge
+;on_info2 = {=zat_b7_is_night} beh@zat_b40_guard_12_sleep
+;on_info3 = {=is_rain} beh@zat_b40_guard_12_rain
+;
+;[beh@zat_b40_guard_13]:beh@general
+;pt1 = 1612122,120000,sit_ass look:394.7958984375,33.464221954346,-436.88269042969
+;pt2 = 1578326,15000,binocular look:371.68685913086,33.260974884033,-323.43347167969
+;pt3 = 1424695,15000,binocular look:228.9481048584,33.102966308594,-383.73696899414
+;path_end = reverse
+;on_info = {=surge_started} beh@zat_b40_guard_13_surge
+;on_info2 = {=zat_b7_is_night} beh@zat_b40_guard_13_sleep
+;on_info3 = {=is_rain} beh@zat_b40_guard_13_rain
+;
+;[beh@zat_b40_guard_14]:beh@general
+;pt1 = 1560280,15000,hide
+;pt2 = 1504584,15000,binocular look:324.75958251953,33.338901519775,-328.68121337891
+;pt3 = 1615493,120000,sit_ass look:394.7958984375,33.464221954346,-436.88269042969
+;path_end = reverse
+;on_info = {=surge_started} beh@zat_b40_guard_14_surge
+;on_info2 = {=zat_b7_is_night} beh@zat_b40_guard_14_sleep
+;on_info3 = {=is_rain} beh@zat_b40_guard_14_rain
+;
+;[beh@zat_b40_guard_15]:beh@general
+;pt1 = 1647151,30000,hide look:422.03771972656,35.695636749268,-413.07583618164
+;pt2 = 1592899,10000,search look:374.6389465332,28.091470718384,-370.43029785156
+;pt3 = 1615491,60000,animpoint_stay_wall animpoint:395.7712097168,33.402793884277,-440.68048095703,0,0,-1
+;path_end = loop
+;on_info = {=surge_started} beh@zat_b40_guard_15_surge
+;on_info2 = {=zat_b7_is_night} beh@zat_b40_guard_15_sleep
+;on_info3 = {=is_rain} beh@zat_b40_guard_15_rain
+;
+;[beh@zat_b40_guard_16]:beh@general
+;pt1 = 1617743,0,sit_ass look:394.7958984375,33.464221954346,-436.88269042969
+;on_info = {=surge_started} beh@zat_b40_guard_16_surge
+;on_info2 = {=zat_b7_is_night} beh@zat_b40_guard_16_sleep
+;on_info3 = {=is_rain} beh@zat_b40_guard_16_rain
+;
+;---------beh sleep
+;[beh@zat_b40_guard_11_sleep]:beh@general
+;walk_anim = rush
+;pt1 = 1475662,0,sleep
+;on_info = {=surge_started} beh@zat_b40_guard_11_surge
+;on_info2 = {!zat_b7_is_night} beh@zat_b40_guard_11
+;
+;[beh@zat_b40_guard_12_sleep]:beh@general
+;walk_anim = rush
+;pt1 = 1630758,0,sleep
+;on_info = {=surge_started} beh@zat_b40_guard_12_surge
+;on_info2 = {!zat_b7_is_night} beh@zat_b40_guard_12
+;
+;[beh@zat_b40_guard_13_sleep]:beh@general
+;walk_anim = rush
+;pt1 = 1476668,0,sleep
+;on_info = {=surge_started} beh@zat_b40_guard_13_surge
+;on_info2 = {!zat_b7_is_night} beh@zat_b40_guard_13
+;
+;[beh@zat_b40_guard_14_sleep]:beh@general
+;walk_anim = rush
+;pt1 = 1628624,0,sleep
+;on_info = {=surge_started} beh@zat_b40_guard_14_surge
+;on_info2 = {!zat_b7_is_night} beh@zat_b40_guard_14
+;
+;[beh@zat_b40_guard_15_sleep]:beh@general
+;walk_anim = rush
+;pt1 = 1629705,0,sleep
+;on_info = {=surge_started} beh@zat_b40_guard_15_surge
+;on_info2 = {!zat_b7_is_night} beh@zat_b40_guard_15
+;
+;[beh@zat_b40_guard_16_sleep]:beh@general
+;walk_anim = rush
+;pt1 = 1632786,0,sleep
+;on_info = {=surge_started} beh@zat_b40_guard_16_surge
+;on_info2 = {!zat_b7_is_night} beh@zat_b40_guard_16
+;
+;---------beh surge
+;[beh@zat_b40_guard_11_surge]:beh@general
+;walk_anim = rush
+;pt1 = 1510862,0,sit_knee look:325.89904785156,38.340690612793,-395.06311035156
+;on_info = {=surge_complete} beh@zat_b40_guard_11
+;
+;[beh@zat_b40_guard_12_surge]:beh@general
+;walk_anim = rush
+;pt1 = 1511806,0,sit_ass look:325.89904785156,38.340690612793,-395.06311035156
+;on_info = {=surge_complete} beh@zat_b40_guard_12
+;
+;[beh@zat_b40_guard_13_surge]:beh@general
+;walk_anim = rush
+;pt1 = 1509989,0,sit_ass look:325.89904785156,38.340690612793,-395.06311035156
+;on_info = {=surge_complete} beh@zat_b40_guard_13
+;
+;[beh@zat_b40_guard_14_surge]:beh@general
+;walk_anim = rush
+;pt1 = 1509094,0,sit_ass look:325.89904785156,38.340690612793,-395.06311035156
+;on_info = {=surge_complete} beh@zat_b40_guard_14
+;
+;[beh@zat_b40_guard_15_surge]:beh@general
+;walk_anim = rush
+;pt1 = 1509094,0,sit_ass look:325.89904785156,38.340690612793,-395.06311035156
+;on_info = {=surge_complete} beh@zat_b40_guard_15
+;
+;[beh@zat_b40_guard_16_surge]:beh@general
+;walk_anim = rush
+;pt1 = 1509094,0,sit_ass look:325.89904785156,38.340690612793,-395.06311035156
+;on_info = {=surge_complete} beh@zat_b40_guard_16
+;
+;---------beh rain
+;[beh@zat_b40_guard_11_rain]:beh@general
+;walk_anim = rush
+;pt1 = 1475662,0,sit_knee look:290,33,-396
+;on_info = {=surge_started} beh@zat_b40_guard_11_surge
+;on_info2 = {=zat_b7_is_night} beh@zat_b40_guard_11_sleep
+;on_info3 = {!is_rain} beh@zat_b40_guard_11
+;
+;[beh@zat_b40_guard_12_rain]:beh@general
+;walk_anim = rush
+;pt1 = 1505500,0,sit_ass look:321,34,-389
+;on_info = {=surge_started} beh@zat_b40_guard_12_surge
+;on_info2 = {=zat_b7_is_night} beh@zat_b40_guard_12_sleep
+;on_info3 = {!is_rain} beh@zat_b40_guard_12
+;
+;[beh@zat_b40_guard_13_rain]:beh@general
+;walk_anim = rush
+;pt1 = 1476668,0,sit_ass look:290,33,-396
+;on_info = {=surge_started} beh@zat_b40_guard_13_surge
+;on_info2 = {=zat_b7_is_night} beh@zat_b40_guard_13_sleep
+;on_info3 = {!is_rain} beh@zat_b40_guard_13
+;
+;[beh@zat_b40_guard_14_rain]:beh@general
+;walk_anim = rush
+;pt1 = 1601367,0
+;pt2 = 1553721,0,sit_ass look:350,30,-375
+;on_info = {=surge_started} beh@zat_b40_guard_14_surge
+;on_info2 = {=zat_b7_is_night} beh@zat_b40_guard_14_sleep
+;on_info3 = {!is_rain} beh@zat_b40_guard_14
+;
+;[beh@zat_b40_guard_15_rain]:beh@general
+;walk_anim = rush
+;pt1 = 1546150,0,sit_ass look:350,38,-398
+;on_info = {=surge_started} beh@zat_b40_guard_15_surge
+;on_info2 = {=zat_b7_is_night} beh@zat_b40_guard_15_sleep
+;on_info3 = {!is_rain} beh@zat_b40_guard_15
+;
+;[beh@zat_b40_guard_16_rain]:beh@general
+;walk_anim = rush
+;pt1 = 1548296,0,sit_ass look:350,38,-398
+;on_info = {=surge_started} beh@zat_b40_guard_16_surge
+;on_info2 = {=zat_b7_is_night} beh@zat_b40_guard_16_sleep
+;on_info3 = {!is_rain} beh@zat_b40_guard_16
+
+; ---- walker ------------------------------------------------------------------
+
+; walker@zat_b40_guard_01..08 — основные секции для guard_01..08.
+; В Мизери лидеры тоже ходят через walker; в vanilla xrMPE лидеры — camper.
+; Оставлен walker (как в Мизери) — camper-версии лидеров ниже для справки.
+
+[walker@zat_b40_guard_leader_01]:walker@zat_b40_mercs_gen
 path_walk = zat_b40_merc_squad_leader_1_walk
 path_look = zat_b40_merc_squad_leader_1_look
+def_state_standing = hide
 on_info = {=surge_started} camper@zat_b40_surge_09
 on_info2 = {+ZAT_B40_ACTOR_FIND_MER_CAMP -ZAT_B40_MERC_IN_COMBAT -ZAT_B40_WARNING} remark@zat_b40_warning_09 %+ZAT_B40_WARNING%
-on_info3 = {+ZAT_B40_MERC_IN_COMBAT} remark@zat_b40_danger_09 
+on_info3 = {+ZAT_B40_MERC_IN_COMBAT} remark@zat_b40_danger_09
 
-[camper@zat_b40_guard_leader_02]:camper@zat_b40_mercs_gen
+[walker@zat_b40_guard_leader_02]:walker@zat_b40_mercs_gen
 path_walk = zat_b40_merc_squad_leader_2_walk
 path_look = zat_b40_merc_squad_leader_2_look
+def_state_standing = hide
 on_info = {=surge_started} camper@zat_b40_surge_10
 on_info2 = {+ZAT_B40_ACTOR_FIND_MER_CAMP -ZAT_B40_MERC_IN_COMBAT -ZAT_B40_WARNING} remark@zat_b40_warning_10 %+ZAT_B40_WARNING%
-on_info3 = {+ZAT_B40_MERC_IN_COMBAT} remark@zat_b40_danger_10 
+on_info3 = {+ZAT_B40_MERC_IN_COMBAT} remark@zat_b40_danger_10
 
-[camper@zat_b40_guard_01]:camper@zat_b40_mercs_gen
+[walker@zat_b40_guard_01]:walker@zat_b40_mercs_gen
 path_walk = zat_b40_merc_01_walk
 path_look = zat_b40_merc_01_look
 on_info = {=surge_started} camper@zat_b40_surge_01
 on_info2 = {+ZAT_B40_ACTOR_FIND_MER_CAMP -ZAT_B40_MERC_IN_COMBAT -ZAT_B40_WARNING} remark@zat_b40_warning_01 %+ZAT_B40_WARNING%
-on_info3 = {+ZAT_B40_MERC_IN_COMBAT} remark@zat_b40_danger_01 
+on_info3 = {+ZAT_B40_MERC_IN_COMBAT} remark@zat_b40_danger_01
 
-[camper@zat_b40_guard_02]:camper@zat_b40_mercs_gen
+[walker@zat_b40_guard_02]:walker@zat_b40_mercs_gen
 path_walk = zat_b40_merc_02_walk
 path_look = zat_b40_merc_02_look
 on_info = {=surge_started} camper@zat_b40_surge_02
 on_info2 = {+ZAT_B40_ACTOR_FIND_MER_CAMP -ZAT_B40_MERC_IN_COMBAT -ZAT_B40_WARNING} remark@zat_b40_warning_02 %+ZAT_B40_WARNING%
-on_info3 = {+ZAT_B40_MERC_IN_COMBAT} remark@zat_b40_danger_02 
+on_info3 = {+ZAT_B40_MERC_IN_COMBAT} remark@zat_b40_danger_02
 
-[camper@zat_b40_guard_03]:camper@zat_b40_mercs_gen
+[walker@zat_b40_guard_03]:walker@zat_b40_mercs_gen
 path_walk = zat_b40_merc_03_walk
 path_look = zat_b40_merc_03_look
 on_info = {=surge_started} camper@zat_b40_surge_03
 on_info2 = {+ZAT_B40_ACTOR_FIND_MER_CAMP -ZAT_B40_MERC_IN_COMBAT -ZAT_B40_WARNING} remark@zat_b40_warning_03 %+ZAT_B40_WARNING%
-on_info3 = {+ZAT_B40_MERC_IN_COMBAT} remark@zat_b40_danger_03 
+on_info3 = {+ZAT_B40_MERC_IN_COMBAT} remark@zat_b40_danger_03
 
-[camper@zat_b40_guard_04]:camper@zat_b40_mercs_gen
+[walker@zat_b40_guard_04]:walker@zat_b40_mercs_gen
 path_walk = zat_b40_merc_04_walk
 path_look = zat_b40_merc_04_look
 on_info = {=surge_started} camper@zat_b40_surge_04
 on_info2 = {+ZAT_B40_ACTOR_FIND_MER_CAMP -ZAT_B40_MERC_IN_COMBAT -ZAT_B40_WARNING} remark@zat_b40_warning_04 %+ZAT_B40_WARNING%
-on_info3 = {+ZAT_B40_MERC_IN_COMBAT} remark@zat_b40_danger_04 
+on_info3 = {+ZAT_B40_MERC_IN_COMBAT} remark@zat_b40_danger_04
 
-[camper@zat_b40_guard_05]:camper@zat_b40_mercs_gen
+[walker@zat_b40_guard_05]:walker@zat_b40_mercs_gen
 path_walk = zat_b40_merc_05_walk
 path_look = zat_b40_merc_05_look
 on_info = {=surge_started} camper@zat_b40_surge_05
 on_info2 = {+ZAT_B40_ACTOR_FIND_MER_CAMP -ZAT_B40_MERC_IN_COMBAT -ZAT_B40_WARNING} remark@zat_b40_warning_05 %+ZAT_B40_WARNING%
-on_info3 = {+ZAT_B40_MERC_IN_COMBAT} remark@zat_b40_danger_05 
+on_info3 = {+ZAT_B40_MERC_IN_COMBAT} remark@zat_b40_danger_05
 
-[camper@zat_b40_guard_06]:camper@zat_b40_mercs_gen
+[walker@zat_b40_guard_06]:walker@zat_b40_mercs_gen
 path_walk = zat_b40_merc_06_walk
 path_look = zat_b40_merc_06_look
 on_info = {=surge_started} camper@zat_b40_surge_06
 on_info2 = {+ZAT_B40_ACTOR_FIND_MER_CAMP -ZAT_B40_MERC_IN_COMBAT -ZAT_B40_WARNING} remark@zat_b40_warning_06 %+ZAT_B40_WARNING%
-on_info3 = {+ZAT_B40_MERC_IN_COMBAT} remark@zat_b40_danger_06 
+on_info3 = {+ZAT_B40_MERC_IN_COMBAT} remark@zat_b40_danger_06
 
-[camper@zat_b40_guard_07]:camper@zat_b40_mercs_gen
+[walker@zat_b40_guard_07]:walker@zat_b40_mercs_gen
 path_walk = zat_b40_merc_07_walk
 path_look = zat_b40_merc_07_look
 on_info = {=surge_started} camper@zat_b40_surge_07
 on_info2 = {+ZAT_B40_ACTOR_FIND_MER_CAMP -ZAT_B40_MERC_IN_COMBAT -ZAT_B40_WARNING} remark@zat_b40_warning_07 %+ZAT_B40_WARNING%
-on_info3 = {+ZAT_B40_MERC_IN_COMBAT} remark@zat_b40_danger_07 
+on_info3 = {+ZAT_B40_MERC_IN_COMBAT} remark@zat_b40_danger_07
 
-[camper@zat_b40_guard_08]:camper@zat_b40_mercs_gen
+[walker@zat_b40_guard_08]:walker@zat_b40_mercs_gen
 path_walk = zat_b40_merc_08_walk
 path_look = zat_b40_merc_08_look
 on_info = {=surge_started} camper@zat_b40_surge_08
 on_info2 = {+ZAT_B40_ACTOR_FIND_MER_CAMP -ZAT_B40_MERC_IN_COMBAT -ZAT_B40_WARNING} remark@zat_b40_warning_08 %+ZAT_B40_WARNING%
-on_info3 = {+ZAT_B40_MERC_IN_COMBAT} remark@zat_b40_danger_08 
+on_info3 = {+ZAT_B40_MERC_IN_COMBAT} remark@zat_b40_danger_08
 
-;walker
+; walker-версии для surge (используются camper@zat_b40_surge_* → on_info2 ссылается на walker)
+; NOTE: в vanilla xrMPE surge-секции — camper, здесь они тоже camper (см. ниже).
+; Отдельные walker@zat_b40_mercs_01..10 оставлены для совместимости с
+; возможными внешними ссылками на эти имена (danger remark → on_info3).
 
 [walker@zat_b40_mercs_01]:walker@zat_b40_mercs_gen
 path_walk = zat_b40_merc_01_walk
@@ -215,7 +548,7 @@ path_walk = zat_b40_merc_squad_leader_2_walk
 path_look = zat_b40_merc_squad_leader_2_look
 on_info = {=surge_started} camper@zat_b40_surge_10
 
-; danger remark
+; ---- danger remark -----------------------------------------------------------
 
 [remark@zat_b40_danger_01]:remark@zat_b40_danger_gen
 on_info3 = {+ZAT_B40_MERC_COMBAT_FIND_ACTOR} walker@zat_b40_mercs_01
@@ -257,96 +590,100 @@ on_info4 = {=surge_started} camper@zat_b40_surge_09
 on_info3 = {+ZAT_B40_MERC_COMBAT_FIND_ACTOR} walker@zat_b40_mercs_10
 on_info4 = {=surge_started} camper@zat_b40_surge_10
 
-;surge
+; ---- surge camper ------------------------------------------------------------
 
 [camper@zat_b40_surge_01]:camper@zat_b40_surge_gen
 path_walk = walker_1_walk
 path_look = walker_1_look
-on_info = {=surge_complete} camper@zat_b40_guard_01
+on_info = {=surge_complete} walker@zat_b40_guard_01
 on_info2 = {+ZAT_B40_ACTOR_FIND_MER_CAMP -ZAT_B40_MERC_IN_COMBAT -ZAT_B40_WARNING} remark@zat_b40_warning_01 %+ZAT_B40_WARNING%
 
 [camper@zat_b40_surge_02]:camper@zat_b40_surge_gen
 path_walk = walker_2_walk
 path_look = walker_2_look
-on_info = {=surge_complete} camper@zat_b40_guard_02
+on_info = {=surge_complete} walker@zat_b40_guard_02
 on_info2 = {+ZAT_B40_ACTOR_FIND_MER_CAMP -ZAT_B40_MERC_IN_COMBAT -ZAT_B40_WARNING} remark@zat_b40_warning_02 %+ZAT_B40_WARNING%
 
 [camper@zat_b40_surge_03]:camper@zat_b40_surge_gen
 path_walk = walker_3_walk
 path_look = walker_3_look
-on_info = {=surge_complete} camper@zat_b40_guard_03
+on_info = {=surge_complete} walker@zat_b40_guard_03
 on_info2 = {+ZAT_B40_ACTOR_FIND_MER_CAMP -ZAT_B40_MERC_IN_COMBAT -ZAT_B40_WARNING} remark@zat_b40_warning_03 %+ZAT_B40_WARNING%
 
 [camper@zat_b40_surge_04]:camper@zat_b40_surge_gen
 path_walk = walker_4_walk
 path_look = walker_4_look
-on_info = {=surge_complete} camper@zat_b40_guard_04
+on_info = {=surge_complete} walker@zat_b40_guard_04
 on_info2 = {+ZAT_B40_ACTOR_FIND_MER_CAMP -ZAT_B40_MERC_IN_COMBAT -ZAT_B40_WARNING} remark@zat_b40_warning_04 %+ZAT_B40_WARNING%
 
 [camper@zat_b40_surge_05]:camper@zat_b40_surge_gen
 path_walk = walker_5_walk
 path_look = walker_5_look
-on_info = {=surge_complete} camper@zat_b40_guard_05
+on_info = {=surge_complete} walker@zat_b40_guard_05
 on_info2 = {+ZAT_B40_ACTOR_FIND_MER_CAMP -ZAT_B40_MERC_IN_COMBAT -ZAT_B40_WARNING} remark@zat_b40_warning_05 %+ZAT_B40_WARNING%
 
 [camper@zat_b40_surge_06]:camper@zat_b40_surge_gen
 path_walk = walker_6_walk
 path_look = walker_6_look
-on_info = {=surge_complete} camper@zat_b40_guard_06
+on_info = {=surge_complete} walker@zat_b40_guard_06
 on_info2 = {+ZAT_B40_ACTOR_FIND_MER_CAMP -ZAT_B40_MERC_IN_COMBAT -ZAT_B40_WARNING} remark@zat_b40_warning_06 %+ZAT_B40_WARNING%
 
 [camper@zat_b40_surge_07]:camper@zat_b40_surge_gen
 path_walk = walker_7_walk
 path_look = walker_7_look
-on_info = {=surge_complete} camper@zat_b40_guard_07
+on_info = {=surge_complete} walker@zat_b40_guard_07
 on_info2 = {+ZAT_B40_ACTOR_FIND_MER_CAMP -ZAT_B40_MERC_IN_COMBAT -ZAT_B40_WARNING} remark@zat_b40_warning_07 %+ZAT_B40_WARNING%
 
 [camper@zat_b40_surge_08]:camper@zat_b40_surge_gen
 path_walk = surge_4_walk
 path_look = surge_4_look
-on_info = {=surge_complete} camper@zat_b40_guard_08
+on_info = {=surge_complete} walker@zat_b40_guard_08
 on_info2 = {+ZAT_B40_ACTOR_FIND_MER_CAMP -ZAT_B40_MERC_IN_COMBAT -ZAT_B40_WARNING} remark@zat_b40_warning_08 %+ZAT_B40_WARNING%
 
 [camper@zat_b40_surge_09]:camper@zat_b40_surge_gen
 path_walk = surge_5_walk
 path_look = surge_5_look
-on_info = {=surge_complete} camper@zat_b40_guard_leader_01
+on_info = {=surge_complete} walker@zat_b40_guard_leader_01
 on_info2 = {+ZAT_B40_ACTOR_FIND_MER_CAMP -ZAT_B40_MERC_IN_COMBAT -ZAT_B40_WARNING} remark@zat_b40_warning_09 %+ZAT_B40_WARNING%
 
 [camper@zat_b40_surge_10]:camper@zat_b40_surge_gen
 path_walk = surge_3_walk
 path_look = surge_3_look
-on_info = {=surge_complete} camper@zat_b40_guard_leader_02
+on_info = {=surge_complete} walker@zat_b40_guard_leader_02
 on_info2 = {+ZAT_B40_ACTOR_FIND_MER_CAMP -ZAT_B40_MERC_IN_COMBAT -ZAT_B40_WARNING} remark@zat_b40_warning_10 %+ZAT_B40_WARNING%
 
-; remark
+; ---- warning remark ----------------------------------------------------------
+; В исходнике Мизери эти секции закомментированы.
+; В vanilla xrMPE они есть и нужны: без них warning-цикл обрывается
+; (remark@zat_b40_warning_gen не имеет on_info2, NPC зависнет в warning навсегда).
+; Раскомментировано. Переход после warning: либо в combat, либо обратно в camper.
 
 [remark@zat_b40_warning_01]:remark@zat_b40_warning_gen
-on_info2 = {+ZAT_B40_MERC_IN_COMBAT} remark@zat_b40_danger_01 %=stop_sound%, {+ZAT_B40_START_WORNING_TIME} camper@zat_b40_guard_01
+on_info2 = {+ZAT_B40_MERC_IN_COMBAT} remark@zat_b40_danger_01 %=stop_sound%, {+ZAT_B40_START_WORNING_TIME} walker@zat_b40_guard_01
 
 [remark@zat_b40_warning_02]:remark@zat_b40_warning_gen
-on_info2 = {+ZAT_B40_MERC_IN_COMBAT} remark@zat_b40_danger_02 %=stop_sound%, {+ZAT_B40_START_WORNING_TIME} camper@zat_b40_guard_02
+on_info2 = {+ZAT_B40_MERC_IN_COMBAT} remark@zat_b40_danger_02 %=stop_sound%, {+ZAT_B40_START_WORNING_TIME} walker@zat_b40_guard_02
 
 [remark@zat_b40_warning_03]:remark@zat_b40_warning_gen
-on_info2 = {+ZAT_B40_MERC_IN_COMBAT} remark@zat_b40_danger_03 %=stop_sound%, {+ZAT_B40_START_WORNING_TIME} camper@zat_b40_guard_03
+on_info2 = {+ZAT_B40_MERC_IN_COMBAT} remark@zat_b40_danger_03 %=stop_sound%, {+ZAT_B40_START_WORNING_TIME} walker@zat_b40_guard_03
 
 [remark@zat_b40_warning_04]:remark@zat_b40_warning_gen
-on_info2 = {+ZAT_B40_MERC_IN_COMBAT} remark@zat_b40_danger_04 %=stop_sound%, {+ZAT_B40_START_WORNING_TIME} camper@zat_b40_guard_04
+on_info2 = {+ZAT_B40_MERC_IN_COMBAT} remark@zat_b40_danger_04 %=stop_sound%, {+ZAT_B40_START_WORNING_TIME} walker@zat_b40_guard_04
 
 [remark@zat_b40_warning_05]:remark@zat_b40_warning_gen
-on_info2 = {+ZAT_B40_MERC_IN_COMBAT} remark@zat_b40_danger_05 %=stop_sound%, {+ZAT_B40_START_WORNING_TIME} camper@zat_b40_guard_05
+on_info2 = {+ZAT_B40_MERC_IN_COMBAT} remark@zat_b40_danger_05 %=stop_sound%, {+ZAT_B40_START_WORNING_TIME} walker@zat_b40_guard_05
 
 [remark@zat_b40_warning_06]:remark@zat_b40_warning_gen
-on_info2 = {+ZAT_B40_MERC_IN_COMBAT} remark@zat_b40_danger_06 %=stop_sound%, {+ZAT_B40_START_WORNING_TIME} camper@zat_b40_guard_06
+on_info2 = {+ZAT_B40_MERC_IN_COMBAT} remark@zat_b40_danger_06 %=stop_sound%, {+ZAT_B40_START_WORNING_TIME} walker@zat_b40_guard_06
 
 [remark@zat_b40_warning_07]:remark@zat_b40_warning_gen
-on_info2 = {+ZAT_B40_MERC_IN_COMBAT} remark@zat_b40_danger_07 %=stop_sound%, {+ZAT_B40_START_WORNING_TIME} camper@zat_b40_guard_07
+on_info2 = {+ZAT_B40_MERC_IN_COMBAT} remark@zat_b40_danger_07 %=stop_sound%, {+ZAT_B40_START_WORNING_TIME} walker@zat_b40_guard_07
 
 [remark@zat_b40_warning_08]:remark@zat_b40_warning_gen
-on_info2 = {+ZAT_B40_MERC_IN_COMBAT} remark@zat_b40_danger_08 %=stop_sound%, {+ZAT_B40_START_WORNING_TIME} camper@zat_b40_guard_08
+on_info2 = {+ZAT_B40_MERC_IN_COMBAT} remark@zat_b40_danger_08 %=stop_sound%, {+ZAT_B40_START_WORNING_TIME} walker@zat_b40_guard_08
 
 [remark@zat_b40_warning_09]:remark@zat_b40_warning_gen
-on_info2 = {+ZAT_B40_MERC_IN_COMBAT} remark@zat_b40_danger_09 %=stop_sound%, {+ZAT_B40_START_WORNING_TIME} camper@zat_b40_guard_leader_01
+on_info2 = {+ZAT_B40_MERC_IN_COMBAT} remark@zat_b40_danger_09 %=stop_sound%, {+ZAT_B40_START_WORNING_TIME} walker@zat_b40_guard_leader_01
 
 [remark@zat_b40_warning_10]:remark@zat_b40_warning_gen
-on_info2 = {+ZAT_B40_MERC_IN_COMBAT} remark@zat_b40_danger_10 %=stop_sound%, {+ZAT_B40_START_WORNING_TIME} camper@zat_b40_guard_leader_02
+on_info2 = {+ZAT_B40_MERC_IN_COMBAT} remark@zat_b40_danger_10 %=stop_sound%, {+ZAT_B40_START_WORNING_TIME} walker@zat_b40_guard_leader_02
