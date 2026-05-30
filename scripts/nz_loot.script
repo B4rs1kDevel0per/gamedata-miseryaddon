@@ -294,6 +294,9 @@ local mutant_parts = {
 	[clsid.poltergeist_s]	= { 
 								{ amount = 0, chance = 0, item_section = nil},
 							},
+	[clsid.cat_s]	= {
+								{ amount = 0, chance = 0, item_section = nil},
+							},							
 	[clsid.psy_dog_s]		= { 
 								{ amount = 1, chance = 66, item_section = "hide_psy_dog"},
 								{ amount = 1, chance = 33, item_section = "mutant_part_controller_glass"},
