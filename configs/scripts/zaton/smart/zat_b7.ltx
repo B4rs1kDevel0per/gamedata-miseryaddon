@@ -1,15 +1,101 @@
 [smart_terrain];zat_b7
+respawn_idle = 21600
+respawn_only_level = true
+respawn_radius = 200
+death_idle_time = 21600
+
 squad_id = 29
 max_population = 2
 
 respawn_params = respawn@zat_b7
 
 [respawn@zat_b7]
+spawn_freedom@advanced_hostile
+spawn_freedom@veteran_hostile
+
+spawn_freedom@veteran_assault_hostile
+
+spawn_stalker@novice_hostile ; NON-HOSTILE SQUADS SPAWN ON SKADOVSK
+spawn_stalker@master_hostile ; NON-HOSTILE SQUADS SPAWN ON SKADOVSK
+
+spawn_stalker@novice_base_sentry
+spawn_stalker@advanced_base_sentry
+
+spawn_stalker@novice_base_sentry_hostile
+spawn_stalker@advanced_base_sentry_hostile
+
+;;; unused
+
 spawn_stalker@advanced
+spawn_stalker@advanced_hostile
+
+;spawn_freedom@sci_hostile
+
+; Freedom hostile squads
+
+[spawn_freedom@advanced_hostile]
+spawn_squads = freedom_sim_squad_novice_hostile
+spawn_num = {+JUP_B207_TASK_END} 0, {+JUP_A12_TASK_DONE} 0, {+JUP_B46_TASK_DONE} 0, {+JUP_B8_HELI_4_SEARCHED} 0, {+JUP_B209_TASK_DONE} 0, {+JUP_B218_GATHER_SQUAD_COMPLETE} 0, {+SIM_DUTY_HELP_HARDER -JUP_B207_TASK_END} 1, {+SIM_DUTY_HELP_HARDER -JUP_A12_TASK_DONE} 1, {+SIM_DUTY_HELP_HARDER -JUP_B46_TASK_DONE} 1, {+SIM_DUTY_HELP_HARDER -JUP_B8_HELI_4_SEARCHED} 1, {+SIM_DUTY_HELP_HARDER -JUP_B209_TASK_DONE} 1, {+SIM_DUTY_HELP_HARDER +JUP_B218_GATHER_SQUAD_COMPLETE} 1, 0
+
+[spawn_freedom@veteran_hostile]
+spawn_squads = freedom_sim_squad_advanced_veteran_hostile, freedom_sim_squad_veteran_hostile, freedom_sci_simulation_squad_hostile, freedom_sci_simulation_squad_hostile
+spawn_num = {+SIM_DUTY_HELP_HARDER +JUP_B207_TASK_END} 1, {+SIM_DUTY_HELP_HARDER +JUP_A12_TASK_DONE} 1, {+SIM_DUTY_HELP_HARDER +JUP_B46_TASK_DONE} 1, {+SIM_DUTY_HELP_HARDER +JUP_B8_HELI_4_SEARCHED} 1, {+SIM_DUTY_HELP_HARDER +JUP_B209_TASK_DONE} 1, {+SIM_DUTY_HELP_HARDER +JUP_B218_GATHER_SQUAD_COMPLETE} 1, 0
+
+; Freedom assault hostile squads
+
+[spawn_freedom@veteran_assault_hostile]
+spawn_squads = freedom_sim_squad_veteran_hostile ; freedom_sim_squad_veteran_zat_b5_smart_terrain_assault_hostile, freedom_sim_squad_veteran_zat_b40_assault_hostile, freedom_sim_squad_veteran_zat_b103_merc_smart_assault_hostile
+spawn_num = {+SIM_DUTY_HELP_HARDER +JUP_B207_TASK_END} 1, {+SIM_DUTY_HELP_HARDER +JUP_A12_TASK_DONE} 1, {+SIM_DUTY_HELP_HARDER +JUP_B46_TASK_DONE} 1, {+SIM_DUTY_HELP_HARDER +JUP_B8_HELI_4_SEARCHED} 1, {+SIM_DUTY_HELP_HARDER +JUP_B209_TASK_DONE} 1, {+SIM_DUTY_HELP_HARDER +JUP_B218_GATHER_SQUAD_COMPLETE} 1, 0
+
+; Stalker hostile squads
+
+[spawn_stalker@novice_hostile]
+spawn_squads = stalker_sim_squad_novice_hostile, stalker_sim_squad_novice_hostile, stalker_hunter_day_simulation_squad_hostile, stalker_hunter_day_simulation_squad_hostile ; stalker_hunter_day_zat_sim_10_assault_simulation_squad_hostile
+spawn_num = {+JUP_B207_TASK_END} 0, {+JUP_A12_TASK_DONE} 0, {+JUP_B46_TASK_DONE} 0, {+JUP_B8_HELI_4_SEARCHED} 0, {+JUP_B209_TASK_DONE} 0, {+JUP_B218_GATHER_SQUAD_COMPLETE} 0, {+KINGPIN_GAINED -JUP_B207_TASK_END} 1, {+KINGPIN_GAINED -JUP_A12_TASK_DONE} 1, {+KINGPIN_GAINED -JUP_B46_TASK_DONE} 1, {+KINGPIN_GAINED -JUP_B8_HELI_4_SEARCHED} 1, {+KINGPIN_GAINED -JUP_B209_TASK_DONE} 1, {+KINGPIN_GAINED -JUP_B218_GATHER_SQUAD_COMPLETE} 1, 0
+
+[spawn_stalker@master_hostile]
+spawn_squads = stalker_sim_squad_advanced_veteran_hostile, stalker_sim_squad_veteran_hostile, stalker_sim_squad_advanced_veteran_hostile, stalker_sim_squad_veteran_hostile, stalker_hunter_day_simulation_squad_hostile, stalker_hunter_night_simulation_squad_hostile ; stalker_hunter_night_zat_sim_10_assault_simulation_squad_hostile, stalker_hunter_day_zat_sim_10_assault_simulation_squad_hostile
+spawn_num = {+KINGPIN_GAINED +JUP_B207_TASK_END} 1, {+KINGPIN_GAINED +JUP_A12_TASK_DONE} 1, {+KINGPIN_GAINED +JUP_B46_TASK_DONE} 1, {+KINGPIN_GAINED +JUP_B8_HELI_4_SEARCHED} 1, {+KINGPIN_GAINED +JUP_B209_TASK_DONE} 1, {+KINGPIN_GAINED +JUP_B218_GATHER_SQUAD_COMPLETE} 1, 0
+
+; Stalker base sentry squads
+
+[spawn_stalker@novice_base_sentry] ; TURNED TO REGULAR SQUADS !!!
+spawn_squads = stalker_sim_squad_novice, stalker_hunter_day_simulation_squad, stalker_hunter_day_simulation_squad ; stalker_hunter_day_zat_sim_10_assault_simulation_squad
+spawn_num = {+JUP_B207_TASK_END} 0, {+JUP_A12_TASK_DONE} 0, {+JUP_B46_TASK_DONE} 0, {+JUP_B8_HELI_4_SEARCHED} 0, {+JUP_B209_TASK_DONE} 0, {+JUP_B218_GATHER_SQUAD_COMPLETE} 0, {-KINGPIN_GAINED -JUP_B207_TASK_END} 1, {-KINGPIN_GAINED -JUP_A12_TASK_DONE} 1, {-KINGPIN_GAINED -JUP_B46_TASK_DONE} 1, {-KINGPIN_GAINED -JUP_B8_HELI_4_SEARCHED} 1, {-KINGPIN_GAINED -JUP_B209_TASK_DONE} 1, {-KINGPIN_GAINED} 1, 0
+
+[spawn_stalker@advanced_base_sentry] ; TURNED TO REGULAR SQUADS !!!
+spawn_squads = stalker_sim_squad_advanced_veteran, stalker_sim_squad_veteran, stalker_sim_squad_advanced_veteran, stalker_sim_squad_veteran, stalker_hunter_night_simulation_squad, stalker_hunter_night_simulation_squad ; stalker_hunter_night_zat_sim_10_assault_simulation_squad
+spawn_num = {-KINGPIN_GAINED +JUP_B207_TASK_END} 1, {-KINGPIN_GAINED +JUP_A12_TASK_DONE} 1, {-KINGPIN_GAINED +JUP_B46_TASK_DONE} 1, {-KINGPIN_GAINED +JUP_B8_HELI_4_SEARCHED} 1, {-KINGPIN_GAINED +JUP_B209_TASK_DONE} 1, {-KINGPIN_GAINED +JUP_B218_GATHER_SQUAD_COMPLETE} 1, 0
+
+; Stalker base sentry hostile squads
+
+[spawn_stalker@novice_base_sentry_hostile] ; TURNED TO REGULAR SQUADS !!!
+spawn_squads = stalker_sim_squad_novice_hostile, stalker_sim_squad_novice_hostile, stalker_hunter_day_simulation_squad_hostile, stalker_hunter_day_simulation_squad_hostile ; stalker_hunter_day_zat_sim_10_assault_simulation_squad_hostile
+spawn_num = {+JUP_B207_TASK_END} 0, {+JUP_A12_TASK_DONE} 0, {+JUP_B46_TASK_DONE} 0, {+JUP_B8_HELI_4_SEARCHED} 0, {+JUP_B209_TASK_DONE} 0, {+JUP_B218_GATHER_SQUAD_COMPLETE} 0, {+KINGPIN_GAINED -JUP_B207_TASK_END} 1, {+KINGPIN_GAINED -JUP_A12_TASK_DONE} 1, {+KINGPIN_GAINED -JUP_B46_TASK_DONE} 1, {+KINGPIN_GAINED -JUP_B8_HELI_4_SEARCHED} 1, {+KINGPIN_GAINED -JUP_B209_TASK_DONE} 1, {+KINGPIN_GAINED -JUP_B218_GATHER_SQUAD_COMPLETE} 1, 0
+
+[spawn_stalker@advanced_base_sentry_hostile] ; TURNED TO REGULAR SQUADS !!!
+spawn_squads = stalker_sim_squad_advanced_veteran_hostile, stalker_sim_squad_veteran_hostile, stalker_sim_squad_advanced_veteran_hostile, stalker_sim_squad_veteran_hostile, stalker_hunter_day_simulation_squad_hostile, stalker_hunter_night_simulation_squad_hostile ; stalker_hunter_night_zat_sim_10_assault_simulation_squad_hostile, stalker_hunter_day_zat_sim_10_assault_simulation_squad_hostile
+spawn_num = {+KINGPIN_GAINED +JUP_B207_TASK_END} 1, {+KINGPIN_GAINED +JUP_A12_TASK_DONE} 1, {+KINGPIN_GAINED +JUP_B46_TASK_DONE} 1, {+KINGPIN_GAINED +JUP_B8_HELI_4_SEARCHED} 1, {+KINGPIN_GAINED +JUP_B209_TASK_DONE} 1, {+KINGPIN_GAINED +JUP_B218_GATHER_SQUAD_COMPLETE} 1, 0
+
+;;; unused
+
+; Stalker permanent squads
 
 [spawn_stalker@advanced]
-spawn_squads = stalker_sim_squad_advanced
-spawn_num = 1
+spawn_squads = stalker_sim_squad_novice
+spawn_num = 0 ; {-KINGPIN_GAINED} 1, 0 ; {-KINGPIN_GAINED -JUP_B207_TASK_END} 1, {-KINGPIN_GAINED -JUP_A12_TASK_DONE} 1, {-KINGPIN_GAINED -JUP_B46_TASK_DONE} 1, {-KINGPIN_GAINED -JUP_B8_HELI_4_SEARCHED} 1, {-KINGPIN_GAINED -JUP_B209_TASK_DONE} 1, {-KINGPIN_GAINED} 1, 0
+
+; Stalker permanent hostile squads
+
+[spawn_stalker@advanced_hostile]
+spawn_squads = stalker_sim_squad_novice_hostile
+spawn_num = 0 ; {+KINGPIN_GAINED} 1, 0 ; {+KINGPIN_GAINED -JUP_B207_TASK_END} 1, {+KINGPIN_GAINED -JUP_A12_TASK_DONE} 1, {+KINGPIN_GAINED -JUP_B46_TASK_DONE} 1, {+KINGPIN_GAINED -JUP_B8_HELI_4_SEARCHED} 1, {+KINGPIN_GAINED -JUP_B209_TASK_DONE} 1, {+KINGPIN_GAINED -JUP_B218_GATHER_SQUAD_COMPLETE} 1, 0
+
+; Freedom sci hostile squads
+
+;[spawn_freedom@sci_hostile]
+;spawn_squads = freedom_sci_hostile_simulation_squad_hostile
+;spawn_num = 0    ; {+SIM_DUTY_HELP_HARDER +JUP_B218_GATHER_SQUAD_COMPLETE} 1, 0
 
 [exclusive]
 zat_b7_stalker_victim_1 = zaton\zat_b7_stalker_victim.ltx
