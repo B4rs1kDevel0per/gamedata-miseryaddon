@@ -23,7 +23,8 @@ holder_range_modifier	= 1.0               ; во сколько раз увел�
 holder_fov_modifier		= 1.0              ; во сколько раз увеличивается eye_fov
 ;-------------------------------------------------------------------------------
 
-cost					= 0
+cost					= 1390
+inv_weight				= 0.182
 
 ammo_limit		 		= 120
 ammo_current		 	= 96
@@ -95,33 +96,33 @@ condition_queue_shot_dec	= 0.00002
 
 ;-------------------------------------------------------------------------------
 ; ttc
-hit_power               = 1.0, 1.0, 1.0, 1.0
-hit_impulse		        = 10
+hit_power               		= 0.305, 0.305, 0.305, 0.305
+hit_impulse		        	= 3.3	;10
 hit_type				= wound
 
-hit_power_2             = 1.5, 1.50, 1.50, 1.50
-hit_power_critical_2    = 0.0, 0.0, 0.0, 0.0
-hit_impulse_2	        = 50
-hit_type_2				= wound ;wound_2
+hit_power_2             		= 0.525, 0.525, 0.525, 0.525
+hit_power_critical_2    		= 0.75, 0.75, 0.75, 0.75
+hit_impulse_2	        		= 6.5	;50
+hit_type_2				= wound
 
-hit_probability_gd_novice	= 0.80
-hit_probability_gd_stalker	= 0.80
-hit_probability_gd_veteran	= 0.80
-hit_probability_gd_master	= 0.80
+hit_probability_gd_novice = 1.00 ;		= 0.80
+hit_probability_gd_stalker = 1.00 ;		= 0.80
+hit_probability_gd_veteran = 1.00 ;		= 0.80
+hit_probability_gd_master = 1.00 ;		= 0.80
 
-PDM_disp_base 			= 1.0
-PDM_disp_vel_factor 	= 0.8
-PDM_disp_accel_factor 	= 0.8
-PDM_disp_crouch	 		= 1.0
-PDM_disp_crouch_no_acc 	= 1.0
+PDM_disp_base 				= 1.0
+PDM_disp_vel_factor 			= 0.8
+PDM_disp_accel_factor 			= 0.8
+PDM_disp_crouch = 1.0 ;  			= 1.0
+PDM_disp_crouch_no_acc = 1.0 ; 			= 1.0
 
-use_aim_bullet			= true		;Поддерживается ли первая суппер пуля
+use_aim_bullet				= false ;true
 time_to_aim				= 1.0
 
-fire_distance           = 2.0 ;1.4
-bullet_speed		 	= 1000
-rpm                     = 1000
-rpm_empty_click 	 	= 1000
+fire_distance           		= 3.80	;1.9
+bullet_speed		 		= 5000
+rpm                     		= 1000
+rpm_empty_click 	 		= 1000
 ; end ttc
 
 ;-------------------------------------------------------------------------------
@@ -190,7 +191,7 @@ snd_close						= weapons\generic_close
 [wpn_knife_hud]:hud_base
 zoom_hide_crosshair			= true
 
-hud_fov = 0.75
+hud_fov = 0.82
 
 hands_position				= 0.0,-0.13,0.03
 hands_orientation			= 0.0,0.0,0.0

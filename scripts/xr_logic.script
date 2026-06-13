@@ -264,17 +264,22 @@ function determine_section_to_activate(npc, ini, section_logic, actor)
 			return sect_to_retr
 		end
 	end
-
 	
-	if not db.storage[npc:id()].logic_type then
+	local st = db.storage[npc:id()]
+
+	if not st.logic_type then
 		determine_logic_type(npc, ini, section_logic)
 	end
 	
-	if db.storage[npc:id()].logic_type == logic_type.sv_only and OnClient() then
+	if st.logic_type == logic_type.sv_only and OnClient() then
 		return "nil"
 	end
 	
-	if db.storage[npc:id()].logic_type == logic_type.cl_only and OnServer() then
+	if st.logic_type == logic_type.cl_only and IsDedicatedServer() then
+		return "nil"
+	end
+	
+	if st.sv_cl_copy and st.logic_type == logic_type.shared_with_cl_data and not IsServerClient() then
 		return "nil"
 	end
 	
@@ -285,7 +290,7 @@ function determine_section_to_activate(npc, ini, section_logic, actor)
 	if not active_section_cond then
 		return "nil"
 		--'abort("object '%s': section '%s': unable to find field 'active'", npc:name(), section_logic)
-	else
+	else	
 		active_section = pick_section_from_condlist(actor, npc, active_section_cond.condlist)
 		if not active_section then
 			abort("object '%s': section '%s': section 'active' has no conditionless else clause",
@@ -306,12 +311,10 @@ function disable_generic_schemes(npc, stype)
 		xr_meet.disable_scheme(npc, "actor_dialogs")
 		--'xr_heli_hunter.disable_scheme(npc, "heli_hunter")
 		if xr_combat_ignore then xr_combat_ignore.disable_scheme(npc, "combat_ignore") end
-
 		stalker_generic.disable_invulnerability(npc)
 	elseif stype == modules.stype_mobile then
 		mob_combat.disable_scheme(npc, "mob_combat")
 		if xr_combat_ignore then xr_combat_ignore.disable_scheme(npc, "combat_ignore") end
-
 		stalker_generic.disable_invulnerability(npc)
 	elseif stype == modules.stype_trader then
 		mob_trade.disable_scheme(npc, "mob_trade")
@@ -373,7 +376,6 @@ end
 		--'xr_heli_hunter.set_scheme(npc, ini, "heli_hunter", heli_hunter_section)
 
 		if xr_combat_ignore then xr_combat_ignore.set_combat_ignore_checker(npc, ini, "combat_ignore") end
-
 		xr_reach_task.set_reach_task(npc, ini, "reach_task")
 
 	elseif stype == modules.stype_mobile then
@@ -395,7 +397,6 @@ end
 		end
 
 		if xr_combat_ignore then xr_combat_ignore.set_combat_ignore_checker(npc, ini, "combat_ignore") end
-
 		
 	elseif stype == modules.stype_trader then
 		local trade_section = utils.cfg_get_string(ini, section, "on_trade", npc, false, "")
@@ -526,7 +527,6 @@ function reset_generic_schemes_on_scheme_switch(npc, scheme, section)
 		xr_gather_items.reset_gather_items(npc, scheme, st, section)
 		if xr_combat_ignore then xr_combat_ignore.reset_combat_ignore_checker(npc, scheme, st, section) end
 
-
 		stalker_generic.reset_threshold(npc, scheme, st, section)
 		stalker_generic.reset_show_spot(npc, scheme, st, section)
 --		stalker_generic.set_level_spot(npc, scheme, st, section)
@@ -551,7 +551,6 @@ function reset_generic_schemes_on_scheme_switch(npc, scheme, section)
 			end
 		end
 		if xr_combat_ignore then xr_combat_ignore.reset_combat_ignore_checker(npc, scheme, st, section) end
-
 		stalker_generic.reset_invulnerability(npc, st.ini, section)
 		restrictor_manager.get_restrictor_manager(npc):reset_restrictions(st, section)
 		xr_hear.reset_hear_callback(st, section)
@@ -825,6 +824,11 @@ function switch_to_section(npc, ini, section)
 		if db.storage[npc_id].logic_type == logic_type.shared then
 			write_client_data(npc)
 		end
+		if IsServerClient() then
+			if (db.storage[npc_id].logic_type == logic_type.cl_only or db.storage[npc_id].logic_type == logic_type.shared_with_cl_data) then
+				write_client_data(npc)
+			end
+		end
 	else
 		if (db.storage[npc_id].logic_type == logic_type.cl_only or 
 			db.storage[npc_id].logic_type == logic_type.shared_with_cl_data) and 
@@ -854,10 +858,8 @@ function try_switch_to_another_section(npc, st, actor)
 	local npc_id = npc:id()
 
 	if not actor then
-		-- If server dies, actor is nil here, prevent the crash on client
-		if OnServer() then
-			abort("try_switch_to_another_section(): error in implementation of scheme '%s': actor is nil", st.scheme)
-		end
+		-- actor == nil законно при загрузке уровня до спауна игрока.
+		-- На сервере пропускаем — NPC попробуют снова в следующем кадре.
 		return
 	end
 
@@ -1906,6 +1908,16 @@ function initialize_obj(obj, st, loaded, actor, stype)
 		local sympathy = utils.cfg_get_number(ini, "logic", "sympathy", obj, false)
 		if(sympathy~=nil) then
 			obj:set_sympathy(sympathy)
+		end
+		
+		
+		local force_svcl_copy = utils.cfg_get_number(ini, "logic", "force_svcl_copy", obj, false)
+		
+		local st = db.storage[obj:id()]
+		if (IsServerClient() and not st.sv_cl_copy and not loaded) and (st.logic_type == logic_type.shared_with_cl_data or force_svcl_copy) then
+			local se_obj = alife():object(obj:id())
+			local copied_entity = copyEntity(se_obj)
+			copied_entity.sv_cl_copy = true
 		end
 	else
 		local ini_filename = st.loaded_ini_filename

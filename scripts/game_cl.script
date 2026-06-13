@@ -194,6 +194,10 @@ function TranslateGameMessage(packet)
 				return
 			end
 			
+			if not db.actor then
+				printf_msg("! GM_SCRIPT_CHANGE_TASK_MAP_LOCATION: db.actor is nil")
+				return
+			end
 			local t = db.actor:get_task(tostring(task_id), true)
 			if not t then
 				printf_msg("! GM_SCRIPT_CHANGE_TASK_MAP_LOCATION: Can't find task")
@@ -214,6 +218,10 @@ function TranslateGameMessage(packet)
 	elseif _type == GM_SCRIPT_REMOVE_TASK_MAP_LOCATIONS then
 		if OnServer() then
 			local task_id = packet:r_stringZ()
+			if not db.actor then
+				printf_msg("! GM_SCRIPT_REMOVE_TASK_MAP_LOCATIONS: db.actor is nil")
+				return
+			end
 			local t = db.actor:get_task(tostring(task_id), true)
 			
 			if not t then
@@ -315,14 +323,19 @@ end
 --end
 
 function give_task(task_id, status)
-	if getLocalActor() then
-		local t = getLocalActor():get_task(tostring(task_id), true)
-		if t then
-			return
-		end
-	end
+    -- xrMPE: при loadLastSave движок вызывает give_task до того как актор net-ready
+    if not IsActorNetReady(LocalActor()) then
+        return
+    end
 
-	task_manager.get_task_manager():give_task(task_id, status)
+    if getLocalActor() then
+        local t = getLocalActor():get_task(tostring(task_id), true)
+        if t then
+            return
+        end
+    end
+
+    task_manager.get_task_manager():give_task(task_id, status)
 end
 
 function set_task_finish_time(task_id, y, m, d, h, mi, s, ms)

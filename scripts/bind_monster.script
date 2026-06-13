@@ -125,7 +125,7 @@ function generic_object_binder:update(delta)
 	
 	local st = db.storage[self.object:id()]
 	if st ~= nil and st.active_scheme ~= nil then
-		xr_logic.try_switch_to_another_section(self.object, st[st.active_scheme], db.actor)
+		if db.actor then xr_logic.try_switch_to_another_section(self.object, st[st.active_scheme], db.actor) end
 	end
 	-- Р С—РЎвЂ”Р вЂ¦Р С—РЎвЂ”Р вЂ¦Р С—РЎвЂ”Р вЂ¦Р С—РЎвЂ”Р вЂ¦Р С—РЎвЂ”Р вЂ¦Р С—РЎвЂ”Р вЂ¦ Р С—РЎвЂ”Р вЂ¦Р С—РЎвЂ”Р вЂ¦Р С—РЎвЂ”Р вЂ¦Р С—РЎвЂ”Р вЂ¦Р С—РЎвЂ”Р вЂ¦Р С—РЎвЂ”Р вЂ¦
 	if squad ~= nil then
@@ -337,7 +337,8 @@ function generic_object_binder:net_spawn(sobject)
 
 	local on_offline_condlist = db.storage[self.object:id()] and db.storage[self.object:id()].overrides and db.storage[self.object:id()].overrides.on_offline_condlist
 	if on_offline_condlist ~= nil then
-		xr_logic.pick_section_from_condlist(db.actor, self.object, on_offline_condlist)
+		local actor = db.actor or getLocalActor()
+		xr_logic.pick_section_from_condlist(actor, self.object, on_offline_condlist)
 	end
 
 	if not self.object:alive() then

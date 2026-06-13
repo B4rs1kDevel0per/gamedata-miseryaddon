@@ -22,33 +22,28 @@ def_hide_bones = scope1, mount_off
 def_show_bones = mount
 
 ;------------------------------------------------------------------------------
-cost					= 26000
+cost					= 29980
 weapon_class			= heavy_weapon
 inv_weight				= 6.3
 
 ;------TTX------------------------------------------------------------------------
-hit_power       		= 1.0, 1.0, 1.0, 1.0
+hit_power       		= 3.00
 hit_impulse				= 100
 hit_type 				= explosion
-fire_distance           = 400
-bullet_speed			= 100 ;300			;начальная скорость пули
+fire_distance           = 1000
+bullet_speed			= 121 ;300			;начальная скорость пули
 rpm                     = 200
 rpm_empty_click         = 10
 
 hud                     = wpn_rpg7_hud
 
-;изношенность, при которой появляется шанс осечки
-misfire_start_condition		= 0.6
-;изношеность при которой шанс осечки становится константным
-misfire_end_condition		= 0.1
-;шанс осечки при изношености больше чем misfireStartCondition
-misfire_start_prob	     	= 0.0
-;шанс осечки при изношености больше чем misfireEndCondition
-misfire_end_prob	     	= 0.0
-;увеличение изношености при одиночном выстреле
-condition_shot_dec      	= 0.00001
-;увеличение изношености при выстреле очередью
-condition_queue_shot_dec	= 0.00002
+misfire_probability        	= 0.005
+misfire_start_condition		= 0.82
+misfire_end_condition		= 0.11
+misfire_start_prob = 0.007 ;	     	= 0.078
+misfire_end_prob = 0.11 ;	     	= 0.084
+condition_shot_dec      	= 0.0030
+condition_queue_shot_dec	= 0.0030
 
 ammo_limit		 		= 120
 ammo_current		 	= 96
@@ -62,23 +57,24 @@ single_handed			= 0
 
 ;---дисперсия-------------------------------------------------------------------------
 ;базовая дисперсия
-fire_dispersion_base			= 1.5   ;угол (в градусах) базовой дисперсии оружия (оружия зажатого в тисках)
-crosshair_inertion   	= 10
+fire_dispersion_base			= 0.33   ;угол (в градусах) базовой дисперсии оружия (оружия зажатого в тисках)
+control_inertion_factor			= 2.62f
+crosshair_inertion   	= 10.3
 
-PDM_disp_base           = 2.0
-PDM_disp_vel_factor     = 1.0
-PDM_disp_accel_factor   = 1.0
-PDM_disp_crouch         = 1.0
-PDM_disp_crouch_no_acc  = 1.0
+PDM_disp_base 				= 1.25
+PDM_disp_vel_factor 		= 2.95
+PDM_disp_accel_factor 		= 2.95
+PDM_disp_crouch = 1.0 ;  			= 0.565
+PDM_disp_crouch_no_acc = 1.0 ; 		= 0.935
 
 ;отдача
-cam_relax_speed         = 10.0	;скорость возврата в исходное положение
+cam_relax_speed         = 2.0	;скорость возврата в исходное положение
 cam_relax_speed_ai      = 360
-cam_dispersion          = 0.1	;увеличения угла (в градусах) с каждым выстрелом
-cam_max_angle			= 15		;максимальный угол отдачи
-cam_max_angle_horz		= 15	;(degree) maximum shot horizontal degree
+cam_dispersion          = 7.05	;увеличения угла (в градусах) с каждым выстрелом
+cam_max_angle			= 50		;максимальный угол отдачи
+cam_max_angle_horz		= 50	;(degree) maximum shot horizontal degree
 cam_step_angle_horz		= 0.5	;(degree) size of step camera moved in horizontal position while shooting
-fire_dispersion_condition_factor 	= 5	;увеличение дисперсии в процентах при максимальном износе
+fire_dispersion_condition_factor = 0.001 ; 	= 0.01 ; 5	
 
 misfire_probability        = 0.005 ;вероятность осечки при максимальном износе  !!!old - now not working
 
@@ -90,8 +86,8 @@ reload_dof			= 0.0, 0.5, 5, 1.7
 holder_range_modifier 	= 2.0               ; во сколько раз увеличивается eye_range
 holder_fov_modifier		= 1.0              ; во сколько раз увеличивается eye_fov
 
-min_radius               	= 50
-max_radius               	= 1500
+min_radius = 0 ;               	= 50
+max_radius = 500 ; = 250 ;    
 ;-------------------------------------------------------------------------------
 slot 				 	= 2
 animation_slot		 	= 4		; type of the animation that will be used
@@ -188,41 +184,54 @@ hud_move_suicide_offset_rot = 10, -50, 0
 
 hud_move_suicide_offset_pos_16x9 = 0, 0, 0.2
 hud_move_suicide_offset_rot_16x9 = 10, -50, 0
+
+hud_move_forward_offset_pos = -0.00294,0,-0.01176
+hud_move_forward_offset_rot = 0,0,0
+
+hud_move_forward_offset_pos_16x9 = -0.00294,0,-0.01176
+hud_move_forward_offset_rot_16x9 = 0,0,0
+
 suicide_delay = 1;
 
 
-zoom_dof_near = 0.25
+zoom_dof_near = 0.2
 zoom_dof_focus = 0.5
 
 fire_point				= 0.0,0.0,0.066
 fire_bone                               = wpn_body
 
-hud_fov = 0.75
-hud_fov_zoom = 0.75 ;аналогичный параметр работает и с прицелами
+hud_fov = 0.78
+hud_fov_zoom = 0.76 ;аналогичный параметр работает и с прицелами
 
-inertion_pitch_offset_r = 0.0
-inertion_pitch_offset_n = 0.0
-inertion_pitch_offset_d = 0.0
+hud_move_back_offset_pos = 0,0,0
+hud_move_back_offset_rot = 0,0,0
+
+hud_move_back_offset_pos_16x9 = 0,0.0
+hud_move_back_offset_rot_16x9 = 0,0,0
+
+inertion_pitch_offset_r = 0.01
+inertion_pitch_offset_n = 0.007
+inertion_pitch_offset_d = 0.01
 inertion_origin_offset = 0.03
 
 inertion_aim_origin_offset = 0.015
 
 disable_bore = false                                           ;отключение анимации скуки
 
-hands_position = 0.000000,-0.0080000,-0.11
-hands_orientation = 0.000000,0.000000,0.0
+hands_position = -0.075000,-0.0380000,-0.15
+hands_orientation = 0.000000,0.000000,-4.000000
 
-hands_position_16x9 = 0.000000,-0.0080000,-0.11
-hands_orientation_16x9 = 0.000000,0.000000,0.0
+hands_position_16x9 = -0.075000,-0.0380000,-0.15
+hands_orientation_16x9 = 0.000000,0.000000,-4.000000
 
 item_position				= 0,0,0
 item_orientation			= 0,0,0
 
-aim_hud_offset_pos = -0.0658000,-0.00240000,0.0
-aim_hud_offset_rot = -0.00560000,0.000000,0.0
+aim_hud_offset_pos = 0.0116700,0.0231000,0.1000
+aim_hud_offset_rot = -0.00560000,0.000000,-0.070000
 
-aim_hud_offset_pos_16x9 = -0.0658000,-0.00240000,0.0
-aim_hud_offset_rot_16x9 = -0.00560000,0.000000,0.0
+aim_hud_offset_pos_16x9 = 0.0116700,0.0231000,0.1000
+aim_hud_offset_rot_16x9 = -0.00560000,0.000000,-0.070000
 
 gl_hud_offset_pos			= 0,0,0
 gl_hud_offset_rot			= 0,0,0
@@ -358,11 +367,11 @@ overriding_show_bones = mount_off
 hud_fov_zoom = 0.4
 use_scope_anims = true ;говорит, что надо использовать анимации с суффиксом _scope в прицеливании с данным прицелом
 
-aim_hud_offset_pos = = 0.0,0.008,0.00
-aim_hud_offset_rot = 0.000000,0.000000,0.000000
+aim_hud_offset_pos = 0.0776,0.0326,0.09
+aim_hud_offset_rot = 0.000000,0.000000,-0.070000
 
-aim_hud_offset_pos_16x9 = 0.0,0.008,0.00
-aim_hud_offset_rot_16x9 = 0.000000,0.000000,0.000000
+aim_hud_offset_pos_16x9 = 0.0776,0.0326,0.09
+aim_hud_offset_rot_16x9 = 0.000000,0.000000,-0.070000
 
 gl_hud_offset_pos          = 0.000000,0.000000,0.000000
 gl_hud_offset_rot          = 0.000000,0.000000,0.000000

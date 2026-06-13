@@ -22,34 +22,28 @@ installed_upgrades =
 upgrade_scheme = upgrade_scheme_rgm40
 
 ;-------------------------------------------------------------------------------
-cost					= 4000
+cost					= 37980
 weapon_class				= heavy_weapon
 inv_weight				= 2.5
 
 ;----TTX--------------------------------------------------------------------------
-hit_power        			= 1.0, 1.0, 1.0, 1.0
+hit_power        			= 0.755, 0.755, 0.755, 0.755
 hit_impulse      			= 150
 hit_type 					= fire_wound
-fire_distance       		= 100
-bullet_speed				= 32 ;76
-rpm                 		= 100
+fire_distance       		= 500
+bullet_speed				= 76
+rpm                 		= 115
 rpm_empty_click 	   		= 200
 
 hud                    	    = wpn_rgm-40_hud
 
-misfire_probability         = 0.005 ;вероятность осечки при максимальном износе  !!!old - now not working
-;изношенность, при которой появляется шанс осечки
-misfire_start_condition		= 0.5
-;изношеность при которой шанс осечки становится константным
-misfire_end_condition		= 0.1
-;шанс осечки при изношености больше чем misfireStartCondition
-misfire_start_prob	     	= 0.1
-;шанс осечки при изношености больше чем misfireEndCondition
-misfire_end_prob	     	= 0.6
-;увеличение изношености при одиночном выстреле
-condition_shot_dec      	= 0.04
-;увеличение изношености при выстреле очередью
-condition_queue_shot_dec	= 0.04
+misfire_probability        	= 0.005
+misfire_start_condition		= 0.86
+misfire_end_condition		= 0.14
+misfire_start_prob = 0.007 ;	     	= 0.0074
+misfire_end_prob = 0.11 ;	     	= 0.088
+condition_shot_dec      	= 0.00075
+condition_queue_shot_dec	= 0.00075
 
 tri_state_reload			= off
 
@@ -65,20 +59,20 @@ sprint_allowed				= true
 
 ;------дисперсия------------------------------------------------------------------------
 ;базовая дисперсия
-fire_dispersion_base	= 1.0  	;угол (в градусах) базовой дисперсии оружия (оружия зажатого в тисках)
-control_inertion_factor	= 1.7f
-crosshair_inertion   	= 8.25
+fire_dispersion_base	= 0.76  	;угол (в градусах) базовой дисперсии оружия (оружия зажатого в тисках)
+control_inertion_factor	= 1.87f
+crosshair_inertion   	= 8.3
 
 ;отдача
 cam_return					= 0
-cam_relax_speed         = 12		;скорость возврата в исходное положение
+cam_relax_speed         = 7.0		;скорость возврата в исходное положение
 cam_relax_speed_ai      = 360
-cam_dispersion          = 10.0 	;увеличения угла (в градусах) с каждым выстрелом
-cam_dispersion_inc		= 1.0 	;увеличениe cam_dispersion с каждым выстрелом
-cam_dispersion_frac		= 0.9 	;ствол будет подыматься на cam_dispersion*cam_dispersion_frac +- cam_dispersion*(1-cam_dispersion_frac)
-cam_max_angle			= 25 		;максимальный угол отдачи
-cam_max_angle_horz		= 5 		;(degree) maximum shot horizontal degree
-cam_step_angle_horz		= 5.0 	;(degree) size of step camera moved in horizontal position while shooting
+cam_dispersion          = 3.02 	;увеличения угла (в градусах) с каждым выстрелом
+cam_dispersion_inc		= 3.02 	;увеличениe cam_dispersion с каждым выстрелом
+cam_dispersion_frac		= 0.1 	;ствол будет подыматься на cam_dispersion*cam_dispersion_frac +- cam_dispersion*(1-cam_dispersion_frac)
+cam_max_angle			= 50 		;максимальный угол отдачи
+cam_max_angle_horz		= 50 		;(degree) maximum shot horizontal degree
+cam_step_angle_horz		= 3.9 	;(degree) size of step camera moved in horizontal position while shooting
 
 zoom_cam_relax_speed         = 12	    ; scope & ironsight
 zoom_cam_relax_speed_ai      = 360
@@ -89,11 +83,11 @@ zoom_cam_max_angle           = 50.0
 zoom_cam_max_angle_horz      = 5.0
 zoom_cam_step_angle_horz     = 0.3
 
-PDM_disp_base 				= 2.0
-PDM_disp_vel_factor 		= 1.1
-PDM_disp_accel_factor 	= 1.1
-PDM_disp_crouch	 				= 1.0
-PDM_disp_crouch_no_acc 		= 1.0
+PDM_disp_base 				= 0.95
+PDM_disp_vel_factor 		= 2.9
+PDM_disp_accel_factor 		= 2.9
+PDM_disp_crouch = 1.0 ;  			= 0.795
+PDM_disp_crouch_no_acc = 1.0 ; 		= 1.235
 
 fire_dispersion_condition_factor = 5	;увеличение дисперсии в процентах при максимальном износе
 
@@ -108,10 +102,10 @@ holder_fov_modifier		= 1.0     ; во сколько раз увеличивае
 min_radius              = 0
 max_radius              = 500
 
-hit_probability_gd_novice		= 0.80
-hit_probability_gd_stalker		= 0.80
-hit_probability_gd_veteran		= 0.80
-hit_probability_gd_master		= 0.80
+hit_probability_gd_novice = 1.00 ;		= 0.80
+hit_probability_gd_stalker = 1.00 ;		= 0.80
+hit_probability_gd_veteran = 1.00 ;		= 0.80
+hit_probability_gd_master = 1.00 ;		= 0.80
 
 ;-------------------------------------------------------------------------------
 
@@ -214,8 +208,8 @@ wanm_reload_half_crouch = idle
 [wpn_rgm-40_hud]:hud_base
 zoom_hide_crosshair		= true
 
-hud_fov = 0.75
-hud_fov_zoom = 0.75
+hud_fov = 0.78
+hud_fov_zoom = 0.76
 
 prohibit_suicide = true
 
@@ -226,19 +220,24 @@ hud_move_suicide_offset_pos_16x9 = 0, 0, 0.2
 hud_move_suicide_offset_rot_16x9 = 10, -50, 0
 suicide_delay = 1;
 
-hands_position				= 0.0,-0.015,-0.07
+hands_position				= -0.012,0.010,-0.07
 hands_orientation			= 0.0,0.0,0.0
 
-hands_position_16x9			= 0.0,-0.015,-0.07
+hands_position_16x9			= -0.012,0.010,-0.17
 hands_orientation_16x9			= 0.0,0.0,0.0
 
 item_position				= 0.0,0.0,0.0
 item_orientation			= 0.0,0.0,0.0
 
-aim_hud_offset_pos = 0.000000,0.000400,0.000000
+inertion_pitch_offset_r = 0.01
+inertion_pitch_offset_n = 0.007
+inertion_pitch_offset_d = 0.01
+inertion_origin_offset = 0.03
+
+aim_hud_offset_pos = 0.012500,-0.02800,0.000000
 aim_hud_offset_rot = 0.013000,0.000000,0.000000
 
-aim_hud_offset_pos_16x9 = 0.000000,-0.001000,0.000000
+aim_hud_offset_pos_16x9 = 0.012500,-0.028000,0.000000
 aim_hud_offset_rot_16x9 = 0.010000,0.000000,0.000000
 
 gl_hud_offset_pos          = 0.0,0.0,0.0

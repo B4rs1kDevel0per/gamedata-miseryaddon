@@ -160,6 +160,36 @@ function se_stalker:STATE_Read_Load(packet, size)
 	self:STATE_Read(packet, size)
 end
 
+function se_stalker:UPDATE_WriteByFlags(packet, flags)
+	cse_alife_human_stalker.UPDATE_WriteByFlags(self, packet, flags)
+	self:NET_UPDATE_Write_Shared(packet)
+end
+
+function se_stalker:NET_UPDATE_Write(packet)
+	cse_alife_human_stalker.NET_UPDATE_Write(self, packet)
+	--self:NET_UPDATE_Write_Shared(packet)
+end
+
+function se_stalker:NET_UPDATE_Write_Shared(packet)
+	if dev_debug then
+		packet:w_stringZ(tostring(self.active_section))
+		packet:w_stringZ(tostring(self.best_enemy_name))
+		packet:w_stringZ(tostring(self.squad_id))
+		packet:w_stringZ(tostring(self.squad_current_action))
+	end
+end
+
+---------------------
+function se_stalker:NET_UPDATE_Read(packet)
+	cse_alife_human_stalker.NET_UPDATE_Read(self, packet)
+	if dev_debug then
+		self.active_section = packet:r_stringZ()
+		self.best_enemy_name = packet:r_stringZ()
+		self.squad_id = packet:r_stringZ()
+		self.squad_current_action = packet:r_stringZ()
+	end
+end
+
 --------------------
 
 function se_stalker:collect_data_for_clients()

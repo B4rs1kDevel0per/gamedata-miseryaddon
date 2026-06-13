@@ -549,18 +549,21 @@ end
 
 function WeatherManager:save(F)
 	set_save_marker(F, "save", false, "WeatherManager")
+	F:w_u8(1)  -- script_version: 1 = period/period_change_hour добавлены
 	F:w_stringZ(self:get_state_as_string())
 	F:w_u32(self.update_time)
 	F:w_stringZ(tostring(self.weather_fx))
 	if self.weather_fx then F:w_float(level.get_wfx_time()) end
 	F:w_stringZ(self.period)
 	F:w_u32(self.last_period_change_hour)
-	F:w_u32(self.next_period_change_hour)
+	F:w_u32(self.next_period_change_hour or 0)
 	set_save_marker(F, "save", true, "WeatherManager")
 end
 
 function WeatherManager:load(F)
     set_save_marker(F, "load", false, "WeatherManager")
+    -- script_version пишется ВНУТРИ маркеров, поэтому r_u8 идёт первым
+    local script_version = F:r_u8()
     local state_string = F:r_stringZ()
     self:set_state_as_string(state_string)
     self.update_time = F:r_u32()
@@ -572,9 +575,11 @@ function WeatherManager:load(F)
     else
         self.weather_fx = nil
     end
-    self.period = F:r_stringZ()
-    self.last_period_change_hour = F:r_u32()
-    self.next_period_change_hour = F:r_u32()
+    if script_version >= 1 then
+        self.period = F:r_stringZ()
+        self.last_period_change_hour = F:r_u32()
+        self.next_period_change_hour = F:r_u32()
+    end
     set_save_marker(F, "load", true, "WeatherManager")
 end
 

@@ -1,0 +1,388 @@
+
+--' Ключем является группировка персонажа. Значением является таблица, содержашая имена секций предметов.
+local item_by_community = {}
+
+--' Зависимости в спауне предметов. Предмет спауниться только если есть хотя бы один из зависимых.
+local item_dependence = {}
+
+--' Множители и минимаксы для выпадения вещей в зависимости от уровня
+local mul_by_level = {}
+local count_by_level = {}
+
+--' Предметы, которые нельзя удалять (квестовые например)
+local always_keep_item = {}
+
+--' Предметы, относящиеся к патронам. Их надо спаунить другим методом.
+ammo_sections = {}
+
+local death_ini = ini_file("misc\\death_generic.ltx")
+
+
+function init_drop_settings()
+	local community_list = { "stalker", "dolg", "freedom", "bandit", "army", "zombied", "ecolog", "killer", "monolith", "csky" }
+
+		for k,v in pairs(community_list) do
+				--' Необходимо заполнить таблицу
+				item_by_community[v] = {}
+				if death_ini:section_exist(v) then
+				local n = death_ini:line_count(v)
+				local id, value = "", ""
+				for i=0,n-1 do
+					result, id, value	= death_ini:r_line(v,i,"","")
+								item_by_community[v][id] = 100*tonumber(value)
+				end
+				end
+		end
+
+		--' Заполняем таблицу зависимостей
+	local n = death_ini:line_count("item_dependence")
+	local id, value = "", ""
+	for i=0,n-1 do
+		result, id, value	= death_ini:r_line("item_dependence",i,"","")
+		item_dependence[id] = {}
+		local vvv = parse_names(value)
+		for k,v in pairs(vvv) do
+			item_dependence[id][v] = true
+		end
+	end
+
+	--' Множители и минимаксы для выпадения вещей в зависимости от уровня
+		local level_name = level.name()
+
+	if not death_ini:section_exist(level_name) then
+		level_name = "default"
+	end
+
+		local n = death_ini:line_count(level_name)
+	local id, value = "", ""
+	for i=0,n-1 do
+		result, id, value	= death_ini:r_line(level_name,i,"","")
+				mul_by_level[id] = tonumber(value)
+	end
+
+		local item_count_section = "item_count_" .. level.get_game_difficulty()
+		local n = death_ini:line_count(item_count_section)
+	for i=0,n-1 do
+		result, id, value	= death_ini:r_line(item_count_section,i,"","")
+		--' Нужно распарсить value в два значения
+		local t = parse_nums(value)
+		if t[1] == nil then
+			abort("Error on [death_ini] declaration. Section [%s], line [%s]", item_count_section, tostring(id))
+		end
+		local min = t[1]
+		local max = t[2]
+		if max == nil then
+			max = min
+		end
+
+		if mul_by_level[id] == nil then
+			mul_by_level[id] = 0
+		end
+
+		min = tonumber(min) * mul_by_level[id]
+		max = tonumber(max) * mul_by_level[id]
+
+		count_by_level[id] = {min = min, max = max}
+	end
+
+ 	--' Предметы, которые нельзя удалять (квестовые например)
+	local n = death_ini:line_count("keep_items")
+	for i=0,n-1 do
+		result, id, value	= death_ini:r_line("keep_items",i,"","")
+		if value == "true" then
+			always_keep_item[id] = true
+		end
+	end
+
+	--' Предметы, относящиеся к патронам. Их надо спаунить другим методом.
+	ammo_sections = {}
+	local n = death_ini:line_count("ammo_sections")
+	local id, value = "", ""
+	for i=0,n-1 do
+		result, id, value	= death_ini:r_line("ammo_sections",i,"","")
+		ammo_sections[id] = true
+	end
+end
+
+class "drop_manager"
+function drop_manager:__init(npc)
+	self.npc = npc
+end
+function drop_manager:create_release_item()
+	--' Спрашиваем у серверного объекта генерились ли предметы
+	local se_obj = alife():object(self.npc:id())
+	if se_obj == nil or se_obj.death_droped == true then
+		return
+	end
+	se_obj.death_droped = true
+
+	--' Запускаем итератор на удаление предметов
+	self.npc:iterate_inventory(keep_item, self.npc)
+
+	--' Проверка на отсутствие спауна лута
+	local ini = self.npc:spawn_ini()
+
+	if ini and ini:section_exist("dont_spawn_loot") then
+		return
+	end
+	local st		= db.storage[self.npc:id()]
+	local st_ini 	= st and st.ini
+	if st_ini and st_ini:line_exist(st.section_logic , "dont_spawn_loot") then
+		return
+	end
+
+	--' Доспавниваем необходимое количество итемов:
+	--' Необходимо составить список объектов которые могут быть заспавнены для персонажа
+
+	local spawn_items = item_by_community[character_community(self.npc)]
+	if spawn_items == nil then
+		return
+	end
+	for k,v in pairs(spawn_items) do
+		--' По каждому объекту необходимо получить зависимости
+		if check_item_dependence(self.npc, k) == true then
+			--' По каждому объекту необходимо получить количество
+			if count_by_level[k] == nil then
+				abort("Incorrect count settings in death_manager for object[%s]", k)
+			end
+			local number = math.ceil(math.random(count_by_level[k].min, count_by_level[k].max))
+			--' Необходимо заспавнить нужное количество.
+			create_items(self.npc, k, number, v)
+		end
+	end
+
+end
+
+--' Функция вызывается для каждого предмета, если вернет false то предмет удалится.
+function keep_item(npc, item)
+	local section = item:section()
+
+	local ini = npc:spawn_ini()
+
+	if ini and ini:section_exist("keep_items")
+			and	section ~= "guitar_a"
+			and	section ~= "harmonica_a"
+			and section ~= "wpn_binoc"
+			and section ~= "device_torch"
+			and section ~= "device_pda" then
+		return
+	end
+
+	if isArtefact(item) then
+		return
+	end
+--	printf("keep_item:item ["..item:name().."] npc_name ["..npc:name().."]")
+	if section == "bolt" then
+		return
+	end
+
+	if always_keep_item[section] == true then
+		return
+	end
+	--printf("item name [%s]", item:name())
+	local npc_rank = npc:character_rank()
+	if isWeapon(item) and not(get_clsid(item)==clsid.wpn_grenade_rgd5_s or get_clsid(item)==clsid.wpn_grenade_f1_s) then
+		set_weapon_drop_condition(item,npc_rank)
+		return
+	end
+
+	if xr_corpse_detection.lootable_table[section] == true and ammo_sections[section] == nil then
+		return
+	end
+	alife():release(alife():object(item:id()), true)
+
+--[[
+	local item_id = item:id()
+	local item_in_slot = npc:item_in_slot(2)
+	if item_in_slot ~= nil and item_in_slot:id() == item_id then
+		local roll_the_dice = math.random(100)
+		local condition_val
+		local npc_rank = npc:character_rank()
+		if npc_rank == nil then
+			npc_rank = 100
+		end
+		if npc_rank < 200 then --					Если NPC новичoк или зомби
+			if roll_the_dice <= 90 then
+				condition_val = math.random(10, 29) -- 90% шанс что прочность будет ниже 30% но выше 10%
+			else
+				condition_val = math.random(30, 50) -- 10% шанс что прочность будет ниже 50% но выше 30%
+			end
+		elseif npc_rank < 400 then --					Если NPC обычный 
+			if roll_the_dice <= 90 then
+				condition_val = math.random(10, 34) -- 90% шанс что прочность будет ниже 35% но выше 10%
+			elseif roll_the_dice <= 97 then
+				condition_val = math.random(35, 69) -- 7% шанс что прочность будет ниже 70% но выше 35%
+			else 
+				condition_val = math.random(70, 99) -- 3% шанс что прочность будет ниже 99% но выше 70%
+			end
+		elseif npc_rank < 600 then --				Если NPC опытный 
+			if roll_the_dice <= 70 then
+				condition_val = math.random(20, 44) -- 70% шанс что прочность будет ниже 45% но выше 20%
+			elseif roll_the_dice <= 85 then
+				condition_val = math.random(45, 69) -- 15% шанс что прочность будет ниже 70% но выше 45%
+			elseif roll_the_dice <= 95 then
+				condition_val = math.random(70, 79) -- 10% шанс что прочность будет ниже 80% но выше 70%
+			else
+				condition_val = math.random(80, 99) -- 5% шанс что прочность будет ниже 99% но выше 80%
+			end
+		else --										Если NPC ветеран или мастер
+			if roll_the_dice <= 80 then
+				condition_val = math.random(25, 69) -- 80% шанс что прочность будет ниже 70% но выше 25%
+			elseif roll_the_dice <= 93 then
+				condition_val = math.random(70, 79) -- 13% шанс что прочность будет ниже 80% но выше 70%
+			else
+				condition_val = math.random(80, 99) -- 7% шанс что прочность будет ниже 99% но выше 80%
+			end
+		end
+		item:set_condition(condition_val/100)
+		return
+	end
+	item_in_slot = npc:item_in_slot(3)
+	if item_in_slot ~= nil and item_in_slot:id() == item_id then
+		local roll_the_dice = math.random(100)
+		local condition_val
+		local npc_rank = npc:character_rank()
+		if npc_rank == nil then
+			npc_rank = 100
+		end
+		if npc_rank < 200 then --					Если NPC новичoк или зомби
+			if roll_the_dice <= 90 then
+				condition_val = math.random(10, 29) -- 90% шанс что прочность будет ниже 30% но выше 10%
+			else
+				condition_val = math.random(30, 50) -- 10% шанс что прочность будет ниже 50% но выше 30%
+			end
+		elseif npc_rank < 400 then --					Если NPC обычный 
+			if roll_the_dice <= 90 then
+				condition_val = math.random(10, 34) -- 90% шанс что прочность будет ниже 35% но выше 10%
+			elseif roll_the_dice <= 97 then
+				condition_val = math.random(35, 69) -- 7% шанс что прочность будет ниже 70% но выше 35%
+			else 
+				condition_val = math.random(70, 99) -- 3% шанс что прочность будет ниже 99% но выше 70%
+			end
+		elseif npc_rank < 600 then --				Если NPC опытный 
+			if roll_the_dice <= 70 then
+				condition_val = math.random(20, 44) -- 70% шанс что прочность будет ниже 45% но выше 20%
+			elseif roll_the_dice <= 85 then
+				condition_val = math.random(45, 69) -- 15% шанс что прочность будет ниже 70% но выше 45%
+			elseif roll_the_dice <= 95 then
+				condition_val = math.random(70, 79) -- 10% шанс что прочность будет ниже 80% но выше 70%
+			else
+				condition_val = math.random(80, 99) -- 5% шанс что прочность будет ниже 99% но выше 80%
+			end
+		else --										Если NPC ветеран или мастер
+			if roll_the_dice <= 80 then
+				condition_val = math.random(25, 69) -- 80% шанс что прочность будет ниже 70% но выше 25%
+			elseif roll_the_dice <= 93 then
+				condition_val = math.random(70, 79) -- 13% шанс что прочность будет ниже 80% но выше 70%
+			else
+				condition_val = math.random(80, 99) -- 7% шанс что прочность будет ниже 99% но выше 80%
+			end
+		end
+		item:set_condition(condition_val/100)
+		return
+	end
+
+--  npc:mark_item_dropped(item)
+	local item_in_slot = npc:item_in_slot(4)
+	if item_in_slot ~= nil and item_in_slot:id() == item_id	then
+		return
+	end
+	if not npc:marked_dropped(item) then
+--		printf("releasing object ["..item:name().."]")
+		alife():release(alife():object(item:id()), true)
+	end
+	]]
+end
+
+function set_weapon_drop_condition(item, npc_rank)
+	local roll_the_dice = math.random(100)
+	local condition_val
+	
+	if npc_rank == nil then
+		npc_rank = 100
+	end
+	
+	if npc_rank < 200 then --					Новичок или зомби: оружие уничтожено, ржавый хлам
+		if roll_the_dice <= 95 then
+			condition_val = math.random(4, 15) -- 95% шанс: металлолом, только на запчасти
+		else
+			condition_val = math.random(16, 28) -- 5% шанс: критический износ, стрелять нельзя
+		end
+		
+	elseif npc_rank < 400 then --					Обычный: сильно изношенные стволы
+		if roll_the_dice <= 85 then
+			condition_val = math.random(8, 22) -- 85% шанс: состояние «убитое»
+		elseif roll_the_dice <= 97 then
+			condition_val = math.random(23, 38) -- 12% шанс: частые клины при стрельбе
+		else 
+			condition_val = math.random(39, 52) -- 3% шанс: среднее состояние, повезло найти
+		end
+		
+	elseif npc_rank < 600 then --				Опытный / Ветеран: оружие повидало виды
+		if roll_the_dice <= 75 then
+			condition_val = math.random(12, 28) -- 75% шанс: плохой износ
+		elseif roll_the_dice <= 92 then
+			condition_val = math.random(29, 45) -- 17% шанс: рабочее, но требует ремонта
+		else
+			condition_val = math.random(46, 65) -- 8% шанс: относительно неплохое состояние
+		end
+		
+	else --										Мастер / Элита: следят за стволами, но палить приходится много
+		if roll_the_dice <= 70 then
+			condition_val = math.random(18, 35) -- 70% шанс: изношено в боях за выживание
+		elseif roll_the_dice <= 90 then
+			condition_val = math.random(36, 55) -- 20% шанс: хорошее состояние для Зоны
+		else
+			condition_val = math.random(56, 75) -- 10% шанс: ценный трофей (75% — потолок для MISERY)
+		end
+	end
+	
+	item:set_condition(condition_val / 100)
+	item:sync_condition() -- update after condition change
+end
+
+
+--' Функция спавнит необходимое число предметов
+function create_items(npc, section, number, rnd)
+		--'printf("create %s of %s", tostring(number), tostring(section))
+		if ammo_sections[section] == true then
+				if number > 0 then
+					create_ammo(section,
+						npc:position(),
+						npc:level_vertex_id(),
+						npc:game_vertex_id(),
+						npc:id(),
+										number)
+				end
+		else
+				for i=1,number do
+			--' Проверяем вероятность появить каждый объект в отдельности
+					if math.random(100) <=  rnd then
+					alife():create(section,
+							npc:position(),
+						npc:level_vertex_id(),
+						npc:game_vertex_id(),
+						npc:id())
+			end
+				end
+		end
+end
+
+
+--' Функция проверяет есть ли хоть один из зависимых объектов у персонажа
+function check_item_dependence(npc, section)
+	if item_dependence[section] == nil then
+		return true
+	end
+
+		local d_flag = true
+		for k,v in pairs(item_dependence[section]) do
+				local obj = npc:object(k)
+				if obj ~= nil and npc:marked_dropped(obj) ~= true then
+						return true
+				end
+				d_flag = false
+		end
+
+		return d_flag
+end

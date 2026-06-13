@@ -158,10 +158,13 @@ function mp_actor_binder:task_callback(_task, _state)
 	if GameType() == game_cl.game_id_coop then
 		if _state ~= task.fail then
 			if not _task:is_silent_notify() then
-				if _state == task.completed then
-					news_manager.send_task(db.actor, "complete", _task)
-				else
-					news_manager.send_task(db.actor, "new", _task)
+				local actor = db.actor or getLocalActor()
+				if actor then
+					if _state == task.completed then
+						news_manager.send_task(actor, "complete", _task)
+					else
+						news_manager.send_task(actor, "new", _task)
+					end
 				end
 			end
 		end
@@ -428,8 +431,8 @@ function actor_binder:net_spawn(data)
 		db.actor.deimos_intensity = self.deimos_intensity
 	end
 	
-	db.add_actor(self.object)
-	db.actor.deimos_intensity = self.deimos_intensity
+	-- db.add_actor(self.object)               -- убрано: дубль вызова, ломает db.actor
+	-- db.actor.deimos_intensity = ...         -- убрано: дубль
 	self.deimos_intensity = nil
 	if self.st.disable_input_time == nil then
 		level.enable_input()
@@ -468,7 +471,9 @@ function actor_binder:net_destroy()
 		actor_stats.remove_from_ranking(self.object:id())
 	end
 	level.show_weapon(true)
-	db.del_actor(self.object)
+	if self.object:id() == SV_OBJECT_ID then
+		db.del_actor(self.object)
+	end
 
 	self.object:set_callback(callback.inventory_info, nil)
 	self.object:set_callback(callback.article_info, nil)
@@ -600,7 +605,10 @@ function anabiotic_callback()
 end
 
 function anabiotic_callback2()
-	xr_effects.enable_ui(db.actor, nil)
+	local actor = db.actor or getLocalActor()
+	if actor then
+		xr_effects.enable_ui(actor, nil)
+	end
     get_console():execute("snd_volume_music "..tostring(_G.mus_vol))
 	get_console():execute("snd_volume_eff "..tostring(_G.amb_vol))
 	_G.amb_vol = 0
@@ -611,10 +619,13 @@ end
 
 function actor_binder:task_callback(_task, _state, _silent)
 	if _state ~= task.fail then
-		if _state == task.completed then
-			news_manager.send_task(db.actor, "complete", _task)
-		else
-			news_manager.send_task(db.actor, "new", _task)
+		local actor = db.actor or getLocalActor()
+		if actor then
+			if _state == task.completed then
+				news_manager.send_task(actor, "complete", _task)
+			else
+				news_manager.send_task(actor, "new", _task)
+			end
 		end
 	end
 	task_manager.task_callback(_task, _state)
@@ -769,7 +780,7 @@ local function spawn_achivement_items(items_table, count, inv_box_story_id)
 end
 
 function actor_binder:check_detective_achievement()
-	if not has_alife_info("detective_achievement_gained") then
+	if not story_flags.has_flag("DETECTIVE_ACHIEVEMENT_GAINED") then
 		return
 	end
 	if self.last_detective_achievement_spawn_time == nil then
@@ -783,7 +794,7 @@ function actor_binder:check_detective_achievement()
 end
 
 function actor_binder:check_mutant_hunter_achievement()
-	if not has_alife_info("mutant_hunter_achievement_gained") then
+	if not story_flags.has_flag("MUTANT_HUNTER_ACHIEVEMENT_GAINED") then
 		return
 	end
 	if self.last_mutant_hunter_achievement_spawn_time == nil then

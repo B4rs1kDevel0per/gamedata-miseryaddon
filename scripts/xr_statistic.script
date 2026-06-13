@@ -255,7 +255,12 @@ function set_best_weapon(hit_amount, actor)
 	end
 end
 
+-- script_version 200: добавлено rps_games_won (отсутствует в ванильных сейвах)
+-- Значение >= 200 чтобы отличать версию от счётчика акторов (< 32) в старых сейвах
+local STATISTIC_SCRIPT_VERSION = 200
+
 function save(package)
+	package:w_u8(STATISTIC_SCRIPT_VERSION)
 	local i = 0
 	for k,v in pairs(actor_statistic) do
 		i = i + 1
@@ -304,8 +309,22 @@ function save(package)
 end
 
 function load(package)
-	local n = package:r_u8()
-	
+	-- Читаем версию. Старые ванильные сейвы не пишут версию —
+	-- там первый байт это счётчик акторов (обычно 1).
+	-- Отличаем по значению: STATISTIC_SCRIPT_VERSION начинаются с 200, счётчики акторов < 32.
+	local first_byte = package:r_u8()
+	local script_version = 0
+	local n
+	if first_byte >= 200 then
+		-- это script_version (текущая = 200 = STATISTIC_SCRIPT_VERSION)
+		script_version = first_byte
+		n = package:r_u8()
+	else
+		-- старый сейв без версии — first_byte это счётчик акторов
+		script_version = 0
+		n = first_byte
+	end
+
 	for i = 1,n do
 		local actor_id = package:r_u16()
 		check_for_statistic_table(actor_id)
@@ -316,8 +335,10 @@ function load(package)
 		actor_statistic[actor_id].founded_secrets  	= package:r_u16()
 		actor_statistic[actor_id].artefacts_founded	= package:r_u16()
 		actor_statistic[actor_id].best_monster_rank = package:r_u32()
-		actor_statistic[actor_id].rps_games_won  	= package:r_u16()
-		
+		if script_version >= 200 then
+			actor_statistic[actor_id].rps_games_won = package:r_u16()
+		end
+
 		local str = package:r_stringZ()
 		if(str~="nil") then
 			actor_statistic[actor_id].best_monster = str
@@ -470,7 +491,7 @@ function seeker_functor()
 			return false
 		end
 	end
-	-- ������� ������������ ������ ���������� ������
+	-- Ѓандиты симуляционно больше преследуют игрока
 	story_flags.give_flag("SIM_BANDIT_ATTACK_HARDER")
 	news_manager.send_tip(getLocalActor(), "st_ach_seeker", nil, "seeker", nil, nil)
 	xr_effects.inc_faction_goodwill_to_actor(db.actor, nil, {"stalker", 200})
@@ -510,7 +531,7 @@ function skilled_stalker_functor()
 end
 
 function leader_functor()
-	-- ������ ������: pri_a21_base_restrictor.ltx
+	-- логика бонуса: pri_a21_base_restrictor.ltx
 	if not story_flags.has_flag("LEADER_ACHIEVEMENT_GAINED") then
 		if story_flags.has_flag("JUP_A10_VANO_AGREE_GO_UND")
 				and story_flags.has_flag("JUP_B218_SOLDIER_HIRED")
@@ -612,7 +633,7 @@ function wealthy_functor()
 end
 
 function keeper_of_secrets_functor()
-	-- ������ ������: pri_b305_logic.ltx
+	-- логика бонуса: pri_b305_logic.ltx
 	if not story_flags.has_flag("KEEPER_OF_SECRETS_ACHIEVEMENT_GAINED") then
 		if story_flags.has_flag("PRI_B305_ALL_STRELOK_NOTES_GIVEN") then
 			story_flags.give_flag("KEEPER_OF_SECRETS_ACHIEVEMENT_GAINED")

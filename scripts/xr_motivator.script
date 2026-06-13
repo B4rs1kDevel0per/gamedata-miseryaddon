@@ -66,7 +66,9 @@ function motivator_binder:net_spawn(sobject)
 	local visual = utils.cfg_get_string(system_ini(), self.object:section(), "set_visual", obj, false, "")
 	if visual ~= nil and visual ~= "" then
 		if visual == "actor_visual" then
-			self.object:set_visual_name(db.actor:get_visual_name())
+			if db.actor then
+				self.object:set_visual_name(db.actor:get_visual_name())
+			end
 		else
 			self.object:set_visual_name(visual)
 		end
@@ -85,6 +87,8 @@ function motivator_binder:net_spawn(sobject)
 	self.object:set_callback(callback.hit, motivator_binder.hit_callback, self)
 	self.object:set_callback(callback.death, motivator_binder.death_callback, self)
 	self.object:set_callback(callback.use_object, motivator_binder.use_callback, self)
+	self.object:set_callback(callback.on_item_take, self.on_item_take, self)
+	self.object:set_callback(callback.on_item_drop, self.on_item_drop, self)
 	self.object:set_callback(callback.sound, motivator_binder.hear_callback, self)
 	self.object:set_callback(callback.help_wounded, motivator_binder.help_wounded_callback, self)
 	--memusage.collect_info(self.object, "after__callback")
@@ -180,6 +184,20 @@ function motivator_binder:net_spawn(sobject)
 	return true
 end
 
+function motivator_binder:on_item_take(item)
+	if (alun_plugin_manager and alun_plugin_manager.npc_on_item_take) then
+		alun_plugin_manager.npc_on_item_take(self.object, item)
+	end
+	if (ai_tweaks) then ai_tweaks.npc_on_item_take(self.object, item) end
+end
+----------------------------------------------------------------------------------------------------------------------
+function motivator_binder:on_item_drop(item)
+	if (alun_plugin_manager and alun_plugin_manager.npc_on_item_drop) then
+		alun_plugin_manager.npc_on_item_drop(self.object, item)
+	end
+	if (ai_tweaks) then ai_tweaks.npc_on_item_drop(self.object, item) end
+end
+----------------------------------------------------------------------------------------------------------------------
 function motivator_binder:net_destroy()
 	--printf("motivator_binder:net_destroy(): self.object:name()='%s'", self.object:name())
 	xrs_dyn_music.npc_table[self.object:id()] = nil
@@ -197,7 +215,7 @@ function motivator_binder:net_destroy()
 
 	local on_offline_condlist = db.storage[self.object:id()] and db.storage[self.object:id()].overrides and db.storage[self.object:id()].overrides.on_offline_condlist
 	if on_offline_condlist ~= nil then
-		xr_logic.pick_section_from_condlist(db.actor, self.object, on_offline_condlist)
+		xr_logic.pick_section_from_condlist(db.actor or getLocalActor(), self.object, on_offline_condlist)
 	end
 	-- для того, чтобы сталкеры запоминали последние позиции/активные секции на смарт террейнах --------
 	local se_obj = alife():object(self.object:id())
@@ -309,14 +327,12 @@ function motivator_binder:death_callback(victim, who)
 	end
 
 	--' Загрузка историй для лагеря.
-	if st.ini and st.section_logic then
-		local known_info = utils.cfg_get_string(st.ini, st.section_logic, "known_info", self.object, false, "", nil)
-		printf("xr_info from death loaded!!!")
-		xr_info.loadInfo(self.object, st.ini, known_info)
-
-		local known_flags = utils.cfg_get_string(st.ini, st.section_logic, "known_flags", self.object, false, "", nil)
-		xr_info.loadFlags(self.object, st.ini, known_flags)
-	end
+	local known_info = utils.cfg_get_string(st.ini,st.section_logic , "known_info", self.object, false, "", nil)
+	printf("xr_info from death loaded!!!")
+	xr_info.loadInfo(self.object, st.ini, known_info)
+	
+	local known_flags = utils.cfg_get_string(st.ini,st.section_logic , "known_flags", self.object, false, "", nil)
+	xr_info.loadFlags(self.object, st.ini, known_flags)
 	
 	--' Принудительно обнуляем анимейшн менеджер чтобы отдетачились приатаченные объекты
 	if self.st.state_mgr ~= nil then
@@ -365,7 +381,7 @@ function motivator_binder:use_callback(obj, who)
 		if xr_info.npc_flags[obj:id()] ~= nil then
 			for k,v in pairs(xr_info.npc_flags[obj:id()]) do
 				story_flags.give_flag(v)
-				printf_msg("Giving known flag %s", tostring(v))
+				printf_msg("Giving known flag %s", v)
 			end
 			xr_info.npc_flags[obj:id()] = nil
 		end
@@ -495,6 +511,32 @@ function motivator_binder:reload(section)
 	--memusage.collect_info(self.object, "reload_end")
 end
 
+function motivator_binder:net_export(packet)
+	--object_binder.net_export(self, packet)
+	if dev_debug then
+		local best_enemy_name = "nil"
+		if self.object:best_enemy() ~= nil then
+			best_enemy_name = self.object:best_enemy():name()
+		end
+
+		local squad = get_object_squad(self.object)
+		local squad_id = "nil"
+		local squad_current_action = "nil"
+		if squad ~= nil then
+			squad_id = squad:section_name()
+			if squad.current_action ~= nil then
+				local target = squad.assigned_target_id and alife():object(squad.assigned_target_id) and alife():object(squad.assigned_target_id):name()
+				squad_current_action = squad.current_action.name .."["..tostring(target).."]"
+			end
+		end
+
+		packet:w_stringZ(tostring(self.st.active_section))
+		packet:w_stringZ(tostring(best_enemy_name))
+		packet:w_stringZ(tostring(squad_id))
+		packet:w_stringZ(tostring(squad_current_action))
+	end
+end
+----------------------------------------------------------------------------------------------------------------------
 function motivator_binder:net_save_relevant()
 	--printf("motivator_binder:net_save_relevant(): self.object:name()='%s'", self.object:name())
 	return true
@@ -587,6 +629,11 @@ function update_logic(object)
 	local st = db.storage[object:id()]
 	local actor = db.actor
 	local st_combat = st.combat
+
+	-- Если актор ещё не заспавнен (начало сессии) — пропускаем логику
+	if not actor then
+		return
+	end
 
 	if st ~= nil and st.active_scheme ~= nil and object_alive then
 		-- Обрабатываем Override on_combat

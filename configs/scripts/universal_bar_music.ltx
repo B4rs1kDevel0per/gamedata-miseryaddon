@@ -1,0 +1,33 @@
+[logic]
+active = ph_idle@check_distance
+update_time = 500
+
+[ph_idle@check_distance]
+; Player enters the inner zone -> Stop any ambient track and prepare the radio mix
+on_info = {=dist_to_actor_le(36)} ph_idle@stop_and_play %+PLAYER_ENTERED_MUSIC_AREA%
+
+[ph_idle@stop_and_play]
+; Instantly call the stop script to clear the speaker channels
+on_info = %=stop_sound()% ph_idle@wait_and_play 
+
+[ph_idle@wait_and_play]
+; Give the engine a distinct 2-second real-time window to completely purge the old sound handle
+on_timer = 2000 | ph_idle@play_music
+
+[ph_idle@play_music]
+; Execute the music playback function exactly once, then shift immediately to the tracking state
+on_info = %=play_sound(bar_radio_mix)% ph_idle@track_playback
+
+[ph_idle@track_playback]
+; Track finishes naturally (280s). Stop sound and transition to a fresh wait loop.
+on_timer = 280000 | ph_idle@track_finished
+; Player steps outside the outer safety radius (42m). Stop sound and reset fully.
+on_info = {!dist_to_actor_le(42)} ph_idle@player_left
+
+[ph_idle@track_finished]
+; Track ended naturally. Silence the entity, wait a brief frame, then restart a new song sequence.
+on_info = %=stop_sound()% ph_idle@wait_and_play
+
+[ph_idle@player_left]
+; Player walked away. Turn off the radio mix and return the space restrictor back to monitoring mode.
+on_info = %=stop_sound() %-PLAYER_ENTERED_MUSIC_AREA% ph_idle@check_distance
