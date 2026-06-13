@@ -3,153 +3,185 @@ local MODULE = "ai_tweaks"
 
 -------------------
 -- se_stalker_on_spawn(se_npc)
+-- Вызывается из se_stalker:on_spawn — точка входа для серверного спауна сталкера.
+-- Раздаёт событие модулям которые хотят инициализировать NPC при создании.
 -------------------
 function se_stalker_on_spawn(se_npc)
-	if (xrs_rnd_npc_loadout) then xrs_rnd_npc_loadout.on_creation(se_npc) end
+	if xrs_rnd_npc_loadout then xrs_rnd_npc_loadout.on_creation(se_npc) end
 end
 
--- 								[s_type]			= {inertion,distance,relation}  [Relation 0-all, 1-enemies]
-local sound_threshold = {		["WPN"] 			= {0,0,0},
-								["WPN_shoot"] 		= {2000,1500,0},
-								["WPN_empty"]		= {0,0,1},
-								["WPN_hit"] 		= {10000,650,0},
-								["WPN_reload"] 		= {0,0,1},
-								["MST"]				= {0,0,1},
-								["MST_die"]			= {0,0,1},
-								["MST_damage"]		= {2000,650,1},
-								["MST_step"]		= {0,0,1},
-								["MST_talk"]		= {0,0,1},
-								["MST_attack"]		= {5000,1500,1},
-								["MST_eat"]			= {0,0,1}
+-- Пороги реакции NPC на звуки.
+-- [s_type] = {inertion_ms, max_dist, relation_filter}
+-- relation_filter: 0 = все, 1 = только враги
+local sound_threshold = {
+	["WPN"]        = {0,     0,    0},
+	["WPN_shoot"]  = {2000,  1500, 0},
+	["WPN_empty"]  = {0,     0,    1},
+	["WPN_hit"]    = {10000, 650,  0},
+	["WPN_reload"] = {0,     0,    1},
+	["MST"]        = {0,     0,    1},
+	["MST_die"]    = {0,     0,    1},
+	["MST_damage"] = {2000,  650,  1},
+	["MST_step"]   = {0,     0,    1},
+	["MST_talk"]   = {0,     0,    1},
+	["MST_attack"] = {5000,  1500, 1},
+	["MST_eat"]    = {0,     0,    1},
 }
 
 -------------------
--- npc_hear_callback(npc,who,s_type,sound_power)
+-- npc_hear_callback(npc, who_id, s_type, dist, sound_power)
+-- Вызывается из xr_motivator/generic_object_binder:hear_callback.
+-- Решает нужно ли взводить danger-состояние NPC и запоминать источник звука.
 -------------------
-function npc_hear_callback(npc,who_id,s_type,dist,sound_power)
-	if not (xr_combat_ignore and xr_combat_ignore.npc_in_safe_zone(npc)) then
-		local who = who_id and level.object_by_id(who)
-		if (who) then
-			if not (xr_wounded.is_wounded(npc)) then
-				if (sound_threshold[s_type] and dist <= sound_threshold[s_type][2]) then
-					if (sound_threshold[s_type][3] == 1 and npc:relation(who) == game_object.enemy) or (sound_threshold[s_type][3] == 0) then
-						xr_danger.set_script_danger(npc,sound_threshold[s_type][1] or 2000)
-                        debug_utils.INFO(MODULE, "NPC %s trigger danger off sound %s from obj %s", npc:id(), s_type, who_id)
-					end
-				end
-			end
+function npc_hear_callback(npc, who_id, s_type, dist, sound_power)
+	-- NPC в safe-зоне не реагирует на звуки
+	if xr_combat_ignore and xr_combat_ignore.npc_in_safe_zone(npc) then return end
 
-			if (npc:relation(who) == game_object.enemy) then
-				npc:enable_memory_object(who,true)
+	local who = who_id and level.object_by_id(who_id)
+	if not who then return end  -- источник звука офлайн или не существует
+
+	-- Взводим danger если звук в пороге и условие relation выполнено
+	if not xr_wounded.is_wounded(npc) then
+		local thr = sound_threshold[s_type]
+		if thr and dist <= thr[2] then
+			local rel_ok = (thr[3] == 0) or (npc:relation(who) == game_object.enemy)
+			if rel_ok then
+				xr_danger.set_script_danger(npc, thr[1] or 2000)
+				debug_utils.INFO(MODULE, "NPC %s trigger danger off sound %s from obj %s", npc:id(), s_type, who_id)
 			end
 		end
+	end
+
+	-- Враг в зоне слышимости — форсируем запоминание объекта
+	if npc:relation(who) == game_object.enemy then
+		npc:enable_memory_object(who, true)
 	end
 end
 
 -------------------
--- npc_on_item_take(npc,item)
+-- npc_on_item_take(npc, item)
+-- Вызывается из motivator_binder:on_item_take.
+-- Живой NPC — пробуем надеть предмет как визуал.
+-- Мёртвый NPC (труп) — уведомляем систему детекции трупов.
 -------------------
-function npc_on_item_take(npc,item)
-	if not (npc) then return end
-	if (npc:alive()) then
-		if (xr_visual) then xr_visual.try_to_equip(npc,item) end
+function npc_on_item_take(npc, item)
+	if not npc then return end
+	if npc:alive() then
+		if xr_visual then xr_visual.try_to_equip(npc, item) end
 	else
-		if (xr_corpse_detection.on_item_take) then
-			xr_corpse_detection.on_item_take(npc,item)
+		if xr_corpse_detection and xr_corpse_detection.on_item_take then
+			xr_corpse_detection.on_item_take(npc, item)
 		end
 	end
 end
 
 -------------------
--- npc_on_item_drop(npc,item)
+-- npc_on_item_drop(npc, item)
+-- Вызывается из motivator_binder:on_item_drop.
+-- Только для трупов — живые NPC бросают предметы сами по AI.
 -------------------
-function npc_on_item_drop(npc,item)
-	if not (npc) then return end
-	if (npc:alive() ~= true and xr_corpse_detection.on_item_drop) then
-		xr_corpse_detection.on_item_drop(npc,item)
+function npc_on_item_drop(npc, item)
+	if not npc then return end
+	if not npc:alive() then
+		if xr_corpse_detection and xr_corpse_detection.on_item_drop then
+			xr_corpse_detection.on_item_drop(npc, item)
+		end
 	end
 end
 
 -------------------
 -- npc_addcommonprecondition(action)
+-- Вызывается из add_to_binder каждой схемы.
+-- Добавляет глобальные precondition'ы к действию планировщика:
+-- пока активна gather_items / kill_wounded / facer / gl_reload / surge — схема не переключается.
 -------------------
 function npc_addcommonprecondition(action)
-	if (xr_gather_items.evaid) then action:add_precondition(world_property(xr_gather_items.evaid,false)) end
-	if (xrs_kill_wounded) then action:add_precondition(world_property(xrs_kill_wounded.evaid,false)) end
-	if (xrs_facer) then action:add_precondition(world_property(xrs_facer.evid_facer,false)) end
-	if (rx_gl) then action:add_precondition(world_property(rx_gl.evid_gl_reload,false)) end
-	if (xrs_surge) then action:add_precondition(world_property(xrs_surge.evid_surge,false)) end
-end
-
--------------------
--- npc_on_update(npc,st)
--------------------
-function npc_on_update(npc,st)
-	if (xr_combat_ignore and xr_combat_ignore.npc_on_update) then xr_combat_ignore.npc_on_update(npc,st) end
-	if (rx_gl) then	rx_gl.npc_update(npc,st) end
-	if (xr_eat_medkit) then xr_eat_medkit.npc_update(npc,st) end
-	if (xr_visual) then xr_visual.npc_on_update(npc,st) end
-
-	if (npc:alive()) then
-		local wpn = npc:best_weapon()
-		if (wpn and alun_utils.item_is_fa(wpn)) then
-			local inmag = wpn:get_ammo_in_magazine()
-			if (inmag == 0) then
-				if not (st.weapon_reload) then
-					--st.weapon_reload = true
-					--npc_on_weapon_no_ammo(npc,wpn,st)
-				end
-			else
-				--st.weapon_reload = nil
-			end
-
-			if (LIOSEnable) then
-				local sight_type = npc:sight_params().m_sight_type
-				if (alun_utils.addon_attached(wpn,"sc") and sight_type) and (sight_type == 4 or sight_type == 9 or sight_type == 10) then
-					if not (st.look_in_scope) then
-						npc_on_looking_in_scope(npc,wpn,st,sight_type)
-						st.look_in_scope = true
-					end
-				else
-					st.look_in_scope = nil
-					if (st.range and st.fov) then
-						npc:set_range(st.range)
-						npc:set_fov(st.fov)
-						st.range = nil
-						st.fov = nil
-					end
-				end
-			end
-		end
+	if xr_gather_items and xr_gather_items.evaid then
+		action:add_precondition(world_property(xr_gather_items.evaid, false))
+	end
+	if xrs_kill_wounded and xrs_kill_wounded.evaid then
+		action:add_precondition(world_property(xrs_kill_wounded.evaid, false))
+	end
+	if xrs_facer and xrs_facer.evid_facer then
+		action:add_precondition(world_property(xrs_facer.evid_facer, false))
+	end
+	if rx_gl and rx_gl.evid_gl_reload then
+		action:add_precondition(world_property(rx_gl.evid_gl_reload, false))
+	end
+	if xrs_surge and xrs_surge.evid_surge then
+		action:add_precondition(world_property(xrs_surge.evid_surge, false))
 	end
 end
 
 -------------------
--- npc_hit_callback(npc,amount,local_direction,who,bone_index)
+-- npc_on_update(npc, st)
+-- Вызывается из xr_danger:npc_on_update каждый кадр для каждого живого онлайн-NPC.
+-- Раздаёт tick по AI-модулям.
 -------------------
-function npc_hit_callback(npc, amount, local_direction, who, bone_index)
-    if npc and amount > 0 and bone_index ~= "from_death_callback" then
-        xr_danger.set_script_danger(npc, 2000)
-        if xrs_facer then xrs_facer.hit_callback(npc, amount, local_direction, who, bone_index) end
-        -- ДОБАВИТЬ: safe_zone логика при ударе актором
-        if xr_combat_ignore then
-            xr_combat_ignore.npc_on_hit_callback(npc, amount, local_direction, who, bone_index)
-        end
-    end
+function npc_on_update(npc, st)
+	if xr_combat_ignore and xr_combat_ignore.npc_on_update then
+		xr_combat_ignore.npc_on_update(npc, st)
+	end
+	if rx_gl         then rx_gl.npc_update(npc, st) end
+	if xr_eat_medkit then xr_eat_medkit.npc_update(npc, st) end
+	if xr_visual     then xr_visual.npc_on_update(npc, st) end
+
+	-- Проверка лучшего оружия NPC (только если живой)
+	if not npc:alive() then return end
+
+	local wpn = npc:best_weapon()
+	if not wpn then return end
+	if not alun_utils.item_is_fa(wpn) then return end
+
+	local inmag = wpn:get_ammo_in_magazine()
+	if inmag == 0 then
+		-- npc_on_weapon_no_ammo(npc, wpn, st)  -- отключено, оставлено для будущего
+	end
+	-- LIOS (Look In Scope) — отключено, модуль не подключён
+	-- if LIOSEnable then ... end
 end
 
 -------------------
--- npc_on_death_callback(npc,who)
+-- npc_hit_callback(npc, amount, local_direction, who, bone_index)
+-- Вызывается из motivator_binder/generic_object_binder:hit_callback.
+-- Взводит danger, уведомляет facer и combat_ignore.
+-------------------
+function npc_hit_callback(npc, amount, local_direction, who, bone_index)
+	if not npc or amount <= 0 or bone_index == "from_death_callback" then return end
+
+	xr_danger.set_script_danger(npc, 2000)
+
+	if xrs_facer then
+		xrs_facer.hit_callback(npc, amount, local_direction, who, bone_index)
+	end
+	if xr_combat_ignore then
+		xr_combat_ignore.npc_on_hit_callback(npc, amount, local_direction, who, bone_index)
+	end
+end
+
+-------------------
+-- npc_on_death_callback(npc, who)
+-- Вызывается из motivator_binder/generic_object_binder:death_callback.
+-- Чистит состояние NPC из всех таблиц и уведомляет зависимые модули.
 -------------------
 function npc_on_death_callback(npc, who)
-    local id = npc:id()
-    db.storage[id].victim_surrender = nil
-    safe_zone_npcs[id] = nil
-    -- ДОБАВИТЬ: очистка safe_zone для всего отряда при гибели последнего бойца
-    local squad = get_object_squad(npc)
-    if squad and xr_combat_ignore then
-        xr_combat_ignore.squad_on_npc_death(squad, npc)
-    end
-    if rx_gl then rx_gl.death(npc) end
-    if xr_visual then xr_visual.death_callback(npc, who) end
+	local id = npc:id()
+
+	-- Чистим глобальные таблицы
+	if db.storage[id] then
+		db.storage[id].victim_surrender = nil
+	end
+	safe_zone_npcs[id]           = nil
+	fighting_with_actor_npcs[id] = nil
+
+	-- Уведомляем squad-логику combat_ignore
+	if xr_combat_ignore then
+		local squad = get_object_squad(npc)
+		if squad then
+			xr_combat_ignore.squad_on_npc_death(squad, npc)
+		end
+	end
+
+	if rx_gl     then rx_gl.death(npc) end
+	if xr_visual then xr_visual.death_callback(npc, who) end
 end
