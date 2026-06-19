@@ -29,7 +29,7 @@ radiation_max_power			=	0.01
 radiation_linear_factor		=	1
 radiation_quadratic_factor	=	1
 radiation_pp_effector_name	= 	postprocess_rad
-radiation_pp_highest_at		= 	0.02
+radiation_pp_highest_at		= 	0.04
 
 
 ;---OFFLINE ALIFE------------------------------------------------------------------
@@ -136,28 +136,27 @@ jump_factor						= 2
 jump_ground_trace_range			= 1.5
 jump_hit_trace_range			= 2
 jump_build_line_distance		= 18.0
-jump_min_distance				= 0.2
+jump_min_distance				= 0.1
 jump_max_distance				= 16.0
-jump_max_angle					= 4.84
-jump_max_height					= 6.0
-jump_auto_aim_factor			= 0.45
+jump_max_angle					= 0.55
+jump_max_height					= 12.0
+jump_auto_aim_factor			= 2
 
 
 ;-------------------------------------------------------------------------
 ; Entity Conditions
 ;-------------------------------------------------------------------------
-satiety_v						= 0.0001				;0.01			;скорость уменьшения сытости со временем
-radiation_v						= 0.00001		;0.004			;скорость уменьшения радиации
-satiety_power_v					= 0.0001		;0.01			;увеличение силы при уменьшении сытости 
-satiety_health_v				= 0.0001	;0.03			;увеличение здоровья при уменьшении сытости 
+satiety_v						= 0.001				;0.01			;скорость уменьшения сытости со временем
+radiation_v						= 0.0001		;0.004			;скорость уменьшения радиации
+satiety_power_v					= 0.001		;0.01			;увеличение силы при уменьшении сытости
+satiety_health_v				= 0.001	;0.03			;увеличение здоровья при уменьшении сытости
 satiety_critical				= -1.0		;0.25						;критическое значения сытости (в процентах от 0..1) когда здоровье начианает уменьшаться
 radiation_health_v				= 0.01	;0.006			;уменьшение здоровья при воздействии радиации
-morale_v						= 0.01					;скорость восстановления морали
+morale_v						= 0					;скорость восстановления морали
 health_hit_part					= 1.0		;0.8			;процент хита, уходящий на отнимание здоровья
 power_hit_part					= 1.0		;0.9			;процент хита, уходящий на отнимание силы
 psy_health_v					= 0.1						;скорость восстановления psy-здоровья
 health_restore_v              = 0.0001
-
 
 protections_sect 				= chimera_protections
 immunities_sect					= chimera_immunities
@@ -217,12 +216,12 @@ killer_clsids					= Z_MINCER,Z_GALANT,ZS_BFUZZ,ZS_MBALD,ZS_GALAN,ZS_MINCE
 
 idle_sound_delay				= 95000
 eat_sound_delay					= 3000
-attack_sound_delay				= 12000
+attack_sound_delay				= 10000
 
 sound_distant_idle				= monsters\snork\snork_idle_
 ;sound_distant_idle				= monsters\bloodsucker\idle_
 distant_idle_sound_delay		= 60000
-distant_idle_sound_range		= 100.0	
+distant_idle_sound_range		= 100.0
 
 SoundThreshold					= 0.02             ; range [0..1]
 max_hear_dist					= 60
@@ -285,34 +284,36 @@ vision_danger_section			= chimera_vision_danger
 [chimera_vision_free]
 min_view_distance   			= 0.8				; коэффициент, который множится на eye_range, в зависимости от угла
 max_view_distance	 			= 1.8				; коэффициент, который множится на eye_range, в зависимости от угла
-visibility_threshold	 		= 170.0				; значение, при достижении суммой которого объект считается видимым
-always_visible_distance 		= 0.6
+visibility_threshold	 		= 100.0				; значение, при достижении суммой которого объект считается видимым
+always_visible_distance 		= 0.55
 time_quant						= 0.001
 decrease_value					= 0.01				; значение, на которое уменьшается вес, если объект попал в фрустум, но отсёкся по каким-то причинам
 velocity_factor		     		= 0.5
 luminocity_factor				= 0.8 				; фактор освещения (только для Актёра)
-transparency_threshold			= 0.35
+transparency_threshold			= 0.15
 
 [chimera_vision_danger]
 min_view_distance   			= 0.8				; коэффициент, который множится на eye_range, в зависимости от угла
 max_view_distance	 			= 1.8				; коэффициент, который множится на eye_range, в зависимости от угла
 visibility_threshold	 		= 100.0				; значение, при достижении суммой которого объект считается видимым
-always_visible_distance 		= 0.6
+always_visible_distance 		= 0.55
 time_quant						= 0.001
 decrease_value					= 0.01				; значение, на которое уменьшается вес, если объект попал в фрустум, но отсёкся по каким-то причинам
 velocity_factor		     		= 0.5
 luminocity_factor				= 0.5 				; фактор освещения (только для Актёра)
-transparency_threshold			= 0.10
+transparency_threshold			= 0.15
+
+feel_enemy_who_just_hit_max_distance = 180
 
 [chimera_protections]
-skin_armor = 0.45
-hit_fraction_monster = 0.75
+skin_armor = 0.54
+hit_fraction_monster = 0.66
 
 ;---------------------------------------------------------------------------------------------------------------------------------------------
 ;	anim			| time[0..1] | hit_power | impulse | impulse_dir (x,y,z)  |	Field of hit_test  (left,right, bottom, top ) |	Test Dist
 ;---------------------------------------------------------------------------------------------------------------------------------------------
 [m_chimera_attack_params]
-jump_attack_1  		= 	0.3,		1.35,		180,       0.0, 1.0, 0.0,		-1.6, 1.6, -1.6, 1.6,							  2.5
+jump_attack_1  		= 	0.3,		2.05,		180,       0.0, 1.0, 0.0,		-1.6, 1.6, -1.6, 1.6,							  2.5
 
 [m_chimera_attack_effector]
 duality_h						= 0.1; 0.01 
@@ -346,15 +347,15 @@ stand_run_fwd_0	=	   1,	   0.01,    1,	    0.25,    0.6,
 ; IMMUNITIES
 ;---------------------------------------------------------------------------
 [chimera_immunities]
-burn_immunity = 2.0 ;     	= 0.5 				;коэффициенты иммунитета
+burn_immunity = 0.66 ;     	= 0.35 				;коэффициенты иммунитета
 strike_immunity     	= 0.0
-shock_immunity = 2.0 ;      	= 0.1
-wound_immunity      	= 0.25
+shock_immunity = 0.12 ;      	= 0.1
+wound_immunity      	= 0.08
 radiation_immunity   	= 0.0
 telepatic_immunity    	= 0.0
-chemical_burn_immunity = 3.5 ; = 3.0 ;  = 0.45
-explosion_immunity    	= 0.18
-fire_wound_immunity   	= 0.075
+chemical_burn_immunity = 0.85 ; = 3.0 ;  = 0.45
+explosion_immunity    	= 0.1
+fire_wound_immunity   	= 0.05
 
 ;=================================================================================
 ; Terrain
@@ -392,12 +393,12 @@ immunities_sect = chimera_immunities_normal
 spec_rank     	= normal
 
 [chimera_immunities_normal]
-burn_immunity = 3.0 ;     	= 0.5 				;коэффициенты иммунитета
-strike_immunity     	= 0.3
-shock_immunity = 3.0 ;      	= 0.1
-wound_immunity      	= 0.35
+burn_immunity = 0.66 ;     	= 0.35 				;коэффициенты иммунитета
+strike_immunity     	= 0.0
+shock_immunity = 0.12 ;      	= 0.1
+wound_immunity      	= 0.08
 radiation_immunity   	= 0.0
 telepatic_immunity    	= 0.0
-chemical_burn_immunity = 5.5 ; = 3.0 ;  = 0.45
-explosion_immunity    	= 0.3
-fire_wound_immunity   	= 0.075
+chemical_burn_immunity = 0.85 ; = 3.0 ;  = 0.45
+explosion_immunity    	= 0.1
+fire_wound_immunity   	= 0.03

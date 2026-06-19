@@ -1,19 +1,317 @@
-local dbg = debug_utils
+------------------------------------------------------
+-- ai_tweaks.script
+-- Центральный диспетчер AI-событий для xrMPE.
+-- Адаптировано из Misery 2.x (Alundaio/Yasti)
+------------------------------------------------------
+
 local MODULE = "ai_tweaks"
 
--------------------
+------------------------------------------------------
+-- Конфигурация NpcHelp из ltx
+-- Дистанции в единицах движка (distance_to_sqr, т.е. квадраты метров).
+-- Таймеры в миллисекундах.
+------------------------------------------------------
+local ini = ini_file("ai_tweaks\\ai_tweaks.ltx")
+
+local NpcHelpEnable         = alun_utils.read_from_ini(ini, "npc_help", "enable",                    "bool",  true)
+local NpcHelpDistanceClose  = alun_utils.read_from_ini(ini, "npc_help", "npc_help_distance_close",   "float", 225)
+local NpcHelpTimerClose     = alun_utils.read_from_ini(ini, "npc_help", "npc_help_timer_close",      "float", 3500)
+local NpcHelpDistanceMedium = alun_utils.read_from_ini(ini, "npc_help", "npc_help_distance_medium",  "float", 900)
+local NpcHelpTimerMedium    = alun_utils.read_from_ini(ini, "npc_help", "npc_help_timer_medium",     "float", 15000)
+local NpcHelpDistanceFar    = alun_utils.read_from_ini(ini, "npc_help", "npc_help_distance_far",     "float", 2500)
+local NpcHelpTimerFar       = alun_utils.read_from_ini(ini, "npc_help", "npc_help_timer_far",        "float", 20000)
+
+------------------------------------------------------
+-- Регистрация callback'ов
+------------------------------------------------------
+
+function on_game_start()
+	callback_register("npc_on_net_destroy", npc_on_net_destroy)
+	callback_register("squad_can_help_actor", squad_can_help_actor)
+	callback_register("npc_on_hit_callback", npc_on_hit_callback_engine)
+end
+
+------------------------------------------------------
 -- se_stalker_on_spawn(se_npc)
--- Вызывается из se_stalker:on_spawn — точка входа для серверного спауна сталкера.
--- Раздаёт событие модулям которые хотят инициализировать NPC при создании.
--------------------
+-- Вызывается из se_stalker:on_spawn — серверный спаун сталкера.
+------------------------------------------------------
+
 function se_stalker_on_spawn(se_npc)
 	if xrs_rnd_npc_loadout then xrs_rnd_npc_loadout.on_creation(se_npc) end
 end
 
--- Пороги реакции NPC на звуки.
--- [s_type] = {inertion_ms, max_dist, relation_filter}
--- relation_filter: 0 = все, 1 = только враги
-local sound_threshold = {
+------------------------------------------------------
+-- npc_on_net_destroy(npc)
+-- Движковый callback при уходе NPC офлайн.
+-- Восстанавливает range/fov если LIOS был активен —
+-- иначе NPC уйдёт офлайн с изменёнными параметрами зрения.
+------------------------------------------------------
+
+function npc_on_net_destroy(npc)
+	local st = db.storage[npc:id()]
+	if st and st.range and st.fov then
+		npc:set_range(st.range)
+		npc:set_fov(st.fov)
+		st.range = nil
+		st.fov   = nil
+	end
+end
+
+------------------------------------------------------
+-- npc_on_hit_callback_engine(npc, who)
+-- Движковый callback при ударе NPC.
+-- Сбрасывает анимацию если NPC получил хит во время
+-- лута трупа или помощи раненому — иначе застывает.
+------------------------------------------------------
+
+local _reset_states = {
+	["search_corpse"] = true,
+	["pickup_crouch"] = true,
+	["help_wounded"]  = true,
+	["help_victim_1"] = true,
+	["help_victim_2"] = true,
+	["search"]        = true,
+}
+
+function npc_on_hit_callback_engine(npc, who)
+	local state = state_mgr and state_mgr.get_state(npc)
+	if state and _reset_states[state] then
+		npc:clear_animations()
+	end
+end
+
+------------------------------------------------------
+-- squad_can_help_actor(squad)
+-- Движковый callback: разрешает отряду помочь актору
+-- если они союзники и отряд в радиусе 150 метров.
+------------------------------------------------------
+
+function squad_can_help_actor(squad)
+	if not db.actor then return end
+	if game_relations.get_squad_goodwill_to_actor_by_id(squad.id) == "friend"
+	and db.actor:position():distance_to_sqr(squad.position) <= 22500 then
+		return true
+	end
+end
+
+------------------------------------------------------
+-- npc_on_item_take(npc, item)
+-- Вызывается из motivator_binder:on_item_take.
+------------------------------------------------------
+
+function npc_on_item_take(npc, item)
+	if not npc then return end
+	if npc:alive() then
+		if xr_visual then xr_visual.try_to_equip(npc, item) end
+	else
+		if xr_corpse_detection and xr_corpse_detection.on_item_take then
+			xr_corpse_detection.on_item_take(npc, item)
+		end
+	end
+end
+
+------------------------------------------------------
+-- npc_on_item_drop(npc, item)
+-- Вызывается из motivator_binder:on_item_drop.
+------------------------------------------------------
+
+function npc_on_item_drop(npc, item)
+	if not npc then return end
+	if not npc:alive() then
+		if xr_corpse_detection and xr_corpse_detection.on_item_drop then
+			xr_corpse_detection.on_item_drop(npc, item)
+		end
+	end
+end
+
+------------------------------------------------------
+-- npc_addcommonprecondition(action)
+-- Вызывается из add_to_binder каждой AI-схемы.
+-- Пока активна gather_items / kill_wounded / facer / gl_reload / surge —
+-- планировщик не переключает схему.
+------------------------------------------------------
+
+function npc_addcommonprecondition(action)
+	if xr_gather_items  and xr_gather_items.evaid       then action:add_precondition(world_property(xr_gather_items.evaid,       false)) end
+	if xrs_kill_wounded and xrs_kill_wounded.evaid       then action:add_precondition(world_property(xrs_kill_wounded.evaid,      false)) end
+	if xrs_facer        and xrs_facer.evid_facer         then action:add_precondition(world_property(xrs_facer.evid_facer,        false)) end
+	if rx_gl            and rx_gl.evid_gl_reload         then action:add_precondition(world_property(rx_gl.evid_gl_reload,        false)) end
+	if xrs_surge        and xrs_surge.evid_surge         then action:add_precondition(world_property(xrs_surge.evid_surge,        false)) end
+end
+
+------------------------------------------------------
+-- npc_on_update(npc, st)
+-- Вызывается из xr_danger:npc_on_update каждый кадр.
+-- Раздаёт tick AI-модулям + NpcHelp логика.
+------------------------------------------------------
+
+function npc_on_update(npc, st)
+	if xr_combat_ignore and xr_combat_ignore.npc_on_update then
+		xr_combat_ignore.npc_on_update(npc, st)
+	end
+	if rx_gl         then rx_gl.npc_update(npc, st)         end
+	if xr_eat_medkit then xr_eat_medkit.npc_update(npc, st) end
+	if xr_visual     then xr_visual.npc_on_update(npc, st)  end
+
+	if not npc:alive() then return end
+
+	-- NpcHelp: NPC дерётся с актором — оповещает ближайшего сослуживца
+	if NpcHelpEnable then
+		_npc_help_update(npc, st)
+	end
+end
+
+------------------------------------------------------
+-- npc_hit_callback(npc, amount, local_direction, who, bone_index)
+-- Вызывается из motivator_binder/generic_object_binder:hit_callback.
+------------------------------------------------------
+
+function npc_hit_callback(npc, amount, local_direction, who, bone_index)
+	if not npc or amount <= 0 or bone_index == "from_death_callback" then return end
+
+	xr_danger.set_script_danger(npc, 2000)
+
+	if xrs_facer        then xrs_facer.hit_callback(npc, amount, local_direction, who, bone_index)         end
+	if xr_combat_ignore then xr_combat_ignore.npc_on_hit_callback(npc, amount, local_direction, who, bone_index) end
+end
+
+------------------------------------------------------
+-- npc_on_death_callback(npc, who)
+-- Вызывается из motivator_binder/generic_object_binder:death_callback.
+------------------------------------------------------
+
+function npc_on_death_callback(npc, who)
+	local id = npc:id()
+
+	-- Чистим глобальные таблицы
+	safe_zone_npcs[id]           = nil
+	fighting_with_actor_npcs[id] = nil
+	if db.storage[id] then
+		db.storage[id].victim_surrender = nil
+	end
+
+	-- Чистим OnlineStalkers
+	if db.OnlineStalkers then
+		for i = #db.OnlineStalkers, 1, -1 do
+			if db.OnlineStalkers[i] == id then
+				table.remove(db.OnlineStalkers, i)
+				break
+			end
+		end
+	end
+
+	if xr_combat_ignore then
+		local squad = get_object_squad(npc)
+		if squad then xr_combat_ignore.squad_on_npc_death(squad, npc) end
+	end
+
+	if rx_gl     then rx_gl.death(npc)                  end
+	if xr_visual then xr_visual.death_callback(npc, who) end
+end
+
+------------------------------------------------------
+-- NpcHelp — вспомогательные функции
+------------------------------------------------------
+
+-- Смарты где NPC не должны реагировать (базы, убежища)
+local _ignored_smarts = {
+	zat_stalker_base_smart = true,
+	jup_b41                = true,
+	jup_a6                 = true,
+	pri_a16                = true,
+}
+
+local function is_in_ignored_zone(npc)
+	if not alife() then return false end
+	local se_npc = alife():object(npc:id())
+	if not se_npc then return false end
+	local smart_id = se_npc.m_smart_terrain_id
+	if not smart_id or smart_id == 65535 then return false end
+	local smart = alife():object(smart_id)
+	return smart and _ignored_smarts[smart:name()] == true
+end
+
+-- Находим ближайшего живого сослуживца который ещё не дерётся с актором
+local function get_near_npc(npc)
+	if not db.OnlineStalkers then return end
+	local nearest, nearest_dist
+	local pos = npc:position()
+	for i = 1, #db.OnlineStalkers do
+		local id = db.OnlineStalkers[i]
+		local st = db.storage[id]
+		local stalker = st and st.object or level.object_by_id(id)
+		if stalker and stalker:alive()
+		and stalker:id() ~= npc:id()
+		and not fighting_with_actor_npcs[stalker:id()] then
+			local d = pos:distance_to_sqr(stalker:position())
+			if not nearest_dist or d < nearest_dist then
+				nearest_dist = d
+				nearest       = stalker
+			end
+		end
+	end
+	return nearest
+end
+
+-- Таймеры хранятся прямо в db.storage[id] чтобы не плодить таблицы
+local function set_timer(st, key, delay)
+	if st then st[key] = time_global() + delay end
+end
+
+local function get_timer(st, key)
+	if not st or not st[key] then return nil end
+	if time_global() > st[key] then
+		st[key] = nil
+		return 1   -- истёк → разрешаем действие
+	end
+	return -1     -- ещё идёт
+end
+
+function _npc_help_update(npc, st)
+	if not (IsStalker(npc) and fighting_with_actor_npcs[npc:id()]) then return end
+	if is_in_ignored_zone(npc) then return end
+
+	local near = get_near_npc(npc)
+	if not near or not near:alive() then return end
+	if near:character_community() ~= npc:character_community() then return end
+
+	local nst  = db.storage[npc:id()]
+	local dist = npc:position():distance_to_sqr(near:position())
+
+	-- Близко — короткий таймер
+	if dist <= NpcHelpDistanceClose then
+		if get_timer(nst, "help_timer_close") == 1 then
+			db.storage[near:id()].enemy_id = db.actor and db.actor:id()
+			fighting_with_actor_npcs[near:id()] = true
+		elseif get_timer(nst, "help_timer_close") == nil then
+			set_timer(nst, "help_timer_close", NpcHelpTimerClose)
+		end
+
+	-- Средняя дистанция
+	elseif dist <= NpcHelpDistanceMedium then
+		if get_timer(nst, "help_timer_med") == 1 then
+			db.storage[near:id()].enemy_id = db.actor and db.actor:id()
+			fighting_with_actor_npcs[near:id()] = true
+		elseif get_timer(nst, "help_timer_med") == nil then
+			set_timer(nst, "help_timer_med", NpcHelpTimerMedium)
+		end
+
+	-- Далеко
+	elseif dist <= NpcHelpDistanceFar then
+		if get_timer(nst, "help_timer_far") == 1 then
+			db.storage[near:id()].enemy_id = db.actor and db.actor:id()
+			fighting_with_actor_npcs[near:id()] = true
+		elseif get_timer(nst, "help_timer_far") == nil then
+			set_timer(nst, "help_timer_far", NpcHelpTimerFar)
+		end
+	end
+end
+
+------------------------------------------------------
+-- Пороги реакции на звуки
+------------------------------------------------------
+
+local _sound_threshold = {
 	["WPN"]        = {0,     0,    0},
 	["WPN_shoot"]  = {2000,  1500, 0},
 	["WPN_empty"]  = {0,     0,    1},
@@ -28,160 +326,29 @@ local sound_threshold = {
 	["MST_eat"]    = {0,     0,    1},
 }
 
--------------------
--- npc_hear_callback(npc, who_id, s_type, dist, sound_power)
--- Вызывается из xr_motivator/generic_object_binder:hear_callback.
--- Решает нужно ли взводить danger-состояние NPC и запоминать источник звука.
--------------------
+------------------------------------------------------
+-- npc_hear_callback(npc, who_id, s_type, dist, power)
+-- Вызывается из мотиватора/монстра:hear_callback.
+------------------------------------------------------
+
 function npc_hear_callback(npc, who_id, s_type, dist, sound_power)
-	-- NPC в safe-зоне не реагирует на звуки
 	if xr_combat_ignore and xr_combat_ignore.npc_in_safe_zone(npc) then return end
 
 	local who = who_id and level.object_by_id(who_id)
-	if not who then return end  -- источник звука офлайн или не существует
+	if not who then return end
 
-	-- Взводим danger если звук в пороге и условие relation выполнено
 	if not xr_wounded.is_wounded(npc) then
-		local thr = sound_threshold[s_type]
-		if thr and dist <= thr[2] then
+		local thr = _sound_threshold[s_type]
+		if thr and thr[2] > 0 and dist <= thr[2] then
 			local rel_ok = (thr[3] == 0) or (npc:relation(who) == game_object.enemy)
 			if rel_ok then
 				xr_danger.set_script_danger(npc, thr[1] or 2000)
-				debug_utils.INFO(MODULE, "NPC %s trigger danger off sound %s from obj %s", npc:id(), s_type, who_id)
 			end
 		end
 	end
 
-	-- Враг в зоне слышимости — форсируем запоминание объекта
 	if npc:relation(who) == game_object.enemy then
 		npc:enable_memory_object(who, true)
 	end
 end
 
--------------------
--- npc_on_item_take(npc, item)
--- Вызывается из motivator_binder:on_item_take.
--- Живой NPC — пробуем надеть предмет как визуал.
--- Мёртвый NPC (труп) — уведомляем систему детекции трупов.
--------------------
-function npc_on_item_take(npc, item)
-	if not npc then return end
-	if npc:alive() then
-		if xr_visual then xr_visual.try_to_equip(npc, item) end
-	else
-		if xr_corpse_detection and xr_corpse_detection.on_item_take then
-			xr_corpse_detection.on_item_take(npc, item)
-		end
-	end
-end
-
--------------------
--- npc_on_item_drop(npc, item)
--- Вызывается из motivator_binder:on_item_drop.
--- Только для трупов — живые NPC бросают предметы сами по AI.
--------------------
-function npc_on_item_drop(npc, item)
-	if not npc then return end
-	if not npc:alive() then
-		if xr_corpse_detection and xr_corpse_detection.on_item_drop then
-			xr_corpse_detection.on_item_drop(npc, item)
-		end
-	end
-end
-
--------------------
--- npc_addcommonprecondition(action)
--- Вызывается из add_to_binder каждой схемы.
--- Добавляет глобальные precondition'ы к действию планировщика:
--- пока активна gather_items / kill_wounded / facer / gl_reload / surge — схема не переключается.
--------------------
-function npc_addcommonprecondition(action)
-	if xr_gather_items and xr_gather_items.evaid then
-		action:add_precondition(world_property(xr_gather_items.evaid, false))
-	end
-	if xrs_kill_wounded and xrs_kill_wounded.evaid then
-		action:add_precondition(world_property(xrs_kill_wounded.evaid, false))
-	end
-	if xrs_facer and xrs_facer.evid_facer then
-		action:add_precondition(world_property(xrs_facer.evid_facer, false))
-	end
-	if rx_gl and rx_gl.evid_gl_reload then
-		action:add_precondition(world_property(rx_gl.evid_gl_reload, false))
-	end
-	if xrs_surge and xrs_surge.evid_surge then
-		action:add_precondition(world_property(xrs_surge.evid_surge, false))
-	end
-end
-
--------------------
--- npc_on_update(npc, st)
--- Вызывается из xr_danger:npc_on_update каждый кадр для каждого живого онлайн-NPC.
--- Раздаёт tick по AI-модулям.
--------------------
-function npc_on_update(npc, st)
-	if xr_combat_ignore and xr_combat_ignore.npc_on_update then
-		xr_combat_ignore.npc_on_update(npc, st)
-	end
-	if rx_gl         then rx_gl.npc_update(npc, st) end
-	if xr_eat_medkit then xr_eat_medkit.npc_update(npc, st) end
-	if xr_visual     then xr_visual.npc_on_update(npc, st) end
-
-	-- Проверка лучшего оружия NPC (только если живой)
-	if not npc:alive() then return end
-
-	local wpn = npc:best_weapon()
-	if not wpn then return end
-	if not alun_utils.item_is_fa(wpn) then return end
-
-	local inmag = wpn:get_ammo_in_magazine()
-	if inmag == 0 then
-		-- npc_on_weapon_no_ammo(npc, wpn, st)  -- отключено, оставлено для будущего
-	end
-	-- LIOS (Look In Scope) — отключено, модуль не подключён
-	-- if LIOSEnable then ... end
-end
-
--------------------
--- npc_hit_callback(npc, amount, local_direction, who, bone_index)
--- Вызывается из motivator_binder/generic_object_binder:hit_callback.
--- Взводит danger, уведомляет facer и combat_ignore.
--------------------
-function npc_hit_callback(npc, amount, local_direction, who, bone_index)
-	if not npc or amount <= 0 or bone_index == "from_death_callback" then return end
-
-	xr_danger.set_script_danger(npc, 2000)
-
-	if xrs_facer then
-		xrs_facer.hit_callback(npc, amount, local_direction, who, bone_index)
-	end
-	if xr_combat_ignore then
-		xr_combat_ignore.npc_on_hit_callback(npc, amount, local_direction, who, bone_index)
-	end
-end
-
--------------------
--- npc_on_death_callback(npc, who)
--- Вызывается из motivator_binder/generic_object_binder:death_callback.
--- Чистит состояние NPC из всех таблиц и уведомляет зависимые модули.
--------------------
-function npc_on_death_callback(npc, who)
-	local id = npc:id()
-
-	-- Чистим глобальные таблицы
-	if db.storage[id] then
-		db.storage[id].victim_surrender = nil
-	end
-	safe_zone_npcs[id]           = nil
-	fighting_with_actor_npcs[id] = nil
-
-	-- Уведомляем squad-логику combat_ignore
-	if xr_combat_ignore then
-		local squad = get_object_squad(npc)
-		if squad then
-			xr_combat_ignore.squad_on_npc_death(squad, npc)
-		end
-	end
-
-	if rx_gl     then rx_gl.death(npc) end
-	if xr_visual then xr_visual.death_callback(npc, who) end
-end

@@ -60,6 +60,7 @@ GM_SCRIPT_ADDON_EVENTS = 100
 -- xr_combat_ignore: глобальные таблицы
 fighting_with_actor_npcs = {}
 safe_zone_npcs           = {}
+db.OnlineStalkers        = {}   -- список id онлайн-сталкеров для NpcHelp
 -- Add your own events after this
 -- Example:
 -- GM_SCRIPT_USE_ITEM = GM_SCRIPT_ADDON_EVENTS + 1

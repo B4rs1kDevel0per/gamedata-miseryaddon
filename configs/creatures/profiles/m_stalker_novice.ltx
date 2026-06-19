@@ -26,7 +26,7 @@ sound_attack_allies_single_enemy	= fight\attack\attack_,fight\attack\attack_one_
 sound_attack_allies_several_enemies	= fight\attack\attack_,fight\attack\attack_many_,fight\fire\fire_
 sound_search1_no_allies				= fight\threat\threat_distant_
 sound_search1_with_allies			= fight\searching_enemy\search_
-sound_enemy_lost_no_allies			= 
+sound_enemy_lost_no_allies			=
 sound_enemy_lost_with_allies		= fight\searching_enemy\enemy_lost_
 sound_throw_grenade					= fight\grenade\grenade_ready_1
 
@@ -38,7 +38,7 @@ movement_speeds					= stalker_novice_movement_speeds
 
 fire_queue_section 				= fire_queue_params_novice
 
-;panic_threshold					= 0.28
+;panic_threshold					= 0.25
 
 condition_sect					= stalker_novice_condition
 
@@ -47,23 +47,23 @@ ignore_monster_threshold			= 0.0		;0.6	;0.8
 max_ignore_distance				= 55.0
 
 ;---FIRE DISPERSIONS--------------------------------------------------
-disp_walk_stand					= 9.5 	;8 ;6
-disp_walk_crouch				= 7.5  	;4 ;3
-disp_run_stand					= 12 	;14 ;12;8
-disp_run_crouch					= 9 	;6  ;4
-disp_stand_stand				= 4  	;4
-disp_stand_crouch				= 3	; 2
-disp_stand_stand_zoom				= 1.3 	;1.5 ;1
-disp_stand_crouch_zoom				= 0.8 	;1.25;1
+disp_walk_stand					= 5.75 	;8 ;6
+disp_walk_crouch				= 4.4  	;4 ;3
+disp_run_stand					= 10.5 	;14 ;12;8
+disp_run_crouch					= 7.1 	;6  ;4
+disp_stand_stand				= 2.5  	;4
+disp_stand_crouch				= 1.82	; 2
+disp_stand_stand_zoom				= 0.86 	;1.5 ;1
+disp_stand_crouch_zoom				= 0.61 	;1.25;1
 
-FireRandomMin 		 =     	1
-FireRandomMax 		 =     	12
+FireRandomMin 		 =     	2
+FireRandomMax 		 =     	4
 NoFireTimeMin 		 =    	4
-NoFireTimeMax 		 =    	16
+NoFireTimeMax 		 =    	10
 MinMissDistance		 =     	1
-MinMissFactor		 =     	0.0
+MinMissFactor		 =     	0.025
 MaxMissDistance		 =    	6
-MaxMissFactor		 =     	0.0
+MaxMissFactor		 =     	0.06
 
 step_params					= stalker_novice_step_manager
 
@@ -71,199 +71,174 @@ step_params					= stalker_novice_step_manager
 
 vision_danger_section			= stalker_novice_vision_danger
 vision_free_section				= stalker_novice_vision_free
-eye_fov							= 120 ;110;120
-eye_range						= 100
+
+eye_fov							= 110 ;110;120
+;eye_range						= 250
 
 ;---------------------------------------------------
 
 [stalker_novice_vision_free]:stalker_vision_free
-min_view_distance 			= 0.3				; коэффициент, который множится на eye_range, в зависимости от угла
-max_view_distance 			= 1.0				; коэффициент, который множится на eye_range, в зависимости от угла
-visibility_threshold	 	= 44.0				; значение, при достижении суммой которого объект считается видимым
-always_visible_distance 	= 0.0
-time_quant					= 0.0019
-decrease_value				= 0.01;0.001				; значение, на которое уменьшается вес, если объект попал в фрустум, но отсёкся по каким-то причинам
-velocity_factor		     	= 0.86
-luminocity_factor			= 1.24;0.7 ;0.5				; фактор освещения (только для Актёра)
-transparency_threshold	 	= 0.99				; 0.75
+min_view_distance   		= 0.20				; коэффициент, который множится на eye_range, в зависимости от угла
+max_view_distance	 		= 1.75				; коэффициент, который множится на eye_range, в зависимости от угла
+visibility_threshold	 	= 190.0				;Threshold in which object becames visible based on factors
+always_visible_distance 	= 0.02
+time_quant					= 0.0018			;step increment to for sight calculations (low values seem to make stalkers take shots faster)
+decrease_value				= 0.0020			;Decrease over time to overall threshold
+velocity_factor		     	= 2.12				;Higher value = greater bonus to detection speed when target is moving (depended on movement speed)
+luminocity_factor			= 0.73				;Low value = easier to see at night
+transparency_threshold	 	= 0.82				;Low value = easier to see through semi-transparent objects
 
 [stalker_novice_vision_danger]:stalker_vision_danger
-min_view_distance   		= 0.25				; коэффициент, который множится на eye_range, в зависимости от угла
-max_view_distance	 		= 1.2				; коэффициент, который множится на eye_range, в зависимости от угла
-visibility_threshold	 	= 35.0				; значение, при достижении суммой которого объект считается видимым
-always_visible_distance 	= 0.1
-time_quant					= 0.0021
-decrease_value				= 0.006;0.004				; значение, на которое уменьшается вес, если объект попал в фрустум, но отсёкся по каким-то причинам
-velocity_factor		     	= 0.76 ;0.5
-luminocity_factor			= 1.24;0.8 ;0.5 				; фактор освещения (только для Актёра)
-transparency_threshold	 	= 0.99		; 0.25
+min_view_distance   		= 0.30				; коэффициент, который множится на eye_range, в зависимости от угла
+max_view_distance	 		= 2.00			; коэффициент, который множится на eye_range, в зависимости от угла
+visibility_threshold	 	= 190.0				; значение, при достижении суммой которого объект считается видимым
+always_visible_distance 	= 0.02
+time_quant					= 0.0014
+decrease_value				= 0.0016 ;0.004		; значение, на которое уменьшается вес, если объект попал в фрустум, но отсёкся по каким-то причинам
+velocity_factor		     	= 2.12				
+luminocity_factor			= 0.73				; фактор освещения (только для Актёра)
+transparency_threshold	 	= 0.82
 
 ;---SECTIONS----------------------------------------------------------
 damage						= stalker_novice_damage
 condition_sect					= stalker_novice_condition
 
 [stalker_novice_condition]:stalker_condition
-;satiety_v					= 0.00001				;скорость уменьшения сытости со временем
-;radiation_v					= 0.0001				;скорость уменьшения радиации
-;satiety_power_v				= 0.0005				;увеличение силы при уменьшении сытости
-;satiety_health_v			= 0.1 ;0.0001				;увеличение здоровья при уменьшении сытости
-;satiety_critical			= 0.0					;критическое значения сытости (в процентах от 0..1) когда здоровье начианает уменьшаться
-;radiation_health_v			= 0.001					;уменьшение здоровья при воздействии радиации
-morale_v					= 0.4				;скорость восстановления морали
-;health_hit_part				= 1.0					;процент хита, уходящий на отнимание здоровья
-;power_hit_part				= 0.0					;процент хита, уходящий на отнимание силы
-;psy_health_v				= 0.01					; скорость восстановления psy-здоровья
-
-;sleep_health				= 1.0					;коэффициенты скоростей изменения параметров во время сна
-;sleep_power					= 1.0
-;sleep_satiety				= 1.0
-;sleep_radiation 			= 1.0
-;sleep_psy_health			= 1.0
-
-;---LIMPING STATE-----------------------------------------------------
-;use_limping_state			= on ;off
-;limping_threshold			= 0.3
-
-;открытые раны
-;bleeding_v					= 0.0035						;потеря крови при номинальной ране в секунду
-;wound_incarnation_v			= 0.0045				;крутизна кривой заживления (какой процент раны останется после заживления в игровую секунду)
-;min_wound_size				= 0.009
+morale_v					= 0.6					;скорость восстановления морали
 
 ;---MOVEMENT----------------------------------------------------------
-movement_speeds					= stalker_novice_movement_speeds;
+movement_speeds					= stalker_movement_speeds ; stalker_novice_movement_speeds ;
 
 ;---STEP MANAGER------------------------------------------------------
 step_params						= stalker_novice_step_manager
 
-[stalker_novice_movement_speeds]
-	; danger
-	;; crouch
-	;;; walk
-	danger_crouch_walk_forward 	= 1.45
-	danger_crouch_walk_backward	= 1.25
-	danger_crouch_walk_left		= 1.35
-	danger_crouch_walk_right 	= 1.35
-	;;; run
-	danger_crouch_run_forward   	= 2.75
-	danger_crouch_run_backward	= 2.55
-	danger_crouch_run_left		= 2.65
-	danger_crouch_run_right		= 2.65
-	;; stand
-	;;; walk
-	danger_stand_walk_forward	= 2.55
-	danger_stand_walk_backward	= 2.35
-	danger_stand_walk_left		= 2.5
-	danger_stand_walk_right		= 2.5
-	;;; run
-	danger_stand_run_forward	= 3.75
-	danger_stand_run_backward	= 2.9
-	danger_stand_run_left		= 3.25
-	danger_stand_run_right		= 3.25
-	; free
-	;; stand
-	;;; forward
-	free_stand_walk_forward		= 1.15
-	free_stand_run_forward		= 3.8
-	; panic
-	;; stand
-	;;; run
-	;;;; forward
-	panic_stand_run_forward		= 6.0
+[stalker_novice_movement_speeds]:stalker_movement_speeds
 
 [stalker_novice_step_manager]:stalker_step_manager
 
 ;--------------------------------------------------------------------------
 [stalker_novice_damage]:stalker_damage
-
-
-
-
-
-;---FIRE QUEUE PARAMETERS
-fire_queue_section = fire_queue_params_novice
+;--------------------------------------------------------------------------
 
 [fire_queue_params_novice]  ; min < 15 < medium < 30 < max
 pstl_min_queue_size_far			= 1
 pstl_max_queue_size_far			= 1
-pstl_min_queue_interval_far		= 1180
-pstl_max_queue_interval_far		= 1630
+pstl_min_queue_interval_far		= 880
+pstl_max_queue_interval_far		= 1150
 
 pstl_min_queue_size_medium		= 1
-pstl_max_queue_size_medium		= 1
-pstl_min_queue_interval_medium	= 820
-pstl_max_queue_interval_medium	= 1110
+pstl_max_queue_size_medium		= 2
+pstl_min_queue_interval_medium	= 580
+pstl_max_queue_interval_medium	= 850
 
 pstl_min_queue_size_close		= 1
-pstl_max_queue_size_close		= 1
-pstl_min_queue_interval_close	= 340
-pstl_max_queue_interval_close	= 460
+pstl_max_queue_size_close		= 3
+pstl_min_queue_interval_close	= 535
+pstl_max_queue_interval_close	= 775
 
 ;-------------------------------
 
 shtg_min_queue_size_far			= 1
 shtg_max_queue_size_far			= 1
-shtg_min_queue_interval_far		= 1130
-shtg_max_queue_interval_far		= 1590
+shtg_min_queue_interval_far		= 4880
+shtg_max_queue_interval_far		= 5450
 
 shtg_min_queue_size_medium		= 1
-shtg_max_queue_size_medium		= 1
-shtg_min_queue_interval_medium	= 260
-shtg_max_queue_interval_medium	= 450
+shtg_max_queue_size_medium		= 2
+shtg_min_queue_interval_medium	= 580
+shtg_max_queue_interval_medium	= 850
 
 shtg_min_queue_size_close		= 1
-shtg_max_queue_size_close		= 6
-shtg_min_queue_interval_close	= 210
-shtg_max_queue_interval_close	= 260
+shtg_max_queue_size_close		= 3
+shtg_min_queue_interval_close	= 535
+shtg_max_queue_interval_close	= 775
 
 ;-------------------------------
 
 snp_min_queue_size_far			= 1
 snp_max_queue_size_far			= 1
-snp_min_queue_interval_far		= 500
-snp_max_queue_interval_far		= 750
+snp_min_queue_interval_far		= 640
+snp_max_queue_interval_far		= 1140
 
 snp_min_queue_size_medium		= 1
 snp_max_queue_size_medium		= 1
-snp_min_queue_interval_medium	= 400
-snp_max_queue_interval_medium	= 850
+snp_min_queue_interval_medium	= 630
+snp_max_queue_interval_medium	= 1040
 
 snp_min_queue_size_close		= 1
 snp_max_queue_size_close		= 1
-snp_min_queue_interval_close	= 350
-snp_max_queue_interval_close	= 600
+snp_min_queue_interval_close	= 610
+snp_max_queue_interval_close	= 940
 
 ;-------------------------------
 
 auto_min_queue_size_far			= 1
-auto_max_queue_size_far			= 2
-auto_min_queue_interval_far		= 400
-auto_max_queue_interval_far		= 800
+auto_max_queue_size_far			= 3
+auto_min_queue_interval_far		= 700
+auto_max_queue_interval_far		= 1210
 
 auto_min_queue_size_medium		= 1
 auto_max_queue_size_medium		= 4
-auto_min_queue_interval_medium	= 300
-auto_max_queue_interval_medium	= 500
+auto_min_queue_interval_medium	= 610
+auto_max_queue_interval_medium	= 1150
 
-auto_min_queue_size_close		= 2
+auto_min_queue_size_close		= 3
 auto_max_queue_size_close		= 6
-auto_min_queue_interval_close	= 250
-auto_max_queue_interval_close	= 450
+auto_min_queue_interval_close	= 520
+auto_max_queue_interval_close	= 850
 
 ;-------------------------------
 
 mchg_min_queue_size_far			= 1
-mchg_max_queue_size_far			= 6
-mchg_min_queue_interval_far		= 400
-mchg_max_queue_interval_far		= 800
+mchg_max_queue_size_far			= 5
+mchg_min_queue_interval_far		= 700
+mchg_max_queue_interval_far		= 1210
 
-mchg_min_queue_size_medium		= 3
-mchg_max_queue_size_medium		= 9
-mchg_min_queue_interval_medium	= 300
-mchg_max_queue_interval_medium	= 500
+mchg_min_queue_size_medium		= 2
+mchg_max_queue_size_medium		= 6
+mchg_min_queue_interval_medium	= 610
+mchg_max_queue_interval_medium	= 1150
 
-mchg_min_queue_size_close		= 4
-mchg_max_queue_size_close		= 12
-mchg_min_queue_interval_close	= 250
-mchg_max_queue_interval_close	= 450
+mchg_min_queue_size_close		= 3
+mchg_max_queue_size_close		= 8
+mchg_min_queue_interval_close	= 520
+mchg_max_queue_interval_close	= 850
+
+;-------------------------------
+
+[stalker_silent_novice]:stalker_novice
+$spawn        = "respawn\stalker_silent"
+character_profile = sim_default_stalker_0
+
+sound_death					=
+sound_anomaly_death				=
+sound_hit					=
+
+sound_humming					=
+sound_alarm					=
+sound_backup					=
+sound_detour					=
+sound_friendly_fire				=
+sound_;panic_human				=
+sound_;panic_monster				=
+sound_tolls					=
+sound_wounded					=
+sound_grenade_alarm				=
+sound_friendly_grenade_alarm			=
+sound_need_backup				=
+sound_running_in_danger				=
+sound_walking_in_danger				=
+sound_kill_wounded				=
+sound_enemy_critically_wounded			=
+sound_enemy_killed_or_wounded			=
+
+sound_attack_no_allies				=
+sound_attack_allies_single_enemy		=
+sound_attack_allies_several_enemies		=
+sound_search1_no_allies				=
+sound_search1_with_allies			=
+sound_enemy_lost_no_allies			=
+sound_enemy_lost_with_allies			=
+sound_throw_grenade				=
 
 ;-------------------------------

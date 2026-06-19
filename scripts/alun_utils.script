@@ -1,13 +1,15 @@
 -----------------------------------------------------
--- alun_utils.lua (minimal for random_loadouts)
+-- alun_utils.script
+-- Утилиты для AI и случайного снаряжения NPC.
+-- Адаптировано для xrMPE из Misery 2.x (Alundaio)
 -----------------------------------------------------
 
-local DBG = false
+------------------------------------------------------
+-- INI / строки
+------------------------------------------------------
 
 function read_from_ini(ini, section, line, var_type, default)
-	if not ini then
-		ini = system_ini()
-	end
+	if not ini then ini = system_ini() end
 	if section and line and ini:section_exist(section) and ini:line_exist(section, line) then
 		if     var_type == "bool"   then return ini:r_bool(section, line)
 		elseif var_type == "string" then return ini:r_string(section, line)
@@ -35,7 +37,7 @@ function string:split(pat)
 end
 
 function str_explode(str, pattern)
-	if type(str) ~= "string" then return {} end  -- возвращаем пустую таблицу вместо nil
+	if type(str) ~= "string" then return {} end
 	local t = {}
 	for word, pat, start in str:split(pattern) do
 		t[#t + 1] = trim(word)
@@ -52,13 +54,15 @@ function parse_list(ini, key, val, convert)
 	local t = str_explode(str, ",")
 	if convert and #t > 0 then
 		local l = {}
-		for _, v in ipairs(t) do
-			l[v] = true
-		end
+		for _, v in ipairs(t) do l[v] = true end
 		return l
 	end
 	return t
 end
+
+------------------------------------------------------
+-- Ранги NPC
+------------------------------------------------------
 
 local ranks
 function get_rank_list()
@@ -66,23 +70,40 @@ function get_rank_list()
 	local tmp = parse_list(nil, "game_relations", "rating")
 	ranks = {}
 	for _, rn in ipairs(tmp) do
-		if not tonumber(rn) then
-			table.insert(ranks, rn)
-		end
+		if not tonumber(rn) then table.insert(ranks, rn) end
 	end
 	return ranks
 end
+
+------------------------------------------------------
+-- Утилиты
+------------------------------------------------------
 
 function rand_num(a, b)
 	if a and b then return math.random(a, b) end
 	return math.random()
 end
 
+function is_in_same_squad(npc1, npc2)
+	if not (npc1 and npc2) then return false end
+	local sq1 = get_object_squad(npc1)
+	local sq2 = get_object_squad(npc2)
+	return sq1 and sq2 and sq1.id == sq2.id
+end
+
+------------------------------------------------------
+-- fake_squad — заглушка для NPC без отряда
+------------------------------------------------------
+
 class "fake_squad"
 function fake_squad:__init() end
 function fake_squad:am_i_reached(squad) end
 function fake_squad:on_reach_target(squad) end
 function fake_squad:on_after_reach_target(squad) end
+
+------------------------------------------------------
+-- INI секции
+------------------------------------------------------
 
 function collect_sections(ini, sections)
 	local r, p = {}, {}
@@ -117,6 +138,10 @@ function collect_section(ini, section, keytable)
 	return _t
 end
 
+------------------------------------------------------
+-- Командиры отрядов
+------------------------------------------------------
+
 function get_commander(npc)
 	local squad = npc and get_object_squad(npc)
 	if squad and squad:commander_id() then
@@ -132,34 +157,158 @@ function get_squad_commander_action(npc)
 	end
 end
 
--- Таблица clsid огнестрельного оружия — объявлена один раз на уровне модуля,
--- не пересоздаётся при каждом вызове item_is_fa
+------------------------------------------------------
+-- Хранилище AI-данных (адаптировано из Rulix/Alundaio)
+-- get_storage(id, name) → таблица db.storage[id].ai_tweaks[name]
+-- Позволяет хранить AI-данные не засоряя db.storage напрямую.
+------------------------------------------------------
+
+function get_storage(id, name)
+	if not id then return {} end
+	local st = db.storage[id]
+	if not st then return {} end
+	if not st.ai_tweaks then st.ai_tweaks = {} end
+	if not name then return st.ai_tweaks end
+	if not st.ai_tweaks[name] then st.ai_tweaks[name] = {} end
+	return st.ai_tweaks[name]
+end
+
+------------------------------------------------------
+-- Аддоны оружия (перенесено из Misery alun_utils)
+-- get_addon_status(wpn, addon) → 0 (нет), 1 (встроен), 2 (съёмный)
+-- get_addon_flag(wpn)          → битовая маска: sc=1, gl=2, sl=4
+-- addon_attached(wpn, addon)   → true если аддон физически прикреплён
+------------------------------------------------------
+
+function get_addon_status(wpn, addon)
+	if addon == "sc" then return wpn:weapon_scope_status()
+	elseif addon == "sl" then return wpn:weapon_silencer_status()
+	elseif addon == "gl" then return wpn:weapon_grenadelauncher_status()
+	end
+	return 0
+end
+
+-- Мемоизация: кэшируем результат на один тик чтобы не дёргать API каждый вызов
+local _addon_cache = {}
+function get_addon_flag(wpn, with_int)
+	local id, tg = wpn:id(), time_global()
+	local c = _addon_cache
+	if c.tg == tg and c.id == id and c.wi == with_int then return c.fl end
+	local flag = 0
+	if wpn:weapon_is_scope() then
+		if with_int or get_addon_status(wpn,"sc") == 2 then flag = flag + 1 end
+	end
+	if wpn:weapon_is_grenadelauncher() then
+		if with_int or get_addon_status(wpn,"gl") == 2 then flag = flag + 2 end
+	end
+	if wpn:weapon_is_silencer() then
+		if with_int or get_addon_status(wpn,"sl") == 2 then flag = flag + 4 end
+	end
+	_addon_cache = {tg=tg, id=id, wi=with_int, fl=flag}
+	return flag
+end
+
+function addon_attached(wpn, addon, flag)
+	-- sc=1, gl=2, sl=4; комбинации покрывают все варианты битовой маски
+	local ft = {
+		sc = {[1]=true, [3]=true, [5]=true, [7]=true},
+		gl = {[2]=true, [3]=true, [6]=true, [7]=true},
+		sl = {[4]=true, [5]=true, [6]=true, [7]=true},
+	}
+	if ft[addon] then
+		return ft[addon][flag or get_addon_flag(wpn, true)] == true
+	end
+	return false
+end
+
+------------------------------------------------------
+-- Типы оружия по clsid
+-- weapon_types_clslist — глобальная таблица (нужна снаружи)
+-- isPistol / isSniper / isShotgun / isRifle / isLauncher
+------------------------------------------------------
+
+-- Ленивая инициализация: clsid доступны только после старта движка
+local _types_built = false
+weapon_types_clslist = {}
+
+local function build_weapon_types()
+	if _types_built then return end
+	_types_built = true
+	weapon_types_clslist = {
+		pistol         = {[clsid.wpn_pm_s]=true, [clsid.wpn_walther_s]=true,
+		                  [clsid.wpn_usp45_s]=true, [clsid.wpn_hpsa_s]=true},
+		sniper         = {[clsid.wpn_svu_s]=true, [clsid.wpn_svd_s]=true,
+		                  [clsid.wpn_vintorez_s]=true},
+		launcher       = {[clsid.wpn_rg6_s]=true, [clsid.wpn_rpg7_s]=true},
+		shotgun        = {[clsid.wpn_shotgun_s]=true, [clsid.wpn_auto_shotgun_s]=true},
+		double_barreled= {[clsid.wpn_bm16_s]=true},
+		rifle          = {[clsid.wpn_ak74_s]=true, [clsid.wpn_lr300_s]=true,
+		                  [clsid.wpn_groza_s]=true, [clsid.wpn_val_s]=true},
+		knife          = {[clsid.wpn_knife_s]=true},
+	}
+end
+
+function isPistol(wpn, c)
+	build_weapon_types()
+	if not c then c = wpn and wpn:clsid() end
+	return weapon_types_clslist.pistol[c]
+end
+
+function isSniper(wpn, c)
+	build_weapon_types()
+	if not c then c = wpn and wpn:clsid() end
+	return weapon_types_clslist.sniper[c]
+end
+
+function isShotgun(wpn, c)
+	build_weapon_types()
+	if not c then c = wpn and wpn:clsid() end
+	return weapon_types_clslist.shotgun[c] or weapon_types_clslist.double_barreled[c]
+end
+
+function isRifle(wpn, c)
+	build_weapon_types()
+	if not c then c = wpn and wpn:clsid() end
+	return weapon_types_clslist.rifle[c]
+end
+
+function isLauncher(wpn, c)
+	build_weapon_types()
+	if not c then c = wpn and wpn:clsid() end
+	return weapon_types_clslist.launcher[c]
+end
+
+------------------------------------------------------
+-- Огнестрельное оружие (любое)
+-- item_is_fa(o, c) → true если предмет является стреляющим оружием
+------------------------------------------------------
+
 local _fa_clsids = nil
 local function build_fa_clsids()
 	_fa_clsids = {
-		[clsid.wpn_pm_s]          = true,
-		[clsid.wpn_walther_s]     = true,
-		[clsid.wpn_usp45_s]       = true,
-		[clsid.wpn_hpsa_s]        = true,
-		[clsid.wpn_bm16_s]        = true,
-		[clsid.wpn_shotgun_s]     = true,
-		[clsid.wpn_auto_shotgun_s]= true,
-		[clsid.wpn_ak74_s]        = true,
-		[clsid.wpn_lr300_s]       = true,
-		[clsid.wpn_groza_s]       = true,
-		[clsid.wpn_val_s]         = true,
-		[clsid.wpn_vintorez_s]    = true,
-		[clsid.wpn_svu_s]         = true,
-		[clsid.wpn_svd_s]         = true,
-		[clsid.wpn_rg6_s]         = true,
-		[clsid.wpn_rpg7_s]        = true,
-		[clsid.wpn_knife_s]       = true,
+		[clsid.wpn_pm_s]=true, [clsid.wpn_walther_s]=true,
+		[clsid.wpn_usp45_s]=true, [clsid.wpn_hpsa_s]=true,
+		[clsid.wpn_bm16_s]=true, [clsid.wpn_shotgun_s]=true,
+		[clsid.wpn_auto_shotgun_s]=true, [clsid.wpn_ak74_s]=true,
+		[clsid.wpn_lr300_s]=true, [clsid.wpn_groza_s]=true,
+		[clsid.wpn_val_s]=true, [clsid.wpn_vintorez_s]=true,
+		[clsid.wpn_svu_s]=true, [clsid.wpn_svd_s]=true,
+		[clsid.wpn_rg6_s]=true, [clsid.wpn_rpg7_s]=true,
+		[clsid.wpn_knife_s]=true,
 	}
 end
 
 function item_is_fa(o, c)
-	-- Ленивая инициализация: clsid доступны только после старта движка
 	if not _fa_clsids then build_fa_clsids() end
 	if not c then c = o and o:clsid() end
 	return c and _fa_clsids[c] or false
 end
+
+------------------------------------------------------
+-- OnlineStalkers — список id онлайн-сталкеров для NpcHelp.
+-- Ведётся из motivator_binder:net_spawn/net_destroy.
+-- db — ссылка на глобальный db чтобы не хранить дубль.
+------------------------------------------------------
+
+db = db  -- явная ссылка для get_near_npc
+

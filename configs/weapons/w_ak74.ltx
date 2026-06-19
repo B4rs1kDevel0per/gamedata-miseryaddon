@@ -324,6 +324,33 @@ fire_bone2                      = wpn_body
 anm_bore                   = ak74_look, idle
 anm_bore_empty             = ak74_look, idle
 anm_bore_jammed            = ak74_look, idle_jammed
+;anm_bore                   = ak74_draw
+;anm_bore_empty             = ak74_draw
+;anm_bore_jammed            = ak74_draw, idle_jammed
+anm_bore_w_gl              = ak74_draw_gl_off, idle_gl_off
+anm_bore_empty_w_gl        = ak74_dry_empty_gl_off, idle_gl_off
+anm_bore_jammed_w_gl       = ak74_dry_gl_off, idle_jammed_gl_off
+anm_bore_g                 = ak74_dry_empty_gl_on, idle_gl_on
+anm_bore_empty_g           = ak74_dry_empty_gl_on, idle_gl_on
+anm_bore_jammed_g          = ak74_dry_empty_gl_on, idle_jammed_gl_on
+
+anm_bore                = ak74_dry
+anm_bore_empty            = ak74_dry
+anm_bore_jammed               = ak74_dry, idle_jammed
+
+anm_fakeshoot_empty_w_gl                = ak74_dry_empty_gl_off, idle_gl_off
+anm_fakeshoot_aim_empty_w_gl            = ak74_aim_dry_gl_off, ak74_aim_gl_off
+anm_fakeshoot_jammed_w_gl               = ak74_dry_gl_off, idle_jammed_gl_off
+anm_fakeshoot_aim_jammed_w_gl           = ak74_aim_dry_gl_off, ak74_aim_jammed_gl_off
+
+anm_fakeshoot_g               = ak74_dry_empty_gl_on, idle_gl_on
+anm_fakeshoot_aim_g           = ak74_aim_dry_gl_on, idle_gl_on
+
+anm_fakeshoot_jammed_g               = ak74_dry_empty_gl_on, idle_jammed_gl_on
+anm_fakeshoot_aim_jammed_g           = ak74_aim_dry_gl_on, idle_jammed_gl_on
+
+anm_fakeshoot_empty_g               = ak74_dry_empty_gl_on, idle_gl_on
+anm_fakeshoot_aim_empty_g           = ak74_aim_dry_gl_on, idle_gl_on
 
 ;Доставание///////////////////////////////////////////////////
 anm_show                   = ak74_draw
@@ -619,15 +646,7 @@ anm_idle_sprint_end_jammed_g     = ak74_sprint_end_gl_on, idle_jammed_gl_on
 
 
 ;Скука////////////////////////////////////////////////////////////////////
-anm_bore                   = ak74_draw
-anm_bore_empty             = ak74_draw
-anm_bore_jammed            = ak74_draw, idle_jammed
-anm_bore_w_gl              = ak74_draw_gl_off, idle_gl_off
-anm_bore_empty_w_gl        = ak74_draw_gl_off, idle_gl_off
-anm_bore_jammed_w_gl       = ak74_draw_gl_off, idle_jammed_gl_off
-anm_bore_g                 = ak74_draw_gl_on, idle_gl_on
-anm_bore_empty_g           = ak74_draw_gl_on, idle_gl_on
-anm_bore_jammed_g          = ak74_draw_gl_on, idle_jammed_gl_on
+
 
 
 ;Выстрелы обычными патронами/////////////////////////////////////////////////////////////////////
