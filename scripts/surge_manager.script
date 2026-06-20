@@ -65,6 +65,15 @@ function CSurgeManager:initialize()
 
 	self.atmosfear = get_atmosfear and get_atmosfear() or nil
 
+	if self.atmosfear then
+		printf("[surge_manager] atmosfear connected, opt_enable_blowout=%s, opt_blowout_freq=%s",
+			tostring(self.atmosfear.opt_enable_blowout),
+			tostring(self.atmosfear.opt_blowout_freq))
+	else
+		printf("[surge_manager] atmosfear NOT connected, using default delta MIN=%s MAX=%s",
+			tostring(MIN_SURGE_TIME), tostring(MAX_SURGE_TIME))
+	end
+
 	self.ini = ini_file("misc\\surge_manager.ltx")
 
 	self.levels_respawn = {zaton = false, jupiter = false, pripyat = false}
@@ -328,7 +337,13 @@ function CSurgeManager:update_sv()
 			self.time_forwarded = false
 		end
 
-		if g_time:diffSec(self.last_surge_time) < self._delta then
+		local elapsed = g_time:diffSec(self.last_surge_time)
+		local remaining = self._delta - elapsed
+		if remaining > 0 then
+			if math.fmod(math.floor(elapsed), 60) == 0 then
+				printf("[surge_manager] next surge in %d sec game time (elapsed=%d, delta=%d)",
+					math.floor(remaining), math.floor(elapsed), math.floor(self._delta))
+			end
 			return
 		end
 		if not self:get_nearest_cover() then
