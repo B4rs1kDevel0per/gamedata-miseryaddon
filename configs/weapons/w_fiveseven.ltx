@@ -18,7 +18,7 @@ control_inertion_factor = 1.0
 repair_group = fn57
 
 ;-------------------------------------------------------------------------------
-cost					= 7280         ; the price of the item
+cost					= 8280         ; the price of the item
 inv_weight				= .610
 
 upgrades                = vartree_fiveseven_body, vartree_fiveseven_sights;, vartree_fiveseven_torch 
@@ -30,7 +30,7 @@ def_show_bones = barrel
 
 ammo_in_chamber = true
 ;----TTX--------------------------------------------------------------------------
-hit_power           		= 0.24, 0.24, 0.24, 0.24
+hit_power            		= 0.47, 0.47, 0.47, 0.47
 hit_impulse	 		 		= 100
 hit_type 					= fire_wound
 fire_distance           	= 200
@@ -424,3 +424,30 @@ anm_reload_detector              = fiveseven_det_reload, fiveseven_reload
 anm_reload_empty_detector        = fiveseven_det_reload_full, fiveseven_reload_full
 anm_reload_jammed                = fiveseven_revival
 anm_reload_jammed_last           = fiveseven_revival_last
+
+[wpn_fiveseven_worn]:wpn_fiveseven
+
+inv_name                  = st_wpn_fiveseven_worn
+inv_name_short            = st_wpn_fiveseven_worn
+description               = st_wpn_fiveseven_worn_descr
+hud                     = wpn_fiveseven_worn_hud
+cost                      = 6500                  ; цена снижена (было 8280)
+
+fire_dispersion_base      = 0.32
+
+misfire_start_condition   = 0.85
+misfire_end_condition     = 0.1
+misfire_start_prob        = 0.009
+misfire_end_prob          = 0.12
+
+condition_shot_dec        = 0.0045
+condition_queue_shot_dec  = 0.0045
+
+inv_grid_x                = 16
+inv_grid_y                = 30
+
+[wpn_fiveseven_worn_hud]:wpn_fiveseven_hud
+
+item_visual             	= dynamics\weapons\rust\wpn_fiveseven\wpn_fiveseven_hud
+
+

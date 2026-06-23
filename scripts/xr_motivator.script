@@ -325,6 +325,9 @@ function motivator_binder:hit_callback(obj, amount, local_direction, who, bone_i
 end
 
 function motivator_binder:death_callback(victim, who)
+	-- self.object может быть nil если биндер уничтожен (loadLastSave во время смерти)
+	if not self.object then return end
+
 	self:hit_callback(victim, 1, vector():set(0,0,0), who, "from_death_callback")
 
 	xrs_dyn_music.npc_table[self.object:id()] = nil
@@ -334,7 +337,7 @@ function motivator_binder:death_callback(victim, who)
 	local npc  = self.object
 	local s_st = self.st  -- self.st может быть nil если reinit не отработал
 
-	if who and is_object_actor_by_id(who:id()) then
+	if who and who.id and is_object_actor_by_id(who:id()) then
 		xr_statistic.inc_killed_stalkers_counter(who:id())
 	end
 
