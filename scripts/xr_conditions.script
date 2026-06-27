@@ -643,18 +643,21 @@ end
 -- true, если у актёра в инвентаре есть указанный предмет
 -- false, если нету, либо не задана секция предмета
 function actor_has_item(actor, npc, p)
-    local local_actor = db.mp_actors[LocalActor()]
-    
-    --shitty hack, sorry
-    if IsDedicatedServer() then
-		if npc then
-			local_actor = getNearestActor(npc)
-		else
-			return any_actor_has_item(actor, npc, p)
-		end
+    if actor and actor:alive() then
+        return p[1] ~= nil and actor:object(p[1]) ~= nil
     end
-    
-    return p[1] ~= nil and local_actor and local_actor:alive() and local_actor:object( p[1] ) ~= nil
+    if IsDedicatedServer() then
+        if db.actor and db.actor:alive() then
+            return p[1] ~= nil and db.actor:object(p[1]) ~= nil
+        end
+        return false
+    else
+        local local_actor = getLocalActor()
+        if local_actor and local_actor:alive() then
+            return p[1] ~= nil and local_actor:object(p[1]) ~= nil
+        end
+        return false
+    end
 end
 
 -- true, если у любого из актёров в инвентаре есть указанный предмет
@@ -884,50 +887,43 @@ function is_factions_friends(actor, npc, p)
 end
 
 function is_faction_enemy_to_actor(actor, npc, p)
-	if(p[1]~=nil) then
-		local actor
-		if npc and IsStalker(npc) then
-			actor = getNearestActor(npc)
-		elseif OnClient() then
-			actor = getLocalActor()
-		elseif OnServer() then
-			actor = db.actor
-		end
-		
-		if not actor then
-			return false
-		end
-		
---        return db.actor:community_goodwill(p[1])<-1000
-		return relation_registry.community_goodwill(p[1], actor:id())<=-1000
-	else
-		return false
-	end
+    if p[1] == nil then return false end
+    if actor and actor:alive() then
+        return relation_registry.community_goodwill(p[1], actor:id()) <= -1000
+    end
+    if OnServer() then
+        if db.actor and db.actor:alive() then
+            return relation_registry.community_goodwill(p[1], db.actor:id()) <= -1000
+        end
+    elseif OnClient() then
+        local local_actor = getLocalActor()
+        if local_actor and local_actor:alive() then
+            return relation_registry.community_goodwill(p[1], local_actor:id()) <= -1000
+        end
+    end
+    return false
 end
 
 function is_faction_friend_to_actor(actor, npc, p)
-	if(p[1]~=nil) then
-		local actor
-		if npc and IsStalker(npc) then
-			actor = getNearestActor(npc)
-		elseif OnClient() then
-			actor = getLocalActor()
-		elseif OnServer() then
-			actor = db.actor
-		end
-		
-		if not actor then
-			return false
-		end
-		
-		return relation_registry.community_goodwill(p[1], actor:id())>=1000
-	else
-		return false
-	end
+    if p[1] == nil then return false end
+    if actor and actor:alive() then
+        return relation_registry.community_goodwill(p[1], actor:id()) >= 1000
+    end
+    if OnServer() then
+        if db.actor and db.actor:alive() then
+            return relation_registry.community_goodwill(p[1], db.actor:id()) >= 1000
+        end
+    elseif OnClient() then
+        local local_actor = getLocalActor()
+        if local_actor and local_actor:alive() then
+            return relation_registry.community_goodwill(p[1], local_actor:id()) >= 1000
+        end
+    end
+    return false
 end
 
 function is_faction_neutral_to_actor(actor, npc, p)
-	return not(is_faction_enemy_to_actor(actor, npc, p) or is_faction_friend_to_actor(actor, npc, p))
+    return not(is_faction_enemy_to_actor(actor, npc, p) or is_faction_friend_to_actor(actor, npc, p))
 end
 
 function is_squad_friend_to_actor(actor, npc, p)

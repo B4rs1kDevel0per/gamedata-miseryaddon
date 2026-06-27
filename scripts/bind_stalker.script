@@ -30,13 +30,13 @@ local weapon_hide = {}
 
 class "mp_actor_binder" (object_binder)
 function mp_actor_binder:__init (obj) super(obj)
-    self.bCheckStart = false
-    self.last_level_name = nil
-    self.deimos_intensity = nil
-    self.loaded_active_slot = 3
-    self.loaded_slot_applied = false
-    self.weather_manager = nil  -- пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅ net_spawn
-    self.surge_manager = surge_manager.get_surge_manager()
+	self.bCheckStart = false
+	self.last_level_name = nil
+	self.deimos_intensity = nil
+	self.loaded_active_slot = 3
+	self.loaded_slot_applied = false
+	self.weather_manager = level_weathers.get_weather_manager()											
+	self.surge_manager = surge_manager.get_surge_manager()
 end
 
 delayed_functions = {}
@@ -79,7 +79,7 @@ function mp_actor_binder:update_gameover_screen()
 		self:init_gameover_screen()
 	end
 	
-	local count = math.floor(6 - (time_global() - self.gameover_start_time) / 1000)
+	local count = math.floor(10 - (time_global() - self.gameover_start_time) / 1000)
 	
 	if count >= 0 then
 		self.gameover_wnd:getTimer():SetText(tostring(count))
@@ -92,27 +92,19 @@ function mp_actor_binder:update_gameover_screen()
 end
 
 function mp_actor_binder:net_spawn(data)
-	if level_weathers then
-		self.weather_manager = level_weathers.get_weather_manager()
-	end
 --	printf("actor net spawn")
 	level.show_indicators()
 	self.bCheckStart = true
-	self.weapon_hide = false -- СЃРїСЂСЏС‚Р°РЅРѕ РёР»Рё РЅРµС‚ РѕСЂСѓР¶РёРµ РїСЂРё СЂР°Р·РіРѕРІРѕСЂРµ.
+	self.weapon_hide = false -- спрятано или нет оружие при разговоре.
 	self.weapon_hide_in_dialog = false
-	weapon_hide = {} -- СѓСЃС‚Р°РЅР°РІР»РёРІР°РµРј РіР»РѕР±Р°Р»СЊРЅС‹Р№ РґРµС„РѕР»С‚РѕРІС‹Р№ С„Р»Р°Рі.
+	weapon_hide = {} -- устанавливаем глобальный дефолтовый флаг.
 	self.task_manager = task_manager.get_task_manager()
 	if object_binder.net_spawn(self,data) == false then
 		return false
 	end
 	
 	
-	if self.weather_manager then
-		if atmosfear then
-			self.weather_manager.atmosfear = atmosfear.get_atmosfear()
-		end
-		self.weather_manager:reset()
-	end
+	self.weather_manager:reset()			 
 	db.add_obj(self.object)
 	db.add_mp_actor(self.object)
 
@@ -120,7 +112,7 @@ function mp_actor_binder:net_spawn(data)
 
 	level.enable_input()
 
-	--'РЈСЃС‚Р°РЅР°РІР»РёРІР°РµРј СЃСЃС‹Р»РєСѓ РЅР° С‚Р°СЃРєРјРµРЅРµРґР¶РµСЂ
+	--'Устанавливаем ссылку на таскменеджер
 	--self.task_manager = task_manager.get_task_manager()
 	self.spawn_frame = device().frame
 	self.already_jumped = false
@@ -158,13 +150,10 @@ function mp_actor_binder:task_callback(_task, _state)
 	if GameType() == game_cl.game_id_coop then
 		if _state ~= task.fail then
 			if not _task:is_silent_notify() then
-				local actor = db.actor or getLocalActor()
-				if actor then
-					if _state == task.completed then
-						news_manager.send_task(actor, "complete", _task)
-					else
-						news_manager.send_task(actor, "new", _task)
-					end
+				if _state == task.completed then
+					news_manager.send_task(db.actor, "complete", _task)
+				else
+					news_manager.send_task(db.actor, "new", _task)
 				end
 			end
 		end
@@ -206,7 +195,7 @@ function mp_actor_binder:use_gesture(gesture_id)
 end
 
 function actor_have_items()
-	local n=3 -- РєРѕР»РёС‡РµСЃС‚РІРѕ
+	local n=3 -- количество
 	local count=0
 	
 	db.storage[LocalActor()].object:iterate_inventory(function (dummy, item) if item:section()=="kolbasa" then count=count+1 end end, nil)
@@ -261,7 +250,7 @@ function mp_actor_binder:update(delta)
 	
 	if LocalActor() ~= self.object:id() or (IsServerClient() and LocalActor() == self.object:id()) then
 		if OnServer() then
-			-- РђРїРґРµР№С‚ РїСЂСЏС‚Р°РЅРёРµ РѕСЂСѓР¶РёСЏ РёРіСЂРѕРєР° РІ Р·РѕРЅРµ sr_no_weapon
+			-- Апдейт прятание оружия игрока в зоне sr_no_weapon
 			if check_for_weapon_hide_by_zones(self.object:id()) == true then
 				if self.weapon_hide == false then
 					self.object:hide_weapon_except_safe_items()
@@ -280,7 +269,7 @@ function mp_actor_binder:update(delta)
 			return
 		end
 		
-		-- AtmosFear 3: РєР»РёРµРЅС‚СЃРєРёР№ Р°РїРґРµР№С‚ РІРёР·СѓР°Р»СЊРЅС‹С… СЌС„С„РµРєС‚РѕРІ РїРѕРіРѕРґС‹ (DOF, РіСЂРѕР·С‹)
+		-- AtmosFear 3: клиентский апдейт визуальных эффектов погоды (DOF, грозы)
 		if self.weather_manager then
 			self.weather_manager:update_client()
 		end
@@ -291,13 +280,13 @@ function mp_actor_binder:update(delta)
 	local time = time_global()
 	game_stats.update (delta, self.object)
 
-	--' РђРїРґРµР№С‚ СЃР°СѓРЅРґРјРµРЅРµРґР¶РµСЂР°
+	--' Апдейт саундменеджера
 	xr_sound.update(self.object:id())
 	
-	-- РћР±РЅРѕРІР»РµРЅРёРµ РѕС‚РєР»СЋС‡РµРЅРёСЏ РІРІРѕРґР° СЃ РєР»Р°РІРёР°С‚СѓСЂС‹.
+	-- Обновление отключения ввода с клавиатуры.
 	self.st.disable_input_time = nil
 	
-	-- РђРїРґРµР№С‚ РїСЂСЏС‚Р°РЅРёРµ РѕСЂСѓР¶РёСЏ РёРіСЂРѕРєР° РІРѕ РІСЂРµРјСЏ РґРёР°Р»РѕРіР°
+	-- Апдейт прятание оружия игрока во время диалога
 	if self.object:is_talking() then
 		if self.weapon_hide_in_dialog == false then
 			self.object:hide_weapon()
@@ -316,7 +305,7 @@ function mp_actor_binder:update(delta)
 		self:update_gameover_screen()
 	end
 	
-	-- РѕР±РЅРѕРІР»РµРЅРёРµ РїСЃРё-Р°РЅС‚РµРЅРЅС‹
+	-- обновление пси-антенны
 	if sr_psy_antenna.psy_antenna then
 		sr_psy_antenna.psy_antenna:update(delta)
 	end
@@ -401,27 +390,26 @@ end
 class "actor_binder" (object_binder)
 ----------------------------------------------------------------------------------------------------------------------
 function actor_binder:__init (obj) super(obj)
-    self.bCheckStart = false
-    self.weather_manager = nil  -- пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅ net_spawn
-    self.surge_manager = surge_manager.get_surge_manager()
-    self.last_level_name = nil
-    self.deimos_intensity = nil
-    self.loaded_active_slot = 3
-    self.loaded_slot_applied = false
-    self.last_detective_achievement_spawn_time    = nil
-    self.last_mutant_hunter_achievement_spawn_time = nil
+	self.bCheckStart = false
+	self.weather_manager = level_weathers.get_weather_manager()
+	self.surge_manager = surge_manager.get_surge_manager()
+	--self.actor_detector = xr_detector.actor_detector()
+	self.last_level_name = nil
+	self.deimos_intensity = nil
+--	self.actor_weapon_on_start = true
+	self.loaded_active_slot = 3
+	self.loaded_slot_applied = false
+	self.last_detective_achievement_spawn_time 	= nil
+	self.last_mutant_hunter_achievement_spawn_time	= nil
 end
 ----------------------------------------------------------------------------------------------------------------------
 function actor_binder:net_spawn(data)
-	if level_weathers then
-		self.weather_manager = level_weathers.get_weather_manager()
-	end
 --	printf("actor net spawn")
 	level.show_indicators()
 	self.bCheckStart = true
-	self.weapon_hide = false -- СЃРїСЂСЏС‚Р°РЅРѕ РёР»Рё РЅРµС‚ РѕСЂСѓР¶РёРµ РїСЂРё СЂР°Р·РіРѕРІРѕСЂРµ.
+	self.weapon_hide = false -- спрятано или нет оружие при разговоре.
 	self.weapon_hide_in_dialog = false
-	weapon_hide = {} -- СѓСЃС‚Р°РЅР°РІР»РёРІР°РµРј РіР»РѕР±Р°Р»СЊРЅС‹Р№ РґРµС„РѕР»С‚РѕРІС‹Р№ С„Р»Р°Рі.
+	weapon_hide = {} -- устанавливаем глобальный дефолтовый флаг.
 	if object_binder.net_spawn(self,data) == false then
 		return false
 	end
@@ -431,25 +419,17 @@ function actor_binder:net_spawn(data)
 		db.actor.deimos_intensity = self.deimos_intensity
 	end
 	
-	-- db.add_actor(self.object)               -- СѓР±СЂР°РЅРѕ: РґСѓР±Р»СЊ РІС‹Р·РѕРІР°, Р»РѕРјР°РµС‚ db.actor
-	-- db.actor.deimos_intensity = ...         -- СѓР±СЂР°РЅРѕ: РґСѓР±Р»СЊ
+	db.add_actor(self.object)
+	db.actor.deimos_intensity = self.deimos_intensity
 	self.deimos_intensity = nil
 	if self.st.disable_input_time == nil then
 		level.enable_input()
 	end
 	xr_s.on_game_load()                                    --' Distemper 03.2008 --
-	if self.weather_manager then
-		-- РџРѕРґСЃС‚Р°РІР»СЏРµРј СЂРµР°Р»СЊРЅС‹Р№ CAtmosFear РѕР±СЉРµРєС‚ РґРѕ reset(),
-		-- С‡С‚РѕР±С‹ reset() РЅРµ СЃРѕР·РґР°РІР°Р» Р·Р°РіР»СѓС€РєСѓ-С‚Р°Р±Р»РёС†Сѓ.
-		-- atmosfear.get_atmosfear() СЃРѕР·РґР°С‘С‚ РѕР±СЉРµРєС‚ Р»РµРЅРёРІРѕ РµСЃР»Рё РµС‰С‘ РЅРµС‚.
-		if atmosfear then
-			self.weather_manager.atmosfear = atmosfear.get_atmosfear()
-		end
-		self.weather_manager:reset()
-	end
-	--' Р—Р°РіСЂСѓР¶Р°РµРј РЅР°СЃС‚СЂРѕР№РєРё РґСЂРѕРїР°
+	self.weather_manager:reset()
+	--' Загружаем настройки дропа
 	death_manager.init_drop_settings()
-	--'РЈСЃС‚Р°РЅР°РІР»РёРІР°РµРј СЃСЃС‹Р»РєСѓ РЅР° С‚Р°СЃРєРјРµРЅРµРґР¶РµСЂ
+	--'Устанавливаем ссылку на таскменеджер
 	self.task_manager = task_manager.get_task_manager()
 	self.spawn_frame = device().frame
 	self.already_jumped = false
@@ -471,9 +451,7 @@ function actor_binder:net_destroy()
 		actor_stats.remove_from_ranking(self.object:id())
 	end
 	level.show_weapon(true)
-	if self.object:id() == SV_OBJECT_ID then
-		db.del_actor(self.object)
-	end
+	db.del_actor(self.object)
 
 	self.object:set_callback(callback.inventory_info, nil)
 	self.object:set_callback(callback.article_info, nil)
@@ -527,8 +505,8 @@ end
 ----------------------------------------------------------------------------------------------------------------------
 function actor_binder:info_callback(npc, info_id)
 	printf("*INFO*: npc='%s' id='%s'", npc:name(), info_id)
-	--' РЎСЋР¶РµС‚
-	-- РћС‚РјРµС‚РєРё РЅР° РєР°СЂС‚Рµ
+	--' Сюжет
+	-- Отметки на карте
 end
 ----------------------------------------------------------------------------------------------------------------------
 function actor_binder:on_trade (item, sell_bye, money)
@@ -605,10 +583,7 @@ function anabiotic_callback()
 end
 
 function anabiotic_callback2()
-	local actor = db.actor or getLocalActor()
-	if actor then
-		xr_effects.enable_ui(actor, nil)
-	end
+	xr_effects.enable_ui(db.actor, nil)
     get_console():execute("snd_volume_music "..tostring(_G.mus_vol))
 	get_console():execute("snd_volume_eff "..tostring(_G.amb_vol))
 	_G.amb_vol = 0
@@ -619,13 +594,10 @@ end
 
 function actor_binder:task_callback(_task, _state, _silent)
 	if _state ~= task.fail then
-		local actor = db.actor or getLocalActor()
-		if actor then
-			if _state == task.completed then
-				news_manager.send_task(actor, "complete", _task)
-			else
-				news_manager.send_task(actor, "new", _task)
-			end
+		if _state == task.completed then
+			news_manager.send_task(db.actor, "complete", _task)
+		else
+			news_manager.send_task(db.actor, "new", _task)
 		end
 	end
 	task_manager.task_callback(_task, _state)
@@ -659,7 +631,7 @@ function actor_binder:update(delta)
 	end
 	
 	if OnServer() then
-		if self.weather_manager then self.weather_manager:update() end
+		self.weather_manager:update()
 
 		local time = time_global()
 		game_stats.update (delta, self.object)
@@ -667,10 +639,10 @@ function actor_binder:update(delta)
 		self:check_detective_achievement()
 		self:check_mutant_hunter_achievement()
 	
-		-- РђРїРґРµР№С‚ СЃР°СѓРЅРґРјРµРЅРµРґР¶РµСЂР°								  
+		-- Апдейт саундменеджера								  
 		xr_sound.update(self.object:id())
 	
-		-- РѕР±РЅРѕРІР»РµРЅРёРµ РїСЃРё-Р°РЅС‚РµРЅРЅС‹
+		-- обновление пси-антенны
 		if sr_psy_antenna.psy_antenna then
 			sr_psy_antenna.psy_antenna:update(delta)
 		end
@@ -703,7 +675,7 @@ function actor_binder:update(delta)
 			end
 			self.surge_manager:update_sv()
 		end
-		-- РђРїРґРµР№С‚ РґРѕСЃС‚СѓРїРЅРѕСЃС‚Рё РґР»СЏ СЃРёРјСѓР»СЏС†РёРё.
+		-- Апдейт доступности для симуляции.
 		simulation_objects.get_sim_obj_registry():update_avaliability(alife():actor())
 		treasure_manager.get_treasure_manager():update()
 	
@@ -725,7 +697,7 @@ function actor_binder:update(delta)
 		return
 	end
 
-	-- Р’С‹Р·РѕРІ Р°РїРґРµР№С‚Р° РїРµСЂРµРЅРѕСЃР° РёРіСЂРѕРєР° РїСЂРѕРІРѕРґРЅРёРєРѕРј
+	-- Вызов апдейта переноса игрока проводником
 	if travel_func ~= nil then
 		travel_func()
 	end
@@ -734,7 +706,7 @@ end
 function actor_binder:save(packet)
 	set_save_marker(packet, "save", false, "actor_binder")
 	object_binder.save(self, packet)
-	if self.weather_manager then self.weather_manager:save(packet) end
+	self.weather_manager:save(packet)
 	release_body_manager.get_release_body_manager():save(packet)
 	self.surge_manager:save(packet)
 	treasure_manager.get_treasure_manager():save(packet)
@@ -746,7 +718,7 @@ end
 function actor_binder:load(reader)
 	set_save_marker(reader, "load", false, "actor_binder")
 	object_binder.load(self, reader)
-	if self.weather_manager then self.weather_manager:load(reader) end
+	self.weather_manager:load(reader)
 	release_body_manager.get_release_body_manager():load(reader)
 	self.surge_manager:load(reader)
 	treasure_manager.get_treasure_manager():load(reader)
@@ -756,7 +728,7 @@ function actor_binder:load(reader)
 end
 
 --*************************************************************
---*					РџРѕРґСЃРїР°СѓРЅ РІРµС‰РµР№ РІ СЏС‰РёРєРё					  *
+--*					Подспаун вещей в ящики					  *
 --*************************************************************
 local detective_achievement_items 		= {	"medkit",
 											"antirad",
@@ -780,7 +752,7 @@ local function spawn_achivement_items(items_table, count, inv_box_story_id)
 end
 
 function actor_binder:check_detective_achievement()
-	if not story_flags.has_flag("DETECTIVE_ACHIEVEMENT_GAINED") then
+	if not has_alife_info("detective_achievement_gained") then
 		return
 	end
 	if self.last_detective_achievement_spawn_time == nil then
@@ -794,7 +766,7 @@ function actor_binder:check_detective_achievement()
 end
 
 function actor_binder:check_mutant_hunter_achievement()
-	if not story_flags.has_flag("MUTANT_HUNTER_ACHIEVEMENT_GAINED") then
+	if not has_alife_info("mutant_hunter_achievement_gained") then
 		return
 	end
 	if self.last_mutant_hunter_achievement_spawn_time == nil then
@@ -911,27 +883,19 @@ end
 
 function bind_stalker_cl:death_callback(victim, who)
 	xrs_dyn_music.npc_table[self.object:id()] = nil
-
-	-- xr_combat_ignore: С‡РёСЃС‚РёРј safe_zone РїСЂРё СЃРјРµСЂС‚Рё
-	if xr_combat_ignore then xr_combat_ignore.npc_on_death_callback(self.object, who) end
-	-- squad_on_npc_death РЅРµ РІС‹Р·С‹РІР°РµРј Р·РґРµСЃСЊ вЂ” alife():object() СѓР¶Рµ nil РїРѕСЃР»Рµ СЃРјРµСЂС‚Рё
-
+	
 	if who and getLocalActor() and getLocalActor():id() == who:id() then
 		xr_statistic.inc_killed_stalkers_counter(who:id())
 	end
 end
 
 function bind_stalker_cl:hit_callback(obj, amount, local_direction, who, bone_index)
-	-- xr_combat_ignore: safe zone hit Р»РѕРіРёРєР°
-	if db.storage[obj:id()] and db.storage[obj:id()].combat_ignore then
-		if xr_combat_ignore then xr_combat_ignore.npc_on_hit_callback(obj, amount, local_direction, who, bone_index) end
-	end
-
 	if who and getLocalActor() and getLocalActor():id() == who:id() then
 		xr_statistic.set_best_weapon(amount, who)
 		debug_utils.INFO(MODULE, "%s hits %s for %s!", who:name(), obj:name(), tonumber(amount)/100)
 	end
 end
+
 function set_level_spot(npc_id, map_spot)
 	if map_spot ~= nil and map_spot ~= 0 then
 		local map_location = ""
@@ -976,8 +940,5 @@ end
 -- Called from the GM message dispatcher when GM_SCRIPT_WEATHER is received
 ---------------------------------------------------------------------
 function OnWeatherMessage(packet)
-    if level_weathers then
-        level_weathers.apply_weather_state(packet)
-    end
+	level_weathers.apply_weather_state(packet)
 end
-

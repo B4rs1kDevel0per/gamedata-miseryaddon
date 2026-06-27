@@ -54,7 +54,6 @@ GM_SCRIPT_UPDATE_STATISTIC = 15
 GM_SCRIPT_REMOVE_TASK_MAP_LOCATIONS = 16
 GM_SCRIPT_SAVE_VOICE_DIALOG = 17
 
-GM_SCRIPT_MUTANT_LOOT = 18
 GM_SCRIPT_ADDON_EVENTS = 100
 
 -- xr_combat_ignore: глобальные таблицы
@@ -64,6 +63,8 @@ db.OnlineStalkers        = {}   -- список id онлайн-сталкеро
 -- Add your own events after this
 -- Example:
 -- GM_SCRIPT_USE_ITEM = GM_SCRIPT_ADDON_EVENTS + 1
+GM_SCRIPT_MUTANT_LOOT  = GM_SCRIPT_ADDON_EVENTS + 1
+GM_SCRIPT_WEATHER = GM_SCRIPT_ADDON_EVENTS + 1
 ----------------------------------------------------------------------
 
 ----------------------------------------------------------------------
@@ -138,7 +139,12 @@ end
 
 ---@param fmt string
 function printf_msg(fmt, ...)
-	print_msg(string.format(fmt, ...))
+    local ok, result = pcall(string.format, fmt, ...)
+    if ok then
+        print_msg(result)
+    else
+        print_msg("!! printf_msg error: " .. tostring(fmt))
+    end
 end
 
 ----------------------------------------------------------------------
@@ -724,12 +730,12 @@ function start_game_callback()
 	sr_light.clean_up ()
 	pda.add_quick_slot_items_on_game_start()
 	story_flags.reset_flags()
-	-- TРµСЃС‚РёСЂРѕРІР°РЅРёРµ РѕРїС‚РёРјРёР·Р°С†РёРё
+	-- Tестирование оптимизации
 	--local test_object = test_object.test_object_class()
 	--test_object:test()
 end
 
----РЈСЃС‚Р°Р»РѕСЃС‚СЊ.
+---Усталость.
 function on_actor_critical_power()
 
 end
@@ -737,7 +743,7 @@ end
 function on_actor_critical_max_power()
 end
 
----РљСЂРѕРІРѕС‚РµС‡РµРЅРёРµ.
+---Кровотечение.
 function on_actor_bleeding()
 
 end
@@ -745,22 +751,22 @@ end
 function on_actor_satiety()
 end
 
----Р Р°РґРёР°С†РёСЏ.
+---Радиация.
 function on_actor_radiation()
 
 end
 
----Р—Р°РєР»РёРЅРёР»Рѕ РѕСЂСѓР¶РёРµ.
+---Заклинило оружие.
 function on_actor_weapon_jammed()
 
 end
 
----РќРµ РјРѕР¶РµС‚ С…РѕРґРёС‚СЊ РёР·-Р·Р° РІРµСЃР°.
+---Не может ходить из-за веса.
 function on_actor_cant_walk_weight()
 
 end
 
----РџСЃРё РІРѕР·РґРµР№СЃС‚РІРёРµ.
+---Пси воздействие.
 function on_actor_psy()
 end
 
@@ -882,7 +888,7 @@ ammo_section["ammo_pkm_100"]		= true
 
 
 quest_section = {}
----РџСЂРµРѕР±СЂР°Р·СѓРµС‚ СЃС‚СЂРѕРєСѓ РІ СЃРѕРѕС‚РІРµС‚СЃС‚РІРёРё СЃРѕ Р·РЅР°С‡РµРЅРёРµРј.
+---Преобразует строку в соответствии со значением.
 ---@param src_string string
 function get_param_string(src_string, obj)
 	--printf("src_string is [%s] obj name is [%s]", tostring(src_string), obj:name())
@@ -898,13 +904,13 @@ end
 ---@type table<string, number>
 local save_markers = {}
 
---Р¤СѓРЅРєС†РёРё РґР»СЏ РїСЂРѕРІРµСЂРєРё РєРѕСЂСЂРµРєС‚РЅРѕСЃС‚Рё СЃРµР№РІ Р»РѕР°Рґ
+--Функции для проверки корректности сейв лоад
 ---@param check boolean
 ---@param prefix string
 ---@return void
 function set_save_marker(p, mode, check, prefix)
 
-	-- РѕРїСЂРµРґРµР»СЏРµРј РєР»СЋС‡ РјР°СЂРєРµСЂР°.
+	-- определяем ключ маркера.
 	local result = ""
 --	if debug ~= nil then
 --		local info_table = debug.getinfo(2)
@@ -956,13 +962,13 @@ function set_save_marker(p, mode, check, prefix)
 	end
 
 end
----РџРµСЂРµРІРѕРґРёС‚ РІРµРєС‚РѕСЂ РІ СЃС‚СЂРѕРєСѓ.
+---Переводит вектор в строку.
 function vec_to_str(vector)
 	if vector == nil then return "nil" end
 	return string.format("[%s:%s:%s]", vector.x, vector.y, vector.z)
 end
 
----Р’С‹РІРѕРґРёС‚ РІ Р»РѕРі СЃС‚СЌРє РІС‹Р·РѕРІР° С„СѓРЅРєС†РёР№.
+---Выводит в лог стэк вызова функций.
 function callstack()
 	if debug ~= nil then
 		printf_msg("%s", tostring(debug.traceback(100)))
@@ -970,7 +976,7 @@ function callstack()
 	end
 end
 
----РњРµРЅСЏРµС‚ team:squad:group РѕР±СЊРµРєС‚Р°.
+---Меняет team:squad:group обьекта.
 function change_team_squad_group(se_obj, team, squad, group)
 	local cl_obj = db.storage[se_obj.id] and db.storage[se_obj.id].object
 	if cl_obj ~= nil then
@@ -1010,7 +1016,7 @@ function unregister_story_id(story_id)
 end
 
 -----------------------------------------------------------------------------------------------
----РџРѕР»СѓС‡РёС‚СЊ СЃРєРІР°Рґ РѕР±СЊРµРєС‚Р°!!!!!
+---Получить сквад обьекта!!!!!
 function get_object_squad(object)
 	if object == nil then abort("You are trying to get squad_object from NIL object!!!") end
 	local obj_id = nil
@@ -1033,7 +1039,7 @@ function get_story_squad(story_id)
 	return squad_id and alife():object(squad_id)
 end
 
----РџСЂРѕРІРµСЂРєР° РїРѕ РІСЂРµРјРµРЅРЅРѕРјСѓ РёРЅС‚РµСЂРІР°Р»Сѓ.
+---Проверка по временному интервалу.
 ---@param val1 number
 ---@param val2 number
 function in_time_interval(val1, val2)

@@ -1,0 +1,143 @@
+[settings]
+condlist = {-PRI_A16_KOVALSKI_START =actor_on_level(pripyat)} false, {+PRI_A25_RFI_SOURCE_ELIMINATED -PRI_A28_ACTOR_IN_ZONE_STAY} false, true
+survive = {+actor_marked_by_zone_3_times} true, {+anabiotic_in_process} true, false
+surge_phase_1_sound = {=actor_on_level(zaton)} zat_a2_stalker_barmen_surge_phase_1, {=actor_on_level(jupiter)} jup_a6_stalker_medik_phase_1, {=actor_on_level(pripyat) -PRI_B305_FIFTH_CAM_END} pri_a17_kovalsky_surge_phase_1
+surge_phase_2_sound = {=actor_on_level(zaton)} zat_a2_stalker_barmen_surge_phase_2, {=actor_on_level(jupiter)} jup_a6_stalker_medik_phase_2, {=actor_on_level(pripyat) -PRI_B305_FIFTH_CAM_END} pri_a17_kovalsky_surge_phase_2
+surge_end_sound = {=actor_on_level(zaton)} zat_a2_stalker_barmen_after_surge, {=actor_on_level(jupiter)} jup_a6_stalker_medik_after_surge, {=actor_on_level(pripyat) -PRI_B305_FIFTH_CAM_END} pri_a17_kovalsky_after_surge
+
+[list]
+;zaton
+zat_surge_hide_a2
+zat_surge_hide_b42
+zat_surge_hide_b44
+zat_surge_hide_b7
+zat_surge_hide_b18
+zat_surge_hide_b101
+zat_surge_hide_b38
+zat_surge_hide_b33
+zat_b33_surge_hide_2
+zat_surge_hide_b40
+zat_surge_hide_a23
+zat_surge_hide_b100
+zat_surge_hide_b28
+zat_surge_hide_b5
+zat_surge_hide_b400
+zat_b22_stalker_medic_identified
+zat_surge_hide_b103
+zat_b103_surge_hide_2
+zat_surge_hide_b38_down
+zat_surge_hide_b38_side
+zat_b14_surge_hide_1
+zat_b14_surge_hide_2
+zat_b14_surge_hide_3
+;jupiter
+jup_surge_hide_a10
+jup_surge_hide_a12
+jup_surge_hide_a6
+jup_b15_sr_light
+jup_surge_hide_b1
+jup_surge_hide_b1_2
+jup_surge_hide_b16
+jup_surge_hide_b200
+jup_b200_surge_hide_2
+jup_b200_surge_hide_3
+jup_b200_surge_hide_4
+jup_b200_surge_hide_5
+jup_surge_hide_b202
+jup_surge_hide_b203
+jup_surge_hide_b205
+jup_surge_hide_b207
+jup_surge_hide_b208
+jup_surge_hide_b208_2
+jup_surge_hide_b214
+jup_surge_hide_b219
+jup_surge_hide_b41
+jup_surge_hide_b47
+jup_a9_surge_hide
+jup_surge_hide_b8
+jup_surge_hide_a9
+;pripyat
+pri_surge_hide_a15
+pri_surge_hide_a16
+pri_surge_hide_b304
+pri_surge_hide_b304_2
+pri_surge_hide_b35
+pri_b35_mercs_surge_hide_1
+pri_b35_mercs_surge_hide_2
+pri_b35_mercs_surge_hide_3
+pri_b35_mercs_surge_hide_4
+pri_b35_military_surge_hide_1
+pri_surge_hide_a18
+pri_surge_hide_a18_2
+pri_surge_hide_a21
+pri_surge_hide_b306
+pri_surge_hide_b301
+pri_surge_hide_b303
+pri_surge_hide_a28
+pri_surge_hide_a28_2
+pri_surge_hide_a17
+pri_surge_hide_b36
+;test
+;sr_out_1
+;sr_out_2
+
+[zat_surge_hide_a2]
+condlist = {=check_smart_alarm_status(zat_stalker_base_smart:normal)} true, false
+
+[zat_surge_hide_b40]
+condlist = {=squad_exist(zat_b40_merc_squad)} false, true
+
+[zat_surge_hide_b100]
+condlist = true;{-ZAT_A23_ACTOR_USED_ACCESS_CARD} false, true
+
+[zat_surge_hide_b28]
+condlist = {=any_actor_in_zone(zat_sr_plateu)} true, false
+
+[zat_surge_hide_b103]
+condlist = {+ZAT_B103_MERC_TASK_DONE} true, false
+
+[zat_b103_surge_hide_2]
+condlist = false
+
+[zat_surge_hide_a23]
+condlist = {+ZAT_A23_ACTOR_USED_ACCESS_CARD} true, false
+
+[zat_b22_stalker_medic_identified]
+condlist = {+ZAT_B22_CAN_GO_IN} true, false
+
+;[zat_surge_hide_b38_side]
+;condlist = {-ZAT_B38_LIFT_OPENED} true, false
+
+[zat_surge_hide_b38_down]
+condlist = {+ZAT_B38_LIFT_OPENED} true, false
+
+
+
+[jup_surge_hide_a6]
+condlist = {=check_smart_alarm_status(jup_a6:normal)} true, false
+
+[jup_surge_hide_b41]
+condlist = {=check_smart_alarm_status(jup_b41:normal)} true, false
+
+[jup_surge_hide_b207]
+condlist = {-JUP_B207_MORGAN_GIVED_DEPOT -JUP_B207_FREEDOM_KNOWS_ABOUT_DEPOT -JUP_B207_DUTY_KNOWS_ABOUT_DEPOT} false, true
+
+[jup_surge_hide_a10]
+condlist = {+JUP_A10_FALS} true, {+JUP_A10_VANO_GIVE_TASK_END} true, {-JUP_A10_VANO_GIVE_TASK} false, true
+
+[jup_surge_hide_b205]
+condlist = {+JUP_B205_PASS_CODE_VALIDE} true, false
+
+[jup_surge_hide_a12]
+condlist = {+JUP_A12_TASK_DONE} true, {+JUP_A12_ACTOR_HAS_PASS_TO_CONTAINERS -JUP_A12_ACTOR_ENEMY_TO_BANDITS} true, false
+
+[jup_surge_hide_b202]
+condlist = {+JUP_B202_ACTOR_ITEMS_STOLEN} true, false
+
+
+
+[pri_surge_hide_a16]
+condlist = {=check_smart_alarm_status(pri_a16:normal)} true, false
+
+[pri_surge_hide_b303]
+condlist = {+PRI_B303_DOOR_CLOSED} true, false

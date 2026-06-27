@@ -5,7 +5,7 @@
 --------------------------------------------------------------------------------
 -- Edited for AtmosFear 3 ------------------------------------------------------
 -- by Cromm Cruac --------------------------------------------------------------
--- by muederatte ---------------------------------------------------------------
+-- итак автор кто ты такой блин кто ты такой черт возьми -----------------------
 -- 25.06.2011 -- 09.05.2026 ----------------------------------------------------
 --------------------------------------------------------------------------------
 
@@ -65,15 +65,6 @@ function CSurgeManager:initialize()
 
 	self.atmosfear = get_atmosfear and get_atmosfear() or nil
 
-	if self.atmosfear then
-		printf("[surge_manager] atmosfear connected, opt_enable_blowout=%s, opt_blowout_freq=%s",
-			tostring(self.atmosfear.opt_enable_blowout),
-			tostring(self.atmosfear.opt_blowout_freq))
-	else
-		printf("[surge_manager] atmosfear NOT connected, using default delta MIN=%s MAX=%s",
-			tostring(MIN_SURGE_TIME), tostring(MAX_SURGE_TIME))
-	end
-
 	self.ini = ini_file("misc\\surge_manager.ltx")
 
 	self.levels_respawn = {zaton = false, jupiter = false, pripyat = false}
@@ -131,8 +122,7 @@ function CSurgeManager:initialize()
 	self.surge_end_sound = xr_logic.parse_condlist(nil, "surge_manager", "surge_end_sound_condlist",
 		ini:r_string("settings", "surge_end_sound"))
 
-	-- На dedicated device() недоступен — инициализируем укрытия безусловно
-	if IsDedicatedServer() or (device and device().precache_frame <= 1) then
+	if device().precache_frame <= 1 then
 		self:init_surge_covers()
 	end
 
@@ -158,8 +148,7 @@ function CSurgeManager:init_surge_covers()
 end
 
 function CSurgeManager:get_nearest_cover(actor_override)
-	-- На dedicated device() недоступен — пропускаем precache проверку
-	if device and device().precache_frame > 1 then return nil end
+	if device().precache_frame > 1 then return nil end
 	if OnClient() and self.count == 0 then self:init_surge_covers() end
 	if self.loaded then self:init_surge_covers() end
 
@@ -337,13 +326,7 @@ function CSurgeManager:update_sv()
 			self.time_forwarded = false
 		end
 
-		local elapsed = g_time:diffSec(self.last_surge_time)
-		local remaining = self._delta - elapsed
-		if remaining > 0 then
-			if math.fmod(math.floor(elapsed), 60) == 0 then
-				printf("[surge_manager] next surge in %d sec game time (elapsed=%d, delta=%d)",
-					math.floor(remaining), math.floor(elapsed), math.floor(self._delta))
-			end
+		if g_time:diffSec(self.last_surge_time) < self._delta then
 			return
 		end
 		if not self:get_nearest_cover() then

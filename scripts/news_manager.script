@@ -63,7 +63,7 @@ tips_icons = {
 
 
 function send_tip(actor, news_id, timeout, sender, showtime, sender_id)
-	debug_utils.INFO(MODULE, "[send_tip] send_tip called with news_id: %s, actor: %s", tostring(news_id), tostring(actor:id()))
+	debug_utils.INFO(MODULE, "[send_tip] send_tip called with news_id: %s, actor: %s", tostring(news_id), actor and tostring(actor:id()) or "nil")
 	if news_id == nil then 
 		debug_utils.INFO(MODULE, "[send_tip] Aborted: news_id is nil")
 		return false 
@@ -94,9 +94,21 @@ function send_tip(actor, news_id, timeout, sender, showtime, sender_id)
 	if timeout == nil then timeout = 0 end
 	if showtime == nil then showtime = 5000 end
 
-	--' ������ ��������� ����
-	xr_sound.set_sound_play(actor:id(), "pda_tips")
+	local target_actor = actor
+	if not target_actor or not target_actor:alive() then
+		if OnServer() then
+			target_actor = db.actor
+		else
+			target_actor = getLocalActor()
+		end
+	end
+	if not target_actor or not target_actor:alive() then
+		debug_utils.INFO(MODULE, "[send_tip] Aborted: no valid actor")
+		return false
+	end
 
+	--' ������ ��������� ����
+	xr_sound.set_sound_play(target_actor:id(), "pda_tips")
 
 	local texture = "ui_iconsTotal_grouping"
 	if sender ~= nil then
@@ -111,8 +123,7 @@ function send_tip(actor, news_id, timeout, sender, showtime, sender_id)
 	local news_caption = game.translate_string("st_tip")
 	local news_text = game.translate_string(news_id)
 	debug_utils.INFO(MODULE, "[send_tip] Sending tip: [%s] -> [%s] with texture [%s], timeout=%d, showtime=%d", news_caption, news_text, texture, timeout*1000, showtime)
---	actor:give_game_news(news_caption, news_text, texture, timeout*1000, showtime)
-	actor:give_game_news(news_caption, news_text, texture, timeout*1000, showtime, 0)
+	target_actor:give_game_news(news_caption, news_text, texture, timeout*1000, showtime, 0)
 
 	return true
 end
@@ -202,9 +213,15 @@ function send_task(actor, type, task)
 		return false
 	end
 	
-	local local_actor = db.mp_actors[LocalActor()]
-	
-	if local_actor == nil then 
+	local target_actor = actor
+	if not target_actor or not target_actor:alive() then
+		if OnServer() then
+			target_actor = db.actor
+		else
+			target_actor = getLocalActor()
+		end
+	end
+	if not target_actor or not target_actor:alive() then
 		return false
 	end
 	
@@ -212,7 +229,7 @@ function send_task(actor, type, task)
 	if type == "updated" then
 		time_on_screen = 5000
 	end
-	xr_sound.set_sound_play(local_actor:id(), "pda_task")
+	xr_sound.set_sound_play(target_actor:id(), "pda_task")
 	local news_caption = game.translate_string(action_descr_by_type[type])
 	local news_text = game.translate_string(task:get_title())
 	
@@ -225,10 +242,10 @@ function send_task(actor, type, task)
 		icon = "ui_iconsTotal_storyline"
 	end
 
-	if local_actor:is_talking() then
-		local_actor:give_talk_message2(news_caption, news_text..".", icon, "iconed_answer_item")
+	if target_actor:is_talking() then
+		target_actor:give_talk_message2(news_caption, news_text..".", icon, "iconed_answer_item")
 	else
-		local_actor:give_game_news(news_caption, news_text..".", icon, 0, time_on_screen)
+		target_actor:give_game_news(news_caption, news_text..".", icon, 0, time_on_screen)
 	end
 
 end
@@ -265,7 +282,7 @@ function relocate_item(actor, type, item, amount)
 	
 	local _actor = db.actor
 	if OnClient() then
-		_actor = db.mp_actors[LocalActor()]
+		_actor = getLocalActor()
 	end
 	
 	if _actor == nil then return false end
