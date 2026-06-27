@@ -20,7 +20,7 @@ def_hide_bones = mag45, mag45_black, mag30_black, mag60, mag40, body2, body3, bo
 repair_group = saiga
 
 ;-------------------------------------------------------------------------------
-cost              		= 8000            ; the price of the item
+cost              		= 28560            ; the price of the item
 weapon_class            = assault_rifle      ; the type of the box that will be used in buy-menu in multiplayer mode
 inv_weight				= 3.6								; weight in inventory
 
@@ -30,13 +30,13 @@ upgrade_scheme = upgrade_scheme_saiga12
 
 ;-ТТХ---------------------------------------------------------------------------
 
-hit_power            	= 0.85, 0.85, 0.85, 0.85
-hit_impulse          	= 130    ; size of physic impulse by bullet
-hit_type            	= fire_wound            ; [] type of the wound
-fire_distance           = 200    ; maximum fire distance that bullet can fly
-bullet_speed            = 225    ; starting bullet speed
-rpm                     = 240    ; max round per minute
-rpm_empty_click         = 10
+hit_power        			= 0.687, 0.687, 0.687, 0.687
+hit_impulse      			= 30
+hit_type 					= fire_wound
+fire_distance            	= 330
+bullet_speed			 	= 410
+rpm                     = 350    ; max round per minute
+rpm_empty_click         = 200
 
 use_aim_bullet          = false                ;Поддерживается ли первая суппер пуля
 time_to_aim             = 1.0
@@ -46,19 +46,13 @@ tri_state_reload			= false
 
 hud                        = wpn_saiga12_hud            ; name of the section of the hud
 
-misfire_probability        = 0.005 ;вероятность осечки при максимальном износе  !!!old - now not working
-;изношенность, при которой появляется шанс осечки
-misfire_start_condition		= 0.8
-;изношеность при которой шанс осечки становится константным
-misfire_end_condition		= 0.2
-;шанс осечки при изношености больше чем misfireStartCondition
-misfire_start_prob	     	= 0.003
-;шанс осечки при изношености больше чем misfireEndCondition
-misfire_end_prob	     	= 0.5
-;увеличение изношености при одиночном выстреле
-condition_shot_dec      	= 0.0043
-;увеличение изношености при выстреле очередью
-condition_queue_shot_dec	= 0.0043
+misfire_probability        	= 0.005
+misfire_start_condition		= 0.88
+misfire_end_condition		= 0.12
+misfire_start_prob = 0.007 ;	     	= 0.0054
+misfire_end_prob = 0.085 ;	     	= 0.058
+condition_shot_dec      	= 0.0012
+condition_queue_shot_dec	= 0.0012
 
 
 ammo_elapsed            = 5           ; obsolete
@@ -76,48 +70,49 @@ zoom_dof             = 0.5, 1.0, 180
 reload_dof           = 0.0, 0.5, 5, 2
 
 ;----Дисперсия---------------------------------------------------------------------------
-fire_dispersion_base       = 0.25 ;0.19      ;угол (в градусах) базовой дисперсии оружия (оружия зажатого в тисках)
-control_inertion_factor    = 1.1
-crosshair_inertion		   = 6.5
+fire_dispersion_base       	= 0.49    ;угол (в градусах) базовой дисперсии оружи¤ (оружи¤ зажатого в тисках)
+control_inertion_factor	= 1.34f
+crosshair_inertion	= 6.3
 
-;params of weapon recoil
-cam_return              = 0
-cam_relax_speed         = 12			;скорость возврата в исходное положение
-cam_relax_speed_ai     	= 120.75
-cam_dispersion          = 3.9		;увеличения угла (в градусах) с первым выстрелом
-cam_dispersion_inc      = 1.75	;увеличениe cam_dispersion с каждым выстрелом
-cam_dispersion_frac     = 0.8	    ;ствол будет подыматься на cam_dispersion*cam_dispersion_frac +- cam_dispersion*(1-cam_dispersion_frac)
-cam_max_angle			= 10.0      ;максимальный угол отдачи
-cam_max_angle_horz      = 10.0      ;(degree) maximum shot horizontal degree
-cam_step_angle_horz     = 1.5		;(degree) size of step camera moved in horizontal position while shooting
+;отдача
+cam_return = 0 ;					= 0
+cam_relax_speed             = 10		;скорость возврата в исходное положение
+cam_relax_speed_ai      	= 360
+cam_dispersion              = 3.52		;увеличени¤ угла (в градусах) с первым выстрелом
+cam_dispersion_inc         	= 3.96		;увеличениe cam_dispersion с каждым выстрелом
+cam_dispersion_frac        	= 1.0	    ;ствол будет подыматьс¤ на cam_dispersion*cam_dispersion_frac +- cam_dispersion*(1-cam_dispersion_frac)
+cam_max_angle				= 50.0      ;максимальный угол отдачи
+cam_max_angle_horz         	= 50.0      ;(degree) maximum shot horizontal degree
+cam_step_angle_horz        	= 1.18		;(degree) size of step camera moved in horizontal position while shooting
 
-zoom_cam_relax_speed         = 10	    ; scope & ironsight
+zoom_cam_relax_speed         = 9	    ; scope & ironsight
 zoom_cam_relax_speed_ai      = 360
-zoom_cam_dispersion          = 3.3
-zoom_cam_dispersion_inc      = 1.5
-zoom_cam_dispersion_frac     = 1.0
+zoom_cam_dispersion          = 2.24
+zoom_cam_dispersion_inc      = 2.66
+zoom_cam_dispersion_frac     = 0.72
 zoom_cam_max_angle           = 50.0
-zoom_cam_max_angle_horz      = 5.0
-zoom_cam_step_angle_horz     = 1.0
-fire_dispersion_condition_factor    = 10         ;увеличение дисперсии в процентах при максимальном износе
+zoom_cam_max_angle_horz      = 50.0
+zoom_cam_step_angle_horz     = 1.06
 
-PDM_disp_base 				= 2.9
+PDM_disp_base 				= 0.96
 PDM_disp_vel_factor 		= 2.3
 PDM_disp_accel_factor 		= 2.3
-PDM_disp_crouch	 			= 1.0
-PDM_disp_crouch_no_acc 		= 1.0
+PDM_disp_crouch = 1.0 ;  			= 1.165
+PDM_disp_crouch_no_acc = 1.0 ; 		= 1.325
+
+fire_dispersion_condition_factor = 0.015 ; 0.001 ;    = 0.01 ; 15    
 
 ;------- for AI ------------------------------------------------------------------------
 holder_range_modifier   = 1.0              ; во сколько раз увеличивается eye_range
 holder_fov_modifier     = 1.0              ; во сколько раз увеличивается eye_fov
 
-min_radius           = 3           ; [] for AI
-max_radius           = 300          ; [] for AI
+min_radius           = 0           ; [] for AI
+max_radius           = 500          ; [] for AI
 
-hit_probability_gd_novice  = 0.80
-hit_probability_gd_stalker = 0.80
-hit_probability_gd_veteran = 0.80
-hit_probability_gd_master  = 0.80
+hit_probability_gd_novice  = 1.0
+hit_probability_gd_stalker = 1.0
+hit_probability_gd_veteran = 1.0
+hit_probability_gd_master  = 1.0
 
 ;-------------------------------------------------------------------------------
 slot                = 2                ; // secondary
@@ -235,32 +230,45 @@ item_visual                = dynamics\weapons\wpn_saiga12\wpn_saiga12_hud.ogf
 zoom_dof_near = 0.25
 zoom_dof_focus = 0.5
 
-hud_fov = 0.75
-hud_fov_zoom = 0.75 ;аналогичный параметр работает и с прицелами
+hud_fov = 0.82
+hud_fov_zoom = 0.7 ;аналогичный параметр работает и с прицелами
 
-inertion_pitch_offset_r = -0.008
-inertion_pitch_offset_n = -0.006
-inertion_pitch_offset_d = -0.001
-inertion_origin_offset = 0.06
+;движение вперед
+hud_move_forward_offset_pos = 0.00294,-0.01882,-0.02941
+hud_move_forward_offset_rot = 0,0,1.47059
+
+hud_move_forward_offset_pos_16x9 = 0.00294,-0.01882,-0.02941
+hud_move_forward_offset_rot_16x9 = 0,0,1.47059
+
+hud_move_back_offset_pos = 0,0,0
+hud_move_back_offset_rot = 0,0,0
+
+hud_move_back_offset_pos_16x9 = 0,0.0
+hud_move_back_offset_rot_16x9 = 0,0,0
+
+inertion_pitch_offset_r = 0.01
+inertion_pitch_offset_n = 0.007
+inertion_pitch_offset_d = 0.01
+inertion_origin_offset = 0.03
 
 inertion_aim_origin_offset = 0.015
 inertion_aim_speed = 10
 
 
-hands_position				= 0.02,-0.02,0.02
+hands_position		= -0.000,-0.008,-0.04
 hands_orientation			= 0.0,0.0,0.0
 
-hands_position_16x9			= 0.02,-0.02,0.02
+hands_position_16x9			= -0.000,-0.008,-0.04
 hands_orientation_16x9			= 0.0,0.0,0.0
 
 item_position				= 0.0,0.0,0.0
 item_orientation			= 0.0,0.0,0.0
 
-aim_hud_offset_pos = -0.001,0.042000,0.0
-aim_hud_offset_rot = -0.0030000,0.000000,0.000000
+aim_hud_offset_pos = 0.0183,0.029000,0.0777000
+aim_hud_offset_rot = -0.0030000,0.000000,-0.000000
 
-aim_hud_offset_pos_16x9 = -0.001,0.042000,0.0
-aim_hud_offset_rot_16x9 = -0.0030000,0.000000,0.000000
+aim_hud_offset_pos_16x9 = 0.0183,0.029000,0.0777000
+aim_hud_offset_rot_16x9 = -0.0030000,0.000000,-0.000000
 
 gl_hud_offset_pos               = 0,0,0;-0.053000,-0.059000,0.000000
 gl_hud_offset_rot               = 0,0,0;-0.145000,0.000000,0.000000
@@ -437,11 +445,11 @@ bone = scope_pso_sniper
 hud_fov_zoom = 0.4
 use_scope_anims = true ;говорит, что надо использовать анимации с суффиксом _scope в прицеливании с данным прицелом
 
-aim_hud_offset_pos = 0.013000,-0.001500,0.18
-aim_hud_offset_rot = 0.000000,0.000000,0.000000
+aim_hud_offset_pos = 0.036600,-0.0107,0.24000
+aim_hud_offset_rot = 0.000000,0.000000,-0.00000
 
-aim_hud_offset_pos_16x9 = 0.013000,-0.001500,0.18
-aim_hud_offset_rot_16x9 = 0.000000,0.000000,0.000000
+aim_hud_offset_pos_16x9 = 0.036600,-0.0107,0.24000
+aim_hud_offset_rot_16x9 = 0.000000,0.000000,-0.00000
 
 inertion_pitch_offset_r_factor = 0.3
 inertion_pitch_offset_n_factor = 0.2
@@ -460,11 +468,11 @@ bone = scope_pso_assault
 hud_fov_zoom = 0.4
 use_scope_anims = true ;говорит, что надо использовать анимации с суффиксом _scope в прицеливании с данным прицелом
 
-aim_hud_offset_pos = 0.015500,-0.007000,0.14
-aim_hud_offset_rot = 0.000000,0.000000,0.000000
+aim_hud_offset_pos = 0.035600,-0.019200,0.24000
+aim_hud_offset_rot = 0.000000,0.000000,-0.00000
 
-aim_hud_offset_pos_16x9 = 0.015500,-0.007000,0.14
-aim_hud_offset_rot_16x9 = 0.000000,0.000000,0.000000
+aim_hud_offset_pos_16x9 = 0.035600,-0.019200,0.24000
+aim_hud_offset_rot_16x9 = 0.000000,0.000000,-0.00000
 
 inertion_pitch_offset_r_factor = 0.3
 inertion_pitch_offset_n_factor = 0.2
@@ -483,21 +491,21 @@ use_scope_anims = true ;говорит, что надо использовать
 
 bone = scope_nv_sniper
 
-aim_hud_offset_pos = 0.01600,-0.039500,0.12
-aim_hud_offset_rot = 0.000000,0.000000,0.000000
+aim_hud_offset_pos = 0.0376,-0.041400,0.22000
+aim_hud_offset_rot = 0.000000,0.000000,-0.00000
 
-aim_hud_offset_pos_16x9 = 0.01600,-0.039500,0.12
-aim_hud_offset_rot_16x9 = 0.000000,0.000000,0.000000
+aim_hud_offset_pos_16x9 = 0.0376,-0.041400,0.22000
+aim_hud_offset_rot_16x9 = 0.000000,0.000000,-0.00000
 
 inertion_aim_origin_offset = 0.01
 inertion_aim_speed = 10 
 
 alter_zoom_allowed = true
 hud_fov_alter_zoom_factor = 0.5
-alter_aim_hud_offset_pos = -0.001,0.042000,0.00000
-alter_aim_hud_offset_rot = -0.0030000,0.000000,0.000000
-alter_aim_hud_offset_pos_16x9 = -0.001,0.042000,-0.003000
-alter_aim_hud_offset_rot_16x9 = -0.0030000,0.000000,0.000000
+alter_aim_hud_offset_pos = 0.0183,0.029000,0.0777000
+alter_aim_hud_offset_rot = -0.0030000,0.000000,-0.000000
+alter_aim_hud_offset_pos_16x9 = 0.0183,0.029000,0.0777000
+alter_aim_hud_offset_rot_16x9 = -0.0030000,0.000000,-0.000000
 
 [scope_nvas_saiga12]
 scope_name 					= wpn_addon_scope_night
@@ -508,11 +516,11 @@ use_scope_anims = true ;говорит, что надо использовать
 
 bone = scope_nv_assault
 
-aim_hud_offset_pos = 0.02550,-0.018000,0.12
-aim_hud_offset_rot = 0.000000,0.000000,0.000000
+aim_hud_offset_pos = 0.0448,-0.03200,0.22000
+aim_hud_offset_rot = 0.000000,0.000000,-0.000000
 
-aim_hud_offset_pos_16x9 = 0.02550,-0.018000,0.12
-aim_hud_offset_rot_16x9 = 0.000000,0.000000,0.000000
+aim_hud_offset_pos_16x9 = 0.0448,-0.03200,0.22000
+aim_hud_offset_rot_16x9 = 0.000000,0.000000,-0.000000
 
 inertion_aim_origin_offset = 0.01
 inertion_aim_speed = 10 
@@ -525,11 +533,11 @@ bone = scope_cobra
 hud_fov_zoom = 0.85
 use_scope_anims = true ;говорит, что надо использовать анимации с суффиксом _scope в прицеливании с данным прицелом
 
-aim_hud_offset_pos = 0.004500,-0.0115000,0.0
-aim_hud_offset_rot = 0.000000,0.000000,0.000000
+aim_hud_offset_pos = 0.02495,-0.021800,-0.0085000
+aim_hud_offset_rot = 0.00250000,0.000000,-0.000000
 
-aim_hud_offset_pos_16x9 = 0.004500,-0.0115000,0.0
-aim_hud_offset_rot_16x9 = 0.000000,0.000000,0.000000
+aim_hud_offset_pos_16x9 = 0.02495,-0.021800,-0.0085000
+aim_hud_offset_rot_16x9 = 0.00250000,0.000000,-0.000000
 
 inertion_aim_origin_offset = 0.01
 inertion_aim_speed = 8
@@ -542,11 +550,11 @@ bone = scope_pka
 hud_fov_zoom = 0.5
 use_scope_anims = true ;говорит, что надо использовать анимации с суффиксом _scope в прицеливании с данным прицелом
 
-aim_hud_offset_pos = 0.01500,-0.0075000,0.05
-aim_hud_offset_rot = 0.000000,0.000000,0.000000
+aim_hud_offset_pos = 0.0352,-0.019800,0.1900
+aim_hud_offset_rot = -0.0000000,0.000000,-0.000000
 
-aim_hud_offset_pos_16x9 = 0.01500,-0.0075000,0.05
-aim_hud_offset_rot_16x9 = 0.000000,0.000000,0.000000
+aim_hud_offset_pos_16x9 = 0.0352,-0.019800,0.1900
+aim_hud_offset_rot_16x9 = -0.0000000,0.000000,-0.000000
 
 inertion_aim_origin_offset = 0.01
 inertion_aim_speed = 8
@@ -560,11 +568,44 @@ use_scope_anims = true ;говорит, что надо использовать
 
 bone = scope_kashtan
 
-aim_hud_offset_pos = 0.0050,-0.0045000,0.05
-aim_hud_offset_rot = 0.000000,0.000000,0.000000
+aim_hud_offset_pos = 0.02480000,-0.01680000,0.190000
+aim_hud_offset_rot = 0.000000,0.000000,-0.00000
 
-aim_hud_offset_pos_16x9 = 0.0050,-0.0045000,0.05
-aim_hud_offset_rot_16x9 = 0.000000,0.000000,0.000000
+aim_hud_offset_pos_16x9 = 0.02480000,-0.01680000,0.190000
+aim_hud_offset_rot_16x9 = 0.000000,0.000000,-0.00000
 
 inertion_aim_origin_offset = 0.01
 inertion_aim_speed = 10 
+[wpn_saiga12_worn]:wpn_saiga12
+$spawn                         = "weapons\saiga12_worn"
+description                    = st_wpn_saiga12_worn_descr
+inv_name                       = st_wpn_saiga12_worn
+inv_name_short                 = st_wpn_saiga12_worn
+
+;--- Экономика ---
+cost                           = 18560         ; Цена снижена (оригинал: 28560)
+
+;--- ТТХ (Небольшое ухудшение из-за износа ствола/газоотвода) ---
+hit_power                      = 0.645, 0.645, 0.645, 0.645 ; Урон упал на ~6% (оригинал: 0.687)
+bullet_speed                   = 385           ; Скорость пули ниже из-за нагара (оригинал: 410)
+fire_dispersion_base           = 0.58          ; Разброс увеличен, ствол "разбит" (оригинал: 0.49)
+
+;--- Надежность и Осечки (Оружие начинает капризничать гораздо раньше) ---
+misfire_start_condition        = 0.94          ; Клинит уже при износе ниже 94% (оригинал: 0.88)
+misfire_end_condition          = 0.16          ; Порог критического заклинивания (оригинал: 0.12)
+misfire_start_prob             = 0.015         ; Шанс первой осечки выше в два раза (оригинал: 0.007)
+misfire_end_prob               = 0.120         ; Максимальный шанс осечки (оригинал: 0.085)
+condition_shot_dec             = 0.0018        ; Износ за выстрел увеличен на 50% (оригинал: 0.0012)
+condition_queue_shot_dec       = 0.0018
+
+;--- Отдача (Из-за просевших пружин контролировать ствол сложнее) ---
+cam_dispersion                 = 3.94          ; Отдача первого выстрела (оригинал: 3.52)
+cam_dispersion_inc             = 4.35          ; Увеличение отдачи с очередью (оригинал: 3.96)
+
+;--- Визуал (Если в моде есть отдельный худ/текстура для потрепанной Сайги, раскомментируй) ---
+hud                            = wpn_saiga12_worn_hud
+
+visual                         = dynamics\weapons\rust\wpn_saiga12\wpn_saiga12.ogf
+
+[wpn_saiga12_worn_hud]:wpn_saiga12_hud
+item_visual                         = dynamics\weapons\rust\wpn_saiga12\wpn_saiga12_hud.ogf

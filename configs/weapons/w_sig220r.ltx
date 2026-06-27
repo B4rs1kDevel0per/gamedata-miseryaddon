@@ -1,14 +1,28 @@
 [wpn_sig220r]:wpn_sig220
 $spawn               = "weapons\sig220r"   ; name and section in level editor
 description					= st_wpn_sig220r_descr
-cost					= 3400         ; the price of the item
+cost					= 19230         ; the price of the item
 
 def_hide_bones = sight, barrel_silencer, mag, flash, laser
 def_show_bones = barrel
 
 hud                     	= wpn_sig220r_hud
-condition_shot_dec      	= 0.0017
-condition_queue_shot_dec	= 0.0017
+
+hit_power           		= 0.509, 0.509, 0.509, 0.509
+hit_impulse	 		 		= 40
+hit_type 					= fire_wound
+fire_distance           	= 250
+bullet_speed		 		= 292
+
+rpm                     	= 219
+rpm_empty_click 	 		= 120
+
+misfire_start_condition		= 0.76
+misfire_end_condition		= 0.08
+misfire_start_prob = 0.007 ;	     	= 0.0051
+misfire_end_prob = 0.085 ;	     	= 0.058
+condition_shot_dec      	= 0.0010
+condition_queue_shot_dec	= 0.0010
 
 upgrades = vartree_sig220r_body, vartree_sig220r_ramka, vartree_sig220r_shell_ejector, vartree_sig220r_sights, vartree_sig220r_laser, vartree_sig220r_handle
 installed_upgrades = 
@@ -63,3 +77,36 @@ snd_aim_start           = weapons\pm\mechanics\pm_aim_start
 snd_aim_end             = weapons\pm\mechanics\pm_aim_end
 snd_silncer_shot				= weapons\glock17\layers\glock17_silencer_a_1
 snd_jammed_click     = weapons\pm\mechanics\pm_check
+
+[wpn_sig220r_worn]:wpn_sig220r
+; --- Тексты и описания ---
+inv_name                    = st_wpn_sig220r_worn
+inv_name_short              = st_wpn_sig220r_worn
+description                 = st_wpn_sig220r_worn_descr
+
+; --- Экономика ---
+cost                        = 11450                     ; Цена упала (у оригинала 19230), так как пушка б/у
+
+; --- Боевые характеристики (ТТХ) ---
+hit_power                   = 0.465, 0.465, 0.465, 0.465 ; Урон снижен из-за износа ствола (у оригинала 0.509)
+bullet_speed                = 260                       ; Начальная скорость пули упала (у оригинала 292)
+
+; --- Надежность и заклинивания (Хардкор Мизери) ---
+misfire_start_condition     = 0.88                      ; Начнет клинить уже при износе в 12% (оригинал держался до 24% / 0.76)
+misfire_start_prob          = 0.035                     ; Шанс поймать осечку на начальном этапе стал выше (было 0.007)
+misfire_end_prob            = 0.24                      ; В "убитом" состоянии будет клинить постоянно (было 0.085)
+
+condition_shot_dec          = 0.0024                    ; Ломается в 2.4 раза быстрее оригинала (было 0.0010)
+condition_queue_shot_dec    = 0.0024                    ; Износ при быстром кликанье
+
+; --- Сетка инвентаря ---
+inv_grid_x                  = 16                        ; Координаты иконки наследуются, но продублированы. 
+inv_grid_y                  = 28                        ; Если сделаешь текстуру ржавого Сига — впиши сюда новые координаты.
+
+hud                     	= wpn_sig220r_worn_hud
+
+
+visual = dynamics\weapons\rust\wpn_sig220\wpn_sig220r.ogf
+
+[wpn_sig220r_worn_hud]:wpn_sig220r_hud
+item_visual             	= dynamics\rust\weapons\wpn_sig220\wpn_sig220r_hud.ogf

@@ -17,7 +17,7 @@ control_inertion_factor = 1.0
 repair_group = gsh18
 
 ;-------------------------------------------------------------------------------
-cost					= 2250           ; the price of the item
+cost					= 8980           ; the price of the item
 inv_weight				= 0.58
 
 upgrades = vartree_gsh18_ejector, vartree_gsh18_body, vartree_gsh18_sights, vartree_gsh18_handle
@@ -29,13 +29,13 @@ ammo_in_chamber = true
 
 def_hide_bones = sight
 ;----TTX--------------------------------------------------------------------------
-hit_power           			= 1.0, 1.0, 1.0, 1.0
-hit_impulse	 		 			= 75
+hit_power           = 0.265, 0.265, 0.265, 0.265
+hit_impulse	 		= 24
 hit_type 						= fire_wound
-fire_distance           	= 200
-bullet_speed		 		= 225
-rpm                     	= 320
-rpm_empty_click 	 		= 10
+fire_distance          	= 400
+bullet_speed		 	= 383
+rpm                     = 275
+rpm_empty_click 	 	= 120
 
 ;singleshoots_time_delta  = 0.2                                ;Скорострельность для одиночных выстрелов
 ;base_dispersioned_bullets_time_delta = 225                    ;Скорострельность для первых выстрелов
@@ -47,20 +47,13 @@ time_to_aim             = 0.0
 hud                     = wpn_gsh18_hud
 
 
-;//////////////////////////////////////////Задержки при стрельбе из оружия////////////////////////////////////////////////
-misfire_probability        = 0.008 ;вероятность осечки при максимальном износе  !!!old - now not working
-;изношенность, при которой появляется шанс осечки
-misfire_start_condition		= 0.65
-;изношеность при которой шанс осечки становится константным
+misfire_probability        	= 0.005
+misfire_start_condition		= 0.85
 misfire_end_condition		= 0.1
-;шанс осечки при изношености больше чем misfireStartCondition
-misfire_start_prob	     	= 0.002
-;шанс осечки при изношености больше чем misfireEndCondition
-misfire_end_prob	     	= 0.05
-;увеличение изношености при одиночном выстреле
-condition_shot_dec      	= 0.0015
-;увеличение изношености при выстреле очередью
-condition_queue_shot_dec	= 0.0001
+misfire_start_prob = 0.007 ;	     	= 0.004
+misfire_end_prob = 0.11 ;	     	= 0.04
+condition_shot_dec      	= 0.0014
+condition_queue_shot_dec	= 0.0014
 
 ;////////////////////////////////////////////Осечки////////////////////////////////////////////////////////////
 ;Это - разновидность задержки => происходит только в указанных для задержек пределах
@@ -81,7 +74,7 @@ fire_dispersion_condition_factor = 6        ;увеличение дисперс
 ammo_elapsed      = 18
 ammo_mag_size     = 18           ; clip (magazine) size
 
-ammo_class		  = ammo_9x19_fmj, ammo_9x19_pbp
+ammo_class		  = ammo_9x19_fmj, ammo_9x19_pbp, ammo_9x19_ap
 
 launch_speed      = 0
 hand_dependence   = 1
@@ -254,8 +247,8 @@ zoom_hide_crosshair			= true
 zoom_dof_near = 0.48
 zoom_dof_focus = 0.50
 
-hud_fov = 0.75
-hud_fov_zoom = 0.75
+hud_fov = 0.82
+hud_fov_zoom = 0.7
 
 hands_position				= 0.0,-0.13,0.03
 hands_orientation			= 0.0,0.0,0.0

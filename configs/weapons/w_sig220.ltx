@@ -15,7 +15,7 @@ sprint_allowed          = true
 control_inertion_factor = 1.0
 
 ;-------------------------------------------------------------------------------
-cost              = 2200            ; the price of the item
+cost              = 13340            ; the price of the item
 inv_weight        = 0.8
 
 upgrades = vartree_sig220_body, vartree_sig220_ramka, vartree_sig220_shell_ejector, vartree_sig220_sights, vartree_sig220_mag, vartree_sig220_handle
@@ -26,79 +26,73 @@ def_hide_bones = sight, barrel_silencer, mag2, flash, laser
 def_show_bones = barrel
 
 ;----TTX--------------------------------------------------------------------------
-hit_power           		= 1.0, 1.0, 1.0, 1.0
-hit_impulse	 		 		= 100
+hit_power           		= 0.434, 0.434, 0.434, 0.434
+hit_impulse	 		 		= 40
 hit_type 					= fire_wound
 fire_distance           	= 200
-bullet_speed		 		= 250
-rpm                     	= 340
-rpm_empty_click 	 		= 10
+bullet_speed		 		= 278
+rpm                     	= 195
+rpm_empty_click 	 		= 120
 
 use_aim_bullet				= false		;Поддерживается ли первая суппер пуля
 time_to_aim					= 1.0
 
 hud                     = wpn_sig220_hud
 
-misfire_probability        = 0.005 ;вероятность осечки при максимальном износе  !!!old - now not working
-;изношенность, при которой появляется шанс осечки
-misfire_start_condition		= 0.6
-;изношеность при которой шанс осечки становится константным
+misfire_probability        = 0.005
+misfire_start_condition		= 0.82
 misfire_end_condition		= 0.1
-;шанс осечки при изношености больше чем misfireStartCondition
-misfire_start_prob	     	= 0.007
-;шанс осечки при изношености больше чем misfireEndCondition
-misfire_end_prob	     	= 0.07
-;увеличение изношености при одиночном выстреле
-condition_shot_dec      	= 0.0027
-;увеличение изношености при выстреле очередью
-condition_queue_shot_dec	= 0.0027
+misfire_start_prob = 0.007 ;	     	= 0.0067
+misfire_end_prob = 0.11 ;	     	= 0.072
+condition_shot_dec      	= 0.0010
+condition_queue_shot_dec	= 0.0010
 
 ammo_elapsed		 	= 7
 ammo_mag_size		 	= 7        ; clip (magazine) size
-ammo_class		  = ammo_11.43x23_fmj, ammo_11.43x23_hydro
+ammo_class		  = ammo_11.43x23_fmj, ammo_11.43x23_hydro, ammo_11.43x23_ap
 
 launch_speed      = 0
 hand_dependence		 	= 1
 single_handed			= 1
 
 ;---DOF-------------------------------------------------------------------------
-zoom_dof					= -1000, 1.0, 1000
-reload_dof						= 0.0, 0.5, 5, 1.7
+zoom_dof                    = -1000, 1.0, 1000
+reload_dof                  = 0.0, 0.5, 5, 1.7
 
-;---дисперсия---------------------------------------------------------------------------
+;---дисперсия (Баланс Мизери)-----------------------------------------------------------
 ;базовая дисперсия
-fire_dispersion_base	= 0.21 ;0.8    ;угол (в градусах) базовой дисперсии оружия (оружия зажатого в тисках)
-control_inertion_factor = 1.0
-crosshair_inertion   	= 3.10
+fire_dispersion_base        = 0.54                      ; Из Мизери: базовый разброс увеличен более чем в два раза (в ванилле 0.21)
+control_inertion_factor     = 1.05
+crosshair_inertion          = 3.8                       ; Из Мизери: сильное раскачивание прицела (в ванилле 3.10)
 
 ;отдача
-cam_return				= 0
-cam_relax_speed         = 7				;скорость возврата в исходное положение
-cam_relax_speed_ai      = 360
-cam_dispersion          = 1.2				;увеличения угла (в градусах) с каждым выстрелом
-cam_dispersion_inc		= 1.2				;увеличениe cam_dispersion с каждым выстрелом
-cam_dispersion_frac		= 1.0				;ствол будет подыматься на cam_dispersion*cam_dispersion_frac +- cam_dispersion*(1-cam_dispersion_frac)
-cam_max_angle			= 40			;максимальный угол отдачи
-cam_max_angle_horz		= 10.0				;(degree) maximum shot horizontal degree
-cam_step_angle_horz		= 1.2				;(degree) size of step camera moved in horizontal position while shooting
+cam_return                  = 0
+cam_relax_speed             = 7                         ; Скорость возврата в исходное положение
+cam_relax_speed_ai          = 360
+cam_dispersion              = 1.22                      ; Из Мизери: мощный стартовый пинок вверх (в ванилле 1.2)
+cam_dispersion_inc          = 1.3                       ; Из Мизери: каждый последующий выстрел бьет еще сильнее (в ванилле 1.2)
+cam_dispersion_frac         = 1.1                       ; Из Мизери: направление увода ствола
+cam_max_angle               = 50.0                      ; Из Мизери: максимальный предел увода вверх (в ванилле 40.0)
+cam_max_angle_horz          = 50.0                      ; Из Мизери: !!! Горизонтальный разнос увеличен в 5 раз (в ванилле было всего 10.0)
+cam_step_angle_horz         = 1.2                       ; Шаг ухода камеры по горизонтали
 
-PDM_disp_base 				= 1.15
-PDM_disp_vel_factor 		= 1.1
-PDM_disp_accel_factor 		= 1.1
-PDM_disp_crouch	 				= 1.0
-PDM_disp_crouch_no_acc 			= 1.0
+PDM_disp_base               = 0.78                      ; Коэффициент Мизери (в ванилле 1.15)
+PDM_disp_vel_factor         = 1.15                      ; Штраф к точности при ходьбе
+PDM_disp_accel_factor       = 1.1555                    ; Штраф к точности при беге
+PDM_disp_crouch             = 1.0
+PDM_disp_crouch_no_acc      = 1.0
 
-zoom_cam_relax_speed        = 10    ; scope & ironsight
+fire_dispersion_condition_factor = 0.001                ; Из Мизери: отключено сильное влияние износа на разброс (в ванилле было 9)
+
+;---Отдача в прицеливании (Адаптировано под Мизери-пропорции)--------------------------
+zoom_cam_relax_speed        = 10
 zoom_cam_relax_speed_ai     = 120.75
-zoom_cam_dispersion         = 0.5
-zoom_cam_dispersion_inc     = 0.75
-zoom_cam_dispersion_frac    = 0.8
-zoom_cam_max_angle          = 20.0
-zoom_cam_max_angle_horz     = 10.0
-zoom_cam_step_angle_horz    = 1.5
-
-fire_dispersion_condition_factor = 9        ;увеличение дисперсии в процентах при максимальном износе
-
+zoom_cam_dispersion         = 0.55                      ; Скорректировано под Мизери (в ванилле 0.5)
+zoom_cam_dispersion_inc     = 0.85                      ; Нарастание отдачи в зуме (в ванилле 0.75)
+zoom_cam_dispersion_frac    = 0.7                       ; Мизери-коэффициент направления
+zoom_cam_max_angle          = 30.0                      ; Максимальный угол вертикалки в зуме (в ванилле 20.0)
+zoom_cam_max_angle_horz     = 25.0                      ; Максимальный увод вбок при прицеливании (в ванилле 10.0)
+zoom_cam_step_angle_horz    = 1.2                       ; Изменено для плавного, но ощутимого заноса
 ;-------------------------------------------------------------------------------
 holder_range_modifier   = 1.0                       ; во сколько раз увеличивается eye_range
 holder_fov_modifier     = 1.0              ; во сколько раз увеличивается eye_fov
@@ -220,21 +214,29 @@ zoom_hide_crosshair			= true
 zoom_dof_near = 0.48
 zoom_dof_focus = 0.53
 
-hud_fov = 0.75
-hud_fov_zoom = 0.75
+hud_fov = 0.82
+hud_fov_zoom = 0.7
 
-hands_position				= 0.0,-0.13,0.03
-hands_orientation			= 0.0,0.0,0.0
+inertion_pitch_offset_r = -0.008
+inertion_pitch_offset_n = -0.006
+inertion_pitch_offset_d = -0.001
+inertion_origin_offset = 0.05
 
-hands_position_16x9			= 0.0,-0.13,0.03
-hands_orientation_16x9			= 0.0,0.0,0.0
+hands_position			= -0.047,-0.13,-0.09
+hands_orientation		= 0.0,0.0,-7.0
+hands_position_16x9			= -0.047,-0.13,-0.09
+hands_orientation_16x9		= 0.0,0.0,-7.0
 
-aim_hud_offset_pos = 0.000000,0.018000,0.0
-aim_hud_offset_rot = -0.004000,0.000000,0.0
+aim_hud_offset_pos = 0.062700,0.012300,0.115
+aim_hud_offset_rot = -0.004000,0.000000,-0.10000
+aim_hud_offset_pos_16x9 = 0.062700,0.012300,0.115
+aim_hud_offset_rot_16x9 = -0.004000,0.000000,-0.10000
 
-aim_hud_offset_pos_16x9 = 0.000000,0.018000,0.0
-aim_hud_offset_rot_16x9 = -0.004000,0.000000,0.0
 
+hud_move_forward_offset_pos = -0.00294,-0.01765,-0.02647
+hud_move_forward_offset_rot = 0,0,1.76471
+hud_move_forward_offset_pos_16x9 = -0.00294,-0.01765,-0.02647
+hud_move_forward_offset_rot_16x9 = 0,0,1.76471
 
 item_position			= 0.0,0.0,0.0
 item_orientation		= 0.0,0.0,0.0
@@ -391,3 +393,221 @@ anm_fakeshoot_empty      = usp_dry_empty, idle_empty
 anm_fakeshoot_aim_empty      = usp_aim_dry, idle_empty
 anm_fakeshoot_jammed     = usp_dry, idle_jammed
 anm_fakeshoot_aim_jammed     = usp_aim_dry, idle_jammed
+
+
+[wpn_sig220_nimble]:wpn_sig220
+$spawn               = "weapons\wpn_sig220_nimble"   ; name and section in level editor
+inv_name				= st_wpn_sig220_nimble
+description					= st_wpn_sig220_nimble_descr
+
+inv_weight        = 0.773
+cost              = 19230
+
+inv_grid_width			= 2	 
+inv_grid_height			= 1	  
+inv_grid_x				= 8  
+inv_grid_y				= 28
+
+ammo_mag_size		 	= 12
+
+;upgrades                = up_gr_firstab_sig220_custom, up_gr_seconab_sig220_custom, up_gr_thirdab_sig220_custom, up_gr_fourtab_sig220_custom, up_gr_fifthab_sig220_custom
+;installed_upgrades      = up_firsta_sig220_custom, up_firstc_sig220_custom, up_thirda_sig220_custom
+;upgrade_scheme          = upgrade_scheme_sig220
+
+;----TTX--------------------------------------------------------------------------
+hit_power           		= 0.509, 0.509, 0.509, 0.509
+hit_impulse	 		 		= 40
+hit_type 					= fire_wound
+fire_distance           	= 250
+bullet_speed		 		= 292
+rpm                     	= 219
+rpm_empty_click 	 		= 120
+
+hud                     = wpn_sig221_hud
+
+misfire_start_condition		= 0.76
+misfire_end_condition		= 0.08
+misfire_start_prob = 0.007 ;	     	= 0.0051
+misfire_end_prob = 0.11 ;	     	= 0.058
+condition_shot_dec      	= 0.0010
+condition_queue_shot_dec	= 0.0010
+
+fire_dispersion_base		= 0.405
+
+;visual                  = dynamics\weapons\wpn_sig221\wpn_sig221.ogf
+
+silencer_x 						= 62
+silencer_y 						= -18
+
+[wpn_sig221_hud]:wpn_sig220_hud
+
+;item_visual             	= dynamics\weapons\wpn_sig221\wpn_sig221_hud.ogf
+[wpn_sig220_hydro]:wpn_sig220,identity_immunities,weapon_probability,default_weapon_params
+
+ammo_class		 		= ammo_11.43x23_ap, ammo_11.43x23_hydro, ammo_11.43x23_fmj
+
+;---------------------------
+;End of AP section
+;---------------------------
+
+[wpn_sig220_custom]:wpn_sig220
+
+cost              = 16940           ; the price of the item
+inv_weight        = 0.75
+
+;upgrades                = up_gr_firstab_sig220_custom, up_gr_seconab_sig220_custom, up_gr_thirdab_sig220_custom, up_gr_fourtab_sig220_custom, up_gr_fifthab_sig220_custom
+;installed_upgrades      = up_fiftha_sig220_custom, up_thirda_sig220_custom, up_thirdc_sig220_custom
+
+hit_power           		= 0.464, 0.464, 0.464, 0.464
+hit_impulse	 		 		= 40
+fire_distance           	= 200
+bullet_speed		 		= 281
+rpm                     	= 210
+
+hud                     = wpn_sig220_custom_hud
+
+misfire_start_condition		= 0.82
+misfire_end_condition		= 0.1
+misfire_start_prob = 0.007 ;	     	= 0.0067
+misfire_end_prob = 0.11 ;	     	= 0.072
+condition_shot_dec      	= 0.0010
+condition_queue_shot_dec	= 0.0010
+
+fire_dispersion_base	= 0.48
+
+inv_name          = st_wpn_sig220_custom              
+inv_name_short    = st_wpn_sig220_custom
+
+inv_grid_width			= 2
+inv_grid_height			= 1
+inv_grid_x				= 4
+inv_grid_y				= 63
+
+;visual                  = dynamics\weapons\wpn_sig220\wpn_sig22a.ogf
+
+[wpn_sig220_custom_hud]:wpn_sig220_hud
+
+;item_visual						= dynamics\weapons\wpn_sig220\wpn_sig22a_hud.ogf
+;==================================================================================================
+[wpn_sig220_camo]:wpn_sig220
+
+cost              = 17890            ; the price of the item
+inv_weight        = 0.78
+
+upgrades                = up_gr_firstab_sig220_camo, up_gr_seconab_sig220_camo, up_gr_thirdab_sig220_camo, up_gr_fourtab_sig220_camo, up_gr_fifthab_sig220_camo
+installed_upgrades      = up_thirda_sig220_camo
+
+hit_power           		= 0.482, 0.482, 0.482, 0.482
+hit_impulse	 		 		= 40
+fire_distance           	= 250
+bullet_speed		 		= 288
+rpm                     	= 219
+
+hud                     = wpn_sig220_camo_hud
+
+misfire_start_condition		= 0.76
+misfire_end_condition		= 0.06
+misfire_start_prob = 0.007 ;	     	= 0.0061
+misfire_end_prob = 0.11 ;	     	= 0.064
+condition_shot_dec      	= 0.0008
+condition_queue_shot_dec	= 0.0008
+
+fire_dispersion_base	= 0.45
+
+inv_name          = st_wpn_sig220_camo              
+inv_name_short    = st_wpn_sig220_camo
+
+silencer_x 						= 56						; offset in inventory icon
+silencer_y 						= -14
+
+inv_grid_width			= 2
+inv_grid_height			= 1
+inv_grid_x				= 4
+inv_grid_y				= 66
+
+;visual                  = dynamics\weapons\wpn_sig220\wpn_sig22b.ogf
+
+[wpn_sig220_camo_hud]:wpn_sig220_hud
+
+;item_visual						= dynamics\weapons\wpn_sig220\wpn_sig22b_hud.ogf
+;==================================================================================================
+
+[wpn_sig220_worn]:wpn_sig220
+
+cost              = 8790            ; the price of the item
+inv_weight        = 0.8
+
+upgrades                = up_gr_firstab_sig220_worn, up_gr_seconab_sig220_worn, up_gr_thirdab_sig220_worn, up_gr_fourtab_sig220_worn, up_gr_fifthab_sig220_worn
+
+hit_power           		= 0.39, 0.39, 0.39, 0.39
+hit_impulse	 		 		= 40
+fire_distance           	= 200
+bullet_speed		 		= 255
+rpm                     	= 177
+
+hud                     = wpn_sig220_worn_hud
+
+misfire_start_condition		= 0.88
+misfire_end_condition		= 0.14
+misfire_start_prob = 0.007 ;	     	= 0.0079
+misfire_end_prob = 0.11 ;	     	= 0.084
+condition_shot_dec      	= 0.0017
+condition_queue_shot_dec	= 0.0017
+
+fire_dispersion_base	= 0.66
+
+silencer_status         = 0
+
+inv_name          = st_wpn_sig220_worn            
+inv_name_short    = st_wpn_sig220_worn
+description       = st_wpn_sig220_worn_descr
+
+inv_grid_width			= 2
+inv_grid_height			= 1
+inv_grid_x				= 4
+inv_grid_y				= 65
+
+visual                  = dynamics\weapons\rust\wpn_sig220\wpn_sig220.ogf
+
+[wpn_sig220_worn_hud]:wpn_sig220_hud
+
+item_visual						= dynamics\weapons\rust\wpn_sig220\wpn_sig220_hud.ogf
+;==================================================================================================
+[wpn_sig220_rusty]:wpn_sig220_worn
+
+cost              = 5870            ; the price of the item
+inv_weight        = 0.86
+
+;upgrades                = up_gr_firstab_sig220_rusty, up_gr_seconab_sig220_rusty, up_gr_thirdab_sig220_rusty, up_gr_fourtab_sig220_rusty, up_gr_fifthab_sig220_rusty
+
+hit_power           		= 0.368, 0.368, 0.368, 0.368
+hit_impulse	 		 		= 40
+fire_distance           	= 180
+bullet_speed		 		= 240
+rpm                     	= 166
+
+hud                     = wpn_sig220_rusty_hud
+
+misfire_start_condition		= 0.95
+misfire_end_condition		= 0.18
+misfire_start_prob = 0.007 ;	     	= 0.0083
+misfire_end_prob = 0.11 ;	     	= 0.088
+condition_shot_dec      	= 0.0021
+condition_queue_shot_dec	= 0.0021
+
+fire_dispersion_base	= 0.83
+
+silencer_status         = 0
+
+inv_name          = st_wpn_sig220_rusty             
+inv_name_short    = st_wpn_sig220_rusty
+description       = st_wpn_sig220_worn_descr
+
+inv_grid_width			= 2
+inv_grid_height			= 1
+inv_grid_x				= 4
+inv_grid_y				= 64
+
+[wpn_sig220_rusty_hud]:wpn_sig220_worn_hud
+
+;item_visual						= dynamics\weapons\wpn_sig220\wpn_sig22d_hud.ogf

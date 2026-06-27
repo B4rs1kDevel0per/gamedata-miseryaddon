@@ -17,7 +17,7 @@ control_inertion_factor = 1.0
 repair_group = glock
 
 ;-------------------------------------------------------------------------------
-cost					= 2350           ; the price of the item
+cost					= 9350           ; the price of the item
 inv_weight				= 0.63
 
 upgrades                = vartree_glock17_reliability, vartree_glock17_mag19, vartree_glock17_sights;, vartree_glock17_torch
@@ -29,13 +29,13 @@ def_hide_bones = flash, laser, line, light, barrel_compensator, barrel_silencer,
 ammo_in_chamber = true
 
 ;----TTX--------------------------------------------------------------------------
-hit_power           			= 0.85, 0.85, 0.85, 0.85
+hit_power           			= 0.28, 0.28, 0.28, 0.28
 hit_impulse	 		 			= 75
 hit_type 						= fire_wound
 fire_distance           	= 200
 bullet_speed		 		= 225
-rpm                     	= 1000
-rpm_empty_click 	 		= 10
+rpm                     	= 300
+rpm_empty_click 	 		= 120
 
 singleshoots_time_delta  = 0.2                                ;Скорострельность для одиночных выстрелов
 ;base_dispersioned_bullets_time_delta = 225                    ;Скорострельность для первых выстрелов
@@ -74,7 +74,7 @@ light_misfire_start_probability = 0.8
 ;какая часть всех задержек будет осечками на нижнем пороге
 light_misfire_end_probability = 0.4
 
-fire_dispersion_condition_factor = 6        ;увеличение дисперсии в процентах при максимальном износе
+fire_dispersion_condition_factor = 0.015        ;увеличение дисперсии в процентах при максимальном износе
 
 ammo_elapsed      = 17
 ammo_mag_size     = 17           ; clip (magazine) size
@@ -92,6 +92,10 @@ single_handed     = 1
 ;can_explose = true
 ;explode_start_condition = 1
 ;explode_probability     = 1
+
+;---DOF-------------------------------------------------------------------------
+zoom_dof             = 0.5, 1.0, 180
+reload_dof           = 0.0, 0.5, 5, 1.7
 
 ;---DOF-------------------------------------------------------------------------
 zoom_dof             = 0.5, 1.0, 180
@@ -134,12 +138,12 @@ holder_range_modifier	= 1.0               ; во сколько раз увел�
 holder_fov_modifier		= 1.0              ; во сколько раз увеличивается eye_fov
 
 min_radius              	= 0
-max_radius              	= 500
+max_radius              	= 50
 
-hit_probability_gd_novice	= 0.80
-hit_probability_gd_stalker	= 0.80
-hit_probability_gd_veteran	= 0.80
-hit_probability_gd_master	= 0.80
+hit_probability_gd_novice  = 1.0
+hit_probability_gd_stalker  = 1.0
+hit_probability_gd_veteran  = 1.0
+hit_probability_gd_master  = 1.0
 
 ;-------------------------------------------------------------------------------
 supports_detector = true
@@ -258,20 +262,30 @@ zoom_hide_crosshair			= true
 zoom_dof_near = 0.48
 zoom_dof_focus = 0.53
 
-hud_fov = 0.75
-hud_fov_zoom = 0.75
+hud_fov = 0.82
+hud_fov_zoom = 0.7
 
-hands_position				= 0.0,-0.13,0.03
-hands_orientation			= 0.0,0.0,0.0
+inertion_pitch_offset_r = -0.008
+inertion_pitch_offset_n = -0.006
+inertion_pitch_offset_d = -0.001
+inertion_origin_offset = 0.05
 
-hands_position_16x9			= 0.0,-0.13,0.03
-hands_orientation_16x9			= 0.0,0.0,0.0
+hud_move_forward_offset_pos = -0.00294,-0.01294,-0.01882
+hud_move_forward_offset_rot = 0,0,1.76471
 
-aim_hud_offset_pos = 0.0,0.031,0.0
-aim_hud_offset_rot = -0.005,0.0,0.0
+hud_move_forward_offset_pos_16x9 = -0.00294,-0.01294,-0.01882
+hud_move_forward_offset_rot_16x9 = 0,0,1.76471
 
-aim_hud_offset_pos_16x9 = 0.0,0.031,0.0
-aim_hud_offset_rot_16x9 = -0.005,0.0,0.0
+
+hands_position			= -0.06,-0.125,-0.09
+hands_orientation			= 0.0,0.0,-7.0
+hands_position_16x9			= -0.06,-0.125,-0.09
+hands_orientation_16x9			= 0.0,0.0,-7.0
+
+aim_hud_offset_pos = 0.0752,0.019,0.115
+aim_hud_offset_rot = -0.005,0.0,-0.1
+aim_hud_offset_pos_16x9 = 0.0752,0.019,0.115
+aim_hud_offset_rot_16x9 = -0.005,0.0,-0.1
 
 item_position			= 0.0,0.0,0.0
 item_orientation		= 0.0,0.0,0.0
@@ -456,3 +470,44 @@ anm_reload                                = glock18_reload, glock18_reload
 anm_reload_empty                          = glock18_reload_full
 anm_reload_ammochange                     = glock18_reload, glock18_reload
 anm_reload_empty_ammochange               = glock18_reload_full
+
+[wpn_glock17_worn]:wpn_glock17
+; --- Тексты и описания ---
+inv_name                    = st_wpn_glock17_worn
+inv_name_short              = st_wpn_glock17_worn
+description                 = st_wpn_glock17_worn_descr
+
+; --- Экономика ---
+cost                        = 7150                      ; Цена снижена (было 9350)
+
+hit_power                   = 0.24, 0.24, 0.24, 0.24    ; Урон слегка снижен из-за износа ствола (было 0.28)
+bullet_speed                = 210                       ; Скорость пули чуть меньше (было 225)
+rpm                         = 285                       ; Скорострельность немного упала (было 300)
+
+; --- Точность (стал косее) ---
+fire_dispersion_base        = 0.44                      ; Разброс увеличен почти в два раза (было 0.24)
+
+; --- Надежность и заклинивания ---
+misfire_start_condition     = 0.75                      ; Теперь клинить начинает при износе в 25% (у дефолта было аж 0.4)
+misfire_start_prob          = 0.006                     ; Начальный шанс осечки выше (было 0.002)
+misfire_end_prob            = 0.14                      ; Максимальный шанс осечки выше (было 0.08)
+
+condition_shot_dec          = 0.0021                    ; Износ за выстрел увеличен (было 0.0009)
+condition_queue_shot_dec    = 0.0026                    ; Износ при зажиме увеличен (было 0.0012)
+
+; --- Легкие осечки ---
+light_misfire_start_condition = 0.65                    ; Порог легких заклиниваний тоже сдвинут (было 0.5)
+
+; --- Сетка инвентаря ---
+; Если перерисовал иконку под worn — меняй координаты, если нет — остаются базовые.
+inv_grid_x                  = 16
+inv_grid_y                  = 31
+
+hud                     = wpn_glock17_worn_hud
+
+visual                  = dynamics\weapons\rust\wpn_glock17\wpn_glock17.ogf
+
+
+[wpn_glock17_worn_hud]:wpn_glock17_hud
+
+item_visual             	= dynamics\weapons\rust\wpn_glock17\wpn_glock17_hud.ogf

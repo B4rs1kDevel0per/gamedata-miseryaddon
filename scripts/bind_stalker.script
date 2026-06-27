@@ -79,7 +79,7 @@ function mp_actor_binder:update_gameover_screen()
 		self:init_gameover_screen()
 	end
 	
-	local count = math.floor(10 - (time_global() - self.gameover_start_time) / 1000)
+	local count = math.floor(6 - (time_global() - self.gameover_start_time) / 1000)
 	
 	if count >= 0 then
 		self.gameover_wnd:getTimer():SetText(tostring(count))

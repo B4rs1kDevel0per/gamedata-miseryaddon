@@ -1,19 +1,22 @@
 ;------------------------------------------bm16_short_barrel------------------------------------------
 [up_sect_bm16_short_barrel]
-cost = 700
-inv_weight = -0.7
-fire_dispersion_base = +0.175
-control_inertion_factor = -0.3
-crosshair_inertion = -4
-bullet_speed = -100
-fire_distance = -50
-actor_camera_speed_factor = 1.5
-overriding_show_bones = barrel_short
-overriding_hide_bones = barrel
-flame_particles = weapons\generic_weapon05
+cost                     = 700
+inv_weight               = -0.40
+hit_power       = 1.05, 1.05, 1.05, 1.05
+hit_impulse              = -10
+fire_distance            = -330
+bullet_speed = -50
+fire_dispersion_base     = +0.39
+condition_shot_dec       = +0.0004
+condition_queue_shot_dec = +0.0003
+
+; Визуальные параметры движка/мода из твоего исходника
+overriding_show_bones    = barrel_short
+overriding_hide_bones    = barrel
+flame_particles          = weapons\generic_weapon05
 upgrade_addon_icons_hide = icon_element_toz66_barrel
-inv_grid_width = -2
-pistol_slot_allowed = +0.6
+inv_grid_width           = -2
+pistol_slot_allowed      = +0.6
 
 [up_bm16_short_barrel]
 scheme_index = 0, 0
@@ -88,7 +91,7 @@ bullet_speed = 100
 condition_queue_shot_dec = 0.002
 condition_shot_dec = 0.002
 fire_dispersion_base = -0.06
-ammo_class = ammo_12x76_zhekan
+ammo_class = ammo_12x76_zhekan, ammo_12x76_dart
 hit_impulse    = +25
 PDM_disp_base = -0.1
 hit_power       = 1.1, 1.1, 1.1, 1.1
@@ -135,39 +138,54 @@ description = st_up_bm16_barrel_break_speed_descr
 icon = ui_up_bm16_barrel_break_speed
 ;------------------------------------------bm16_short_stock------------------------------------------
 [up_sect_bm16_short_stock]
-cost = 500
-inv_weight = -0.5
-cam_dispersion = 4
-cam_step_angle_horz = 3
-zoom_cam_dispersion = 2
-zoom_cam_dispersion_inc = 1
-zoom_cam_step_angle_horz = 4
-overriding_show_bones = stock_short
-overriding_hide_bones = stock
-actor_camera_speed_factor = 1.1
-PDM_disp_base = 1.2
+cost                     = 500
+inv_weight               = -0.27
+control_inertion_factor  = -0.39
+crosshair_inertion       = -3.3
+
+; Дикая Мизерововская отдача из-за отсутствия упора
+cam_relax_speed          = +4.0
+cam_dispersion           = +0.48
+cam_dispersion_inc       = +0.82
+cam_dispersion_frac      = -0.4
+cam_step_angle_horz      = +0.43
+
+zoom_cam_relax_speed     = +4.0
+zoom_cam_dispersion      = +0.71
+zoom_cam_dispersion_inc  = +0.80
+zoom_cam_dispersion_frac = -0.2
+zoom_cam_step_angle_horz = +0.40
+
+; Дисперсия при движении (PDM)
+PDM_disp_base            = -0.45
+PDM_disp_vel_factor      = -0.60
+PDM_disp_accel_factor     = -0.605
+
+; Визуальные параметры движка/мода из твоего исходника
+overriding_show_bones    = stock_short
+overriding_hide_bones    = stock
 upgrade_addon_icons_hide = icon_element_toz66_stock
-inv_grid_width = -1
-inv_grid_x = +1
-inv_addons_correction_x = -50
-pistol_slot_allowed = +0.6
+inv_grid_width           = -1
+inv_grid_x               = -3
+inv_grid_y               = -26
+pistol_slot_allowed      = +0.6
 
 [up_bm16_short_stock]
-scheme_index = 0, 2
-known = 1
-effects = vartree_bm16_tsevie
-section = up_sect_bm16_short_stock
-property = prop_shortstock
-precondition_functor = inventory_upgrades.precondition_functor_a
-precondition_parameter = true
-effect_functor = inventory_upgrades.effect_functor_a
-effect_parameter  = something_here
-prereq_functor  = inventory_upgrades.prereq_functor_a
+scheme_index            = 0, 2
+known                   = 1
+effects                 = vartree_bm16_tsevie
+section                 = up_sect_bm16_short_stock
+property                = prop_shortstock
+precondition_functor    = inventory_upgrades.precondition_functor_a
+precondition_parameter  = true
+effect_functor          = inventory_upgrades.effect_functor_a
+effect_parameter        = something_here
+prereq_functor          = inventory_upgrades.prereq_functor_a
 prereq_tooltip_functor  = inventory_upgrades.prereq_tooltip_functor_a
-prereq_params  = 
-name = st_up_bm16_short_stock_name
-description = st_up_bm16_short_stock_descr
-icon = ui_up_bm16_short_stock
+prereq_params           = 
+name                    = st_up_bm16_short_stock_name
+description             = st_up_bm16_short_stock_descr
+icon                    = ui_up_bm16_short_stock
 ;------------------------------------------bm16_accurate_stock------------------------------------------
 [up_sect_bm16_accurate_stock]
 cost = 700

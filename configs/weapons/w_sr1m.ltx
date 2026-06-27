@@ -18,7 +18,7 @@ control_inertion_factor = 1.0
 repair_group = sr1m
 
 ;-------------------------------------------------------------------------------
-cost					= 2700           ; the price of the item
+cost					= 14628           ; the price of the item
 inv_weight				= 0.9
 
 upgrades = vartree_sr1m_zatvor, vartree_sr1m_mag_reliability, vartree_sr1m_usm, vartree_sr1m_ramka, vartree_sr1m_rail, vartree_sr1m_sights, vartree_sr1m_mag
@@ -31,13 +31,13 @@ ammo_in_chamber = true
 def_hide_bones = sight, picatinia, laser, flash, barrel_silencer, barrel_compensator
 def_show_bones = barrel
 ;----TTX--------------------------------------------------------------------------
-hit_power           			= 1.0, 1.0, 1.0, 1.0
+hit_power           		= 0.35, 0.35, 0.35, 0.35
 hit_impulse	 		 			= 75
 hit_type 						= fire_wound
 fire_distance           	= 200
 bullet_speed		 		= 225
-rpm                     	= 320
-rpm_empty_click 	 		= 10
+rpm                     	= 300
+rpm_empty_click 	 		= 120
 
 ;singleshoots_time_delta  = 0.2                                ;Скорострельность для одиночных выстрелов
 ;base_dispersioned_bullets_time_delta = 225                    ;Скорострельность для первых выстрелов
@@ -75,7 +75,7 @@ light_misfire_start_probability = 0.8
 ;какая часть всех задержек будет осечками на нижнем пороге
 light_misfire_end_probability = 0.4
 
-fire_dispersion_condition_factor = 6        ;увеличение дисперсии в процентах при максимальном износе
+fire_dispersion_condition_factor = 0.060        ;увеличение дисперсии в процентах при максимальном износе
 
 ammo_elapsed      = 18
 ammo_mag_size     = 18           ; clip (magazine) size
@@ -128,14 +128,14 @@ holder_range_modifier	= 1.0               ; во сколько раз увел�
 holder_fov_modifier		= 1.0              ; во сколько раз увеличивается eye_fov
 
 min_radius              	= 0
-max_radius              	= 500
+max_radius              	= 50
 
-hit_probability_gd_novice	= 0.80
-hit_probability_gd_stalker	= 0.80
-hit_probability_gd_veteran	= 0.80
-hit_probability_gd_master	= 0.80
+hit_probability_gd_novice  = 1.0
+hit_probability_gd_stalker  = 1.0
+hit_probability_gd_veteran  = 1.0
+hit_probability_gd_master  = 1.0
 
-;-------------------------------------------------------------------------------
+;------------------------------------------------------------------------------
 supports_detector = true
 slot              = 1                ; // secondary
 animation_slot    = 1                ; type of the animation that will be used
@@ -254,20 +254,28 @@ zoom_hide_crosshair			= true
 zoom_dof_near = 0.48
 zoom_dof_focus = 0.50
 
-hud_fov = 0.75
-hud_fov_zoom = 0.75
+hud_fov = 0.82
+hud_fov_zoom = 0.7
 
-hands_position				= 0.0,-0.13,0.03
-hands_orientation			= 0.0,0.0,0.0
+inertion_pitch_offset_r = -0.008
+inertion_pitch_offset_n = -0.006
+inertion_pitch_offset_d = -0.001
+inertion_origin_offset = 0.05
 
-hands_position_16x9			= 0.0,-0.13,0.03
-hands_orientation_16x9			= 0.0,0.0,0.0
+hands_position			= -0.036,-0.135,-0.085
+hands_orientation			= 0.0,0.0,-7.0
+hands_position_16x9			= -0.036,-0.135,-0.085
+hands_orientation_16x9			= 0.0,0.0,-7.0
 
-aim_hud_offset_pos = 0.0003000,0.0135000,0.0
-aim_hud_offset_rot = -0.0040000,0.000000,0.0
+aim_hud_offset_pos = 0.052200,0.0132000,0.115
+aim_hud_offset_rot = -0.0040000,0.000000,-0.10000
+aim_hud_offset_pos_16x9 = 0.052200,0.0132000,0.115
+aim_hud_offset_rot_16x9 = -0.0040000,0.000000,-0.10000
 
-aim_hud_offset_pos_16x9 = 0.0003000,0.0135000,0.0
-aim_hud_offset_rot_16x9 = -0.0040000,0.000000,0.0
+hud_move_forward_offset_pos = -0.00294,-0.02059,-0.02647
+hud_move_forward_offset_rot = 0,0,1.76471
+hud_move_forward_offset_pos_16x9 = -0.00294,-0.02059,-0.02647
+hud_move_forward_offset_rot_16x9 = 0,0,1.76471
 
 item_position			= 0.0,0.0,0.0
 item_orientation		= 0.0,0.0,0.0
@@ -426,3 +434,42 @@ anm_reload                       = sr1m_reload
 anm_reload_empty                 = sr1m_reload_full
 anm_reload_jammed                = gsh18_revival, sr1m_revival
 anm_reload_jammed_last           = gsh18_revival_last, sr1m_revival_last
+
+[wpn_sr1m_worn]:wpn_sr1m
+; --- Тексты и описания ---
+inv_name                    = st_wpn_sr1m_worn
+inv_name_short              = st_wpn_sr1m_worn
+description                 = st_wpn_sr1m_worn_descr
+
+; --- Экономика ---
+cost                        = 9850                      ; Цена б/у ствола снижена (у оригинала 14628)
+
+; --- Боевые характеристики (ТТХ) ---
+hit_power                   = 0.31, 0.31, 0.31, 0.31    ; Урон снижен из-за износа уникальной полигональной нарези (было 0.35)
+bullet_speed                = 205                       ; Начальная скорость пули просела (было 225)
+
+; --- Точность ---
+fire_dispersion_base        = 0.38                      ; Пистолет стал заметно косее из-за люфта затвора (было 0.18)
+
+; --- Надежность и тяжелые заклинивания ---
+misfire_start_condition     = 0.86                      ; Начнет ловить глухие клины уже при 14% износа (у оригинала аж при 30% / 0.7)
+misfire_start_prob          = 0.08                      ; Начальный шанс поймать жесткий клин выше (было 0.05)
+misfire_end_prob            = 0.24                      ; Шанс заклинить, если пистолет полностью "в хламе" (было 0.15)
+
+condition_shot_dec          = 0.0054                    ; Износ за один выстрел увеличен почти в два раза (было 0.0028)
+condition_queue_shot_dec    = 0.0054                    ; Ресурс деталей снижен
+
+; --- Легкие осечки (Фичи xrMPE) ---
+light_misfire_start_condition = 0.78                    ; Мелкие осечки начнут докучать игроку гораздо раньше (было 0.5)
+
+; --- Сетка инвентаря ---
+inv_grid_x                  = 18
+inv_grid_y                  = 25
+
+hud                     = wpn_sr1m_worn_hud
+
+visual                  = dynamics\weapons\rust\wpn_sr1m\wpn_sr1m.ogf
+
+[wpn_sr1m_worn_hud]:wpn_sr1m_hud
+
+item_visual             	= dynamics\weapons\rust\wpn_sr1m\wpn_sr1m_hud.ogf
