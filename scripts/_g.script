@@ -53,6 +53,7 @@ GM_SCRIPT_SLEEP = 14
 GM_SCRIPT_UPDATE_STATISTIC = 15
 GM_SCRIPT_REMOVE_TASK_MAP_LOCATIONS = 16
 GM_SCRIPT_SAVE_VOICE_DIALOG = 17
+GM_SCRIPT_MUTANT_LOOT  = 18
 
 GM_SCRIPT_ADDON_EVENTS = 100
 
@@ -63,7 +64,7 @@ db.OnlineStalkers        = {}   -- список id онлайн-сталкеро
 -- Add your own events after this
 -- Example:
 -- GM_SCRIPT_USE_ITEM = GM_SCRIPT_ADDON_EVENTS + 1
-GM_SCRIPT_MUTANT_LOOT  = GM_SCRIPT_ADDON_EVENTS + 1
+-- GM_SCRIPT_MUTANT_LOOT  = GM_SCRIPT_ADDON_EVENTS + 1
 GM_SCRIPT_WEATHER = GM_SCRIPT_ADDON_EVENTS + 1
 ----------------------------------------------------------------------
 
