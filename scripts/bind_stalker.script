@@ -79,7 +79,7 @@ function mp_actor_binder:update_gameover_screen()
 		self:init_gameover_screen()
 	end
 	
-	local count = math.floor(5 - (time_global() - self.gameover_start_time) / 1000)
+	local count = math.floor(6 - (time_global() - self.gameover_start_time) / 1000)
 	
 	if count >= 0 then
 		self.gameover_wnd:getTimer():SetText(tostring(count))
@@ -150,13 +150,10 @@ function mp_actor_binder:task_callback(_task, _state)
 	if GameType() == game_cl.game_id_coop then
 		if _state ~= task.fail then
 			if not _task:is_silent_notify() then
-				local actor = db.actor or getLocalActor()
-				if actor then
-					if _state == task.completed then
-						news_manager.send_task(actor, "complete", _task)
-					else
-						news_manager.send_task(actor, "new", _task)
-					end
+				if _state == task.completed then
+					news_manager.send_task(db.actor, "complete", _task)
+				else
+					news_manager.send_task(db.actor, "new", _task)
 				end
 			end
 		end
@@ -422,8 +419,8 @@ function actor_binder:net_spawn(data)
 		db.actor.deimos_intensity = self.deimos_intensity
 	end
 	
-	-- db.add_actor(self.object)
-	-- db.actor.deimos_intensity = self.deimos_intensity
+	db.add_actor(self.object)
+	db.actor.deimos_intensity = self.deimos_intensity
 	self.deimos_intensity = nil
 	if self.st.disable_input_time == nil then
 		level.enable_input()
@@ -597,13 +594,10 @@ end
 
 function actor_binder:task_callback(_task, _state, _silent)
 	if _state ~= task.fail then
-		local actor = db.actor or getLocalActor()
-		if actor then
-			if _state == task.completed then
-				news_manager.send_task(actor, "complete", _task)
-			else
-				news_manager.send_task(actor, "new", _task)
-			end
+		if _state == task.completed then
+			news_manager.send_task(db.actor, "complete", _task)
+		else
+			news_manager.send_task(db.actor, "new", _task)
 		end
 	end
 	task_manager.task_callback(_task, _state)
@@ -758,7 +752,7 @@ local function spawn_achivement_items(items_table, count, inv_box_story_id)
 end
 
 function actor_binder:check_detective_achievement()
-	if not story_flags.has_flag("DETECTIVE_ACHIEVEMENT_GAINED") then
+	if not has_alife_info("detective_achievement_gained") then
 		return
 	end
 	if self.last_detective_achievement_spawn_time == nil then
@@ -772,7 +766,7 @@ function actor_binder:check_detective_achievement()
 end
 
 function actor_binder:check_mutant_hunter_achievement()
-	if not story_flags.has_flag("MUTANT_HUNTER_ACHIEVEMENT_GAINED") then
+	if not has_alife_info("mutant_hunter_achievement_gained") then
 		return
 	end
 	if self.last_mutant_hunter_achievement_spawn_time == nil then
@@ -890,9 +884,9 @@ end
 function bind_stalker_cl:death_callback(victim, who)
 	xrs_dyn_music.npc_table[self.object:id()] = nil
 	
-		-- xr_combat_ignore: чистим safe_zone при смерти
+		-- xr_combat_ignore: пїЅпїЅпїЅпїЅпїЅпїЅ safe_zone пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 	if xr_combat_ignore then xr_combat_ignore.npc_on_death_callback(self.object, who) end
-	-- squad_on_npc_death не вызываем здесь — alife():object() уже nil после смерти
+	-- squad_on_npc_death пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅ alife():object() пїЅпїЅпїЅ nil пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 
 	if who and getLocalActor() and getLocalActor():id() == who:id() then
 		xr_statistic.inc_killed_stalkers_counter(who:id())
@@ -900,7 +894,7 @@ function bind_stalker_cl:death_callback(victim, who)
 end
 
 function bind_stalker_cl:hit_callback(obj, amount, local_direction, who, bone_index)
-	-- xr_combat_ignore: safe zone hit логика
+	-- xr_combat_ignore: safe zone hit пїЅпїЅпїЅпїЅпїЅпїЅ
 	if db.storage[obj:id()] and db.storage[obj:id()].combat_ignore then
 		if xr_combat_ignore then xr_combat_ignore.npc_on_hit_callback(obj, amount, local_direction, who, bone_index) end
 	end

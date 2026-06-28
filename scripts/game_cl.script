@@ -308,10 +308,6 @@ end
 --end
 
 function give_task(task_id, status)
-	if not IsActorNetReady(LocalActor()) then
-		return
-	end
-
 	if getLocalActor() then
 		local t = getLocalActor():get_task(tostring(task_id), true)
 		if t then

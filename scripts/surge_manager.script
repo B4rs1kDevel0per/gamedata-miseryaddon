@@ -391,9 +391,11 @@ function CSurgeManager:update_sv()
 				self.effector_set = true
 			elseif diff_sec >= 96 and not self.effector_set then
 				self.effector_set = true
-			elseif diff_sec >= 38 and not self.blowout_sound then
-				self.blowout_sound = true
+			elseif diff_sec >= 38 and not self.task_given then
+				self:give_surge_hide_task()
 				self.task_given = true
+			elseif diff_sec >= 37 and not self.blowout_sound then
+				self.blowout_sound = true
             elseif diff_sec >= 36 and self.stages['siren'] == nil and self.atmosfear and 
 			(self.atmosfear.opt_blowout_warning == "siren" or 
 			 self.atmosfear.opt_blowout_warning == "radio_siren") then
