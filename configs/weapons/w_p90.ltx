@@ -24,7 +24,7 @@ hide_collimator_sights_in_alter_zoom = true
 repair_group = p90
 
 ;-------------------------------------------------------------------------------
-cost              = 6600            ; the price of the item
+cost              = 32950            ; the price of the item
 weapon_class      = assault_rifle      ; the type of the box that will be used in buy-menu in multiplayer mode
 inv_weight        = 2.78
 
@@ -35,32 +35,26 @@ upgrade_scheme          = upgrade_scheme_p90
 
 singleshoots_time_delta  = 0.1                                ;Скорострельность для одиночных выстрелов
 ;----TTX--------------------------------------------------------------------------
-hit_power            = 0.8, 0.8, 0.8, 0.8
+hit_power            = 0.57, 0.57, 0.57, 0.57
 hit_impulse          = 100    ; size of physic impulse by bullet
 hit_type             = fire_wound            ; [] type of the wound
-fire_distance           = 200                  ; maximum fire distance that bullet can fly
+fire_distance           = 1000                  ; maximum fire distance that bullet can fly
 bullet_speed            = 270                ; starting bullet speed
-rpm                     = 780
-rpm_empty_click         = 10
+rpm                     = 700
+rpm_empty_click         = 200
 
 use_aim_bullet          = false                ;Поддерживается ли первая суппер пуля
 time_to_aim             = 3.0
 
 hud                     = wpn_p90_hud
 
-misfire_probability        = 0.005 ;вероятность осечки при максимальном износе  !!!old - now not working
-;изношенность, при которой появляется шанс осечки
-misfire_start_condition		= 0.6
-;изношеность при которой шанс осечки становится константным
+misfire_probability        	= 0.005
+misfire_start_condition		= 0.7
 misfire_end_condition		= 0.1
-;шанс осечки при изношености больше чем misfireStartCondition
-misfire_start_prob	     	= 0.004
-;шанс осечки при изношености больше чем misfireEndCondition
-misfire_end_prob	     	= 0.057
-;увеличение изношености при одиночном выстреле
-condition_shot_dec      	= 0.0012
-;увеличение изношености при выстреле очередью
-condition_queue_shot_dec	= 0.0014
+misfire_start_prob = 0.007 ;	     	= 0.0075
+misfire_end_prob = 0.085 ;	     	= 0.04
+condition_shot_dec      	= 0.0008
+condition_queue_shot_dec	= 0.0008
 
 ammo_in_chamber = true
 
@@ -79,37 +73,37 @@ reload_dof           = 0.0, 0.5, 5, 2
 
 ;---дисперсия---------------------------------------------------------------------------
 ;базовая дисперсия
-fire_dispersion_base       = 0.23    ;угол (в градусах) базовой дисперсии оружия (оружия зажатого в тисках)
-control_inertion_factor    = 1.2f
-crosshair_inertion			= 6.30
+fire_dispersion_base       	= 0.24
+control_inertion_factor    	= 1.36f
+crosshair_inertion			= 5.8
 
 ;отдача
-cam_return 				= 0
-cam_relax_speed         = 5    		;скорость возврата в исходное положение
-cam_relax_speed_ai     	= 120.75
-cam_dispersion          = 0.6 		;увеличения угла (в градусах) с каждым выстрелом
-cam_dispersion_inc      = 0.15 		;увеличениe cam_dispersion с каждым выстрелом
-cam_dispersion_frac     = 0.85 		;ствол будет подыматься на cam_dispersion*cam_dispersion_frac +- cam_dispersion*(1-cam_dispersion_frac)
-cam_max_angle           = 80.0		;максимальный угол отдачи
-cam_max_angle_horz      = 50.0      ;(degree) maximum shot horizontal degree
-cam_step_angle_horz     = 1.2 		;(degree) size of step camera moved in horizontal position while shooting
+cam_return = 0 ;				= 1
+cam_relax_speed         = 10
+cam_relax_speed_ai      = 360
+cam_dispersion	        = 0.8
+cam_dispersion_inc      = 0.52
+cam_dispersion_frac     = 1.0
+cam_max_angle		= 50.0
+cam_max_angle_horz      = 50.0
+cam_step_angle_horz     = 1.44
 
-PDM_disp_base 				= 1.5
-PDM_disp_vel_factor 		= 1.9
-PDM_disp_accel_factor 		= 1.9
-PDM_disp_crouch	 			= 1.0
-PDM_disp_crouch_no_acc 		= 1.0
+PDM_disp_base 				= 0.95
+PDM_disp_vel_factor 		= 2.3
+PDM_disp_accel_factor 		= 2.3
+PDM_disp_crouch = 1.0 ;  			= 1.165
+PDM_disp_crouch_no_acc = 1.0 ; 		= 1.325
 
-zoom_cam_relax_speed         = 5     ; scope & ironsight
-zoom_cam_relax_speed_ai      = 360
-zoom_cam_dispersion          = 0.3
-zoom_cam_dispersion_inc      = 0.15
-zoom_cam_dispersion_frac     = 0.95
-zoom_cam_max_angle           = 50.0
-zoom_cam_max_angle_horz      = 50.0
-zoom_cam_step_angle_horz     = 1.0
+zoom_cam_relax_speed    = 10
+zoom_cam_relax_speed_ai = 360
+zoom_cam_dispersion          	= 0.7
+zoom_cam_dispersion_inc      	= 0.3
+zoom_cam_dispersion_frac= 0.9
+zoom_cam_max_angle      = 50.0
+zoom_cam_max_angle_horz = 50.0
+zoom_cam_step_angle_horz= 1.34
 
-fire_dispersion_condition_factor = 11        ;увеличение дисперсии в процентах при максимальном износе
+fire_dispersion_condition_factor = 0.015 ; 0.001 ; = 0.01 ; 15
 
 ;-------------------------------------------------------------------------------
 holder_range_modifier   = 1.0                       ; во сколько раз увеличивается eye_range
@@ -118,10 +112,10 @@ holder_fov_modifier     = 1.0              ; во сколько раз увел
 min_radius              = 0
 max_radius              = 500
 
-hit_probability_gd_novice  = 0.80
-hit_probability_gd_stalker = 0.80
-hit_probability_gd_veteran = 0.80
-hit_probability_gd_master  = 0.80
+hit_probability_gd_novice  = 1.0
+hit_probability_gd_stalker = 1.0
+hit_probability_gd_veteran = 1.0
+hit_probability_gd_master  = 1.0
 
 ;-------------------------------------------------------------------------------
 slot              = 2                ; // secondary
@@ -267,29 +261,41 @@ hud_move_fall_offset_pos_16x9 = 0,0.0,0.06
 hud_move_landing_offset_pos = 0,-0.2,0.03
 hud_move_landing_offset_pos_16x9 = 0,-0.15,0.03
 
-inertion_pitch_offset_r = 0
-inertion_pitch_offset_n = 0
-inertion_pitch_offset_d = 0
-inertion_origin_offset = 0.05
+hud_move_forward_offset_pos = 0.00294,-0.01235,-0.02647
+hud_move_forward_offset_rot = 0,0,0.88235
+
+hud_move_forward_offset_pos_16x9 = 0.00294,-0.01235,-0.02647
+hud_move_forward_offset_rot_16x9 = 0,0,0.88235
+
+hud_move_back_offset_pos = 0,0,0
+hud_move_back_offset_rot = 0,0,0
+
+hud_move_back_offset_pos_16x9 = 0,0.0
+hud_move_back_offset_rot_16x9 = 0,0,0
+
+inertion_pitch_offset_r = 0.01
+inertion_pitch_offset_n = 0.007
+inertion_pitch_offset_d = 0.01
+inertion_origin_offset = 0.03
 
 inertion_aim_origin_offset = 0.015
 inertion_aim_speed = 10
 
-hud_fov = 0.82
+hud_fov = 0.86
 hud_fov_zoom = 0.3 ;аналогичный параметр работает и с прицелами
 hud_recalc_koef = 1.25
 
-zoom_dof_near = 0.48
+zoom_dof_near = 0.2
 zoom_dof_focus = 0.53
 
 zoom_hide_crosshair     = true
 attach_place_idx        = 0
 item_visual             = dynamics\weapons\wpn_p90\wpn_p90_hud.ogf
 
-hands_position				= 0.0,-0.015,-0.05
+hands_position                     = -0.005,-0.010,-0.235
 hands_orientation			= 0.0,0.0,0.0
 
-hands_position_16x9                     = 0.0,-0.015,-0.05
+hands_position_16x9                     = -0.005,-0.010,-0.235
 hands_orientation_16x9			= 0.0,0.0,0.0
 
 item_position				= 0.0,0.0,0.0
@@ -458,11 +464,11 @@ anm_changefiremode_from_-1_to_1			     = p90_firemode_a_to_1
 anm_changefiremode_from_-1_to_1_jammed		     = p90_firemode_a_to_1
 anm_changefiremode_from_-1_to_1_empty		     = p90_firemode_a_to_1
 
-aim_hud_offset_pos = 0.000160,0.015600,-0.1
-aim_hud_offset_rot = -0.002300,0.000200,0.000000
+aim_hud_offset_pos = 0.0053,0.01050,0.18
+aim_hud_offset_rot = 0.000000,0.000000,-0.000000
 
-aim_hud_offset_pos_16x9 = 0.000160,0.015600,-0.1
-aim_hud_offset_rot_16x9 = 0.000000,0.000000,0.000000
+aim_hud_offset_pos_16x9 = 0.0053,0.01050,0.18
+aim_hud_offset_rot_16x9 = 0.000000,0.000000,-0.000000
 
 gl_hud_offset_pos		        = 0,0,0
 gl_hud_offset_rot			= 0,0,0
@@ -473,8 +479,59 @@ lean_hud_offset_rot			= 0,0,0
 alter_zoom_allowed = true
 hud_fov_alter_zoom_factor = 0.35
 
-alter_aim_hud_offset_pos = 0.020800,0.027900,0.05000
-alter_aim_hud_offset_rot = -0.000300,0.001600,0.000000
+alter_aim_hud_offset_pos = 0.0268,0.023700,0.18
+alter_aim_hud_offset_rot = 0.000000,0.000000,-0.000000
 
-alter_aim_hud_offset_pos_16x9 = 0.019460,0.027800,0.05000
-alter_aim_hud_offset_rot_16x9 = -0.000500,0.003700,0.000000
+alter_aim_hud_offset_pos_16x9 = 0.0268,0.023700,0.18
+alter_aim_hud_offset_rot_16x9 = 0.000000,0.000000,-0.000000
+
+[wpn_p90_worn]:wpn_p90
+;---Характеристики P90 Worn---------------------------------------------------------
+cost              = 21450            ; Цена снижена (оригинал: 32950)
+inv_name          = st_wpn_p90_worn  ; Не забудь добавить в стринги локализации
+inv_name_short    = st_wpn_p90_worn
+description       = st_wpn_p90_worn_descr
+
+;----TTX--------------------------------------------------------------------------
+hit_power            = 0.42, 0.42, 0.42, 0.42 ; Урон снижен из-за износа ствола (было 0.57)
+condition_shot_dec      	= 0.0014         ; Ломается почти в два раза быстрее (было 0.0008)
+condition_queue_shot_dec	= 0.0016         ; Износ при зажиме еще выше
+
+;Осечки (начинаются гораздо раньше, клинит часто)
+misfire_probability        	= 0.009          ; Шанс осечки повышен (было 0.005)
+misfire_start_condition		= 0.85           ; Начинает клинить уже при 85% прочности (было 0.7)
+misfire_end_condition		= 0.18           ; Порог критического износа (было 0.1)
+misfire_start_prob          = 0.015          ; Стартовая вероятность клина выше
+misfire_end_prob            = 0.160          ; Максимальный шанс клина в хламе
+
+;---дисперсия---------------------------------------------------------------------------
+fire_dispersion_base       	= 0.38           ; Базовая точность заметно хуже (было 0.24)
+crosshair_inertion			= 6.5            ; Сетка прицела шире
+
+;отдача (ствол сильно швыряет из-за разбитых механизмов)
+cam_relax_speed         = 8              ; Возврат ствола после выстрела медленнее (было 10)
+cam_dispersion	        = 1.12           ; Вертикальный подброс увеличен (было 0.8)
+cam_dispersion_inc      = 0.72           ; Нарастание отдачи при очереди сильнее (было 0.52)
+cam_max_angle		    = 60.0           ; Максимальный угол увода увеличен
+cam_max_angle_horz      = 60.0
+cam_step_angle_horz     = 1.95           ; Сильная горизонтальная болтанка (было 1.44)
+
+zoom_cam_relax_speed    = 8
+zoom_cam_dispersion          	= 0.95   ; В прицеливании контролировать тяжелее (было 0.7)
+zoom_cam_dispersion_inc      	= 0.48   ; (было 0.3)
+zoom_cam_step_angle_horz        = 1.82   ; (было 1.34)
+
+;---динамическая дисперсия (PDM)--------------------------------------------------------
+PDM_disp_base 				= 1.25           ; Разброс в покое увеличен (было 0.95)
+PDM_disp_vel_factor 		= 2.8            ; Стрельба на ходу стала очень неточной (было 2.3)
+PDM_disp_accel_factor 		= 2.8            ; (было 2.3)
+PDM_disp_crouch             = 1.2            ; Даже в присяде стабильность хуже
+PDM_disp_crouch_no_acc      = 1.1
+
+hud = wpn_p90_worn_hud
+
+visual             = dynamics\weapons\rust\wpn_p90\wpn_p90.ogf
+
+[wpn_p90_worn_hud]:wpn_p90_hud
+
+item_visual             = dynamics\weapons\rust\wpn_p90\wpn_p90_hud.ogf

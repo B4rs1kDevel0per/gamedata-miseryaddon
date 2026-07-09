@@ -17,39 +17,33 @@ sprint_allowed       	= true
 control_inertion_factor = 1.0
 
 ;-------------------------------------------------------------------------------
-cost					= 25000
+cost					= 79890
 weapon_class			= sniper_rifle
-inv_weight				= 5.5
+inv_weight				= 12.768
 
 def_hide_bones = mui_rail, mui, mui_ver1, mui_ver2, mui_ver3, mui_upgrade1, mui_upgrade2, mui_upgrade3, mui_upgrade4, mui_upgrade5, mui_upgrade6, mui_upgrade7, mui_upgrade8, mui_mode_autoaim, mui_loading, mag_handmade, bullet
 
 ;---TTX---------------------------------------------------------------------------
-hit_power           	= 1.0, 1.0, 1.0, 1.0
-hit_impulse		 			= 100
+hit_power           		= 5.5, 5.5, 5.5, 5.5
+hit_impulse		 			= 1
 hit_type 					= fire_wound
-fire_distance           = 1000
-bullet_speed		 	= 1500	;начальная скорость пули
-rpm                     = 30
-rpm_empty_click         = 10
+fire_distance           = 1450
+bullet_speed		 	= 15000	;начальная скорость пули
+rpm                     = 35
+rpm_empty_click         = 200
 
 use_aim_bullet			= false		;Поддерживается ли первая суппер пуля
 time_to_aim				= 1.0
 
 hud                     = wpn_gauss_hud
 
-misfire_probability        = 0.005 ;вероятность осечки при максимальном износе  !!!old - now not working
-;изношенность, при которой появляется шанс осечки
-misfire_start_condition		= 0.5
-;изношеность при которой шанс осечки становится константным
+misfire_probability        	= 0.02
+misfire_start_condition		= 0.7
 misfire_end_condition		= 0.1
-;шанс осечки при изношености больше чем misfireStartCondition
-misfire_start_prob	     	= 0.0005
-;шанс осечки при изношености больше чем misfireEndCondition
-misfire_end_prob	     	= 0.6
-;увеличение изношености при одиночном выстреле
-condition_shot_dec      	= 0.01
-;увеличение изношености при выстреле очередью
-condition_queue_shot_dec	= 0.01
+misfire_start_prob = 0.007 ;	     	= 0.02
+misfire_end_prob = 0.11 ;	     	= 0.10
+condition_shot_dec      	= 0.003
+condition_queue_shot_dec	= 0.003
 
 ammo_limit				= 60
 ammo_current			= 10
@@ -67,47 +61,48 @@ reload_dof				= 0.0, 0.5, 5, 1.7
 
 ;--дисперсия----------------------------------------------------------------------------
 ;базовая дисперсия
-fire_dispersion_base	= 0.020 ;угол (в градусах) базовой дисперсии оружия (оружия зажатого в тисках)
-control_inertion_factor	= 1.4f
-crosshair_inertion   	= 5
+fire_dispersion_base	= 0.001 ;угол (в градусах) базовой дисперсии оружия (оружия зажатого в тисках)
+control_inertion_factor	= 2.92f
+crosshair_inertion   	= 10.8
 
 ;отдача
+cam_return = 0 ;				= 0
 cam_relax_speed         = 3	;скорость возврата в исходное положение
 cam_relax_speed_ai      = 360	;скорость возврата в исходное положение
-cam_dispersion          = 0.7	;увеличения угла (в градусах) с каждым выстрелом
-cam_dispersion_inc		= 0.01	;увеличениe cam_dispersion с каждым выстрелом
-cam_dispersion_frac		= 1.0	;ствол будет подыматься на cam_dispersion*cam_dispersion_frac +- cam_dispersion*(1-cam_dispersion_frac)
+cam_dispersion          = 0.05	;увеличения угла (в градусах) с каждым выстрелом
+cam_dispersion_inc		= 0.05	;увеличениe cam_dispersion с каждым выстрелом
+cam_dispersion_frac		= 1.1	;ствол будет подыматься на cam_dispersion*cam_dispersion_frac +- cam_dispersion*(1-cam_dispersion_frac)
 cam_max_angle			= 0.01	;максимальный угол отдачи
 cam_max_angle_horz		= 0.01	;(degree) maximum shot horizontal degree
 cam_step_angle_horz		= 0.01	;(degree) size of step camera moved in horizontal position while shooting
 
-PDM_disp_base 			= 1.2
-PDM_disp_vel_factor 	= 2.0
-PDM_disp_accel_factor 	= 2.0
-PDM_disp_crouch	 		= 1.0
-PDM_disp_crouch_no_acc 	= 1.0
+PDM_disp_base 				= 2.25
+PDM_disp_vel_factor 		= 3.05
+PDM_disp_accel_factor 		= 3.05
+PDM_disp_crouch = 1.0 ;  			= 1.225
+PDM_disp_crouch_no_acc = 1.0 ; 		= 1.425
 
 zoom_cam_relax_speed        = 3   ; scope & ironsight
 zoom_cam_relax_speed_ai     = 360
-zoom_cam_dispersion         = 0.2
+zoom_cam_dispersion         = 0.01
 zoom_cam_dispersion_inc     = 0.01
 zoom_cam_dispersion_frac    = 1.0
 zoom_cam_max_angle          = 0.01
 zoom_cam_max_angle_horz     = 0.01
 zoom_cam_step_angle_horz    = 0.01
 
-fire_dispersion_condition_factor = 5	;увеличение дисперсии в процентах при максимальном износе
+fire_dispersion_condition_factor = 0.001 ; = 0.01 ; 5	;увеличение дисперсии в процентах при максимальном износе
 ;-------------------------------------------------------------------------------
 holder_range_modifier	= 2.85           ; во сколько раз увеличивается eye_range
 holder_fov_modifier		= 1.0           ; во сколько раз увеличивается eye_fov
 
-min_radius              = 0
-max_radius              = 500
+min_radius = 0 ;              = 0
+max_radius = 500 ; = 250 ;              = 50
 
-hit_probability_gd_novice	= 1
-hit_probability_gd_stalker	= 1
-hit_probability_gd_veteran	= 1
-hit_probability_gd_master	= 1
+hit_probability_gd_novice = 1.00 ;	= 1
+hit_probability_gd_stalker = 1.00 ;	= 1
+hit_probability_gd_veteran = 1.00 ;	= 1
+hit_probability_gd_master = 1.00 ;	= 1
 
 ;-------------------------------------------------------------------------------
 slot                    = 2                ; // secondary
@@ -220,22 +215,34 @@ need_lens_frame = true		//включает для этого прицела дв
 hud_fov = 0.82
 hud_fov_zoom = 0.4
 
-inertion_pitch_offset_r = 0
-inertion_pitch_offset_n = 0
-inertion_pitch_offset_d = 0
-inertion_origin_offset = 0.05
+hud_move_forward_offset_pos = 0.00294,-0.01471,-0.02941
+hud_move_forward_offset_rot = 0,0,0.88235
 
-hands_position				= 0.0,-0.02,-0.02
-hands_orientation			= 0.0,0.0,0.0
+hud_move_forward_offset_pos_16x9 = 0.00294,-0.01471,-0.02941
+hud_move_forward_offset_rot_16x9 = 0,0,0.88235
 
-hands_position_16x9			= 0.0,-0.02,-0.02
+hud_move_back_offset_pos = 0,0,0
+hud_move_back_offset_rot = 0,0,0
+
+hud_move_back_offset_pos_16x9 = 0,0.0
+hud_move_back_offset_rot_16x9 = 0,0,0
+
+inertion_pitch_offset_r = 0.01
+inertion_pitch_offset_n = 0.007
+inertion_pitch_offset_d = 0.01
+inertion_origin_offset = 0.03
+
+hands_position			= -0.020,-0.020,-0.07
+hands_orientation			= 0.0,0.0,0.0.0
+
+hands_position_16x9			= -0.020,-0.020,-0.07
 hands_orientation_16x9			= 0.0,0.0,0.0
 
-aim_hud_offset_pos = 0.0,0.02,0.035
-aim_hud_offset_rot = 0.0,0.0,0.0
+aim_hud_offset_pos = 0.0205,0.0203,0.145
+aim_hud_offset_rot = 0.0,0.0,-0.00
 
-aim_hud_offset_pos_16x9 = 0.0,0.02,0.035
-aim_hud_offset_rot_16x9 = 0.0,0.0,0.0
+aim_hud_offset_pos_16x9 = 0.0205,0.0203,0.145
+aim_hud_offset_rot_16x9 = 0.0,0.0,-0.00
 
 item_position				= 0.0,0.0,0.0
 item_orientation			= 0.0,0.0,0.0
@@ -403,3 +410,58 @@ anm_reload                           = gauss_reload
 anm_reload_empty                     = gauss_reload, gauss_reload_empty
 anm_reload_jammed                    = gauss_revival
 anm_reload_jammed_last               = gauss_revival
+
+[pri_a17_gauss_rifle]:wpn_gauss	;Gauss UMIROTVORITEL
+$spawn          = "weapons\uniq\pri_a17_gauss_rifle"
+quest_item 		= false ;true
+story_id = pri_a17_gauss_rifle
+hud 							= wpn_gauss_hud
+inv_name                = st_wpn_umirotvoritel
+description				= st_wpn_umirotvoritel_descr
+
+upgr_icon_x			= 1724 ; 298
+upgr_icon_y			= 802 ; 939
+upgr_icon_width		= 167 ; 297
+upgr_icon_height   	= 159 ; 81
+
+; ttc
+hit_power           		= 5.5, 5.5, 5.5, 5.5
+hit_impulse		 			= 1
+hit_type 					= fire_wound
+
+hit_probability_gd_novice = 1.00 ;	= 1
+hit_probability_gd_stalker = 1.00 ;	= 1
+hit_probability_gd_veteran = 1.00 ;	= 1
+hit_probability_gd_master = 1.00 ;	= 1
+
+fire_distance           = 2000
+bullet_speed		 	= 100000	;начальная скорость пули
+;rpm                     = 20
+
+ammo_limit				= 10
+ammo_current			= 10
+ammo_elapsed			= 0
+
+ammo_mag_size			= 10
+ammo_class				= ammo_gauss
+
+;изношенность, при которой появляется шанс осечки
+misfire_start_condition		= 0.6
+;изношеность при которой шанс осечки становится константным
+misfire_end_condition		= 0.3
+;шанс осечки при изношености больше чем misfireStartCondition
+misfire_start_prob = 0.007 ;	     	= 1
+;шанс осечки при изношености больше чем misfireEndCondition
+misfire_end_prob = 0.11 ;	     	= 1
+;увеличение изношености при одиночном выстреле
+condition_shot_dec      	= 0.00001
+;увеличение изношености при выстреле очередью
+condition_queue_shot_dec	= 0.00002
+
+hud = wpn_gauss_worn_hud
+
+visual = dynamics\weapons\rust\wpn_gauss\wpn_gauss.ogf
+
+[wpn_gauss_worn_hud]:wpn_gauss_hud
+
+item_visual = dynamics\weapons\rust\wpn_gauss\wpn_gauss_hud.ogf

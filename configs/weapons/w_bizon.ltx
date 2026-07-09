@@ -69,11 +69,6 @@ reload_dof           = 0.0, 0.5, 5, 2
 
 ;----Дисперсия---------------------------------------------------------------------------
 ;базовая дисперсия
-fire_dispersion_base    = 0.25  ;угол (в градусах) базовой дисперсии оружия (оружия зажатого в тисках)
-control_inertion_factor = 1.1f
-crosshair_inertion   	= 3.3
-
-;базовая дисперсия
 fire_dispersion_base    = 0.64  ;угол (в градусах) базовой дисперсии оружия (оружия зажатого в тисках)
 control_inertion_factor = 1.05f
 crosshair_inertion   	= 4.05
@@ -614,3 +609,37 @@ aim_hud_offset_rot_16x9 = 0.000000,0.000000,-0.000000
 
 inertion_aim_origin_offset = 0.01
 inertion_aim_speed = 10 
+
+[wpn_bizon_worn]:wpn_bizon
+$spawn                               = "weapons\bizon_worn"
+description                          = st_wpn_bizon_worn_descr
+inv_name                             = st_wpn_bizon_worn
+inv_name_short                       = st_wpn_bizon_worn
+
+;--- Экономика ---
+cost                                 = 9400          ; На треть дешевле оригинала (база: 15680)
+
+;--- ТТХ (Ствол подношен, падение давления газов) ---
+hit_power                            = 0.185, 0.185, 0.185, 0.185 ; Урон снижен (база: 0.205)
+bullet_speed                         = 190           ; Начальная скорость пули упала (база: 210)
+fire_dispersion_base                 = 0.78          ; Ощутимо косит из-за раковинок в стволе (база: 0.64)
+
+;--- Надежность и Осечки (Шнековый магазин на 64 патрона + плохой уход = частый клин) ---
+misfire_start_condition              = 0.90          ; Начнет клинить уже при износе ниже 90% (база: 0.84)
+misfire_end_condition                = 0.20          ; Порог полной непригодности (база: 0.16)
+misfire_start_prob                   = 0.018         ; Вероятность первой осечки выросла (база: 0.007)
+misfire_end_prob                     = 0.140         ; Максимальный шанс поймать клин (база: 0.085)
+condition_shot_dec                   = 0.0016        ; Износ за один выстрел увеличен (база: 0.0011)
+condition_queue_shot_dec             = 0.0016
+
+;--- Отдача (Разболтанный приклад и уставшие пружины) ---
+cam_dispersion                       = 0.68          ; Подброс ствола при каждом выстреле (база: 0.55)
+cam_dispersion_inc                   = 0.32          ; Нарастание отдачи при зажатом спускном крючке (база: 0.25)
+
+;--- Визуал (Раскомментируй, если подкинешь уникальную текстуру/худы) ---
+hud                                  = wpn_bizon_worn_hud
+visual                               = dynamics\weapons\rust\wpn_bizon\wpn_bizon.ogf
+
+[wpn_bizon_worn_hud]:wpn_bizon_hud
+
+item_visual = dynamics\weapons\rust\wpn_bizon\wpn_bizon_hud.ogf

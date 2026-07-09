@@ -14,7 +14,7 @@ default_to_ruck         = false
 sprint_allowed          = true
 
 ;-------------------------------------------------------------------------------
-cost                    = 17000
+cost                    = 42420
 weapon_class			= sniper_rifle
 inv_weight              = 4.4
 
@@ -28,32 +28,26 @@ def_show_bones = ironsight_on, handler, mag10
 no_scope_overriding_hide_bones = sight_off
 
 ;----TTX------------------------------------------------------------------------
-hit_power               = 1.09, 1.09, 1.09, 1.09
-hit_impulse             = 125
+hit_power           	= 0.722, 0.722, 0.722, 0.722
+hit_impulse             = 40
 hit_type 				= fire_wound
-fire_distance           = 1000
-bullet_speed		 	= 700 ;800	;начальная скорость пули
-rpm                     = 165
-rpm_empty_click         = 10
+fire_distance           = 1190
+bullet_speed		 	= 797	;начальная скорость пули
+rpm                     = 74
+rpm_empty_click         = 200
 
 use_aim_bullet				= false		;Поддерживается ли первая суппер пуля
 time_to_aim					= 1.0
 
 hud                     = wpn_svu_hud
 
-misfire_probability        = 0.005 ;вероятность осечки при максимальном износе  !!!old - now not working
-;изношенность, при которой появляется шанс осечки
-misfire_start_condition		= 0.7
-;изношеность при которой шанс осечки становится константным
-misfire_end_condition		= 0.3
-;шанс осечки при изношености больше чем misfireStartCondition
-misfire_start_prob	     	= 0.0065
-;шанс осечки при изношености больше чем misfireEndCondition
-misfire_end_prob	     	= 0.09
-;увеличение изношености при одиночном выстреле
-condition_shot_dec      	= 0.0083
-;увеличение изношености при выстреле очередью
-condition_queue_shot_dec	= 0.0093
+misfire_probability       	= 0.005
+misfire_start_condition		= 0.96
+misfire_end_condition		= 0.1
+misfire_start_prob = 0.007 ;	     	= 0.0056
+misfire_end_prob = 0.11 ;	     	= 0.064
+condition_shot_dec      	= 0.0019
+condition_queue_shot_dec	= 0.0019
 
 ammo_elapsed			= 10
 ammo_mag_size			= 10
@@ -64,38 +58,38 @@ single_handed           = 0
 
 ;---дисперсия-------------------------------------------------------------------------
 ;базовая дисперсия
-fire_dispersion_base    = 0.11   ;угол (в градусах) базовой дисперсии оружия (оружия зажатого в тисках)
-control_inertion_factor    	= 1.4f
-crosshair_inertion		= 6.15
+fire_dispersion_base    = 0.102  ;угол (в градусах) базовой дисперсии оружия (оружия зажатого в тисках)
+control_inertion_factor = 2.06f
+crosshair_inertion		= 8.8
 
 ;отдача
-cam_return				= 1
-cam_relax_speed         = 12.0   ;скорость возврата в исходное положение
+cam_return = 0 ;				= 0
+cam_relax_speed         = 3.0   ;скорость возврата в исходное положение
 cam_relax_speed_ai      = 360	;скорость возврата в исходное положение
-cam_dispersion          = 5.0 ;увеличения угла (в градусах) с каждым выстрелом
-cam_dispersion_inc		= 2.5	;увеличениe cam_dispersion с каждым выстрелом
-cam_dispersion_frac		= 0.99	;ствол будет подыматься на cam_dispersion*cam_dispersion_frac +- cam_dispersion*(1-cam_dispersion_frac)
-cam_max_angle           = 90.0   ;максимальный угол отдачи
-cam_max_angle_horz		= 3.0	;(degree) maximum shot horizontal degree
-cam_step_angle_horz     = 2.5 ;(degree) size of step camera moved in horizontal position while shooting
+cam_dispersion          = 1.94 ;увеличения угла (в градусах) с каждым выстрелом
+cam_dispersion_inc		= 1.94	;увеличениe cam_dispersion с каждым выстрелом
+cam_dispersion_frac		= 1.1	;ствол будет подыматься на cam_dispersion*cam_dispersion_frac +- cam_dispersion*(1-cam_dispersion_frac)
+cam_max_angle           = 50.0   ;максимальный угол отдачи
+cam_max_angle_horz		= 50.0	;(degree) maximum shot horizontal degree
+cam_step_angle_horz     = 2.92 ;(degree) size of step camera moved in horizontal position while shooting
 
-PDM_disp_base 			= 1.5
-PDM_disp_vel_factor 	= 6.0
-PDM_disp_accel_factor 	= 8.0
-PDM_disp_crouch	 		= 0.9
-PDM_disp_crouch_no_acc 	= 0.8
+PDM_disp_base 				= 1.33
+PDM_disp_vel_factor 		= 3.05
+PDM_disp_accel_factor 		= 3.05
+PDM_disp_crouch = 1.0 ;  			= 1.225
+PDM_disp_crouch_no_acc = 1.0 ; 		= 1.425
 
 
-zoom_cam_relax_speed        = 9.0    ; scope & ironsight
+zoom_cam_relax_speed        = 0.7    ; scope & ironsight
 zoom_cam_relax_speed_ai     = 120.75
-zoom_cam_dispersion         = 2.25
-zoom_cam_dispersion_inc     = 1.5
-zoom_cam_dispersion_frac    = 0.99
-zoom_cam_max_angle          = 70
-zoom_cam_max_angle_horz     = 15.0
-zoom_cam_step_angle_horz    = 0.5
+zoom_cam_dispersion         = 1.48
+zoom_cam_dispersion_inc     = 1.48
+zoom_cam_dispersion_frac    = 1.0
+zoom_cam_max_angle          = 50.0
+zoom_cam_max_angle_horz     = 50.0
+zoom_cam_step_angle_horz    = 2.56
 
-fire_dispersion_condition_factor = 25	;увеличение дисперсии в процентах при максимальном износе
+fire_dispersion_condition_factor = 0.001 ; = 0.01 ; 10	;увеличение дисперсии в процентах при максимальном износе
 
 ;---DOF-------------------------------------------------------------------------
 ;zoom_dof				= 0.5, 1.0, 350
@@ -105,13 +99,13 @@ reload_dof				= 0.0, 0.5, 5, 2
 holder_range_modifier	= 2.15               ; во сколько раз увеличивается eye_range
 holder_fov_modifier		= 1.0             ; во сколько раз увеличивается eye_fov
 
-min_radius              = 10
-max_radius              = 500
+min_radius = 0 ;              = 0
+max_radius = 500 ; = 250 ;              = 50
 
-hit_probability_gd_novice	= 1
-hit_probability_gd_stalker	= 1
-hit_probability_gd_veteran	= 1
-hit_probability_gd_master	= 1
+hit_probability_gd_novice = 1.00 ;	= 1
+hit_probability_gd_stalker = 1.00 ;	= 1
+hit_probability_gd_veteran = 1.00 ;	= 1
+hit_probability_gd_master = 1.00 ;	= 1
 
 ;-------------------------------------------------------------------------------
 slot                    = 2                ; // secondary
@@ -213,20 +207,37 @@ zoom_dof_focus = 0.5
 hud_fov = 0.82
 hud_fov_zoom = 0.7 ;аналогичный параметр работает и с прицелами
 
+hud_move_forward_offset_pos = 0.00294,-0.01471,-0.02941
+hud_move_forward_offset_rot = 0,0,0.88235
+
+hud_move_forward_offset_pos_16x9 = 0.00294,-0.01471,-0.02941
+hud_move_forward_offset_rot_16x9 = 0,0,0.88235
+
+hud_move_back_offset_pos = 0,0,0
+hud_move_back_offset_rot = 0,0,0
+
+hud_move_back_offset_pos_16x9 = 0,0.0
+hud_move_back_offset_rot_16x9 = 0,0,0
+
+inertion_pitch_offset_r = 0.01
+inertion_pitch_offset_n = 0.007
+inertion_pitch_offset_d = 0.01
+inertion_origin_offset = 0.03
+
 inertion_aim_origin_offset = 0.007
 inertion_aim_speed = 10
 
-hands_position				= 0.0,0.0,-0.15
+hands_position			= -0.050,0.013,-0.364
 hands_orientation			= 0.0,0.0,0.0
 
-hands_position_16x9			= 0.0,0.0,-0.15
+hands_position_16x9			= -0.050,0.013,-0.364
 hands_orientation_16x9			= 0.0,0.0,0.0
 
-aim_hud_offset_pos = -0.012,0.025,-0.05
-aim_hud_offset_rot = 0.0,0.0,0.0
+aim_hud_offset_pos = 0.0376,0.012650,0.02
+aim_hud_offset_rot = 0.0,0.0,-0.00
 
-aim_hud_offset_pos_16x9 = -0.012,0.025,-0.1
-aim_hud_offset_rot_16x9 = 0.0,0.0,0.0
+aim_hud_offset_pos_16x9 = 0.0376,0.012650,0.02
+aim_hud_offset_rot_16x9 = 0.0,0.0,-0.00
 
 item_position				= 0,0,0
 item_orientation			= 0,0,0
@@ -418,11 +429,10 @@ use_scope_anims = true ;говорит, что надо использовать
 inertion_aim_origin_offset = 0.02
 inertion_aim_speed = 8
 
-aim_hud_offset_pos = 0.0,0.0,-0.009
-aim_hud_offset_rot = 0.0,0.0,0.0
-
-aim_hud_offset_pos_16x9 = 0.0,0.0,-0.009
-aim_hud_offset_rot_16x9 = 0.0,0.0,0.0
+aim_hud_offset_pos = 0.0503,-0.0148,0.26
+aim_hud_offset_rot = 0.0,0.0,-0.00
+aim_hud_offset_pos_16x9 = 0.0503,-0.0148,0.26
+aim_hud_offset_rot_16x9 = 0.0,0.0,-0.00
 
 [scope_pso1m2_svu]
 scope_name 					= wpn_addon_scope_x2.7
@@ -437,11 +447,10 @@ use_scope_anims = true ;говорит, что надо использовать
 inertion_aim_origin_offset = 0.02
 inertion_aim_speed = 8
 
-aim_hud_offset_pos = 0.0,0.0,-0.055
-aim_hud_offset_rot = 0.0,0.0,0.0
-
-aim_hud_offset_pos_16x9 = 0.0,0.0,-0.055
-aim_hud_offset_rot_16x9 = 0.0,0.0,0.0
+aim_hud_offset_pos = 0.0503,-0.01580,0.25
+aim_hud_offset_rot = 0.0,0.0,-0.00
+aim_hud_offset_pos_16x9 = 0.0503,-0.01580,0.25
+aim_hud_offset_rot_16x9 = 0.0,0.0,-0.00
 
 [scope_nvsn_svu]
 scope_name 					= wpn_addon_scope_detector
@@ -460,19 +469,17 @@ overriding_show_bones = ironsight_off
 inertion_aim_origin_offset = 0.01
 inertion_aim_speed = 10 
 
-aim_hud_offset_pos = 0.0025,-0.03,-0.09
-aim_hud_offset_rot = 0.0,0.0,0.0
-
-aim_hud_offset_pos_16x9 = 0.0025,-0.03,-0.09
-aim_hud_offset_rot_16x9 = 0.0,0.0,0.0
+aim_hud_offset_pos = 0.0533,-0.0439,0.20
+aim_hud_offset_rot = 0.0,0.0,-0.00
+aim_hud_offset_pos_16x9 = 0.0533,-0.0439,0.20
+aim_hud_offset_rot_16x9 = 0.0,0.0,-0.00
 
 alter_zoom_allowed = true
-hud_fov_alter_zoom_factor = 0.5
-alter_aim_hud_offset_pos = -0.012,0.025,-0.05
-alter_aim_hud_offset_rot = 0.0,0.0,0.0
-
-alter_aim_hud_offset_pos_16x9 = -0.012,0.025,-0.1
-alter_aim_hud_offset_rot_16x9 = 0.0,0.0,0.0
+hud_fov_alter_zoom_factor = 1.0
+alter_aim_hud_offset_pos = 0.0376,0.01265,0.02
+alter_aim_hud_offset_rot = 0.0,0.0,-0.00
+alter_aim_hud_offset_pos_16x9 = 0.0376,0.01265,0.02
+alter_aim_hud_offset_rot_16x9 = 0.0,0.0,-0.00
 
 [scope_nvas_svu]
 scope_name 					= wpn_addon_scope_night
@@ -488,11 +495,10 @@ overriding_show_bones = ironsight_off
 inertion_aim_origin_offset = 0.01
 inertion_aim_speed = 10 
 
-aim_hud_offset_pos = 0.011,-0.014,-0.05
-aim_hud_offset_rot = 0.0,0.0,0.0
-
-aim_hud_offset_pos_16x9 = 0.011,-0.014,-0.05
-aim_hud_offset_rot_16x9 = 0.0,0.0,0.0
+aim_hud_offset_pos = 0.0603,-0.0363,0.20
+aim_hud_offset_rot = 0.0,0.0,-0.00
+aim_hud_offset_pos_16x9 = 0.0603,-0.0363,0.20
+aim_hud_offset_rot_16x9 = 0.0,0.0,-0.00
 
 [scope_cobra_svu]
 scope_name 					= wpn_addon_scope_cobra
@@ -505,11 +511,11 @@ overriding_show_bones = ironsight_off
 hud_fov_zoom = 0.85
 ;use_scope_anims = true ;говорит, что надо использовать анимации с суффиксом _scope в прицеливании с данным прицелом
 
-aim_hud_offset_pos = -0.0088,0.001,-0.16
-aim_hud_offset_rot = 0.0,0.0,0.0
+aim_hud_offset_pos = 0.0410,-0.0149,-0.003
+aim_hud_offset_rot = -0.0015,0.0,-0.00
 
-aim_hud_offset_pos_16x9 = -0.0088,0.001,-0.16
-aim_hud_offset_rot_16x9 = 0.0,0.0,0.0
+aim_hud_offset_pos_16x9 = 0.0410,-0.0149,-0.003
+aim_hud_offset_rot_16x9 = -0.0015,0.0,-0.00
 
 inertion_aim_origin_offset = 0.01
 inertion_aim_speed = 8
@@ -524,11 +530,11 @@ overriding_show_bones = ironsight_off
 hud_fov_zoom = 0.5
 ;use_scope_anims = true ;говорит, что надо использовать анимации с суффиксом _scope в прицеливании с данным прицелом
 
-aim_hud_offset_pos = 0.001,-0.0015,-0.13
-aim_hud_offset_rot = 0.0,0.0,0.0
+aim_hud_offset_pos = 0.0506,-0.0139,0.17
+aim_hud_offset_rot = 0.0,0.0,-0.00
 
-aim_hud_offset_pos_16x9 = 0.001,-0.0015,-0.13
-aim_hud_offset_rot_16x9 = 0.0,0.0,0.0
+aim_hud_offset_pos_16x9 = 0.0506,-0.0139,0.17
+aim_hud_offset_rot_16x9 = 0.0,0.0,-0.00
 
 inertion_aim_origin_offset = 0.01
 inertion_aim_speed = 8
@@ -544,11 +550,104 @@ bone = scope3
 overriding_hide_bones = ironsight_on, sight_on
 overriding_show_bones = ironsight_off
 
-aim_hud_offset_pos = -0.0115,0.0,-0.1
-aim_hud_offset_rot = 0.0,0.0,0.0
+aim_hud_offset_pos = 0.0385,-0.0138,0.22
+aim_hud_offset_rot = 0.0,0.0,-0.00
 
-aim_hud_offset_pos_16x9 = -0.0115,0.0,-0.1
-aim_hud_offset_rot_16x9 = 0.0,0.0,0.0
+aim_hud_offset_pos_16x9 = 0.0385,-0.0138,0.22
+aim_hud_offset_rot_16x9 = 0.0,0.0,-0.00
 
 inertion_aim_origin_offset = 0.01
 inertion_aim_speed = 10 
+
+[wpn_svu_nimble]:wpn_svu
+$spawn              = "weapons\wpn_svu_nimble"
+class               = WP_SVU
+inv_name				= st_wpn_svu_nimble
+description					= st_wpn_svu_nimble_descr
+
+cost                    = 56240
+inv_weight              = 4.624
+
+inv_grid_width			= 5	 
+inv_grid_height			= 2	  
+inv_grid_x				= 0  
+inv_grid_y				= 33
+
+;upgrades                = up_gr_firstab_svu, up_gr_seconab_svu, up_gr_thirdab_svu, up_gr_fourtab_svu, up_gr_fourtcd_svu, up_gr_fourtef_svu, up_gr_fifthab_svu
+;installed_upgrades      = 
+;upgrade_scheme          = upgrade_scheme_svu
+
+;grenade_class        = ammo_vog-25         ; name of the ltx-section of used grenades
+ammo_mag_size		= 10
+
+scope_status            = 1
+silencer_status		= 0
+grenade_launcher_status	= 0
+
+;----TTX------------------------------------------------------------------------
+hit_power           	= 0.749, 0.749, 0.749, 0.749
+hit_impulse             = 44
+hit_type 				= fire_wound
+fire_distance           = 1296
+bullet_speed		 	= 819	;начальная скорость пули
+rpm                     = 166
+rpm_empty_click         = 200
+
+grenade_flame_particles = weapons\generic_weapon01
+
+fire_dispersion_base    = 0.091
+
+hud                     = wpn_swu_hud
+;visual                  = dynamics\weapons\wpn_swu\wpn_swu.ogf
+
+[wpn_swu_hud]:wpn_svu_hud
+
+;item_visual             = dynamics\weapons\wpn_svu\wpn_svu_hud
+
+[wpn_svu_worn]:wpn_svu
+;---Характеристики SVU Worn---------------------------------------------------------
+cost                    = 27500            ; Цена снижена (оригинал: 42420)
+inv_name                = st_wpn_svu_worn
+inv_name_short          = st_wpn_svu_worn
+description             = st_wpn_svu_worn_descr
+
+;----TTX------------------------------------------------------------------------
+hit_power           	= 0.615, 0.615, 0.615, 0.615 ; Падение начальной скорости из-за износа ствола (было: 0.722)
+condition_shot_dec      	= 0.0031         ; Быстрее ломается при стрельбе (было: 0.0019)
+condition_queue_shot_dec	= 0.0031         ;
+
+;Осечки и заклинивания (автоматика буллпапа чувствительна к грязи)
+misfire_probability       	= 0.01           ; Базовый шанс заклинивания выше (было: 0.005)
+misfire_start_condition		= 0.97           ; Начинает капризничать почти сразу (было: 0.96)
+misfire_end_condition		= 0.16           ; Порог полного отказа автоматики (было: 0.1)
+misfire_start_prob          = 0.015          ; Начальный шанс поймать клин (было: 0.007)
+misfire_end_prob            = 0.20           ; Максимальный шанс осечки (было: 0.11)
+
+;---дисперсия-------------------------------------------------------------------------
+;базовая дисперсия
+fire_dispersion_base    = 0.210  ; Потеряна кучность, ствол «расстрелян» (было: 0.102)
+crosshair_inertion		= 10.2   ; Из-за люфтов и веса винтовку тяжелее удерживать (было: 8.8)
+
+;отдача (прогар камер дульного супрессора увеличил подброс)
+cam_relax_speed         = 2.1    ; Ствол возвращается в центр заметно дольше (было: 3.0)
+cam_dispersion          = 2.55   ; Вертикальный подброс стал сильнее (было: 1.94)
+cam_dispersion_inc		= 2.55   ; Нарастание отдачи (было: 1.94)
+cam_step_angle_horz     = 3.80   ; Горизонтальное виляние ствола стало агрессивным (было: 2.92)
+
+zoom_cam_relax_speed        = 0.52   ; Возврат прицела в оптике (было: 0.7)
+zoom_cam_dispersion         = 1.98   ; Подброс в режиме прицеливания (было: 1.48)
+zoom_cam_dispersion_inc     = 1.98   ;
+zoom_cam_step_angle_horz    = 3.35   ; Горизонтальное смещение в оптике (было: 2.56)
+
+;Динамический разброс (PDM)
+PDM_disp_base 				= 1.75   ; Болтанка оружия в руках (было: 1.33)
+PDM_disp_vel_factor 		= 3.85   ; Штраф к точности при ходьбе (было: 3.05)
+PDM_disp_accel_factor 		= 3.85   ;
+
+hud                     = wpn_svu_worn_hud
+
+visual             = dynamics\weapons\rust\wpn_svu\wpn_svu.ogf
+
+[wpn_svu_worn_hud]:wpn_svu_hud
+
+item_visual             = dynamics\weapons\rust\wpn_svu\wpn_svu_hud.ogf

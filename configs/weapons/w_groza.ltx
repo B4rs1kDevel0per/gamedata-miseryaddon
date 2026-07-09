@@ -1568,3 +1568,108 @@ inertion_aim_origin_offset = 0.015
 inertion_aim_speed = 10 
 
 prohibit_aim_for_gl = true
+
+
+[wpn_groza_nimble]:wpn_groza
+$spawn               = "weapons\unique\wpn_groza_nimble"   ; name and section in level editor
+inv_name				= st_wpn_groza_nimble
+description					= st_wpn_groza_nimble_descr
+
+cost                    = 37540
+
+inv_grid_width			= 4	 
+inv_grid_height			= 2	  
+inv_grid_x				= 5  
+inv_grid_y				= 30
+
+inv_weight              = 4.1
+
+ammo_mag_size 	= 30
+ammo_class 		= ammo_7.62x39_fmj, ammo_7.62x39_ap
+fire_modes 		= 1, 3, -1
+
+;upgrades                = up_gr_firstab_groza, up_gr_seconab_groza, up_gr_thirdab_groza, up_gr_fourtab_groza, up_gr_fifthab_groza
+;installed_upgrades      = up_fourta_groza, up_fourtc_groza
+
+;--TTX----------------------------------------------------------------------------
+hit_power				= 0.564, 0.564, 0.564, 0.564
+hit_impulse				= 34
+hit_type				= fire_wound
+fire_distance           = 1000
+bullet_speed            = 720
+rpm                     = 750
+rpm_empty_click         = 200
+
+scope_status            = 2
+silencer_status			= 2
+
+silencer_name					= wpn_addon_silencer_762x39	; section name for the attachable silencer
+snd_silncer_shot				= weapons\silencers\silencer_762x39
+silencer_x              = 180
+silencer_y              = 16
+
+misfire_probability        = 0.005
+misfire_start_condition		= 0.75
+misfire_end_condition		= 0.1
+misfire_start_prob = 0.007 ;	     	= 0.003
+misfire_end_prob = 0.11 ;	     	= 0.03
+condition_shot_dec      	= 0.0009
+condition_queue_shot_dec	= 0.0009
+
+fire_dispersion_base    = 0.3
+
+hud                     = wpn_groz1_hud
+;visual                  = dynamics\weapons\wpn_groz1\wpn_groz1.ogf
+
+[wpn_groz1_hud]:wpn_groza_hud
+
+[wpn_groza_specops]:wpn_groza_nimble
+
+$spawn               = "weapons\unique\wpn_groza_specops"	
+
+[wpn_groza_ap]:wpn_groza
+
+ammo_class              = ammo_9x39_ap, ammo_9x39_pab9
+
+;---------------------------
+;End of AP section
+;---------------------------
+
+;-------------------------------------------------------------------------------
+; Изношенная версия ОЦ-14 "Гроза"
+;-------------------------------------------------------------------------------
+[wpn_groza_worn]:wpn_groza
+$spawn                  = "weapons\worn\groza"
+inv_name                = st_wpn_groza_worn
+inv_name_short          = st_wpn_groza_worn
+description             = st_wpn_groza_worn_descr
+
+cost                    = 17720 ; Базовая цена снижена (было 27260)
+
+;--Надежность и осечки----------------------------------------------------------
+misfire_probability      = 0.006 ; Шанс осечки увеличен (было 0.002)
+misfire_start_condition  = 0.85  ; Начинает клинить раньше, при 85% прочности (было 0.75)
+misfire_end_condition    = 0.15
+misfire_start_prob       = 0.02  ; Начальная вероятность осечки выше (было 0.007)
+misfire_end_prob         = 0.18  ; Максимальная вероятность осечки выше (было 0.11)
+condition_shot_dec       = 0.0014 ; Износ за выстрел увеличен (было 0.0009)
+condition_queue_shot_dec = 0.0014
+
+;--Точность и дисперсия---------------------------------------------------------
+fire_dispersion_base    = 0.46   ; Базовая точность хуже (было 0.37)
+
+;--Отдача-----------------------------------------------------------------------
+cam_dispersion          = 0.78   ; Отдачу сильнее подбрасывает вверх (было 0.64)
+cam_dispersion_inc      = 0.75   ; Увеличение отдачи с каждым выстрелом в очереди (было 0.63)
+cam_step_angle_horz     = 2.55   ; Горизонтальное покачивание при стрельбе (было 2.15)
+
+zoom_cam_dispersion     = 0.68   ; Отдача в прицеливании (было 0.54)
+zoom_cam_dispersion_inc = 0.65   ; (было 0.53)
+
+hud = wpn_groza_worn_hud
+
+visual = dynamics\weapons\rust\wpn_groza\wpn_groza.ogf
+
+[wpn_groza_worn_hud]:wpn_groza_hud
+
+item_visual = dynamics\weapons\rust\wpn_groza\wpn_groza_hud.ogf
