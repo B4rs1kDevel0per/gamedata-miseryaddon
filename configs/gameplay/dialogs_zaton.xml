@@ -932,7 +932,7 @@
     </dialog>
     <dialog id="zat_b215_stalker_guide_maps">
         <has_flag>ZAT_B215_ASKED_ABOUT_LOCATIONS</has_flag>
-        <has_info>zat_b100_got_guide_maps</has_info>
+        <has_flag>ZAT_B100_GOT_GUIDE_MAPS</has_flag>
         <dont_has_flag>ZAT_B215_GAVE_MAPS</dont_has_flag>
         <phrase_list>
             <phrase id="1">
