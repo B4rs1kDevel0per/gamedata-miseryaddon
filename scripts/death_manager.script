@@ -303,43 +303,38 @@ function set_weapon_drop_condition(item, npc_rank)
 	end
 	
 	if npc_rank < 200 then --					Новичок или зомби: оружие уничтожено, ржавый хлам
-		if roll_the_dice <= 95 then
-			condition_val = math.random(4, 15) -- 95% шанс: металлолом, только на запчасти
+		if roll_the_dice <= 70 then
+			condition_val = math.random(4, 32) -- 70% шанс: полный рандом (от лома до 32%)
 		else
-			condition_val = math.random(16, 28) -- 5% шанс: критический износ, стрелять нельзя
+			condition_val = math.random(18, 36) -- 30% шанс: стабильный рандом без откровенного мусора
 		end
 		
 	elseif npc_rank < 400 then --					Обычный: сильно изношенные стволы
-		if roll_the_dice <= 85 then
-			condition_val = math.random(8, 22) -- 85% шанс: состояние «убитое»
-		elseif roll_the_dice <= 97 then
-			condition_val = math.random(23, 38) -- 12% шанс: частые клины при стрельбе
+		if roll_the_dice <= 65 then
+			condition_val = math.random(8, 45) -- 65% шанс: дикий разброс, верхний предел забафан до 45%
 		else 
-			condition_val = math.random(39, 52) -- 3% шанс: среднее состояние, повезло найти
+			condition_val = math.random(26, 52) -- 35% шанс: стабильное среднее состояние (минимум 26%)
 		end
 		
 	elseif npc_rank < 600 then --				Опытный / Ветеран: оружие повидало виды
-		if roll_the_dice <= 75 then
-			condition_val = math.random(12, 28) -- 75% шанс: плохой износ
-		elseif roll_the_dice <= 92 then
-			condition_val = math.random(29, 45) -- 17% шанс: рабочее, но требует ремонта
+		if roll_the_dice <= 60 then
+			condition_val = math.random(12, 60) -- 60% шанс: огромный рандом (от хлама до вполне рабочего 60%)
 		else
-			condition_val = math.random(46, 65) -- 8% шанс: относительно неплохое состояние
+			condition_val = math.random(35, 70) -- 40% шанс: опытный сталкер, минимум 35%, максимум поднят до 70%
 		end
 		
-	else --										Мастер / Элита: следят за стволами, но палить приходится много
-		if roll_the_dice <= 70 then
-			condition_val = math.random(18, 35) -- 70% шанс: изношено в боях за выживание
-		elseif roll_the_dice <= 90 then
-			condition_val = math.random(36, 55) -- 20% шанс: хорошее состояние для Зоны
+	else --										Мастер / Элита: следят за стволами
+		if roll_the_dice <= 65 then
+			condition_val = math.random(18, 75) -- 65% шанс: боевой износ, но верхний предел расширен до 75%
 		else
-			condition_val = math.random(56, 75) -- 10% шанс: ценный трофей (75% — потолок для MISERY)
+			condition_val = math.random(45, 88) -- 35% шанс: элитный трофей, гарантированно от 45% до отличных 88%
 		end
 	end
 	
 	item:set_condition(condition_val / 100)
 	item:sync_condition() -- update after condition change
 end
+
 
 
 --' Функция спавнит необходимое число предметов
