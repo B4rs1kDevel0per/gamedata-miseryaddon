@@ -136,13 +136,13 @@
 	<string id="st_ammo_9x18_pmm_descr">
 		<text>Over-pressurized round, developed for PMM pistol. Compared to standard 9x18mm cartridge muzzle velocity is substantially higher due to 15% increase in chamber pressure. However, use of this ammunition leads to increased barrel wear and erosion. Ineffective against body armor.</text>
 	</string>
-	<string id="st_ammo_9x18_ap">
+	<string id="st_ammo_9x18_pbp">
 		<text>9x18mm PBP rounds</text>
 	</string>
-	<string id="st_ammo_9x18_ap_short">
+	<string id="st_ammo_9x18_pbp_short">
         <text>9x18 PBP</text>
     </string>
-    <string id="st_ammo_9x18_ap_descr">
+    <string id="st_ammo_9x18_pbp_descr">
         <text>Armor-piercing cartridge, consisting of a semi-shell bullet. Due to its design, it is capable of piercing body armor. An aluminum jacket is located between the core and the shell. An excellent combination of armor-piercing and bullet stopping action.</text>
     </string>
 	<string id="st_ammo_9x19_fmj">

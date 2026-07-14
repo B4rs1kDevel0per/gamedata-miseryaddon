@@ -3,6 +3,16 @@
 dbg = debug_utils
 MODULE = "bind_stalker"
 
+function spawn_music()
+		if not alife():object("priemnik_zaton") then
+			alife():create("priemnik_zaton",vector():set(124.06143798828,-4.3362640380859,175.74554138184),1182873,225)
+		end
+		if not alife():object("priemnik_yanov") then
+			alife():create("priemnik_yanov",vector():set(-58.112621307373,5.932647228241,203.24978942871),623866,333)
+		end
+		story_flags.give_flag("PRIEMNIKS_SPAWNED")
+end
+
 function init    (obj)
 				if (OnClient()) then
 					obj:bind_object(bind_stalker_cl(obj))
@@ -619,6 +629,9 @@ function actor_binder:try_start_game()
 		
 		if num > 0 and num_players == num then
 			story_flags.give_flag("GAME_STARTED")
+			if not story_flags.has_flag("PRIEMNIKS_SPAWNED") then
+				spawn_music()
+			end
 		end
 	end
 end

@@ -1,0 +1,52 @@
+<w>
+	<file name="ui\ui_actor_portrets_mpe">
+		<texture id="ui_actor_p_stalker_df_neutral_1_face_1" 	x="495" y="648" width="165" height="108" />
+		<texture id="ui_actor_p_stalker_df_neutral_2_face_1" 	x="660" y="540" width="165" height="108" />
+		<texture id="ui_actor_p_stalker_df_freedom_2_face_1" 	x="495" y="540" width="165" height="108" />
+		<texture id="ui_actor_p_stalker_df_dolg_2_face_1" 		x="0"   y="648" width="165" height="108" />
+	
+		<texture id="ui_actor_p_stalker_neutral_1"				x="660" y="648" width="165" height="108" />
+		<texture id="ui_actor_p_stalker_neutral_1_face_1" 		x="0"   y="0"   width="165" height="108" />
+		<texture id="ui_actor_p_stalker_neutral_1_face_2"  		x="165" y="0"   width="165" height="108" />
+		<texture id="ui_actor_p_stalker_neutral_1_face_3" 		x="330" y="0"   width="165" height="108" />
+		<texture id="ui_actor_p_stalker_neutral_1_mask" 		x="495" y="0"   width="165" height="108" />
+		<texture id="ui_actor_p_stalker_neutral_1a" 				x="0" 	y="108" width="165" height="108" />
+	    <texture id="ui_actor_p_stalker_neutral_1a_face_1" 		x="660" y="0"   width="165" height="108" />
+		<texture id="ui_actor_p_stalker_neutral_1a_mask" 		x="825" y="0"   width="165" height="108" />
+		<texture id="ui_actor_p_stalker_neutral_2" 				x="330" y="216" width="165" height="108" />
+		<texture id="ui_actor_p_stalker_neutral_2_face_1" 		x="165" y="108" width="165" height="108" />
+		<texture id="ui_actor_p_stalker_neutral_2_face_2" 		x="330" y="108" width="165" height="108" />
+		<texture id="ui_actor_p_stalker_neutral_2_face_3" 		x="495" y="108" width="165" height="108" />
+		<texture id="ui_actor_p_stalker_neutral_2_mask_1" 		x="660" y="108" width="165" height="108" />
+		<texture id="ui_actor_p_stalker_neutral_2_mask_2" 		x="825" y="108" width="165" height="108" />
+		<texture id="ui_actor_p_stalker_neutral_3" 				x="495" y="216" width="165" height="108" />
+		<texture id="ui_actor_p_stalker_neutral_nauchniy" 		x="0" 	y="216" width="165" height="108" />
+		<texture id="ui_actor_p_stalker_neutral_4" 				x="165" y="216" width="165" height="108" />
+		
+		<texture id="ui_actor_p_stalker_freedom_1_face_1" 		x="495" y="324" width="165" height="108" />
+		<texture id="ui_actor_p_stalker_freedom_1_face_2" 		x="660" y="324" width="165" height="108" />
+		<texture id="ui_actor_p_stalker_freedom_1_mask" 		x="330" y="324" width="165" height="108" />
+		<texture id="ui_actor_p_stalker_freedom_2" 				x="825" y="216" width="165" height="108" />
+		<texture id="ui_actor_p_stalker_freedom_2_face_1" 		x="825" y="324" width="165" height="108" />
+		<texture id="ui_actor_p_stalker_freedom_2_face_2" 		x="825" y="540" width="165" height="108" />
+	    <texture id="ui_actor_p_stalker_freedom_2_face_3" 		x="165" y="648" width="165" height="108" />
+		<texture id="ui_actor_p_stalker_freedom_2_face_4" 		x="329" y="648" width="165" height="108" />
+		<texture id="ui_actor_p_stalker_freedom_2_mask" 		x="660" y="216" width="165" height="108" />
+		<texture id="ui_actor_p_stalker_freedom_3" 				x="0" 	y="432" width="165" height="108" />
+		<texture id="ui_actor_p_stalker_freedom_4" 				x="0" 	y="324" width="165" height="108" />
+		<texture id="ui_actor_p_stalker_freedom_5" 				x="165" y="324" width="165" height="108" />
+		
+		<texture id="ui_actor_p_stalker_dolg_1" 				x="165" y="432" width="165" height="108" />
+		<texture id="ui_actor_p_stalker_dolg_2" 				x="0" 	y="540" width="165" height="108" />
+		<texture id="ui_actor_p_stalker_dolg_2_face_1" 			x="330" y="432" width="165" height="108" />
+		<texture id="ui_actor_p_stalker_dolg_2_face_2" 			x="165" y="540" width="165" height="108" />
+		<texture id="ui_actor_p_stalker_dolg_2_mask_1" 			x="825" y="432" width="165" height="108" />
+		<texture id="ui_actor_p_stalker_dolg_2_mask_2" 			x="495" y="432" width="165" height="108" />
+		<texture id="ui_actor_p_stalker_dolg_3" 				x="330" y="540" width="165" height="108" />
+		<texture id="ui_actor_p_stalker_dolg_4" 				x="660" y="432" width="165" height="108" />
+		
+		<texture id="ui_actor_p_stalker_hero_neutral_1" 		x="165" y="108" width="165" height="108" />
+		
+		<texture id="ui_actor_p_stalker_zombied_garik" 		x="825" y="648" width="165" height="108" />
+	</file>
+</w>

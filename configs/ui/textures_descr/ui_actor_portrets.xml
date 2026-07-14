@@ -1,0 +1,89 @@
+<w>
+    <file name="ui\ui_actor_portrets">
+	<texture id="ui_inGame2_Hero" x="246" y="870" width="123" height="87" />
+	
+	<texture id="ui_portret_neutral_1" x="0" y="0" width="165" height="108" />
+	<texture id="ui_portret_neutral_1_face_1" x="165" y="0" width="165" height="108" />
+	<texture id="ui_portret_neutral_1_face_2" x="330" y="0" width="165" height="108" />
+	<texture id="ui_portret_neutral_1_face_3" x="495" y="0" width="165" height="108" />
+	<texture id="ui_portret_neutral_1_mask" x="660" y="0" width="165" height="108" />
+	<texture id="ui_portret_neutral_1a" x="825" y="0" width="165" height="108" />
+	<texture id="ui_portret_neutral_1a_face_1" x="0" y="108" width="165" height="108" />
+	<texture id="ui_portret_neutral_1a_mask" x="165" y="108" width="165" height="108" />
+	<texture id="ui_portret_neutral_2" x="330" y="108" width="165" height="108" />
+	<texture id="ui_portret_neutral_2_face_1" x="495" y="108" width="165" height="108" />
+	<texture id="ui_portret_neutral_2_face_2" x="660" y="108" width="165" height="108" />
+	<texture id="ui_portret_neutral_2_face_3" x="825" y="108" width="165" height="108" />
+	<texture id="ui_portret_neutral_2_mask_1" x="0" y="216" width="165" height="108" />
+	<texture id="ui_portret_neutral_2_mask_2" x="165" y="216" width="165" height="108" />
+	<texture id="ui_portret_neutral_nauchniy" x="330" y="216" width="165" height="108" />
+	<texture id="ui_portret_neutral_3" x="495" y="216" width="165" height="108" />
+	<texture id="ui_portret_neutral_4" x="660" y="216" width="165" height="108" />
+
+	<texture id="ui_portret_bandit_1" x="825" y="216" width="165" height="108" />
+	<texture id="ui_portret_bandit_1_face_1" x="0" y="324" width="165" height="108" />
+	<texture id="ui_portret_bandit_1_face_2" x="165" y="324" width="165" height="108" />
+	<texture id="ui_portret_bandit_1_mask" x="330" y="324" width="165" height="108" />
+	<texture id="ui_portret_bandit_2" x="495" y="324" width="165" height="108" />
+	<texture id="ui_portret_bandit_3" x="660" y="324" width="165" height="108" />
+	<texture id="ui_portret_bandit_3_mask" x="825" y="324" width="165" height="108" />
+	<texture id="ui_portret_bandit_4" x="0" y="432" width="165" height="108" />
+	
+	<texture id="ui_portret_dolg_2" x="165" y="432" width="165" height="108" />
+	<texture id="ui_portret_dolg_2_face_1" x="330" y="432" width="165" height="108" />
+	<texture id="ui_portret_dolg_2_face_2" x="495" y="432" width="165" height="108" />
+	<texture id="ui_portret_dolg_2_mask_1" x="660" y="432" width="165" height="108" />
+	<texture id="ui_portret_dolg_2_mask_2" x="825" y="432" width="165" height="108" />
+	<texture id="ui_portret_dolg_1" x="0" y="540" width="165" height="108" />
+	<texture id="ui_portret_dolg_3" x="165" y="540" width="165" height="108" />
+	<texture id="ui_portret_dolg_4" x="330" y="540" width="165" height="108" />
+	
+	<texture id="ui_portret_freedom_2" x="495" y="540" width="165" height="108" />
+	<texture id="ui_portret_freedom_2_face_1" x="660" y="540" width="165" height="108" />
+	<texture id="ui_portret_freedom_2_face_2" x="825" y="540" width="165" height="108" />
+	<texture id="ui_portret_freedom_2_mask" x="0" y="648" width="165" height="108" />
+	<texture id="ui_portret_freedom_1" x="165" y="648" width="165" height="108" />
+	<texture id="ui_portret_freedom_1_face_1" x="330" y="648" width="165" height="108" />
+	<texture id="ui_portret_freedom_1_mask" x="495" y="648" width="165" height="108" />
+	<texture id="ui_portret_freedom_3" x="660" y="648" width="165" height="108" />
+	<texture id="ui_portret_freedom_5" x="825" y="648" width="165" height="108" />
+	<texture id="ui_portret_freedom_4" x="0" y="756" width="165" height="108" />
+	
+	<texture id="ui_portret_merc_2" x="165" y="756" width="165" height="108" />
+	<texture id="ui_portret_merc_2_mask" x="330" y="756" width="165" height="108" />
+	<texture id="ui_portret_merc_2a_face_1" x="495" y="756" width="165" height="108" />
+	<texture id="ui_portret_merc_3" x="660" y="756" width="165" height="108" />
+	<texture id="ui_portret_merc_4" x="825" y="756" width="165" height="108" />
+	
+	<texture id="ui_portret_soldier_1_face_1" x="0" y="864" width="165" height="108" />
+	<texture id="ui_portret_soldier_1_face_2" x="165" y="864" width="165" height="108" />
+	<texture id="ui_portret_soldier_1a_face_1" x="330" y="864" width="165" height="108" />
+	<texture id="ui_portret_soldier_1a_face_2" x="495" y="864" width="165" height="108" />
+	<texture id="ui_portret_soldier_1a_face_3" x="660" y="864" width="165" height="108" />
+	<texture id="ui_portret_soldier_1a_face_4" x="825" y="864" width="165" height="108" />
+	<texture id="ui_portret_soldier_2" x="0" y="972" width="165" height="108" />
+	<texture id="ui_portret_soldier_2_face_1" x="165" y="972" width="165" height="108" />
+	<texture id="ui_portret_soldier_3" x="330" y="972" width="165" height="108" />
+	<texture id="ui_portret_soldier_3_face_1" x="495" y="972" width="165" height="108" />
+	<texture id="ui_portret_soldier_4" x="660" y="972" width="165" height="108" />
+	
+	<texture id="ui_portret_monolith_2" x="825" y="972" width="165" height="108" />
+	<texture id="ui_portret_monolith_2_face_1" x="0" y="1080" width="165" height="108" />
+	<texture id="ui_portret_monolith_2_mask" x="165" y="1080" width="165" height="108" />
+	<texture id="ui_portret_monolith_1" x="330" y="1080" width="165" height="108" />
+	<texture id="ui_portret_monolith_3" x="495" y="1080" width="165" height="108" />
+	<texture id="ui_portret_monolith_4" x="660" y="1080" width="165" height="108" />
+	
+	<texture id="ui_portret_zombied_1" x="825" y="1080" width="165" height="108" />
+	<texture id="ui_portret_zombied_1a" x="0" y="1188" width="165" height="108" />
+	<texture id="ui_portret_zombied_1b" x="165" y="1188" width="165" height="108" />
+	<texture id="ui_portret_zombied_2" x="330" y="1188" width="165" height="108" />
+	<texture id="ui_portret_zombied_2a" x="495" y="1188" width="165" height="108" />
+	<texture id="ui_portret_zombied_2b" x="660" y="1188" width="165" height="108" />
+	<texture id="ui_portret_zombied_3" x="825" y="1188" width="165" height="108" />
+	<texture id="ui_portret_zombied_4" x="0" y="1296" width="165" height="108" />	
+	
+	<texture id="ui_portret_ecolog" x="165" y="1296" width="165" height="108" />
+	<texture id="ui_portret_ecolog_military" x="330" y="1296" width="165" height="108" />	 
+   </file>
+</w>

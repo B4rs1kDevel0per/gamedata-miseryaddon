@@ -2,6 +2,13 @@
 ;;	WEAPON ADDON
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
+[addon_base]:identity_immunities
+GroupControlSection	= spawn_group
+discovery_dependency =
+script_binding      = bind_physic_object.init
+cform           = skeleton
+$prefetch 		= 32
+
 ;#include "addon_scopes.ltx"
 
 
@@ -136,17 +143,10 @@
 #include "w_m1891.ltx"
 #include "w_m4.ltx"
 
+
 [weapons_global_settings]
 grenade_types_order = mp_grenade_rgd5, mp_grenade_rgn, mp_grenade_rgo, mp_grenade_f1, mp_grenade_flashbang, mp_grenade_gd-05, grenade_rgd5, grenade_rgn, grenade_rgo, grenade_f1, grenade_flashbang, grenade_gd-05
 activated_item_types_order = mp_af_defence, mp_af_defence_heal, landmine_pmn2
-
-
-[addon_base]:identity_immunities
-GroupControlSection	= spawn_group
-discovery_dependency =
-script_binding      = bind_physic_object.init
-cform           = skeleton
-$prefetch 		= 32
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Огнестрельное оружие
@@ -307,8 +307,6 @@ tracer			= off        ;  off
 wm_size			= 0.028
 k_air_resistance = 1.8
 
-
-;копия ap версии
 [ammo_9x18_pbp]:ammo_base
 $spawn			= "weapons\ammo\ammo_9x18_pbp" ; option for Level Editor
 visual          = dynamics\weapons\wpn_ammo\ammo_9x18_pbp.ogf
@@ -316,27 +314,21 @@ description		= st_ammo_9x18_pbp_descr
 cost    		= 400
 box_size		= 50
 
-inv_name		= st_ammo_9x18_ap
-inv_name_short	= st_ammo_9x18_ap_short
-inv_weight		= .15
+inv_name		= st_ammo_9x18_pbp
+inv_name_short	= st_ammo_9x18_pbp_short
+inv_weight		= .2
 
 inv_grid_width	= 1
 inv_grid_height	= 1
 inv_grid_x		= 20
 inv_grid_y		= 31
 
-k_dist			= 1
-k_disp			= 0.45 ; 3
-k_hit			= 1.33
-k_impulse		= 0.48
-k_pierce		= 1.26
-k_ap			= 0.98
-impair			= 1.05 ; 1.0
-buck_shot		= 1
-tracer			= off        ;  off
-wm_size			= 0.028
-k_air_resistance = 1.8
+k_hit 			= 0.66
+k_ap			= 0.35
+k_air_resistance = 1.5
+impair			 = 1.4
 
+tracer			= on
 
 ;***********************9x19***********************
 [ammo_9x19_fmj]:ammo_base
@@ -2926,9 +2918,6 @@ pp_eff_overlap = false
 pp_eff_name = contrast.ppe
 pp_eff_cyclic = 1
 pp_eff_overlap = false
-
-
-
 
 #include "weapons_unique.ltx"
 
