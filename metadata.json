@@ -9,17 +9,17 @@
         },
     "description":
         {
-            "en": "With the help of his group, USS special agent Major Degtyarev is sent into the Zone to search for the missing military helicopters and to investigate the failure of Operation Fairway.",
-            "ru": "Майор СБУ Дегтярёв, заручившись поддержкой своей группы, отправляется на территорию Чернобыльской Зоны Отчуждения на поиски пропавших военных вертолётов и для расследования причин провала операции «Фарватер».",
-            "ua": "Майор СБУ Дегтярьов, заручившись підтримкою своєї групи, вирушає на територію Чорнобильської Зони відчуження на пошуки зниклих військових вертольотів і для розслідування причин провалу операції «Фарватер»",
+            "en": "miserable addon",
+            "ru": "мизеребл аддон.",
+            "ua": "мiзiрiбл iддiн.",
             "by": "noinfo",
             "pl": "noinfo"
         },
     "modes": [ "coop" ],
     "coopStartMap": "zaton",
-    "author": "xrMPE Misery Team",
+    "author": "B4rs1k, muederatte",
     "icon": "icon",
-    "addonVersion": "v 0.1",
+    "addonVersion": "v 1.0 demo",
     "coopStartupArgs": [ "-use_all_spawn" , "-noprefetch", "-nointro"],
-    "manifestVersion": "v0.8.3.7"
+    "manifestVersion": "v0.9"
 }
