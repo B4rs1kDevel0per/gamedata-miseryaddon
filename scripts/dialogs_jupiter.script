@@ -510,14 +510,14 @@ function jup_a12_transfer_ransom_from_actor(first_speaker, second_speaker)
 	end
 end
 
-function jup_a12_transfer_5000_money_to_actor(first_speaker, second_speaker)
+function jup_a12_transfer_8000_money_to_actor(first_speaker, second_speaker)
 	dialogs.relocate_money_to_actor(first_speaker, second_speaker, 8000)
 	treasure_manager.get_treasure_manager():give_treasure("jup_hiding_place_40")
 	treasure_manager.get_treasure_manager():give_treasure("jup_hiding_place_34")
 end
 
 function jup_a12_transfer_artefact_to_actor(first_speaker, second_speaker)
-	dialogs.relocate_item_section_to_actor(first_speaker, second_speaker, "af_vyvert_lead_box")
+	dialogs.relocate_item_section_to_actor(first_speaker, second_speaker, "af_vyvert")
 	if story_flags.has_flag("JUP_A12_STALKER_PRISONER_FREE_DIALOG_DONE") then
 		treasure_manager.get_treasure_manager():give_treasure("jup_hiding_place_40")
 		treasure_manager.get_treasure_manager():give_treasure("jup_hiding_place_34")
@@ -1133,7 +1133,7 @@ function jup_b43_reward_for_second_artefact(first_speaker, second_speaker)
 end
 
 function jup_b43_reward_for_both_artefacts(first_speaker, second_speaker)
-	dialogs.relocate_money_to_actor(first_speaker, second_speaker, 18640)
+	dialogs.relocate_money_to_actor(first_speaker, second_speaker, 14640)
 end
 
 -- Jupiter B15 functions -------------------------------------------------
@@ -1168,9 +1168,10 @@ function jup_b46_sell_duty_founder_pda(first_speaker, second_speaker)
 	local actor = dialogs.who_is_actor(first_speaker, second_speaker)
 	if story_flags.has_flag("JUP_B46_DUTY_FOUNDER_PDA_TO_FREEDOM") then
 		dialogs.relocate_money_to_actor(first_speaker, second_speaker, 12680)
-		dialogs.relocate_item_section(actor,"ammo_5.56x45_ss190","in",5)
+		dialogs.relocate_item_section(actor,"ammo_5.56x45_ss190","in",6)
 	elseif story_flags.has_flag("JUP_B46_DUTY_FOUNDER_PDA_TO_DUTY") then
-		dialogs.relocate_item_section(actor,"ammo_9x39_ap","in",2)
+		dialogs.relocate_money_to_actor(first_speaker, second_speaker, 15950)
+		dialogs.relocate_item_section(actor,"ammo_9x39_ap","in",5)
 		dialogs.relocate_item_section(actor,"ammo_vog-25","in",2)
 	end
 end
@@ -1331,7 +1332,7 @@ function jup_b47_bunker_guard_revard(first_speaker, second_speaker)
 end
 
 function jup_b47_gauss_rifle_revard(first_speaker, second_speaker)
-	dialogs.relocate_money_to_actor(first_speaker, second_speaker, 17660)
+	dialogs.relocate_money_to_actor(first_speaker, second_speaker, 15660)
 end
 
 function jup_b47_actor_has_hauss_rifle_docs(first_speaker, second_speaker)

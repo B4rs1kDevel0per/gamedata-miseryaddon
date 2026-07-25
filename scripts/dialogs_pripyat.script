@@ -4,11 +4,11 @@ end
 
 function pri_a17_reward(first_speaker, second_speaker)
 	if story_flags.has_flag("PRI_A17_REWARD_WELL") then
-		dialogs.relocate_money_to_actor(first_speaker, second_speaker, 7500)
+		dialogs.relocate_money_to_actor(first_speaker, second_speaker, 18550)
 	elseif story_flags.has_flag("PRI_A17_REWARD_NORM") then
-		dialogs.relocate_money_to_actor(first_speaker, second_speaker, 4000)
+		dialogs.relocate_money_to_actor(first_speaker, second_speaker, 14200)
 	elseif story_flags.has_flag("PRI_A17_REWARD_BAD") then
-		dialogs.relocate_money_to_actor(first_speaker, second_speaker, 3000)
+		dialogs.relocate_money_to_actor(first_speaker, second_speaker, 11300)
 	end
 end
 
@@ -30,39 +30,39 @@ end
 
 function pay_cost_to_guide_to_zaton(first_speaker, second_speaker)
 	if story_flags.has_flag("ZAT_B215_GAVE_MAPS") then
-		dialogs.relocate_money_from_actor(first_speaker, second_speaker, 1000)
+		dialogs.relocate_money_from_actor(first_speaker, second_speaker, 4000)
 	else
-		dialogs.relocate_money_from_actor(first_speaker, second_speaker, 3000)
+		dialogs.relocate_money_from_actor(first_speaker, second_speaker, 6000)
 	end
 end
 
 -- проверка, платежеспособности игрока за телепорт на Затон через Юпитер
 
-function jup_b43_actor_has_10000_money(first_speaker, second_speaker)
+function jup_b43_actor_has_6000_money(first_speaker, second_speaker)
 	if story_flags.has_flag("ZAT_B215_GAVE_MAPS") then
-		return getLocalActor():money() >= 3000
+		return getLocalActor():money() >= 6000
 	end
-	return getLocalActor():money() >= 5000
+	return getLocalActor():money() >= 6000
 end
 
-function jup_b43_actor_do_not_has_10000_money(first_speaker, second_speaker)
-	return not jup_b43_actor_has_10000_money(first_speaker, second_speaker)
+function jup_b43_actor_do_not_has_6000_money(first_speaker, second_speaker)
+	return not jup_b43_actor_has_6000_money(first_speaker, second_speaker)
 end
 
 -- плата за телепорт игрока на Юпитер (диалог с проводником с Юпитера)
 
 function pay_cost_to_guide_to_jupiter(first_speaker, second_speaker)
-	dialogs.relocate_money_from_actor(first_speaker, second_speaker, 7000)
+	dialogs.relocate_money_from_actor(first_speaker, second_speaker, 4000)
 end
 
 -- проверка платежеспособности игрока за телепорт на Юпитер
 
-function jup_b43_actor_has_7000_money(first_speaker, second_speaker)
-	return getLocalActor():money() >= 7000
+function jup_b43_actor_has_4000_money(first_speaker, second_speaker)
+	return getLocalActor():money() >= 4000
 end
 
-function jup_b43_actor_do_not_has_7000_money(first_speaker, second_speaker)
-	return getLocalActor():money() < 7000
+function jup_b43_actor_do_not_has_4000_money(first_speaker, second_speaker)
+	return getLocalActor():money() < 4000
 end
 
 -- Pripyat B35
@@ -73,7 +73,6 @@ function pri_b35_transfer_svd(first_speaker, second_speaker)
     
     dialogs.relocate_item_section_to_actor(first_speaker, second_speaker, "wpn_svd", num)
     dialogs.relocate_item_section_to_actor(first_speaker, second_speaker, "ammo_7.62x54_7h1", num)
-	dialogs.relocate_item_section_to_actor(first_speaker, second_speaker, "wpn_addon_scope", num)
 end	
 
 function pri_b35_give_actor_reward(first_speaker, second_speaker)
@@ -153,15 +152,15 @@ function pri_a25_medic_give_kit(first_speaker, second_speaker)
 end
 
 local supp_table = {
-					["SUPPLY_AMMO_1"] = {["ammo_9x18_fmj"] = 2, ["ammo_9x18_pmm"] = 1},
-					["SUPPLY_AMMO_2"] = {["ammo_9x19_fmj"] = 2, ["ammo_9x19_pbp"] = 1},
-					["SUPPLY_AMMO_3"] = {["ammo_11.43x23_fmj"] = 2, ["ammo_11.43x23_hydro"] = 1},
-					["SUPPLY_AMMO_4"] = {["ammo_12x70_buck"] = 10, ["ammo_12x76_zhekan"] = 5},
-					["SUPPLY_AMMO_5"] = {["ammo_5.45x39_fmj"] = 2, ["ammo_5.45x39_ap"] = 1},
-					["SUPPLY_AMMO_6"] = {["ammo_5.56x45_ss190"] = 2, ["ammo_5.56x45_ap"] = 1},
-					["SUPPLY_AMMO_7"] = {["ammo_9x39_pab9"] = 1, ["ammo_9x39_ap"] = 1},
-					["SUPPLY_AMMO_8"] = {["ammo_7.62x54_7h1"] = 3},
-					["SUPPLY_AMMO_9"] = {["ammo_pkm_100"] = 2},
+					["SUPPLY_AMMO_1"] = {["ammo_9x18_fmj"] = 4, ["ammo_9x18_pmm"] = 2, ["ammo_9x18_ap"] = 2},
+					["SUPPLY_AMMO_2"] = {["ammo_9x19_fmj"] = 4, ["ammo_9x19_pbp"] = 2, ["ammo_9x19_ap"] = 2},
+					["SUPPLY_AMMO_3"] = {["ammo_11.43x23_fmj"] = 3, ["ammo_11.43x23_hydro"] = 2, ["ammo_11.43x23_ap"] = 1},
+					["SUPPLY_AMMO_4"] = {["ammo_12x70_buck"] = 8, ["ammo_12x76_zhekan"] = 4},
+					["SUPPLY_AMMO_5"] = {["ammo_5.45x39_fmj"] = 6, ["ammo_5.45x39_ap"] = 3},
+					["SUPPLY_AMMO_6"] = {["ammo_5.56x45_ss190"] = 5, ["ammo_5.56x45_ap"] = 3},
+					["SUPPLY_AMMO_7"] = {["ammo_9x39_pab9"] = 4, ["ammo_9x39_ap"] = 2},
+					["SUPPLY_AMMO_8"] = {["ammo_7.62x54_7h1"] = 3, ["ammo_7.62x54_7h14"] = 1},
+					["SUPPLY_AMMO_9"] = {["ammo_pkm_100"] = 2, ["ammo_7.62x54_ap"] = 1},
 					["SUPPLY_GRENADE_1"] = {["grenade_rgd5"] = 5, ["grenade_f1"] = 2},
 					["SUPPLY_GRENADE_2"] = {["ammo_vog-25"] = 4},
 					["SUPPLY_GRENADE_3"] = {["ammo_m209"] = 3},
@@ -179,8 +178,13 @@ function pri_a22_army_signaller_supply(first_speaker, second_speaker)
 end
 
 function pri_a22_give_actor_outfit (first_speaker, second_speaker)
-	dialogs.relocate_item_section_to_actor(first_speaker, second_speaker, "military_outfit")
-	dialogs.relocate_item_section_to_actor(first_speaker, second_speaker, "helm_battle")
+	dialogs.relocate_item_section_to_actor(first_speaker, second_speaker, "stimpack_army", 2)
+	dialogs.relocate_item_section_to_actor(first_speaker, second_speaker, "medkit_army", 2)	
+	dialogs.relocate_item_section_to_actor(first_speaker, second_speaker, "bandage", 3)
+	dialogs.relocate_item_section_to_actor(first_speaker, second_speaker, "antirad")
+	dialogs.relocate_item_section_to_actor(first_speaker, second_speaker, "drug_coagulant5")
+	dialogs.relocate_item_section_to_actor(first_speaker, second_speaker, "drug_psy_blockade3")
+	dialogs.relocate_item_section_to_actor(first_speaker, second_speaker, "morphine")
 end
 
 -- Pripyat B305
@@ -249,9 +253,13 @@ function pri_b305_sell_strelok_notes(first_speaker, second_speaker)
 	end
 
 	if getLocalActor():object("wpn_gauss") ~= nil then
-		dialogs.relocate_item_section_to_actor(first_speaker, second_speaker, "ammo_gauss", 2)
+		dialogs.relocate_item_section_to_actor(first_speaker, second_speaker, "ammo_gauss", 3)
+		dialogs.relocate_item_section_to_actor(first_speaker, second_speaker, "wpn_fn2000", 1)
+		dialogs.relocate_item_section_to_actor(first_speaker, second_speaker, "ammo_5.56x45_ap", 4)
 	else
-		dialogs.relocate_item_section_to_actor(first_speaker, second_speaker, "medkit_scientic", 3)
+		dialogs.relocate_item_section_to_actor(first_speaker, second_speaker, "medkit_scientic", 10)
+		dialogs.relocate_item_section_to_actor(first_speaker, second_speaker, "wpn_fn2000", 1)
+		dialogs.relocate_item_section_to_actor(first_speaker, second_speaker, "ammo_5.56x45_ap", 4)
 	end
 
 	if amount > 1 then
@@ -267,7 +275,7 @@ end
 function pri_a17_sokolov_is_not_at_base(first_speaker, second_speaker)
 	if story_flags.has_flag("PRI_A15_SOKOLOV_OUT") and story_flags.has_flag("PAS_B400_SOKOLOV_DEAD") then
 		return true
---	elseif has_alife_info("pri_a16_sokolov_on_pripyat") and not xr_conditions.squad_exist(nil,nil, {"pri_a16_sokolov_squad"}) then
+--	elseif has_alife_info("PRI_A16_SOKOLOV_ON_PRIPYAT") and not xr_conditions.squad_exist(nil,nil, {"PRI_A16_SOKOLOV_SQUAD"}) then
 --		return true
 	end
 

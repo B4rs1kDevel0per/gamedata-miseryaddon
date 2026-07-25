@@ -2857,11 +2857,11 @@
             </phrase>
             <phrase id="13">
                 <text>jup_b43_stalker_assistant_guide_to_pripyat_13</text>
-                <precondition>dialogs_jupiter.jup_b43_actor_do_not_has_5000_money</precondition>
+                <precondition>dialogs_jupiter.jup_b43_actor_do_not_has_7000_money</precondition>
             </phrase>
             <phrase id="11">
                 <text>jup_b43_stalker_assistant_guide_to_pripyat_11</text>
-                <precondition>dialogs_jupiter.jup_b43_actor_has_5000_money</precondition>
+                <precondition>dialogs_jupiter.jup_b43_actor_has_4000_money</precondition>
                 <action>dialogs.save_uni_travel_jup_to_pri</action>
                 <next>111</next>
             </phrase>
@@ -2873,7 +2873,7 @@
             </phrase>
             <phrase id="12">
                 <text>jup_b43_stalker_assistant_guide_to_pripyat_12</text>
-                <precondition>dialogs_jupiter.jup_b43_actor_has_5000_money</precondition>
+                <precondition>dialogs_jupiter.jup_b43_actor_has_4000_money</precondition>
                 <next>121</next>
             </phrase>
             <phrase id="0">
@@ -2899,11 +2899,11 @@
         <phrase_list>
             <phrase id="23">
                 <text>jup_b43_stalker_assistant_guide_to_zaton_23</text>
-                <precondition>dialogs_pripyat.jup_b43_actor_do_not_has_10000_money</precondition>
+                <precondition>dialogs_pripyat.jup_b43_actor_do_not_has_6000_money</precondition>
             </phrase>
             <phrase id="22">
                 <text>jup_b43_stalker_assistant_guide_to_zaton_22</text>
-                <precondition>dialogs_pripyat.jup_b43_actor_has_10000_money</precondition>
+                <precondition>dialogs_pripyat.jup_b43_actor_has_6000_money</precondition>
                 <next>221</next>
             </phrase>
             <phrase id="221">
@@ -2911,7 +2911,7 @@
             </phrase>
             <phrase id="21">
                 <text>jup_b43_stalker_assistant_guide_to_zaton_21</text>
-                <precondition>dialogs_pripyat.jup_b43_actor_has_10000_money</precondition>
+                <precondition>dialogs_pripyat.jup_b43_actor_has_6000_money</precondition>
                 <action>dialogs.save_uni_travel_pri_to_zat</action>
                 <next>211</next>
             </phrase>
@@ -6712,7 +6712,7 @@
             </phrase>
             <phrase id="13">
                 <text>jup_a12_stalker_assaulter_after_scene_dialog_13</text>
-                <action>dialogs_jupiter.jup_a12_transfer_5000_money_to_actor</action>
+                <action>dialogs_jupiter.jup_a12_transfer_8000_money_to_actor</action>
                 <dont_has_flag>JUP_A12_STALKER_PRISONER_FRIENDS_TALKED</dont_has_flag>
                 <dont_has_flag>JUP_A12_STALKER_PRISONER_DEAD</dont_has_flag>
                 <give_flag>JUP_A12_STALKER_PRISONER_FRIENDS_TALKED</give_flag>
@@ -6721,7 +6721,7 @@
             </phrase>
             <phrase id="14">
                 <text>jup_a12_stalker_assaulter_after_scene_dialog_14</text>
-                <action>dialogs_jupiter.jup_a12_transfer_5000_money_to_actor</action>
+                <action>dialogs_jupiter.jup_a12_transfer_8000_money_to_actor</action>
                 <dont_has_flag>JUP_A12_STALKER_PRISONER_FRIENDS_TALKED</dont_has_flag>
                 <dont_has_flag>JUP_A12_STALKER_PRISONER_DEAD</dont_has_flag>
                 <give_flag>JUP_A12_STALKER_PRISONER_FRIENDS_TALKED</give_flag>
