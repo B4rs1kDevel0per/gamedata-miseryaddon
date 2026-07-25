@@ -9,21 +9,43 @@
 
 		<team>mp_actor</team>
 		<supplies>
-			[spawn] \n
-			novice_outfit \n
+			[spawn] \n			
+            identity_card_assaulter \n
+            container_tool \n
+            con_checker \n
 
-			wpn_pmm  \n
-   			ammo_9x18_fmj = 5 \n
-   			
-			bandage = 2 \n
-			antirad = 1 \n
-			medkit = 2 \n
+            wpn_upd \n
+            roubles = 7 \n
+            novice_outfit \n
 
-			conserva = 2 \n
+            gun_oil2 \n
+            cleaning_kit_r7_3 \n
+            glue_a2 \n
+            textile_patch_m \n
+
+            flask \n
+            ration_ukr5 \n
+
+            bandage = 3 \n
+            antirad \n
+            drug_coagulant5 \n
+            medkit_army = 2 \n
+            stimpack_army = 2 \n
+
+            wpn_ak47m_worn \n
+            wpn_gsh18 \n
+            ammo_9x19_fmj = 2 \n
+            ammo_9x19_pbp \n
+            ammo_7.62x39_fmj = 8 \n
+
+            helm_hardhat \n
+            af_kevlar \n
+            grenade_f1 \n
+            grenade_rgd5 = 2 \n
 			
     </supplies>
 
-    <money min="2500"  max="2500"  infinitive="0"/>
+    <money min="1"  max="1"  infinitive="0"/>
 
 		<class>actor_degtyarev</class>
 		<community>stalker</community>
@@ -41,19 +63,43 @@
 		<team>mp_actor</team>
 		<supplies>
 			[spawn] \n
-			white_novice_outfit \n
+            identity_card_recon \n
+            container_tool \n
+            con_checker \n
 
-			wpn_bm16  \n
-   			ammo_12x70_buck = 4 \n
-   			
-			bandage = 2 \n
-			antirad = 1 \n
-			medkit = 2 \n
+            wpn_upd \n
+            wpn_binoc_inv \n
+            roubles = 2 \n
+            novice_outfit \n
 
-			tomato = 2 \n
+            gun_oil_ru_d2 \n
+            cleaning_kit_p3 \n
+
+            flask \n
+            ration_ukr5 \n
+            cigar2_3 \n
+
+            bandage = 4 \n
+            cantirad = 2 \n
+            drug_coagulant5 \n
+            drug_psy_blockade5 \n
+            morphine \n
+            medkit_army \n
+            stimpack_army \n
+            mine \n
+
+            wpn_pb \n
+            wpn_mp5sd \n
+            ammo_9x18_fmj = 2 \n
+            ammo_9x18_pbp = 2 \n
+            ammo_9x19_fmj = 6 \n
+
+            wpn_addon_silencer_9x18 \n
+            helm_respirator \n
+            detector_simple \n
     </supplies>
 	
-	   <money min="2500"  max="3500"  infinitive="0"/>
+	   <money min="1"  max="1"  infinitive="0"/>
 
 		<class>actor_partner</class>
 		<community>stalker</community>
@@ -71,19 +117,41 @@
 		<team>mp_actor</team>
 		<supplies>
 			[spawn] \n
-			cs_light_outfit \n
+            identity_card_assaulter \n
+            container_tool \n
+            con_checker \n
 
-			wpn_pm  \n
-   			ammo_9x18_fmj = 5 \n
-   			
-			bandage = 2 \n
-			antirad = 1 \n
-			medkit = 2 \n
+            wpn_upd \n
+            roubles = 7 \n
+            novice_outfit \n
 
-			tushonka = 2 \n
+            gun_oil2 \n
+            cleaning_kit_r7_3 \n
+            glue_a2 \n
+            textile_patch_m \n
+
+            flask \n
+            ration_ukr5 \n
+
+            bandage = 3 \n
+            antirad \n
+            drug_coagulant5 \n
+            medkit_army = 2 \n
+            stimpack_army = 2 \n
+
+            wpn_ak47_rusty \n
+            wpn_gsh18 \n
+            ammo_9x19_fmj = 2 \n
+            ammo_9x19_pbp \n
+            ammo_7.62x39_fmj = 3 \n
+
+            chelm_hardhat \n
+            af_kevlar \n
+            grenade_f1 \n
+            grenade_rgd5 = 2 \n
     </supplies>
 	
-	    <money min="1500"  max="2500"  infinitive="0"/>
+	    <money min="1"  max="1"  infinitive="0"/>
 
 		<class>actor_partner</class>
 		<community>stalker</community>
@@ -113,7 +181,7 @@
 			conserva = 2 \n
     </supplies>
 
-    <money min="1500"  max="2500"  infinitive="0"/>
+    <money min="1"  max="1"  infinitive="0"/>
 
 		<class>actor_partner</class>
 		<community>stalker</community>
