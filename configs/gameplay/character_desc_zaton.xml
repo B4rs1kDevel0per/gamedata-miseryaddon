@@ -10,38 +10,39 @@
 		<team>mp_actor</team>
 		<supplies>
 			[spawn] \n			
-            identity_card_assaulter \n
+            identity_card_sniper \n
             container_tool \n
             con_checker \n
 
             wpn_upd \n
-            roubles = 7 \n
+            roubles = 3 \n
             novice_outfit \n
 
-            gun_oil2 \n
+            gun_oil_ru_d2 \n
             cleaning_kit_r7_3 \n
-            glue_a2 \n
-            textile_patch_m \n
+            sewing_kit_a3 \n
 
             flask \n
             ration_ukr5 \n
 
             bandage = 3 \n
-            antirad \n
+            tetanus \n
             drug_coagulant5 \n
+            caffeine5 \n
+            drug_sleepingpills3 \n
             medkit_army = 2 \n
-            stimpack_army = 2 \n
+            stimpack_army \n
+            itm_backpack \n
 
-            wpn_ak47m_worn \n
-            wpn_gsh18 \n
-            ammo_9x19_fmj = 2 \n
-            ammo_9x19_pbp \n
-            ammo_7.62x39_fmj = 8 \n
+            helm_cloth_mask \n
 
-            helm_hardhat \n
-            af_kevlar \n
-            grenade_f1 \n
-            grenade_rgd5 = 2 \n
+            wpn_m1891 \n
+            wpn_bm16 \n
+            ammo_12x70_buck = 4 \n
+            ammo_7.62x54_ap = 2 \n
+
+            itm_sleepbag \n
+            wpn_addon_scope_pu \n
 			
     </supplies>
 
