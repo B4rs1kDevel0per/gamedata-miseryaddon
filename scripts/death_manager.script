@@ -304,28 +304,28 @@ function set_weapon_drop_condition(item, npc_rank)
 	
 	if npc_rank < 200 then --					Новичок или зомби: оружие уничтожено, ржавый хлам
 		if roll_the_dice <= 70 then
-			condition_val = math.random(4, 32) -- 70% шанс: полный рандом (от лома до 32%)
+			condition_val = math.random(12, 42) -- 70% шанс: полный рандом (от лома до 32%)
 		else
-			condition_val = math.random(18, 36) -- 30% шанс: стабильный рандом без откровенного мусора
+			condition_val = math.random(24, 48) -- 30% шанс: стабильный рандом без откровенного мусора
 		end
 		
 	elseif npc_rank < 400 then --					Обычный: сильно изношенные стволы
 		if roll_the_dice <= 65 then
-			condition_val = math.random(8, 45) -- 65% шанс: дикий разброс, верхний предел забафан до 45%
+			condition_val = math.random(24, 48) -- 65% шанс: дикий разброс, верхний предел забафан до 45%
 		else 
-			condition_val = math.random(26, 52) -- 35% шанс: стабильное среднее состояние (минимум 26%)
+			condition_val = math.random(28, 52) -- 35% шанс: стабильное среднее состояние (минимум 26%)
 		end
 		
 	elseif npc_rank < 600 then --				Опытный / Ветеран: оружие повидало виды
 		if roll_the_dice <= 60 then
-			condition_val = math.random(12, 60) -- 60% шанс: огромный рандом (от хлама до вполне рабочего 60%)
+			condition_val = math.random(28, 60) -- 60% шанс: огромный рандом (от хлама до вполне рабочего 60%)
 		else
 			condition_val = math.random(35, 70) -- 40% шанс: опытный сталкер, минимум 35%, максимум поднят до 70%
 		end
 		
 	else --										Мастер / Элита: следят за стволами
 		if roll_the_dice <= 65 then
-			condition_val = math.random(18, 75) -- 65% шанс: боевой износ, но верхний предел расширен до 75%
+			condition_val = math.random(28, 75) -- 65% шанс: боевой износ, но верхний предел расширен до 75%
 		else
 			condition_val = math.random(45, 88) -- 35% шанс: элитный трофей, гарантированно от 45% до отличных 88%
 		end
