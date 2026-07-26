@@ -6,11 +6,11 @@
 	</character>
 	
 	<character id="actor_partner_assaulter">
-		<class>actor_partner</class>
+		<class>actor_partner_assaulter</class>
 	</character>
 	
 	<character id="actor_partner_recon">
-		<class>actor_partner</class>
+		<class>actor_partner_recon</class>
 	</character>
 	
 	<!--  ZATON -->

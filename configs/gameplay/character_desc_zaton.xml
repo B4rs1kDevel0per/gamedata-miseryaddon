@@ -102,7 +102,7 @@
 	
 	   <money min="7000"  max="10000"  infinitive="0"/>
 
-		<class>actor_partner</class>
+		<class>actor_partner_recon</class>
 		<community>stalker</community>
 
 		<rank>0</rank>
@@ -154,7 +154,7 @@
 	
 	    <money min="7000"  max="10000"  infinitive="0"/>
 
-		<class>actor_partner</class>
+		<class>actor_partner_assaulter</class>
 		<community>stalker</community>
 
 		<rank>0</rank>
