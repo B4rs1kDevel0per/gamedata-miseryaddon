@@ -6,7 +6,6 @@
 $spawn                     = "actors\actor_degtyarev"
 character_profile     = actor_degtyarev
 visual                 = actors\stalker_mp\stalker_neutral_2.ogf
-story_id = actor_degtyarev
 outfit_sect = actor_degtyarev_outfits
 
 [actor_degtyarev_outfits]
@@ -22,16 +21,214 @@ military_outfit = actors\stalker_mp\stalker_hero_degtyarev_military.ogf
 cs_heavy_outfit = actors\stalker_mp\stalker_hero_degtyarev_nebo_2.ogf
 specops_outfit = actors\stalker_mp\stalker_hero_degtyarev_specops.ogf
 
-[actor_partner]:mp_actor
+[actor_partner_assaulter]:mp_actor
 $spawn                = "actors\actor_partner"
-character_profile     = actor_partner
+character_profile     = actor_partner_assaulter
 visual                = actors\stalker_hero\stalker_hero_1.ogf
-story_id = actor_partner
+story_id = actor_degtyarev
+outfit_sect = actor_assaulter_outfits
 
-[actor_partner_regular]:mp_actor
+max_item_mass           = 40
+jump_speed              = 6.3
+crouch_coef             = 0.65
+climb_coef              = 0.45
+run_coef                = 1.710	;4.1
+sprint_koef             = 1.55	;2.0
+run_back_coef           = 1.4
+walk_back_coef          = 0.66
+air_control_param       = 0.15
+walk_accel              = 20	;16
+
+ph_crash_speed_min                              = 13
+ph_crash_speed_max                              = 33
+
+immunities_sect                 = actor_immunities_gd_novice_assaulter
+condition_sect                  = actor_condition_assaulter
+
+[actor_immunities_gd_novice_assaulter]:actor_immunities_gd_novice
+burn_immunity 				= 8.4
+strike_immunity 			= 1.24
+shock_immunity 				= 1.78
+wound_immunity				= 1.02
+radiation_immunity 			= 1.2
+telepatic_immunity 			= 3.33
+chemical_burn_immunity 			= 2.15
+explosion_immunity 			= 0.84
+fire_wound_immunity  			= 0.64
+
+[actor_condition_assaulter]:mp_actor_condition
+satiety_v				= 0.000195 	;скорость уменьшения сытости со временем
+radiation_v				= 0.0002	;скорость уменьшения радиации
+satiety_power_v			= 0.0425		;увеличение силы при уменьшении сытости
+satiety_health_v		= 0.001    ;увеличение здоровья при уменьшении сытости
+satiety_critical		= 0.1       ;критическое значения сытости (в процентах от 0..1) когда здоровье начианает уменьшаться
+radiation_health_v		= 0.018	;0.002     ;уменьшение здоровья при воздействии радиации
+morale_v				= 0.0001	;скорость восстановления морали
+psy_health_v			= 0.002 ;0.001		;скорость восстановления psy-здоровья
+alcohol_v				= -0.008
+health_hit_part			= 1.0		;процент хита, уходящий на отнимание здоровья
+power_hit_part			= 0.04		;процент хита, уходящий на отнимание силы
+max_power_leak_speed	= 0 ; 0.000001		;накопление усталости (макс граница, до которой восстанавливается сила) в секунду игрового времени
+max_walk_weight			= 150 ; 950 ; wpn_test ; 150 ; 55 ;50 ;490 ;90
+health_restore_v              = 0
+
+bleeding_v 				= 0.077	 ;0.0005	;потеря крови при номинальной ране в секунду
+
+wound_incarnation_v		= 0.030 ; 0.004 ; 0.003 ;0.0003     ;скорость заживления раны
+min_wound_size 			= 0.064	;минимальный размер раны, после которого она считается зажившей
+
+
+satiety_v_sleep          	= 0.000135
+radiation_v_sleep        	= 0.00017		;0.0003
+
+radiation_health_v_sleep = 0.013
+
+;actor_condition only
+
+jump_power 				= 0.018 ;умешьшение силы с прыжком без учета веса ноши
+jump_weight_power       = 0.2  ;0.045                                        ;умешьшение силы с прыжком с учетом веса ноши, для максимального допустимого веса
+overweight_jump_k       = 1.02		;10                ;10                                        ;коэффициент влияние перегрузки прыжок с весом (умножается на jump_weight_power)
+
+stand_power             = -0.070
+walk_power              = 0.0001 ;0.00002  ;0.000012                                ;Reduction of force for a second during walking without taking into account weight of a burden
+walk_weight_power       = 0.035  ;0.0001;                        ;Reduction of force for a second during walking in view of weight of a burden, for the maximal allowable weight
+overweight_walk_k       = 1.04			;9        ;10                                ;Factor influence of an overload of a burden (it is multiplied on walk_weight_power)
+accel_k                 = 1.7			;5                                        ;Factor on run (it is multiplied walk_power, walk_weight_power)
+sprint_k                = 3.8 ;75        ;коэффициент на "sprint" бег (умножается walk_power, walk_weight_power)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+; хромота
+limping_health_begin =        0.03                ;порог здоровья меньше которого актер начинает хромать
+limping_health_end   =        0.06                ;порог здоровья больше которого актер перестает хромать
+limping_power_begin  =        0.18               ;порог силы меньше которого актер начинает хромать
+limping_power_end         =        0.29            ;порог силы больше которого актер перестает хромать
+use_limping_state         = on
+
+[actor_assaulter_outfits]
+novice_outfit = actors\stalker_mp\assaulter\stalker_hero_neutral_assaulter.ogf
+black_coat_outfit = actors\stalker_mp\assaulter\stalker_hero_bandit_assaulter.ogf
+stalker_outfit = actors\stalker_mp\assaulter\stalker_hero_stalker_assaulter.ogf
+stalker_outfit_barge = actors\stalker_mp\assaulter\stalker_hero_stalker_assaulter.ogf
+dolg_outfit = actors\stalker_mp\assaulter\stalker_hero_dolg_2_assaulter.ogf
+dolg_heavy_outfit = actors\stalker_mp\assaulter\stalker_hero_dolg_3_assaulter.ogf
+svoboda_light_outfit = actors\stalker_mp\assaulter\stalker_hero_freedom_1_assaulter.ogf
+svoboda_heavy_outfit = actors\stalker_mp\assaulter\stalker_hero_freedom_3_assaulter.ogf
+military_outfit = actors\stalker_mp\assaulter\stalker_hero_military_assaulter.ogf
+cs_heavy_outfit = actors\stalker_mp\assaulter\stalker_hero_nebo_2_assaulter.ogf
+specops_outfit = actors\stalker_mp\assaulter\stalker_hero_specops_assaulter.ogf
+
+[actor_partner_recon]:mp_actor
 $spawn                = "actors\actor_partner_regular"
 character_profile     = actor_partner
 visual                = actors\stalker_hero\stalker_hero_1.ogf
+
+outfit_sect = actor_recon_outfits
+
+max_item_mass           = 34
+jump_speed              = 7.0
+crouch_coef             = 0.65
+climb_coef              = 0.55
+run_coef                = 1.710	;4.1
+sprint_koef             = 1.65	;2.0
+run_back_coef           = 1.4
+walk_back_coef          = 0.66
+air_control_param       = 0.15
+walk_accel              = 22.7	;16
+
+ph_crash_speed_min                              = 15
+ph_crash_speed_max                              = 41
+
+immunities_sect                 = actor_immunities_gd_novice_recon
+condition_sect                  = actor_condition_recon
+
+[actor_immunities_gd_novice_recon]:actor_immunities_gd_novice
+burn_immunity 				= 10.9
+strike_immunity 			= 1.28
+shock_immunity 				= 1.90
+wound_immunity				= 1.18
+radiation_immunity 			= 1.03
+telepatic_immunity 			= 2.84
+chemical_burn_immunity 			= 2.42
+explosion_immunity 			= 0.89
+fire_wound_immunity  			= 0.72
+
+[actor_condition_recon]:mp_actor_condition
+satiety_v				= 0.000105 	;скорость уменьшения сытости со временем
+radiation_v				= 0.00018	;скорость уменьшения радиации
+satiety_power_v			= 0.0325		;увеличение силы при уменьшении сытости
+satiety_health_v		= 0.0007    ;увеличение здоровья при уменьшении сытости
+satiety_critical		= 0.06       ;критическое значения сытости (в процентах от 0..1) когда здоровье начианает уменьшаться
+radiation_health_v		= 0.017	;0.002     ;уменьшение здоровья при воздействии радиации
+morale_v				= 0.001	;скорость восстановления морали
+psy_health_v			= 0.028 ;0.001		;скорость восстановления psy-здоровья
+alcohol_v				= -0.0052
+health_hit_part			= 1.0		;процент хита, уходящий на отнимание здоровья
+power_hit_part			= 0.08		;процент хита, уходящий на отнимание силы
+max_power_leak_speed	= 0.000001		;накопление усталости (макс граница, до которой восстанавливается сила) в секунду игрового времени
+max_walk_weight			= 150 ; 950 ; wpn_test ; 150 ; 55 ;50 ;490 ;90
+health_restore_v              = 0
+
+bleeding_v 				= 0.116	 ;0.0005	;потеря крови при номинальной ране в секунду
+
+wound_incarnation_v		= 0.020 ; 0.004 ; 0.003 ;0.0003     ;скорость заживления раны
+min_wound_size 			= 0.068	;минимальный размер раны, после которого она считается зажившей
+
+
+satiety_v_sleep          	= 0.00006
+radiation_v_sleep        	= 0.00014		;0.0003
+satiety_power_v_sleep    	= 0.001
+satiety_health_v_sleep   = 0.0
+radiation_health_v_sleep = 0.012
+
+alcohol_v_sleep               	= -0.005
+
+
+;actor_condition only
+
+jump_power 				= 0.018 ;умешьшение силы с прыжком без учета веса ноши
+jump_weight_power       = 0.2  ;0.045                                        ;умешьшение силы с прыжком с учетом веса ноши, для максимального допустимого веса
+overweight_jump_k       = 1.04		;10                ;10                                        ;коэффициент влияние перегрузки прыжок с весом (умножается на jump_weight_power)
+
+stand_power             = -0.075
+walk_power              = 0.0001 ;0.00002  ;0.000012                                ;Reduction of force for a second during walking without taking into account weight of a burden
+walk_weight_power       = 0.040  ;0.0001;                        ;Reduction of force for a second during walking in view of weight of a burden, for the maximal allowable weight
+overweight_walk_k       = 1.12			;9        ;10                                ;Factor influence of an overload of a burden (it is multiplied on walk_weight_power)
+accel_k                 = 1.3			;5                                        ;Factor on run (it is multiplied walk_power, walk_weight_power)
+sprint_k                = 3.0 ;75        ;коэффициент на "sprint" бег (умножается walk_power, walk_weight_power)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+; хромота
+limping_health_begin =        0.08                ;порог здоровья меньше которого актер начинает хромать
+limping_health_end   =        0.12                ;порог здоровья больше которого актер перестает хромать
+limping_power_begin  =        0.08              ;порог силы меньше которого актер начинает хромать
+limping_power_end         =        0.16            ;порог силы больше которого актер перестает хромать
+use_limping_state         = on
+
+[actor_recon_outfits]
+novice_outfit = actors\stalker_mp\recon\stalker_hero_neutral_recon.ogf
+
+black_coat_outfit = actors\stalker_mp\recon\stalker_hero_bandit_recon.ogf
+
+stalker_outfit = actors\stalker_mp\recon\stalker_hero_stalker_recon.ogf
+
+stalker_outfit_barge = actors\stalker_mp\recon\stalker_hero_stalker_recon.ogf
+
+dolg_outfit = actors\stalker_mp\recon\stalker_hero_dolg_2_recon.ogf
+
+dolg_heavy_outfit = actors\stalker_mp\recon\stalker_hero_dolg_3_recon.ogf
+
+svoboda_light_outfit = actors\stalker_mp\recon\stalker_hero_freedom_1_recon.ogf
+
+svoboda_heavy_outfit = actors\stalker_mp\recon\stalker_hero_freedom_3_recon.ogf
+
+military_outfit = actors\stalker_mp\recon\stalker_hero_military_recon.ogf
+
+cs_heavy_outfit = actors\stalker_mp\recon\stalker_hero_nebo_2_recon.ogf
+
+specops_outfit = actors\stalker_mp\recon\stalker_hero_specops_recon.ogf
+
 
 ;-------------------------B14------------------
 

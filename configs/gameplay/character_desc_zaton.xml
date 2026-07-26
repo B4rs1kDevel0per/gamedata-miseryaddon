@@ -39,14 +39,14 @@
             wpn_m1891 \n
             wpn_bm16 \n
             ammo_12x70_buck = 4 \n
-            ammo_7.62x54_ap = 2 \n
+            ammo_7.62x54_ap = 3 \n
 
             itm_sleepbag \n
             wpn_addon_scope_pu \n
 			
     </supplies>
 
-    <money min="1"  max="1"  infinitive="0"/>
+    <money min="7000"  max="10000"  infinitive="0"/>
 
 		<class>actor_degtyarev</class>
 		<community>stalker</community>
@@ -56,7 +56,7 @@
 		<visual>actors\stalker_mp\stalker_neutral_2</visual>
 	</specific_character>
 	
-	<specific_character id="actor_partner_default_0" team_default = "1">
+	<specific_character id="actor_partner_recon" team_default = "1">
 		<name>st_partner_name</name>
 		<icon>ui_inGame2_Hero</icon>
 		<map_icon x="2" y="5"></map_icon>
@@ -81,7 +81,7 @@
             cigar2_3 \n
 
             bandage = 4 \n
-            cantirad = 2 \n
+            antirad = 2 \n
             drug_coagulant5 \n
             drug_psy_blockade5 \n
             morphine \n
@@ -100,7 +100,7 @@
             detector_simple \n
     </supplies>
 	
-	   <money min="1"  max="1"  infinitive="0"/>
+	   <money min="7000"  max="10000"  infinitive="0"/>
 
 		<class>actor_partner</class>
 		<community>stalker</community>
@@ -110,7 +110,7 @@
 		<visual>actors\stalker_hero\stalker_hero_1</visual>
 	</specific_character>		
 	
-	<specific_character id="actor_partner_default_1" team_default = "1">
+	<specific_character id="actor_partner_assaulter" team_default = "1">
 		<name>st_partner_name</name>
 		<icon>ui_inGame2_Hero</icon>
 		<map_icon x="2" y="5"></map_icon>
@@ -140,11 +140,11 @@
             medkit_army = 2 \n
             stimpack_army = 2 \n
 
-            wpn_ak47_rusty \n
+            wpn_ak47m_worn \n
             wpn_gsh18 \n
             ammo_9x19_fmj = 2 \n
             ammo_9x19_pbp \n
-            ammo_7.62x39_fmj = 3 \n
+            ammo_7.62x39_fmj = 5 \n
 
             helm_hardhat \n
             af_kevlar \n
@@ -152,7 +152,7 @@
             grenade_rgd5 = 2 \n
     </supplies>
 	
-	    <money min="1"  max="1"  infinitive="0"/>
+	    <money min="7000"  max="10000"  infinitive="0"/>
 
 		<class>actor_partner</class>
 		<community>stalker</community>
@@ -162,35 +162,6 @@
 		<visual>actors\stalker_hero\stalker_hero_1</visual>
 	</specific_character>		
 	
-	<specific_character id="actor_partner_default_2" team_default = "1">
-		<name>st_partner_name</name>
-		<icon>ui_inGame2_Hero</icon>
-		<map_icon x="2" y="5"></map_icon>
-
-		<team>mp_actor</team>
-		<supplies>
-			[spawn] \n
-			black_coat_outfit \n
-
-			wpn_toz34  \n
-   			ammo_12x70_buck = 3 \n
-   			
-			bandage = 2 \n
-			antirad = 1 \n
-			medkit = 3 \n
-
-			conserva = 2 \n
-    </supplies>
-
-    <money min="1"  max="1"  infinitive="0"/>
-
-		<class>actor_partner</class>
-		<community>stalker</community>
-
-		<rank>0</rank>
-		<reputation>0</reputation>
-		<visual>actors\stalker_hero\stalker_hero_1</visual>
-	</specific_character>		
 
 	<specific_character id="zat_b30_owl_stalker_trader" team_default="1">
 		<name>st_zat_b30_owl_stalker_trader_name</name>

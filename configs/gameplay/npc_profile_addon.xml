@@ -5,10 +5,15 @@
 		<specific_character>actor_degtyarev</specific_character>
 	</character>
 	
-	
-	<character id="actor_partner">
+	<character id="actor_partner_assaulter">
 		<class>actor_partner</class>
-	</character><!--  ZATON -->
+	</character>
+	
+	<character id="actor_partner_recon">
+		<class>actor_partner</class>
+	</character>
+	
+	<!--  ZATON -->
   <!-- Zaton B106 -->
 
 	<character id="zat_b106_stalker_gonta">
